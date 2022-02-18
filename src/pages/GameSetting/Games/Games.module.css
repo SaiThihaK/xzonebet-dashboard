@@ -1,0 +1,16 @@
+.toggleImage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+    padding: 10px;
+}
+.toggleImage img {
+    width: 100%;
+    height:210px;
+    object-fit: cover;
+    margin-bottom: 5px;
+}
+.toggleContainer {
+    margin-top: 10px;
+}

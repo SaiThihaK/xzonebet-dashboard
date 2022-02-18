@@ -1,0 +1,49 @@
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.checkbox {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 30px;
+  background-color: #aeaeae;
+  cursor: pointer;
+  transition: 0.4s;
+  -webkit-transition: 0.4s;
+}
+.switch-btn::before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  border-radius: inherit;
+  background-color: #fff;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
+  transition: 0.4s ease all, left 0.4s cubic-bezier(0.18, 0.89, 0.35, 1.15);
+}
+.switch-btn:active:before {
+  width: 40px;
+}
+
+.checkbox:checked + .switch-btn {
+  background-color: lightgreen;
+  box-shadow: 0 0 8px 0 lightgreen;
+}
+.checkbox:checked + .switch-btn::before {
+  left: calc(100% - 4px);
+  transform: translateX(-100%);
+}

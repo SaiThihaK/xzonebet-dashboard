@@ -1,0 +1,63 @@
+.betting-table {
+  border-collapse: collapse;
+  width: 100%;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.betting-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  color: rgb(61, 61, 61);
+  font-size: 14px;
+  text-align: center;
+  min-width: 100px;
+}
+.betting-table td:first-child {
+  min-width: 50px;
+}
+.betting-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.betting-table tr:hover {
+  background-color: rgb(240, 240, 240);
+}
+.table-title {
+    font-size: 15px;
+    color: #999;
+    margin-bottom: 10px;
+}
+.table-title span {
+    color: #333;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.table-title span:hover {
+    color: #1565C0;
+}
+.country-club {
+    display: flex;
+    align-items: center;
+}
+.logoSize {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.betting-table td input {
+    width: 50px;
+    outline: none;
+    text-align: center;
+    border: 1px solid #929292;
+    color: rgb(61, 61, 61);
+    font-size: 15px;
+    padding: 2px 5px;
+    border-radius: 0.25rem;
+}
+.betting-date {
+  font-weight: 300;
+  font-size: 14px;
+  margin-left: 20px;
+}
