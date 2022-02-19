@@ -36,6 +36,16 @@ export const SidebarData = [
                 path: '/Betting/football',
                 icon: <IoIcons.IoIosArrowForward />,
             },
+            {
+                title: '2D',
+                path: '/Betting/2d',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+            {
+                title: '3D',
+                path: '/Betting/3d',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
         ]
     },
     {

@@ -11,10 +11,10 @@
   color: rgb(61, 61, 61);
   font-size: 14px;
   text-align: center;
-  min-width: 100px;
+  max-width: 100px;
 }
 .betting-table td:first-child {
-  min-width: 50px;
+  max-width: 50px;
 }
 .betting-table tr:nth-child(even) {
   background-color: #f2f2f2;

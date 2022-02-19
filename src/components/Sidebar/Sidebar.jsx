@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { SidebarData } from "./SidebarData";
 import Submenu from "./Submenu";
-
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -123,8 +122,8 @@ const Sidebar = () => {
         // style={{ left: sidebar ? "0" : "-100%" }}
       >
         <div className={classes["sidebar-header"]}>
-          {/* <img src={logo} className={classes.logo} alt="" /> */}
-          <h1 style={{ color: "#FFF" }}>Logo</h1>
+          <img src={logo} className={classes.logo} alt="" />
+          {/* <h1 style={{ color: "#FFF" }}>Logo</h1> */}
         </div>
         <div className={classes.sidebarWrap}>
           {SidebarData.map((item, index) => {
