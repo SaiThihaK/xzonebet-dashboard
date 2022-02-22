@@ -1,4 +1,5 @@
 // ---------------------- Fixture Betting ---------------------
+import axios from 'axios';
 import configsData from '../configs.json';
 let dt = new Date();
 let year = dt.getFullYear();
@@ -36,3 +37,17 @@ export const oddByBookmaker = {
     'x-rapidapi-key': configsData.API_KEY,
   }
 };
+
+
+
+ export const betting = {
+  method: "GET",
+  url: "https://football-pro.p.rapidapi.com/api/v2.0/livescores",
+  params: { tz: 'Europe/Amsterdam', include: 'localTeam,visitorTeam' },
+  headers: {  
+    "x-rapidapi-host": "football-pro.p.rapidapi.com",
+    "x-rapidapi-key": "9b4fb89138mshdc697cc5d45c52fp1daa25jsne2be8889fabc",
+  },
+};
+
+

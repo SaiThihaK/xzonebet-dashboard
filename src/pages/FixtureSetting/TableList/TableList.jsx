@@ -7,6 +7,8 @@ import Checkbox from "@mui/material/Checkbox";
 import classes from "./TableList.module.css";
 import { fixtureBetting } from "../../../services/api-services";
 // import { oddByDate } from "../../../services/api-services";
+import { bettingData } from "../../../features/betting";
+import {useDispatch,useSelector} from 'react-redux';
 
 let dt = new Date();
 let year = dt.getFullYear();
@@ -15,21 +17,27 @@ let day = dt.getDate().toString().padStart(2, "0");
 
 const TableList = ({oddByState}) => {
   const [fixturebydate, setFixturebydate] = useState([]);
-  // const [oddByState, setOddByState] = useState([]);
-  useEffect(() => {
-    axios
-      .request(fixtureBetting)
-      .then((res) => {
-        clear();
-        setFixturebydate(res.data.response);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-  }, [fixtureBetting]);
-  // -------------------- testing odd by date ------------------------
   
+  const dispatch = useDispatch();
+  const betting = useSelector(state => state.betting);
+  useEffect(()=>{
+     dispatch(bettingData())
+  },[dispatch])
+  console.log(betting)
+  // const [oddByState, setOddByState] = useState([]);
+  // useEffect(() => {
+  //   axios
+  //     .request(fixtureBetting)
+  //     .then((res) => {
+  //       clear();
+  //       setFixturebydate(res.data.response);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+
+  // }, [fixtureBetting]);
+  // -------------------- testing odd by date ------------------------
 
   let leagueIds = [];
   let leagueNames = [];
