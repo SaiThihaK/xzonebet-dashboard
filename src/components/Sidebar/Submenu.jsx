@@ -16,6 +16,8 @@ const Submenu = ({ item }) => {
   const showSubNav = () => {
     setSubnav(!subnav);
   };
+
+  console.log(subnav)
   return (
     <Fragment>
       <Link to={item.subNav === undefined ? item.path : '#'}>

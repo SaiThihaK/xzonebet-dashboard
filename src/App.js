@@ -11,6 +11,9 @@ import Football from "./pages/Football/Football";
 import Twod from "./pages/2d/Twod";
 import Time from "./pages/2d/Time/Time";
 import Threed from "./pages/3d/Threed";
+import ThreedTime from "./pages/3d/ThreedTime/ThreedTime";
+import TwodCloseNumber from './pages/2d/TwodCloseNumber/TwodCloseNumber';
+import ThreedCloseNumber from './pages/3d/ThreedCloseNumber/ThreedCloseNumber';
 
 import Notfound from "./components/UI/404/404";
 function App() {
@@ -27,7 +30,12 @@ function App() {
           <Route path="/Betting/football" exact element={<Football />} />
           <Route path="/Betting/2d" exact element={<Twod />} />
           <Route path="Betting/2d/time" exact element={<Time/>} />
+          <Route path="/Betting/2d/close-number" exact element={<TwodCloseNumber />} />
+
           <Route path="/Betting/3d" exact element={<Threed />} />
+          <Route path="/Betting/3d/time" exact element={<ThreedTime />} />
+          <Route path="/Betting/3d/close-number" exact element={<ThreedCloseNumber />} />
+
           <Route path="*" element={<Notfound />} />
         </Routes>
       </Container>

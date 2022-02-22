@@ -1,0 +1,39 @@
+.numbers-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.numbers-container li {
+  width: 10%;
+  padding: 10px;
+  border: 1px solid #6774b1;
+  outline: 1px solid #6774b1;
+  position: relative;
+}
+.numbers-container li .numbers-list {
+   text-align: left;
+   font-size: 16px;
+   color: #6774b1;
+   font-weight: 700;
+}
+.numbers-container li .toggle-switch {
+    position: absolute;
+    top: 11px;
+    right: 4px;
+    z-index: 10;
+}
+.disableLock {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.13);
+    z-index: 5;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    color: gray;
+    font-size: 25px;    
+}
