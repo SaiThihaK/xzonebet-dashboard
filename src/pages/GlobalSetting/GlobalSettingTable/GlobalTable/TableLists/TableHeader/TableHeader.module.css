@@ -1,0 +1,32 @@
+.live-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--live-header);
+  padding: 10px 7px;
+  width: 100%;
+}
+.live-title {
+  color: white;
+}
+.live-search {
+  position: relative;
+  color: var(--main-color);
+}
+.live-search input {
+  outline: none;
+  padding: 3px 3px 3px 30px;
+  border: none;
+  color: var(--main-color);
+
+  width: 180px;
+}
+.live-search input::placeholder {
+  color: var(--main-color);
+}
+.live-search i {
+  position: absolute;
+  left: 5px;
+  z-index: 10;
+  color: var(--main-color);
+  top: 4px;
+}

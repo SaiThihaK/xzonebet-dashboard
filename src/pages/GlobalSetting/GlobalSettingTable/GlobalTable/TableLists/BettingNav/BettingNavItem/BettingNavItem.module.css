@@ -1,0 +1,37 @@
+
+.mr-3{
+margin-right: 5px;
+}
+ul li 
+.d-flex{
+    display: flex;
+    height: 100%;
+    align-items: center;
+            
+}
+.d-flex img{
+    width: 30px;
+    margin-right: 5px;
+}
+.d-count{
+    color: var(--text-color);
+    border-radius: 3px;
+    background-color: #EEF4F8;
+    width: 30px;
+    text-align: center;
+
+
+}
+ .d-count i{
+    font-size: 0.8rem;
+    color: var(--text-color) !important;
+    margin: 0px 5px;
+}
+.dropdown-right{
+    left: unset;
+    right: 0px !important;
+            
+}
+.d-flex{
+  display: flex;
+}

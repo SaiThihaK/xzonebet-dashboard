@@ -10,7 +10,7 @@ const FixtureSetting = () => {
     <div className={classes["soccer-setting-container"]}>
       <Card>
         <div className={classes["card-header"]}>
-          <h1 className={classes["card-title"]}>Fixture Betting</h1>
+          <h1 className={classes["card-title"]}>Myanmar Betting</h1>
         </div>
         <div className={classes["card-body"]}>
             <SearchHeader />
