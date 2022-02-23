@@ -7,6 +7,8 @@ import GameSetting from "./pages/GameSetting/GameSetting";
 import SoccerSetting from "./pages/SoccerSetting/SoccerSetting";
 import FixtureSetting from "./pages/FixtureSetting/FixtureSetting";
 import GlobalSetting from './pages/GlobalSetting/GlobalSetting';
+import GlobalSettingTable from './pages/GlobalSetting/GlobalSettingTable/GlobalSettingTable';
+import GlobalSettingEditBetting from "./pages/GlobalSetting/GlobalSettingPages/GlobalSettingEditBetting/GlobalSettingEditBetting";
 import MaungSetting from "./pages/MaungSetting/MaungSetting";
 import Football from "./pages/Football/Football";
 import Twod from "./pages/2d/Twod";
@@ -28,6 +30,8 @@ function App() {
           <Route path="/Setting/soccer-setting" exact element={<SoccerSetting />} />
           <Route path="/Setting/soccer-setting/fixture-betting" exact element={<FixtureSetting />} />
           <Route path="/Setting/soccer-setting/global-betting" exact element={<GlobalSetting />} />
+          <Route path="/Setting/soccer-setting/global-betting/edit-betting" exact element={<GlobalSettingEditBetting />} />
+          <Route path="/Setting/soccer-setting/global-betting/search-betting" exact element={<GlobalSettingTable />} />
           <Route path="/Setting/soccer-setting/maung-setting" exact element={<MaungSetting />} />
           <Route path="/Betting/football" exact element={<Football />} />
           <Route path="/Betting/2d" exact element={<Twod />} />
@@ -36,7 +40,7 @@ function App() {
           <Route path="/Betting/3d" exact element={<Threed />} />
           <Route path="/Betting/3d/time" exact element={<ThreedTime />} />
           <Route path="/Betting/3d/close-number" exact element={<ThreedCloseNumber />} />
-
+          
           <Route path="*" element={<Notfound />} />
         </Routes>
       </Container>

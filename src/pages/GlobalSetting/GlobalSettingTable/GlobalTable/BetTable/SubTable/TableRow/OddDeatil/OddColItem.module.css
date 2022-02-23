@@ -1,0 +1,50 @@
+.betRow {
+    display: flex;
+    border-bottom: 1px solid #918989;
+  }
+  .betRow:hover {
+    cursor: pointer;
+  }
+  .betRow .betData {
+      flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+  }
+  .betRow .betData:hover {
+    background: #e9f5fc !important;
+  }
+  .betRow .betData:hover .betNum {
+    background: #e9f5fc !important;
+  }
+  .betRow .betData div {
+   padding: 7px  10px;
+  }
+  .betRow .betData .betNum {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eee;
+    width: 65px;
+    height: 100%;
+    text-align: center;
+    /* padding:7px 15px ; */
+  }
+  .selected {
+    width: 200px;
+    background-color: #FBE274;
+  }
+  .selected:hover {
+    background-color: #f7ebb5;
+  }
+      
+      
+  /*  */
+  .tabcontent {
+    display: none;
+  }
+  .arrowRotate{
+    transform: rotate(180deg);
+    transform-origin: left;
+  }

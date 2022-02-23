@@ -95,683 +95,970 @@ const NumbersTable = () => {
 
   const label = { componentsProps: { input: { "aria-label": "Demo switch" } } };
   return (
-    <ul className={classes["numbers-container"]}>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>00</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>01</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>02</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>03</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>04</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>05</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>06</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>07</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>08</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>09</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled onChange={switchHandler} component={Root} {...label} defaultChecked />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>00</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>01</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>02</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>03</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>04</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>05</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>06</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>07</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>08</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>09</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled onChange={switchHandler} component={Root} {...label} defaultChecked />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>00</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>01</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>02</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>03</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>04</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>05</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>06</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>07</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>08</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>09</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled onChange={switchHandler} component={Root} {...label} defaultChecked />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>00</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>01</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>02</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>03</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>04</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>05</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>06</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>07</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>08</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>09</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled onChange={switchHandler} component={Root} {...label} defaultChecked />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>00</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>01</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>02</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>03</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>04</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>05</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>06</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>07</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>08</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled
-            onChange={switchHandler}
-            component={Root}
-            {...label}
-            defaultChecked
-          />
-        </div>
-      </li>
-      <li>
-        <div className={classes.disableLock}>
-          <FaIcons.FaLock />
-        </div>
-        <div className={classes["numbers-list"]}>09</div>
-        <div className={classes["toggle-switch"]}>
-          <SwitchUnstyled onChange={switchHandler} component={Root} {...label} defaultChecked />
-        </div>
-      </li>
-    </ul>
+    <div className={classes["numbers-container"]}>
+      <ul>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+        <li>
+          <div className={classes.disableLock}>
+            <FaIcons.FaLock />
+          </div>
+          <div className={classes["close-number-group"]}>
+            <div className={classes["toggle-switch"]}>
+              <SwitchUnstyled
+                onChange={switchHandler}
+                component={Root}
+                {...label}
+                defaultChecked
+              />
+            </div>
+            <span>00</span>
+          </div>
+        </li>
+      </ul>
+    </div>
   );
 };
 

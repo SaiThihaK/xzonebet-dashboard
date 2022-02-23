@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "../../components/UI/Card";
-import GlobalSettingHeader from "./GlobalSettingHeader/GlobalSettingHeader";
+import GlobalSettingPages from "./GlobalSettingPages/GlobalSettingPages";
 import classes from "./GlobalSetting.module.css";
 const GlobalSetting = () => {
   return (
@@ -10,7 +10,7 @@ const GlobalSetting = () => {
           <h1 className={classes["card-title"]}>Global Betting</h1>
         </div>
         <div className={classes["card-body"]}>
-            <GlobalSettingHeader />
+            <GlobalSettingPages />
         </div>
       </Card>
     </div>

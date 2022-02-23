@@ -1,0 +1,33 @@
+.extra-table{
+    border: 1px solid var(--main-color);
+    display: block;
+}
+/* .extra-table-show{
+display: block;
+} */
+.extra-table-body{
+    background-color: white;
+    display: flex;
+       align-items: center;
+}
+.extra-table-content{
+    flex: 0 0 388px;
+    border: 1px solid #EEF4F8;
+    padding: 5px 10px;
+    height: 50px;
+       display: flex;
+       align-items: center;
+                 
+}
+.extra-flex{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+               
+}
+.odd-name{
+  display: flex;
+  justify-content: center;
+    margin-left: 5px;
+    display: block;
+}
