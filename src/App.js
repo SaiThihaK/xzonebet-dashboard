@@ -17,7 +17,8 @@ import Threed from "./pages/3d/Threed";
 import ThreedTime from "./pages/3d/ThreedTime/ThreedTime";
 import TwodCloseNumber from './pages/2d/TwodCloseNumber/TwodCloseNumber';
 import ThreedCloseNumber from './pages/3d/ThreedCloseNumber/ThreedCloseNumber';
-
+import BecomeAnAgent from './pages/BecomeAnAgent/BecomeAnAgent';
+import AgentDetail from "./pages/BecomeAnAgent/AgentCard/AgentDetail/AgentDetail";
 import Notfound from "./components/UI/404/404";
 function App() {
   return (
@@ -26,20 +27,22 @@ function App() {
       <Container>
         <Routes>
           <Route path="/" exact element={<Overview />} />
-          <Route path="/Setting/game-setting" exact element={<GameSetting />} />
-          <Route path="/Setting/soccer-setting" exact element={<SoccerSetting />} />
-          <Route path="/Setting/soccer-setting/fixture-betting" exact element={<FixtureSetting />} />
-          <Route path="/Setting/soccer-setting/global-betting" exact element={<GlobalSetting />} />
-          <Route path="/Setting/soccer-setting/global-betting/edit-betting" exact element={<GlobalSettingEditBetting />} />
-          <Route path="/Setting/soccer-setting/global-betting/search-betting" exact element={<GlobalSettingTable />} />
-          <Route path="/Setting/soccer-setting/maung-setting" exact element={<MaungSetting />} />
-          <Route path="/Betting/football" exact element={<Football />} />
-          <Route path="/Betting/2d" exact element={<Twod />} />
-          <Route path="Betting/2d/time" exact element={<Time/>} />
-          <Route path="/Betting/2d/close-number" exact element={<TwodCloseNumber />} />
-          <Route path="/Betting/3d" exact element={<Threed />} />
-          <Route path="/Betting/3d/time" exact element={<ThreedTime />} />
-          <Route path="/Betting/3d/close-number" exact element={<ThreedCloseNumber />} />
+          <Route path="/setting/game-setting" exact element={<GameSetting />} />
+          <Route path="/setting/soccer-setting" exact element={<SoccerSetting />} />
+          <Route path="/setting/soccer-setting/fixture-betting" exact element={<FixtureSetting />} />
+          <Route path="/setting/soccer-setting/global-betting" exact element={<GlobalSetting />} />
+          <Route path="/setting/soccer-setting/global-betting/edit-betting" exact element={<GlobalSettingEditBetting />} />
+          <Route path="/setting/soccer-setting/global-betting/search-betting" exact element={<GlobalSettingTable />} />
+          <Route path="/setting/soccer-setting/maung-setting" exact element={<MaungSetting />} />
+          <Route path="/betting/football" exact element={<Football />} />
+          <Route path="/betting/2d" exact element={<Twod />} />
+          <Route path="/betting/2d/time" exact element={<Time/>} />
+          <Route path="/betting/2d/close-number" exact element={<TwodCloseNumber />} />
+          <Route path="/betting/3d" exact element={<Threed />} />
+          <Route path="/betting/3d/time" exact element={<ThreedTime />} />
+          <Route path="/betting/3d/close-number" exact element={<ThreedCloseNumber />} />
+          <Route path="/become-an-agent" exact element={<BecomeAnAgent />} />
+          <Route path="/become-an-agent/detail/:id" exact element={<AgentDetail />} />
           
           <Route path="*" element={<Notfound />} />
         </Routes>

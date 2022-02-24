@@ -11,8 +11,8 @@ export const betting = {
   params: {
     tz: "Asia/Yangon",
     include: "localTeam,visitorTeam,league",
-    page: 4,
   },
+ 
   headers: {
     "x-rapidapi-host": "football-pro.p.rapidapi.com",
     "x-rapidapi-key": configsData.API_KEY,

@@ -23,8 +23,7 @@ const TableList = () => {
     clean();
     dispatch(bettingData());
   }, [dispatch]);
-
-  
+ 
 
   data &&
     data.map((item) => {
@@ -40,7 +39,6 @@ const TableList = () => {
     tempCountryId = [];
   }
 
-  // console.log(tempLeagueId)
   // console.log("country id ",tempCountryId)
 
   const label = { inputProps: { "aria-label": "Switch demo" } };

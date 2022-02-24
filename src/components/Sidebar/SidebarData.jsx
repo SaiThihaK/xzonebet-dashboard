@@ -33,17 +33,17 @@ export const SidebarData = [
         subNav : [
             {
                 title: 'Football',
-                path: '/Betting/football',
+                path: '/betting/football',
                 icon: <IoIcons.IoIosArrowForward />,
             },
             {
                 title: '2D',
-                path: '/Betting/2d',
+                path: '/betting/2d',
                 icon: <IoIcons.IoIosArrowForward />,
             },
             {
                 title: '3D',
-                path: '/Betting/3d',
+                path: '/betting/3d',
                 icon: <IoIcons.IoIosArrowForward />,
             },
         ]
@@ -57,22 +57,22 @@ export const SidebarData = [
         subNav : [
             {
                 title: 'All Master',
-                path: '/Betting/all-master',
+                path: '/betting/all-master',
                 icon: <IoIcons.IoIosArrowForward />,
             },
             {
                 title: 'All Agent',
-                path: '/Betting/all-agent',
+                path: '/betting/all-agent',
                 icon: <IoIcons.IoIosArrowForward />,
             },
             {
                 title: 'All User',
-                path: '/Betting/all-user',
+                path: '/betting/all-user',
                 icon: <IoIcons.IoIosArrowForward />,
             },
             {
                 title: 'Manage Super Master',
-                path: '/Betting/manage-super-master',
+                path: '/betting/manage-super-master',
                 icon: <IoIcons.IoIosArrowForward />,
             },
         ]
@@ -86,7 +86,7 @@ export const SidebarData = [
         subNav : [
             {
                 title: 'Reports',
-                path: '/Accounting/Reports',
+                path: '/accounting/reports',
                 icon: <IoIcons.IoIosArrowForward />,
             },
         ]
@@ -105,12 +105,12 @@ export const SidebarData = [
         subNav : [
             {
                 title: 'Game Setting',
-                path: '/Setting/game-setting',
+                path: '/setting/game-setting',
                 icon: <IoIcons.IoIosArrowForward />,
             },
             {
                 title: 'Soccer Setting',
-                path: '/Setting/soccer-setting',
+                path: '/setting/soccer-setting',
                 icon: <IoIcons.IoIosArrowForward />,
             },
         ]
