@@ -33,56 +33,6 @@ const BettingNav = () => {
           icon={"fas fa-futbol"}
           name={"football"}
         />
-        <Bettingnavitemcontainer
-          fixture={fixture}
-          icon={"fas fa-baseball-ball"}
-          name={"tennis"}
-        />
-        <Bettingnavitemcontainer
-          fixture={fixture}
-          icon={"fas fa-basketball-ball"}
-          name={"basketball"}
-        />
-        <Bettingnavitemcontainer
-          fixture={fixture}
-          icon={"fas fa-futbol"}
-          name={"football"}
-        />
-        <Bettingnavitemcontainer
-          fixture={fixture}
-          icon={"fas fa-baseball-ball"}
-          name={"tennis"}
-        />
-        <Bettingnavitemcontainer
-          fixture={fixture}
-          icon={"fas fa-basketball-ball"}
-          name={"basketball"}
-        />
-        <Bettingnavitemcontainer
-          fixture={fixture}
-          icon={"fas fa-futbol"}
-          name={"football"}
-        />
-        <Bettingnavitemcontainer
-          fixture={fixture}
-          icon={"fas fa-baseball-ball"}
-          name={"tennis"}
-        />
-        <Bettingnavitemcontainer
-          fixture={fixture}
-          icon={"fas fa-basketball-ball"}
-          name={"basketball"}
-        />
-        <Bettingnavitemcontainer
-          fixture={fixture}
-          icon={"fas fa-futbol"}
-          name={"football"}
-        />
-        <Bettingnavitemcontainer
-          fixture={fixture}
-          icon={"fas fa-baseball-ball"}
-          name={"tennis"}
-        />
       </div>
     </div>
   );

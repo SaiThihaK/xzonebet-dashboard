@@ -7,7 +7,6 @@ import classes from './TableRow.module.css';
 const TableRow=({team1,team2,duration,half,odd})=> {
   const [detail,setDetail]=useState(false);
   const [extra,setExtra]=useState(false);
-  console.log(odd);
   return (
       <div className={classes["table-row"]}>
     <div className={classes["table-body"]}>
