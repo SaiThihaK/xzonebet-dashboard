@@ -42,7 +42,11 @@ const Login = () => {
 
   useEffect(() => {
     loginName.current.focus();
+    
   }, []);
+  const loginNameHandler = () => {
+    setErrorMsg(null)
+  }
 
 
    const loginFormSubmitHandler = (e) => {
@@ -84,6 +88,7 @@ const Login = () => {
                   placeholder="Username or Email"
                   required
                   autoComplete="off"
+                  onChange={loginNameHandler}
                 />
                 <span className="errorMessage">{errorMsg}</span>
               </p>
