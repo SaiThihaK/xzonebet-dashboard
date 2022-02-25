@@ -14,6 +14,7 @@ const MasterSettingCard = ({name,bgColor,path}) => {
           <h3>{name}</h3>
           <FaIcons.FaUserAlt style={{fontSize: "40px"}} />
         </div>
+        <span className={classes['total-number']}>10</span>
       </div>
       </Link>
     </div>

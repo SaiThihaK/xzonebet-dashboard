@@ -22,6 +22,9 @@ import AgentDetail from "./pages/BecomeAnAgent/AgentCard/AgentDetail/AgentDetail
 import SuperMaster from "./pages/SuperMaster/SuperMaster";
 import SuperMasterDetail from "./pages/SuperMaster/SuperMasterCard/SuperMasterDetail/SuperMasterDetail";
 import Master from "./pages/Master/Master";
+import PandingMaster from "./pages/Master/PandingMaster/PandingMaster";
+import PandingMasterDetail from "./pages/Master/PandingMaster/PandingMasterCard/PandingMasterDetail/PandingMasterDetail";
+import MasterDeposit from './pages/MasterDeposit/MasterDeposit';
 import Notfound from "./components/UI/404/404";
 
 function App() {
@@ -50,6 +53,10 @@ function App() {
           <Route path="/account/super-master" exact element={<SuperMaster />} />
           <Route path="account/super-master/detail/:id" exact element={<SuperMasterDetail />} />
           <Route path="/account/master" exact element={<Master />} />
+          <Route path="/account/master/panding-master" exact element={<PandingMaster />} />
+          <Route path="/account/master/panding-master/detail/:id" exact element={<PandingMasterDetail />} />
+          <Route path="/accounting/master-deposit" exact element={<MasterDeposit />} />
+          
           <Route/>
           <Route path="*" element={<Notfound />} />
         </Routes>

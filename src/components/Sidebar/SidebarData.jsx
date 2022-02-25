@@ -90,6 +90,11 @@ export const SidebarData = [
         iconOpened: <RiIcons.RiArrowUpSFill/>,
         subNav : [
             {
+                title: 'Master Deposit',
+                path: '/accounting/master-deposit',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+            {
                 title: 'Reports',
                 path: '/accounting/reports',
                 icon: <IoIcons.IoIosArrowForward />,

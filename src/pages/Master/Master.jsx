@@ -11,7 +11,7 @@ const Master = () => {
         </div>
         <div className={classes["card-body"]}>
             <div className={classes['soccer-setting-content-flex']}>
-               <MasterSettingCard name="Panding Master" bgColor="#FFC107" path="" />
+               <MasterSettingCard name="Panding Master" bgColor="#FFC107" path="panding-master" />
                <MasterSettingCard name="Confirm Master" bgColor="#4099FF" path="" />
                <MasterSettingCard name="Complete Master" bgColor="#2ED8B6" path="" />
                <MasterSettingCard name="Cancel Master" bgColor="#FF5370" path="" />
