@@ -19,7 +19,11 @@ import TwodCloseNumber from './pages/2d/TwodCloseNumber/TwodCloseNumber';
 import ThreedCloseNumber from './pages/3d/ThreedCloseNumber/ThreedCloseNumber';
 import BecomeAnAgent from './pages/BecomeAnAgent/BecomeAnAgent';
 import AgentDetail from "./pages/BecomeAnAgent/AgentCard/AgentDetail/AgentDetail";
+import SuperMaster from "./pages/SuperMaster/SuperMaster";
+import SuperMasterDetail from "./pages/SuperMaster/SuperMasterCard/SuperMasterDetail/SuperMasterDetail";
+import Master from "./pages/Master/Master";
 import Notfound from "./components/UI/404/404";
+
 function App() {
   return (
     <Router>
@@ -43,7 +47,10 @@ function App() {
           <Route path="/betting/3d/close-number" exact element={<ThreedCloseNumber />} />
           <Route path="/become-an-agent" exact element={<BecomeAnAgent />} />
           <Route path="/become-an-agent/detail/:id" exact element={<AgentDetail />} />
-          
+          <Route path="/account/super-master" exact element={<SuperMaster />} />
+          <Route path="account/super-master/detail/:id" exact element={<SuperMasterDetail />} />
+          <Route path="/account/master" exact element={<Master />} />
+          <Route/>
           <Route path="*" element={<Notfound />} />
         </Routes>
       </Container>

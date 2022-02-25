@@ -4,6 +4,15 @@ let dt = new Date();
 let year = dt.getFullYear();
 let month = (dt.getMonth() + 1).toString().padStart(2, "0");
 let day = dt.getDate().toString().padStart(2, "0");
+
+// ------------------------Login API ---------------------------
+export const login = {
+  method: 'post',
+  url: `${configsData.DOMAIN}/api/login`,
+  headers: {
+    Accept: "application/json"
+  }
+};
 // ---------------------- Fixture Betting ---------------------
 export const betting = {
   method: "GET",
@@ -12,7 +21,7 @@ export const betting = {
     tz: "Asia/Yangon",
     include: "localTeam,visitorTeam,league",
   },
- 
+
   headers: {
     "x-rapidapi-host": "football-pro.p.rapidapi.com",
     "x-rapidapi-key": configsData.API_KEY,

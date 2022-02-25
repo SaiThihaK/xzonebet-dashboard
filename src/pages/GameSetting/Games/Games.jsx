@@ -12,13 +12,6 @@ import classes from "./Games.module.css";
 const Games = ({ src }) => {
   const label = { inputProps: { "aria-label": "Switch demo" } };
   return (
-    // <div className={classes.toggleImage}>
-    //   <img src={src} alt="" />
-    //   <p>Hello World</p>
-    //   <div className={classes.toggleContainer}>
-          // <ToggleBtn defaultChecked= "true" />
-    //   </div>
-    // </div>
     <Card sx={{ width: '19%',boxShadow: '0 0 5px 0 rgb(43 43 43 / 10%), 0 11px 6px -7px rgb(43 43 43 / 10%)',border: '1px solid #cecece',marginBottom:'1%' }}>
       <CardActionArea>
         <CardMedia
