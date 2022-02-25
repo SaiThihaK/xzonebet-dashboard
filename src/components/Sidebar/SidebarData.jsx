@@ -56,23 +56,28 @@ export const SidebarData = [
         iconOpened: <RiIcons.RiArrowUpSFill/>,
         subNav : [
             {
-                title: 'All Master',
-                path: '/betting/all-master',
+                title: 'Super Master',
+                path: '/account/super-master',
                 icon: <IoIcons.IoIosArrowForward />,
             },
             {
-                title: 'All Agent',
-                path: '/betting/all-agent',
+                title: 'Master',
+                path: '/account/master',
                 icon: <IoIcons.IoIosArrowForward />,
             },
             {
-                title: 'All User',
-                path: '/betting/all-user',
+                title: 'Agent',
+                path: '/account/agent',
                 icon: <IoIcons.IoIosArrowForward />,
             },
             {
-                title: 'Manage Super Master',
-                path: '/betting/manage-super-master',
+                title: 'User',
+                path: '/account/user',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+            {
+                title: 'Affiliate Agent',
+                path: '/account/affiliate-agent',
                 icon: <IoIcons.IoIosArrowForward />,
             },
         ]
