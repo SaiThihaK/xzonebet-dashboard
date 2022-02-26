@@ -11,6 +11,7 @@ const Login = () => {
   const [userloginname, setuserloginname] = useState();
   const [loginpass, setLoginpass] = useState();
   const [errorMsg,setErrorMsg] = useState(null);
+  const [errorUserName,setErrorUserName] = useState(null);
   const loginName = useRef();
   const loginPassword = useRef();
   
@@ -21,6 +22,7 @@ const Login = () => {
       password: loginpass,
     })
     .then(res => {
+      console.log("hello")
       switch(res.data.status){
         case "success":
           console.log('login success');
@@ -33,10 +35,9 @@ const Login = () => {
           setErrorMsg(res.data.message);
         break;
         default:
-        
       }
     })
-    .catch(err => console.log(err))
+    .catch(err => setErrorUserName( "The selected email is invalid."))
   },[userloginname,loginpass])
 
 
@@ -46,6 +47,7 @@ const Login = () => {
   }, []);
   const loginNameHandler = () => {
     setErrorMsg(null)
+    setErrorUserName(null)
   }
 
 
@@ -90,7 +92,7 @@ const Login = () => {
                   autoComplete="off"
                   onChange={loginNameHandler}
                 />
-                <span className="errorMessage">{errorMsg}</span>
+                <span className="errorMessage">{errorUserName}</span>
               </p>
               <p>
                 <label>
@@ -102,7 +104,9 @@ const Login = () => {
                   placeholder="Password"
                   required
                   autoComplete="off"
+                  onChange={loginNameHandler}
                 />
+                <span className="errorMessage">{errorMsg}</span>
               </p>
               <p>
                 <input type="submit" value="Sing In" />
