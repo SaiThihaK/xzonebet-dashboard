@@ -68,7 +68,7 @@ const MasterDepositTable = () => {
       1000000,
       <Stack spacing={1} direction="row" sx={{display:'block'}}>
         <Button variant="contained" color="success" size="small">Confirm</Button>
-        <Button variant="outlined" onClick={handleOpen} color="error" size="small">Cancel</Button>
+        <Button variant="outlined" onClick={handleOpen} color="error" size="small">Reject</Button>
       </Stack>
     ),
   ];

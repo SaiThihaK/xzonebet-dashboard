@@ -1,0 +1,8 @@
+.formGroup {
+    margin-right: 20px;
+  }
+  .search-header-flex {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }

@@ -5,7 +5,7 @@ import "./Login.css";
 function refreshPage() {
   setTimeout(()=>{
       window.location.reload(false);
-  }, 100);
+  }, 1);
 }
 const Login = () => {
   const [userloginname, setuserloginname] = useState();

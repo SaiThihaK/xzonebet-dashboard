@@ -16,6 +16,13 @@ import * as BiIcons from "react-icons/bi";
 import logo from "./images/logo.webp";
 import classes from "./Sidebar.module.css";
 import { IconContext } from "react-icons/lib";
+
+function refreshPage() {
+  setTimeout(()=>{
+      window.location.reload(false);
+  }, 1);
+}
+
 const Sidebar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -25,6 +32,12 @@ const Sidebar = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const logoutHandler = () => {
+    localStorage.removeItem('status');
+    localStorage.removeItem('jToken');
+    localStorage.removeItem('lToken');
+    refreshPage();
+  }
   return (
     <IconContext.Provider value={{ color: "#FFF" }}>
       <div className={classes.container}>
@@ -107,7 +120,7 @@ const Sidebar = () => {
                 </ListItemIcon>
                 Settings
               </MenuItem>
-              <MenuItem>
+              <MenuItem onClick={logoutHandler}>
                 <ListItemIcon>
                   <Logout fontSize="small" />
                 </ListItemIcon>

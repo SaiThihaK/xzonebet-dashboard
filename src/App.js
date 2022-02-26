@@ -25,6 +25,8 @@ import Master from "./pages/Master/Master";
 import PandingMaster from "./pages/Master/PandingMaster/PandingMaster";
 import PandingMasterDetail from "./pages/Master/PandingMaster/PandingMasterCard/PandingMasterDetail/PandingMasterDetail";
 import MasterDeposit from './pages/MasterDeposit/MasterDeposit';
+import Users from './pages/Users/Users';
+import ActiveUser from './pages/Users/ActiveUsers/ActiveUsers';
 import Notfound from "./components/UI/404/404";
 
 function App() {
@@ -56,6 +58,9 @@ function App() {
           <Route path="/account/master/panding-master" exact element={<PandingMaster />} />
           <Route path="/account/master/panding-master/detail/:id" exact element={<PandingMasterDetail />} />
           <Route path="/accounting/master-deposit" exact element={<MasterDeposit />} />
+          <Route path="/account/user" exact element={<Users />} />
+          <Route path="/account/user/active-user" exact element={<ActiveUser />} />
+          
           
           <Route/>
           <Route path="*" element={<Notfound />} />

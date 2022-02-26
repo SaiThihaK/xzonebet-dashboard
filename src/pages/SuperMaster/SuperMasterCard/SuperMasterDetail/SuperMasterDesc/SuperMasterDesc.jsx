@@ -11,7 +11,7 @@ const SuperMasterDesc = () => {
           alt=""
         />
         <div className={classes["agent-user-des"]}>
-          <h3>Super Master Name</h3>
+          <h3>Lady Gar Gar</h3>
           <span>ID - 1234567</span>
         </div>
       </div>
