@@ -22,7 +22,6 @@ const Login = () => {
       password: loginpass,
     })
     .then(res => {
-      console.log("hello")
       switch(res.data.status){
         case "success":
           console.log('login success');
