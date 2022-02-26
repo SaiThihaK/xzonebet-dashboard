@@ -13,7 +13,7 @@ import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import * as AiIcons from "react-icons/ai";
 import * as BiIcons from "react-icons/bi";
-import logo from "./images/logo.webp";
+import logo from "./images/xlogo.png";
 import classes from "./Sidebar.module.css";
 import { IconContext } from "react-icons/lib";
 
