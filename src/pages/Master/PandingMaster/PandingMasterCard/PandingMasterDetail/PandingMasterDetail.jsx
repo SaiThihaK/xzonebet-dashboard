@@ -1,20 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "../../../../../components/UI/Card";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import SuperMasterDesc from "../../../../SuperMaster/SuperMasterCard/SuperMasterDetail/SuperMasterDesc/SuperMasterDesc";
 import classes from "./PandingMasterDetail.module.css";
+import {  useParams } from "react-router-dom";
+import { useEffect } from "react";
+import axios from "axios";
 const PandingMasterDetail = () => {
   const [age, setAge] = React.useState("");
+  const [pendingMaster,setPendingMaster] = useState([]);
+  const {id} = useParams();
+  console.log(id);
+
+  const fetchMasterDetail = async()=>{
+    const {data} = await axios.get(`https://lapi.xzonebet.com/api/affiliate-register-lists/${id}`);
+    setPendingMaster(data.data);
+  }
+  useEffect(()=>{
+    fetchMasterDetail();
+    return ()=>setPendingMaster([]);
+  },[id]);
 
   const handleChange = (event) => {
     setAge(event.target.value);
   };
-
+  console.log(pendingMaster);
   return (
     <div className={classes["soccer-setting-container"]}>
       <Card>
@@ -22,7 +34,7 @@ const PandingMasterDetail = () => {
           <h1 className={classes["card-title"]}>Pending Master Form Detail</h1>
         </div>
         <div className={classes["card-body"]}>
-          <SuperMasterDesc />
+          <SuperMasterDesc userInfo={pendingMaster} />
         </div>
       </Card>
       <div style={{marginTop: '20px'}}>
@@ -101,22 +113,12 @@ const PandingMasterDetail = () => {
                     <p>
                       &nbsp;&nbsp;
                       <FormControl variant="standard" sx={{ minWidth: 200 }}>
-                        <InputLabel id="demo-simple-select-standard-label">
-                          Currency
-                        </InputLabel>
-                        <Select
-                          labelId="demo-simple-select-standard-label"
-                          id="demo-simple-select-standard"
-                          value={age}
-                          onChange={handleChange}
-                        >
-                          <MenuItem value="">
-                            <em>None</em>
-                          </MenuItem>
-                          <MenuItem value={10}>MMK</MenuItem>
-                          <MenuItem value={20}>Dolla</MenuItem>
-                          <MenuItem value={30}>Yan</MenuItem>
-                        </Select>
+                      <TextField
+                        id="standard-basic"
+                        label="Currency"
+                        sx={{ width: 200 }}
+                        variant="standard"
+                      />
                       </FormControl>
                     </p>
                   </div>
@@ -175,12 +177,12 @@ const PandingMasterDetail = () => {
                     </p>
                   </div>
                   <div className={classes["form-group-desc"]}>
-                    <label htmlFor="">Withdraw</label>:
+                    <label htmlFor="">Withdraw Percentage</label>:
                     <p>
                       &nbsp;&nbsp;
                       <TextField
                         id="standard-basic"
-                        label="Withdraw"
+                        label="Withdraw Percentage"
                         sx={{ width: 200 }}
                         variant="standard"
                       />

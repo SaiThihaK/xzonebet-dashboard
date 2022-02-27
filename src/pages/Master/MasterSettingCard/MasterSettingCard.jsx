@@ -5,7 +5,7 @@ import * as FaIcons from "react-icons/fa";
 // import * as IoIcons from "react-icons/io";
 // import * as RiIcons from "react-icons/ri";
 import classes from './MasterSettingCard.module.css';
-const MasterSettingCard = ({name,bgColor,path}) => {
+const MasterSettingCard = ({name,bgColor,path,userNum}) => {
   return (
     <div className={classes["soccer-card-item"]}>
       <Link to={path}>
@@ -14,7 +14,7 @@ const MasterSettingCard = ({name,bgColor,path}) => {
           <h3>{name}</h3>
           <FaIcons.FaUserAlt style={{fontSize: "40px"}} />
         </div>
-        <span className={classes['total-number']}>10</span>
+        <span className={classes['total-number']}>{userNum}</span>
       </div>
       </Link>
     </div>
