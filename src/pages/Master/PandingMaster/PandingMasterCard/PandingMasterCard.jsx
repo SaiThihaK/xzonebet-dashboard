@@ -7,10 +7,8 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import * as FaIcons from "react-icons/fa";
-
 import classes from "./PandingMasterCard.module.css";
-const PandingMasterCard = () => {
-
+const PandingMasterCard = ({pendingMaster}) => {
   return (
     <Grid item xs={3}>
       <Card sx={{ maxWidth: 345 }}>
@@ -21,7 +19,7 @@ const PandingMasterCard = () => {
             height="140px"
             image="https://icon-library.com/images/user-icon-jpg/user-icon-jpg-14.jpg"
           />
-          <Link to="/account/master/panding-master/detail/1">
+          <Link to={`/account/master/panding-master/detail/${pendingMaster.id}`}>
             <button className={classes["view-detail"]}>
               <FaIcons.FaEye />
             </button>
@@ -33,7 +31,7 @@ const PandingMasterCard = () => {
             component="div"
             sx={{ fontSize: "15px", fontWeight: "600", color: "#504444" }}
           >
-            Agent Name
+            {pendingMaster.name}
           </Typography>
         </CardContent>
         {/* <CardActions sx={{ padding: "0 16px 16px 16px",float:'right' }}>

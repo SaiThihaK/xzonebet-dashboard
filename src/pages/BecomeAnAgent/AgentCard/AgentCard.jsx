@@ -11,14 +11,23 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import * as FaIcons from "react-icons/fa";
-
 import classes from "./AgentCard.module.css";
+import {useDispatch} from "react-redux"
+import { getStatus } from "../../../features/agent";
 const AgentCard = () => {
   const [age, setAge] = React.useState("");
+  const dispatch = useDispatch();
   const handleChange = (event) => {
     setAge(event.target.value);
   };
   console.log(age);
+  const handleSubmit = async()=>{
+    const config = {
+      method:"POST",
+      headers:"Application/json"
+    }
+  }
+ 
   return (
     <Grid item xs={3}>
       <Card sx={{ maxWidth: 345 }}>
@@ -53,10 +62,10 @@ const AgentCard = () => {
               sx={{ backgroundColor: "#f3f3f3" }}
             >
               <MenuItem value="">Choose</MenuItem>
-              <MenuItem value={"master"}>Master</MenuItem>
-              <MenuItem value={"agent"}>Agent</MenuItem>
-              <MenuItem value={"affiliate"}>Affiliate Agent</MenuItem>
-              <MenuItem value={"cancel"}>Cancel</MenuItem>
+              <MenuItem value={"master"} onClick={(e)=>dispatch(getStatus(e.target.value))}>Master</MenuItem>
+              <MenuItem value={"agent"} onClick={(e)=>dispatch(getStatus(e.target.value))}>Agent</MenuItem>
+              <MenuItem value={"affiliate"} onClick={(e)=>dispatch(getStatus(e.target.value))}>affiliate Agent</MenuItem>
+              <MenuItem value={"cancel"} onClick={(e)=>dispatch(getStatus(e.target.value))}>Cancel</MenuItem>
             </Select>
           </FormControl>
         </CardContent>
