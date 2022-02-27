@@ -65,14 +65,7 @@ const Login = () => {
         <div className="col-left">
           <div className="login-text">
             <h2>Welcome Back</h2>
-            <p>
-              Create your account.
-              <br />
-              It's totally free.
-            </p>
-            <a className="btn" href="">
-              Sign Up
-            </a>
+            <h2>Xzonebet</h2>
           </div>
         </div>
         <div className="col-right">
