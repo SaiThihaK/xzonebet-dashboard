@@ -2,7 +2,7 @@ import React from 'react';
 import BettingNavItem from './BettingNavItem';
 import  classes from "./BettingNavItemContainer.module.css";
 
-const Bettingnavitemcontainer = ({fixture,icon,name }) => {
+const Bettingnavitemcontainer = ({icon,name }) => {
     return (
     
         <div className={classes["lc-item"]}  >
@@ -11,14 +11,14 @@ const Bettingnavitemcontainer = ({fixture,icon,name }) => {
         </div>
         <p>{name}</p> 
         <ul className={classes["betting-dropdown-item"]}>
-        {fixture.map((el) => {
+        {/* {fixture.map((el) => {
           
           return (
 
           <BettingNavItem element={el}  key={el.fixture.id}/>
       
 
-          )}) }
+          )}) } */}
           
           </ul>
       </div>                                

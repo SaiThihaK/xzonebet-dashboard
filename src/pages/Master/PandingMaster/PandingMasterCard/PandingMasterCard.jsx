@@ -8,6 +8,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import * as FaIcons from "react-icons/fa";
 import classes from "./PandingMasterCard.module.css";
+import { Button } from "@mui/material";
 const PandingMasterCard = ({pendingMaster}) => {
   return (
     <Grid item xs={3}>
@@ -29,10 +30,14 @@ const PandingMasterCard = ({pendingMaster}) => {
           <Typography
             gutterBottom
             component="div"
+            style={{display:"flex",justifyContent:"center",alignItems:"center"}}
             sx={{ fontSize: "15px", fontWeight: "600", color: "#504444" }}
           >
             {pendingMaster.name}
           </Typography>
+          <div style={{display:"flex",justifyContent:"center",alignItems:"center",marginTop:10}}>
+            <Button variant="contained" color="primary" size="small">Confirm</Button>
+          </div>
         </CardContent>
         {/* <CardActions sx={{ padding: "0 16px 16px 16px",float:'right' }}>
            <span className={classes['panding-status']}>Panding</span>
