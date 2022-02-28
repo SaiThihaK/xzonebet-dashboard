@@ -30,6 +30,12 @@ import ActiveUser from "./pages/Users/ActiveUsers/ActiveUsers";
 import Notfound from "./components/UI/404/404";
 import AffiliateAgent from "./pages/Affiliate Agent/AffiliateAgent";
 import Agent from "./pages/Agent/Agent";
+import ConfirmMaster from "./pages/Master/ConfirmMaster/ConfirmMaster";
+import ConfirmMasterDetail from "./pages/Master/ConfirmMaster/ConfirmMasterCard/ConfirmMasterDetail/ConfirmMasterDetail";
+import CompleteMasterCard from "./pages/Master/CompleteMaster/CompleteMasterCard/CompleteMasterCard";
+import CompleteMasterDetail from "./pages/Master/CompleteMaster/CompleteMasterCard/CompleteMasterDetail/CompleteMasterDetail";
+import CancelMaster from "./pages/Master/CancelMaster/CancelMaster";
+import CancelMasterDetail from "./pages/Master/CancelMaster/CancelMasterCard/CancelMasterDetail/CancelMasterDetail";
 
 function App() {
   return (
@@ -102,6 +108,7 @@ function App() {
             exact
             element={<AffiliateAgent />}
           />
+          {/* Pending Master */}
           <Route path="/account/agent" exact element={<Agent />} />
           <Route
             path="/account/master/panding-master"
@@ -113,6 +120,42 @@ function App() {
             exact
             element={<PandingMasterDetail />}
           />
+          {/* Confirm Master(sai) */}
+          <Route
+            path="/account/master/confirm-master"
+            exact
+            element={<ConfirmMaster />}
+          />
+          <Route
+            path="/account/master/confirm-master/detail/:id"
+            exact
+            element={<ConfirmMasterDetail />}
+          />
+          {/* Confirm Master(sai) */}
+          {/* complete Master */}
+          <Route
+            path="/account/master/complete-master"
+            exact
+            element={<CompleteMasterCard />}
+          />
+          <Route
+            path="/account/master/complete-master/detail/:id"
+            exact
+            element={<CompleteMasterDetail />}
+          />
+          {/* complete Master */}
+          {/* Cancel Master */}
+          <Route
+            path="/account/master/cancel-master"
+            exact
+            element={<CancelMaster />}
+          />
+          <Route
+            path="/account/master/cancel-master/detail/:id"
+            exact
+            element={<CancelMasterDetail />}
+          />
+          {/* Cancel Master */}
           <Route
             path="/accounting/master-deposit"
             exact

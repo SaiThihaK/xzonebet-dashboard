@@ -7,10 +7,11 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import * as FaIcons from "react-icons/fa";
-import classes from "./PandingMasterCard.module.css";
-import { Button } from "@mui/material";
-const PandingMasterCard = ({pendingMaster}) => {
-  return (
+import classes from "./CompleteMasterCard.module.css";
+
+const CompleteMasterCard = ({completeMaster}) => {
+     console.log(completeMaster)
+    return (
     <Grid item xs={3}>
       <Card sx={{ maxWidth: 345 }}>
         <div className={classes["user-image-hover-detail"]}>
@@ -20,7 +21,7 @@ const PandingMasterCard = ({pendingMaster}) => {
             height="140px"
             image="https://icon-library.com/images/user-icon-jpg/user-icon-jpg-14.jpg"
           />
-          <Link to={`/account/master/panding-master/detail/${pendingMaster.id}`}>
+          <Link to={`/account/master/complete-master/detail/99`}>
             <button className={classes["view-detail"]}>
               <FaIcons.FaEye />
             </button>
@@ -33,8 +34,9 @@ const PandingMasterCard = ({pendingMaster}) => {
             style={{display:"flex",justifyContent:"center",alignItems:"center"}}
             sx={{ fontSize: "15px", fontWeight: "600", color: "#504444" }}
           >
-            {pendingMaster.name}
+            NOne
           </Typography>
+          
         </CardContent>
         {/* <CardActions sx={{ padding: "0 16px 16px 16px",float:'right' }}>
            <span className={classes['panding-status']}>Panding</span>
@@ -44,4 +46,4 @@ const PandingMasterCard = ({pendingMaster}) => {
   );
 };
 
-export default PandingMasterCard;
+export default CompleteMasterCard;

@@ -5,10 +5,20 @@ import classes from './Master.module.css';
 import axios from 'axios';
 import { useEffect } from 'react';
 const Master = () => {
-  const [pendingUser,setPendingUser] = useState([]);
+  const [pendingMaster,setPendingMaster] = useState([]);
+  const [confirmMaster,setConfirmMaster] = useState([]);
+  const [completeMaster,setCompleteMaster] = useState([]);
+  const [cancelMaster,setCancelMaster] = useState([]);
   const fetchMaster = async()=>{
-    const pending = await axios.get(`https://lapi.xzonebet.com/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=3&status=pending`)
-    setPendingUser(pending.data.data.length);
+    const baseUrl = "https://lapi.xzonebet.com";
+    const pending = await axios.get(`${baseUrl}/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=master`);
+    setPendingMaster(pending.data.data.length);
+    const confirm = await axios.get(`${baseUrl}/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-confirm&form_type=master`);
+    setConfirmMaster(confirm.data.data.length);
+    const complete = await axios.get(`${baseUrl}/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=complete&form_type=master`);
+    setCompleteMaster(complete.data.data.length);
+    const cancel = await axios.get(`${baseUrl}/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-rejet&form_type=master`);
+    setCancelMaster(cancel.data.data.length);
   }
  useEffect(()=>{
    fetchMaster();
@@ -21,10 +31,10 @@ const Master = () => {
         </div>
         <div className={classes["card-body"]}>
             <div className={classes['soccer-setting-content-flex']}>
-               <MasterSettingCard name="Panding Master" bgColor="#FFC107" path="panding-master" userNum={pendingUser} />
-               <MasterSettingCard name="Confirm Master" bgColor="#4099FF" path=""  userNum="3"/>
-               <MasterSettingCard name="Complete Master" bgColor="#2ED8B6" path=""  userNum="4"/>
-               <MasterSettingCard name="Cancel Master" bgColor="#FF5370" path=""  userNum="5"/>
+               <MasterSettingCard name="Panding Master" bgColor="#FFC107" path="panding-master" userNum={pendingMaster} />
+               <MasterSettingCard name="Confirm Master" bgColor="#4099FF" path="confirm-master"  userNum={confirmMaster}/>
+               <MasterSettingCard name="Complete Master" bgColor="#2ED8B6" path="complete-master"  userNum={completeMaster}/>
+               <MasterSettingCard name="Cancel Master" bgColor="#FF5370" path="cancel-master"  userNum={cancelMaster}/>
            </div>
         </div>
       </Card>

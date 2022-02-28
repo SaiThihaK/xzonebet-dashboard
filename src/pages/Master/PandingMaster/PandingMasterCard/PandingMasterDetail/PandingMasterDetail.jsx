@@ -261,7 +261,7 @@ const PandingMasterDetail = () => {
             </div>
           </div>
         </Card>
-        <div style={{display:"flex",justifyContent:"center",alignItems:"center",marginTop:20}}>
+        <div style={{display:"flex",justifyContent:"flex-end",marginTop:20}}>
         <Button type="submit" onClick={(e)=>{submitHandler(e)}} variant="contained">Submit</Button>
       </div>
       </div>
