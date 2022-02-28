@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -11,10 +11,12 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import MasterDepositCancel from '../../../components/UI/Modal/MasterDepositCancel/MasterDepositCancel';
 import classes from "./MasterDepositTable.module.css";
+import axios from "axios";
 const MasterDepositTable = () => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const [rowData,setRowData] = useState([]);
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: "#505B72",
@@ -34,7 +36,15 @@ const MasterDepositTable = () => {
       border: 0,
     },
   }));
+  const fetchData = async()=>{
+    const {data} = await axios.get("https://lapi.xzonebet.com/api/affiliate-register-lists-detail?sortColumn=id&sortDirection=desc&limit=3&status=deposit-pending");
+    
+    setRowData(data.data)
+  }
 
+  useEffect(()=>{
+    fetchData();
+  },[])
   function createData(
     id,
     userid,
@@ -56,7 +66,7 @@ const MasterDepositTable = () => {
       action,
     };
   }
-
+  
   const rows = [
     createData(
       1,
@@ -82,8 +92,8 @@ const MasterDepositTable = () => {
               <StyledTableCell>No.</StyledTableCell>
               <StyledTableCell align="right">ID</StyledTableCell>
               <StyledTableCell align="right">Name</StyledTableCell>
-              <StyledTableCell align="right">Bank&nbsp;Type</StyledTableCell>
-              <StyledTableCell align="right">Bank&nbsp;Name</StyledTableCell>
+              <StyledTableCell align="right">Payment&nbsp;Type</StyledTableCell>
+              <StyledTableCell align="right">Payment&nbsp;Name</StyledTableCell>
               <StyledTableCell align="right">
                 Transition&nbsp;ID
               </StyledTableCell>

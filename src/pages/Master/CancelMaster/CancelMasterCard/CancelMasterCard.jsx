@@ -7,9 +7,9 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import * as FaIcons from "react-icons/fa";
-import classes from "./PandingMasterCard.module.css";
+import classes from "./CancelMasterCard.module.css";
 import { Button } from "@mui/material";
-const PandingMasterCard = ({pendingMaster}) => {
+const CancelMasterCard = ({cancelMaster}) => {
   return (
     <Grid item xs={3}>
       <Card sx={{ maxWidth: 345 }}>
@@ -20,7 +20,7 @@ const PandingMasterCard = ({pendingMaster}) => {
             height="140px"
             image="https://icon-library.com/images/user-icon-jpg/user-icon-jpg-14.jpg"
           />
-          <Link to={`/account/master/panding-master/detail/${pendingMaster.id}`}>
+          <Link to={`/account/master/cancel-master/detail/${cancelMaster.id}`}>
             <button className={classes["view-detail"]}>
               <FaIcons.FaEye />
             </button>
@@ -33,7 +33,7 @@ const PandingMasterCard = ({pendingMaster}) => {
             style={{display:"flex",justifyContent:"center",alignItems:"center"}}
             sx={{ fontSize: "15px", fontWeight: "600", color: "#504444" }}
           >
-            {pendingMaster.name}
+            {cancelMaster.name}
           </Typography>
         </CardContent>
         {/* <CardActions sx={{ padding: "0 16px 16px 16px",float:'right' }}>
@@ -44,4 +44,4 @@ const PandingMasterCard = ({pendingMaster}) => {
   );
 };
 
-export default PandingMasterCard;
+export default CancelMasterCard;
