@@ -1,9 +1,8 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import classes from "./SuperMasterDesc.module.css";
 
 const SuperMasterDesc = ({userInfo}) => {
-  console.log(userInfo)
   return (
     <div>
       <div className={classes["agent-user-image-group"]}>

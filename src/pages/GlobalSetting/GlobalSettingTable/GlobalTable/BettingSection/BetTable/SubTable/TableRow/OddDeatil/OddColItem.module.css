@@ -1,16 +1,18 @@
 .betRow {
     display: flex;
     border-bottom: 1px solid #918989;
+  flex-wrap: wrap;
   }
   .betRow:hover {
     cursor: pointer;
   }
   .betRow .betData {
-      flex: 1 1 auto;
+    width: 50%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     background: #fff;
+    border-bottom: 1px solid rgb(165, 161, 161);
   }
   .betRow .betData:hover {
     background: #e9f5fc !important;

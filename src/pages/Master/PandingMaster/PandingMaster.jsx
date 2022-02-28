@@ -9,7 +9,7 @@ import axios from "axios";
 const PandingMaster = () => {
   const [pendingMasters,setPendingMaster] = useState([]);
   const fetchPendingMaster = async()=>{
-    const {data} = await axios.get('https://lapi.xzonebet.com/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=3&status=pending');
+    const {data} = await axios.get('https://lapi.xzonebet.com/api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=master');
     setPendingMaster(data.data);
   };
  console.log(pendingMasters);
@@ -17,7 +17,6 @@ const PandingMaster = () => {
    fetchPendingMaster();
    return ()=>setPendingMaster([]);
   },[]);
-  console.log(pendingMasters);
   return (
     <div className={classes["soccer-setting-container"]}>
       <Card>

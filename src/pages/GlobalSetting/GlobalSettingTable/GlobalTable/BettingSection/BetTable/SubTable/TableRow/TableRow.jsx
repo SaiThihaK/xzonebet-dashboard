@@ -5,6 +5,7 @@ import OddDetail from './OddDeatil/OddDetail';
 import classes from './TableRow.module.css';
 
 const TableRow=({team1,team2,duration,half,odd})=> {
+ const teamName= {"1": team1 ,"2": team2, "X": "Draw" }
   const [detail,setDetail]=useState(false);
   const [extra,setExtra]=useState(false);
   return (
@@ -218,14 +219,14 @@ const TableRow=({team1,team2,duration,half,odd})=> {
                  </div>
           </div>
             
-          <div className={classes["bets-detail"]} onClick={()=>{setDetail(!detail)}} >
+          {/* <div className={classes["bets-detail"]} onClick={()=>{setDetail(!detail)}} >
               <p >314</p> 
               <div className={`${classes["bet-arrow"]} ${ detail && classes["detail-active"]} `}>
                 <i className="fas fa-chevron-down arrow-fs"></i> 
               </div>
                
 
-          </div>
+          </div> */}
         
              <div className={`${classes["down "]} ${extra && classes["extra-active"]}  ` } onClick={()=>{setExtra(!extra)}}  >
                 <i className="fas fa-chevron-down arrow-fs"></i> 
@@ -234,15 +235,20 @@ const TableRow=({team1,team2,duration,half,odd})=> {
   </div>
          
 </div>
-   <OddCol odd={odd}/>
+
+ 
+ {
+ odd.length != 0 &&  <OddCol odd={odd.data} />
+} 
+  
    
 
 
   
 </div>
-{extra && <ExtraOdd />}
+{/* {extra && <ExtraOdd />} */}
 
-{detail &&<OddDetail ColType="OddCol" odd={odd}/>}
+{detail &&<OddDetail ColType="OddCol" odd={odd.data} team={teamName} />}
 
 
 </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
@@ -12,20 +12,44 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import * as FaIcons from "react-icons/fa";
 import classes from "./AgentCard.module.css";
-import {useDispatch} from "react-redux"
-import { getStatus } from "../../../features/agent";
-const AgentCard = () => {
+import axios from "axios";
+const AgentCard = ({
+  user,
+  num,
+  alertToast,
+  setNum
+}) => {
   const [age, setAge] = React.useState("");
-  const dispatch = useDispatch();
+  const [status,setStatus] = useState("");
   const handleChange = (event) => {
     setAge(event.target.value);
   };
-  console.log(age);
-  const handleSubmit = async()=>{
-    const config = {
-      method:"POST",
-      headers:"Application/json"
+  const submitHandler = async(e)=>{
+    e.preventDefault();
+    if(!age)return;
+    else{
+      try{
+        const config = {
+          headers: {
+            "Content-type": "application/json",
+          },
+        };
+        const url = `https://lapi.xzonebet.com/api/affiliate-register-lists/${status}/${user.id}`;
+        const {data} = await axios.post(
+          url,
+          {user_type:age},
+          config
+        );
+        if(data.status = "success"){
+        alertToast(data.message);
+        setNum(num+1);
+        return;
+        };
+      }catch(error){
+        console.log(error);
+      }
     }
+
   }
  
   return (
@@ -50,9 +74,9 @@ const AgentCard = () => {
             component="div"
             sx={{ fontSize: "15px", fontWeight: "600", color: "#504444" }}
           >
-            Agent Name
+            {user.name}
           </Typography>
-          <FormControl sx={{ width: "100%" }}>
+            <FormControl sx={{ width: "100%" }}>
             <Select
               value={age}
               onChange={handleChange}
@@ -62,15 +86,15 @@ const AgentCard = () => {
               sx={{ backgroundColor: "#f3f3f3" }}
             >
               <MenuItem value="">Choose</MenuItem>
-              <MenuItem value={"master"} onClick={(e)=>dispatch(getStatus(e.target.value))}>Master</MenuItem>
-              <MenuItem value={"agent"} onClick={(e)=>dispatch(getStatus(e.target.value))}>Agent</MenuItem>
-              <MenuItem value={"affiliate"} onClick={(e)=>dispatch(getStatus(e.target.value))}>affiliate Agent</MenuItem>
-              <MenuItem value={"cancel"} onClick={(e)=>dispatch(getStatus(e.target.value))}>Cancel</MenuItem>
+              <MenuItem value={"master"} onClick={()=>setStatus("accept")}>Master</MenuItem>
+              <MenuItem value={"agent"} onClick={()=>setStatus("accept")}>Agent</MenuItem>
+              <MenuItem value={"affiliate-agent"} onClick={()=>setStatus("accept")}>affiliate Agent</MenuItem>
+              <MenuItem value={"reject"} onClick={()=>setStatus("rejet")}>Cancel</MenuItem>
             </Select>
           </FormControl>
         </CardContent>
         <CardActions sx={{ padding: "0 16px 16px 16px" }}>
-          <Button size="medium" variant="contained" sx={{ width: "100%" }}>
+          <Button size="medium" variant="contained" sx={{ width: "100%" }} onClick={(e)=>submitHandler(e)}>
             Submit
           </Button>
         </CardActions>

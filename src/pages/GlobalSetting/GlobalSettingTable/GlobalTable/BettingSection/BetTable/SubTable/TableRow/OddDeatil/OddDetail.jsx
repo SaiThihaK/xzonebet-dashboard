@@ -1,10 +1,14 @@
 import React,{useState} from 'react';
 import classes from './OddDetail.module.css';
 import OddDetailColOne from './OddDetailColOne';
+const OddDetail = ({odd,team}) => {
+    let odd1= odd.filter((el,index)=>{
+        return (index % 2 == 0);
+    });
+    let odd2= odd.filter((el,index)=>{
+        return !(index % 2 == 0);
+    });
 
-
-const OddDetail = ({odd}) => {
-    console.log(odd);
     const[tab,showtab]=useState( {
         'tab1': true,
         'tab2': false,
@@ -68,35 +72,39 @@ const OddDetail = ({odd}) => {
 <div className={classes["betGroupContainer"]}>
 <div className={ `${classes['betGroup']} ${classes['detail_tab']} ${ tab.tab1 && classes['show_detail_table']} `}>
 
-<OddDetailColOne odd={odd}/>
-
+<OddDetailColOne odd={odd1} team={team}/>
+<OddDetailColOne odd={odd2} team={team} />
 
 
 </div>
 <div className={ `${classes['betGroup']} ${classes['detail_tab']} ${ tab.tab2 && classes['show_detail_table']} `}>
 
-<OddDetailColOne odd={odd}/>
+<OddDetailColOne odd={odd1} team={team}  />
+    <OddDetailColOne odd={odd2} team={team} />
 
 
 
 </div>
 <div className={ `${classes['betGroup']} ${classes['detail_tab']} ${ tab.tab3 && classes['show_detail_table']} `}>
 
-<OddDetailColOne odd={odd}/>
+<OddDetailColOne odd={odd1} team={team}  />
+    <OddDetailColOne odd={odd2} team={team} />
 
 
 
 </div>
 <div className={ `${classes['betGroup']} ${classes['detail_tab']} ${ tab.tab4 && classes['show_detail_table']} `}>
 
-<OddDetailColOne odd={odd}/>
+<OddDetailColOne odd={odd1} team={team}  />
+    <OddDetailColOne odd={odd2} team={team} />
 
 
 
 </div>
 <div className={ `${classes['betGroup']} ${classes['detail_tab']} ${ tab.tab5 && classes['show_detail_table']} `}>
 
-<OddDetailColOne odd={odd}/>
+<OddDetailColOne odd={odd1} team={team}  />
+    <OddDetailColOne odd={odd2} team={team} />
 
 
 
