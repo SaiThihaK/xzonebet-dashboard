@@ -1,11 +1,11 @@
 import React from "react";
 import Card from '../../../components/UI/Card';
 import Grid from "@mui/material/Grid";
-
 import classes from './CompleteMaster.module.css';
 import { useState, useEffect   } from "react";
 import axios from "axios";
-import CompleteMasterCard from "./CompleteMasterCard/CompleteMasterCard";
+import MasterCard from "../../../components/MasterCard/MasterCard";
+
 
 const CompleteMaster = () => {
   const [completeMasters,setCompleteMasters] = useState([]);
@@ -27,7 +27,7 @@ const CompleteMaster = () => {
         <div className={classes["card-body"]}>
           <Grid container spacing={3}>
            {completeMasters.length !==0 && completeMasters.map((completeMaster)=>
-           (<CompleteMasterCard key={completeMaster?.id} completeMaster ={completeMaster} />)
+           (<MasterCard key={completeMaster?.id} user={completeMaster} path="/account/master/complete-master/detail/" />)
            )}
           </Grid>
         </div>

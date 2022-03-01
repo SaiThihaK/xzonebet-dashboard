@@ -1,11 +1,11 @@
 import React from "react";
 import Card from '../../../components/UI/Card';
 import Grid from "@mui/material/Grid";
-import PandingMasterCard from "./CancelMasterCard/CancelMasterCard";
 import classes from './CancelMaster.module.css';
 import { useState, useEffect   } from "react";
 import axios from "axios";
-import CancelMasterCard from "./CancelMasterCard/CancelMasterCard";
+
+import MasterCard from "../../../components/MasterCard/MasterCard";
 
 const CancelMaster = () => {
   const [cancelMasters,setCancelMaster] = useState([]);
@@ -27,7 +27,7 @@ const CancelMaster = () => {
         <div className={classes["card-body"]}>
           <Grid container spacing={3}>
            {cancelMasters.length !==0 && cancelMasters.map((cancelMaster)=>
-           (<CancelMasterCard key={cancelMaster?.id} cancelMaster ={cancelMaster} />)
+           (<MasterCard key={cancelMaster?.id} user ={cancelMaster} />)
            )}
           </Grid>
         </div>
