@@ -31,14 +31,15 @@ import AffiliateAgent from "./pages/Affiliate Agent/AffiliateAgent";
 import Agent from "./pages/Agent/Agent";
 import ConfirmMaster from "./pages/Master/ConfirmMaster/ConfirmMaster";
 
-import CompleteMasterDetail from "./pages/Master/CompleteMaster/CompleteMasterCard/CompleteMasterDetail/CompleteMasterDetail";
 import CancelMaster from "./pages/Master/CancelMaster/CancelMaster";
-import CancelMasterDetail from "./pages/Master/CancelMaster/CancelMasterCard/CancelMasterDetail/CancelMasterDetail";
+
 import CompleteMaster from "./pages/Master/CompleteMaster/CompleteMaster";
 import CompleteAgent from "./components/Table/Complete/CompleteAgent";
 import Transition from "./components/Table/Complete/Transition/Transiton";
 import PandingMasterDetail from "./pages/Master/PandingMaster/PandingMasterDetail/PandingMasterDetail";
 import ConfirmMasterDetail from "./pages/Master/ConfirmMaster/ConfirmMasterDetail/ConfirmMasterDetail";
+import CompleteMasterDetail from "./pages/Master/CompleteMaster/CompleteMasterDetail/CompleteMasterDetail";
+import CancelMasterDetail from "./pages/Master/CancelMaster/CancelMasterDetail/CancelMasterDetail";
 
 function App() {
   return (

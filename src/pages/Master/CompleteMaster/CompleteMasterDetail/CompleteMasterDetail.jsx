@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import Card from "../../../../../components/UI/Card";
+
 import classes from "./CompleteMasterDetail.module.css";
 import {  useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
 import CompleteMasterDesc from "./CompleteMasterDesc/CompleteMasterDesc";
 import { Button } from "@mui/material";
+import Card from "../../../../components/UI/Card";
 const CompleteMasterDetail = () => {
   const [age, setAge] = React.useState("");
   const [completeMaster,setCompleteMaster] = useState([]);

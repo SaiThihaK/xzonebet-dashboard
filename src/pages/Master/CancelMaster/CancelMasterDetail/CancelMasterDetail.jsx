@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import Card from "../../../../../components/UI/Card";
-import SuperMasterDesc from "../../../../SuperMaster/SuperMasterCard/SuperMasterDetail/SuperMasterDesc/SuperMasterDesc";
+
+
 import classes from "./CancelMasterDetail.module.css";
 import {  useParams } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
+import Card from "../../../../components/UI/Card";
+import SuperMasterDesc from "../../../SuperMaster/SuperMasterCard/SuperMasterDetail/SuperMasterDesc/SuperMasterDesc";
 const CancelMasterDetail = () => {
   const [age, setAge] = React.useState("");
   const [cancelMaster,setCancelMaster] = useState([]);
