@@ -5,9 +5,11 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import SuperMasterDesc from "../../../../SuperMaster/SuperMasterCard/SuperMasterDetail/SuperMasterDesc/SuperMasterDesc";
 import classes from "./PandingMasterDetail.module.css";
-import {  useParams } from "react-router-dom";
+import {  useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const PandingMasterDetail = () => {
   const [age, setAge] = React.useState("");
   const [pendingMaster,setPendingMaster] = useState([]);
@@ -17,12 +19,13 @@ const PandingMasterDetail = () => {
   const [transition_id,setTransition_id] = useState("");
   const [amount,setAmount] = useState("");
   const  [currency,setCurrency] = useState("");
-  
+  const alertToast = (message) =>toast(message);
   // Enjoyment
   const [username,setUserName] = useState("");
   const [password,setPassword] = useState("");
   const [deposit_percent,setDeposite_percent] = useState("");
   const [withdraw_percent,setWidthDraw_percent] = useState("");
+  const navigate = useNavigate();
   
   const {id} = useParams();
   console.log({
@@ -40,7 +43,8 @@ const PandingMasterDetail = () => {
   const submitHandler = async(e)=>{
     e.preventDefault();
     if(!real_name ||!payment_name||!payment_type||!transition_id||!amount||!currency||!username||!password||!deposit_percent ||!withdraw_percent){
-      return
+      alertToast("Please Fill All the Field")
+      return;
     }
     else{
       try{
@@ -50,7 +54,7 @@ const PandingMasterDetail = () => {
           },
         };
         const url = `https://lapi.xzonebet.com/api/affiliate-register-lists/deposit-pending/${id}`;
-        const response = axios.post(
+        const response = await axios.post(
           url,
           {
             real_name,
@@ -65,7 +69,11 @@ const PandingMasterDetail = () => {
             withdraw_percent
           },
         );
-        console.log(response);
+        console.log(response.data.status);
+        if(response.data.status === "success"){
+          alertToast(response.data.message);
+          return;
+        }
         return;
       }catch(error){
         console.log(error);
@@ -99,6 +107,7 @@ const PandingMasterDetail = () => {
       </Card>
       <div style={{marginTop: '20px'}}>
           <form>
+          <ToastContainer />
           <div className={classes["card-column"]}>
         <Card>
           <div className={classes["card-header"]}>

@@ -10,7 +10,6 @@ import * as FaIcons from "react-icons/fa";
 import classes from "./CompleteMasterCard.module.css";
 
 const CompleteMasterCard = ({completeMaster}) => {
-     console.log(completeMaster)
     return (
     <Grid item xs={3}>
       <Card sx={{ maxWidth: 345 }}>
@@ -21,7 +20,7 @@ const CompleteMasterCard = ({completeMaster}) => {
             height="140px"
             image="https://icon-library.com/images/user-icon-jpg/user-icon-jpg-14.jpg"
           />
-          <Link to={`/account/master/complete-master/detail/99`}>
+          <Link to={`/account/master/complete-master/detail/${completeMaster.id}`}>
             <button className={classes["view-detail"]}>
               <FaIcons.FaEye />
             </button>
@@ -34,7 +33,7 @@ const CompleteMasterCard = ({completeMaster}) => {
             style={{display:"flex",justifyContent:"center",alignItems:"center"}}
             sx={{ fontSize: "15px", fontWeight: "600", color: "#504444" }}
           >
-            NOne
+            {completeMaster.name}
           </Typography>
           
         </CardContent>
