@@ -26,7 +26,7 @@ const PandingMaster = () => {
         <div className={classes["card-body"]}>
           <Grid container spacing={3}>
            {pendingMasters.length !==0 && pendingMasters.map((pendingMaster)=>
-           (<PandingMasterCard key={pendingMaster?.id} pendingMaster ={pendingMaster} />)
+           (<PandingMasterCard key={pendingMaster?.id} user ={pendingMaster} />)
            )}
           </Grid>
         </div>

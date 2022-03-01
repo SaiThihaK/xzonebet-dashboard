@@ -1,13 +1,10 @@
-import { Button } from "@mui/material";
-import axios from "axios";
-import React from "react";
-import classes from "./ComfirmMasterDesc.module.css";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
-const ComfirmMasterDesc = ({userInfo}) => {
-    const alertToast = (message) =>toast(message,alertToast);
-    console.log(userInfo.id);
+import React from "react";
+import classes from "./CompleteMasterDesc.module.css";
+
+
+const CompleteMasterDesc = ({userInfo}) => {
+
    
   return (
     <div>
@@ -23,6 +20,9 @@ const ComfirmMasterDesc = ({userInfo}) => {
         </div>
       </div>
       <div style={{ marginTop: "30px" }}>
+      <div className={classes["form-group-desc"]}>
+          <label htmlFor="">Unit </label>:<p>&nbsp;&nbsp;</p>
+        </div>
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Email </label>:<p>&nbsp;&nbsp;{userInfo.email}</p>
         </div>
@@ -36,14 +36,14 @@ const ComfirmMasterDesc = ({userInfo}) => {
           <label htmlFor="">City </label>:<p>&nbsp;&nbsp;{userInfo.city}</p>
         </div>
         <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Currency </label>:<p>&nbsp;&nbsp;{userInfo.currency}</p>
+          <label htmlFor="">Deposite Percentage </label>:<p>&nbsp;&nbsp;{userInfo.currency}</p>
         </div>
         <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Transition Id </label>:<p>&nbsp;&nbsp;{userInfo.transition_id}</p>
+          <label htmlFor="">Withdraw Percentage </label>:<p>&nbsp;&nbsp;{userInfo.transition_id}</p>
         </div>
       </div>
     </div>
   );
 };
 
-export default ComfirmMasterDesc;
+export default CompleteMasterDesc;

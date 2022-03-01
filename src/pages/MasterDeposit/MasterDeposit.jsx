@@ -1,9 +1,10 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import Card from "../../components/UI/Card";
+
 import MasterDepositTable from "./MasterDepositTable/MasterDepositTable";
 import classes from "./MasterDeposit.module.css";
+import Card from "../../components/UI/Card";
 const MasterDeposit = () => {
   let searchLists = [
     { label: "Master" },
