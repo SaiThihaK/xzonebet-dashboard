@@ -37,6 +37,9 @@ import CancelMaster from "./pages/Master/CancelMaster/CancelMaster";
 import CancelMasterDetail from "./pages/Master/CancelMaster/CancelMasterCard/CancelMasterDetail/CancelMasterDetail";
 import CompleteMaster from "./pages/Master/CompleteMaster/CompleteMaster";
 import ComfirmMasterDesc from "./pages/Master/ConfirmMaster/ConfirmMasterCard/ConfirmMasterDetail/ComfirmMasterDesc/ConfirmMasterDesc";
+import CompleteTable from "./components/Table/Complete/AgentTable/CompleteTable";
+import CompleteAgent from "./components/Table/Complete/CompleteAgent";
+import Transition from "./components/Table/Complete/Transition/Transiton";
 
 function App() {
   return (
@@ -144,6 +147,16 @@ function App() {
             path="/account/master/complete-master/detail/:id"
             exact
             element={<CompleteMasterDetail />}
+          />
+          <Route
+            path="/account/master/complete-master/agent-table"
+            exact
+            element={<CompleteAgent />}
+          />
+          <Route
+            path="/account/master/complete-master/transition-table"
+            exact
+            element={<Transition />}
           />
           {/* complete Master */}
           {/* Cancel Master */}

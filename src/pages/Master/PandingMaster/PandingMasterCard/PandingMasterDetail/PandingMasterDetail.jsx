@@ -10,8 +10,9 @@ import { useEffect } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { InputLabel, MenuItem, Select } from "@mui/material";
 const PandingMasterDetail = () => {
-  const [age, setAge] = React.useState("");
+  const [age,setAge] = useState();
   const [pendingMaster,setPendingMaster] = useState([]);
   const [real_name,setReal_Name] = useState("");
   const [payment_type,setPayment_Type] = useState("");
@@ -25,7 +26,9 @@ const PandingMasterDetail = () => {
   const [password,setPassword] = useState("");
   const [deposit_percent,setDeposite_percent] = useState("");
   const [withdraw_percent,setWidthDraw_percent] = useState("");
-  const navigate = useNavigate();
+  // Crypto
+  const [coin,setCoin] = useState([]);
+ 
   
   const {id} = useParams();
   console.log({
@@ -48,11 +51,7 @@ const PandingMasterDetail = () => {
     }
     else{
       try{
-        const config = {
-          headers: {
-            "Content-type": "application/json",
-          },
-        };
+        
         const url = `https://lapi.xzonebet.com/api/affiliate-register-lists/deposit-pending/${id}`;
         const response = await axios.post(
           url,
@@ -89,12 +88,17 @@ const PandingMasterDetail = () => {
   }
   useEffect(()=>{
     fetchMasterDetail();
+    fetchCrypto();
     return ()=>setPendingMaster([]);
   },[id]);
-
+   
   const handleChange = (event) => {
     setAge(event.target.value);
   };
+  const fetchCrypto = async()=>{
+    const {data} = await axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=100&page=1&sparkline=false");
+    setCoin(data);
+  }
   return (
     <div className={classes["soccer-setting-container"]}>
       <Card>
@@ -136,11 +140,17 @@ const PandingMasterDetail = () => {
                     <p>
                       &nbsp;&nbsp;
                       <FormControl variant="standard" sx={{ minWidth: 200 }}>
-                        <TextField 
+                        <InputLabel
                         label="Crypto Currency" 
                         onChange={(e)=>setPayment_Type(e.target.value)}
-                        sx={{ width: 200 }}  
-                         variant="standard" />
+                        sx={{ width: 200 }} 
+                        id="demo-simple-select" 
+                         >Crypto Currency
+                         </InputLabel>
+                           <Select variant="outlined"   id="demo-simple-select"     labelId="demo-simple-select-label">
+                             <MenuItem value="Hello">Hello</MenuItem>
+                           </Select>
+                        
                       </FormControl>
                     </p>
                   </div>
