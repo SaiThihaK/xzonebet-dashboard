@@ -7,7 +7,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import * as FaIcons from "react-icons/fa";
-import classes from "./PandingMasterCard.module.css";
+import classes from "./MasterCard.module.css";
 import { Button } from "@mui/material";
 const MasterCard = ({user,path}) => {
   return (

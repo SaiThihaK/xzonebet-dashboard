@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import Card from "../../../../../components/UI/Card";
 import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import SuperMasterDesc from "../../../../SuperMaster/SuperMasterCard/SuperMasterDetail/SuperMasterDesc/SuperMasterDesc";
 import classes from "./PandingMasterDetail.module.css";
 import {  useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
@@ -11,6 +9,8 @@ import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { InputLabel, MenuItem, Select } from "@mui/material";
+import SuperMasterDesc from "../../../SuperMaster/SuperMasterCard/SuperMasterDetail/SuperMasterDesc/SuperMasterDesc";
+import Card from "../../../../components/UI/Card";
 const PandingMasterDetail = () => {
   const [age,setAge] = useState();
   const [pendingMaster,setPendingMaster] = useState([]);
@@ -31,18 +31,6 @@ const PandingMasterDetail = () => {
  
   
   const {id} = useParams();
-  console.log({
-    real_name,
-    payment_name,
-    payment_type,
-    transition_id,
-    amount,
-    currency,
-    username,
-    password,
-    deposit_percent,
-    withdraw_percent
-  });
   const submitHandler = async(e)=>{
     e.preventDefault();
     if(!real_name ||!payment_name||!payment_type||!transition_id||!amount||!currency||!username||!password||!deposit_percent ||!withdraw_percent){
@@ -88,17 +76,17 @@ const PandingMasterDetail = () => {
   }
   useEffect(()=>{
     fetchMasterDetail();
-    fetchCrypto();
+    // fetchCrypto();
     return ()=>setPendingMaster([]);
   },[id]);
    
   const handleChange = (event) => {
     setAge(event.target.value);
   };
-  const fetchCrypto = async()=>{
-    const {data} = await axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=100&page=1&sparkline=false");
-    setCoin(data);
-  }
+  // const fetchCrypto = async()=>{
+  //   const {data} = await axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=100&page=1&sparkline=false");
+  //   setCoin(data);
+  // }
   return (
     <div className={classes["soccer-setting-container"]}>
       <Card>
@@ -140,17 +128,15 @@ const PandingMasterDetail = () => {
                     <p>
                       &nbsp;&nbsp;
                       <FormControl variant="standard" sx={{ minWidth: 200 }}>
-                        <InputLabel
+                        <TextField
                         label="Crypto Currency" 
                         onChange={(e)=>setPayment_Type(e.target.value)}
-                        sx={{ width: 200 }} 
+                        sx={{ width: 200 }}
+                        variant="standard"
                         id="demo-simple-select" 
                          >Crypto Currency
-                         </InputLabel>
-                           <Select variant="outlined"   id="demo-simple-select"     labelId="demo-simple-select-label">
-                             <MenuItem value="Hello">Hello</MenuItem>
-                           </Select>
-                        
+                         </TextField>
+                    
                       </FormControl>
                     </p>
                   </div>

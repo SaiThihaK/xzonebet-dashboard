@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Card from "../../../../../components/UI/Card";
+
 import classes from "./ConfirmMasterDetail.module.css";
 import {  useParams } from "react-router-dom";
 import { useEffect } from "react";
@@ -7,6 +7,8 @@ import axios from "axios";
 import ComfirmMasterDesc from "./ComfirmMasterDesc/ConfirmMasterDesc";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Card from "../../../../components/UI/Card";
+
 const ConfirmMasterDetail = () => {
   const [age, setAge] = React.useState("");
   const [confirmMaster,setConfirmMaster] = useState([]);
