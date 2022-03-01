@@ -10,7 +10,7 @@ const CompleteMasterDetail = () => {
   const [completeMaster,setCompleteMaster] = useState([]);
   const {id} = useParams();
   // Enjoyment
- 
+
 
   const fetchMasterDetail = async()=>{
     const {data} = await axios.get(`https://lapi.xzonebet.com/api/affiliate-register-lists/${id}`);

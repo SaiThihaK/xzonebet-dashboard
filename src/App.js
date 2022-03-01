@@ -32,10 +32,11 @@ import AffiliateAgent from "./pages/Affiliate Agent/AffiliateAgent";
 import Agent from "./pages/Agent/Agent";
 import ConfirmMaster from "./pages/Master/ConfirmMaster/ConfirmMaster";
 import ConfirmMasterDetail from "./pages/Master/ConfirmMaster/ConfirmMasterCard/ConfirmMasterDetail/ConfirmMasterDetail";
-import CompleteMasterCard from "./pages/Master/CompleteMaster/CompleteMasterCard/CompleteMasterCard";
 import CompleteMasterDetail from "./pages/Master/CompleteMaster/CompleteMasterCard/CompleteMasterDetail/CompleteMasterDetail";
 import CancelMaster from "./pages/Master/CancelMaster/CancelMaster";
 import CancelMasterDetail from "./pages/Master/CancelMaster/CancelMasterCard/CancelMasterDetail/CancelMasterDetail";
+import CompleteMaster from "./pages/Master/CompleteMaster/CompleteMaster";
+import ComfirmMasterDesc from "./pages/Master/ConfirmMaster/ConfirmMasterCard/ConfirmMasterDetail/ComfirmMasterDesc/ConfirmMasterDesc";
 
 function App() {
   return (
@@ -132,11 +133,12 @@ function App() {
             element={<ConfirmMasterDetail />}
           />
           {/* Confirm Master(sai) */}
+
           {/* complete Master */}
           <Route
             path="/account/master/complete-master"
             exact
-            element={<CompleteMasterCard />}
+            element={<CompleteMaster />}
           />
           <Route
             path="/account/master/complete-master/detail/:id"

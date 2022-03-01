@@ -10,7 +10,7 @@ import CompleteMasterCard from "./CompleteMasterCard/CompleteMasterCard";
 const CompleteMaster = () => {
   const [completeMasters,setCompleteMasters] = useState([]);
   const fetchCompleteMaster = async()=>{
-    const {data} = await axios.get('https://lapi.xzonebet.com/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=complete&form_type=master');
+    const {data} = await axios.get('https://lapi.xzonebet.com/api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=complete&form_type=master');
     setCompleteMasters(data.data);
   };
  console.log(completeMasters);

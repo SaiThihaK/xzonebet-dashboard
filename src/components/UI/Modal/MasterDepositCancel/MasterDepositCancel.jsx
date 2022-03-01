@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
+import axios from "axios";
 
-const MasterDepositCancel = ({ open, handleClose }) => {
+const MasterDepositCancel = ({ open, handleClose,setNum,id,num}) => {
+  const [accounting_remark,setAccounting_remark] = useState("");
   const style = {
     position: "absolute",
     top: "50%",
@@ -18,6 +20,28 @@ const MasterDepositCancel = ({ open, handleClose }) => {
     borderRadius: "0.5rem",
     p: 4,
   };
+
+  const confirmHandler = async(e)=>{
+  e.preventDefault();
+  if(!accounting_remark){
+    return;
+  }
+  try{
+  const {data} = await axios.post(
+  `https://lapi.xzonebet.com/api/affiliate-register-lists/deposit-rejet/${id}`,
+  {accounting_remark:accounting_remark}
+  );
+  
+  if(data.status="success"){
+    handleClose();
+    setNum(num+1);
+    return;
+  }
+  }catch(error){
+    console.log(error);
+    return;
+  }
+  }
   return (
     <div>
       <Modal
@@ -41,13 +65,20 @@ const MasterDepositCancel = ({ open, handleClose }) => {
                 padding: '10px',
                 color: "#464646",
                 fontSize: '16px'
-            }} name="" id="" placeholder="example ...."  rows="5"></textarea>
+            }} name="" 
+            id="" placeholder="example ...."
+              rows="5"
+               onChange={(e)=>setAccounting_remark(e.target.value)}
+               />
             <Stack
               direction="row"
               spacing={2}
               sx={{ justifyContent: "center" }}
             >
-              <Button variant="contained" type="submit" color="success">
+              <Button onClick={(e)=>{
+                  confirmHandler(e);
+
+              }} variant="contained" type="submit" color="success">
                 Confirm
               </Button>
               <Button onClick={handleClose} variant="contained" color="error">
