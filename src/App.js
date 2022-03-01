@@ -23,7 +23,6 @@ import SuperMaster from "./pages/SuperMaster/SuperMaster";
 import SuperMasterDetail from "./pages/SuperMaster/SuperMasterCard/SuperMasterDetail/SuperMasterDetail";
 import Master from "./pages/Master/Master";
 import PandingMaster from "./pages/Master/PandingMaster/PandingMaster";
-import PandingMasterDetail from "./pages/Master/PandingMaster/PandingMasterCard/PandingMasterDetail/PandingMasterDetail";
 import MasterDeposit from "./pages/MasterDeposit/MasterDeposit";
 import Users from "./pages/Users/Users";
 import ActiveUser from "./pages/Users/ActiveUsers/ActiveUsers";
@@ -31,15 +30,15 @@ import Notfound from "./components/UI/404/404";
 import AffiliateAgent from "./pages/Affiliate Agent/AffiliateAgent";
 import Agent from "./pages/Agent/Agent";
 import ConfirmMaster from "./pages/Master/ConfirmMaster/ConfirmMaster";
-import ConfirmMasterDetail from "./pages/Master/ConfirmMaster/ConfirmMasterCard/ConfirmMasterDetail/ConfirmMasterDetail";
+
 import CompleteMasterDetail from "./pages/Master/CompleteMaster/CompleteMasterCard/CompleteMasterDetail/CompleteMasterDetail";
 import CancelMaster from "./pages/Master/CancelMaster/CancelMaster";
 import CancelMasterDetail from "./pages/Master/CancelMaster/CancelMasterCard/CancelMasterDetail/CancelMasterDetail";
 import CompleteMaster from "./pages/Master/CompleteMaster/CompleteMaster";
-import ComfirmMasterDesc from "./pages/Master/ConfirmMaster/ConfirmMasterCard/ConfirmMasterDetail/ComfirmMasterDesc/ConfirmMasterDesc";
-import CompleteTable from "./components/Table/Complete/AgentTable/CompleteTable";
 import CompleteAgent from "./components/Table/Complete/CompleteAgent";
 import Transition from "./components/Table/Complete/Transition/Transiton";
+import PandingMasterDetail from "./pages/Master/PandingMaster/PandingMasterDetail/PandingMasterDetail";
+import ConfirmMasterDetail from "./pages/Master/ConfirmMaster/ConfirmMasterDetail/ConfirmMasterDetail";
 
 function App() {
   return (

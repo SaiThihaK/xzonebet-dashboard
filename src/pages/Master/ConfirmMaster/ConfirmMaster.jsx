@@ -1,11 +1,10 @@
 import React from "react";
 import Card from '../../../components/UI/Card';
 import Grid from "@mui/material/Grid";
-import ConfirmMasterCard from "./ConfirmMasterCard/ConfirmMasterCard";
 import classes from './ConfirmMaster.module.css';
-
 import { useState, useEffect   } from "react";
 import axios from "axios";
+import MasterCard from "../../../components/MasterCard/MasterCard";
 
 const ConfirmMaster = () => {
   const [confirmMasters,setConfirmMasters] = useState([]);
@@ -30,7 +29,7 @@ const ConfirmMaster = () => {
         <div className={classes["card-body"]}>
           <Grid container spacing={3}>
            {confirmMasters.length !==0 && confirmMasters.map((confirmMaster)=>
-           (<ConfirmMasterCard key={confirmMaster?.id} confirmMaster ={confirmMaster} />)
+           (<MasterCard key={confirmMaster?.id} user={confirmMaster} path="/account/master/confirm-master/detail/" />)
            )}
           </Grid>
         </div>

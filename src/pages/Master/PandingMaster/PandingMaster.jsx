@@ -1,10 +1,11 @@
 import React from "react";
 import Card from '../../../components/UI/Card';
 import Grid from "@mui/material/Grid";
-import PandingMasterCard from "./PandingMasterCard/PandingMasterCard";
+
 import classes from './PandingMaster.module.css';
 import { useState, useEffect   } from "react";
 import axios from "axios";
+import MasterCard from "../../../components/MasterCard/MasterCard";
 
 const PandingMaster = () => {
   const [pendingMasters,setPendingMaster] = useState([]);
@@ -26,7 +27,7 @@ const PandingMaster = () => {
         <div className={classes["card-body"]}>
           <Grid container spacing={3}>
            {pendingMasters.length !==0 && pendingMasters.map((pendingMaster)=>
-           (<PandingMasterCard key={pendingMaster?.id} user ={pendingMaster} />)
+           (<MasterCard key={pendingMaster?.id} user={pendingMaster} path={"/account/master/panding-master/detail/"} />)
            )}
           </Grid>
         </div>
