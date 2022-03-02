@@ -1,13 +1,13 @@
 import React from "react";
 import TextField from "@mui/material/TextField"; 
-import classes from "./Transition.module.css";
-import TransitionTable from "./TransitonTable/TransitionTable";
-import Card from "../../../UI/Card";
+import classes from "./AgentTransition.module.css";
 import { Button } from "@mui/material";
 import { DateRangePicker, LocalizationProvider } from "@mui/lab";
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import Box from '@mui/material/Box';
-const Transition = () => {
+import Card from "../../UI/Card";
+import AgentTransitionTable from "./AgentTransitionTable/AgentTransitionTable";
+const AgentTransition = () => {
   // let today = new Date();
   // let Todate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 
@@ -54,7 +54,7 @@ const Transition = () => {
     </LocalizationProvider>
     </div>
             </div>
-            <TransitionTable />
+            <AgentTransitionTable />
           </div>
         </div>
       </Card>
@@ -62,4 +62,5 @@ const Transition = () => {
   );
 };
 
-export default Transition;
+export default AgentTransition;
+ 

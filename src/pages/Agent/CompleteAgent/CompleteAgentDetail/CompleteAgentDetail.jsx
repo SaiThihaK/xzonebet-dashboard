@@ -39,8 +39,7 @@ const CompleteAgentDetail = () => {
         </div>
       </Card>
       <div style={{width:"100%",display:"flex",justifyContent:"space-around",marginTop:30}}>
-        <Button variant="contained" onClick={()=>navigate("/account/master/complete-master/agent-table")} color="primary">Agent Table</Button>
-        <Button variant="contained" onClick={()=>navigate("/account/master/complete-master/transition-table")} color="primary">Transition Table</Button>
+        <Button variant="contained" onClick={()=>navigate("/account/agent/complete-agent/transition-table")} color="primary">Transition Table</Button>
       </div>
     </div>
   );

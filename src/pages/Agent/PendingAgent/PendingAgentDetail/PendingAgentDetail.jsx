@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { InputLabel, MenuItem, Select } from "@mui/material";
 import SuperMasterDesc from "../../../SuperMaster/SuperMasterCard/SuperMasterDetail/SuperMasterDesc/SuperMasterDesc";
 import Card from "../../../../components/UI/Card";
+import PendingAgentDesc from "./PendingAgentDesc/PendingAgentDesc";
 const PendingAgentDetail = () => {
   const [age,setAge] = useState();
   const [pendingMaster,setPendingMaster] = useState([]);
@@ -94,178 +95,16 @@ const PendingAgentDetail = () => {
           <h1 className={classes["card-title"]}>Pending Agent Form Detail</h1>
         </div>
         <div className={classes["card-body"]}>
-          <SuperMasterDesc userInfo={pendingMaster} />
+          <PendingAgentDesc userInfo={pendingMaster} />
         </div>
       </Card>
       <div style={{marginTop: '20px'}}>
           <form>
           <ToastContainer />
           <div className={classes["card-column"]}>
-        <Card>
-          <div className={classes["card-header"]}>
-            <h1 className={classes["card-title"]}>Initial Deposite Detail</h1>
-          </div>
-          <div className={classes["card-body"]}>
-            <div>
-              <div>
-                <form action="" style={{ width: "400px" }}>
-                  <div className={classes["form-group-desc"]}>
-                    <label htmlFor="">Name </label>:
-                    <p>
-                      &nbsp;&nbsp;
-                      {/* <input type="text" /> */}
-                      <TextField
-                        id="standard-basic"
-                        label="Name"
-                        onChange={(e)=>setReal_Name(e.target.value)}
-                        sx={{ width: 200 }}
-                        variant="standard"
-                      />
-                    </p>
-                  </div>
-                  <div className={classes["form-group-desc"]}>
-                    <label htmlFor="">Payment Type </label>:
-                    <p>
-                      &nbsp;&nbsp;
-                      <FormControl variant="standard" sx={{ minWidth: 200 }}>
-                        <TextField
-                        label="Crypto Currency" 
-                        onChange={(e)=>setPayment_Type(e.target.value)}
-                        sx={{ width: 200 }}
-                        variant="standard"
-                        id="demo-simple-select" 
-                         >Crypto Currency
-                         </TextField>
-                    
-                      </FormControl>
-                    </p>
-                  </div>
-                  <div className={classes["form-group-desc"]}>
-                    <label htmlFor="">Payment  Name </label>:
-                    <p>
-                      &nbsp;&nbsp;
-                      <TextField
-                        id="standard-basic"
-                        label="Payment Name"
-                        onChange={(e)=>setPayment_Name(e.target.value)}
-                        sx={{width:200}}
-                        variant="standard"
-                      />
-                    </p>
-                  </div>
-                  <div className={classes["form-group-desc"]}>
-                    <label htmlFor="">Transition ID</label>:
-                    <p>
-                      &nbsp;&nbsp;
-                      <TextField
-                        id="standard-basic"
-                        onChange={(e)=>setTransition_id(e.target.value)}
-                        label="Transition"
-                        sx={{ width: 200 }}
-                        variant="standard"
-                      />
-                    </p>
-                  </div>
-                  <div className={classes["form-group-desc"]}>
-                    <label htmlFor="">Amount </label>:
-                    <p>
-                      &nbsp;&nbsp;
-                      <TextField
-                        id="standard-basic"
-                        onChange={(e)=>setAmount(e.target.value)}
-                        label="Amount"
-                        sx={{ width: 200 }}
-                        variant="standard"
-                      />
-                    </p>
-                  </div>
-                  <div className={classes["form-group-desc"]}>
-                    <label htmlFor="">Currency </label>:
-                    <p>
-                      &nbsp;&nbsp;
-                      <FormControl variant="standard" sx={{ minWidth: 200 }}>
-                      <TextField
-                        id="standard-basic"
-                        onChange={(e)=>setCurrency(e.target.value)}
-                        label="Currency"
-                        sx={{ width: 200 }}
-                        variant="standard"
-                      />
-                      </FormControl>
-                    </p>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </Card>
+        
         {/* Enjoyment detail form */}
-        <Card>
-          <div className={classes["card-header"]}>
-            <h1 className={classes["card-title"]}>Enjoyment</h1>
-          </div>
-          <div className={classes["card-body"]}>
-            <div>
-              <div>
-                <form action="" style={{ width: "400px" }}>
-                  <div className={classes["form-group-desc"]}>
-                    <label htmlFor="">User Name </label>:
-                    <p>
-                      &nbsp;&nbsp;
-                      {/* <input type="text" /> */}
-                      <TextField
-                        id="standard-basic"
-                        label="User Name"
-                        onChange={(e)=>setUserName(e.target.value)}
-                        sx={{ width: 200 }}
-                        variant="standard"
-                      />
-                    </p>
-                  </div>
-                  <div className={classes["form-group-desc"]}>
-                    <label htmlFor="">Password </label>:
-                    <p>
-                      &nbsp;&nbsp;
-                  
-                        <TextField
-                        onChange={(e)=>setPassword(e.target.value)}
-                        label="Password" 
-                        sx={{ width: 200 }}  
-                         variant="standard" />
-                     
-                    </p>
-                  </div>
-                  <div className={classes["form-group-desc"]}>
-                    <label htmlFor="">Deposite percentage </label>:
-                    <p>
-                      &nbsp;&nbsp;
-                      <TextField
-                        id="standard-basic"
-                        onChange={(e)=>setDeposite_percent(e.target.value)}
-                        label="Deposite Percentage"
-                        sx={{width:200}}
-                        variant="standard"
-                      />
-                    </p>
-                  </div>
-                  <div className={classes["form-group-desc"]}>
-                    <label htmlFor="">Withdraw Percentage</label>:
-                    <p>
-                      &nbsp;&nbsp;
-                      <TextField
-                        id="standard-basic"
-                        onChange={(e)=>setWidthDraw_percent(e.target.value)}
-                        label="Withdraw Percentage"
-                        sx={{ width: 200 }}
-                        variant="standard"
-                      />
-                    </p>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </Card>
+        
         <div style={{display:"flex",justifyContent:"flex-end",marginTop:20}}>
         <Button type="submit" onClick={(e)=>{submitHandler(e)}} variant="contained">Submit</Button>
       </div>

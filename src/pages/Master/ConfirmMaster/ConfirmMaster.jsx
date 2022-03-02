@@ -13,8 +13,6 @@ const ConfirmMaster = () => {
     setConfirmMasters(data.data);
   };
   
-  console.log(confirmMasters)
-
 
   useEffect(()=>{
    fetchConfirmMaster();
@@ -24,7 +22,7 @@ const ConfirmMaster = () => {
     <div className={classes["soccer-setting-container"]}>
       <Card>
         <div className={classes["card-header"]}>
-          <h1 className={classes["card-title"]}>Confirm Master</h1>
+          <h1 className={classes["card-title"]}>Confirm Masters</h1>
         </div>
         <div className={classes["card-body"]}>
           <Grid container spacing={3}>

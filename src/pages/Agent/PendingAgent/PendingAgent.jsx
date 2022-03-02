@@ -1,19 +1,20 @@
 import React from "react";
 import Card from '../../../components/UI/Card';
 import Grid from "@mui/material/Grid";
-
 import classes from './PendingAgent.module.css';
 import { useState, useEffect   } from "react";
 import axios from "axios";
-import MasterCard from "../../../components/MasterCard/MasterCard";
+import PendingAgentCard from "./PendingAgentCard/PendingAgentCard";
 
 const PendingAgent = () => {
   const [pendingMasters,setPendingMaster] = useState([]);
+  
   const fetchPendingMaster = async()=>{
     const {data} = await axios.get('https://lapi.xzonebet.com/api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=agent');
     setPendingMaster(data.data);
   };
  console.log(pendingMasters);
+ 
   useEffect(()=>{
    fetchPendingMaster();
    return ()=>setPendingMaster([]);
@@ -27,7 +28,8 @@ const PendingAgent = () => {
         <div className={classes["card-body"]}>
           <Grid container spacing={3}>
            {pendingMasters.length !==0 && pendingMasters.map((pendingMaster)=>
-           (<MasterCard key={pendingMaster?.id} user={pendingMaster} path={"/account/agent/pending-agent/detail/"} />)
+           (
+             <PendingAgentCard key={pendingMaster?.id} user={pendingMaster} path={"/account/agent/pending-agent/detail/"} />)
            )}
           </Grid>
         </div>

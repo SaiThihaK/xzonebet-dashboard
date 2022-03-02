@@ -62,8 +62,8 @@ const ComfirmMasterDesc = ({userInfo}) => {
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Transition Id </label>:<p>&nbsp;&nbsp;{userInfo.transition_id}</p>
         </div>
-        <form style={{width:"100%",display:"flex",alignItems:"center",marginTop:20}}>
-        <Button   variant="contained" color="primary" onClick={confirmHandler}>Comfirm</Button>
+        <form style={{width:"100%",display:"flex",alignItems:"center",marginTop:30}}>
+        <Button   variant="contained" color="primary" onClick={confirmHandler} style={{marginLeft:150}}>Comfirm</Button>
         </form>
       </div>
     </div>

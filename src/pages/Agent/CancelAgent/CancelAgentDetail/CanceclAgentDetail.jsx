@@ -1,49 +1,46 @@
 import React, { useState } from "react";
-
-import classes from "./ConfirmAgentDetail.module.css";
+import classes from "./CancelAgentDetail.module.css";
 import {  useParams } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
-
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
-import ConfirmAgentDesc from "./ConfirmAgentDesc/ConfirmAgentDesc";
 import Card from "../../../../components/UI/Card";
-
-
-const ConfirmAgentDetail = () => {
+import SuperMasterDesc from "../../../SuperMaster/SuperMasterCard/SuperMasterDetail/SuperMasterDesc/SuperMasterDesc";
+const CancelAgentDetail = () => {
   const [age, setAge] = React.useState("");
-  const [confirmMaster,setConfirmMaster] = useState([]);
-  const {id} = useParams();
-  const alertToast = (message) => toast(message);
+  const [cancelMaster,setCancelMaster] = useState([]);
+ 
+  
   // Enjoyment
+
+  
+  const {id} = useParams();
+ 
  
 
   const fetchMasterDetail = async()=>{
     const {data} = await axios.get(`https://lapi.xzonebet.com/api/affiliate-register-lists/${id}`);
-    setConfirmMaster(data.data);
+    setCancelMaster(data.data);
   }
   useEffect(()=>{
     fetchMasterDetail();
-    return ()=>setConfirmMaster([]);
+    return ()=>setCancelMaster([]);
   },[id]);
+
   const handleChange = (event) => {
     setAge(event.target.value);
   };
   return (
     <div className={classes["soccer-setting-container"]}>
-      <ToastContainer />
       <Card>
         <div className={classes["card-header"]}>
-          <h1 className={classes["card-title"]}>Confirm Agent Form Detail</h1>
+          <h1 className={classes["card-title"]}>Cancel Agent Form Detail</h1>
         </div>
         <div className={classes["card-body"]}>
-          <ConfirmAgentDesc userInfo={confirmMaster} alertToast={alertToast} />
+          <SuperMasterDesc userInfo={cancelMaster} />
         </div>
       </Card>
     </div>
   );
 };
 
-export default ConfirmAgentDetail;
+export default CancelAgentDetail;

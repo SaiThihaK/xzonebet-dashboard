@@ -3,9 +3,11 @@ import TextField from "@mui/material/TextField";
 import CompleteTable from "./AgentTable/CompleteTable";
 import classes from "./CompleteMasterTable.module.css";
 import Card from "../../UI/Card";
-const CompleteMasterTable = () => {
 
+const CompleteMasterTable = () => {
+  
   return (
+    
     <div className={classes["soccer-setting-container"]}>
       <Card>
         <div className={classes["card-header"]}>
@@ -23,6 +25,7 @@ const CompleteMasterTable = () => {
                   label="Search ID"
                   variant="outlined"
                 />
+                
               </div>
             </div>
             <CompleteTable />
@@ -30,6 +33,7 @@ const CompleteMasterTable = () => {
         </div>
       </Card>
     </div>
+  
   );
 };
 

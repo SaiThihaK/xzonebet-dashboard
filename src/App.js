@@ -47,6 +47,9 @@ import ConfirmAgentDetail from "./pages/Agent/ConfirmAgent/ConfirmAgentDetail.js
 import CompleteMasterTable from "./components/Table/Complete/CompleteMasterTable";
 import CompleteAgent from "./pages/Agent/CompleteAgent/CompleteAgent";
 import CompleteAgentDetail from "./pages/Agent/CompleteAgent/CompleteAgentDetail/CompleteAgentDetail";
+import CancelAgent from "./pages/Agent/CancelAgent/CancelAgent";
+import CancelAgentDetail from "./pages/Agent/CancelAgent/CancelAgentDetail/CanceclAgentDetail";
+import AgentTransition from "./components/Table/AgentTransiton/AgentTransition";
 
 function App() {
   return (
@@ -151,6 +154,21 @@ function App() {
             exact
             element={<CompleteAgentDetail />}
           />
+          <Route
+            path="/account/agent/cancel-agent"
+            exact
+            element={<CancelAgent />}
+          />
+          <Route
+            path="/account/agent/cancel-agent/detail/:id"
+            exact
+            element={<CancelAgentDetail />}
+          />
+          {/* CompleteAgent Table */}
+          <Route
+            path="/account/agent/complete-agent/transition-table"
+            element={<AgentTransition />}
+          />
           {/* Agent */}
           {/* Pending Master */}
           <Route
@@ -197,6 +215,7 @@ function App() {
             exact
             element={<Transition />}
           />
+
           {/* complete Master */}
           {/* Cancel Master */}
           <Route

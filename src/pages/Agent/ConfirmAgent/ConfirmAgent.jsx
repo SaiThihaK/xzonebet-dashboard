@@ -24,7 +24,7 @@ const ConfirmAgent = () => {
     <div className={classes["soccer-setting-container"]}>
       <Card>
         <div className={classes["card-header"]}>
-          <h1 className={classes["card-title"]}>Confirm Agent</h1>
+          <h1 className={classes["card-title"]}>Confirm Agents</h1>
         </div>
         <div className={classes["card-body"]}>
           <Grid container spacing={3}>
