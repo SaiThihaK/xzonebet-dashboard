@@ -1,9 +1,9 @@
 import React from "react";
 import TextField from "@mui/material/TextField"; 
 import CompleteTable from "./AgentTable/CompleteTable";
-import classes from "./CompleteAgent.module.css";
+import classes from "./CompleteMasterTable.module.css";
 import Card from "../../UI/Card";
-const CompleteAgent = () => {
+const CompleteMasterTable = () => {
 
   return (
     <div className={classes["soccer-setting-container"]}>
@@ -33,4 +33,4 @@ const CompleteAgent = () => {
   );
 };
 
-export default CompleteAgent;
+export default CompleteMasterTable;

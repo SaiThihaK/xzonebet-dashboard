@@ -34,12 +34,19 @@ import ConfirmMaster from "./pages/Master/ConfirmMaster/ConfirmMaster";
 import CancelMaster from "./pages/Master/CancelMaster/CancelMaster";
 
 import CompleteMaster from "./pages/Master/CompleteMaster/CompleteMaster";
-import CompleteAgent from "./components/Table/Complete/CompleteAgent";
+
 import Transition from "./components/Table/Complete/Transition/Transiton";
 import PandingMasterDetail from "./pages/Master/PandingMaster/PandingMasterDetail/PandingMasterDetail";
 import ConfirmMasterDetail from "./pages/Master/ConfirmMaster/ConfirmMasterDetail/ConfirmMasterDetail";
 import CompleteMasterDetail from "./pages/Master/CompleteMaster/CompleteMasterDetail/CompleteMasterDetail";
 import CancelMasterDetail from "./pages/Master/CancelMaster/CancelMasterDetail/CancelMasterDetail";
+import PendingAgent from "./pages/Agent/PendingAgent/PendingAgent";
+import PendingAgentDetail from "./pages/Agent/PendingAgent/PendingAgentDetail/PendingAgentDetail";
+import ConfirmAgent from "./pages/Agent/ConfirmAgent/ConfirmAgent";
+import ConfirmAgentDetail from "./pages/Agent/ConfirmAgent/ConfirmAgentDetail.jsx/ConfirmAgentDetail";
+import CompleteMasterTable from "./components/Table/Complete/CompleteMasterTable";
+import CompleteAgent from "./pages/Agent/CompleteAgent/CompleteAgent";
+import CompleteAgentDetail from "./pages/Agent/CompleteAgent/CompleteAgentDetail/CompleteAgentDetail";
 
 function App() {
   return (
@@ -112,8 +119,40 @@ function App() {
             exact
             element={<AffiliateAgent />}
           />
-          {/* Pending Master */}
+          {/* Agent */}
           <Route path="/account/agent" exact element={<Agent />} />
+          <Route
+            path="/account/agent/pending-agent"
+            exact
+            element={<PendingAgent />}
+          />
+          <Route
+            path="/account/agent/pending-agent/detail/:id"
+            exact
+            element={<PendingAgentDetail />}
+          />
+          <Route
+            path="/account/agent/confirm-agent"
+            exact
+            element={<ConfirmAgent />}
+          />
+          <Route
+            path="/account/agent/confirm-agent/detail/:id"
+            exact
+            element={<ConfirmAgentDetail />}
+          />
+          <Route
+            path="/account/agent/complete-agent"
+            exact
+            element={<CompleteAgent />}
+          />
+          <Route
+            path="/account/agent/complete-agent/detail/:id"
+            exact
+            element={<CompleteAgentDetail />}
+          />
+          {/* Agent */}
+          {/* Pending Master */}
           <Route
             path="/account/master/panding-master"
             exact
@@ -151,7 +190,7 @@ function App() {
           <Route
             path="/account/master/complete-master/agent-table"
             exact
-            element={<CompleteAgent />}
+            element={<CompleteMasterTable />}
           />
           <Route
             path="/account/master/complete-master/transition-table"
