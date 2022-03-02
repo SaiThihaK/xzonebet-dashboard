@@ -22,7 +22,7 @@ const CompleteMaster = () => {
     <div className={classes["soccer-setting-container"]}>
       <Card>
         <div className={classes["card-header"]}>
-          <h1 className={classes["card-title"]}>Complete Master</h1>
+          <h1 className={classes["card-title"]}>Complete Masters</h1>
         </div>
         <div className={classes["card-body"]}>
           <Grid container spacing={3}>

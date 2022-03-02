@@ -19,7 +19,7 @@ const ConfirmAgentDesc = ({userInfo}) => {
     };
    const response = await axios.post(
     `https://lapi.xzonebet.com/api/affiliate-register-lists/confirm/${userInfo.id}`,
-       {super_master_id:1},
+       {master_id:2},
    );
    console.log(response);
    if(response.data.status="success"){
@@ -62,8 +62,8 @@ const ConfirmAgentDesc = ({userInfo}) => {
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Transition Id </label>:<p>&nbsp;&nbsp;{userInfo.transition_id}</p>
         </div>
-        <form style={{width:"100%",display:"flex",alignItems:"center",marginTop:20}}>
-        <Button   variant="contained" color="primary" onClick={confirmHandler}>Comfirm</Button>
+        <form style={{width:"100%",display:"flex",alignItems:"center",marginTop:30}}>
+        <Button   variant="contained" color="primary" onClick={confirmHandler} style={{marginLeft:150}}>Comfirm</Button>
         </form>
       </div>
     </div>

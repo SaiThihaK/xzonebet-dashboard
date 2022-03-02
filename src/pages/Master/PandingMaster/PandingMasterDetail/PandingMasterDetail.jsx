@@ -15,7 +15,6 @@ const PandingMasterDetail = () => {
   const [age,setAge] = useState();
   const [pendingMaster,setPendingMaster] = useState([]);
   const [real_name,setReal_Name] = useState("");
-  const [payment_type,setPayment_Type] = useState("");
   const [payment_name,setPayment_Name] = useState("");
   const [transition_id,setTransition_id] = useState("");
   const [amount,setAmount] = useState("");
@@ -33,7 +32,7 @@ const PandingMasterDetail = () => {
   const {id} = useParams();
   const submitHandler = async(e)=>{
     e.preventDefault();
-    if(!real_name ||!payment_name||!payment_type||!transition_id||!amount||!currency||!username||!password||!deposit_percent ||!withdraw_percent){
+    if(!real_name ||!payment_name||!transition_id||!amount||!currency||!username||!password||!deposit_percent ||!withdraw_percent){
       alertToast("Please Fill All the Field")
       return;
     }
@@ -46,7 +45,7 @@ const PandingMasterDetail = () => {
           {
             real_name,
             payment_name,
-            payment_type,
+            payment_type:"crypto",
             transition_id,
             amount,
             currency,
@@ -130,10 +129,11 @@ const PandingMasterDetail = () => {
                       <FormControl variant="standard" sx={{ minWidth: 200 }}>
                         <TextField
                         label="Crypto Currency" 
-                        onChange={(e)=>setPayment_Type(e.target.value)}
+                        
                         sx={{ width: 200 }}
                         variant="standard"
-                        id="demo-simple-select" 
+                        id="demo-simple-select"
+                        disabled={true}
                          >Crypto Currency
                          </TextField>
                     
@@ -266,9 +266,10 @@ const PandingMasterDetail = () => {
             </div>
           </div>
         </Card>
-        <div style={{display:"flex",justifyContent:"flex-end",marginTop:20}}>
-        <Button type="submit" onClick={(e)=>{submitHandler(e)}} variant="contained">Submit</Button>
+       
       </div>
+      <div style={{display:"flex",marginTop:20,justifyContent:"flex-end",marginRight:100}}>
+        <Button type="submit" onClick={(e)=>{submitHandler(e)}} variant="contained">Submit</Button>
       </div>
         </form>
       </div>

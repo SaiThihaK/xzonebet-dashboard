@@ -8,8 +8,6 @@
   border-bottom: none;
   padding: 20px;
   position: relative;
-  display: flex;
-  justify-content: space-between;
 }
 .card-body {
   padding: 20px;
@@ -32,14 +30,4 @@
   position: absolute;
   bottom: -20px;
   left: 0;
-}
-
-.formGroup {
-  margin-right: 20px;
-  display: flex;
-}
-.search-header-flex {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
 }

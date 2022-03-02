@@ -42,7 +42,7 @@ const MasterDepositTable = () => {
     },
   }));
   const fetchData = async()=>{
-    const {data} = await axios.get("https://lapi.xzonebet.com/api/affiliate-register-lists-detail?sortColumn=id&sortDirection=desc&limit=30&status=deposit-pending");
+    const {data} = await axios.get("https://lapi.xzonebet.com/api/affiliate-register-lists-detail?sortColumn=updated_at&sortDirection=desc&limit=30&status=deposit-pending");
     
     setRowData(data.data)
   }
