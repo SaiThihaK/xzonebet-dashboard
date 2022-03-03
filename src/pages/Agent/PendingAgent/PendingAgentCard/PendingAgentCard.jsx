@@ -53,12 +53,14 @@ const PendingAgentCard = ({user,path}) => {
             {user.name}
           </Typography>
           <FormControl fullWidth>
-  <InputLabel id="demo-simple-select-label" style={{height:20}}>Master</InputLabel>
+  <InputLabel id="demo-simple-select-label" size="small" >Master</InputLabel>
   <Select
     labelId="demo-simple-select-label"
     id="demo-simple-select"
     value={master}
     label="Choose"
+    inputProps={{ "aria-label": "Without label" }}
+    size="small"
     onChange={handleChange}
   > 
   {completeMasters.map((master,index)=>(

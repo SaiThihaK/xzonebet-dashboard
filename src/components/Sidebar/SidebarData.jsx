@@ -126,6 +126,35 @@ export const SidebarData = [
         ]
     },
     {
+        title: 'Payment Setting',
+        path: '/payment-setting',
+        icon: <AiIcons.AiFillSetting />,
+        iconClosed: <RiIcons.RiArrowDownSFill/>,
+        iconOpened: <RiIcons.RiArrowUpSFill/>,
+        subNav : [
+            {
+                title: 'Payment Type',
+                path: '/payment-setting/payment-value',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+            {
+                title: 'Payment Provider',
+                path: '/setting/soccer-setting',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+            {
+                title: 'Payment Account',
+                path: '/setting/soccer-setting',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+            {
+                title: 'Payment Method',
+                path: '/setting/soccer-setting',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+        ]
+    },
+    {
        title:"Unit Setting",
        path:"unit-setting",
        icon: <AiIcons.AiFillSetting />,

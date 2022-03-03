@@ -52,6 +52,7 @@ import CancelAgentDetail from "./pages/Agent/CancelAgent/CancelAgentDetail/Cance
 import AgentTransition from "./components/Table/AgentTransiton/AgentTransition";
 import CreateUnit from "./pages/UnitSetting/CreateUnit/CreateUnit";
 import UnitValue from "./pages/UnitSetting/UnitValue/UnitValue";
+import PaymentType from "./pages/PaymentSetting/PaymentType/PaymentType";
 
 function App() {
   return (
@@ -245,10 +246,20 @@ function App() {
           {/* Unit Setting */}
           <Route
             exact
-            path="unit-setting/create-unit"
+            path="/unit-setting/create-unit"
             element={<CreateUnit />}
           />
-          <Route exact path="unit-setting/unit-value" element={<UnitValue />} />
+          <Route
+            exact
+            path="/unit-setting/unit-value"
+            element={<UnitValue />}
+          />
+          {/* Payment Setting */}
+          <Route
+            exact
+            path="/payment-setting/payment-value"
+            element={<PaymentType />}
+          />
           <Route />
           <Route path="*" element={<Notfound />} />
         </Routes>
