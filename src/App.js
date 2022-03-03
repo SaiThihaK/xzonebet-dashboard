@@ -50,6 +50,8 @@ import CompleteAgentDetail from "./pages/Agent/CompleteAgent/CompleteAgentDetail
 import CancelAgent from "./pages/Agent/CancelAgent/CancelAgent";
 import CancelAgentDetail from "./pages/Agent/CancelAgent/CancelAgentDetail/CanceclAgentDetail";
 import AgentTransition from "./components/Table/AgentTransiton/AgentTransition";
+import CreateUnit from "./pages/UnitSetting/CreateUnit/CreateUnit";
+import UnitValue from "./pages/UnitSetting/UnitValue/UnitValue";
 
 function App() {
   return (
@@ -240,7 +242,13 @@ function App() {
             exact
             element={<ActiveUser />}
           />
-
+          {/* Unit Setting */}
+          <Route
+            exact
+            path="unit-setting/create-unit"
+            element={<CreateUnit />}
+          />
+          <Route exact path="unit-setting/unit-value" element={<UnitValue />} />
           <Route />
           <Route path="*" element={<Notfound />} />
         </Routes>

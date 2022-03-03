@@ -126,6 +126,31 @@ export const SidebarData = [
         ]
     },
     {
+       title:"Unit Setting",
+       path:"unit-setting",
+       icon: <AiIcons.AiFillSetting />,
+       iconClosed: <RiIcons.RiArrowDownSFill/>,
+        iconOpened: <RiIcons.RiArrowUpSFill/>,
+        subNav : [
+            {
+                title: 'Create Unit',
+                path: '/unit-setting/create-unit',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+            {
+                title: 'Unit Value',
+                path: '/unit-setting/unit-value',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+            {
+                title: 'Unit History',
+                path: '/unit-setting/unit-history',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+           
+        ]
+    },
+    {
         title: "Become An Agent",
         path: "/become-an-agent",
         icon: <RiIcons.RiAccountPinCircleFill/>
