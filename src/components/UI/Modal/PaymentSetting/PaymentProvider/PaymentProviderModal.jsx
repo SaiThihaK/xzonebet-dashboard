@@ -5,7 +5,7 @@ import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { FormControl,Select,MenuItem, TextField } from "@mui/material";
+import { FormControl,Select,MenuItem, TextField, Input } from "@mui/material";
 
 const style = {
   position: "absolute",
@@ -45,9 +45,9 @@ export default function PaymentProviderModal({
         <Fade in={open}>
           <Box sx={style}>
             <Typography id="transition-modal-title" variant="h6" component="h2">
-              Create New Payment
+              Create New Payment Provider
             </Typography>
-            <FormControl sx={{ width: "100%" }}>
+            <FormControl sx={{ width: "100%" }} style={{marginTop:10}}>
             <Select
               value={type}
               onChange={handleChange}
@@ -62,6 +62,11 @@ export default function PaymentProviderModal({
               ))}
             </Select>
             <TextField size="small" label="Payment Provider" onChange={(e)=>setProvider(e.target.value)} />
+            <div style={{marginTop:30}}>
+            <label>Choose Provider Logo</label>
+            <Input  variant="standard" type="file" accept="image/png, image/jpeg" />
+            </div>
+            
             <div style={{marginTop: 20,display:"flex",justifyContent:"flex-end"}}>
             <Button
                 variant="contained"

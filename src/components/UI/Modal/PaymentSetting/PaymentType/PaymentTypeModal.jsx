@@ -25,7 +25,7 @@ export default function PaymentTypeModal({
   setPayment_type
 
 }) {
-  const [type,setType] = useState("E-wallet");
+  const [type,setType] = useState("");
   const methods = [{name:"E-wallet"},{name:"Banking"},{name:"PayPal"}]
   const handleChange = (e)=>setType(e.target.value);
   return (
@@ -46,19 +46,17 @@ export default function PaymentTypeModal({
             <Typography id="transition-modal-title" variant="h6" component="h2">
               Create New Payment
             </Typography>
-            <FormControl sx={{ width: "100%" }}>
-            <Select
+            <FormControl sx={{ width: "100%" }} style={{marginTop:10}}>
+            <TextField
               value={type}
               onChange={handleChange}
               displayEmpty
+              label="Create Payment Type"
               inputProps={{ "aria-label": "Without label" }}
               size="small"
               sx={{ backgroundColor: "#f3f3f3" }}
             >
-              {methods.map((item,index)=>(
-                  <MenuItem key={index} value={item.name}>{item.name}</MenuItem>
-              ))}
-            </Select>
+            </TextField>
             <div style={{marginTop: 20,display:"flex",justifyContent:"flex-end"}}>
             <Button
                 variant="contained"

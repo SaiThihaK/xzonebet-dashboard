@@ -54,19 +54,19 @@ const UnitValue = () => {
            <label htmlFor="">1Main </label>:
            <div>
                &nbsp;{Kvalue}&nbsp;MMK
-               &nbsp;<Button size="large" onClick={KhandleOpen}  >Edit</Button>
+               &nbsp;<Button variant='contained' size="small" onClick={KhandleOpen}  >Edit</Button>
            </div>
             </div>
             <div className={classes["form-group"]}>
            <label htmlFor="">1 Main </label>:
            <div>&nbsp;{PUvalue}&nbsp;PU
-           &nbsp;<Button size="large" onClick={PUhandleOpen}  >Edit</Button>
+           &nbsp;<Button variant='contained' size="small" onClick={PUhandleOpen}  >Edit</Button>
            </div>
             </div>
             <div className={classes["form-group"]}>
            <label htmlFor="">1 Diamond </label>:
            <div>&nbsp;{Mvalue}&nbsp;Main
-           &nbsp;<Button size="large" onClick={MhandleOpen}  >Edit</Button></div>
+           &nbsp;<Button variant='contained' size="small" onClick={MhandleOpen}  >Edit</Button></div>
             </div>
              </div>
              </div>
@@ -75,7 +75,7 @@ const UnitValue = () => {
             <UnitEditModal open={Kopen}  handleClose={KhandleClose} unitFrom="1Main" unitTo={Kvalue} setValue={KsetValue} unit="MMK" />
             <UnitEditModal open={PUopen}  handleClose={PUhandleClose} unitFrom="1Main" unitTo={PUvalue} setValue={PUsetValue} unit="PU" />
             <UnitEditModal open={Mopen}  handleClose={MhandleClose} unitFrom="1Diamond" unitTo={Mvalue} setValue={MsetValue} unit="Main" />
-        </div>
+            </div>
         </Card>
         {/* <div style={{widht:"100%",marginTop:30,display:"flex",justifyContent:"flex-end"}}>
             <Button variant='contained' color="primary">Confirm</Button>

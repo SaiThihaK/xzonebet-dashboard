@@ -48,6 +48,7 @@
   align-items: center;
   color: rgb(65, 65, 65);
   margin-bottom: 20px;
+  min-width: 200px;
 }
 
 .form-group label {
@@ -58,8 +59,7 @@
   font-size: 20px;
   display: flex;
   align-items: center;
-  justify-content: space-bwtween;
-  width: 300px;
+  width: 100%;
 }
 
 .form-group div {
@@ -67,5 +67,5 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 300px;
+  width: 100%;
 }
