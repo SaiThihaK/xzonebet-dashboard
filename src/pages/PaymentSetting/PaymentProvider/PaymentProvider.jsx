@@ -6,12 +6,13 @@ import Card from "../../../components/UI/Card";
 import PaymentTypeModal from "../../../components/UI/Modal/PaymentSetting/PaymentType/PaymentTypeModal";
 import PaymentProviderModal from "../../../components/UI/Modal/PaymentSetting/PaymentProvider/PaymentProviderModal";
 import PaymentProviderTable from "./PaymentProviderTable/PaymentProviderTable";
-
+import {useNavigate}from "react-router-dom"
 
 const PaymentProvider = () => {
   const [open,setOpen] = useState(false);
   const [payment_type,setPayment_type] = useState("");
   const [payment_provider,setPayment_provider] = useState("");
+  const navigate = useNavigate();
   const handleOpen = ()=>setOpen(true);
   const handleClose = ()=>setOpen(false);
 
@@ -25,17 +26,17 @@ const PaymentProvider = () => {
         <div className={classes["card-body"]}>
           <div className={classes["table-container"]}>
           <div style={{display:"flex",justifyContent:"flex-end"}}>
-            <Button variant="contained" onClick={handleOpen}>Create Provider</Button>
+            <Button variant="contained" onClick={()=>navigate("/payment-setting/payment-provider/create-account")}>Create Provider</Button>
           </div>
          <PaymentProviderTable />
         </div>
         </div>
-        <PaymentProviderModal 
+        {/* <PaymentProviderModal 
         open={open} 
         handleClose={handleClose} 
         setPayment_type={setPayment_type}
         setPayment_provider={setPayment_provider}
-        />
+        /> */}
       </Card>
     </div>
   
