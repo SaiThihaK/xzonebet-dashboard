@@ -46,7 +46,7 @@ const PaymentTypeTable = () => {
             <TableHead>
               <TableRow>
                 <StyledTableCell align="left">No.</StyledTableCell>
-                <StyledTableCell align="center">Payment Type</StyledTableCell>
+                <StyledTableCell align="left">Payment Type</StyledTableCell>
                 <StyledTableCell align="right">Action</StyledTableCell>
               </TableRow>
             </TableHead>
@@ -57,7 +57,7 @@ const PaymentTypeTable = () => {
                     <StyledTableCell component="th" scope="row">
                     {row.id}
                   </StyledTableCell>
-                  <StyledTableCell align="center" >{row.payment_type}</StyledTableCell>
+                  <StyledTableCell align="left" >{row.payment_type}</StyledTableCell>
                   <StyledTableCell align="right">
                   <Stack spacing={1} direction="row" sx={{justifyContent: 'flex-end'}}>
                   <Button variant="contained">Edit</Button>

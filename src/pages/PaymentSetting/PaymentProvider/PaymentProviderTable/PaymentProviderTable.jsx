@@ -12,6 +12,7 @@ import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import classes from "./PaymentProviderTable.module.css";
+import { Avatar } from "@mui/material";
 const PaymentProviderTable = () => {
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -51,7 +52,7 @@ const PaymentProviderTable = () => {
   // ];
 
 
-  const Arr = [{id:"1",payment_type:"E-wallet",payment_provider:"Wave"}];
+  const Arr = [{id:"1",payment_type:"E-wallet",payment_provider:"Wave",provider_logo:"https://play-lh.googleusercontent.com/rPq4GMCZy12WhwTlanEu7RzxihYCgYevQHVHLNha1VcY5SU1uLKHMd060b4VEV1r-OQ"}];
  
   return (
     <div className={classes["table-container"]}>
@@ -63,6 +64,7 @@ const PaymentProviderTable = () => {
                 <StyledTableCell align="left">No.</StyledTableCell>
                 <StyledTableCell align="center">Payment Type</StyledTableCell>
                 <StyledTableCell align="center">Payment Provider</StyledTableCell>
+                <StyledTableCell align="center">Provider Logo</StyledTableCell>
                 <StyledTableCell align="right">Action</StyledTableCell>
               </TableRow>
             </TableHead>
@@ -87,6 +89,12 @@ const PaymentProviderTable = () => {
                   </StyledTableCell>
                   <StyledTableCell align="center" >{row.payment_type}</StyledTableCell>
                   <StyledTableCell align="center" >{row.payment_provider}</StyledTableCell>
+                  <StyledTableCell align="center" >
+                      <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
+                      <Avatar style={{display:"flex",justifyContent:"center"}} src={row.provider_logo} variant="square" alt=""/>
+                      </div>
+                      
+                  </StyledTableCell>
                   <StyledTableCell align="right">
                   <Stack spacing={1} direction="row" sx={{justifyContent: 'flex-end'}}>
                   <Button variant="contained">Edit</Button>
