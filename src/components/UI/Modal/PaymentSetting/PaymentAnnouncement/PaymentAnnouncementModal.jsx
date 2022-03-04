@@ -5,7 +5,7 @@ import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { FormControl, InputLabel, TextField } from "@mui/material";
+import { FormControl, TextareaAutosize, TextField } from "@mui/material";
 
 const style = {
   position: "absolute",
@@ -19,16 +19,12 @@ const style = {
   borderRadius: 3,
 };
 
-export default function UnitEditModal({
-  handleOpen,
+export default function PaymentAnnouncementModal({
   handleClose,
   open,
-  unitTo,
-  unitFrom,
-  setValue,
-  unit,
+  setText
 }) {
-  const [changeValue, setChangeValue] = React.useState("");
+    const [changeText,setChangeText] = React.useState("");
   return (
     <div>
       <Modal
@@ -45,13 +41,13 @@ export default function UnitEditModal({
         <Fade in={open}>
           <Box sx={style}>
             <Typography id="transition-modal-title" variant="h6" component="h2">
-              Unit Value({`${unitFrom}-${unitTo}${unit}`})
+              payment Announcement
             </Typography>
             <FormControl style={{ marginTop: 20 }}>
               <TextField
-                type="number"
-                onChange={(e) => setChangeValue(e.target.value)}
-                label={unit}
+               onChange={(e)=>setChangeText(e.target.value)}
+               size="large"
+               variant="outlined"
               />
               <Button
                 variant="contained"
@@ -63,7 +59,7 @@ export default function UnitEditModal({
                 }}
                 onClick={() => {
                   handleClose();
-                  setValue(changeValue);
+                  setText(changeText);
                 }}
               >
                 Confirm

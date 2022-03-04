@@ -7,11 +7,11 @@ let day = dt.getDate().toString().padStart(2, "0");
 
 // ------------------------Login API ---------------------------
 export const login = {
-  method: 'post',
+  method: "post",
   url: `${configsData.DOMAIN}/api/login`,
   headers: {
-    Accept: "application/json"
-  }
+    Accept: "application/json",
+  },
 };
 // ---------------------- Fixture Betting ---------------------
 export const betting = {
