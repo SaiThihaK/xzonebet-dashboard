@@ -1,11 +1,11 @@
-import * as React from "react";
+import React,{useState} from "react";
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { FormControl, InputLabel, TextField } from "@mui/material";
+import { FormControl,Select,MenuItem, TextField } from "@mui/material";
 
 const style = {
   position: "absolute",
@@ -19,16 +19,15 @@ const style = {
   borderRadius: 3,
 };
 
-export default function UnitEditModal({
-  handleOpen,
+export default function PaymentTypeModal({
   handleClose,
   open,
-  unitTo,
-  unitFrom,
-  setValue,
-  unit,
+  setPayment_type
+
 }) {
-  const [changeValue, setChangeValue] = React.useState("");
+  const [type,setType] = useState("E-wallet");
+  const methods = [{name:"E-wallet"},{name:"Banking"},{name:"PayPal"}]
+  const handleChange = (e)=>setType(e.target.value);
   return (
     <div>
       <Modal
@@ -45,29 +44,38 @@ export default function UnitEditModal({
         <Fade in={open}>
           <Box sx={style}>
             <Typography id="transition-modal-title" variant="h6" component="h2">
-              Unit Value({`${unitFrom}-${unitTo}${unit}`})
+              Create New Payment
             </Typography>
-            <FormControl style={{ marginTop: 20 }}>
-              <TextField
-                type="number"
-                onChange={(e) => setChangeValue(e.target.value)}
-                label={unit}
-              />
-              <Button
+            <FormControl sx={{ width: "100%" }}>
+            <Select
+              value={type}
+              onChange={handleChange}
+              displayEmpty
+              inputProps={{ "aria-label": "Without label" }}
+              size="small"
+              sx={{ backgroundColor: "#f3f3f3" }}
+            >
+              {methods.map((item,index)=>(
+                  <MenuItem key={index} value={item.name}>{item.name}</MenuItem>
+              ))}
+            </Select>
+            <div style={{marginTop: 20,display:"flex",justifyContent:"flex-end"}}>
+            <Button
                 variant="contained"
                 color="success"
                 style={{
-                  marginTop: 20,
+                  
                   width: 80,
-                  marginLeft: 200,
                 }}
                 onClick={() => {
                   handleClose();
-                  setValue(changeValue);
+                  setPayment_type(type)
                 }}
               >
-                Confirm
+                Create
               </Button>
+            </div>
+             
             </FormControl>
           </Box>
         </Fade>

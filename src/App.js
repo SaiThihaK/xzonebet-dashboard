@@ -53,6 +53,8 @@ import AgentTransition from "./components/Table/AgentTransiton/AgentTransition";
 import CreateUnit from "./pages/UnitSetting/CreateUnit/CreateUnit";
 import UnitValue from "./pages/UnitSetting/UnitValue/UnitValue";
 import PaymentType from "./pages/PaymentSetting/PaymentType/PaymentType";
+import PaymentProvider from "./pages/PaymentSetting/PaymentProvider/PaymentProvider";
+import PaymentAnnouncement from "./pages/PaymentSetting/PaymentAnnoucement/PaymentAnnouncement";
 
 function App() {
   return (
@@ -259,6 +261,16 @@ function App() {
             exact
             path="/payment-setting/payment-value"
             element={<PaymentType />}
+          />
+          <Route
+            exact
+            path="/payment-setting/payment-provider"
+            element={<PaymentProvider />}
+          />
+          <Route
+            exact
+            path="/payment-setting/payment-announcement"
+            element={<PaymentAnnouncement />}
           />
           <Route />
           <Route path="*" element={<Notfound />} />

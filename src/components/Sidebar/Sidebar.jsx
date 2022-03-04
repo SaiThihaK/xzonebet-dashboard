@@ -142,6 +142,19 @@ const Sidebar = () => {
           {SidebarData.map((item, index) => {
             return <Submenu item={item} key={index} />;
           })}
+          {/* 
+          {switch(login.token){
+            case "Agent":
+            return ()=>{
+              AgsidebarData.map((item,index)=><Submenu item={item} key={index} />)
+            };
+            break;
+            case "AffilicateAgent":
+            return ()=>{
+              AFagentsidebarData.((item,index))=><Submenu item={item} key={index}/>}
+            }
+          }}
+          */}
         </div>
       </div>
     </IconContext.Provider>

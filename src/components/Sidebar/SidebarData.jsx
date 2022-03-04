@@ -139,17 +139,22 @@ export const SidebarData = [
             },
             {
                 title: 'Payment Provider',
-                path: '/setting/soccer-setting',
+                path: '/payment-setting/payment-provider',
                 icon: <IoIcons.IoIosArrowForward />,
             },
             {
                 title: 'Payment Account',
-                path: '/setting/soccer-setting',
+                path: '/payment-setting/payment-account',
                 icon: <IoIcons.IoIosArrowForward />,
             },
             {
                 title: 'Payment Method',
-                path: '/setting/soccer-setting',
+                path: '/payment-setting/payment Method',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+            {
+                title: 'Payment  Announcement',
+                path: '/payment-setting/payment-announcement',
                 icon: <IoIcons.IoIosArrowForward />,
             },
         ]
