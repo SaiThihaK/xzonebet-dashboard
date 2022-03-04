@@ -6,10 +6,6 @@ import Fade from "@mui/material/Fade";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { FormControl,Select,MenuItem, TextField, Input } from "@mui/material";
-
-
-import CountriesSelect from "./CountiesSelect/CountriesSelect";
-
 const style = {
   position: "absolute",
   top: "50%",
@@ -22,16 +18,13 @@ const style = {
   borderRadius: 3,
 };
 
-export default function PaymentProviderModal({
+export default function PaymentAccountModal({
   handleClose,
   open,
-  setPayment_type,
-  setPayment_provider
 }) {
-  const [type,setType] = useState("E-wallet");
-  const [provider,setProvider] = useState("")
+  
   const methods = [{name:"E-wallet"},{name:"Banking"},{name:"PayPal"}]
-  const handleChange = (e)=>setType(e.target.value);
+ 
 
   return (
     <div>
@@ -49,29 +42,47 @@ export default function PaymentProviderModal({
         <Fade in={open}>
           <Box sx={style}>
             <Typography id="transition-modal-title" variant="h6" component="h2">
-              Create New Payment Provider
+              Create New Payment Account
             </Typography>
             <FormControl sx={{ width: "100%" }} style={{marginTop:10}}>
+            <label>Select Payment Type</label>
             <Select
-              value={type}
-              onChange={handleChange}
               displayEmpty
               inputProps={{ "aria-label": "Without label" }}
               size="small"
               style={{marginBottom:30}}
               sx={{ backgroundColor: "#f3f3f3" }}
-            >
+            > 
               {methods.map((item,index)=>(
                   <MenuItem key={index} value={item.name}>{item.name}</MenuItem>
               ))}
             </Select>
             </FormControl>
-            <TextField size="small" label="Payment Provider" onChange={(e)=>setProvider(e.target.value)} />
-            <div style={{marginTop:30}}>
-            <label>Choose Provider Logo</label>
-            <Input  variant="standard" type="file" accept="image/png, image/jpeg" />
-            </div>
-             <CountriesSelect />
+            <FormControl sx={{ width: "100%" }} style={{marginTop:10}}>
+            <label>Select Payment Provider</label>
+            <Select
+          placeholder="Payment Provider"
+          displayEmpty
+          inputProps={{ "aria-label": "Without label" }}
+          size="small"
+          style={{marginBottom:30}}
+          sx={{ backgroundColor: "#f3f3f3" }}
+        >
+          {methods.map((item,index)=>(
+              <MenuItem key={index} value={item.name}>{item.name}</MenuItem>
+          ))}
+        </Select>
+        </FormControl>
+        <FormControl sx={{width:"100%"}} style={{marginBottom:20}}>
+        <label>Account or Phone Number</label>
+        <TextField l size="small"   />
+        </FormControl>
+        
+        <FormControl sx={{width:"100%"}} style={{marginBottom:20}}>
+        <label>Name</label>
+        <TextField  size="small"   />
+        </FormControl>
+            
             <div style={{marginTop: 20,display:"flex",justifyContent:"flex-end"}}>
             <Button
                 variant="contained"
@@ -82,8 +93,7 @@ export default function PaymentProviderModal({
                 }}
                 onClick={() => {
                   handleClose();
-                  setPayment_type(type);
-                  setPayment_provider(provider)
+                
                 }}
               >
                 Create

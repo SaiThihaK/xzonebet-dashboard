@@ -55,6 +55,8 @@ import UnitValue from "./pages/UnitSetting/UnitValue/UnitValue";
 import PaymentType from "./pages/PaymentSetting/PaymentType/PaymentType";
 import PaymentProvider from "./pages/PaymentSetting/PaymentProvider/PaymentProvider";
 import PaymentAnnouncement from "./pages/PaymentSetting/PaymentAnnoucement/PaymentAnnouncement";
+import PaymentAccount from "./pages/PaymentSetting/PaymentAccount/PaymentAccount";
+import CreatePaymentProvider from "./pages/PaymentSetting/PaymentProvider/CreatePaymentProvider/CreatePaymentProvider";
 
 function App() {
   return (
@@ -269,10 +271,20 @@ function App() {
           />
           <Route
             exact
+            path="/payment-setting/payment-provider/create-account"
+            element={<CreatePaymentProvider />}
+          />
+          <Route
+            exact
             path="/payment-setting/payment-announcement"
             element={<PaymentAnnouncement />}
           />
-          <Route />
+          <Route
+            exact
+            path="/payment-setting/payment-account"
+            element={<PaymentAccount />}
+          />
+
           <Route path="*" element={<Notfound />} />
         </Routes>
       </Container>
