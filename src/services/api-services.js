@@ -44,3 +44,14 @@ export const globalBetting = {
     "x-rapidapi-key": "9b4fb89138mshdc697cc5d45c52fp1daa25jsne2be8889fabc",
   },
 };
+
+// ----------------------------All Countries------------------------------------
+
+export const Countries = {
+  method: "GET",
+  url: "https://api-football-v1.p.rapidapi.com/v3/countries",
+  headers: {
+    "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
+    "x-rapidapi-key": "9b4fb89138mshdc697cc5d45c52fp1daa25jsne2be8889fabc",
+  },
+};
