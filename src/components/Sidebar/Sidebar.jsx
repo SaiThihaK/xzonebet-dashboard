@@ -136,14 +136,14 @@ const Sidebar = () => {
       >
         <div className={classes["sidebar-header"]}>
           <img src={logo} className={classes.logo} alt="" />
-          {/* <h1 style={{ color: "#FFF" }}>Logo</h1> */}
+          {/* y<h1 style={{ color: "#FFF" }}>Logo</h1> */}
         </div>
         <div className={classes.sidebarWrap}>
           {SidebarData.map((item, index) => {
             return <Submenu item={item} key={index} />;
           })}
           {/* 
-          {switch(login.token){
+          {switch(res.data.type){
             case "Agent":
             return ()=>{
               AgsidebarData.map((item,index)=><Submenu item={item} key={index} />)
