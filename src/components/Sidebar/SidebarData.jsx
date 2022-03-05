@@ -12,42 +12,10 @@ export const SidebarData = [
         iconClosed: <RiIcons.RiArrowDownSFill/>,
         iconOpened: <RiIcons.RiArrowUpSFill/>,
         subNav : [
-            {
-                title: 'User',
-                path: '/user',
-                icon: <IoIcons.IoIosArrowForward />,
-            },
-            {
-                title: 'Revenue',
-                path: '/revenue',
-                icon: <IoIcons.IoIosArrowForward />,
-            },
+            
         ]
     },
-    {
-        title: 'Betting',
-        path: '/betting',
-        icon: <IoIcons.IoIosFootball />,
-        iconClosed: <RiIcons.RiArrowDownSFill/>,
-        iconOpened: <RiIcons.RiArrowUpSFill/>,
-        subNav : [
-            {
-                title: 'Football',
-                path: '/betting/football',
-                icon: <IoIcons.IoIosArrowForward />,
-            },
-            {
-                title: '2D',
-                path: '/betting/2d',
-                icon: <IoIcons.IoIosArrowForward />,
-            },
-            {
-                title: '3D',
-                path: '/betting/3d',
-                icon: <IoIcons.IoIosArrowForward />,
-            },
-        ]
-    },
+    
     {
         title: 'Account',
         path: '/account',
@@ -71,15 +39,16 @@ export const SidebarData = [
                 icon: <IoIcons.IoIosArrowForward />,
             },
             {
-                title: 'User',
-                path: '/account/user',
-                icon: <IoIcons.IoIosArrowForward />,
-            },
-            {
                 title: 'Affiliate Agent',
                 path: '/account/affiliate-agent',
                 icon: <IoIcons.IoIosArrowForward />,
             },
+            {
+                title: 'User',
+                path: '/account/user',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+            
         ]
     },
     {
@@ -177,11 +146,40 @@ export const SidebarData = [
                 icon: <IoIcons.IoIosArrowForward />,
             },
             {
+                title: 'Currency',
+                path: '/unit-setting/currency',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+            {
                 title: 'Unit History',
                 path: '/unit-setting/unit-history',
                 icon: <IoIcons.IoIosArrowForward />,
             },
            
+        ]
+    },
+    {
+        title: 'Bet List',
+        path: '/betlist',
+        icon: <IoIcons.IoIosFootball />,
+        iconClosed: <RiIcons.RiArrowDownSFill/>,
+        iconOpened: <RiIcons.RiArrowUpSFill/>,
+        subNav : [
+            {
+                title: 'Football',
+                path: '/betlist/football',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+            {
+                title: '2D',
+                path: '/betlist/2d',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+            {
+                title: '3D',
+                path: '/betting/3d',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
         ]
     },
     {
