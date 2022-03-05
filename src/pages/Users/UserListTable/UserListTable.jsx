@@ -33,33 +33,31 @@ const UserListTable = () => {
     },
   }));
 
-  function createData(id, userid, name, email, phone, currency, action) {
-    return {
-      id,
-      userid,
-      name,
-      email,
-      phone,
-      currency,
-      action,
-    };
-  }
+  // function createData(id, userid, name, email, phone, currency, action) {
+  //   return {
+  //     id,
+  //     userid,
+  //     name,
+  //     email,
+  //     phone,
+  //     currency,
+  //     action,
+  //   };
+  // }
 
-  const rows = [
-    createData(
-      1,
-      15,
-      "LION",
-      "xyz@gmail.com",
-      '555-555-5555',
-      "MMK",
-      <Stack spacing={1} direction="row" sx={{justifyContent: 'flex-end'}}>
-        <Button variant="contained">Detail</Button>
-        <Button variant="outlined" color="error">Ban</Button>
-        <Button variant="outlined" color="success">Unban</Button>
-    </Stack>
-    ),
-  ];
+  // const rows = [
+  //   createData(
+  //     1,
+  //     15,
+  //     "LION",
+  //     "xyz@gmail.com",
+  //     '555-555-5555',
+  //     "MMK",
+    
+  //   ),
+  // ];
+
+    const rows = [{id:1,name:"Sai",email:"sai@gmail.com",balance:5435,country:"Myanmar",registeration_date:"22-3-2022",status:"Master",currency_type:"Crypto"}];
 
   let searchLists = [
     { label: "Master" },
@@ -99,9 +97,12 @@ const UserListTable = () => {
                 <StyledTableCell>No.</StyledTableCell>
                 <StyledTableCell align="right">ID</StyledTableCell>
                 <StyledTableCell align="right">Name</StyledTableCell>
-                <StyledTableCell align="right">Email</StyledTableCell>
-                <StyledTableCell align="right">Phone</StyledTableCell>
-                <StyledTableCell align="right">Currency</StyledTableCell>
+                <StyledTableCell align="right">Email/Phone</StyledTableCell>
+                <StyledTableCell align="right">Balance</StyledTableCell>
+                <StyledTableCell align="right">Country</StyledTableCell>
+                <StyledTableCell align="right">Registraion</StyledTableCell>
+                <StyledTableCell align="right">Status</StyledTableCell>
+                <StyledTableCell align="right">Currency_Type</StyledTableCell>
                 <StyledTableCell align="right">Action</StyledTableCell>
               </TableRow>
             </TableHead>
@@ -109,14 +110,23 @@ const UserListTable = () => {
               {rows.map((row, index) => (
                 <StyledTableRow key={index}>
                   <StyledTableCell component="th" scope="row">
-                    {row.id}
+                    {index+1}
                   </StyledTableCell>
-                  <StyledTableCell align="right">{row.userid}</StyledTableCell>
+                  <StyledTableCell align="right">{row.id}</StyledTableCell>
                   <StyledTableCell align="right">{row.name}</StyledTableCell>
                   <StyledTableCell align="right">{row.email}</StyledTableCell>
-                  <StyledTableCell align="right">{row.phone}</StyledTableCell>
-                  <StyledTableCell align="right">{row.currency}</StyledTableCell>
-                  <StyledTableCell align="right">{row.action}</StyledTableCell>
+                  <StyledTableCell align="right">{row.balance}</StyledTableCell>
+                  <StyledTableCell align="right">{row.country}</StyledTableCell>
+                  <StyledTableCell align="right">{row.registeration_date}</StyledTableCell>
+                  <StyledTableCell align="right">{row.status}</StyledTableCell>
+                  <StyledTableCell align="right">{row.currency_type}</StyledTableCell>
+                  <StyledTableCell align="right">
+                  <Stack spacing={1} direction="row" sx={{justifyContent: 'flex-end'}}>
+        <Button variant="contained">Detail</Button>
+        <Button variant="outlined" color="error">Ban</Button>
+        <Button variant="outlined" color="success">Unban</Button>
+    </Stack></StyledTableCell>
+       
                 </StyledTableRow>
               ))}
             </TableBody>

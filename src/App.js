@@ -57,6 +57,7 @@ import PaymentProvider from "./pages/PaymentSetting/PaymentProvider/PaymentProvi
 import PaymentAnnouncement from "./pages/PaymentSetting/PaymentAnnoucement/PaymentAnnouncement";
 import PaymentAccount from "./pages/PaymentSetting/PaymentAccount/PaymentAccount";
 import CreatePaymentProvider from "./pages/PaymentSetting/PaymentProvider/CreatePaymentProvider/CreatePaymentProvider";
+import Currency from "./pages/UnitSetting/Currency/Currency";
 
 function App() {
   return (
@@ -96,18 +97,18 @@ function App() {
             exact
             element={<MaungSetting />}
           />
-          <Route path="/betting/football" exact element={<Football />} />
-          <Route path="/betting/2d" exact element={<Twod />} />
-          <Route path="/betting/2d/time" exact element={<Time />} />
+          <Route path="/betlist/football" exact element={<Football />} />
+          <Route path="/betlist/2d" exact element={<Twod />} />
+          <Route path="/betlist/2d/time" exact element={<Time />} />
           <Route
-            path="/betting/2d/close-number"
+            path="/betlist/2d/close-number"
             exact
             element={<TwodCloseNumber />}
           />
-          <Route path="/betting/3d" exact element={<Threed />} />
-          <Route path="/betting/3d/time" exact element={<ThreedTime />} />
+          <Route path="/betlist/3d" exact element={<Threed />} />
+          <Route path="/betlist/3d/time" exact element={<ThreedTime />} />
           <Route
-            path="/betting/3d/close-number"
+            path="/betlist/3d/close-number"
             exact
             element={<ThreedCloseNumber />}
           />
@@ -258,6 +259,7 @@ function App() {
             path="/unit-setting/unit-value"
             element={<UnitValue />}
           />
+          <Route exact path="/unit-setting/currency" element={<Currency />} />
           {/* Payment Setting */}
           <Route
             exact
