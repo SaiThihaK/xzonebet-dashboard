@@ -11,7 +11,7 @@ const SelectCountry = ({setSelectCoun,selectCoun})=>{
     const fetchCountries = async()=>{
         axios.request(Countries)
         .then(function (response) {
-            console.log(response.data.response);
+            // console.log(response.data.response);
             setCoun(response.data.response);
         }).catch(function (error) {
             console.error(error);
@@ -19,7 +19,7 @@ const SelectCountry = ({setSelectCoun,selectCoun})=>{
       }
      
 
-      console.log(coun);
+    //   console.log(coun);
       useEffect(()=>{
           fetchCountries();
       },[]);

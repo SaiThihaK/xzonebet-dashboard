@@ -6,7 +6,7 @@ import classes from "./OddColItem.module.css";
 
 const OddColItem = ({odd,team}) => {
     const oddType=useSelector((state) => state.oddSetting.odd);
-console.log(team);
+// console.log(team);
     return (
         <div className={classes["betRowContainer"]}>
         <div className={classes["betRow"]}>

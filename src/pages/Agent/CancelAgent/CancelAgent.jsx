@@ -12,7 +12,7 @@ const CancelAgent = () => {
     const {data} = await axios.get('https://lapi.xzonebet.com/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-rejet&form_type=master');
     setCancelMaster(data.data);
   };
- console.log(cancelMasters);
+//  console.log(cancelMasters);
   useEffect(()=>{
    fetchCancelMaster();
    return ()=>setCancelMaster([]);

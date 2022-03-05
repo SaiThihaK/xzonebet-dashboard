@@ -11,9 +11,7 @@ export const SidebarData = [
         icon: <AiIcons.AiFillHome />,
         iconClosed: <RiIcons.RiArrowDownSFill/>,
         iconOpened: <RiIcons.RiArrowUpSFill/>,
-        subNav : [
-            
-        ]
+       
     },
     
     {
@@ -116,11 +114,7 @@ export const SidebarData = [
                 path: '/payment-setting/payment-account',
                 icon: <IoIcons.IoIosArrowForward />,
             },
-            {
-                title: 'Payment Method',
-                path: '/payment-setting/payment Method',
-                icon: <IoIcons.IoIosArrowForward />,
-            },
+           
             {
                 title: 'Payment  Announcement',
                 path: '/payment-setting/payment-announcement',

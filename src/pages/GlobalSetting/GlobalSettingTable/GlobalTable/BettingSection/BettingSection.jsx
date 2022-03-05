@@ -38,7 +38,7 @@ const BettngSection = () => {
             r[a.league_id] = [...r[a.league_id] || [], a];
             return r;
            }, {});
-        console.log(group);
+        // console.log(group);
              return   group;              
           }).then(res =>{
          

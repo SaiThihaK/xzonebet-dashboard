@@ -15,7 +15,7 @@ FetchCrypto();
 return ()=>setCoin([]);
 },[]);
 
-console.log(coin);
+// console.log(coin);
 return(
     <div >
         <h1 style={{marginBottom:20}}>Crypto Exchange</h1>

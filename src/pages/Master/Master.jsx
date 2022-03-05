@@ -4,20 +4,20 @@ import MasterSettingCard from './MasterSettingCard/MasterSettingCard';
 import classes from './Master.module.css';
 import axios from 'axios';
 import { useEffect } from 'react';
+import { getMethod } from '../../services/api-services';
 const Master = () => {
   const [pendingMaster,setPendingMaster] = useState([]);
   const [confirmMaster,setConfirmMaster] = useState([]);
   const [completeMaster,setCompleteMaster] = useState([]);
   const [cancelMaster,setCancelMaster] = useState([]);
   const fetchMaster = async()=>{
-    const baseUrl = "https://lapi.xzonebet.com";
-    const pending = await axios.get(`${baseUrl}/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=master`);
+    const pending = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=master'));
     setPendingMaster(pending.data.data.length);
-    const confirm = await axios.get(`${baseUrl}/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-confirm&form_type=master`);
+    const confirm = await axios.request(getMethod(`/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-confirm&form_type=master`));
     setConfirmMaster(confirm.data.data.length);
-    const complete = await axios.get(`${baseUrl}/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=complete&form_type=master`);
+    const complete = await axios.request(getMethod(`/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=complete&form_type=master`));
     setCompleteMaster(complete.data.data.length);
-    const cancel = await axios.get(`${baseUrl}/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-rejet&form_type=master`);
+    const cancel = await axios.get(getMethod(`/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-rejet&form_type=master`));
     setCancelMaster(cancel.data.data.length);
   }
  useEffect(()=>{

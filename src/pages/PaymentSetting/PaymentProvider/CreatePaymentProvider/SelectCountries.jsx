@@ -11,7 +11,7 @@ const SelectCountries = ()=>{
     const fetchCountries = async()=>{
         axios.request(Countries)
         .then(function (response) {
-            console.log(response.data.response);
+            // console.log(response.data.response);
             setCoun(response.data.response);
         }).catch(function (error) {
             console.error(error);
@@ -21,7 +21,7 @@ const SelectCountries = ()=>{
 
       console.log(coun);
       const FilterArr = coun.map((c)=>c.name);
-      console.log(FilterArr);
+      // console.log(FilterArr);
       useEffect(()=>{
           fetchCountries();
       },[]);
@@ -32,11 +32,11 @@ return(
 <Multiselect
         isObject={false}
         onRemove={(event) => {
-            console.log(select);
+            // console.log(select);
           setSelect(event);
         }}
         onSelect={(event) => {
-            console.log(select);
+            // console.log(select);
           setSelect(event)
         }}
         options={FilterArr}

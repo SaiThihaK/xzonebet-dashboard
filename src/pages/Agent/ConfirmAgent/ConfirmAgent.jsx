@@ -13,7 +13,7 @@ const ConfirmAgent = () => {
     setConfirmMasters(data.data);
   };
   
-  console.log(confirmMasters)
+  // console.log(confirmMasters)
 
 
   useEffect(()=>{

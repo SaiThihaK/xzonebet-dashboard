@@ -7,9 +7,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const ComfirmMasterDesc = ({userInfo}) => {
     const alertToast = (message) =>toast(message,alertToast);
-    console.log(userInfo.id);
+    // console.log(userInfo.id);
    const confirmHandler = async()=>{
-   console.log("confirm");
+  //  console.log("confirm");
     try{
    const url = `https://lapi.xzonebet.com/api/affiliate-register-lists/confirm/${userInfo.id}`;
    const config = {
@@ -21,7 +21,7 @@ const ComfirmMasterDesc = ({userInfo}) => {
     `https://lapi.xzonebet.com/api/affiliate-register-lists/confirm/${userInfo.id}`,
        {super_master_id:1},
    );
-   console.log(response);
+  //  console.log(response);
    if(response.data.status="success"){
      alertToast(response.data.message)
    }

@@ -12,7 +12,7 @@ import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import classes from "./UserListTable.module.css";
-const UserListTable = () => {
+const UserListTable = ({allUsers}) => {
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: "#505B72",
@@ -107,18 +107,18 @@ const UserListTable = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row, index) => (
+              {allUsers.map((row, index) => (
                 <StyledTableRow key={index}>
                   <StyledTableCell component="th" scope="row">
                     {index+1}
                   </StyledTableCell>
                   <StyledTableCell align="right">{row.id}</StyledTableCell>
                   <StyledTableCell align="right">{row.name}</StyledTableCell>
-                  <StyledTableCell align="right">{row.email}</StyledTableCell>
+                  <StyledTableCell align="right">{row.email || row.phone}</StyledTableCell>
                   <StyledTableCell align="right">{row.balance}</StyledTableCell>
                   <StyledTableCell align="right">{row.country}</StyledTableCell>
-                  <StyledTableCell align="right">{row.registeration_date}</StyledTableCell>
-                  <StyledTableCell align="right">{row.status}</StyledTableCell>
+                  <StyledTableCell align="right">{row.created_at}</StyledTableCell>
+                  <StyledTableCell align="right">{row.type}</StyledTableCell>
                   <StyledTableCell align="right">{row.currency_type}</StyledTableCell>
                   <StyledTableCell align="right">
                   <Stack spacing={1} direction="row" sx={{justifyContent: 'flex-end'}}>
