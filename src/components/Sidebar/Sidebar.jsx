@@ -16,13 +16,15 @@ import * as BiIcons from "react-icons/bi";
 import logo from "./images/xlogo.png";
 import classes from "./Sidebar.module.css";
 import { IconContext } from "react-icons/lib";
+import { AgentSidebarData } from "../../Dashboard/AgentDashboard/AgentSideBarData";
+import { MasterSidebarData } from "../../Dashboard/MasterDashboard/MasterSideBarData";
 
 function refreshPage() {
   setTimeout(()=>{
       window.location.reload(false);
   }, 1);
 }
-
+const dashboard = localStorage.getItem('type');
 const Sidebar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -37,6 +39,24 @@ const Sidebar = () => {
     localStorage.removeItem('jToken');
     localStorage.removeItem('lToken');
     refreshPage();
+  };
+
+  const DifDashboard = ()=>{
+  if(dashboard==="admin"){
+    return SidebarData.map((item, index) => (
+      <Submenu item={item} key={index} />)
+     );
+  }
+  if(dashboard==="master"){
+    return MasterSidebarData.map((item,index)=>(
+      <Submenu item={item} key={index} />
+    ));
+  }
+  if(dashboard==="agent"){
+    return AgentSidebarData.map((item,index)=>(
+      <Submenu item={item} key={index} />
+    ))
+  }
   }
   return (
     <IconContext.Provider value={{ color: "#FFF" }}>
@@ -139,22 +159,10 @@ const Sidebar = () => {
           {/* y<h1 style={{ color: "#FFF" }}>Logo</h1> */}
         </div>
         <div className={classes.sidebarWrap}>
-          {SidebarData.map((item, index) => {
-            return <Submenu item={item} key={index} />;
-          })}
-          {/* 
-          {switch(res.data.type){
-            case "Agent":
-            return ()=>{
-              AgsidebarData.map((item,index)=><Submenu item={item} key={index} />)
-            };
-            break;
-            case "AffilicateAgent":
-            return ()=>{
-              AFagentsidebarData.((item,index))=><Submenu item={item} key={index}/>}
-            }
-          }}
-          */}
+        {/* {SidebarData.map((item, index) => (
+           <Submenu item={item} key={index} />)
+          )} */}
+          {DifDashboard()}
         </div>
       </div>
     </IconContext.Provider>

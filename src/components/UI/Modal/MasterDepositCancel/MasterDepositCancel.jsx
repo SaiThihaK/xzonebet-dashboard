@@ -38,7 +38,7 @@ const MasterDepositCancel = ({ open, handleClose,setNum,id,num}) => {
     return;
   }
   }catch(error){
-    console.log(error);
+    // console.log(error);
     return;
   }
   }

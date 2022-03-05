@@ -1,4 +1,5 @@
 import configsData from "../configs.json";
+import { ltoken } from "./Token";
 
 let dt = new Date();
 let year = dt.getFullYear();
@@ -60,4 +61,28 @@ export const Countries = {
 export const Crypto = {
   method: "GET",
   url: "https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=gecko_desc&per_page=10&page=1&sparkline=false&price_change_percentage=24h`",
+};
+
+// -------------------------Default Headers----------------------------------//
+export const getMethod = (route) => {
+  const res = {
+    method: "GET",
+    url: `${configsData.DOMAIN}${route}`,
+    headers: {
+      Accept: "application/json",
+      Authorization: ltoken,
+    },
+  };
+  return res;
+};
+
+export const PostMethod = (route) => {
+  const res = {
+    method: "POST",
+    url: `${configsData.DOMAIN}${route}`,
+    headers: {
+      Accept: "application/json",
+      authorization: ltoken,
+    },
+  };
 };

@@ -13,7 +13,7 @@ const PendingAgent = () => {
     const {data} = await axios.get('https://lapi.xzonebet.com/api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=agent');
     setPendingMaster(data.data);
   };
- console.log(pendingMasters);
+//  console.log(pendingMasters);
  
   useEffect(()=>{
    fetchPendingMaster();

@@ -13,7 +13,7 @@ const Transition = () => {
 
     const [value, setValue] = React.useState([null, null]);
   
-  console.log(value)
+  // console.log(value)
   return (
     
     <div className={classes["soccer-setting-container"]}>

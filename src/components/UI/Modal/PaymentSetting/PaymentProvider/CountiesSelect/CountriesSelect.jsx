@@ -25,7 +25,7 @@ const CountriesSelect = ()=>{
 
     const fetchCountries = async()=>{
       axios.request(Countries).then(function (response) {
-          console.log(response.data.response);
+        //   console.log(response.data.response);
           setCountries(response.data.response);
       }).catch(function (error) {
           console.error(error);

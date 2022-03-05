@@ -22,12 +22,14 @@ const Login = () => {
       password: loginpass,
     })
     .then(res => {
+      // console.log(res);
       switch(res.data.status){
         case "success":
-          console.log('login success');
+          // console.log('login success');
           localStorage.setItem('status',res.data.status);
           localStorage.setItem('jToken',res.data.data['j-token']);
           localStorage.setItem('lToken',res.data.data['l-token']);
+          localStorage.setItem('type',res.data.data['type'])
           refreshPage();
         break;
         case "error":
@@ -48,8 +50,6 @@ const Login = () => {
     setErrorMsg(null)
     setErrorUserName(null)
   }
-
-
    const loginFormSubmitHandler = (e) => {
      e.preventDefault();
      setuserloginname(loginName.current.value);

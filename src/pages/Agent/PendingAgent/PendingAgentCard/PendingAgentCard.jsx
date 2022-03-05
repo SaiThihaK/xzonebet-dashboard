@@ -26,7 +26,7 @@ const PendingAgentCard = ({user,path}) => {
     fetchCompleteMaster() ;
   },[]);
 
-  console.log(completeMasters);
+  // console.log(completeMasters);
   return (
     <Grid item xs={3}>
       <Card sx={{ maxWidth: 345 }}>

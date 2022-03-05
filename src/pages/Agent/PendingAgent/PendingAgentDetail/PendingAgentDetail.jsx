@@ -57,7 +57,7 @@ const PendingAgentDetail = () => {
             withdraw_percent
           },
         );
-        console.log(response.data.status);
+        // console.log(response.data.status);
         if(response.data.status === "success"){
           alertToast(response.data.message);
           return;

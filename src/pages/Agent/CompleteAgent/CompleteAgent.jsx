@@ -13,7 +13,7 @@ const CompleteAgent = () => {
     const {data} = await axios.get('https://lapi.xzonebet.com/api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=complete&form_type=agent');
     setCompleteMasters(data.data);
   };
- console.log(completeMasters);
+//  console.log(completeMasters);
   useEffect(()=>{
    fetchCompleteMaster();
    return ()=>setCompleteMasters([]);

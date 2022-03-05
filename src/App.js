@@ -58,6 +58,7 @@ import PaymentAnnouncement from "./pages/PaymentSetting/PaymentAnnoucement/Payme
 import PaymentAccount from "./pages/PaymentSetting/PaymentAccount/PaymentAccount";
 import CreatePaymentProvider from "./pages/PaymentSetting/PaymentProvider/CreatePaymentProvider/CreatePaymentProvider";
 import Currency from "./pages/UnitSetting/Currency/Currency";
+import AllUser from "./pages/Users/AllUser/AllUser";
 
 function App() {
   return (
@@ -248,6 +249,7 @@ function App() {
             exact
             element={<ActiveUser />}
           />
+          <Route path="/account/user/all-user" exact element={<AllUser />} />
           {/* Unit Setting */}
           <Route
             exact
