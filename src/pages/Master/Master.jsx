@@ -17,7 +17,7 @@ const Master = () => {
     setConfirmMaster(confirm.data.data.length);
     const complete = await axios.request(getMethod(`/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=complete&form_type=master`));
     setCompleteMaster(complete.data.data.length);
-    const cancel = await axios.get(getMethod(`/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-rejet&form_type=master`));
+    const cancel = await axios.request(getMethod(`/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-rejet&form_type=master`));
     setCancelMaster(cancel.data.data.length);
   };
 
