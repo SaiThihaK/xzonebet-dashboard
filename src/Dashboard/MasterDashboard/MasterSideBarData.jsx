@@ -6,7 +6,7 @@ import * as RiIcons from 'react-icons/ri';
 
 export const MasterSidebarData = [
     {
-        title: 'DashBoard',
+        title: 'Master DashBoard',
         path: '/',
         icon: <AiIcons.AiFillHome />,
         iconClosed: <RiIcons.RiArrowDownSFill/>,
@@ -26,7 +26,7 @@ export const MasterSidebarData = [
     },
     {
         title: 'Profile',
-        path: '/betting',
+        path: '/profile',
         icon: <IoIcons.IoIosFootball />,
         iconClosed: <RiIcons.RiArrowDownSFill/>,
         iconOpened: <RiIcons.RiArrowUpSFill/>,
@@ -50,7 +50,7 @@ export const MasterSidebarData = [
     },
     {
         title: 'Agent',
-        path: '/account',
+        path: '/agent',
         icon: <RiIcons.RiAccountPinCircleFill />,
         iconClosed: <RiIcons.RiArrowDownSFill/>,
         iconOpened: <RiIcons.RiArrowUpSFill/>,
@@ -84,7 +84,7 @@ export const MasterSidebarData = [
     },
     {
         title: 'Transition History',
-        path: '/accounting',
+        path: '/transition-history',
         icon: <FaIcons.FaLayerGroup />,
         iconClosed: <RiIcons.RiArrowDownSFill/>,
         iconOpened: <RiIcons.RiArrowUpSFill/>,
@@ -103,12 +103,12 @@ export const MasterSidebarData = [
     },
     {
         title: "Profit",
-        path: "/HR",
+        path: "/profit",
         icon: <FaIcons.FaUserFriends/>
     },
     {
         title: 'Transfer To',
-        path: '/setting',
+        path: '/transfer-to',
         icon: <AiIcons.AiFillSetting />,
         iconClosed: <RiIcons.RiArrowDownSFill/>,
         iconOpened: <RiIcons.RiArrowUpSFill/>,
@@ -127,12 +127,12 @@ export const MasterSidebarData = [
     },
     {
         title: "Deposite",
-        path: "/become-an-agent",
+        path: "/deposite",
         icon: <RiIcons.RiAccountPinCircleFill/>
     },
     {
         title: "Bank Setting",
-        path: "/become-an-agent",
+        path: "/bank-setting",
         icon: <RiIcons.RiAccountPinCircleFill/>
     },
     

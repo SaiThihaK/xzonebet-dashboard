@@ -15,12 +15,14 @@ const Login = () => {
   const loginName = useRef();
   const loginPassword = useRef();
   
+  function validateEmail(email) {
+    var re = /\S+@\S+\.\S+/;
+    return re.test(email);
+  }
 
   useEffect(()=>{
-    axios.request(login,login.data = {
-      email: userloginname,
-      password: loginpass,
-    })
+    const input = validateEmail(userloginname) ? {email:userloginname,password: loginpass,} :{id:userloginname,password: loginpass,};
+    axios.request(login,login.data = input)
     .then(res => {
       // console.log(res);
       switch(res.data.status){

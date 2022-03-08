@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { InputLabel, MenuItem, Select } from "@mui/material";
 import SuperMasterDesc from "../../../SuperMaster/SuperMasterCard/SuperMasterDetail/SuperMasterDesc/SuperMasterDesc";
 import Card from "../../../../components/UI/Card";
+import { getMethod, PostMethod } from "../../../../services/api-services";
 const PandingMasterDetail = () => {
   const [age,setAge] = useState();
   const [pendingMaster,setPendingMaster] = useState([]);
@@ -39,8 +40,8 @@ const PandingMasterDetail = () => {
     else{
       try{
         
-        const url = `https://lapi.xzonebet.com/api/affiliate-register-lists/deposit-pending/${id}`;
-        const response = await axios.post(
+        const url = `/api/affiliate-register-lists/deposit-pending/${id}`;
+        const response = await axios.request(PostMethod(
           url,
           {
             real_name,
@@ -54,7 +55,7 @@ const PandingMasterDetail = () => {
             deposit_percent,
             withdraw_percent
           },
-        );
+        ));
         // console.log(response.data.status);
         if(response.data.status === "success"){
           alertToast(response.data.message);
@@ -70,7 +71,7 @@ const PandingMasterDetail = () => {
   }
 
   const fetchMasterDetail = async()=>{
-    const {data} = await axios.get(`https://lapi.xzonebet.com/api/affiliate-register-lists/${id}`);
+    const {data} = await axios.request(getMethod(`/api/affiliate-register-lists/${id}`));
     setPendingMaster(data.data);
   }
   useEffect(()=>{

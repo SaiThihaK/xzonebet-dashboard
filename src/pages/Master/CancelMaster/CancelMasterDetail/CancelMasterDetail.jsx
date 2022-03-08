@@ -7,8 +7,8 @@ import { useEffect } from "react";
 import axios from "axios";
 import Card from "../../../../components/UI/Card";
 import SuperMasterDesc from "../../../SuperMaster/SuperMasterCard/SuperMasterDetail/SuperMasterDesc/SuperMasterDesc";
+import { getMethod } from "../../../../services/api-services";
 const CancelMasterDetail = () => {
-  const [age, setAge] = React.useState("");
   const [cancelMaster,setCancelMaster] = useState([]);
  
   
@@ -20,7 +20,7 @@ const CancelMasterDetail = () => {
  
 
   const fetchMasterDetail = async()=>{
-    const {data} = await axios.get(`https://lapi.xzonebet.com/api/affiliate-register-lists/${id}`);
+    const {data} = await axios.get(getMethod(`/api/affiliate-register-lists/${id}`));
     setCancelMaster(data.data);
   }
   useEffect(()=>{
@@ -28,9 +28,7 @@ const CancelMasterDetail = () => {
     return ()=>setCancelMaster([]);
   },[id]);
 
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
+  
   return (
     <div className={classes["soccer-setting-container"]}>
       <Card>

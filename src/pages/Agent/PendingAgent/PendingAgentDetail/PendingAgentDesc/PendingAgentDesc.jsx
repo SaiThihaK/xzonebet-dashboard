@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import classes from "./PendingAgentDesc.module.css";
 import { Button, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { getMethod } from "../../../../../services/api-services";
 
 const PendingAgentDesc = ({userInfo}) => {
     const [completeMasters,setCompleteMasters] = useState([]);
@@ -10,7 +11,7 @@ const PendingAgentDesc = ({userInfo}) => {
         setMaster(event.target.value);
       };
     const fetchCompleteMaster = async()=>{
-        const {data} = await axios.get('https://lapi.xzonebet.com/api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=complete&form_type=master');
+        const {data} = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=complete&form_type=master'));
         setCompleteMasters(data.data);
       };
       useEffect(()=>{

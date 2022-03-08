@@ -33,37 +33,19 @@ const UserListTable = ({allUsers}) => {
     },
   }));
 
-  // function createData(id, userid, name, email, phone, currency, action) {
-  //   return {
-  //     id,
-  //     userid,
-  //     name,
-  //     email,
-  //     phone,
-  //     currency,
-  //     action,
-  //   };
-  // }
-
-  // const rows = [
-  //   createData(
-  //     1,
-  //     15,
-  //     "LION",
-  //     "xyz@gmail.com",
-  //     '555-555-5555',
-  //     "MMK",
-    
-  //   ),
-  // ];
-
-    const rows = [{id:1,name:"Sai",email:"sai@gmail.com",balance:5435,country:"Myanmar",registeration_date:"22-3-2022",status:"Master",currency_type:"Crypto"}];
-
+   
+console.log(allUsers)
   let searchLists = [
     { label: "Master" },
     { label: "Agent" },
     { label: "User" },
   ];
+
+const getResDate = (date)=>{
+let d = new Date(date);
+let ResDate = d.toISOString().split('T')[0];
+return ResDate;
+  }
   return (
     <div className={classes["table-container"]}>
       <div className={classes["search-header-flex"]}>
@@ -95,15 +77,15 @@ const UserListTable = ({allUsers}) => {
             <TableHead>
               <TableRow>
                 <StyledTableCell>No.</StyledTableCell>
-                <StyledTableCell align="right">ID</StyledTableCell>
-                <StyledTableCell align="right">Name</StyledTableCell>
-                <StyledTableCell align="right">Email/Phone</StyledTableCell>
-                <StyledTableCell align="right">Balance</StyledTableCell>
-                <StyledTableCell align="right">Country</StyledTableCell>
-                <StyledTableCell align="right">Registraion</StyledTableCell>
-                <StyledTableCell align="right">Status</StyledTableCell>
-                <StyledTableCell align="right">Currency_Type</StyledTableCell>
-                <StyledTableCell align="right">Action</StyledTableCell>
+                <StyledTableCell align="left">ID</StyledTableCell>
+                <StyledTableCell align="left">Name</StyledTableCell>
+                <StyledTableCell align="left">Email/Phone</StyledTableCell>
+                <StyledTableCell align="left">Balance</StyledTableCell>
+                <StyledTableCell align="left">Country</StyledTableCell>
+                <StyledTableCell align="left">Registraion</StyledTableCell>
+                <StyledTableCell align="left">Status</StyledTableCell>
+                <StyledTableCell align="left">Currency_Type</StyledTableCell>
+                <StyledTableCell align="left">Action</StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -112,15 +94,15 @@ const UserListTable = ({allUsers}) => {
                   <StyledTableCell component="th" scope="row">
                     {index+1}
                   </StyledTableCell>
-                  <StyledTableCell align="right">{row.id}</StyledTableCell>
-                  <StyledTableCell align="right">{row.name}</StyledTableCell>
-                  <StyledTableCell align="right">{row.email || row.phone}</StyledTableCell>
-                  <StyledTableCell align="right">{row.balance}</StyledTableCell>
-                  <StyledTableCell align="right">{row.country}</StyledTableCell>
-                  <StyledTableCell align="right">{row.created_at}</StyledTableCell>
-                  <StyledTableCell align="right">{row.type}</StyledTableCell>
-                  <StyledTableCell align="right">{row.currency_type}</StyledTableCell>
-                  <StyledTableCell align="right">
+                  <StyledTableCell align="left">{row.id}</StyledTableCell>
+                  <StyledTableCell align="left">{row.name}</StyledTableCell>
+                  <StyledTableCell align="left">{row.email || row.phone}</StyledTableCell>
+                  <StyledTableCell align="left">{row.balance}</StyledTableCell>
+                  <StyledTableCell align="left">{row.country}</StyledTableCell>
+                  <StyledTableCell align="left" spacing={1} direction="row">&nbsp;{getResDate(row.created_at)}</StyledTableCell>
+                  <StyledTableCell align="left">{row.type}</StyledTableCell>
+                  <StyledTableCell align="left">{row.currency_type}</StyledTableCell>
+                  <StyledTableCell align="left">
                   <Stack spacing={1} direction="row" sx={{justifyContent: 'flex-end'}}>
         <Button variant="contained">Detail</Button>
         <Button variant="outlined" color="error">Ban</Button>

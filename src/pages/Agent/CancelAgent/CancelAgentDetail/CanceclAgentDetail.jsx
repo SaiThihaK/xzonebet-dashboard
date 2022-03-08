@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import Card from "../../../../components/UI/Card";
 import SuperMasterDesc from "../../../SuperMaster/SuperMasterCard/SuperMasterDetail/SuperMasterDesc/SuperMasterDesc";
+import { getMethod } from "../../../../services/api-services";
 const CancelAgentDetail = () => {
   const [age, setAge] = React.useState("");
   const [cancelMaster,setCancelMaster] = useState([]);
@@ -18,7 +19,7 @@ const CancelAgentDetail = () => {
  
 
   const fetchMasterDetail = async()=>{
-    const {data} = await axios.get(`https://lapi.xzonebet.com/api/affiliate-register-lists/${id}`);
+    const {data} = await axios.request(getMethod(`api/affiliate-register-lists/${id}`));
     setCancelMaster(data.data);
   }
   useEffect(()=>{

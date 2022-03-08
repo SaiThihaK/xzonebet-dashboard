@@ -14,6 +14,7 @@ import classes from "./MasterDepositTable.module.css";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { getMethod } from "../../../services/api-services";
 const MasterDepositTable = () => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
@@ -42,7 +43,7 @@ const MasterDepositTable = () => {
     },
   }));
   const fetchData = async()=>{
-    const {data} = await axios.get("https://lapi.xzonebet.com/api/affiliate-register-lists-detail?sortColumn=updated_at&sortDirection=desc&limit=30&status=deposit-pending");
+    const {data} = await axios.request(getMethod(`/api/affiliate-register-lists-detail?sortColumn=updated_at&sortDirection=desc&limit=30&status=deposit-pending`));
     
     setRowData(data.data)
   }

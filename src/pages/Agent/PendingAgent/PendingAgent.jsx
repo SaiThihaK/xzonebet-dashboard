@@ -5,12 +5,13 @@ import classes from './PendingAgent.module.css';
 import { useState, useEffect   } from "react";
 import axios from "axios";
 import PendingAgentCard from "./PendingAgentCard/PendingAgentCard";
+import { getMethod } from "../../../services/api-services";
 
 const PendingAgent = () => {
   const [pendingMasters,setPendingMaster] = useState([]);
   
   const fetchPendingMaster = async()=>{
-    const {data} = await axios.get('https://lapi.xzonebet.com/api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=agent');
+    const {data} = await axios.request(getMethod(`/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=agent`));
     setPendingMaster(data.data);
   };
 //  console.log(pendingMasters);
