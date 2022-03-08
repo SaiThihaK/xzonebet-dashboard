@@ -7,7 +7,7 @@ import React,{useEffect, useState} from "react";
 const CurrencyExchange = () => {
   const currency = [{usd:"300MMK",idn:"400MMK",type:"USD"},{usd:"300MMK",idn:"400MMK",type:"USD"},{usd:"300MMK",idn:"400MMK",type:"USD"},{usd:"300MMK",idn:"400MMK",type:"USD"},{usd:"300MMK",idn:"400MMK",type:"USD"}]
   return (
-    <div style={{padding:"0px 20px"}}>
+    <div style={{padding:"0px 20px",overflow:"visible"}}>
         <h1  style={{display:"flex",justifyContent:"center",alignItems:"center"}}>Currency Exchange</h1>
         <TableContainer component={Paper} style={{marginTop:20}}>
         <Table  aria-label="simple table">

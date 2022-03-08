@@ -14,6 +14,10 @@ import SelectCountries from "./SelectCountries";
 
    const payment_typeChange = (e)=>setPayment_type(e.target.value);
    const payment_providerChange = (e)=>setPayment_provider(e.target.value);
+
+   const FetchPyament_type = async() =>{
+     
+   }
      return(
          <div className={classes["soccer-setting-container"]}>
          <Card>

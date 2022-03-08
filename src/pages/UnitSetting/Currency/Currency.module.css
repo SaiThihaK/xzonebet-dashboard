@@ -46,6 +46,7 @@
   grid-gap: 20px;
   margin-top: 50px;
   padding: 20p;
+  height: 400px;
 }
 .form-group {
   display: flex;
