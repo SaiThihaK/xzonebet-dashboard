@@ -5,11 +5,12 @@ import classes from './CancelAgent.module.css';
 import { useState, useEffect   } from "react";
 import axios from "axios";
 import MasterCard from "../../../components/MasterCard/MasterCard";
+import { getMethod } from "../../../services/api-services";
 
 const CancelAgent = () => {
   const [cancelMasters,setCancelMaster] = useState([]);
   const fetchCancelMaster = async()=>{
-    const {data} = await axios.get('https://lapi.xzonebet.com/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-rejet&form_type=master');
+    const {data} = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-rejet&form_type=master'));
     setCancelMaster(data.data);
   };
 //  console.log(cancelMasters);

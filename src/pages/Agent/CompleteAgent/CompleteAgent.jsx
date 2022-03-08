@@ -5,12 +5,13 @@ import classes from './CompleteAgent.module.css';
 import { useState, useEffect   } from "react";
 import axios from "axios";
 import MasterCard from "../../../components/MasterCard/MasterCard";
+import { getMethod } from "../../../services/api-services";
 
 
 const CompleteAgent = () => {
   const [completeMasters,setCompleteMasters] = useState([]);
   const fetchCompleteMaster = async()=>{
-    const {data} = await axios.get('https://lapi.xzonebet.com/api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=complete&form_type=agent');
+    const {data} = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=complete&form_type=agent'));
     setCompleteMasters(data.data);
   };
 //  console.log(completeMasters);

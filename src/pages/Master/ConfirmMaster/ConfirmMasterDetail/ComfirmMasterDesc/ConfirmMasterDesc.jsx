@@ -4,6 +4,7 @@ import React from "react";
 import classes from "./ComfirmMasterDesc.module.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { PostMethod } from "../../../../../services/api-services";
 
 const ComfirmMasterDesc = ({userInfo}) => {
     const alertToast = (message) =>toast(message,alertToast);
@@ -17,10 +18,10 @@ const ComfirmMasterDesc = ({userInfo}) => {
         "Content-type": "application/json",
       },
     };
-   const response = await axios.post(
-    `https://lapi.xzonebet.com/api/affiliate-register-lists/confirm/${userInfo.id}`,
+   const response = await axios.request(
+    PostMethod(`/api/affiliate-register-lists/confirm/${userInfo.id}`,
        {super_master_id:1},
-   );
+   ));
   //  console.log(response);
    if(response.data.status="success"){
      alertToast(response.data.message)

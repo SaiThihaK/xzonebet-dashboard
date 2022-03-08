@@ -8,6 +8,7 @@ import ComfirmMasterDesc from "./ComfirmMasterDesc/ConfirmMasterDesc";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Card from "../../../../components/UI/Card";
+import { getMethod } from "../../../../services/api-services";
 
 const ConfirmMasterDetail = () => {
   const [age, setAge] = React.useState("");
@@ -18,7 +19,7 @@ const ConfirmMasterDetail = () => {
  
 
   const fetchMasterDetail = async()=>{
-    const {data} = await axios.get(`https://lapi.xzonebet.com/api/affiliate-register-lists/${id}`);
+    const {data} = await axios.get(getMethod(`/api/affiliate-register-lists/${id}`));
     setConfirmMaster(data.data);
   }
   useEffect(()=>{

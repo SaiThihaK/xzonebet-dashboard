@@ -7,11 +7,12 @@ import axios from "axios";
 import { CircularProgress } from "@mui/material";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { getMethod } from "../../services/api-services";
 const BecomeAnAgent = () => {
   const [pending,setPending] = useState([]);
   const [num,setNum] = useState(0);
   const FetchpendingMaster = async()=>{
-    const {data} = await axios.get(`https://lapi.xzonebet.com/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=pending`);
+    const {data} = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=pending'));
     setPending(data.data);
   }
  const alertToast = (message) =>toast(message);

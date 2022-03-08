@@ -8,6 +8,7 @@ import axios from "axios";
 import { Button } from "@mui/material";
 import Card from "../../../../components/UI/Card";
 import CompleteAgentDesc from "./CompleteAgentDesc/CompleteAgentDesc";
+import { getMethod } from "../../../../services/api-services";
 const CompleteAgentDetail = () => {
   const [age, setAge] = React.useState("");
   const [completeMaster,setCompleteMaster] = useState([]);
@@ -17,7 +18,7 @@ const CompleteAgentDetail = () => {
 
 
   const fetchMasterDetail = async()=>{
-    const {data} = await axios.get(`https://lapi.xzonebet.com/api/affiliate-register-lists/${id}`);
+    const {data} = await axios.request(getMethod(`/affiliate-register-lists/${id}`));
     setCompleteMaster(data.data);
   }
   useEffect(()=>{

@@ -11,8 +11,9 @@ const Users = () => {
         </div>
         <div className={classes["card-body"]}>
            <div className={classes['soccer-setting-content-flex']}>
+           <UserCard name="All Users" bgColor="#4099FF" path="all-user" />
                <UserCard name="Active Users" bgColor="#2ED8B6" path="active-user" />
-               <UserCard name="All Users" bgColor="#4099FF" path="all-user" />
+              
                <UserCard name="Ban Users" bgColor="#FF5370" path="ban-user" />
            </div>
         </div>

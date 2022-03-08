@@ -13,6 +13,7 @@ import Select from "@mui/material/Select";
 import * as FaIcons from "react-icons/fa";
 import classes from "./AgentCard.module.css";
 import axios from "axios";
+import { PostMethod } from "../../../services/api-services";
 const AgentCard = ({
   user,
   num,
@@ -34,12 +35,12 @@ const AgentCard = ({
             "Content-type": "application/json",
           },
         };
-        const url = `https://lapi.xzonebet.com/api/affiliate-register-lists/${status}/${user.id}`;
-        const {data} = await axios.post(
+        const url = `/api/affiliate-register-lists/${status}/${user.id}`;
+        const {data} = await axios.request(PostMethod(
           url,
           {user_type:age},
           config
-        );
+        ));
         if(data.status = "success"){
         alertToast(data.message);
         setNum(num+1);

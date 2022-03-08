@@ -6,7 +6,7 @@ import * as RiIcons from 'react-icons/ri';
 
 export const AgentSidebarData = [
     {
-        title: 'DashBoard',
+        title: 'Agent DashBoard',
         path: '/',
         icon: <AiIcons.AiFillHome />,
         iconClosed: <RiIcons.RiArrowDownSFill/>,
@@ -26,7 +26,7 @@ export const AgentSidebarData = [
     },
     {
         title: 'Profile',
-        path: '/betting',
+        path: '/profile',
         icon: <IoIcons.IoIosFootball />,
         iconClosed: <RiIcons.RiArrowDownSFill/>,
         iconOpened: <RiIcons.RiArrowUpSFill/>,
@@ -50,7 +50,7 @@ export const AgentSidebarData = [
     },
     {
         title: 'Profit',
-        path: '/account',
+        path: '/profit',
         icon: <RiIcons.RiAccountPinCircleFill />,
         iconClosed: <RiIcons.RiArrowDownSFill/>,
         iconOpened: <RiIcons.RiArrowUpSFill/>,
@@ -84,7 +84,7 @@ export const AgentSidebarData = [
     },
     {
         title: 'Transition History',
-        path: '/accounting',
+        path: '/transition-history',
         icon: <FaIcons.FaLayerGroup />,
         iconClosed: <RiIcons.RiArrowDownSFill/>,
         iconOpened: <RiIcons.RiArrowUpSFill/>,
@@ -103,12 +103,12 @@ export const AgentSidebarData = [
     },
     {
         title: "Transfer To",
-        path: "/HR",
+        path: "/trnsfer to",
         icon: <FaIcons.FaUserFriends/>
     },
     {
         title: 'User Withdraw',
-        path: '/setting',
+        path: '/user-withdraw',
         icon: <AiIcons.AiFillSetting />,
         iconClosed: <RiIcons.RiArrowDownSFill/>,
         iconOpened: <RiIcons.RiArrowUpSFill/>,
@@ -127,12 +127,12 @@ export const AgentSidebarData = [
     },
     {
         title: "Deposite",
-        path: "/become-an-agent",
+        path: "/deposite",
         icon: <RiIcons.RiAccountPinCircleFill/>
     },
     {
         title: "Bank Account",
-        path: "/become-an-agent",
+        path: "/bank-account",
         icon: <RiIcons.RiAccountPinCircleFill/>
     },
     

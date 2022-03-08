@@ -11,6 +11,7 @@ import * as FaIcons from "react-icons/fa";
 import classes from "./PendingAgentCard.module.css";
 import { Button, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import axios from "axios";
+import { getMethod } from "../../../../services/api-services";
 const PendingAgentCard = ({user,path}) => {
     const [master, setMaster] = React.useState('');
     const [completeMasters,setCompleteMasters] = useState([]);
@@ -19,7 +20,7 @@ const PendingAgentCard = ({user,path}) => {
       };
    
   const fetchCompleteMaster = async()=>{
-    const {data} = await axios.get('https://lapi.xzonebet.com/api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=complete&form_type=master');
+    const {data} = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=complete&form_type=master'));
     setCompleteMasters(data.data);
   };
   useEffect(()=>{
