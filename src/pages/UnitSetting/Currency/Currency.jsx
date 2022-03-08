@@ -23,8 +23,12 @@ const Currency = () => {
         <CardDesc />
         </Card>
         <div className={classes["card-body-container"]}>
+          <div>
           <CurrencyExchange />
+          </div>
+          <div>
           <CryptoCurrencyExchange />
+          </div>
         </div>
       
         {/* <div style={{widht:"100%",marginTop:30,display:"flex",justifyContent:"flex-end"}}>
