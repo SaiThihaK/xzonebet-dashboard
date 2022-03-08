@@ -19,9 +19,17 @@ const Master = () => {
     setCompleteMaster(complete.data.data.length);
     const cancel = await axios.get(getMethod(`/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-rejet&form_type=master`));
     setCancelMaster(cancel.data.data.length);
-  }
+  };
+
+  console.log(cancelMaster);
  useEffect(()=>{
    fetchMaster();
+   return ()=>{
+     setPendingMaster([]);
+     setConfirmMaster([]);
+     setCompleteMaster([]);
+     setCancelMaster([]);
+   }
  },[]);
   return (
     <div className={classes["soccer-setting-container"]}>

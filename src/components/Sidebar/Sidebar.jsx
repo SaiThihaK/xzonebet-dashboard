@@ -38,6 +38,7 @@ const Sidebar = () => {
     localStorage.removeItem('status');
     localStorage.removeItem('jToken');
     localStorage.removeItem('lToken');
+    localStorage.removeItem('type')
     refreshPage();
   };
 

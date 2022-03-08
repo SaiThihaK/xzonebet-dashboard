@@ -5,6 +5,7 @@ import classes from './Agent.module.css';
 import axios from 'axios';
 import { useEffect } from 'react';
 import MasterSettingCard from '../Master/MasterSettingCard/MasterSettingCard';
+import { getMethod } from '../../services/api-services';
 const Agent = () => {
   const [pendingMaster,setPendingMaster] = useState([]);
   const [confirmMaster,setConfirmMaster] = useState([]);
@@ -12,13 +13,13 @@ const Agent = () => {
   const [cancelMaster,setCancelMaster] = useState([]);
   const fetchMaster = async()=>{
     const baseUrl = "https://lapi.xzonebet.com";
-    const pending = await axios.get(`${baseUrl}/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=agent`);
+    const pending = await axios.request(getMethod(`/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=agent`));
     setPendingMaster(pending.data.data.length);
-    const confirm = await axios.get(`${baseUrl}/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-confirm&form_type=agent`);
+    const confirm = await axios.request(getMethod(`/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-confirm&form_type=agent`));
     setConfirmMaster(confirm.data.data.length);
-    const complete = await axios.get(`${baseUrl}/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=complete&form_type=agent`);
+    const complete = await axios.request(getMethod(`/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=complete&form_type=agent`));
     setCompleteMaster(complete.data.data.length);
-    const cancel = await axios.get(`${baseUrl}/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-rejet&form_type=agent`);
+    const cancel = await axios.request(getMethod(`/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-rejet&form_type=agent`));
     setCancelMaster(cancel.data.data.length);
   }
  useEffect(()=>{
