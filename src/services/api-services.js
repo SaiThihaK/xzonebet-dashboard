@@ -56,7 +56,11 @@ export const Countries = {
     "x-rapidapi-key": "9b4fb89138mshdc697cc5d45c52fp1daa25jsne2be8889fabc",
   },
 };
-
+// -----------------------------------Currency for Currency Exchange-----------------
+export const Currency = {
+  method: "GET",
+  url: "https://v6.exchangerate-api.com/v6/f08f01b448f9b740baf0b750/latest/MMK",
+};
 // ------------------------------------Crypto-Currency-------------------
 export const Crypto = {
   method: "GET",
