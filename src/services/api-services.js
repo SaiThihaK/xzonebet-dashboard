@@ -76,13 +76,28 @@ export const getMethod = (route) => {
   return res;
 };
 
-export const PostMethod = (route) => {
+export const PostMethod = (route, data) => {
   const res = {
     method: "POST",
     url: `${configsData.DOMAIN}${route}`,
+    data,
     headers: {
       Accept: "application/json",
       authorization: ltoken,
     },
   };
+  return res;
+};
+
+export const PatchMethod = (route, data) => {
+  const res = {
+    method: "PATCH",
+    url: `${configsData.DOMAIN}${route}`,
+    data,
+    headers: {
+      Accept: "application/json",
+      authorization: ltoken,
+    },
+  };
+  return res;
 };

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Crypto } from "../../../../services/api-services";
 import {  Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import { height } from "@mui/system";
 
 
 const CryptoCurrencyExchange = ()=>{
@@ -21,9 +22,9 @@ console.log(coin);
 
 // console.log(coin);
 return(
-    <div >
+    <div style={{height:"700px"}}>
         <h1 style={{marginBottom:20,display:"flex",justifyContent:"center",alignItem:"center"}}>Crypto Exchange</h1>
-        <TableContainer component={Paper} style={{marginTop:20}}>
+        <TableContainer component={Paper}  style={{marginTop:20}}>
         <Table  aria-label="simple table">
         <TableHead>
             <TableRow></TableRow>
@@ -33,10 +34,10 @@ return(
                 coin.map((c,index)=>(
               <TableRow key={index}>
                   <TableCell align="left">
-                    
+                    <div style={{display:"flex"}}>
                     <Avatar src={c.image} alt="" />
-                  <p>&nbsp;{c.name}</p>
-                
+                      <span>&nbsp;{c.name}</span>
+                    </div>
                   </TableCell>
                   <TableCell align="left">
                      <Typography>

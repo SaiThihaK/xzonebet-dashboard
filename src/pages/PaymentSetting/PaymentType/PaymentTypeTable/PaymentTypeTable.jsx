@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { styled } from "@mui/material/styles";
@@ -12,7 +12,8 @@ import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import classes from "./PaymentTypeTable.module.css";
-const PaymentTypeTable = () => {
+import EditPaymentModal from "../../../../components/UI/Modal/PaymentSetting/PaymentType/EditPaymentTypeModal";
+const PaymentTypeTable = ({payment_type,num,setNum}) => {
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: "#505B72",
@@ -36,8 +37,14 @@ const PaymentTypeTable = () => {
  
 
 
-  const Arr = [{id:"1",payment_type:"E-wallet",payment_name:"Wave"}];
- 
+const [open, SetOpen] = useState(false);
+
+const [typeId,setTypeId] = useState("");
+const handleOpen = ()=>SetOpen(true);
+const handleClose = ()=>SetOpen(false);
+ useEffect(()=>{
+
+ },[num]);
   return (
     <div className={classes["table-container"]}>
       <div className={classes["table-margin"]}>
@@ -52,22 +59,26 @@ const PaymentTypeTable = () => {
             </TableHead>
             <TableBody>
              
-              {Arr.map((row,index)=>(
+              {payment_type.map((row,index)=>(
                    <StyledTableRow key={index}>
                     <StyledTableCell component="th" scope="row">
                     {row.id}
                   </StyledTableCell>
-                  <StyledTableCell align="left" >{row.payment_type}</StyledTableCell>
+
+                  <StyledTableCell align="left" >{row.name}</StyledTableCell>
                   <StyledTableCell align="right">
                   <Stack spacing={1} direction="row" sx={{justifyContent: 'flex-end'}}>
-                  <Button variant="contained">Edit</Button>
+                  <Button variant="contained" onClick={()=>{handleOpen();setTypeId(row.id)}}>Edit</Button>
                    </Stack>
                   </StyledTableCell>
                   </StyledTableRow>
+                                  
               ))}
             </TableBody>
+          
           </Table>
         </TableContainer>
+        <EditPaymentModal open={open} handleClose={handleClose} num={num} setNum={setNum} id={typeId} />
       </div>
     </div>
   );

@@ -30,16 +30,10 @@ const AgentCard = ({
     if(!age)return;
     else{
       try{
-        const config = {
-          headers: {
-            "Content-type": "application/json",
-          },
-        };
+       
         const url = `/api/affiliate-register-lists/${status}/${user.id}`;
         const {data} = await axios.request(PostMethod(
-          url,
-          {user_type:age},
-          config
+          url,{user_type:age}
         ));
         if(data.status = "success"){
         alertToast(data.message);

@@ -6,7 +6,7 @@ import Fade from "@mui/material/Fade";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { FormControl, TextField } from "@mui/material";
-import { PostMethod } from "../../../../../services/api-services";
+import { PatchMethod, PostMethod } from "../../../../../services/api-services";
 
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -25,11 +25,12 @@ const style = {
   borderRadius: 3,
 };
 
-export default function PaymentTypeModal({
+export default function EditPaymentModal({
   handleClose,
   open,
   num,
-  setNum
+  setNum,
+  id
 }) {
   const [type,setType] = useState("");
   const handleChange = (e)=>setType(e.target.value);
@@ -42,13 +43,15 @@ const submitHandler = async(e)=>{
     return;
   }
   try{
-   const response = await axios.request(PostMethod(`/api/payment-types`,{name:type}));
+   const response = await axios.request(PatchMethod(`/api/payment-types/${id}`,
+   {name:type}));
    if(response.data.status==="success"){
-     setType("");
-     ToastAlert(toast.success(response.data.message));
-     setNum(num+1)
-     return;
+  setType('');
+  ToastAlert(toast.success(response.data.message))
+  setNum(num+1);
+  return;
    }
+   
   }catch(error){
     console.log(error);
     return;
@@ -73,7 +76,7 @@ const submitHandler = async(e)=>{
         <Fade in={open}>
           <Box sx={style}>
             <Typography id="transition-modal-title" variant="h6" component="h2">
-              Create New Payment
+              Edit Payment Type
             </Typography>
             <FormControl sx={{ width: "100%" }} style={{marginTop:10}}>
             <TextField
@@ -88,7 +91,7 @@ const submitHandler = async(e)=>{
             <div style={{marginTop: 20,display:"flex",justifyContent:"flex-end"}}>
             <Button
                 variant="contained"
-                color="success"
+                
                 style={{
                   
                   width: 80,
@@ -98,7 +101,7 @@ const submitHandler = async(e)=>{
                   submitHandler(e)
                 }}
               >
-                Create
+                Confirm
               </Button>
             </div>
              
