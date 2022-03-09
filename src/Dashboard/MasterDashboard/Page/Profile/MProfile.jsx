@@ -7,22 +7,26 @@ import ProfileDetail from "./ProfileDetail/ProfileDetail";
 const MProfile = ()=>{
 
 return(
-    <div>
+    <div style={{padding:20}}>
         <Card>
      <div className={classes["card-header"]}>
-          <h1 className={classes["card-title"]}>Profile</h1>
+          <h1 className={classes["card-title"]}>MasterInfo</h1>
      </div>
      <div className={classes["card-body"]}>
-        <p>Master Info</p>
     <ProfileCard />
     </div>
         </Card>
+        <div style={{marginTop:20}}>
         <Card>
         <div className={classes["card-header"]}>
         <h1 className={classes["card-title"]}>Personal Info</h1>
-         <ProfileDetail />
+        </div>
+        <div className={classes["card-body"]}>
+        <ProfileDetail />
         </div>
         </Card>
+        </div>
+       
         
     </div>
 )
