@@ -29,8 +29,8 @@ const Login = () => {
         case "success":
           // console.log('login success');
           localStorage.setItem('status',res.data.status);
-          localStorage.setItem('jToken',res.data.data['j-token']);
-          localStorage.setItem('lToken',res.data.data['l-token']);
+          localStorage.setItem('jToken',res.data.data['j_token']);
+          localStorage.setItem('lToken',res.data.data['l_token']);
           localStorage.setItem('type',res.data.data['type'])
           refreshPage();
         break;

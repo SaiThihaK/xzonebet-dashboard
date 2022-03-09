@@ -26,7 +26,7 @@ export const MasterSidebarData = [
     },
     {
         title: 'Profile',
-        path: '/profile',
+        path: '/master/profile',
         icon: <IoIcons.IoIosFootball />,
         iconClosed: <RiIcons.RiArrowDownSFill/>,
         iconOpened: <RiIcons.RiArrowUpSFill/>,
@@ -103,12 +103,12 @@ export const MasterSidebarData = [
     },
     {
         title: "Profit",
-        path: "/profit",
+        path: "/master/profit",
         icon: <FaIcons.FaUserFriends/>
     },
     {
         title: 'Transfer To',
-        path: '/transfer-to',
+        path: '/master/transfer-to',
         icon: <AiIcons.AiFillSetting />,
         iconClosed: <RiIcons.RiArrowDownSFill/>,
         iconOpened: <RiIcons.RiArrowUpSFill/>,
@@ -127,7 +127,7 @@ export const MasterSidebarData = [
     },
     {
         title: "Deposite",
-        path: "/deposite",
+        path: "/master/deposite",
         icon: <RiIcons.RiAccountPinCircleFill/>
     },
     {
