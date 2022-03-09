@@ -60,6 +60,10 @@ import CreatePaymentProvider from "./pages/PaymentSetting/PaymentProvider/Create
 import Currency from "./pages/UnitSetting/Currency/Currency";
 import AllUser from "./pages/Users/AllUser/AllUser";
 import MPaymentAccount from "./Dashboard/MasterDashboard/Page/BankSetting/PaymentAccount/MPaymentAccount";
+import ABankAccount from "./Dashboard/AgentDashboard/Page/BankAccount/ABankAccount";
+import MDeposite from "./Dashboard/MasterDashboard/Page/Deposite/MDeposite";
+import ADeposite from "./Dashboard/AgentDashboard/Page/Deposite/ADeposite";
+import MProfile from "./Dashboard/MasterDashboard/Page/Profile/MProfile";
 
 function App() {
   return (
@@ -296,7 +300,13 @@ function App() {
             path="/master/bank-setting/payment-account"
             element={<MPaymentAccount />}
           />
+          <Route exact path="/master/deposite" element={<MDeposite />} />
+          <Route exact path="/master/profile" element={<MProfile />} />
+          {/* --------------------Agent Dashboard------------------------------ */}
+          <Route exact path="/agent/bank-account" element={<ABankAccount />} />
+          <Route exact path="/agent/deposite" element={<ADeposite />} />
 
+          {/* -----------------------Not Found------------------------------ */}
           <Route path="*" element={<Notfound />} />
         </Routes>
       </Container>

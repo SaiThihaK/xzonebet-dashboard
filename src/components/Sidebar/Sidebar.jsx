@@ -18,6 +18,7 @@ import classes from "./Sidebar.module.css";
 import { IconContext } from "react-icons/lib";
 import { AgentSidebarData } from "../../Dashboard/AgentDashboard/AgentSideBarData";
 import { MasterSidebarData } from "../../Dashboard/MasterDashboard/MasterSideBarData";
+import { useNavigate } from "react-router-dom";
 
 function refreshPage() {
   setTimeout(()=>{
@@ -38,7 +39,8 @@ const Sidebar = () => {
     localStorage.removeItem('status');
     localStorage.removeItem('jToken');
     localStorage.removeItem('lToken');
-    localStorage.removeItem('type')
+    localStorage.removeItem('type');
+    
     refreshPage();
   };
 
