@@ -13,8 +13,6 @@ const ConfirmMaster = () => {
     const {data} = await axios.request(getMethod(`/api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=deposit-confirm&form_type=master`));
     setConfirmMasters(data.data);
   };
-  
-
   useEffect(()=>{
    fetchConfirmMaster();
    return ()=>setConfirmMasters([]);

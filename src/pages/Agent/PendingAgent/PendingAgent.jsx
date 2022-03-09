@@ -10,14 +10,15 @@ import { getMethod } from "../../../services/api-services";
 const PendingAgent = () => {
   const [pendingMasters,setPendingMaster] = useState([]);
   
-  const fetchPendingMaster = async()=>{
-    const {data} = await axios.request(getMethod(`/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=agent`));
-    setPendingMaster(data.data);
+  const fetchPending = async()=>{
+    const pending = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=agent'));
+    console.log(pending)
+    setPendingMaster(pending.data.data);
   };
 //  console.log(pendingMasters);
  
   useEffect(()=>{
-   fetchPendingMaster();
+   fetchPending();
    return ()=>setPendingMaster([]);
   },[]);
   return (

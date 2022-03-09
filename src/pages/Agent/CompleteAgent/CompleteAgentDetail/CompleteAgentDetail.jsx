@@ -15,10 +15,10 @@ const CompleteAgentDetail = () => {
   const {id} = useParams();
   const navigate = useNavigate();
   // Enjoyment
-
+  console.log(id);
 
   const fetchMasterDetail = async()=>{
-    const {data} = await axios.request(getMethod(`/affiliate-register-lists/${id}`));
+    const {data} = await axios.request(getMethod(`/api/affiliate-register-lists/${id}`));
     setCompleteMaster(data.data);
   }
   useEffect(()=>{

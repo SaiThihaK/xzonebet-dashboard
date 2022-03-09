@@ -19,10 +19,10 @@ const PaymentType = () => {
   const handleClose = ()=>setOpen(false);
    
   const FetchPaymentType = async()=>{
-    const response = await axios.request(getMethod(`/api/payment-types`));
+    const response = await axios.request(getMethod(`/api/dashboard/payment-types`));
     setPayment_type(response.data.data);
   }
-
+ console.log(payment_type)
   useEffect(()=>{
     FetchPaymentType()
   },[num]);
