@@ -59,6 +59,7 @@ import PaymentAccount from "./pages/PaymentSetting/PaymentAccount/PaymentAccount
 import CreatePaymentProvider from "./pages/PaymentSetting/PaymentProvider/CreatePaymentProvider/CreatePaymentProvider";
 import Currency from "./pages/UnitSetting/Currency/Currency";
 import AllUser from "./pages/Users/AllUser/AllUser";
+import MPaymentAccount from "./Dashboard/MasterDashboard/Page/BankSetting/PaymentAccount/MPaymentAccount";
 
 function App() {
   return (
@@ -287,6 +288,13 @@ function App() {
             exact
             path="/payment-setting/payment-account"
             element={<PaymentAccount />}
+          />
+
+          {/* ----------------------Master Dashboard--------------------------- */}
+          <Route
+            exact
+            path="/master/bank-setting/payment-account"
+            element={<MPaymentAccount />}
           />
 
           <Route path="*" element={<Notfound />} />
