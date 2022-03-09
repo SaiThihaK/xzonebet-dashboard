@@ -30,8 +30,9 @@
 
 .form-group-desc label {
   width: 200px;
-  font-size: 15px;
+  font-size: 18px;
 }
 .form-group-desc p {
-  font-size: 15px;
+  font-size: 18px;
+  margin-left: 40px;
 }
