@@ -11,19 +11,36 @@ const Agent = () => {
   const [confirmMaster,setConfirmMaster] = useState([]);
   const [completeMaster,setCompleteMaster] = useState([]);
   const [cancelMaster,setCancelMaster] = useState([]);
-  const fetchMaster = async()=>{
-    const baseUrl = "https://lapi.xzonebet.com";
-    const pending = await axios.request(getMethod(`/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=agent`));
+  const fetchPending = async()=>{
+    const pending = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=agent'));
+    console.log(pending)
     setPendingMaster(pending.data.data.length);
+  };
+  const fetchConfirm = async()=>{
     const confirm = await axios.request(getMethod(`/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-confirm&form_type=agent`));
     setConfirmMaster(confirm.data.data.length);
+  };
+  const fetchComplete = async()=>{
     const complete = await axios.request(getMethod(`/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=complete&form_type=agent`));
     setCompleteMaster(complete.data.data.length);
+  };
+  const fetchCancel = async()=>{
     const cancel = await axios.request(getMethod(`/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-rejet&form_type=agent`));
     setCancelMaster(cancel.data.data.length);
   }
+
+  console.log(cancelMaster);
  useEffect(()=>{
-   fetchMaster();
+   fetchPending();
+   fetchComplete();
+   fetchConfirm();
+   fetchCancel();
+   return ()=>{
+     setPendingMaster([]);
+     setConfirmMaster([]);
+     setCompleteMaster([]);
+     setCancelMaster([]);
+   }
  },[]);
   return (
     <div className={classes["soccer-setting-container"]}>

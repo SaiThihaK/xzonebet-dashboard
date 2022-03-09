@@ -14,7 +14,7 @@ import classes from "./MasterDepositTable.module.css";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { getMethod } from "../../../services/api-services";
+import { getMethod, PostMethod } from "../../../services/api-services";
 const MasterDepositTable = () => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
@@ -53,10 +53,10 @@ const MasterDepositTable = () => {
   },[num])
   const confirmHandler = async(id)=>{
     try{
-    const response = await axios.post(
-      `https://lapi.xzonebet.com/api/affiliate-register-lists/accept/${id}`,
+    const response = await axios.request(
+      PostMethod(`/api/affiliate-register-lists/accept/${id}`,
       {user_type:"deposit-confirm"},
-    );
+    ));
   
     if(response.data.status="success"){
       alertToast(response.data.message.toUpperCase());
