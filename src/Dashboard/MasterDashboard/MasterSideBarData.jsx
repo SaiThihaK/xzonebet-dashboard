@@ -49,6 +49,11 @@ export const MasterSidebarData = [
         // ]
     },
     {
+        title: 'Security Imformation',
+        path: '/master/security-imformation',
+        icon: <IoIcons.IoIosFootball />,
+    },
+    {
         title: 'Agent',
         path: '/master/agent',
         icon: <RiIcons.RiAccountPinCircleFill />,

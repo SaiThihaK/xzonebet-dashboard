@@ -1,13 +1,15 @@
 import React from "react";
 import TextField from "@mui/material/TextField"; 
-import classes from "./AgentTransition.module.css";
+import classes from "./TransitionHistory.module.css";
 import { Button } from "@mui/material";
 import { DateRangePicker, LocalizationProvider } from "@mui/lab";
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import Box from '@mui/material/Box';
+import Card from "../../../../components/UI/Card";
+import TransitionHistoryTable from "./TransitionHistoryTable/TransitionHistoryTable";
 
 
-const Transition = () => {
+const TransitionHistory = () => {
   // let today = new Date();
   // let Todate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 
@@ -54,7 +56,7 @@ const Transition = () => {
     </LocalizationProvider>
     </div>
             </div>
-            {/* <AgentTransitionTable /> */}
+      <TransitionHistoryTable />
           </div>
         </div>
       </Card>
@@ -62,5 +64,5 @@ const Transition = () => {
   );
 };
 
-export default Transition;
+export default TransitionHistory;
  
