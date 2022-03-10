@@ -64,12 +64,12 @@ import ABankAccount from "./Dashboard/AgentDashboard/Page/BankAccount/ABankAccou
 import MDeposite from "./Dashboard/MasterDashboard/Page/Deposite/MDeposite";
 import ADeposite from "./Dashboard/AgentDashboard/Page/Deposite/ADeposite";
 import MProfile from "./Dashboard/MasterDashboard/Page/Profile/MProfile";
+import { type } from "./services/Token";
 
 function App() {
-  return (
-    <Router>
-      <Sidebar />
-      <Container>
+  const DashboardRouting = () => {
+    if (type === "admin") {
+      return (
         <Routes>
           <Route path="/" exact element={<Overview />} />
           <Route path="/setting/game-setting" exact element={<GameSetting />} />
@@ -293,8 +293,14 @@ function App() {
             path="/payment-setting/payment-account"
             element={<PaymentAccount />}
           />
-
-          {/* ----------------------Master Dashboard--------------------------- */}
+          <Route path="*" element={<Notfound />} />
+        </Routes>
+      );
+    }
+    //------------------------------------------ Master Dashboard -------------------------------------------------------
+    if (type === "master") {
+      return (
+        <Routes>
           <Route
             exact
             path="/master/bank-setting/payment-account"
@@ -302,14 +308,24 @@ function App() {
           />
           <Route exact path="/master/deposite" element={<MDeposite />} />
           <Route exact path="/master/profile" element={<MProfile />} />
-          {/* --------------------Agent Dashboard------------------------------ */}
-          <Route exact path="/agent/bank-account" element={<ABankAccount />} />
-          <Route exact path="/agent/deposite" element={<ADeposite />} />
-
-          {/* -----------------------Not Found------------------------------ */}
           <Route path="*" element={<Notfound />} />
         </Routes>
-      </Container>
+      );
+    }
+    if (type === "agent") {
+      return (
+        <Routes>
+          <Route exact path="/agent/bank-account" element={<ABankAccount />} />
+          <Route exact path="/agent/deposite" element={<ADeposite />} />
+          <Route path="*" element={<Notfound />} />
+        </Routes>
+      );
+    }
+  };
+  return (
+    <Router>
+      <Sidebar />
+      <Container>{DashboardRouting()}</Container>
     </Router>
   );
 }

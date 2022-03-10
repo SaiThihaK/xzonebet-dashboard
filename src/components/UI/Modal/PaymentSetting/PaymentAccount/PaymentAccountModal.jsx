@@ -1,11 +1,13 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { FormControl,Select,MenuItem, TextField, Input } from "@mui/material";
+import { FormControl,Select,MenuItem, TextField, Input, Avatar } from "@mui/material";
+import axios from "axios";
+import { getMethod } from "../../../../../services/api-services";
 const style = {
   position: "absolute",
   top: "50%",
@@ -21,11 +23,41 @@ const style = {
 export default function PaymentAccountModal({
   handleClose,
   open,
+  num,
+  setNum
 }) {
-  
-  const methods = [{name:"E-wallet"},{name:"Banking"},{name:"PayPal"}]
- 
+  const [payment_type,setPayment_type] = useState([]);
+  const [payment_typeValue,setPayment_typeValue] = useState("");
+  const Payment_typeChange = (e)=>setPayment_typeValue(e.target.value);
+  // --------PaymentProvider-------------------------//
+  const [payment_provider,setPayment_provider] = useState([]);
+  const [payment_providerValue,setPayment_providerValue] = useState("");
 
+  const Payment_ProviderChange = (e)=>setPayment_providerValue(e.target.value);
+  const Payment_Method = async()=>{
+    const response = await axios.request(getMethod(`/api/dashboard/payment-types`));
+    // console.log(response.data.data);
+    setPayment_type(response.data.data);
+  };
+  
+  const FetchPayment_provider = async()=>{
+    const response = await axios.request(getMethod(`/api/dashboard/payment-providers`));
+    // console.log(response.data.data);
+    setPayment_provider(response.data.data);
+  }
+
+  useEffect(()=>{
+    Payment_Method();
+    FetchPayment_provider();
+    return ()=>{
+      setPayment_type([]);
+      setPayment_provider([]);
+    }
+  },[]);
+// To get exact paymentProvider under the Parent Payment Type
+  const FilterPayment_Provider = payment_provider.filter((c)=>c.payment_type.name===payment_typeValue);
+  // console.log({FilterPayment_Provider});
+ 
   return (
     <div>
       <Modal
@@ -47,13 +79,14 @@ export default function PaymentAccountModal({
             <FormControl sx={{ width: "100%" }} style={{marginTop:10}}>
             <label>Select Payment Type</label>
             <Select
-              displayEmpty
+              value={payment_typeValue}
               inputProps={{ "aria-label": "Without label" }}
               size="small"
               style={{marginBottom:30}}
               sx={{ backgroundColor: "#f3f3f3" }}
+              onChange={Payment_typeChange}
             > 
-              {methods.map((item,index)=>(
+              {payment_type.map((item,index)=>(
                   <MenuItem key={index} value={item.name}>{item.name}</MenuItem>
               ))}
             </Select>
@@ -62,20 +95,24 @@ export default function PaymentAccountModal({
             <label>Select Payment Provider</label>
             <Select
           placeholder="Payment Provider"
-          displayEmpty
+          value={payment_providerValue}
+          onChange={Payment_ProviderChange}
           inputProps={{ "aria-label": "Without label" }}
           size="small"
           style={{marginBottom:30}}
           sx={{ backgroundColor: "#f3f3f3" }}
         >
-          {methods.map((item,index)=>(
-              <MenuItem key={index} value={item.name}>{item.name}</MenuItem>
+          {FilterPayment_Provider && FilterPayment_Provider.map((item,index)=>(
+              <MenuItem key={index} value={item.name} style={{display:"flex"}}>
+                <Avatar src={FilterPayment_Provider.logo} size="sm" alt="logo" variant="square" />
+                <p>{item.name}</p>
+              </MenuItem>
           ))}
         </Select>
         </FormControl>
         <FormControl sx={{width:"100%"}} style={{marginBottom:20}}>
         <label>Account or Phone Number</label>
-        <TextField l size="small"   />
+        <TextField  size="small"   />
         </FormControl>
         
         <FormControl sx={{width:"100%"}} style={{marginBottom:20}}>

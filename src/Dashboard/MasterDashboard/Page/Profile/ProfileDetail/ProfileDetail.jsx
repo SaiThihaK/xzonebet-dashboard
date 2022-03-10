@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import axios from "axios";
 import React from "react";
 import Card from "../../../../../components/UI/Card";
@@ -12,6 +13,9 @@ const ProfileDetail = () => {
           className={classes["agent-user-image"]}
           alt=""
         />
+        </div>
+        <div style={{display:"flex",justifyContent:"flex-end",marginBottom:10}}>
+          <Button variant="contained">Edit</Button>
         </div>
       <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",padding:10,width:"100%"}}>
           <Card>

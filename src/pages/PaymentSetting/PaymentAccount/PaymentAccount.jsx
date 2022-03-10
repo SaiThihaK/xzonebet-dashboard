@@ -10,8 +10,8 @@ import PaymentAccountTable from "./PaymentAccountTable/PaymentAccountTable";
 
 const PaymentAccount = () => {
   const [open,setOpen] = useState(false);
-  const [payment_type,setPayment_type] = useState("");
-  const [payment_provider,setPayment_provider] = useState("");
+  // To render with useEffect
+  const [num,setNum] = useState(0);
   const handleOpen = ()=>setOpen(true);
   const handleClose = ()=>setOpen(false);
 
@@ -27,12 +27,14 @@ const PaymentAccount = () => {
           <div style={{display:"flex",justifyContent:"flex-end"}}>
             <Button variant="contained" onClick={handleOpen}>Create Payment Account</Button>
           </div>
-         <PaymentAccountTable />
+         <PaymentAccountTable num={num} setNum={setNum}/>
         </div>
         </div>
         <PaymentAccountModal 
         open={open} 
         handleClose={handleClose}
+        num={num}
+        setNum={setNum}
         />
       </Card>
     </div>
