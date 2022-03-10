@@ -43,7 +43,7 @@ const submitHandler = async(e)=>{
     return;
   }
   try{
-   const response = await axios.request(PatchMethod(`/api/payment-types/${id}`,
+   const response = await axios.request(PatchMethod(`/api/dashboard/payment-types/${id}`,
    {name:type}));
    if(response.data.status==="success"){
   setType('');
@@ -82,7 +82,7 @@ const submitHandler = async(e)=>{
             <TextField
               value={type}
               onChange={handleChange}
-              label="Create Payment Type"
+              label="Edit Payment Type"
               inputProps={{ "aria-label": "Without label" }}
               size="small"
               sx={{ backgroundColor: "#f3f3f3" }}

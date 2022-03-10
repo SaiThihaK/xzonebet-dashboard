@@ -42,7 +42,8 @@ const submitHandler = async(e)=>{
     return;
   }
   try{
-   const response = await axios.request(PostMethod(`/api/payment-types`,{name:type}));
+   const response = await axios.request(PostMethod(`/api/dashboard/payment-types`,{name:type}));
+   console.log(response);
    if(response.data.status==="success"){
      setType("");
      ToastAlert(toast.success(response.data.message));
