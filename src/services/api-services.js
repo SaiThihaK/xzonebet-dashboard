@@ -105,3 +105,18 @@ export const PatchMethod = (route, data) => {
   };
   return res;
 };
+
+// -----------------------------Patch Method for CreatePayment Provider-------------------------//
+export const PostProvider = (route, data) => {
+  const res = {
+    method: "POST",
+    url: `${configsData.DOMAIN}${route}`,
+    data,
+    headers: {
+      Accept: "application/json",
+      authorization: ltoken,
+      "Content-Type": "multipart/form-data",
+    },
+  };
+  return res;
+};

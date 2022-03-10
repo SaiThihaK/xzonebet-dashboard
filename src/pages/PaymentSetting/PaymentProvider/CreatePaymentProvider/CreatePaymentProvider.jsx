@@ -4,9 +4,12 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 import Card from "../../../../components/UI/Card";
-import { getMethod } from "../../../../services/api-services";
+import { getMethod,PostProvider } from "../../../../services/api-services";
 import classes from "./CreatePaymentProvider.module.css"
 import SelectCountries from "./SelectCountries";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
  const CreatePaymentProvider =()=>{
@@ -14,21 +17,46 @@ import SelectCountries from "./SelectCountries";
    const [payment_type,setPayment_type] = useState([]);
    const [payment_provider,setPayment_provider] = useState();
    const [payment_typeValue,setPayment_typeValue] = useState('');
+   const [logo,setlogo] = useState('');
 
    const payment_typeChange = (e)=>setPayment_typeValue(e.target.value);
    const payment_providerChange = (e)=>setPayment_provider(e.target.value);
+   const logoChange = (e)=>setlogo(e.target.value);
 
    const FetchPayment_type = async() =>{
      const response = await axios.request(getMethod(`/api/dashboard/payment-types`));
      setPayment_type(response.data.data);
    }
-
+  const AlertToast = (toast,msg) =>{
+    return toast(msg);
+  };
+  console.log(logo)
    useEffect(()=>{
     FetchPayment_type();
     return ()=>setPayment_type([]);
-   },[])
+   },[]);
+
+   const submitHandler = async(e)=>{
+     e.preventDefault();
+     console.log({payment_typeValue,payment_provider,logo})
+   if(!payment_typeValue || !payment_provider || !logo){
+     AlertToast(toast.warning,"Please fill all the field")
+     return;
+   }
+   try{
+     const response = await axios.request(PostProvider(`/api/dashboard/payment-providers`,{
+      payment_type_id:payment_typeValue,
+      name:payment_provider,
+      logo
+     }));
+     console.log(response);
+   }catch(error){
+     console.log(error);
+   }
+   };
      return(
          <div className={classes["soccer-setting-container"]}>
+           <ToastContainer />
          <Card>
            <div className={classes["card-header"]}>
              <h1 className={classes["card-title"]} >Payment Provider</h1>
@@ -39,7 +67,7 @@ import SelectCountries from "./SelectCountries";
              <Select value={payment_typeValue} size="small"style={{marginTop:10}} onChange={payment_typeChange}>
               {
                 payment_type.map((a,index)=>(
-                  <MenuItem key={index} value={a.name}>{a.name}</MenuItem>
+                  <MenuItem key={index} value={a.id}>{a.name}</MenuItem>
                 ))
               }
              </Select>
@@ -50,10 +78,10 @@ import SelectCountries from "./SelectCountries";
             </FormControl>
              <FormControl  style={{marginTop:20}} fullWidth>
              <label>Choose Provider Logo</label>
-             <TextField style={{border:"none"}}  variant="standard" type="file" accept="image/png, image/jpeg" />
+             <TextField style={{border:"none"}}  variant="standard" type="file" accept="image/png, image/jpeg" onChange={logoChange} />
             </FormControl>
-             <SelectCountries />
-               <Button variant="contained" style={{marginTop:20}} fullWidth>Create</Button>
+             {/* <SelectCountries /> */}
+               <Button variant="contained" onClick={submitHandler} style={{marginTop:20}} fullWidth>Create</Button>
            </div>
          </Card>
       </div>
