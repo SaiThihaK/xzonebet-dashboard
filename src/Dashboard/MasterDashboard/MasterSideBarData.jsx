@@ -131,6 +131,11 @@ export const MasterSidebarData = [
         icon: <RiIcons.RiAccountPinCircleFill/>
     },
     {
+        title: "Deposite",
+        path: "/master/deposite",
+        icon: <RiIcons.RiAccountPinCircleFill/>
+    },
+    {
         title: "Bank Setting",
         path: "/master/bank-setting",
         icon: <AiIcons.AiFillSetting />,
