@@ -41,7 +41,6 @@ const PendingAgentDetail = () => {
     }
     else{
       try{
-        
         const url = `/api/affiliate-register-lists/deposit-pending/${id}`;
         const response = await axios.request(PostMethod(
           url,

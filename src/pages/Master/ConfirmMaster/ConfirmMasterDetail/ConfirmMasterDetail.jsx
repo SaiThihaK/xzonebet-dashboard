@@ -19,7 +19,7 @@ const ConfirmMasterDetail = () => {
  
 
   const fetchMasterDetail = async()=>{
-    const {data} = await axios.get(getMethod(`/api/affiliate-register-lists/${id}`));
+    const {data} = await axios.request(getMethod(`/api/affiliate-register-lists/${id}`));
     setConfirmMaster(data.data);
   }
   useEffect(()=>{
