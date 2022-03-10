@@ -32,7 +32,7 @@ const CardDesc = () => {
               <TableCell align="right">
                 <div>
                   <Typography variant="h6">Currency Type</Typography>
-                  <p>1&nbsp; MMK</p>
+                  <p style={{ fontSize: "18px" }}>1&nbsp; USD</p>
                 </div>
               </TableCell>
               <TableCell align="right">
@@ -50,7 +50,7 @@ const CardDesc = () => {
                     variant="h6"
                     style={{ transition: "left 2s ease" }}
                   >
-                    &nbsp;3232&nbsp;USD
+                    &nbsp;0.2893&nbsp;MMK
                   </Typography>
                 )}
               </TableCell>

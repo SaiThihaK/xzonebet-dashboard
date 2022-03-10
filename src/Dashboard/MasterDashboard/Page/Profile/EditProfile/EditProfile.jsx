@@ -14,7 +14,7 @@ return(
      <div className={classes["card-header"]}>
           <h1 className={classes["card-title"]}>Edit Profile</h1>
      </div>
-     <div style={{paddingBottom:20}}>
+     <div style={{paddingBottom:20,paddingRight:20}}>
      <div className={classes["card-body"]}>
      <div style={{padding:"0px 20px"}}>
          <FormControl fullWidth style={{marginBottom:10}}>
@@ -26,7 +26,11 @@ return(
              <TextField  size="small" />
          </FormControl>
          <FormControl fullWidth style={{marginBottom:10}}>
-             <label>Phone</label>
+             <label>National Identity Card Number</label>
+             <TextField  size="small" />
+         </FormControl>
+         <FormControl fullWidth style={{marginBottom:10}}>
+             <label>Passport Name</label>
              <TextField  size="small" />
          </FormControl>
      </div>
@@ -37,11 +41,15 @@ return(
              <TextField  size="small" />
          </FormControl>
          <FormControl fullWidth style={{marginBottom:10}}>
+             <label>Nationality</label>
+             <TextField  size="small" />
+         </FormControl>
+         <FormControl fullWidth style={{marginBottom:10}}>
              <label>Region</label>
              <TextField  size="small" />
          </FormControl>
          <FormControl fullWidth style={{marginBottom:10}}>
-             <label>E-mail</label>
+             <label>Currency Type</label>
              <TextField  size="small" />
          </FormControl>
      </div>
