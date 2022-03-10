@@ -24,10 +24,10 @@ const Login = () => {
     const input = validateEmail(userloginname) ? {email:userloginname,password: loginpass,} :{id:userloginname,password: loginpass,};
     axios.request(login,login.data = input)
     .then(res => {
-      // console.log(res);
+      console.log(res);
       switch(res.data.status){
         case "success":
-          // console.log('login success');
+          console.log('login success');
           console.log(res.data)
           localStorage.setItem('status',res.data.status);
           localStorage.setItem('jToken',res.data.data['j_token']);

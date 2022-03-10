@@ -12,15 +12,10 @@ const ConfirmAgentDesc = ({userInfo}) => {
    const confirmHandler = async()=>{
   //  console.log("confirm");
     try{
-   const url = `https://lapi.xzonebet.com/api/affiliate-register-lists/confirm/${userInfo.id}`;
-   const config = {
-    headers: {
-        "Content-type": "application/json",
-      },
-    };
+   
    const response = await axios.request(
     PostMethod(`/api/affiliate-register-lists/confirm/${userInfo.id}`,
-       {master_id:2},
+       {master_id:2}
    ));
   //  console.log(response);
    if(response.data.status="success"){
