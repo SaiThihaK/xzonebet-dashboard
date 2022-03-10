@@ -68,6 +68,7 @@ import { type } from "./services/Token";
 
 import EditProfile from "./Dashboard/MasterDashboard/Page/Profile/EditProfile/EditProfile";
 import TransferTo from "./Dashboard/MasterDashboard/Page/TransferTo/TransferTo";
+import MAgent from "./Dashboard/MasterDashboard/Page/Agent/MAgent";
 
 function App() {
   const DashboardRouting = () => {
@@ -314,6 +315,7 @@ function App() {
           <Route exact path="/master/profile" element={<MProfile />} />
           <Route exact path="master/profile/edit" element={<EditProfile />} />
           <Route exact path="/master/transfer-to" element={<TransferTo />} />
+          <Route exact path="/master/agent" element={<MAgent />} />
           <Route path="*" element={<Notfound />} />
         </Routes>
       );

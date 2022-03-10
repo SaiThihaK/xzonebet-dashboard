@@ -50,7 +50,7 @@ export const MasterSidebarData = [
     },
     {
         title: 'Agent',
-        path: '/agent',
+        path: '/master/agent',
         icon: <RiIcons.RiAccountPinCircleFill />,
         iconClosed: <RiIcons.RiArrowDownSFill/>,
         iconOpened: <RiIcons.RiArrowUpSFill/>,
@@ -84,7 +84,7 @@ export const MasterSidebarData = [
     },
     {
         title: 'Transition History',
-        path: '/transition-history',
+        path: '/master/transition-history',
         icon: <FaIcons.FaLayerGroup />,
         iconClosed: <RiIcons.RiArrowDownSFill/>,
         iconOpened: <RiIcons.RiArrowUpSFill/>,
@@ -124,11 +124,6 @@ export const MasterSidebarData = [
         //         icon: <IoIcons.IoIosArrowForward />,
         //     },
         // ]
-    },
-    {
-        title: "Deposite",
-        path: "/master/deposite",
-        icon: <RiIcons.RiAccountPinCircleFill/>
     },
     {
         title: "Deposite",
