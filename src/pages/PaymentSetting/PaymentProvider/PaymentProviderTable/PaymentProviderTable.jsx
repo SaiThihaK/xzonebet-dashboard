@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { styled } from "@mui/material/styles";
@@ -13,7 +13,10 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import classes from "./PaymentProviderTable.module.css";
 import { Avatar } from "@mui/material";
+import axios from "axios"
+import {getMethod} from "../../../../services/api-services"
 const PaymentProviderTable = () => {
+
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: "#505B72",
@@ -33,24 +36,17 @@ const PaymentProviderTable = () => {
       border: 0,
     },
   }));
-
- 
-
-  // const rows = [
-  //   createData(
-  //     1,
-  //     15,
-  //     "LION",
-  //     "xyz@gmail.com",
-  //     '555-555-5555',
-  //     "MMK",
-  //     <Stack spacing={1} direction="row" sx={{justifyContent: 'flex-end'}}>
-  //       <Button variant="contained">Edit</Button>
-  //       <Button variant="contained" color="success">Confirm</Button>
-  //   </Stack>
-  //   ),
-  // ];
-
+  // State
+  const [payment_provider,setPayment_provider] = useState([]);
+  const FetchPayment_type = async()=>{
+    const response = await  axios.request(getMethod(`/api/dashboard/payment-providers`));
+    console.log(response.data.data);
+    setPayment_provider(response.data.data);
+  }
+  
+  useEffect(()=>{
+    FetchPayment_type()
+  },[]);
 
   const Arr = [{id:"1",payment_type:"E-wallet",payment_provider:"Wave",provider_logo:"https://play-lh.googleusercontent.com/rPq4GMCZy12WhwTlanEu7RzxihYCgYevQHVHLNha1VcY5SU1uLKHMd060b4VEV1r-OQ"}];
  
@@ -82,16 +78,16 @@ const PaymentProviderTable = () => {
                   <StyledTableCell align="right">{row.action}</StyledTableCell>
                 </StyledTableRow>
               ))} */}
-              {Arr.map((row,index)=>(
+              {payment_provider.map((row,index)=>(
                    <StyledTableRow key={index}>
                     <StyledTableCell component="th" scope="row">
                     {row.id}
                   </StyledTableCell>
-                  <StyledTableCell align="center" >{row.payment_type}</StyledTableCell>
-                  <StyledTableCell align="center" >{row.payment_provider}</StyledTableCell>
+                  <StyledTableCell align="center" >{row.payment_type.name}</StyledTableCell>
+                  <StyledTableCell align="center" >{row.name}</StyledTableCell>
                   <StyledTableCell align="center" >
                       <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
-                      <Avatar style={{display:"flex",justifyContent:"center"}} src={row.provider_logo} variant="square" alt=""/>
+                      <Avatar style={{display:"flex",justifyContent:"center"}} src={row.logo} variant="square" alt=""/>
                       </div>
                       
                   </StyledTableCell>
