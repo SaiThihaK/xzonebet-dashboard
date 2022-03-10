@@ -66,6 +66,9 @@ import ADeposite from "./Dashboard/AgentDashboard/Page/Deposite/ADeposite";
 import MProfile from "./Dashboard/MasterDashboard/Page/Profile/MProfile";
 import { type } from "./services/Token";
 
+import EditProfile from "./Dashboard/MasterDashboard/Page/Profile/EditProfile/EditProfile";
+import TransferTo from "./Dashboard/MasterDashboard/Page/TransferTo/TransferTo";
+
 function App() {
   const DashboardRouting = () => {
     if (type === "admin") {
@@ -293,6 +296,7 @@ function App() {
             path="/payment-setting/payment-account"
             element={<PaymentAccount />}
           />
+
           <Route path="*" element={<Notfound />} />
         </Routes>
       );
@@ -308,6 +312,8 @@ function App() {
           />
           <Route exact path="/master/deposite" element={<MDeposite />} />
           <Route exact path="/master/profile" element={<MProfile />} />
+          <Route exact path="master/profile/edit" element={<EditProfile />} />
+          <Route exact path="/master/transfer-to" element={<TransferTo />} />
           <Route path="*" element={<Notfound />} />
         </Routes>
       );

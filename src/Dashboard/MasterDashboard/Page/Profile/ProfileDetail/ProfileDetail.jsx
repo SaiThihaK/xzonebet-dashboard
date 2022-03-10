@@ -1,10 +1,12 @@
 import { Button } from "@mui/material";
 import axios from "axios";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Card from "../../../../../components/UI/Card";
 import classes from "./ProfileDetail.module.css";
 
 const ProfileDetail = () => {
+  const navigate = useNavigate();
   return (
     <div>
         <div className={classes["agent-user-image-group"]}>
@@ -15,7 +17,7 @@ const ProfileDetail = () => {
         />
         </div>
         <div style={{display:"flex",justifyContent:"flex-end",marginBottom:10}}>
-          <Button variant="contained">Edit</Button>
+          <Button onClick={()=>navigate("/master/profile/edit")} variant="contained">Edit</Button>
         </div>
       <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",padding:10,width:"100%"}}>
           <Card>
