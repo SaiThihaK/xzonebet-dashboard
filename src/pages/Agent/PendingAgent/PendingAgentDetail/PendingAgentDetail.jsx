@@ -31,7 +31,7 @@ const PendingAgentDetail = () => {
   // Crypto
   const [coin,setCoin] = useState([]);
  
-  
+  console.log(pendingMaster)
   const {id} = useParams();
   const submitHandler = async(e)=>{
     e.preventDefault();
