@@ -1,23 +1,32 @@
 import { FormControl, Input, MenuItem, Select, TextField ,Button} from "@mui/material";
 import { width } from "@mui/system";
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 import Card from "../../../../components/UI/Card";
+import { getMethod } from "../../../../services/api-services";
 import classes from "./CreatePaymentProvider.module.css"
 import SelectCountries from "./SelectCountries";
 
 
  const CreatePaymentProvider =()=>{
-   const Arr = ["Mobile-banking","E-wallet","PayPal"];
-   const [payment_type,setPayment_type] = useState(Arr[0]);
-   const [payment_provider,setPayment_provider] = useState();
 
-   const payment_typeChange = (e)=>setPayment_type(e.target.value);
+   const [payment_type,setPayment_type] = useState([]);
+   const [payment_provider,setPayment_provider] = useState();
+   const [payment_typeValue,setPayment_typeValue] = useState('');
+
+   const payment_typeChange = (e)=>setPayment_typeValue(e.target.value);
    const payment_providerChange = (e)=>setPayment_provider(e.target.value);
 
-   const FetchPyament_type = async() =>{
-     
+   const FetchPayment_type = async() =>{
+     const response = await axios.request(getMethod(`/api/dashboard/payment-types`));
+     setPayment_type(response.data.data);
    }
+
+   useEffect(()=>{
+    FetchPayment_type();
+    return ()=>setPayment_type([]);
+   },[])
      return(
          <div className={classes["soccer-setting-container"]}>
          <Card>
@@ -27,10 +36,10 @@ import SelectCountries from "./SelectCountries";
           <div className={classes["card-body"]} style={{display:"flex",flexDirection:"column",padding:"0px 40px"}}>
            <FormControl  style={{marginTop:20}} fullWidth>
              <label>Payment Type</label>
-             <Select value={payment_type} size="small"style={{marginTop:10}} onChange={payment_typeChange}>
+             <Select value={payment_typeValue} size="small"style={{marginTop:10}} onChange={payment_typeChange}>
               {
-                Arr.map((a,index)=>(
-                  <MenuItem key={index} value={a}>{a}</MenuItem>
+                payment_type.map((a,index)=>(
+                  <MenuItem key={index} value={a.name}>{a.name}</MenuItem>
                 ))
               }
              </Select>

@@ -3,9 +3,10 @@ import { Button } from "@mui/material";
 
 import {useState} from "react";
 import classes from "./ABankAccount.module.css"
-import MPaymentAccountModal from "../../../../components/UI/Modal/MPaymentAccountModal/MPaymentAccountModal";
+
 import MPaymentAccountTable from "../../../MasterDashboard/Page/BankSetting/PaymentAccount/MPayMentAccountTable/MPaymentAccountTable";
 import Card from "../../../../components/UI/Card";
+import MPaymentAccountModal from "../../../../components/UI/Modal/MPaymentAccountModal/MPaymentAccountModal";
 
 
 const ABankAccount = ()=>{

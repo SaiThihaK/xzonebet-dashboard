@@ -5,6 +5,7 @@ import classes from "./MPaymentAccount.module.css"
 import MPaymentAccountTable from "./MPayMentAccountTable/MPaymentAccountTable";
 import MPaymentAccountModal from "../../../../../components/UI/Modal/MPaymentAccountModal/MPaymentAccountModal";
 
+
 const MPaymentAccount = ()=>{
 const [open,setOpen] = useState(false);
 const handleOpen = ()=>setOpen(true);
@@ -13,7 +14,7 @@ return(
     <div>
         <Card>
      <div className={classes["card-header"]}>
-          <h1 className={classes["card-title"]}>All Super Master</h1>
+          <h1 className={classes["card-title"]}>Payment Account</h1>
      </div>
      <div className={classes["card-body"]}>
          <div style={{display:"flex",justifyContent:"flex-end"}}>
