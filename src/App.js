@@ -330,7 +330,11 @@ function App() {
       return (
         <Routes>
           <Route exact path="/agent/bank-account" element={<ABankAccount />} />
-          <Route exact path="/agent/deposite" element={<ADeposite />} />
+          <Route
+            exact
+            path="/agent/deposite/user-deposite"
+            element={<ADeposite />}
+          />
           <Route path="*" element={<Notfound />} />
         </Routes>
       );

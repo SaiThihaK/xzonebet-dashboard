@@ -40,6 +40,7 @@ const Sidebar = () => {
     localStorage.removeItem('jToken');
     localStorage.removeItem('lToken');
     localStorage.removeItem('type');
+    window.location.assign("/")
     
     refreshPage();
   };

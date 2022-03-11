@@ -44,7 +44,7 @@ const CreateUnitTable = () => {
               <StyledTableCell align="right">Date</StyledTableCell>
               <StyledTableCell align="right">User Id</StyledTableCell>
               <StyledTableCell align="right">User Name</StyledTableCell>
-              <StyledTableCell align="right">Create</StyledTableCell>
+
               <StyledTableCell align="right">Amount</StyledTableCell>
             </TableRow>
           </TableHead>
@@ -57,7 +57,7 @@ const CreateUnitTable = () => {
                 <StyledTableCell align="right">{row[0]}</StyledTableCell>
                 <StyledTableCell align="right">{row[1]}</StyledTableCell>
                 <StyledTableCell align="right">{row[2]}</StyledTableCell>
-                <StyledTableCell align="right">{row[3]}</StyledTableCell>
+
                 <StyledTableCell align="right">{row[3]}</StyledTableCell>
           
         </StyledTableRow>

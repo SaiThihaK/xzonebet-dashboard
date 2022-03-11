@@ -22,7 +22,7 @@ const style = {
 export default function TransferToModal({
   handleClose,
   open,
-
+  toggleClose,
 }) {
  
   return (
@@ -53,6 +53,7 @@ export default function TransferToModal({
                 }}
                 onClick={() => {
                   handleClose();
+                  toggleClose();
                 }}
               >
                 Cancel

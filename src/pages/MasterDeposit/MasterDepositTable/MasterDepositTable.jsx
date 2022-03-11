@@ -15,11 +15,22 @@ import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getMethod, PostMethod } from "../../../services/api-services";
+import { FormControl, MenuItem, Select } from "@mui/material";
+import MasterDepositeConfirm from "../../../components/UI/Modal/MasterDeposite/MasterDepositeConfirm";
 const MasterDepositTable = () => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const [rowData,setRowData] = useState([]);
+  //  Comfirm
+  const [confirmOpen,setConfirmOpen] = useState(false);
+  const confirmOpenHandler = ()=>setConfirmOpen(true);
+  const confirmCloseHandler = ()=>setConfirmOpen(false);
+
+  // -----------------
+  const [ammount,setAmmount] = useState('');
+  const handleAmmount = (e)=>setAmmount(e.target.value);
+  console.log(ammount);
     const [id,setId] = useState(0);
     const alertToast = (message) => toast(message);
     const [num,setNum] = useState(0);
@@ -105,7 +116,9 @@ const MasterDepositTable = () => {
                 <StyledTableCell align="right">{row[5]}</StyledTableCell>
                 <StyledTableCell align="right">
                 <Stack spacing={1} direction="row" sx={{display:'block'}}>
-        <Button variant="contained" color="success" size="small" onClick={()=>confirmHandler(row[0])}>Confirm</Button>
+        <Button variant="contained" color="success" size="small" onClick={()=>{
+          confirmOpenHandler();setId(row[0])}
+          }>Confirm</Button>
         <Button variant="outlined" onClick={()=>{handleOpen();setId(row[0])}} color="error" size="small">Reject</Button>
          </Stack> 
         </StyledTableCell>
@@ -113,7 +126,8 @@ const MasterDepositTable = () => {
             ))}
           </TableBody>
         </Table>
-        <MasterDepositCancel open={open} handleClose={handleClose} setNum={setNum} id={id} num={num}/>
+        <MasterDepositCancel open={open} handleClose={handleClose} setNum={setNum} id={id} num={num} handleAmmount={handleAmmount} alertToast={alertToast}/>
+        <MasterDepositeConfirm open={confirmOpen} handleClose={confirmCloseHandler} setNum={setNum} num={num} submitHandler={confirmHandler} id={id}  />
       </TableContainer>
     </div>
   );

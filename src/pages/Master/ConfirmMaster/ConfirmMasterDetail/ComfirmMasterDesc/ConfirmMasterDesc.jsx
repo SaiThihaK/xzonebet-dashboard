@@ -25,6 +25,7 @@ const ComfirmMasterDesc = ({userInfo}) => {
 
    };
    }
+   console.log(userInfo);
   return (
     <div>
       <div className={classes["agent-user-image-group"]}>
@@ -39,7 +40,11 @@ const ComfirmMasterDesc = ({userInfo}) => {
         </div>
       </div>
       <div style={{ marginTop: "30px" }}>
+      <div className={classes["form-group-desc"]}>
+          <label htmlFor="">Unit </label>:<p>&nbsp;&nbsp;{userInfo.ammount}</p>
+        </div>
         <div className={classes["form-group-desc"]}>
+          
           <label htmlFor="">Email </label>:<p>&nbsp;&nbsp;{userInfo.email}</p>
         </div>
         <div className={classes["form-group-desc"]}>
@@ -54,6 +59,7 @@ const ComfirmMasterDesc = ({userInfo}) => {
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Currency </label>:<p>&nbsp;&nbsp;{userInfo.currency}</p>
         </div>
+        
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Transition Id </label>:<p>&nbsp;&nbsp;{userInfo.transition_id}</p>
         </div>
