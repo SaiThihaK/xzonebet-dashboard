@@ -28,7 +28,7 @@ const MAgent = () => {
                 />
               </div>
             </div>
-           <MAgentTable />
+           <MAgentTable Id="Agent ID" name="Agent Name" />
           </div>
         </div>
       </Card>

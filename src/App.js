@@ -70,6 +70,7 @@ import EditProfile from "./Dashboard/MasterDashboard/Page/Profile/EditProfile/Ed
 import TransferTo from "./Dashboard/MasterDashboard/Page/TransferTo/TransferTo";
 import MAgent from "./Dashboard/MasterDashboard/Page/Agent/MAgent";
 import TransitionHistory from "./Dashboard/MasterDashboard/Page/TransitionHistory/TransitionHistory";
+import ATransitionHistory from "./Dashboard/AgentDashboard/Page/TransitionHistory/ATransitionHistory";
 
 function App() {
   const DashboardRouting = () => {
@@ -307,6 +308,7 @@ function App() {
     if (type === "master") {
       return (
         <Routes>
+          <Route path="/" exact element={<Overview />} />
           <Route
             exact
             path="/master/bank-setting/payment-account"
@@ -329,11 +331,17 @@ function App() {
     if (type === "agent") {
       return (
         <Routes>
+          <Route path="/" exact element={<Overview />} />
           <Route exact path="/agent/bank-account" element={<ABankAccount />} />
           <Route
             exact
             path="/agent/deposite/user-deposite"
             element={<ADeposite />}
+          />
+          <Route
+            exact
+            path="/agent/transition-history"
+            element={<ATransitionHistory />}
           />
           <Route path="*" element={<Notfound />} />
         </Routes>
