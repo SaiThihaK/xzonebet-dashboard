@@ -11,6 +11,7 @@ import Stack from "@mui/material/Stack";
 
 import classes from "./MDepositeTable.module.css";
 import { Button, FormControl, MenuItem, Select } from "@mui/material";
+import Card from "../../UI/Card";
 
 const MDepositeTable = () => { 
 
@@ -56,6 +57,7 @@ const DummyArr = [
  }
   return (
     <div className={classes["table-margin"]}>
+      <Card>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
@@ -111,6 +113,7 @@ const DummyArr = [
           </TableBody>
         </Table>
       </TableContainer>
+      </Card>
     </div>
   );
 };

@@ -9,6 +9,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import classes from "./TransitionHistoryTable.module.css";
+import { Button } from "@mui/material";
 
 const TransitionHistoryTable = () => {
     const [open, setOpen] = useState(false);
@@ -41,13 +42,13 @@ const TransitionHistoryTable = () => {
             <TableRow>
               <StyledTableCell>No.</StyledTableCell>
               <StyledTableCell align="right">Date</StyledTableCell>
-              <StyledTableCell align="right">Name</StyledTableCell>
-              <StyledTableCell align="right">Deposite</StyledTableCell>
-              <StyledTableCell align="right">From</StyledTableCell>
+              <StyledTableCell align="right">Payment Type</StyledTableCell>
+              <StyledTableCell align="right">Payment Provider</StyledTableCell>
+              <StyledTableCell align="right">Ammount</StyledTableCell>
               <StyledTableCell align="right">
-                to
+                From
               </StyledTableCell>
-              <StyledTableCell align="right">Amount</StyledTableCell>
+              <StyledTableCell align="right">To</StyledTableCell>
               <StyledTableCell align="right">Status</StyledTableCell>
             </TableRow>
           </TableHead>
@@ -62,8 +63,11 @@ const TransitionHistoryTable = () => {
                 <StyledTableCell align="right">{row[2]}</StyledTableCell>
                 <StyledTableCell align="right">{row[3]}</StyledTableCell>
                 <StyledTableCell align="right">{row[3]}</StyledTableCell>
+                <StyledTableCell align="right">{row[3]}</StyledTableCell>
                 <StyledTableCell align="right">
-                  {row[4]}
+                  <Button  size="small" variant="contained">
+                  With Draw
+                  </Button>
                 </StyledTableCell>
         </StyledTableRow>
             ))}

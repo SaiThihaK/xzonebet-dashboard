@@ -10,8 +10,9 @@ import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 
 import classes from "./MAgentTable.module.css";
+import { Button } from "@mui/material";
 
-const MAgentTable = () => {
+const MAgentTable = ({Id,name}) => {
     const [open, setOpen] = useState(false);
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -41,14 +42,11 @@ const MAgentTable = () => {
           <TableHead>
             <TableRow>
               <StyledTableCell>No.</StyledTableCell>
-              <StyledTableCell align="right">ID</StyledTableCell>
-              <StyledTableCell align="right">Agent</StyledTableCell>
-              <StyledTableCell align="right">Name</StyledTableCell>
-              <StyledTableCell align="right">Deposite</StyledTableCell>
-              <StyledTableCell align="right">Amount</StyledTableCell>
-              <StyledTableCell align="right">
-                Detail
-              </StyledTableCell>
+              <StyledTableCell align="right">Date</StyledTableCell>
+              <StyledTableCell align="right">{Id}</StyledTableCell>
+              <StyledTableCell align="right">{name}</StyledTableCell>
+              <StyledTableCell align="right">Deposite Ammount</StyledTableCell>
+              <StyledTableCell align="right">Status</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -59,11 +57,10 @@ const MAgentTable = () => {
                 </StyledTableCell>
                 <StyledTableCell align="right">{row[0]}</StyledTableCell>
                 <StyledTableCell align="right">{row[1]}</StyledTableCell>
+                <StyledTableCell align="right">{row[1]}</StyledTableCell>
                 <StyledTableCell align="right">{row[2]}</StyledTableCell>
-                <StyledTableCell align="right">{row[3]}</StyledTableCell>
-                <StyledTableCell align="right">{row[3]}</StyledTableCell>
                 <StyledTableCell align="right">
-                  {row[4]}
+                  <Button size="small" variant="contained" color="success">pending</Button>
                 </StyledTableCell>
         </StyledTableRow>
             ))}

@@ -13,10 +13,11 @@ return(
           <h1 className={classes["card-title"]}>Deposite</h1>
      </div>
      <div className={classes["card-body"]}>
-    
+     <MDepositeTable />
     </div>
-    <MDepositeTable />
+   
         </Card>
+        
     </div>
 )
 
