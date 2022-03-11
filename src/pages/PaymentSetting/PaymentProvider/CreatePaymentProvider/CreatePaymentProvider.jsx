@@ -9,6 +9,7 @@ import classes from "./CreatePaymentProvider.module.css"
 import SelectCountries from "./SelectCountries";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import SelectCoun from "./SelectCoun";
 
 
 
@@ -81,6 +82,7 @@ import 'react-toastify/dist/ReactToastify.css';
              <TextField style={{border:"none"}}  variant="standard" type="file" accept="image/png, image/jpeg" onChange={logoChange} />
             </FormControl>
              {/* <SelectCountries /> */}
+             <SelectCoun />
                <Button variant="contained" onClick={submitHandler} style={{marginTop:20}} fullWidth>Create</Button>
            </div>
          </Card>

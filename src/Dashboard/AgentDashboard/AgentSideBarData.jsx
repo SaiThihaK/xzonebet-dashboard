@@ -84,7 +84,7 @@ export const AgentSidebarData = [
     },
     {
         title: 'Transition History',
-        path: '/agent//transition-history',
+        path: '/agent/transition-history',
         icon: <FaIcons.FaLayerGroup />,
         iconClosed: <RiIcons.RiArrowDownSFill/>,
         iconOpened: <RiIcons.RiArrowUpSFill/>,
@@ -128,7 +128,16 @@ export const AgentSidebarData = [
     {
         title: "Deposite",
         path: "/agent/deposite",
-        icon: <RiIcons.RiAccountPinCircleFill/>
+        icon: <AiIcons.AiFillSetting />,
+        iconClosed: <RiIcons.RiArrowDownSFill/>,
+        iconOpened: <RiIcons.RiArrowUpSFill/>,
+        subNav : [
+            {
+                title: 'User Deposite',
+                path: '/agent/deposite/user-deposite',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+        ]
     },
     {
         title: "Bank Account",

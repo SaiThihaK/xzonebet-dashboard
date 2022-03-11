@@ -6,9 +6,12 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
+import { PostMethod } from "../../../../services/api-services";
+import { toast } from "react-toastify";
 
-const MasterDepositCancel = ({ open, handleClose,setNum,id,num}) => {
+const MasterDepositCancel = ({ open, handleClose,setNum,id,num,alertToast}) => {
   const [accounting_remark,setAccounting_remark] = useState("");
+
   const style = {
     position: "absolute",
     top: "50%",
@@ -27,18 +30,24 @@ const MasterDepositCancel = ({ open, handleClose,setNum,id,num}) => {
     return;
   }
   try{
-  const {data} = await axios.post(
-  `https://lapi.xzonebet.com/api/affiliate-register-lists/deposit-rejet/${id}`,
+  const {data} = await axios.request(
+  PostMethod(`/api/affiliate-register-lists/deposit-rejet/${id}`,
   {accounting_remark:accounting_remark}
-  );
-  
+  ));
+  console.log(data);
   if(data.status="success"){
     handleClose();
     setNum(num+1);
+    alertToast(data.message);
+    return;
+  }
+  if(data.status="error"){
+    handleClose();
+    // alertToast(data.message);
     return;
   }
   }catch(error){
-    // console.log(error);
+    console.log(error);
     return;
   }
   }

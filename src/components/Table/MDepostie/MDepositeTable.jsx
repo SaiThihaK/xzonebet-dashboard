@@ -13,12 +13,15 @@ import classes from "./MDepositeTable.module.css";
 import { Button, FormControl, MenuItem, Select } from "@mui/material";
 
 const MDepositeTable = () => { 
-   const [toggle,setToggle] = useState(false);
-   const handleOpen = ()=>setToggle(true);
-   const handleClose = ()=>setToggle(false);
+
    const [value,setValue] = useState("");
-
-
+   const [ID,setID] = useState(null);
+   const [toggle,setToggle] = useState(false);
+const DummyArr = [
+  {id:"1",name:"Yoshi",provider:"K-pay",ammount:"3000",phone:"0934387483",transiitionId:"342834283",status:"active",payment_date:"22/3/2022"},
+  {id:"2",name:"Yoshi",provider:"K-pay",ammount:"3000",phone:"0934387483",transiitionId:"342834283",status:"active",payment_date:"22/3/2022"},
+  {id:"3",name:"Yoshi",provider:"K-pay",ammount:"3000",phone:"0934387483",transiitionId:"342834283",status:"active",payment_date:"22/3/2022"}
+]
    const onChangeValue = (e)=>setValue(e.target.value);
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -39,7 +42,18 @@ const MDepositeTable = () => {
       border: 0,
     },
   }));
- 
+ const handleClick = (id)=>{
+   setID(id);
+   if(id===ID){
+     setToggle(true);
+   }
+
+ const handleClose = (id)=>{
+   if(id===ID){
+     setToggle(false);
+   }
+ }
+ }
   return (
     <div className={classes["table-margin"]}>
       <TableContainer component={Paper}>
@@ -60,13 +74,13 @@ const MDepositeTable = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-           
-              <StyledTableRow >
+           {DummyArr.map((a,index)=>(
+              <StyledTableRow key={index}>
                 <StyledTableCell component="th" scope="row">
-                1
+                {index+1}
                 </StyledTableCell>
-                <StyledTableCell align="left">1003</StyledTableCell>
-                <StyledTableCell align="left">Wai Yan</StyledTableCell>
+                <StyledTableCell align="left">{a.id}</StyledTableCell>
+                <StyledTableCell align="left">{a.name}</StyledTableCell>
                 <StyledTableCell align="left">K-pay</StyledTableCell>
                 <StyledTableCell align="left">30000</StyledTableCell>
                 <StyledTableCell align="left">093468326</StyledTableCell>
@@ -74,18 +88,17 @@ const MDepositeTable = () => {
                 345353536
                 </StyledTableCell>
                 <StyledTableCell align="left">
-  
-                 {!toggle &&   <Button onClick={handleOpen}   size="small" color="success" variant="contained">Pending</Button>}
                  {
-                     toggle && 
-                     <FormControl style={{display:"flex",flexDirection:"column"}}>
+                     ID !==a.id ?
+                     (<Button onClick={()=>handleClick(a.id)}   size="small" color="success" variant="contained">Pending</Button>)
+                     :(<FormControl style={{display:"flex",flexDirection:"column"}}>
                      <Select value={value} onChange={onChangeValue} size="small">
                          <MenuItem value="pending">Pending</MenuItem>
                          <MenuItem value="approve">Approve</MenuItem>
                          <MenuItem value="reject">Reject</MenuItem>
                      </Select>
-                     <Button onClick={handleClose}>Confirm</Button>
-                     </FormControl>
+                     <Button onClick={()=>{setID(null)}}>Confirm</Button>
+                     </FormControl>)
                  }
                
                 </StyledTableCell>
@@ -93,41 +106,8 @@ const MDepositeTable = () => {
                  22-3-2022
                 </StyledTableCell>
         </StyledTableRow>
+                  ))}
         {/* --------------------------------------------------Test */}
-        <StyledTableRow >
-                <StyledTableCell component="th" scope="row">
-                1
-                </StyledTableCell>
-                <StyledTableCell align="left">1003</StyledTableCell>
-                <StyledTableCell align="left">Wai Yan</StyledTableCell>
-                <StyledTableCell align="left">K-pay</StyledTableCell>
-                <StyledTableCell align="left">30000</StyledTableCell>
-                <StyledTableCell align="left">093468326</StyledTableCell>
-                <StyledTableCell align="left">
-                345353536
-                </StyledTableCell>
-                <StyledTableCell align="left">
-  
-                 {!toggle &&   <Button onClick={handleOpen}   size="small" color="success" variant="contained">Pending</Button>}
-                 {
-                     toggle && 
-                     <FormControl style={{display:"flex",flexDirection:"column"}}>
-                     <Select value={value} onChange={onChangeValue} size="small">
-                         <MenuItem value="pending">Pending</MenuItem>
-                         <MenuItem value="approve">Approve</MenuItem>
-                         <MenuItem value="reject">Reject</MenuItem>
-                     </Select>
-                     <Button onClick={handleClose}>Confirm</Button>
-                     </FormControl>
-                 }
-               
-                </StyledTableCell>
-                <StyledTableCell align="left">
-                 22-3-2022
-                </StyledTableCell>
-        </StyledTableRow>
-
-
           </TableBody>
         </Table>
       </TableContainer>
