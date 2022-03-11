@@ -93,6 +93,40 @@ const MDepositeTable = () => {
                  22-3-2022
                 </StyledTableCell>
         </StyledTableRow>
+        {/* --------------------------------------------------Test */}
+        <StyledTableRow >
+                <StyledTableCell component="th" scope="row">
+                1
+                </StyledTableCell>
+                <StyledTableCell align="left">1003</StyledTableCell>
+                <StyledTableCell align="left">Wai Yan</StyledTableCell>
+                <StyledTableCell align="left">K-pay</StyledTableCell>
+                <StyledTableCell align="left">30000</StyledTableCell>
+                <StyledTableCell align="left">093468326</StyledTableCell>
+                <StyledTableCell align="left">
+                345353536
+                </StyledTableCell>
+                <StyledTableCell align="left">
+  
+                 {!toggle &&   <Button onClick={handleOpen}   size="small" color="success" variant="contained">Pending</Button>}
+                 {
+                     toggle && 
+                     <FormControl style={{display:"flex",flexDirection:"column"}}>
+                     <Select value={value} onChange={onChangeValue} size="small">
+                         <MenuItem value="pending">Pending</MenuItem>
+                         <MenuItem value="approve">Approve</MenuItem>
+                         <MenuItem value="reject">Reject</MenuItem>
+                     </Select>
+                     <Button onClick={handleClose}>Confirm</Button>
+                     </FormControl>
+                 }
+               
+                </StyledTableCell>
+                <StyledTableCell align="left">
+                 22-3-2022
+                </StyledTableCell>
+        </StyledTableRow>
+
 
           </TableBody>
         </Table>

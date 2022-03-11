@@ -15,14 +15,19 @@ import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getMethod, PostMethod } from "../../../services/api-services";
+import { FormControl, MenuItem, Select } from "@mui/material";
 const MasterDepositTable = () => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const [rowData,setRowData] = useState([]);
+    const [toggle,setToggle] =  useState(false);
     const [id,setId] = useState(0);
     const alertToast = (message) => toast(message);
     const [num,setNum] = useState(0);
+
+    const toggleOpen = ()=>setToggle(true);
+    const toggleClose = ()=>setToggle(false);
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: "#505B72",
