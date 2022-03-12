@@ -28,9 +28,8 @@ return(
         <TableHead>
             <TableRow></TableRow>
           </TableHead>
-          <TableBody>
-            {
-                coin.map((c,index)=>(
+          (<TableBody>
+                {coin.map((c,index)=>(
               <TableRow key={index}>
                   <TableCell align="left">
                     <div style={{display:"flex"}}>
@@ -47,9 +46,8 @@ return(
                    {c.current_price}&nbsp;USD
                   </TableCell>
               </TableRow>   
-                ))
-            }
-          </TableBody>
+                ))}
+          </TableBody>) 
         </Table>
         </TableContainer>
     </div>
