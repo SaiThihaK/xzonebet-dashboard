@@ -73,6 +73,7 @@ import TransitionHistory from "./Dashboard/MasterDashboard/Page/TransitionHistor
 import ATransitionHistory from "./Dashboard/AgentDashboard/Page/TransitionHistory/ATransitionHistory";
 import AffiliateAgentSetting from "./pages/Setting/AffiliateAgentSetting/AffiliateAgentSetting";
 import AffiliateAgentPercentage from "./pages/Setting/AffiliateAgentSetting/AffiliateAgentPercentage/AffiliateAgentPercentage";
+import AffiliateUserPercentage from "./pages/Setting/AffiliateAgentSetting/AffiliateUserPercentage/AffiliateUserPercentage.jsx";
 
 function App() {
   const DashboardRouting = () => {
@@ -119,6 +120,10 @@ function App() {
           <Route
             path="setting/affiliate-agent-setting/affiliate-agent-percentage"
             element={<AffiliateAgentPercentage />}
+          />
+          <Route
+            path="setting/affiliate-agent-setting/affiliate-user-percentage"
+            element={<AffiliateUserPercentage />}
           />
           <Route path="/betlist/football" exact element={<Football />} />
           <Route path="/betlist/2d" exact element={<Twod />} />
