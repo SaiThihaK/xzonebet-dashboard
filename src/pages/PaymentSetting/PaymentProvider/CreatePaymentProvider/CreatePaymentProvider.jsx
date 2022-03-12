@@ -55,6 +55,8 @@ import SelectCoun from "./SelectCoun";
      console.log(error);
    }
    };
+   
+   console.log(payment_typeValue)
      return(
          <div className={classes["soccer-setting-container"]}>
            <ToastContainer />

@@ -33,7 +33,6 @@ const BecomeAnAgent = () => {
           <Grid container spacing={3}>
              {pending.length !==0 ? pending.map((user)=>(<AgentCard 
              key={user.id} user={user} num={num} setNum={setNum} alertToast={alertToast} />)) 
-      
              :<div
              style={{display:"flex",justifyContent:"center",alignItems:"center",width:"100%",marginTop:30}} 
               ><CircularProgress size={100} thickness={1}/></div>}
