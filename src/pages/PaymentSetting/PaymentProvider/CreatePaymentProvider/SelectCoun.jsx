@@ -20,18 +20,7 @@ const MenuProps = {
   },
 };
 
-const names = [
-  'Oliver Hansen',
-  'Van Henry',
-  'April Tucker',
-  'Ralph Hubbard',
-  'Omar Alexander',
-  'Carlos Abbott',
-  'Miriam Wagner',
-  'Bradley Wilkerson',
-  'Virginia Andrews',
-  'Kelly Snyder',
-];
+
 
 export default function SelectCoun() {
   const [personName, setPersonName] = React.useState([]);
@@ -62,23 +51,25 @@ export default function SelectCoun() {
   };
 
   return (
-    <div>
-      <FormControl sx={{ m: 1, width: 300 }}>
-        <InputLabel id="demo-multiple-checkbox-label">Tag</InputLabel>
+    <div style={{marginTop:20}}>
+      <FormControl sx={{ width:"100%" }}>
+        <label>Select Country</label>
         <Select
           labelId="demo-multiple-checkbox-label"
           id="demo-multiple-checkbox"
           multiple
-          value={personName}
+          value={personName.map((p)=>p.name)}
+          size="small"
           onChange={handleChange}
-          input={<OutlinedInput label="Tag" />}
           renderValue={(selected) => selected.join(', ')}
           MenuProps={MenuProps}
         >
           {coun.map((name,index) => (
             <MenuItem key={index} value={name}>
               <Checkbox checked={personName.indexOf(name) > -1} />
-              <ListItemText primary={name.name} />
+              <ListItemText value={name.name}>
+                 {name.name} 
+             </ListItemText>
             </MenuItem>
           ))}
         </Select>

@@ -73,25 +73,7 @@ export const SidebarData = [
         path: "/HR",
         icon: <FaIcons.FaUserFriends/>
     },
-    {
-        title: 'Setting',
-        path: '/setting',
-        icon: <AiIcons.AiFillSetting />,
-        iconClosed: <RiIcons.RiArrowDownSFill/>,
-        iconOpened: <RiIcons.RiArrowUpSFill/>,
-        subNav : [
-            {
-                title: 'Game Setting',
-                path: '/setting/game-setting',
-                icon: <IoIcons.IoIosArrowForward />,
-            },
-            {
-                title: 'Soccer Setting',
-                path: '/setting/soccer-setting',
-                icon: <IoIcons.IoIosArrowForward />,
-            },
-        ]
-    },
+    
     {
         title: 'Payment Setting',
         path: '/payment-setting',
@@ -180,6 +162,30 @@ export const SidebarData = [
         title: "Become An Agent",
         path: "/become-an-agent",
         icon: <RiIcons.RiAccountPinCircleFill/>
+    },
+    {
+        title: 'Setting',
+        path: '/setting',
+        icon: <AiIcons.AiFillSetting />,
+        iconClosed: <RiIcons.RiArrowDownSFill/>,
+        iconOpened: <RiIcons.RiArrowUpSFill/>,
+        subNav : [
+            {
+                title: 'Game Setting',
+                path: '/setting/game-setting',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+            {
+                title: 'Soccer Setting',
+                path: '/setting/soccer-setting',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+            {
+                title: 'Affiliate Agent Setting',
+                path: '/setting/affiliate-agent-setting',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+        ]
     },
     
 ]
