@@ -74,13 +74,14 @@ import ATransitionHistory from "./Dashboard/AgentDashboard/Page/TransitionHistor
 import AffiliateAgentSetting from "./pages/Setting/AffiliateAgentSetting/AffiliateAgentSetting";
 import AffiliateAgentPercentage from "./pages/Setting/AffiliateAgentSetting/AffiliateAgentPercentage/AffiliateAgentPercentage";
 import AffiliateUserPercentage from "./pages/Setting/AffiliateAgentSetting/AffiliateUserPercentage/AffiliateUserPercentage.jsx";
+import Dashboard from "./pages/Dashboard/Dashboard";
 
 function App() {
   const DashboardRouting = () => {
     if (type === "admin") {
       return (
         <Routes>
-          <Route path="/" exact element={<Overview />} />
+          <Route path="/" exact element={<Dashboard />} />
           <Route path="/setting/game-setting" exact element={<GameSetting />} />
           <Route
             path="/setting/soccer-setting"
