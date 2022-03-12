@@ -20,16 +20,15 @@ const AffiliateUserPercentage = () => {
     <div className={classes["soccer-setting-container"]}>
       <Card>
         <div className={classes["card-header"]}>
-          <h1 className={classes["card-title"]}>Affiliate Agent Percentage</h1>
+          <h1 className={classes["card-title"]}>Affiliate User Percentage</h1>
         </div>
         <div className={classes["card-body"]}>
           {
             Arr.map((i,index)=>(
             <div key={index} className={classes["soccer-setting-content-flex"]}>
-           {!open && id !== i.id ?(<h2 style={{marginRight:50}}>{i.percentage}%</h2>) 
-           :(<FormControl sx={{width:500}}>
+           {open && id === i.id ? (<FormControl sx={{width:500}}>
            <TextField size="small" onChange={(e)=>setValue(e.target.value)} />
-           </FormControl>)}
+           </FormControl>) :(<h2 style={{marginRight:50}}>{i.percentage}%</h2>)}
             {open && id === i.id ?
             (<Stack spacing={2} direction="row" >
         <Button variant='contained' onClick={()=>
