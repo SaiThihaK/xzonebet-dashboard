@@ -139,7 +139,8 @@ export const AgentSidebarData = [
             },
             {
                 title:"Agent Deposite",
-                path:'/agent/deposite/agent-deposite'
+                path:'/agent/deposite/agent-deposite',
+                icon: <IoIcons.IoIosArrowForward />,              
             }
         ]
     },
