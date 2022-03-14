@@ -3,19 +3,18 @@ import classes from "./AgentDeposite.module.css"
 import Card from '../../../../../components/UI/Card';
 import axios from 'axios';
 import { getMethod } from '../../../../../services/api-services';
-import { List, ListItemButton, ListItemText } from '@mui/material';
-
-const drawerWidth = 240;
+import {  List, ListItemButton, ListItemText,Item,} from '@mui/material';
+import {Col, Row} from "react-bootstrap"
 
 export default function AgentDeposite() {
 const [provider,setProvider] = React.useState([]);
 const [paymentType,setPaymentType] = React.useState([]);
-const [paymentId,setPaymentId] = React.useState('');
+const [paymentId,setPaymentId] = React.useState(1);
 
 const fetchProviders = async()=>{
 const {data} = await axios.request(getMethod(`/api/dashboard/payment-providers`));
-
-setProvider(data);
+console.log(data.data)
+setProvider(data.data);
 }
 
 const fetchPaymentType = async()=>{
@@ -32,10 +31,16 @@ React.useEffect(()=>{
         setPaymentType([]);
     }
 },[]);
-console.log(paymentId)
+const FilterPayment_Provider = provider.filter((c)=>c.payment_type_id === paymentId);
+
+console.log(FilterPayment_Provider)
   return (
-    <div className={classes['grid-container']}>
-    
+      <div>
+          <div className={classes["card-header"]}>
+          <h1 className={classes["card-title"]}>Agent Deposite</h1>
+     </div>
+    <Row>
+    <Col xs={4}>
         <Card>
      <div className={classes["card-header"]}>
           <h1 className={classes["card-title"]}>Payment Type</h1>
@@ -46,19 +51,50 @@ console.log(paymentId)
     >
         {paymentType.map((payment,index)=>(
             <ListItemButton key={index} onClick={()=>{
-                setPaymentId(paymentType.id);
-            }}>
+                setPaymentId(payment.id)
+            }}
+            sx={{marginBottom:1}}
+            style={paymentId== payment.id ?  {borderLeft:"3px solid rgb(255, 0, 0)"}: {}}
+            >
                 <ListItemText primary={payment.name} />
             </ListItemButton>
         ))}
     </List>
         </Card>
+        </Col>
+        <Col xs={8}>
         <Card>
      <div className={classes["card-header"]}>
           <h1 className={classes["card-title"]}>Payment Provider</h1>
      </div>
+     <Row className={classes['prov-container']}  style={{ width: "100%" }}>
+  {
+      FilterPayment_Provider && FilterPayment_Provider.map((prov,index)=>(
+
+          <Col 
+              className={classes['prov']}
+              xs={4}
+              sm={4}
+              md={4}
+              lg={3}
+              xl={3}
+              key={index}>
+              <Card>
+              <img src={prov.logo ? prov.logo : "https://cdn.logojoy.com/wp-content/uploads/2018/05/30160306/447.png"} 
+              alt="provider_logo"   width="100%" />
+              <div className={classes['prov-title']}>
+              <span>{prov.name}</span>
+              </div>
+              </Card>
+ 
+          </Col>
+        
+      ))
+  }
+       </Row>
     </Card>
+    </Col>
+    </Row>
     </div>
-      
   );
 }
