@@ -46,6 +46,6 @@
 .data-time-container {
   margin-top: 20px;
   display: flex;
-  justify-content: flex-end;
-  padding-right: 30px;
+  justify-content: center;
+  margin-bottom: 30px;
 }
