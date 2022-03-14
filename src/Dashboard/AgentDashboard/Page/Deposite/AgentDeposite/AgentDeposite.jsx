@@ -3,8 +3,11 @@ import classes from "./AgentDeposite.module.css"
 import Card from '../../../../../components/UI/Card';
 import axios from 'axios';
 import { getMethod } from '../../../../../services/api-services';
-import {  List, ListItemButton, ListItemText,Item,} from '@mui/material';
+import {  List, ListItemButton, ListItemText,ListItemIcon} from '@mui/material';
 import {Col, Row} from "react-bootstrap"
+import PaymentIcon from '@mui/icons-material/Payment';
+
+
 
 export default function AgentDeposite() {
 const [provider,setProvider] = React.useState([]);
@@ -13,14 +16,14 @@ const [paymentId,setPaymentId] = React.useState(1);
 
 const fetchProviders = async()=>{
 const {data} = await axios.request(getMethod(`/api/dashboard/payment-providers`));
-console.log(data.data)
+// console.log(data.data)
 setProvider(data.data);
 }
 
 const fetchPaymentType = async()=>{
 const {data} = await axios.request(getMethod("/api/dashboard/payment-types"));
 setPaymentType(data.data);
-console.log(data.data);
+// console.log(data.data);
 }
 
 React.useEffect(()=>{
@@ -33,7 +36,7 @@ React.useEffect(()=>{
 },[]);
 const FilterPayment_Provider = provider.filter((c)=>c.payment_type_id === paymentId);
 
-console.log(FilterPayment_Provider)
+// console.log(FilterPayment_Provider)
   return (
       <div>
           <div className={classes["card-header"]}>
@@ -56,6 +59,9 @@ console.log(FilterPayment_Provider)
             sx={{marginBottom:1}}
             style={paymentId== payment.id ?  {borderLeft:"3px solid rgb(255, 0, 0)"}: {}}
             >
+                <ListItemIcon>
+                    <PaymentIcon/>
+                </ListItemIcon>
                 <ListItemText primary={payment.name} />
             </ListItemButton>
         ))}
