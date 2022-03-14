@@ -75,6 +75,7 @@ import AffiliateAgentSetting from "./pages/Setting/AffiliateAgentSetting/Affilia
 import AffiliateAgentPercentage from "./pages/Setting/AffiliateAgentSetting/AffiliateAgentPercentage/AffiliateAgentPercentage";
 import AffiliateUserPercentage from "./pages/Setting/AffiliateAgentSetting/AffiliateUserPercentage/AffiliateUserPercentage.jsx";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import AgentDeposite from "./Dashboard/AgentDashboard/Page/Deposite/AgentDeposite/AgentDeposite";
 
 function App() {
   const DashboardRouting = () => {
@@ -354,6 +355,11 @@ function App() {
             exact
             path="/agent/deposite/user-deposite"
             element={<ADeposite />}
+          />
+          <Route
+            exact
+            path="/agent/deposite/agent-deposite"
+            element={<AgentDeposite />}
           />
           <Route
             exact

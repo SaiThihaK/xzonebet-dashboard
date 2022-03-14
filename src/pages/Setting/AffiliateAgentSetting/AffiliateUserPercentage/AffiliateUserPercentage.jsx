@@ -9,7 +9,7 @@ const AffiliateUserPercentage = () => {
     const handleOpen = ()=>setOpen(true);
     const handleClose = ()=>setOpen(false);
 
-    const Arr = [{id:1,percentage:"30"},{id:2,percentage:"40"},{id:3,percentage:"70"},{id:4,percentage:"90"}]
+    const Arr = [{id:1,name:"A",percentage:"30"},{id:2,name:"B",percentage:"40"},{id:3,name:"C",percentage:"70"},{id:4,name:"D",percentage:"90"},{id:5,name:"E",percentage:"90"}]
 
     const [percentage,setPercentage] = useState("30");
     const [value,setValue] = useState('');
@@ -26,6 +26,7 @@ const AffiliateUserPercentage = () => {
           {
             Arr.map((i,index)=>(
             <div key={index} className={classes["soccer-setting-content-flex"]}>
+              <h2>{i.name}</h2>
            {open && id === i.id ? (<FormControl sx={{width:500}}>
            <TextField size="small" onChange={(e)=>setValue(e.target.value)} />
            </FormControl>) :(<h2 style={{marginRight:50}}>{i.percentage}%</h2>)}

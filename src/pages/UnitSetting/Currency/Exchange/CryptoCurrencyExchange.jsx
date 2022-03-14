@@ -28,7 +28,7 @@ return(
         <TableHead>
             <TableRow></TableRow>
           </TableHead>
-          (<TableBody>
+          <TableBody>
                 {coin.map((c,index)=>(
               <TableRow key={index}>
                   <TableCell align="left">
@@ -47,7 +47,7 @@ return(
                   </TableCell>
               </TableRow>   
                 ))}
-          </TableBody>) 
+          </TableBody>
         </Table>
         </TableContainer>
     </div>

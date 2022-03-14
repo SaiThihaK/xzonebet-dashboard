@@ -1,4 +1,4 @@
-import { Stack } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 import React, { useState } from 'react';
 import ProfitLossChart from '../../components/Chart/ProfitLossChart/ProfitLossChart';
 import Card from '../../components/UI/Card';
@@ -7,9 +7,10 @@ import classes from './Dashboard.module.css';
 import TextField from '@mui/material/TextField';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
+import {DateRangePicker} from "@mui/lab"
 
 const Dashboard = () => {
+  const [value, setValue] = React.useState([null, null]);
 
   return (
     <div className={classes["soccer-setting-container"]}>
@@ -33,12 +34,22 @@ const Dashboard = () => {
         </div>
         <div className={classes["data-time-container"]}>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <DesktopDatePicker
-          label="Date desktop"
-          inputFormat="MM/dd/yyyy"
-          renderInput={(params) => <TextField {...params} size="small" />}
-        />
-        </LocalizationProvider>
+      <DateRangePicker
+        startText="Check-in"
+        endText="Check-out"
+        value={value}
+        onChange={(newValue) => {
+          setValue(newValue);
+        }}
+        renderInput={(startProps, endProps) => (
+          <React.Fragment>
+            <TextField {...startProps}  variant="standard" />
+            <Box sx={{ mx: 2 }}> to </Box>
+            <TextField {...endProps}  variant="standard"  />
+          </React.Fragment>
+        )}
+      />
+    </LocalizationProvider>
         </div>
         <ProfitLossChart />
       </Card>
