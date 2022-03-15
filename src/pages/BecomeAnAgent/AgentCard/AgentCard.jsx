@@ -75,8 +75,6 @@ const AgentCard = ({
             <Select
               value={age}
               onChange={handleChange}
-              displayEmpty
-              inputProps={{ "aria-label": "Without label" }}
               size="small"
               sx={{ backgroundColor: "#f3f3f3" }}
             >
