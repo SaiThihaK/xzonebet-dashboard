@@ -66,6 +66,9 @@ const Sidebar = () => {
       <div className={classes.container}>
         <ul className={classes["header-noti-icons"]}>
           <li>
+            <div id="google"></div>
+          </li>
+          <li>
             <button className={classes['header-icon']}>
               <AiIcons.AiOutlineBell color="#9b9b9b" size="23px" />
               <span>10</span>
