@@ -32,7 +32,7 @@
 
 #           script: |
 
-#             cd /var/www/xzonebet.com
+#             cd /var/www/dashboard.xzonebet.com
 
 #             git restore .
 
@@ -46,6 +46,6 @@
 
 #             npm run build
 
-#             scp -r ./build/* root@137.184.129.228:/var/www/xzonebet.com
+#             scp -r ./build/* root@137.184.129.228:/var/www/dashboard.xzonebet.com
 
             
