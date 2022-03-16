@@ -22,13 +22,13 @@ const PandingMasterDetail = () => {
   const  [currency,setCurrency] = useState("");
   const alertToast = (message) =>toast(message);
   // Enjoyment
+  const [superMaster,setSuperMaster] = useState("");
   const [username,setUserName] = useState("");
   const [password,setPassword] = useState("");
   const [deposit_percent,setDeposite_percent] = useState("");
   const [withdraw_percent,setWidthDraw_percent] = useState("");
   // Crypto
-  const [coin,setCoin] = useState([]);
- 
+
   
   const {id} = useParams();
   const submitHandler = async(e)=>{
@@ -83,6 +83,8 @@ const PandingMasterDetail = () => {
   const handleChange = (event) => {
     setAge(event.target.value);
   };
+
+  const supMaster = [{id:"1",name:"J-me"},{id:"2",name:"Mr.Harry Potter"},{id:"3",name:"Mr.Willson"}];
   // const fetchCrypto = async()=>{
   //   const {data} = await axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=100&page=1&sparkline=false");
   //   setCoin(data);
@@ -209,6 +211,29 @@ const PandingMasterDetail = () => {
             <div>
               <div>
                 <form action="" style={{ width: "400px" }}>
+                <div className={classes["form-group-desc"]}>
+                    <label htmlFor="">Choose SuperMaster</label>:
+                    <p>
+                      &nbsp;&nbsp;
+                      {/* <input type="text" /> */}
+                      <Select
+                        id="standard-basic"
+                        label="Super Master"
+                        sx={{ width: 200 }}
+                        variant="standard"
+                        value={superMaster}
+                        onChange={(e)=>setSuperMaster(e.target.value)}
+                      >
+                      {
+                        supMaster.map((sup,index)=>(
+                          <MenuItem key={index} value={sup.id}>
+                            {sup.name}
+                          </MenuItem>
+                        ))
+                      }
+                      </Select>
+                    </p>
+                  </div>
                   <div className={classes["form-group-desc"]}>
                     <label htmlFor="">User Name </label>:
                     <p>

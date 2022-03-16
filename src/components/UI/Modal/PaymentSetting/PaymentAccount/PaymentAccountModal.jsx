@@ -5,7 +5,7 @@ import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { FormControl,Select,MenuItem, TextField, Input, Avatar } from "@mui/material";
+import { FormControl,Select,MenuItem, TextField, Avatar } from "@mui/material";
 import axios from "axios";
 import { getMethod } from "../../../../../services/api-services";
 const style = {
@@ -80,7 +80,6 @@ export default function PaymentAccountModal({
             <label>Select Payment Type</label>
             <Select
               value={payment_typeValue}
-              inputProps={{ "aria-label": "Without label" }}
               size="small"
               style={{marginBottom:30}}
               sx={{ backgroundColor: "#f3f3f3" }}
