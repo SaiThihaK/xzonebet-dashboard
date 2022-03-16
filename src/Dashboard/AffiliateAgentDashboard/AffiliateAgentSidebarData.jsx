@@ -4,9 +4,9 @@ import * as AiIcons from 'react-icons/ai';
 import * as IoIcons from 'react-icons/io';
 import * as RiIcons from 'react-icons/ri';
 
-export const AgentSidebarData = [
+export const AffiliateAgentSidebarData  = [
     {
-        title: 'Agent DashBoard',
+        title: 'Affiliate Agent DashBoard',
         path: '/',
         icon: <AiIcons.AiFillHome />,
         iconClosed: <RiIcons.RiArrowDownSFill/>,
@@ -26,7 +26,7 @@ export const AgentSidebarData = [
     },
     {
         title: 'Profile',
-        path: '/agent/profile',
+        path: '/affiliate-agent/profile',
         icon: <RiIcons.RiAccountPinCircleFill />,
         iconClosed: <RiIcons.RiArrowDownSFill/>,
         iconOpened: <RiIcons.RiArrowUpSFill/>,
@@ -50,7 +50,7 @@ export const AgentSidebarData = [
     },
     {
         title: 'Profit',
-        path: '/agent/profit',
+        path: '/affiliate-agent/profit',
         icon: <RiIcons.RiMoneyDollarCircleLine />,
         iconClosed: <RiIcons.RiArrowDownSFill/>,
         iconOpened: <RiIcons.RiArrowUpSFill/>,
@@ -84,7 +84,7 @@ export const AgentSidebarData = [
     },
     {
         title: 'Transition History',
-        path: '/agent/transition-history',
+        path: '/affiliate-agent/transition-history',
         icon: <FaIcons.FaLayerGroup />,
         iconClosed: <RiIcons.RiArrowDownSFill/>,
         iconOpened: <RiIcons.RiArrowUpSFill/>,
@@ -102,13 +102,13 @@ export const AgentSidebarData = [
         // ]
     },
     {
-        title: "Transfer To",
-        path: "/agent/trnsfer to",
+        title: "Affiliate User",
+        path: "/affiliate-agent/affiliate-user",
         icon: <FaIcons.FaUserFriends/>
     },
     {
-        title: 'User Withdraw',
-        path: '/agent/user-withdraw',
+        title: 'Profit',
+        path: '/affiliate-agent/profit',
         icon: <RiIcons.RiCoinsLine/>,
         iconClosed: <RiIcons.RiArrowDownSFill/>,
         iconOpened: <RiIcons.RiArrowUpSFill/>,
@@ -125,29 +125,4 @@ export const AgentSidebarData = [
         //     },
         // ]
     },
-    {
-        title: "Deposite",
-        path: "/agent/deposite",
-        icon: <FaIcons.FaMoneyCheckAlt />,
-        iconClosed: <RiIcons.RiArrowDownSFill/>,
-        iconOpened: <RiIcons.RiArrowUpSFill/>,
-        subNav : [
-            {
-                title: 'User Deposite',
-                path: '/agent/deposite/user-deposite',
-                icon: <IoIcons.IoIosArrowForward />,
-            },
-            {
-                title:"Agent Deposite",
-                path:'/agent/deposite/agent-deposite',
-                icon: <IoIcons.IoIosArrowForward />,              
-            }
-        ]
-    },
-    {
-        title: "Bank Account",
-        path: "/agent/bank-account",
-        icon: <AiIcons.AiFillBank/>
-    },
-    
 ]

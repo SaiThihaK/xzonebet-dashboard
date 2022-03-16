@@ -4,6 +4,7 @@ import * as AiIcons from 'react-icons/ai';
 import * as IoIcons from 'react-icons/io';
 import * as RiIcons from 'react-icons/ri';
 
+
 export const SidebarData = [
     {
         title: 'DashBoard',
@@ -164,6 +165,20 @@ export const SidebarData = [
         icon: <RiIcons.RiAccountPinCircleFill/>
     },
     {
+        title: 'Game Setting',
+        path: '/game-setting',
+        icon: <AiIcons.AiFillSetting />,
+        iconClosed: <RiIcons.RiArrowDownSFill/>,
+        iconOpened: <RiIcons.RiArrowUpSFill/>,
+        subNav : [
+            {
+                title: 'Football Setting',
+                path: '/game-setting/football-setting',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+        ]
+    },
+    {
         title: 'Setting',
         path: '/setting',
         icon: <AiIcons.AiFillSetting />,
@@ -176,7 +191,7 @@ export const SidebarData = [
                 icon: <IoIcons.IoIosArrowForward />,
             },
             {
-                title: 'Soccer Setting',
+                title: 'Football Setting',
                 path: '/setting/soccer-setting',
                 icon: <IoIcons.IoIosArrowForward />,
             },

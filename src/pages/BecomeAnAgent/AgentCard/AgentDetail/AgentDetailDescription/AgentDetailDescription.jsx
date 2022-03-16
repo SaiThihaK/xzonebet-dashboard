@@ -1,36 +1,51 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import Button from "@mui/material/Button";
 import classes from "./AgentDetailDescription.module.css";
+import axios from "axios";
+import { getMethod } from "../../../../../services/api-services";
 const AgentDetailDescription = () => {
+const [user,setUser] = useState("");
+const fetchUserDetail = async()=>{
+  const {data} = await axios.request(getMethod(`/api/affiliate-register-lists/${id}`));
+  console.log(data.data);
+  setUser(data.data);
+}
+
+useEffect(()=>{
+  fetchUserDetail();
+  return ()=>setUser("");
+},[])
+const {id} = useParams();
+console.log(id)
   return (
     <div>
       <div className={classes["agent-user-image-group"]}>
         <img
-          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80"
+          src="https://icon-library.com/images/user-icon-jpg/user-icon-jpg-14.jpg"
           className={classes["agent-user-image"]}
           alt=""
         />
         <div className={classes["agent-user-des"]}>
-          <h3>Agent Name</h3>
-          <span>ID - 1234567</span>
+          <h3>{user.name}</h3>
+          <span>ID - {user.id}</span>
         </div>
       </div>
       <div style={{ marginTop: "30px" }}>
         <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Email </label>:<p>&nbsp;&nbsp;zxc@gmail.com</p>
+          <label htmlFor="">Email </label>:<p>&nbsp;&nbsp;{user.email}</p>
         </div>
         <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Phone </label>:<p>&nbsp;&nbsp;555-5555-55555</p>
+          <label htmlFor="">Phone </label>:<p>&nbsp;&nbsp;{user.phone}</p>
         </div>
         <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Country </label>:<p>&nbsp;&nbsp;-</p>
+          <label htmlFor="">Country </label>:<p>&nbsp;&nbsp;{user.country}</p>
         </div>
-        <div className={classes["form-group-desc"]}>
+        {/* <div className={classes["form-group-desc"]}>
           <label htmlFor="">Region </label>:<p>&nbsp;&nbsp;-</p>
-        </div>
+        </div> */}
         <div className={classes["form-group-desc"]}>
-          <label htmlFor="">City </label>:<p>&nbsp;&nbsp;-</p>
+          <label htmlFor="">City </label>:<p>&nbsp;{user.city}&nbsp;</p>
         </div>
         <Link to="/become-an-agent">
           <Button variant="contained">Back</Button>
