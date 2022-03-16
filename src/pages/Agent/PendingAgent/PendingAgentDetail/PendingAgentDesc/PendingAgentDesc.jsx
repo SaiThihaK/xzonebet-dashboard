@@ -55,6 +55,7 @@ const PendingAgentDesc = ({userInfo}) => {
     size="small"
     label="Choose"
     onChange={handleChange}
+    variant="standard"
   > 
   {completeMasters.map((master,index)=>(
   <MenuItem key={index} value={master.id}>{master.name}</MenuItem>
