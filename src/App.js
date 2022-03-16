@@ -77,6 +77,8 @@ import AffiliateUserPercentage from "./pages/Setting/AffiliateAgentSetting/Affil
 import Dashboard from "./pages/Dashboard/Dashboard";
 import AgentDeposite from "./Dashboard/AgentDashboard/Page/Deposite/AgentDeposite/AgentDeposite";
 import FootballSetting from "./pages/FootballSetting/FootballSetting";
+import PendingAffiliateAgent from "./pages/Affiliate Agent/PendingAffiliateAgent/PendingAffiiliateAgent";
+import PendingAffiliateAgentDetail from "./pages/Affiliate Agent/PendingAffiliateAgent/PendingAffiliateAgentDetail/PendingAffiliateAgentDetail";
 
 function App() {
   const DashboardRouting = () => {
@@ -160,6 +162,14 @@ function App() {
             path="/account/affiliate-agent"
             exact
             element={<AffiliateAgent />}
+          />
+          <Route
+            path="/account/affiliate-agent/pending-affiliate-agent"
+            element={<PendingAffiliateAgent />}
+          />
+          <Route
+            path="/account/affiliate-agent/pending-affiliate-agent/detail/:id"
+            element={<PendingAffiliateAgentDetail />}
           />
           {/* Agent */}
           <Route path="/account/agent" exact element={<Agent />} />
