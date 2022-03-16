@@ -14,6 +14,7 @@ import * as FaIcons from "react-icons/fa";
 import classes from "./AgentCard.module.css";
 import axios from "axios";
 import { PostMethod } from "../../../services/api-services";
+import { InputLabel } from "@mui/material";
 const AgentCard = ({
   user,
   num,
@@ -25,6 +26,8 @@ const AgentCard = ({
   const handleChange = (event) => {
     setAge(event.target.value);
   };
+
+  console.log(user)
   const submitHandler = async(e)=>{
     e.preventDefault();
     if(!age)return;
@@ -57,7 +60,7 @@ const AgentCard = ({
             height="140px"
             image="https://icon-library.com/images/user-icon-jpg/user-icon-jpg-14.jpg"
           />
-          <Link to="/become-an-agent/detail/1">
+          <Link to={`/become-an-agent/detail/${user.id}`}>
             <button className={classes["view-detail"]}>
               <FaIcons.FaEye />
             </button>
@@ -72,13 +75,17 @@ const AgentCard = ({
             {user.name}
           </Typography>
             <FormControl sx={{ width: "100%" }}>
+             <InputLabel labelId="demo-simple-select-label"
+              id="demo-simple-select" size="small">Choose</InputLabel>
             <Select
               value={age}
               onChange={handleChange}
               size="small"
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              inputProps={{ "aria-label": "Without label" }}
               sx={{ backgroundColor: "#f3f3f3" }}
             >
-              <MenuItem value="">Choose</MenuItem>
               <MenuItem value={"master"} onClick={()=>setStatus("accept")}>Master</MenuItem>
               <MenuItem value={"agent"} onClick={()=>setStatus("accept")}>Agent</MenuItem>
               <MenuItem value={"affiliate-agent"} onClick={()=>setStatus("accept")}>affiliate Agent</MenuItem>

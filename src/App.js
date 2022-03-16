@@ -76,6 +76,7 @@ import AffiliateAgentPercentage from "./pages/Setting/AffiliateAgentSetting/Affi
 import AffiliateUserPercentage from "./pages/Setting/AffiliateAgentSetting/AffiliateUserPercentage/AffiliateUserPercentage.jsx";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import AgentDeposite from "./Dashboard/AgentDashboard/Page/Deposite/AgentDeposite/AgentDeposite";
+import FootballSetting from "./pages/FootballSetting/FootballSetting";
 
 function App() {
   const DashboardRouting = () => {
@@ -317,7 +318,11 @@ function App() {
             path="/payment-setting/payment-account"
             element={<PaymentAccount />}
           />
-
+          <Route
+            exact
+            path="/game-setting/football-setting"
+            element={<FootballSetting />}
+          />
           <Route path="*" element={<Notfound />} />
         </Routes>
       );
