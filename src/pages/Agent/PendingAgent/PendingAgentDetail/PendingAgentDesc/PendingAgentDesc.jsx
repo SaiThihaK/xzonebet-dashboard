@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import classes from "./PendingAgentDesc.module.css";
-import { Button, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import {  FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { getMethod } from "../../../../../services/api-services";
 
 const PendingAgentDesc = ({userInfo}) => {

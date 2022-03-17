@@ -14,6 +14,30 @@ export const SidebarData = [
         iconOpened: <RiIcons.RiArrowUpSFill/>,
        
     },
+    {
+        title: 'Admin Team Account',
+        path: '/admin-team-account',
+        icon: <RiIcons.RiGroupLine/>,
+        iconClosed: <RiIcons.RiArrowDownSFill/>,
+        iconOpened: <RiIcons.RiArrowUpSFill/>,
+        subNav : [
+            {
+                title: 'Department',
+                path: '/admin-team-account/department',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+            {
+                title: 'Position',
+                path: '/admin-team-account/position',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+            {
+                title: 'Admin Account',
+                path: '/admin-team-account/admin-account',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+        ]
+    },
     
     {
         title: 'Account',

@@ -44,9 +44,10 @@ const [coun,setCoun] = useState([]);
                 </TableCell>
                 <TableCell>
                   {coun.map((cu)=>{
-                    if(cu[0]==c){
+                    if(cu[0]===c){
                       return cu[1];
-                    }
+                    };
+                    return [];
                   })}
                 </TableCell>
                 <TableCell align="left">
@@ -56,7 +57,7 @@ const [coun,setCoun] = useState([]);
                   =
                 </TableCell>
                 <TableCell align="left">
-                {currency[c]+""+"MMK"}
+                {`${currency[c]} MMK`}
                   </TableCell>
                   </TableRow>
               ))

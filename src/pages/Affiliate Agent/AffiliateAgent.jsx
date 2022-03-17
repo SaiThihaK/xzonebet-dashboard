@@ -48,7 +48,7 @@ const AffiliateAgent = () => {
         </div>
         <div className={classes["card-body"]}>
             <div className={classes['soccer-setting-content-flex']}>
-               <MasterSettingCard name="Pending Master" bgColor="#FFC107" path="pending-affiliate-agent" userNum={pendingMaster} />
+               <MasterSettingCard name="Pending Affiliate Agent" bgColor="#FFC107" path="pending-affiliate-agent" userNum={pendingMaster} />
                {/* <MasterSettingCard name="Confirm Master" bgColor="#4099FF" path="confirm-master"  userNum={confirmMaster}/>
                <MasterSettingCard name="Complete Master" bgColor="#2ED8B6" path="complete-master"  userNum={completeMaster}/>
                <MasterSettingCard name="Cancel Master" bgColor="#FF5370" path="cancel-master"  userNum={cancelMaster}/> */}

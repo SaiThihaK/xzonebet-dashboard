@@ -79,6 +79,10 @@ import AgentDeposite from "./Dashboard/AgentDashboard/Page/Deposite/AgentDeposit
 import FootballSetting from "./pages/FootballSetting/FootballSetting";
 import PendingAffiliateAgent from "./pages/Affiliate Agent/PendingAffiliateAgent/PendingAffiiliateAgent";
 import PendingAffiliateAgentDetail from "./pages/Affiliate Agent/PendingAffiliateAgent/PendingAffiliateAgentDetail/PendingAffiliateAgentDetail";
+import Department from "./pages/AdminTeamAccount/Department/Department";
+import CreateDepartment from "./pages/AdminTeamAccount/Department/CreateDepartment/CreateDepartment";
+import Position from "./pages/AdminTeamAccount/Position/Position";
+import CreatePosition from "./pages/AdminTeamAccount/Position/CreatePosition/CreatePosition";
 
 function App() {
   const DashboardRouting = () => {
@@ -332,6 +336,28 @@ function App() {
             exact
             path="/game-setting/football-setting"
             element={<FootballSetting />}
+          />
+
+          {/*------------------------------ Admin Team Account------------------------------------------------ */}
+          <Route
+            exact
+            path="/admin-team-account/department"
+            element={<Department />}
+          />
+          <Route
+            exact
+            path="/admin-team-account/department/create-department"
+            element={<CreateDepartment />}
+          />
+          <Route
+            exact
+            path="/admin-team-account/position"
+            element={<Position />}
+          />
+          <Route
+            exact
+            path="/admin-team-account/position/create-position"
+            element={<CreatePosition />}
           />
           <Route path="*" element={<Notfound />} />
         </Routes>
