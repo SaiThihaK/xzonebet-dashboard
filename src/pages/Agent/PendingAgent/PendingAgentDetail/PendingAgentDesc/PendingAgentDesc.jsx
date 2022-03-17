@@ -63,7 +63,6 @@ const PendingAgentDesc = ({userInfo}) => {
   </Select>
 </FormControl>
         </div>
-       
       </div>
     </div>
   );

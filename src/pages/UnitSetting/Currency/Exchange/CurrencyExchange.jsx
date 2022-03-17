@@ -1,7 +1,7 @@
-import {  Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import {  Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow,Avatar } from "@mui/material";
 import axios from "axios";
 import React,{useEffect, useState} from "react";
-import { Avatar } from "rsuite";
+
 import { Currency } from "../../../../services/api-services";
 
 
