@@ -1,7 +1,6 @@
 
 import {Check, HourglassBottom, Person} from '@mui/icons-material';
-import { Row } from "rsuite";
-import { Col } from "react-bootstrap";
+import { Col,Row } from "react-bootstrap";
 import Card from "../../../components/UI/Card";
 import classes from "./FootballSettingTable.module.css";
 const items = [
