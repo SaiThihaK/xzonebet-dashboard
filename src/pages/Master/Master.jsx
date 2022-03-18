@@ -5,6 +5,7 @@ import classes from './Master.module.css';
 import axios from 'axios';
 import { useEffect } from 'react';
 import { getMethod } from '../../services/api-services';
+import { logoutHandler } from '../../components/Sidebar/Sidebar';
 const Master = () => {
   const [pendingMaster,setPendingMaster] = useState([]);
   const [confirmMaster,setConfirmMaster] = useState([]);
@@ -12,20 +13,46 @@ const Master = () => {
   const [cancelMaster,setCancelMaster] = useState([]);
  
   const fetchPending = async()=>{
-    const pending = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=master'));
-    setPendingMaster(pending.data.data.length);
+    try{
+      const pending = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=master'));
+      setPendingMaster(pending.data.data.length);
+    }catch(error){
+      if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+      logoutHandler();
+      }
+    }
   };
   const fetchConfirm = async()=>{
-    const confirm = await axios.request(getMethod(`/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-confirm&form_type=master`));
-    setConfirmMaster(confirm.data.data.length);
+    try{
+      const confirm = await axios.request(getMethod(`/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-confirm&form_type=master`));
+      setConfirmMaster(confirm.data.data.length);
+    }catch(error){
+      if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+      logoutHandler();
+      }
+    }
+    
   };
   const fetchComplete = async()=>{
-    const complete = await axios.request(getMethod(`/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=complete&form_type=master`));
-    setCompleteMaster(complete.data.data.length);
+    try{
+      const complete = await axios.request(getMethod(`/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=complete&form_type=master`));
+      setCompleteMaster(complete.data.data.length);
+    }catch(error){
+      if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+      logoutHandler();
+      }
+    }
   };
   const fetchCancel = async()=>{
+  try{
     const cancel = await axios.request(getMethod(`/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-rejet&form_type=master`));
     setCancelMaster(cancel.data.data.length);
+
+  }catch(error){
+    if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+    logoutHandler();
+    }
+  }
   }
 
   console.log(cancelMaster);

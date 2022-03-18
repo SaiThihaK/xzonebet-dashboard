@@ -6,14 +6,22 @@ import { useState, useEffect   } from "react";
 import axios from "axios";
 import PendingAgentCard from "./PendingAgentCard/PendingAgentCard";
 import { getMethod } from "../../../services/api-services";
+import { logoutHandler } from "../../../components/Sidebar/Sidebar";
 
 const PendingAgent = () => {
   const [pendingMasters,setPendingMaster] = useState([]);
   
   const fetchPending = async()=>{
-    const pending = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=agent'));
-    console.log(pending)
-    setPendingMaster(pending.data.data);
+    try{
+      const pending = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=agent'));
+      console.log(pending)
+      setPendingMaster(pending.data.data);
+
+    }catch(error){
+      if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+      logoutHandler();
+      }
+    }
   };
 //  console.log(pendingMasters);
  

@@ -5,6 +5,7 @@ import classes from "./ComfirmMasterDesc.module.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { PostMethod } from "../../../../../services/api-services";
+import { logoutHandler } from "../../../../../components/Sidebar/Sidebar";
 
 const ComfirmMasterDesc = ({userInfo}) => {
     const alertToast = (message) =>toast(message,alertToast);
@@ -13,6 +14,7 @@ const ComfirmMasterDesc = ({userInfo}) => {
   //  console.log("confirm");
     try{
    const response = await axios.request(
+     
     PostMethod(`/api/affiliate-register-lists/confirm/${userInfo.id}`,
        {super_master_id:1},
    ));
@@ -22,10 +24,11 @@ const ComfirmMasterDesc = ({userInfo}) => {
    }
    return;
    }catch(error){
-
-   };
+    if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+    logoutHandler();
+    }
+  }
    }
-   console.log(userInfo);
   return (
     <div>
       <div className={classes["agent-user-image-group"]}>

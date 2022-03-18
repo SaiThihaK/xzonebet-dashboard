@@ -32,8 +32,8 @@ const ATransitionHistory = () => {
                   sx={{ width: 300 }}
                   size="small"
                   id="outlined-basic"
-                  label="Search ID"
                   variant="outlined"
+                  label="Search ID"
                 />
              <Button variant="contained" style={{marginLeft:30}}>Search</Button>
               </div>

@@ -1,6 +1,5 @@
 import { Button, Checkbox, ListItemText, MenuItem, Select, TextField } from '@mui/material'
 import React, { useState } from 'react'
-import { FormControl } from 'react-bootstrap'
 import PageTitleCard from '../../../../components/UI/PageTitleCard/PageTitleCard'
 import classes from "./CreateDepartment.module.css"
 

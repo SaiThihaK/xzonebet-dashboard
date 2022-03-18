@@ -6,12 +6,19 @@ import { useState, useEffect   } from "react";
 import axios from "axios";
 import MasterCard from "../../../components/MasterCard/MasterCard";
 import { getMethod } from "../../../services/api-services";
+import { logoutHandler } from "../../../components/Sidebar/Sidebar";
 
 const CancelAgent = () => {
   const [cancelMasters,setCancelMaster] = useState([]);
   const fetchCancelMaster = async()=>{
-    const {data} = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-rejet&form_type=master'));
-    setCancelMaster(data.data);
+    try{
+      const {data} = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-rejet&form_type=master'));
+      setCancelMaster(data.data);
+    }catch(error){
+      if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+      logoutHandler();
+      }
+    }
   };
 //  console.log(cancelMasters);
   useEffect(()=>{

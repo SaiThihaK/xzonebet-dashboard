@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import ConfirmAgentDesc from "./ConfirmAgentDesc/ConfirmAgentDesc";
 import Card from "../../../../components/UI/Card";
 import { getMethod } from "../../../../services/api-services";
+import { logoutHandler } from "../../../../components/Sidebar/Sidebar";
 
 
 const ConfirmAgentDetail = () => {
@@ -22,8 +23,15 @@ const ConfirmAgentDetail = () => {
  
 
   const fetchMasterDetail = async()=>{
-    const {data} = await axios.request(getMethod(`/api/affiliate-register-lists/${id}`));
-    setConfirmMaster(data.data);
+    try{
+
+      const {data} = await axios.request(getMethod(`/api/affiliate-register-lists/${id}`));
+      setConfirmMaster(data.data);
+    }catch(error){
+      if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+      logoutHandler();
+      }
+    }
   }
   useEffect(()=>{
     fetchMasterDetail();

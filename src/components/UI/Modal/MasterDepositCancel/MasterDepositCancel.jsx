@@ -8,6 +8,7 @@ import TextField from "@mui/material/TextField";
 import axios from "axios";
 import { PostMethod } from "../../../../services/api-services";
 import { toast } from "react-toastify";
+import { logoutHandler } from "../../../Sidebar/Sidebar";
 
 const MasterDepositCancel = ({ open, handleClose,setNum,id,num,alertToast}) => {
   const [accounting_remark,setAccounting_remark] = useState("");
@@ -34,7 +35,7 @@ const MasterDepositCancel = ({ open, handleClose,setNum,id,num,alertToast}) => {
   PostMethod(`/api/affiliate-register-lists/deposit-rejet/${id}`,
   {accounting_remark:accounting_remark}
   ));
-  console.log(data);
+  // console.log(data);
   if(data.status="success"){
     handleClose();
     setNum(num+1);
@@ -47,8 +48,9 @@ const MasterDepositCancel = ({ open, handleClose,setNum,id,num,alertToast}) => {
     return;
   }
   }catch(error){
-    console.log(error);
-    return;
+    if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+    logoutHandler();
+    }
   }
   }
   return (

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import classes from "./PendingAgentDesc.module.css";
 import {  FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { getMethod } from "../../../../../services/api-services";
+import { logoutHandler } from "../../../../../components/Sidebar/Sidebar";
 
 const PendingAgentDesc = ({userInfo}) => {
     const [completeMasters,setCompleteMasters] = useState([]);
@@ -11,8 +12,15 @@ const PendingAgentDesc = ({userInfo}) => {
         setMaster(event.target.value);
       };
     const fetchCompleteMaster = async()=>{
+      try{
         const {data} = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=complete&form_type=master'));
         setCompleteMasters(data.data);
+
+      }catch(error){
+        if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+        logoutHandler();
+        }
+      }
       };
       useEffect(()=>{
         fetchCompleteMaster() ;

@@ -9,6 +9,7 @@ import axios from "axios";
 import { getMethod } from "../../../services/api-services";
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { logoutHandler } from "../../../components/Sidebar/Sidebar";
 
 
 const PaymentType = () => {
@@ -19,8 +20,15 @@ const PaymentType = () => {
   const handleClose = ()=>setOpen(false);
    
   const FetchPaymentType = async()=>{
-    const response = await axios.request(getMethod(`/api/dashboard/payment-types`));
-    setPayment_type(response.data.data);
+    try{
+      const response = await axios.request(getMethod(`/api/dashboard/payment-types`));
+      setPayment_type(response.data.data);
+
+    }catch(error){
+      if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+      logoutHandler();
+      }
+    }
   }
  console.log(payment_type)
   useEffect(()=>{

@@ -17,6 +17,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { getMethod, PostMethod } from "../../../services/api-services";
 import { FormControl, MenuItem, Select } from "@mui/material";
 import MasterDepositeConfirm from "../../../components/UI/Modal/MasterDeposite/MasterDepositeConfirm";
+import { logoutHandler } from "../../../components/Sidebar/Sidebar";
 const MasterDepositTable = () => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
@@ -54,9 +55,14 @@ const MasterDepositTable = () => {
     },
   }));
   const fetchData = async()=>{
-    const {data} = await axios.request(getMethod(`/api/affiliate-register-lists-detail?sortColumn=updated_at&sortDirection=desc&limit=30&status=deposit-pending`));
-    
-    setRowData(data.data)
+    try{
+      const {data} = await axios.request(getMethod(`/api/affiliate-register-lists-detail?sortColumn=updated_at&sortDirection=desc&limit=30&status=deposit-pending`));
+      setRowData(data.data)
+    }catch(error){
+      if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+      logoutHandler();
+      }
+    }
   }
 
   useEffect(()=>{
@@ -75,7 +81,9 @@ const MasterDepositTable = () => {
       return;
     }
     }catch(error){
-
+      if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+      logoutHandler();
+      }
     }
   }
 

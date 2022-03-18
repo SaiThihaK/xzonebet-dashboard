@@ -8,12 +8,20 @@ import { CircularProgress } from "@mui/material";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getMethod } from "../../services/api-services";
+import { logoutHandler } from "../../components/Sidebar/Sidebar";
 const BecomeAnAgent = () => {
   const [pending,setPending] = useState([]);
   const [num,setNum] = useState(0);
   const FetchpendingMaster = async()=>{
-    const {data} = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=pending'));
-    setPending(data.data);
+    try{
+      const {data} = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=pending'));
+      setPending(data.data);
+
+    }catch(error){
+      if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+      logoutHandler();
+      }
+    }
   }
  const alertToast = (message) =>toast(message);
   useEffect(()=>{

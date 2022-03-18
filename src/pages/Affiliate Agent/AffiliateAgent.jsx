@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { getMethod } from '../../services/api-services';
 import MasterSettingCard from '../Master/MasterSettingCard/MasterSettingCard';
 import Card from '../../components/UI/Card';
+import { logoutHandler } from '../../components/Sidebar/Sidebar';
 const AffiliateAgent = () => {
   const [pendingMaster,setPendingMaster] = useState([]);
 //   const [confirmMaster,setConfirmMaster] = useState([]);
@@ -12,8 +13,15 @@ const AffiliateAgent = () => {
 //   const [cancelMaster,setCancelMaster] = useState([]);
  
   const fetchPending = async()=>{
-    const pending = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=affiliate-agent'));
-    setPendingMaster(pending.data.data.length);
+    try{
+
+      const pending = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=affiliate-agent'));
+      setPendingMaster(pending.data.data.length);
+    }catch(error){
+      if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+      logoutHandler();
+      }
+    }
   };
 //   const fetchConfirm = async()=>{
 //     const confirm = await axios.request(getMethod(`/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-confirm&form_type=master`));

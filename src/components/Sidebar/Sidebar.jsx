@@ -18,31 +18,36 @@ import classes from "./Sidebar.module.css";
 import { IconContext } from "react-icons/lib";
 import { AgentSidebarData } from "../../Dashboard/AgentDashboard/AgentSideBarData";
 import { MasterSidebarData } from "../../Dashboard/MasterDashboard/MasterSideBarData";
-import { useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import { userInfo } from "../../features/UserInfo";
 
 function refreshPage() {
   setTimeout(()=>{
       window.location.reload(false);
   }, 1);
 }
+export const logoutHandler = () => {
+  localStorage.removeItem('status');
+  localStorage.removeItem('jToken');
+  localStorage.removeItem('lToken');
+  localStorage.removeItem('type');
+  window.location.assign("/");
+  refreshPage();
+};
 const dashboard = localStorage.getItem('type');
 const Sidebar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+  // const userInfo = useSelector(userInfo);
+
+  // console.log({userInfo});
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const logoutHandler = () => {
-    localStorage.removeItem('status');
-    localStorage.removeItem('jToken');
-    localStorage.removeItem('lToken');
-    localStorage.removeItem('type');
-    window.location.assign("/");
-    refreshPage();
-  };
+
 
   const DifDashboard = ()=>{
   if(dashboard==="admin"){
@@ -65,9 +70,7 @@ const Sidebar = () => {
     <IconContext.Provider value={{ color: "#FFF" }}>
       <div className={classes.container}>
         <ul className={classes["header-noti-icons"]}>
-          <li>
-            <div id="google"></div>
-          </li>
+  
           <li>
             <button className={classes['header-icon']}>
               <AiIcons.AiOutlineBell color="#9b9b9b" size="23px" />

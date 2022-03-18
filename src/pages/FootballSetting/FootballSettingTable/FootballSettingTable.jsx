@@ -1,6 +1,6 @@
 
 import {Check, HourglassBottom, Person} from '@mui/icons-material';
-import { Col,Row } from "react-bootstrap";
+import { Grid } from '@mui/material';
 import Card from "../../../components/UI/Card";
 import classes from "./FootballSettingTable.module.css";
 const items = [
@@ -29,15 +29,11 @@ const items = [
   const FootballSettingTable = ()=>{
       return(
        <Card>
-       <Row className={classes["card-body"]}>
+       <Grid container className={classes["card-body"]}>
         {
             items.map((item,index)=>(
-                <Col key={index}
-                xs={4}
-                sm={4}
-                md={4}
-                lg={3}
-                xl={3}>
+                <Grid item key={index}
+                xs={3}>
                  <div className={classes["container"]}>
                      <div>
                          <span className={classes["head-icons"]}>
@@ -51,10 +47,10 @@ const items = [
                          {item.body}
                      </h2>
                  </div>
-                </Col>
+                </Grid>
             ))
         }
-       </Row>
+       </Grid>
        </Card>
       )
   }

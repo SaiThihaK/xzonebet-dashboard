@@ -6,13 +6,20 @@ import { useState, useEffect   } from "react";
 import axios from "axios";
 import MasterCard from "../../../components/MasterCard/MasterCard";
 import { getMethod } from "../../../services/api-services";
+import { logoutHandler } from "../../../components/Sidebar/Sidebar";
 
 
 const CompleteAgent = () => {
   const [completeMasters,setCompleteMasters] = useState([]);
   const fetchCompleteMaster = async()=>{
-    const {data} = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=complete&form_type=agent'));
-    setCompleteMasters(data.data);
+    try{
+      const {data} = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=complete&form_type=agent'));
+      setCompleteMasters(data.data);
+    }catch(error){
+      if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+      logoutHandler();
+      }
+    }
   };
 //  console.log(completeMasters);
   useEffect(()=>{

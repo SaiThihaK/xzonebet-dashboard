@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { login } from "../../services/api-services";
 import "./Login.css";
+
 function refreshPage() {
   setTimeout(()=>{
       window.location.reload(false);
@@ -14,6 +15,7 @@ const Login = () => {
   const [errorUserName,setErrorUserName] = useState(null);
   const loginName = useRef();
   const loginPassword = useRef();
+
   
   function validateEmail(email) {
     var re = /\S+@\S+\.\S+/;
@@ -32,7 +34,7 @@ const Login = () => {
           localStorage.setItem('status',res.data.status);
           localStorage.setItem('jToken',res.data.data['j_token']);
           localStorage.setItem('lToken',res.data.data['l_token']);
-          localStorage.setItem('type',res.data.data['type'])
+          localStorage.setItem('type',res.data.data['type']);
           refreshPage();
         break;
         case "error":
