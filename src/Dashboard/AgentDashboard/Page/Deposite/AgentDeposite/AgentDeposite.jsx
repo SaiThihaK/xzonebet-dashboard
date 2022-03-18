@@ -87,11 +87,11 @@ const FilterPayment_Provider = provider.filter((c)=>c.payment_type_id === paymen
      <div className={classes["card-header"]}>
           <h1 className={classes["card-title"]}>Payment Provider</h1>
      </div>
-     {/* <Row className={classes['prov-container']}  style={{ width: "100%" }}> */}
-     <Grid  container spacing={3}>
+    
+     <Grid  container spacing={3} className={classes["provider-grid"]}>
   {
       FilterPayment_Provider && FilterPayment_Provider.map((prov,index)=>(
-          <Grid item xs={4} key={index}>
+          <Grid item xs={3} key={index}>
               <Card>
               <img src={prov.logo ? prov.logo : "https://cdn.logojoy.com/wp-content/uploads/2018/05/30160306/447.png"} 
               alt="provider_logo"   width="100%" />
