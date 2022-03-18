@@ -15,6 +15,7 @@ import classes from "./PaymentProviderTable.module.css";
 import { Avatar } from "@mui/material";
 import axios from "axios"
 import {getMethod} from "../../../../services/api-services"
+import { logoutHandler } from "../../../../components/Sidebar/Sidebar";
 const PaymentProviderTable = () => {
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -39,9 +40,16 @@ const PaymentProviderTable = () => {
   // State
   const [payment_provider,setPayment_provider] = useState([]);
   const FetchPayment_type = async()=>{
-    const response = await  axios.request(getMethod(`/api/dashboard/payment-providers`));
-    console.log(response.data.data);
-    setPayment_provider(response.data.data);
+    try{
+      const response = await  axios.request(getMethod(`/api/dashboard/payment-providers`));
+      console.log(response.data.data);
+      setPayment_provider(response.data.data);
+
+    }catch(error){
+      if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+      logoutHandler();
+      }
+    }
   }
   
   useEffect(()=>{

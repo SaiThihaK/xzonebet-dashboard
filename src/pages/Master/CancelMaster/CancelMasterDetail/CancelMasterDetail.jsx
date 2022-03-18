@@ -8,6 +8,7 @@ import axios from "axios";
 import Card from "../../../../components/UI/Card";
 import SuperMasterDesc from "../../../SuperMaster/SuperMasterCard/SuperMasterDetail/SuperMasterDesc/SuperMasterDesc";
 import { getMethod } from "../../../../services/api-services";
+import { logoutHandler } from "../../../../components/Sidebar/Sidebar";
 const CancelMasterDetail = () => {
   const [cancelMaster,setCancelMaster] = useState([]);
  
@@ -20,8 +21,15 @@ const CancelMasterDetail = () => {
  
 
   const fetchMasterDetail = async()=>{
-    const {data} = await axios.request(getMethod(`/api/affiliate-register-lists/${id}`));
-    setCancelMaster(data.data);
+    try{
+      const {data} = await axios.request(getMethod(`/api/affiliate-register-lists/${id}`));
+      setCancelMaster(data.data);
+
+    }catch(error){
+      if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+      logoutHandler();
+      }
+    }
   }
   useEffect(()=>{
     fetchMasterDetail();

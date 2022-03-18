@@ -6,12 +6,20 @@ import { useState, useEffect   } from "react";
 import axios from "axios";
 import MasterCard from "../../../components/MasterCard/MasterCard";
 import { getMethod } from "../../../services/api-services";
+import { logoutHandler } from "../../../components/Sidebar/Sidebar";
 
 const ConfirmAgent = () => {
   const [confirmMasters,setConfirmMasters] = useState([]);
   const fetchConfirmMaster = async()=>{
-    const {data} = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=deposit-confirm&form_type=agent'));
-    setConfirmMasters(data.data);
+    try{
+      const {data} = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=deposit-confirm&form_type=agent'));
+      setConfirmMasters(data.data);
+
+    }catch(error){
+      if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+      logoutHandler();
+      }
+    }
   };
   
   // console.log(confirmMasters)

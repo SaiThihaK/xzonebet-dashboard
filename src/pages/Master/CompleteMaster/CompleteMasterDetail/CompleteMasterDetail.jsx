@@ -8,6 +8,7 @@ import CompleteMasterDesc from "./CompleteMasterDesc/CompleteMasterDesc";
 import { Button } from "@mui/material";
 import Card from "../../../../components/UI/Card";
 import { getMethod } from "../../../../services/api-services";
+import { logoutHandler } from "../../../../components/Sidebar/Sidebar";
 const CompleteMasterDetail = () => {
   const [age, setAge] = React.useState("");
   const [completeMaster,setCompleteMaster] = useState([]);
@@ -17,8 +18,15 @@ const CompleteMasterDetail = () => {
 
 
   const fetchMasterDetail = async()=>{
-    const {data} = await axios.request(getMethod(`/api/affiliate-register-lists/${id}`));
-    setCompleteMaster(data.data);
+    try{
+      const {data} = await axios.request(getMethod(`/api/affiliate-register-lists/${id}`));
+      setCompleteMaster(data.data);
+
+    }catch(error){
+      if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+      logoutHandler();
+      }
+    }
   }
   useEffect(()=>{
     fetchMasterDetail();

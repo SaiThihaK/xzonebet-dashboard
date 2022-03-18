@@ -13,6 +13,7 @@ import SuperMasterDesc from "../../../SuperMaster/SuperMasterCard/SuperMasterDet
 import Card from "../../../../components/UI/Card";
 import PendingAgentDesc from "./PendingAgentDesc/PendingAgentDesc";
 import { getMethod, PostMethod } from "../../../../services/api-services";
+import { logoutHandler } from "../../../../components/Sidebar/Sidebar";
 const PendingAgentDetail = () => {
   const [age,setAge] = useState();
   const [pendingMaster,setPendingMaster] = useState([]);
@@ -65,16 +66,23 @@ const PendingAgentDetail = () => {
         }
         return;
       }catch(error){
-        console.log(error);
-        return;
+        if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+        logoutHandler();
+        }
       }
    
     }
   }
 
   const fetchMasterDetail = async()=>{
-    const {data} = await axios.request(getMethod(`/api/affiliate-register-lists/${id}`));
-    setPendingMaster(data.data);
+    try{
+      const {data} = await axios.request(getMethod(`/api/affiliate-register-lists/${id}`));
+      setPendingMaster(data.data);
+    }catch(error){
+      if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+      logoutHandler();
+      }
+    }
   }
   useEffect(()=>{
     fetchMasterDetail();

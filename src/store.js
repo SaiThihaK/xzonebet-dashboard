@@ -3,6 +3,7 @@ import bettingSlice from "./features/betting";
 import globalbettingSlice from "./features/globalbettingtable";
 import loginSlice from "./features/login-auth";
 import AgentSlice from "./features/agent";
+import UserInfoSlice from "./features/UserInfo";
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     globalbetting: globalbettingSlice,
     auth: loginSlice,
     agent: AgentSlice,
+    userInfo: UserInfoSlice,
   },
 });
 export default store;

@@ -5,6 +5,7 @@ import classes from "./ConfirmAgentDesc.module.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { PostMethod } from "../../../../../services/api-services";
+import { logoutHandler } from "../../../../../components/Sidebar/Sidebar";
 
 const ConfirmAgentDesc = ({userInfo}) => {
     const alertToast = (message) =>toast(message,alertToast);
@@ -23,8 +24,10 @@ const ConfirmAgentDesc = ({userInfo}) => {
    }
    return;
    }catch(error){
-
-   };
+    if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+    logoutHandler();
+    }
+  }
    }
   return (
     <div>

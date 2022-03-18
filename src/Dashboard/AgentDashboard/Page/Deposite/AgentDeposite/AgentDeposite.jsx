@@ -3,9 +3,10 @@ import classes from "./AgentDeposite.module.css"
 import Card from '../../../../../components/UI/Card';
 import axios from 'axios';
 import { getMethod } from '../../../../../services/api-services';
-import {  List, ListItemButton, ListItemText,ListItemIcon} from '@mui/material';
-import {Col, Row} from "react-bootstrap"
+import {  List, ListItemButton, ListItemText,ListItemIcon,Grid} from '@mui/material';
+
 import PaymentIcon from '@mui/icons-material/Payment';
+import { logoutHandler } from '../../../../../components/Sidebar/Sidebar';
 
 
 
@@ -15,15 +16,28 @@ const [paymentType,setPaymentType] = React.useState([]);
 const [paymentId,setPaymentId] = React.useState(1);
 
 const fetchProviders = async()=>{
-const {data} = await axios.request(getMethod(`/api/dashboard/payment-providers`));
-// console.log(data.data)
-setProvider(data.data);
+try{
+ const {data} = await axios.request(getMethod(`/api/dashboard/payment-providers`));
+    // console.log(data.data)
+ setProvider(data.data);
+}catch(error){
+    if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+    logoutHandler();
+    }
+  }
 }
 
 const fetchPaymentType = async()=>{
-const {data} = await axios.request(getMethod("/api/dashboard/payment-types"));
-setPaymentType(data.data);
-// console.log(data.data);
+try{
+
+    const {data} = await axios.request(getMethod("/api/dashboard/payment-types"));
+    setPaymentType(data.data);
+    // console.log(data.data);
+}catch(error){
+    if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+    logoutHandler();
+    }
+  }
 }
 
 React.useEffect(()=>{
@@ -42,8 +56,8 @@ const FilterPayment_Provider = provider.filter((c)=>c.payment_type_id === paymen
           <div className={classes["card-header"]}>
           <h1 className={classes["card-title"]}>Agent Deposite</h1>
      </div>
-    <Row>
-    <Col xs={4}>
+    <Grid container spacing={3}>
+        <Grid item xs={4}>
         <Card>
      <div className={classes["card-header"]}>
           <h1 className={classes["card-title"]}>Payment Type</h1>
@@ -57,7 +71,7 @@ const FilterPayment_Provider = provider.filter((c)=>c.payment_type_id === paymen
                 setPaymentId(payment.id)
             }}
             sx={{marginBottom:1}}
-            style={paymentId== payment.id ?  {borderLeft:"3px solid rgb(255, 0, 0)"}: {}}
+            style={paymentId === payment.id ?  {borderLeft:"3px solid rgb(255, 0, 0)"}: {}}
             >
                 <ListItemIcon>
                     <PaymentIcon/>
@@ -67,24 +81,17 @@ const FilterPayment_Provider = provider.filter((c)=>c.payment_type_id === paymen
         ))}
     </List>
         </Card>
-        </Col>
-        <Col xs={8}>
+        </Grid>
+        <Grid item xs={8}>
         <Card>
      <div className={classes["card-header"]}>
           <h1 className={classes["card-title"]}>Payment Provider</h1>
      </div>
-     <Row className={classes['prov-container']}  style={{ width: "100%" }}>
+     {/* <Row className={classes['prov-container']}  style={{ width: "100%" }}> */}
+     <Grid  container spacing={3}>
   {
       FilterPayment_Provider && FilterPayment_Provider.map((prov,index)=>(
-
-          <Col 
-              className={classes['prov']}
-              xs={4}
-              sm={4}
-              md={4}
-              lg={3}
-              xl={3}
-              key={index}>
+          <Grid item xs={4} key={index}>
               <Card>
               <img src={prov.logo ? prov.logo : "https://cdn.logojoy.com/wp-content/uploads/2018/05/30160306/447.png"} 
               alt="provider_logo"   width="100%" />
@@ -92,15 +99,16 @@ const FilterPayment_Provider = provider.filter((c)=>c.payment_type_id === paymen
               <span>{prov.name}</span>
               </div>
               </Card>
+              </Grid>
  
-          </Col>
+  
         
       ))
   }
-       </Row>
+       </Grid>
     </Card>
-    </Col>
-    </Row>
+    </Grid>
+    </Grid>
     </div>
   );
 }

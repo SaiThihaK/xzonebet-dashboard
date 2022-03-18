@@ -6,12 +6,20 @@ import { useState, useEffect   } from "react";
 import axios from "axios";
 import { getMethod } from "../../../services/api-services";
 import MasterCard from "../../../components/MasterCard/MasterCard";
+import { logoutHandler } from "../../../components/Sidebar/Sidebar";
 
 const PendingAffiliateAgent = () => {
     const [pendingMasters,setPendingMaster] = useState([]);
     const fetchPendingMaster = async()=>{
-      const {data} = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=affiliate-agent'));
-      setPendingMaster(data.data);
+      try{
+        const {data} = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=affiliate-agent'));
+        setPendingMaster(data.data);
+
+      }catch(error){
+        if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+        logoutHandler();
+        }
+      }
     };
   //  console.log(pendingMasters);
     useEffect(()=>{

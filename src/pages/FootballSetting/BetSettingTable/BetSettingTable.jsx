@@ -63,7 +63,7 @@ const BetSettingTable = () => {
               <StyledTableCell align="left">
              <Button 
              onClick={()=>setToggle1(!toggle1)}
-              color={toggle1 ? "primary":"error"}
+              color={toggle1 ? "success":"error"}
              variant="contained"
               >
                {toggle1 ? "Enable" : "Disable"}
@@ -73,7 +73,7 @@ const BetSettingTable = () => {
               <StyledTableCell align="left">
              <Button 
              onClick={()=>setToggle2(!toggle2)}
-              color={toggle2 ? "primary":"error"}
+              color={toggle2 ? "success":"error"}
              variant="contained"
               >
                {toggle2 ? "Enable" : "Disable"}

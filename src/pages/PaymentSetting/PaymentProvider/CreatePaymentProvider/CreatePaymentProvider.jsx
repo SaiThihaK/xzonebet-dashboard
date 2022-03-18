@@ -10,6 +10,7 @@ import classes from "./CreatePaymentProvider.module.css"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SelectCoun from "./SelectCoun";
+import { logoutHandler } from "../../../../components/Sidebar/Sidebar";
 
 
 
@@ -25,13 +26,19 @@ import SelectCoun from "./SelectCoun";
    const logoChange = (e)=>setlogo(e.target.value);
 
    const FetchPayment_type = async() =>{
-     const response = await axios.request(getMethod(`/api/dashboard/payment-types`));
-     setPayment_type(response.data.data);
+     try{
+       const response = await axios.request(getMethod(`/api/dashboard/payment-types`));
+       setPayment_type(response.data.data);
+     }catch(error){
+      if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+      logoutHandler();
+      }
+    }
    }
   const AlertToast = (toast,msg) =>{
     return toast(msg);
   };
-  console.log(logo)
+
    useEffect(()=>{
     FetchPayment_type();
     return ()=>setPayment_type([]);
@@ -52,8 +59,10 @@ import SelectCoun from "./SelectCoun";
      }));
      console.log(response);
    }catch(error){
-     console.log(error);
-   }
+    if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+    logoutHandler();
+    }
+  }
    };
    
    console.log(payment_typeValue)

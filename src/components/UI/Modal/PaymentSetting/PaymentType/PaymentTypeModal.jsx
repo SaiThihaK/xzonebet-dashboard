@@ -10,6 +10,7 @@ import { PostMethod } from "../../../../../services/api-services";
 
 import axios from "axios";
 import { toast } from "react-toastify";
+import { logoutHandler } from "../../../../Sidebar/Sidebar";
 
 
 
@@ -51,8 +52,9 @@ const submitHandler = async(e)=>{
      return;
    }
   }catch(error){
-    console.log(error);
-    return;
+    if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+    logoutHandler();
+    }
   }
 }
 

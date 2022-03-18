@@ -15,6 +15,7 @@ import classes from "./AgentCard.module.css";
 import axios from "axios";
 import { PostMethod } from "../../../services/api-services";
 import { InputLabel } from "@mui/material";
+import { logoutHandler } from "../../../components/Sidebar/Sidebar";
 const AgentCard = ({
   user,
   num,
@@ -44,7 +45,9 @@ const AgentCard = ({
         return;
         };
       }catch(error){
-        console.log(error);
+        if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+        logoutHandler();
+        }
       }
     }
 

@@ -1,16 +1,22 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { logoutHandler } from "../../../components/Sidebar/Sidebar";
 import Card from "../../../components/UI/Card";
 import { getMethod } from "../../../services/api-services";
-import { ltoken } from "../../../services/Token";
 import UserListTable from "../UserListTable/UserListTable";
 import classes from "./AllUser.module.css";
 const AllUser = () => {
   const [allUsers,setAllUsers] = useState([]);
   const FetchUser = async()=>{
-  const response = await axios.request(getMethod("/api/users?sortColumn=id&sortDirection=desc&limit=30"));
-//   console.log(response.data.data);
-  setAllUsers(response.data.data);
+    try{
+      const response = await axios.request(getMethod("/api/users?sortColumn=id&sortDirection=desc&limit=30"));
+    //   console.log(response.data.data);
+      setAllUsers(response.data.data);
+    }catch(error){
+      if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+      logoutHandler();
+      }
+    }
   }
   useEffect(()=>{
       FetchUser();

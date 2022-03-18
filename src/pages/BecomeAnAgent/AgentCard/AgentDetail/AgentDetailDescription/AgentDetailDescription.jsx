@@ -4,12 +4,20 @@ import Button from "@mui/material/Button";
 import classes from "./AgentDetailDescription.module.css";
 import axios from "axios";
 import { getMethod } from "../../../../../services/api-services";
+import { logoutHandler } from "../../../../../components/Sidebar/Sidebar";
 const AgentDetailDescription = () => {
 const [user,setUser] = useState("");
 const fetchUserDetail = async()=>{
-  const {data} = await axios.request(getMethod(`/api/affiliate-register-lists/${id}`));
-  console.log(data.data);
-  setUser(data.data);
+  try{
+    const {data} = await axios.request(getMethod(`/api/affiliate-register-lists/${id}`));
+    console.log(data.data);
+    setUser(data.data);
+
+  }catch(error){
+    if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+    logoutHandler();
+    }
+  }
 }
 
 useEffect(()=>{
