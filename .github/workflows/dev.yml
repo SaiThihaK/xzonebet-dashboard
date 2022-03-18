@@ -46,6 +46,6 @@ jobs:
 
             npm run build
 
-            scp -r ./build/* root@137.184.129.228:/var/www/dashboard.xzonebet.online
+            scp -r ./build/* root@xzonebet.online:/var/www/dashboard.xzonebet.online
 
             
