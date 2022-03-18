@@ -3,17 +3,22 @@ import axios from "axios";
 import { login } from "../../services/api-services";
 import "./Login.css";
 
+
+
 function refreshPage() {
   setTimeout(()=>{
       window.location.reload(false);
   }, 1);
 }
 const Login = () => {
+  const [showPh,setshowPh] = useState(false);
   const [userloginname, setuserloginname] = useState();
+  const [phone,setPhone] = useState();
   const [loginpass, setLoginpass] = useState();
   const [errorMsg,setErrorMsg] = useState(null);
   const [errorUserName,setErrorUserName] = useState(null);
   const loginName = useRef();
+  const loginPhone = useRef();
   const loginPassword = useRef();
 
   
@@ -23,7 +28,13 @@ const Login = () => {
   }
 
   useEffect(()=>{
-    const input = validateEmail(userloginname) ? {email:userloginname,password: loginpass,} :{id:userloginname,password: loginpass,};
+    let input = '';
+    if(userloginname){
+       input = validateEmail(userloginname) ? {email:userloginname,password: loginpass,} :{id:userloginname,password: loginpass,};
+    }
+    if(phone){
+      input = {phone,password:loginPassword};
+    }
     axios.request(login,login.data = input)
     .then(res => {
       console.log(res);
@@ -55,13 +66,15 @@ const Login = () => {
     setErrorMsg(null)
     setErrorUserName(null)
   }
+ 
    const loginFormSubmitHandler = (e) => {
      e.preventDefault();
      setuserloginname(loginName.current.value);
      setLoginpass(loginPassword.current.value);
-
+     setPhone(loginPhone.current.value)
      loginName.current.value = "";
      loginPassword.current.value = "";
+     loginPhone.current.value ="";
   }
 
   return (
@@ -77,20 +90,42 @@ const Login = () => {
           <div className="login-form">
             <h2>Login</h2>
             <form onSubmit={loginFormSubmitHandler}>
-              <p>
+      {/* ---------------------------Phone Login------------------------------------ */}
+              {
+                showPh ?(
+                  <p>
+                  <label>
+                    Phone<span>*</span>
+                  </label>
+                  <input
+                    type="text"
+                    ref={loginPhone}
+                    placeholder="Phone"
+                    required
+                    autoComplete="off"
+                    onChange={loginNameHandler}
+                  />
+                <span className="errorMessage">{errorUserName}</span>
+                </p>
+                ) :
+              // ----------------------------Email Login-------------------
+                 (<p>
                 <label>
-                  Username or email address<span>*</span>
+                  Email address or id<span>*</span>
                 </label>
                 <input
                   type="text"
                   ref={loginName}
-                  placeholder="Username or Email"
+                  placeholder="email address or Id"
                   required
                   autoComplete="off"
                   onChange={loginNameHandler}
                 />
                 <span className="errorMessage">{errorUserName}</span>
-              </p>
+              </p>)
+               }
+             
+              {/*-----------------------------------Password------------------------- */}
               <p>
                 <label>
                   Password<span>*</span>
@@ -112,6 +147,12 @@ const Login = () => {
                 <a href="">Forget Password?</a>
               </p>
             </form>
+            <div>
+              {showPh?
+              ( <p onClick={()=>setshowPh(false)}>
+                login with e-mail</p>):(<p onClick={()=>setshowPh(true)}>login with phone? Click here</p>)
+              }
+            </div>
           </div>
         </div>
       </div>

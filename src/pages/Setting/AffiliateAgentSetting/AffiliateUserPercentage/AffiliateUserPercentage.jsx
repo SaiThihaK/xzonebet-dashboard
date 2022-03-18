@@ -13,7 +13,7 @@ const AffiliateUserPercentage = () => {
 
     const [percentage,setPercentage] = useState("30");
     const [value,setValue] = useState('');
-    const [buttonToggle,setButtonToggle] = useState(false);
+
     const [id,setId] = useState(0);
 
   return (
@@ -28,7 +28,7 @@ const AffiliateUserPercentage = () => {
             <div key={index} className={classes["soccer-setting-content-flex"]}>
               <h2>{i.name}</h2>
            {open && id === i.id ? (<FormControl sx={{width:500}}>
-           <TextField size="small" onChange={(e)=>setValue(e.target.value)} />
+           <TextField size="small" sx={{width:400}} onChange={(e)=>setValue(e.target.value)} />
            </FormControl>) :(<h2 style={{marginRight:50}}>{i.percentage}%</h2>)}
             {open && id === i.id ?
             (<Stack spacing={2} direction="row" >
