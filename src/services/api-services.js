@@ -1,4 +1,3 @@
-import configsData from "../configs.json";
 import { ltoken } from "./Token";
 
 let dt = new Date();
@@ -6,10 +5,11 @@ let year = dt.getFullYear();
 let month = (dt.getMonth() + 1).toString().padStart(2, "0");
 let day = dt.getDate().toString().padStart(2, "0");
 
+const { REACT_APP_DOMAIN } = process.env;
 // ------------------------Login API ---------------------------
 export const login = {
   method: "post",
-  url: `${configsData.DOMAIN}/api/login`,
+  url: `${REACT_APP_DOMAIN}/api/login`,
   headers: {
     Accept: "application/json",
   },
@@ -25,7 +25,7 @@ export const betting = {
 
   headers: {
     "x-rapidapi-host": "football-pro.p.rapidapi.com",
-    "x-rapidapi-key": configsData.API_KEY,
+    "x-rapidapi-key": process.env.REACT_APP_API_KEY,
   },
 };
 
@@ -71,7 +71,7 @@ export const Crypto = {
 export const getMethod = (route) => {
   const res = {
     method: "GET",
-    url: `${configsData.DOMAIN}${route}`,
+    url: `${REACT_APP_DOMAIN}${route}`,
     headers: {
       Accept: "application/json",
       Authorization: ltoken,
@@ -83,7 +83,7 @@ export const getMethod = (route) => {
 export const PostMethod = (route, data) => {
   const res = {
     method: "POST",
-    url: `${configsData.DOMAIN}${route}`,
+    url: `${REACT_APP_DOMAIN}${route}`,
     data,
     headers: {
       Accept: "application/json",
@@ -96,7 +96,7 @@ export const PostMethod = (route, data) => {
 export const PatchMethod = (route, data) => {
   const res = {
     method: "PATCH",
-    url: `${configsData.DOMAIN}${route}`,
+    url: `${REACT_APP_DOMAIN}${route}`,
     data,
     headers: {
       Accept: "application/json",
@@ -110,7 +110,7 @@ export const PatchMethod = (route, data) => {
 export const PostProvider = (route, data) => {
   const res = {
     method: "POST",
-    url: `${configsData.DOMAIN}${route}`,
+    url: `${REACT_APP_DOMAIN}${route}`,
     data,
     headers: {
       Accept: "application/json",

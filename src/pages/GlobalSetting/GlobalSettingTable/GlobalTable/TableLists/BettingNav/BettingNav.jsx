@@ -1,6 +1,5 @@
 import React,{useState,useEffect} from "react";
-import axios from "axios";
-import token from '../../../../configs.json';
+
 import classes from "./BettingNav.module.css";
 import Bettingnavitemcontainer from "./BettingNavItem/BettingNavItemContainer";
 const BettingNav = () => {
