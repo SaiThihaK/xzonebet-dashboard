@@ -16,7 +16,7 @@ const Agent = () => {
     try{
 
       const pending = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=agent'));
-      console.log(pending)
+      // console.log(pending);
       setPendingMaster(pending.data.data.length);
     }catch(error){
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
@@ -58,7 +58,7 @@ const Agent = () => {
     }
   }
 
-  console.log(cancelMaster);
+  // console.log(cancelMaster);
  useEffect(()=>{
    fetchPending();
    fetchComplete();

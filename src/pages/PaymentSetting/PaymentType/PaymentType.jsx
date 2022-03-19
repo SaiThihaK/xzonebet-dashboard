@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import TextField from "@mui/material/TextField"; 
+
 import classes from "./PaymentType.module.css";
 import Card from "../../../components/UI/Card";
 import PaymentTypeTable from "./PaymentTypeTable/PaymentTypeTable";
@@ -30,7 +30,7 @@ const PaymentType = () => {
       }
     }
   }
- console.log(payment_type)
+//  console.log(payment_type)
   useEffect(()=>{
     FetchPaymentType()
   },[num]);
@@ -45,7 +45,7 @@ const PaymentType = () => {
         <div className={classes["card-body"]}>
           <div className={classes["table-container"]}>
             <div className={classes["search-header-flex"]}>
-              <div style={{display:"flex",justifyContent:"flex-end"}}>
+              <div className={classes["btn-container"]}>
                 <Button variant="contained" onClick={handleOpen}>
                  Create
                 </Button>

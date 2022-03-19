@@ -35,3 +35,21 @@
   bottom: -20px;
   left: 0;
 }
+.container {
+  padding: 20px;
+}
+.gird-item {
+  padding: 0px 20px;
+}
+.form-control {
+  margin-top: 20px;
+}
+.btn-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.form-container {
+  padding-bottom: 20px;
+  padding-right: 20px;
+}

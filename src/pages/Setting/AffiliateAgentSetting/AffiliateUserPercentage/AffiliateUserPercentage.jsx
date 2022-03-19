@@ -29,7 +29,8 @@ const AffiliateUserPercentage = () => {
               <h2>{i.name}</h2>
            {open && id === i.id ? (<FormControl sx={{width:500}}>
            <TextField size="small" sx={{width:400}} onChange={(e)=>setValue(e.target.value)} />
-           </FormControl>) :(<h2 style={{marginRight:50}}>{i.percentage}%</h2>)}
+           </FormControl>) :
+           (<h2 className={classes["percentage-title"]}>{i.percentage}%</h2>)}
             {open && id === i.id ?
             (<Stack spacing={2} direction="row" >
         <Button variant='contained' onClick={()=>

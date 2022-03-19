@@ -93,7 +93,7 @@ const DummyArr = [
                  {
                      ID !==a.id ?
                      (<Button onClick={()=>handleClick(a.id)}   size="small" color="success" variant="contained">Pending</Button>)
-                     :(<FormControl style={{display:"flex",flexDirection:"column"}}>
+                     :(<FormControl className={classes["form-control"]}>
                      <Select value={value} onChange={onChangeValue} size="small">
                          <MenuItem value="pending">Pending</MenuItem>
                          <MenuItem value="approve">Approve</MenuItem>

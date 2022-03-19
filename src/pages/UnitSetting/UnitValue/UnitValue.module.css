@@ -69,3 +69,7 @@
   justify-content: space-between;
   width: 100%;
 }
+
+.total-unit-container {
+  border-right: 1px solid rgb(65, 65, 65);
+}

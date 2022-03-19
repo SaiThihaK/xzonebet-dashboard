@@ -20,7 +20,8 @@ const AffiliateAgentPercentage = () => {
         </div>
         <div className={classes["card-body"]}>
             <div className={classes["soccer-setting-content-flex"]}>
-           {!open ?(<h2 style={{marginRight:50}}>{percentage}%</h2>) 
+           {!open ?
+           (<h2 className={classes["percentage-title"]}>{percentage}%</h2>) 
            :(<FormControl sx={{width:500}}>
            <TextField size="small" onChange={(e)=>setValue(e.target.value)} />
            </FormControl>)}

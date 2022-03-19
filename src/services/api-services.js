@@ -115,7 +115,6 @@ export const PostProvider = (route, data) => {
     headers: {
       Accept: "application/json",
       authorization: ltoken,
-      "Content-Type": "multipart/form-data",
     },
   };
   return res;

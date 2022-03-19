@@ -20,7 +20,7 @@ return(
           <h1 className={classes["card-title"]}>Bank Accounts</h1>
      </div>
      <div className={classes["card-body"]}>
-         <div style={{display:"flex",justifyContent:"flex-end"}}>
+         <div className={classes["btn-container"]}>
          <Button variant="contained" onClick={handleOpen}>Create Payment</Button>
          </div>
          <MPaymentAccountTable />

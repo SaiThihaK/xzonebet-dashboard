@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import FormControl from "@mui/material/FormControl";
-import TextField from "@mui/material/TextField";
+
 import Button from "@mui/material/Button";
 import classes from "./PendingAgentDetail.module.css";
 import {  useNavigate, useParams } from "react-router-dom";
@@ -8,8 +7,6 @@ import { useEffect } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { InputLabel, MenuItem, Select } from "@mui/material";
-import SuperMasterDesc from "../../../SuperMaster/SuperMasterCard/SuperMasterDetail/SuperMasterDesc/SuperMasterDesc";
 import Card from "../../../../components/UI/Card";
 import PendingAgentDesc from "./PendingAgentDesc/PendingAgentDesc";
 import { getMethod, PostMethod } from "../../../../services/api-services";
@@ -32,7 +29,7 @@ const PendingAgentDetail = () => {
   // Crypto
   const [coin,setCoin] = useState([]);
  
-  console.log(pendingMaster)
+  // console.log(pendingMaster)
   const {id} = useParams();
   const submitHandler = async(e)=>{
     e.preventDefault();
@@ -107,19 +104,14 @@ const PendingAgentDetail = () => {
           <PendingAgentDesc userInfo={pendingMaster} />
         </div>
       </Card>
-      <div style={{marginTop: '20px'}}>
           <form>
           <ToastContainer />
           <div className={classes["card-column"]}>
-        
-        {/* Enjoyment detail form */}
-        
-        <div style={{display:"flex",justifyContent:"flex-end",marginTop:20}}>
+        <div className={classes["btn-container"]}>
         <Button type="submit" onClick={(e)=>{submitHandler(e)}} variant="contained">Submit</Button>
       </div>
       </div>
         </form>
-      </div>
     </div>
   );
 };

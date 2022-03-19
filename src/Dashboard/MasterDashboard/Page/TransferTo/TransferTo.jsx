@@ -14,7 +14,7 @@ const handleOpen = ()=>setOpen(true);
 const handleClose = ()=>setOpen(false);
 const toggleClose = ()=>setFirstToggle(false);
 return(
-    <div style={{padding:50}}>
+    <div className={classes["container"]}>
         <Card>
      <div className={classes["card-header"]}>
           <h1 className={classes["card-title"]}>Transfer To</h1>
@@ -30,7 +30,7 @@ return(
          
         {firstToggle &&<FormControl sx={{width:700}}>
         <label>Transfer To Sai</label>
-       <TextField style={{marginTop:"20px"}}   size="small" label="Enter your ammount"/>
+       <TextField className={classes["form-input"]}   size="small" label="Enter your ammount"/>
        <div className={classes['btn']}>
            <Button variant="contained" onClick={handleOpen}>Confirm</Button>
        </div>

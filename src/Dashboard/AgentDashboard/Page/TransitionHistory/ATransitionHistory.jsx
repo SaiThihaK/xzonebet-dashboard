@@ -1,6 +1,6 @@
 import React from "react";
 import TextField from "@mui/material/TextField"; 
-import classes from "./TransitionHistory.module.css";
+import classes from "./ATransitionHistory.module.css";
 import { Button } from "@mui/material";
 import { DateRangePicker, LocalizationProvider } from "@mui/lab";
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
@@ -16,7 +16,7 @@ const ATransitionHistory = () => {
 
     const [value, setValue] = React.useState([null, null]);
   
-  console.log(value)
+  // console.log(value)
   return (
     
     <div className={classes["soccer-setting-container"]}>
@@ -35,9 +35,9 @@ const ATransitionHistory = () => {
                   variant="outlined"
                   label="Search ID"
                 />
-             <Button variant="contained" style={{marginLeft:30}}>Search</Button>
+             <Button variant="contained" className={classes['btn']}>Search</Button>
               </div>
-              <div style={{marginLeft:70}}>
+              <div className={classes["date-time-picker"]}>
               <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DateRangePicker
         startText="Check-in"

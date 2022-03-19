@@ -32,9 +32,9 @@ const AgentTransition = () => {
                   label="Search ID"
                   variant="outlined"
                 />
-             <Button variant="contained" style={{marginLeft:30}}>Search</Button>
+             <Button variant="contained" className={classes[".btn"]}>Search</Button>
               </div>
-              <div style={{marginLeft:70}}>
+              <div className={classes["date-time-picker"]}>
               <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DateRangePicker
         startText="Check-in"

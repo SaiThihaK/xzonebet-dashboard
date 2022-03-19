@@ -37,7 +37,7 @@ const UnitValue = () => {
             <h2  className={classes["card-body-title"]}>Total Unit - 3424432</h2>
             <div className={classes["card-body-container"]}>
              {/* UnitValueDesc */}
-             <div style={{borderRight:"1px solid rgb(65, 65, 65) "}}>
+             <div className={classes["total-unit-container"]}>
              <div className={classes["form-group"]} >
            <label htmlFor="">Promotion Unit </label>:<p>&nbsp;&nbsp;787800</p>
             </div>

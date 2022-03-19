@@ -7,7 +7,7 @@ import ProfileDetail from "./ProfileDetail/ProfileDetail";
 const MProfile = ()=>{
 
 return(
-    <div style={{padding:20}}>
+    <div className={classes["container"]}>
         <Card>
      <div className={classes["card-header"]}>
           <h1 className={classes["card-title"]}>MasterInfo</h1>
@@ -16,7 +16,7 @@ return(
     <ProfileCard />
     </div>
         </Card>
-        <div style={{marginTop:20}}>
+        <div className={classes["personal-info-card"]}>
         <Card>
         <div className={classes["card-header"]}>
         <h1 className={classes["card-title"]}>Personal Info</h1>

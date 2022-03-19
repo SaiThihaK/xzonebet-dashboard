@@ -12,11 +12,11 @@ const CancelAgentDetail = () => {
   const [cancelMaster,setCancelMaster] = useState([]);
  
   
-  // Enjoyment
+
 
   
   const {id} = useParams();
-  console.log(id);
+  // console.log(id);
  
  
 

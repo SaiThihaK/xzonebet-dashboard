@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { styled } from "@mui/material/styles";
@@ -34,7 +34,7 @@ const UserListTable = ({allUsers}) => {
   }));
 
    
-console.log(allUsers)
+// console.log(allUsers)
   let searchLists = [
     { label: "Master" },
     { label: "Agent" },

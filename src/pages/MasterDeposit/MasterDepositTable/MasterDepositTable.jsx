@@ -31,7 +31,7 @@ const MasterDepositTable = () => {
   // -----------------
   const [ammount,setAmmount] = useState('');
   const handleAmmount = (e)=>setAmmount(e.target.value);
-  console.log(ammount);
+  // console.log(ammount);
     const [id,setId] = useState(0);
     const alertToast = (message) => toast(message);
     const [num,setNum] = useState(0);

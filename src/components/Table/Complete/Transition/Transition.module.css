@@ -43,3 +43,9 @@
   align-items: center;
   margin-bottom: 20px;
 }
+.btn {
+  margin-left: 30px;
+}
+.date-time-picker {
+  margin-left: 70px;
+}

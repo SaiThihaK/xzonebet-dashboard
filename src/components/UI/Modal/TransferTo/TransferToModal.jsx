@@ -5,7 +5,7 @@ import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { FormControl, TextareaAutosize, TextField } from "@mui/material";
+import classes from "./TransferTo.module.css"
 
 const style = {
   position: "absolute",
@@ -43,14 +43,10 @@ export default function TransferToModal({
             <Typography id="transition-modal-title" variant="h6" component="h2">
              Successfully Transfered
             </Typography>
-             <div style={{marginTop: 20,display:"flex",justifyContent:"flex-end"}}>
+             <div className={classes["btn-container"]}>
              <Button
                 variant="contained"
                 color="error"
-                style={{
-                  
-                  width: 80,
-                }}
                 onClick={() => {
                   handleClose();
                   toggleClose();

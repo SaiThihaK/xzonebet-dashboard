@@ -46,7 +46,7 @@ const CompleteMasterDetail = () => {
           <CompleteMasterDesc userInfo={completeMaster} />
         </div>
       </Card>
-      <div style={{width:"100%",display:"flex",justifyContent:"space-around",marginTop:30}}>
+      <div className={classes["btn-container"]}>
         <Button variant="contained" onClick={()=>navigate("/account/master/complete-master/agent-table")} color="primary">Agent Table</Button>
         <Button variant="contained" onClick={()=>navigate("/account/master/complete-master/transition-table")} color="primary">Transition Table</Button>
       </div>

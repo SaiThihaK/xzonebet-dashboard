@@ -55,7 +55,7 @@ const Master = () => {
   }
   }
 
-  console.log(cancelMaster);
+  // console.log(cancelMaster);
  useEffect(()=>{
    fetchPending();
    fetchComplete();

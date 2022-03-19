@@ -16,10 +16,10 @@ const ProfileDetail = () => {
           alt=""
         />
         </div>
-        <div style={{display:"flex",justifyContent:"flex-end",marginBottom:10}}>
+        <div className={classes['btn-container']}>
           <Button onClick={()=>navigate("/master/profile/edit")} variant="contained">Edit</Button>
         </div>
-      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",padding:10,width:"100%"}}>
+      <div className={classes["grid-container"]}>
           <Card>
           <div className={classes["form-group-desc"]}>
           <label htmlFor="">Name </label>

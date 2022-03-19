@@ -38,7 +38,7 @@ const PendingAgentDesc = ({userInfo}) => {
           <span>ID - {userInfo.id}</span>
         </div>
       </div>
-      <div style={{ marginTop: "30px" }}>
+      <div className={classes["form-container"]}>
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Email </label>:<p>&nbsp;&nbsp;{userInfo.email}</p>
         </div>
@@ -54,8 +54,10 @@ const PendingAgentDesc = ({userInfo}) => {
  
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Choose Master </label>:
-          <FormControl  style={{width:200,marginLeft:10}}>
-  <InputLabel  id="demo-simple-select-label" size="small" style={{height:20}}>Master</InputLabel>
+          <FormControl className={classes["select-container"]}>
+  <InputLabel  id="demo-simple-select-label" size="small"
+  className={classes["select-label"]}
+  >Choose Master</InputLabel>
   <Select
     labelId="demo-simple-select-label"
     id="demo-simple-select"
