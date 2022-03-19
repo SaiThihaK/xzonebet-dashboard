@@ -24,37 +24,37 @@
   background-color: rgb(240, 240, 240);
 }
 .table-title {
-    font-size: 15px;
-    color: #999;
-    margin-bottom: 10px;
+  font-size: 15px;
+  color: #999;
+  margin-bottom: 10px;
 }
 .table-title span {
-    color: #333;
-    cursor: pointer;
-    transition: 0.5s;
+  color: #333;
+  cursor: pointer;
+  transition: 0.5s;
 }
 .table-title span:hover {
-    color: #1565C0;
+  color: #1565c0;
 }
 .country-club {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 .logoSize {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    margin-right: 10px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 10px;
 }
 .betting-table td input {
-    width: 50px;
-    outline: none;
-    text-align: center;
-    border: 1px solid #929292;
-    color: rgb(61, 61, 61);
-    font-size: 15px;
-    padding: 2px 5px;
-    border-radius: 0.25rem;
+  width: 50px;
+  outline: none;
+  text-align: center;
+  border: 1px solid #929292;
+  color: rgb(61, 61, 61);
+  font-size: 15px;
+  padding: 2px 5px;
+  border-radius: 0.25rem;
 }
 .betting-date {
   font-weight: 300;

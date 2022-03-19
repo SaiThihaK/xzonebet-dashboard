@@ -30,7 +30,7 @@ const MasterCard = ({user,path}) => {
           <Typography
             gutterBottom
             component="div"
-            style={{display:"flex",justifyContent:"center",alignItems:"center"}}
+            className={classes["card-title"]}
             sx={{ fontSize: "15px", fontWeight: "600", color: "#504444" }}
           >
             {user.name}
