@@ -18,8 +18,9 @@ const CreateUnit = () => {
         <div className={classes["card-body"]}>
             <div className={classes['soccer-setting-content-flex']}>
             <h3>Current Unit-</h3>
-            <TextField
-            sx={{marginLeft:70,width:700}}
+          <TextField
+          sx={{width:500}}
+          className={classes["form-input"]}
           disabled
           id="outlined-disabled"
           label="0"
