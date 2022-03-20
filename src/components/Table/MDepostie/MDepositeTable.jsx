@@ -12,6 +12,7 @@ import Stack from "@mui/material/Stack";
 import classes from "./MDepositeTable.module.css";
 import { Button, FormControl, MenuItem, Select } from "@mui/material";
 import Card from "../../UI/Card";
+import { BasedColor } from "../../../Controller/BasedColor";
 
 const MDepositeTable = () => { 
 
@@ -26,7 +27,7 @@ const DummyArr = [
    const onChangeValue = (e)=>setValue(e.target.value);
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-      backgroundColor: "#505B72",
+      backgroundColor: BasedColor.tableHead,
       color: theme.palette.common.white,
     },
     [`&.${tableCellClasses.body}`]: {

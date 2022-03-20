@@ -10,10 +10,11 @@ import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import ToggleBtn from "../../../../../../../components/UI/ToggleBtn/ToggleBtn";
 import classes from "./SuperMasterTableList.module.css";
+import { BasedColor } from "../../../../../../../Controller/BasedColor";
 const SuperMasterTableList = () => {
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-      backgroundColor: "#505B72",
+      backgroundColor: BasedColor.tableHead,
       color: theme.palette.common.white,
     },
     [`&.${tableCellClasses.body}`]: {

@@ -1,1 +1,1 @@
-export const alert = (toast, msg) => toast(msg);
+export const ToastAlert = (toast, msg) => toast(msg);
