@@ -13,10 +13,11 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import classes from "./PaymentTypeTable.module.css";
 import EditPaymentModal from "../../../../components/UI/Modal/PaymentSetting/PaymentType/EditPaymentTypeModal";
+import { BasedColor } from "../../../../Controller/BasedColor";
 const PaymentTypeTable = ({payment_type,num,setNum}) => {
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-      backgroundColor: "#505B72",
+      backgroundColor: BasedColor.tableHead,
       color: theme.palette.common.white,
     },
     [`&.${tableCellClasses.body}`]: {

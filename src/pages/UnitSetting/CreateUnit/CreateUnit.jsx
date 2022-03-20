@@ -32,7 +32,7 @@ const CreateUnit = () => {
           variant="standard"
           type="number"
         /> 
-        <Button className={classes['btn']} variant="contained">Create</Button>
+        <Button variant="contained" className={classes["btn"]}>Create</Button>
         </form>
         </div>
       </Card>

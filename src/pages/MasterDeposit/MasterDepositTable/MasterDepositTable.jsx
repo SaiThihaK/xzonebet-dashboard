@@ -18,6 +18,7 @@ import { getMethod, PostMethod } from "../../../services/api-services";
 import { FormControl, MenuItem, Select } from "@mui/material";
 import MasterDepositeConfirm from "../../../components/UI/Modal/MasterDeposite/MasterDepositeConfirm";
 import { logoutHandler } from "../../../components/Sidebar/Sidebar";
+import { BasedColor } from "../../../Controller/BasedColor";
 const MasterDepositTable = () => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
@@ -37,7 +38,7 @@ const MasterDepositTable = () => {
     const [num,setNum] = useState(0);
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-      backgroundColor: "#505B72",
+      backgroundColor: BasedColor.tableHead,
       color: theme.palette.common.white,
     },
     [`&.${tableCellClasses.body}`]: {
