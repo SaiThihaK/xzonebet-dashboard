@@ -11,12 +11,13 @@ import Stack from "@mui/material/Stack";
 
 import classes from "./MAgentTable.module.css";
 import { Button } from "@mui/material";
+import { BasedColor } from "../../../../../Controller/BasedColor";
 
 const MAgentTable = ({Id,name}) => {
     const [open, setOpen] = useState(false);
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-      backgroundColor: "#505B72",
+      backgroundColor: BasedColor.tableHead,
       color: theme.palette.common.white,
     },
     [`&.${tableCellClasses.body}`]: {

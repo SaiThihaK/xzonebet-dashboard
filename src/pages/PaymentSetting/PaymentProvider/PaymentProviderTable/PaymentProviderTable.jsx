@@ -16,11 +16,12 @@ import { Avatar } from "@mui/material";
 import axios from "axios"
 import {getMethod} from "../../../../services/api-services"
 import { logoutHandler } from "../../../../components/Sidebar/Sidebar";
+import { BasedColor } from "../../../../Controller/BasedColor";
 const PaymentProviderTable = () => {
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-      backgroundColor: "#505B72",
+      backgroundColor: BasedColor.tableHead,
       color: theme.palette.common.white,
     },
     [`&.${tableCellClasses.body}`]: {

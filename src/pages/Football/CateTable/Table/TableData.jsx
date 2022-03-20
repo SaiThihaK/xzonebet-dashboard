@@ -10,10 +10,11 @@ import Paper from "@mui/material/Paper";
 import Button from '@mui/material/Button';
 import FootballDetail from "../../../../components/UI/Modal/FootballDetail/FootballDetail";
 import classes from "./TableData.module.css";
+import { BasedColor } from "../../../../Controller/BasedColor";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: '#505B72',
+    backgroundColor: BasedColor.tableHead,
     color: theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
