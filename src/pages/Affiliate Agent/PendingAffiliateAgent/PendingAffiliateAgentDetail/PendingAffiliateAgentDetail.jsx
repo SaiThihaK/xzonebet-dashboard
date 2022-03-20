@@ -12,7 +12,7 @@ const [user,setUser] = useState("");
 const fetchUserDetail = async()=>{
   try{
     const {data} = await axios.request(getMethod(`/api/affiliate-register-lists/${id}`));
-    console.log(data.data);
+    // console.log(data.data);
     setUser(data.data);
   }catch(error){
     if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
@@ -26,7 +26,7 @@ useEffect(()=>{
   return ()=>setUser("");
 },[])
 const {id} = useParams();
-console.log(user);
+// console.log(user);
   return (
     <div>
               <Card>
@@ -45,7 +45,7 @@ console.log(user);
           <span>ID - {user.id}</span>
         </div>
       </div>
-      <div style={{ marginTop: "30px" }}>
+      <div className={classes["detail-container"]}>
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Email </label>:<p>&nbsp;&nbsp;{user.email}</p>
         </div>

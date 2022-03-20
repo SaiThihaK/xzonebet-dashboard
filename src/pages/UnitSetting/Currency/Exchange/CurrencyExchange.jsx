@@ -14,12 +14,12 @@ const [coun,setCoun] = useState([]);
 
   const FetchCurrency = async()=>{
     const response = await  axios.request(Currency);
-    console.log(response.data.conversion_rates);
+    // console.log(response.data.conversion_rates);
     setCurrency(response.data.conversion_rates)
   };
   const FetchCountries = async()=>{
     const response = await axios.get(`https://v6.exchangerate-api.com/v6/f08f01b448f9b740baf0b750/codes?fbclid=IwAR0xRGVSUAcXp3BvTieGvgNtB3KmaIKCgvIvGkPV6yG2B_ZWHWf_SpVCLJw`);
-    console.log(response.data.supported_codes);
+    // console.log(response.data.supported_codes);
     setCoun(response.data.supported_codes);
   }
   useEffect(()=>{

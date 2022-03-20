@@ -88,3 +88,10 @@
   align-items: center;
   margin-bottom: 20px;
 }
+.date-range-picker {
+  margin-left: 70px;
+}
+
+.btn {
+  margin-left: 30px;
+}

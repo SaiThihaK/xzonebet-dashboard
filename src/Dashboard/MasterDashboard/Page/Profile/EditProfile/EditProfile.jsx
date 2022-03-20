@@ -9,53 +9,53 @@ import classes from "./EditProfile.module.css"
 const EditProfile = ()=>{
 
 return(
-    <div style={{padding:20}}>
+    <div className={classes["container"]}>
         <Card>
      <div className={classes["card-header"]}>
           <h1 className={classes["card-title"]}>Edit Profile</h1>
      </div>
-     <div style={{paddingBottom:20,paddingRight:20}}>
+     <div className={classes["form-container"]}>
      <div className={classes["card-body"]}>
-     <div style={{padding:"0px 20px"}}>
-         <FormControl fullWidth style={{marginBottom:10}}>
+     <div className={classes["grid-item"]}>
+         <FormControl fullWidth className={classes["form-control"]}>
              <label>Name</label>
              <TextField  size="small" />
          </FormControl>
-         <FormControl fullWidth style={{marginBottom:10}}>
+         <FormControl fullWidth className={classes["form-control"]}>
              <label>Date of Birth</label>
              <TextField  size="small" />
          </FormControl>
-         <FormControl fullWidth style={{marginBottom:10}}>
+         <FormControl fullWidth className={classes["form-control"]}>
              <label>National Identity Card Number</label>
              <TextField  size="small" />
          </FormControl>
-         <FormControl fullWidth style={{marginBottom:10}}>
+         <FormControl fullWidth className={classes["form-control"]}>
              <label>Passport Name</label>
              <TextField  size="small" />
          </FormControl>
      </div>
      {/* --------------------Grid Right----------------- */}
-     <div style={{padding:"0px 20px"}}>
-         <FormControl fullWidth style={{marginBottom:10}}>
+     <div className={classes["grid-item"]}>
+         <FormControl fullWidth className={classes["form-control"]}>
              <label>Country</label>
              <TextField  size="small" />
          </FormControl>
-         <FormControl fullWidth style={{marginBottom:10}}>
+         <FormControl fullWidth className={classes["form-control"]}>
              <label>Nationality</label>
              <TextField  size="small" />
          </FormControl>
-         <FormControl fullWidth style={{marginBottom:10}}>
+         <FormControl fullWidth className={classes["form-control"]}>
              <label>Region</label>
              <TextField  size="small" />
          </FormControl>
-         <FormControl fullWidth style={{marginBottom:10}}>
+         <FormControl fullWidth className={classes["form-control"]}>
              <label>Currency Type</label>
              <TextField  size="small" />
          </FormControl>
      </div>
     </div>
          
-     <div style={{display:"flex",justifyContent:"flex-end",alignItems:"center"}}>
+     <div className={classes["btn-container"]}>
         <Button variant="contained">Confirm</Button>
     </div>
      </div>

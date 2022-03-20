@@ -19,7 +19,7 @@ const CompleteMasterDesc = ({userInfo}) => {
           <span>ID - {userInfo.id}</span>
         </div>
       </div>
-      <div style={{ marginTop: "30px" }}>
+      <div   className={classes["form-container"]}>
       <div className={classes["form-group-desc"]}>
           <label htmlFor="">Unit </label>:<p>&nbsp;&nbsp;</p>
         </div>

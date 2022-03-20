@@ -42,7 +42,7 @@ const ConfirmAgentDesc = ({userInfo}) => {
           <span>ID - {userInfo.id}</span>
         </div>
       </div>
-      <div style={{ marginTop: "30px" }}>
+      <div className={classes["form-container"]}>
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Email </label>:<p>&nbsp;&nbsp;{userInfo.email}</p>
         </div>
@@ -61,8 +61,8 @@ const ConfirmAgentDesc = ({userInfo}) => {
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Transition Id </label>:<p>&nbsp;&nbsp;{userInfo.transition_id}</p>
         </div>
-        <form style={{width:"100%",display:"flex",alignItems:"center",marginTop:30}}>
-        <Button   variant="contained" color="primary" onClick={confirmHandler} style={{marginLeft:150}}>Comfirm</Button>
+        <form className={classes["btn-container"]}>
+        <Button   variant="contained" color="primary" onClick={confirmHandler} className={classes["btn"]}>Comfirm</Button>
         </form>
       </div>
     </div>

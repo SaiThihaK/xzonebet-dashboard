@@ -16,7 +16,7 @@ const CompleteAgentDetail = () => {
   const {id} = useParams();
   const navigate = useNavigate();
   // Enjoyment
-  console.log(id);
+  // console.log(id);
 
   const fetchMasterDetail = async()=>{
     try{
@@ -46,7 +46,7 @@ const CompleteAgentDetail = () => {
           <CompleteAgentDesc userInfo={completeMaster} /> 
         </div>
       </Card>
-      <div style={{width:"100%",display:"flex",justifyContent:"space-around",marginTop:30}}>
+      <div className={classes["btn-container"]}>
         <Button variant="contained" onClick={()=>navigate("/account/agent/complete-agent/transition-table")} color="primary">Transition Table</Button>
       </div>
     </div>

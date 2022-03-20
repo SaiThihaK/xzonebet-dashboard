@@ -15,7 +15,7 @@ const TransitionHistory = () => {
 
     const [value, setValue] = React.useState([null, null]);
   
-  console.log(value)
+  // console.log(value)
   return (
     
     <div className={classes["soccer-setting-container"]}>
@@ -34,9 +34,9 @@ const TransitionHistory = () => {
                   label="Search ID"
                   variant="outlined"
                 />
-             <Button variant="contained" style={{marginLeft:30}}>Search</Button>
+             <Button variant="contained" className={classes["btn"]}>Search</Button>
               </div>
-              <div style={{marginLeft:70}}>
+              <div className={classes["date-range-picker"]}>
               <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DateRangePicker
         startText="Check-in"

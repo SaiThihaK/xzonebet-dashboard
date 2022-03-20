@@ -6,6 +6,7 @@ import Fade from "@mui/material/Fade";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material";
+import classes from "./MPaymentAccountModal.module.css"
 
 
 import axios from "axios";
@@ -63,7 +64,7 @@ const Arr = [{name:"E-wallet"},{name:"Cash"},{name:"Banking"}];
             <Typography id="transition-modal-title" variant="h6" component="h2">
               Create Payment Account
             </Typography>
-            <FormControl sx={{ width: "100%" }} style={{marginTop:10}}>
+            <FormControl sx={{ width: "100%" }} className={classes["form-container"]}>
             <label>Select Payment Type</label>
             <Select
               value={type}
@@ -79,7 +80,7 @@ const Arr = [{name:"E-wallet"},{name:"Cash"},{name:"Banking"}];
             }
             </Select>
             </FormControl>
-            <FormControl sx={{ width: "100%" }} style={{marginTop:10}}>
+            <FormControl sx={{ width: "100%" }} className={classes["form-container"]}>
             <label>Select Payment Provider</label>
             <Select
               value={type}
@@ -95,22 +96,18 @@ const Arr = [{name:"E-wallet"},{name:"Cash"},{name:"Banking"}];
             }
             </Select>
             </FormControl>
-            <FormControl sx={{ width: "100%" }} style={{marginTop:10}}>
+            <FormControl sx={{ width: "100%" }} className={classes["form-container"]}>
                 <label>Phone number or Bank account</label>
                 <TextField size="small" />
             </FormControl>
-            <FormControl sx={{ width: "100%" }} style={{marginTop:10}}>
+            <FormControl sx={{ width: "100%" }} className={classes["form-container"]}>
                 <label>Owner Name</label>
                 <TextField size="small" />
             </FormControl >
-            <div style={{marginTop: 20,display:"flex",justifyContent:"flex-end"}}>
+            <div className={classes["btn-container"]}>
             <Button
                 variant="contained"
                 color="success"
-                style={{
-                  
-                  width: 80,
-                }}
                 onClick={(e) => {
                   handleClose();
                 

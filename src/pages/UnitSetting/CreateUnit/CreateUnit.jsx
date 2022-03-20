@@ -19,7 +19,7 @@ const CreateUnit = () => {
             <div className={classes['soccer-setting-content-flex']}>
             <h3>Current Unit-</h3>
             <TextField
-            style={{marginLeft:70,width:700}}
+            sx={{marginLeft:70,width:700}}
           disabled
           id="outlined-disabled"
           label="0"
@@ -27,11 +27,11 @@ const CreateUnit = () => {
            </div>
            <form className={classes['creadit-input']}>
         <TextField
-          style={{width:300}}
+          sx={{width:300}}
           variant="standard"
           type="number"
         /> 
-        <Button style={{width:100,marginTop:30,marginLeft:200}} variant="contained">Create</Button>
+        <Button className={classes['btn']} variant="contained">Create</Button>
         </form>
         </div>
       </Card>

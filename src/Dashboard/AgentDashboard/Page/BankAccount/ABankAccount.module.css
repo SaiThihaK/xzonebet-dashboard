@@ -33,3 +33,7 @@
   bottom: -20px;
   left: 0;
 }
+.btn-container {
+  display: flex;
+  justify-content: flex-end;
+}

@@ -42,7 +42,7 @@ const PaymentProviderTable = () => {
   const FetchPayment_type = async()=>{
     try{
       const response = await  axios.request(getMethod(`/api/dashboard/payment-providers`));
-      console.log(response.data.data);
+      // console.log(response.data.data);
       setPayment_provider(response.data.data);
 
     }catch(error){
@@ -94,8 +94,8 @@ const PaymentProviderTable = () => {
                   <StyledTableCell align="center" >{row.payment_type.name}</StyledTableCell>
                   <StyledTableCell align="center" >{row.name}</StyledTableCell>
                   <StyledTableCell align="center" >
-                      <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
-                      <Avatar style={{display:"flex",justifyContent:"center"}} src={row.logo} variant="square" alt=""/>
+                      <div className={classes["logo-container"]}>
+                      <Avatar className={classes['logo']} src={row.logo} variant="square" alt=""/>
                       </div>
                       
                   </StyledTableCell>

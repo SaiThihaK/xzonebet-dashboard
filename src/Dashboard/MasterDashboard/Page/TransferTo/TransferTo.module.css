@@ -38,3 +38,10 @@
   justify-content: flex-end;
   margin-top: 30px;
 }
+.container {
+  padding: 50px;
+}
+
+.form-input {
+  margin-top: 20px;
+}

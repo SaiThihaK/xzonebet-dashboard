@@ -28,7 +28,7 @@ const AgentCard = ({
     setAge(event.target.value);
   };
 
-  console.log(user)
+  // console.log(user)
   const submitHandler = async(e)=>{
     e.preventDefault();
     if(!age)return;

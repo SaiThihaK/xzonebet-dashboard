@@ -9,6 +9,7 @@ import { FormControl,Select,MenuItem, TextField, Avatar } from "@mui/material";
 import axios from "axios";
 import { getMethod } from "../../../../../services/api-services";
 import { logoutHandler } from "../../../../Sidebar/Sidebar";
+import classes from "./PaymentAccountModal.module.css"
 const style = {
   position: "absolute",
   top: "50%",
@@ -37,7 +38,6 @@ export default function PaymentAccountModal({
   const Payment_ProviderChange = (e)=>setPayment_providerValue(e.target.value);
   const Payment_Method = async()=>{
     try{
-
       const response = await axios.request(getMethod(`/api/dashboard/payment-types`));
       // console.log(response.data.data);
       setPayment_type(response.data.data);
@@ -69,9 +69,9 @@ export default function PaymentAccountModal({
     }
   },[]);
 // To get exact paymentProvider under the Parent Payment Type
-  const FilterPayment_Provider = payment_provider.filter((c)=>c.payment_type.name===payment_typeValue);
+  const FilterPayment_Provider = payment_provider.filter((c)=>c.payment_type===payment_typeValue);
   // console.log({FilterPayment_Provider});
- 
+ console.log(payment_provider);
   return (
     <div>
       <Modal
@@ -90,12 +90,11 @@ export default function PaymentAccountModal({
             <Typography id="transition-modal-title" variant="h6" component="h2">
               Create New Payment Account
             </Typography>
-            <FormControl sx={{ width: "100%" }} style={{marginTop:10}}>
-            <label>Select Payment Type</label>
+            <FormControl sx={{ width: "100%" }} className={classes["form-container"]}>
+            <label className={classes["form-label"]}>Select Payment Type</label>
             <Select
               value={payment_typeValue}
               size="small"
-              style={{marginBottom:30}}
               sx={{ backgroundColor: "#f3f3f3" }}
               onChange={Payment_typeChange}
             > 
@@ -104,15 +103,15 @@ export default function PaymentAccountModal({
               ))}
             </Select>
             </FormControl>
-            <FormControl sx={{ width: "100%" }} style={{marginTop:10}}>
-            <label>Select Payment Provider</label>
+            <FormControl sx={{ width: "100%" }} className={classes["form-container"]}>
+            <label className={classes["form-label"]}>Select Payment Provider</label>
             <Select
           placeholder="Payment Provider"
           value={payment_providerValue}
           onChange={Payment_ProviderChange}
           inputProps={{ "aria-label": "Without label" }}
           size="small"
-          style={{marginBottom:30}}
+
           sx={{ backgroundColor: "#f3f3f3" }}
         >
           {FilterPayment_Provider && FilterPayment_Provider.map((item,index)=>(
@@ -123,24 +122,20 @@ export default function PaymentAccountModal({
           ))}
         </Select>
         </FormControl>
-        <FormControl sx={{width:"100%"}} style={{marginBottom:20}}>
-        <label>Account or Phone Number</label>
+        <FormControl sx={{width:"100%"}} className={classes["form-container"]}>
+        <label className={classes["form-label"]}>Account or Phone Number</label>
         <TextField  size="small"   />
         </FormControl>
         
-        <FormControl sx={{width:"100%"}} style={{marginBottom:20}}>
-        <label>Name</label>
+        <FormControl sx={{width:"100%"}} className={classes["form-container"]}>
+        <label className={classes["form-label"]}>Name</label>
         <TextField  size="small"   />
         </FormControl>
             
-            <div style={{marginTop: 20,display:"flex",justifyContent:"flex-end"}}>
+            <div className={classes["btn-container"]}>
             <Button
                 variant="contained"
                 color="success"
-                style={{
-                  
-                  width: 80,
-                }}
                 onClick={() => {
                   handleClose();
                 

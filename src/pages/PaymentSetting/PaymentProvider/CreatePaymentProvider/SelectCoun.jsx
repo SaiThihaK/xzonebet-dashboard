@@ -6,7 +6,7 @@ import FormControl from '@mui/material/FormControl';
 import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
-import { Countries } from '../../../../services/api-services';
+import {  getMethod } from '../../../../services/api-services';
 import axios from 'axios';
 import { Avatar } from '@mui/material';
 
@@ -23,39 +23,37 @@ const MenuProps = {
 
 
 
-export default function SelectCoun() {
-  const [personName, setPersonName] = React.useState([]);
-  const [code,setCode] = React.useState("");
-  const [coun,setCoun] = React.useState([]);
+export default function SelectCoun({country,setCountry}) {
 
-  const arr = React.useRef([]);
+
+  const [coun,setCoun] = React.useState([]);
+  
+ 
+
   const fetchCountries = async()=>{
-    axios.request(Countries)
+    axios.request(getMethod(`/api/countries`))
     .then(function (response) {
-        console.log(response.data.response);
-        setCoun(response.data.response);
-    }).catch(function (error) {
-        console.error(error);
+      setCoun(response.data.data);
     });
   }
  
   React.useEffect(()=>{
       fetchCountries();
   },[])
-  console.log(personName);
+  // console.log(country);
   
   const handleChange = (event) => {
     // const {
     //   target: { value },
     // } = event;
-    setPersonName(
+    setCountry(
       // On autofill we get a stringified value.
       // typeof value === 'string' ? value.split(',') : value,
       event.target.value
     );
   };
-//  console.log(arr.current.value)
-const filterArr = (arr)=>arr.map((c)=>c.name);
+
+
   return (
     <div style={{marginTop:20}}>
       <FormControl sx={{ width:"100%" }}>
@@ -64,16 +62,16 @@ const filterArr = (arr)=>arr.map((c)=>c.name);
           labelId="demo-multiple-checkbox-label"
           id="demo-multiple-checkbox"
           multiple
-          value={personName}
+          value={country}
           size="small"
           // ref={arr}
           onChange={handleChange}
           renderValue={(selected) => selected.join(', ')}
         >
           {coun.map((name,index) => (
-            <MenuItem key={index} value={name.code}>
-              <Checkbox checked={personName.indexOf(name.code) > -1} />
-              <Avatar src={name.flag} style={{width:"20px",height:"20px",marginRight:10}} />
+            <MenuItem key={index} value={name.id}>
+              <Checkbox checked={country.indexOf(name.id) > -1} />
+              {/* <Avatar src={name.flag} style={{width:"20px",height:"20px",marginRight:10}} /> */}
               <ListItemText>
                  {name.name}({name.code})
              </ListItemText>

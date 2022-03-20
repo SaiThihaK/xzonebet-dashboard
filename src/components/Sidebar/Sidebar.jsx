@@ -18,21 +18,38 @@ import classes from "./Sidebar.module.css";
 import { IconContext } from "react-icons/lib";
 import { AgentSidebarData } from "../../Dashboard/AgentDashboard/AgentSideBarData";
 import { MasterSidebarData } from "../../Dashboard/MasterDashboard/MasterSideBarData";
-import { useSelector } from 'react-redux';
-import { userInfo } from "../../features/UserInfo";
+import { PostMethod } from "../../services/api-services";
+import axios from "axios"
+
 
 function refreshPage() {
   setTimeout(()=>{
       window.location.reload(false);
   }, 1);
 }
-export const logoutHandler = () => {
-  localStorage.removeItem('status');
-  localStorage.removeItem('jToken');
-  localStorage.removeItem('lToken');
-  localStorage.removeItem('type');
-  window.location.assign("/");
-  refreshPage();
+export const logoutHandler = async() => {
+  try{
+    const response = await axios.request(PostMethod(`/api/logout`))
+    if(response.data.status === "success"){
+      localStorage.removeItem('status');
+      localStorage.removeItem('jToken');
+      localStorage.removeItem('lToken');
+      localStorage.removeItem('type');
+      window.location.assign("/");
+      refreshPage();
+      return;
+    }
+  }catch(error){
+      if (error.response.status === 401 || error.response.data.message === "Unauthenticated."){
+        localStorage.removeItem('status');
+        localStorage.removeItem('jToken');
+        localStorage.removeItem('lToken');
+        localStorage.removeItem('type');
+        window.location.assign("/");
+        refreshPage();
+        return;
+      }
+  }
 };
 const dashboard = localStorage.getItem('type');
 const Sidebar = () => {

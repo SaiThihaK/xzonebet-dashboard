@@ -17,12 +17,19 @@ FetchCrypto();
 return ()=>setCoin([]);
 },[]);
 
-
+const styles={
+  title:{
+    marginBottom:20,
+    display:"flex",
+    justifyContent:"center",
+    alignItem:"center"
+  }
+}
 
 // console.log(coin);
 return(
     <div>
-        <h1 style={{marginBottom:20,display:"flex",justifyContent:"center",alignItem:"center"}}>Crypto Exchange</h1>
+        <h1 style={styles.title}>Crypto Exchange</h1>
         <TableContainer component={Paper}  style={{marginTop:20}}>
         <Table  aria-label="simple table">
         <TableHead>

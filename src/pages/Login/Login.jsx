@@ -37,11 +37,11 @@ const Login = () => {
     }
     axios.request(login,login.data = input)
     .then(res => {
-      console.log(res);
+      // console.log(res);
       switch(res.data.status){
         case "success":
-          console.log('login success');
-          console.log(res.data)
+          // console.log('login success');
+          // console.log(res.data)
           localStorage.setItem('status',res.data.status);
           localStorage.setItem('jToken',res.data.data['j_token']);
           localStorage.setItem('lToken',res.data.data['l_token']);

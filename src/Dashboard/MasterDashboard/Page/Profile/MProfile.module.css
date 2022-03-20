@@ -32,3 +32,9 @@
   bottom: -20px;
   left: 0;
 }
+.container {
+  padding: 20px;
+}
+.personal-info-card {
+  margin-top: 20px;
+}

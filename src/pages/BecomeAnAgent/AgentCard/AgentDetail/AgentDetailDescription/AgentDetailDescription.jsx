@@ -10,7 +10,7 @@ const [user,setUser] = useState("");
 const fetchUserDetail = async()=>{
   try{
     const {data} = await axios.request(getMethod(`/api/affiliate-register-lists/${id}`));
-    console.log(data.data);
+    // console.log(data.data);
     setUser(data.data);
 
   }catch(error){
@@ -25,7 +25,7 @@ useEffect(()=>{
   return ()=>setUser("");
 },[])
 const {id} = useParams();
-console.log(id)
+// console.log(id)
   return (
     <div>
       <div className={classes["agent-user-image-group"]}>
@@ -39,7 +39,7 @@ console.log(id)
           <span>ID - {user.id}</span>
         </div>
       </div>
-      <div style={{ marginTop: "30px" }}>
+      <div className={classes["form-container"]}>
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Email </label>:<p>&nbsp;&nbsp;{user.email}</p>
         </div>

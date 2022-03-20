@@ -76,3 +76,9 @@
 .form-group-desc p {
   font-size: 15px;
 }
+.btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+}
