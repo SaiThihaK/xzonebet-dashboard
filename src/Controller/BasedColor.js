@@ -1,5 +1,5 @@
 export const BasedColor = {
-  background: "#343EA1",
-  hover: "#9535C9",
-  tableHead: "#9535C9",
+  background: "#15171c",
+  hover: " #252831",
+  tableHead: "#15171c",
 };
