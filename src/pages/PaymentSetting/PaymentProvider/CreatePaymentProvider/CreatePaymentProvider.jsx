@@ -22,11 +22,11 @@ const CreatePaymentProvider = () => {
   const [logo, setlogo] = useState('');
   const [country, setCountry] = useState([]);
 
-  console.log({country});
+  console.log({logo});
 
   const payment_typeChange = (e) => setPayment_typeValue(e.target.value);
   const payment_providerChange = (e) => setPayment_provider(e.target.value);
-  const logoChange = (e) => setlogo(e.target.value);
+  const logoChange = (e) => setlogo(e.target.files[0]);
 
   const FetchPayment_type = async () => {
     try {
@@ -39,7 +39,9 @@ const CreatePaymentProvider = () => {
     }
   }
 
-  console.log(country)
+ 
+  
+
   const AlertToast = (toast, msg) => {
     return toast(msg);
   };
@@ -48,31 +50,34 @@ const CreatePaymentProvider = () => {
     FetchPayment_type();
     return () => setPayment_type([]);
   }, []);
-   console.log({payment_typeValue,payment_provider,logo,country})
+  console.log(logo)
   const submitHandler = async (e) => {
     e.preventDefault();
-  
     if (!payment_typeValue || !payment_provider ||!logo ||!country) {
       AlertToast(toast.warning, "Please fill all the field")
       return;
     }
     try {
-      const response = await axios.request(PostMethod(`/api/dashboard/payment-providers`, {
+   
+
+      const response = await axios.request(PostMethod(`/api/dashboard/payment-providers`,
+       {
         payment_type_id: payment_typeValue,
         name: payment_provider,
         logo,
         countries:country
-      }));
+      }
+      ));
       console.log(response);
     } catch (error) {
+      console.log(error.response.data.message)
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
         logoutHandler();
       }
     }
   };
 
-  //  console.log(payment_typeValue)
-  console.log(logo);
+
   return (
     <div className={classes["soccer-setting-container"]}>
       <ToastContainer />

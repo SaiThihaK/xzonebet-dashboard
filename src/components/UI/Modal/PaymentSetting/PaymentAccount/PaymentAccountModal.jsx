@@ -38,7 +38,6 @@ export default function PaymentAccountModal({
   const Payment_ProviderChange = (e)=>setPayment_providerValue(e.target.value);
   const Payment_Method = async()=>{
     try{
-
       const response = await axios.request(getMethod(`/api/dashboard/payment-types`));
       // console.log(response.data.data);
       setPayment_type(response.data.data);
@@ -70,9 +69,9 @@ export default function PaymentAccountModal({
     }
   },[]);
 // To get exact paymentProvider under the Parent Payment Type
-  const FilterPayment_Provider = payment_provider.filter((c)=>c.payment_type.name===payment_typeValue);
+  const FilterPayment_Provider = payment_provider.filter((c)=>c.payment_type===payment_typeValue);
   // console.log({FilterPayment_Provider});
- 
+ console.log(payment_provider);
   return (
     <div>
       <Modal
