@@ -15,7 +15,7 @@ const AgentTransitionTable = () => {
     const [open, setOpen] = useState(false);
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-      backgroundColor: "#505B72",
+      backgroundColor: "#9535C9",
       color: theme.palette.common.white,
     },
     [`&.${tableCellClasses.body}`]: {

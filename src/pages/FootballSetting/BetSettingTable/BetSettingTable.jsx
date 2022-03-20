@@ -9,10 +9,11 @@ import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import { Button, Table } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { BasedColor } from '../../../Controller/BasedColor';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-      backgroundColor: theme.palette.common.black,
+      backgroundColor: BasedColor.tableHead,
       color: theme.palette.common.white,
     },
     [`&.${tableCellClasses.body}`]: {
