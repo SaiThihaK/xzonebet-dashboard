@@ -8,10 +8,10 @@
   text-decoration: none;
   font-size: 18px;
   transition: 0.3s;
-  background-color: #343ea1;
+  background-color: #15171c;
 }
 .menuItem:hover {
-  background-color: #9535c9;
+  background-color: #252831;
   border-left: 4px solid #d1cdd8;
   cursor: pointer;
 }
@@ -21,7 +21,7 @@
   font-size: 15px;
 }
 .sub-list {
-  background-color: #343ea1;
+  background-color: #15171c;
   /* height: 60px; */
   padding: 20px 20px 20px 2.3rem;
   display: flex;
