@@ -112,6 +112,36 @@ export const MasterSidebarData = [
         icon: <FaIcons.FaUserFriends/>
     },
     {
+        title: 'Payment Setting',
+        path: '/master/payment-setting',
+        icon: <AiIcons.AiFillSetting />,
+        iconClosed: <RiIcons.RiArrowDownSFill/>,
+        iconOpened: <RiIcons.RiArrowUpSFill/>,
+        subNav : [
+            {
+                title: 'Payment Type',
+                path: '/master/payment-setting/payment-value',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+            {
+                title: 'Payment Provider',
+                path: '/master/payment-setting/payment-provider',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+            {
+                title: 'Payment Account',
+                path: '/master/payment-setting/payment-account',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+           
+            {
+                title: 'Payment  Announcement',
+                path: '/master/payment-setting/payment-announcement',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+        ]
+    },
+    {
         title: 'Transfer To',
         path: '/master/transfer-to',
         icon: <AiIcons.AiFillSetting />,

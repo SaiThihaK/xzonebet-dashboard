@@ -10,6 +10,9 @@ import axios from "axios";
 import { getMethod, PostMethod } from "../../../../../services/api-services";
 import { logoutHandler } from "../../../../Sidebar/Sidebar";
 import classes from "./PaymentAccountModal.module.css"
+import { ToastAlert } from "../../../../../Controller/ToastAlert";
+import { toast } from "react-toastify";
+import { refreshPage } from "../../../../../Controller/RefreshPage";
 const style = {
   position: "absolute",
   top: "50%",
@@ -52,11 +55,10 @@ export default function PaymentAccountModal({
       }
     }
   };
-  console.log("name",name);
-  console.log("account",account);
-  console.log("id",payment_typeValue)
+  
   const FetchPayment_provider = async()=>{
     try{
+     
       const response = await axios.request(getMethod(`/api/dashboard/payment-providers`));
       // console.log(response.data.data);
       setPayment_provider(response.data.data);
@@ -69,17 +71,30 @@ export default function PaymentAccountModal({
   
   const createHandler =async()=>{
     try{
-    const response =await axios.request(PostMethod("/api/dashboard/payment-accounts",{
-      payment_provider_id:payment_typeValue,
-      name,
-      account_no:account
-    }));
-    console.log(response);
+      if(!name || !payment_providerValue || !account){
+        ToastAlert(toast.warning,"Please fill all the field")
+        return;
+      }
+      let fd = new FormData();
+      fd.append("payment_provider_id",payment_providerValue);
+      fd.append("name",name);
+      fd.append("account_no",account);
+      console.log("payment_provider_id",payment_providerValue);
+      console.log("name",name);
+      console.log("account_no",account);
+    const response =await axios.request(PostMethod("/api/dashboard/payment-accounts",fd));
+  
+    if(response.data.status){
+      ToastAlert(toast.success,response.data.message)
+      setNum(num+1);
+      handleClose();
+    }
     }catch(error){
-      // if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
-      // logoutHandler();
+       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+       logoutHandler();
       return;
-      // }
+     }
+     ToastAlert(toast.error,error.response.data.message)
     }
   }
 
@@ -138,7 +153,7 @@ export default function PaymentAccountModal({
           sx={{ backgroundColor: "#f3f3f3" }}
         >
           {FilterPayment_Provider && FilterPayment_Provider.map((item,index)=>(
-              <MenuItem key={index} value={item.name} style={{display:"flex"}}>
+              <MenuItem key={index} value={item.id} style={{display:"flex"}}>
                 <Avatar src={FilterPayment_Provider.logo} size="sm" alt="logo" variant="square" />
                 <p>{item.name}</p>
               </MenuItem>
