@@ -83,6 +83,7 @@ import Department from "./pages/AdminTeamAccount/Department/Department";
 import CreateDepartment from "./pages/AdminTeamAccount/Department/CreateDepartment/CreateDepartment";
 import Position from "./pages/AdminTeamAccount/Position/Position";
 import CreatePosition from "./pages/AdminTeamAccount/Position/CreatePosition/CreatePosition";
+import EditPaymentAccount from "./pages/PaymentSetting/PaymentAccount/EditPaymentAccount/EditPaymentAccount";
 
 function App() {
   const DashboardRouting = () => {
@@ -384,6 +385,11 @@ function App() {
             exact
             path="/master/payment-setting/payment-account"
             element={<PaymentAccount />}
+          />
+          <Route
+            exact
+            path="/master/payment-setting/payment-account/edit/:id"
+            element={<EditPaymentAccount />}
           />
           <Route path="*" element={<Notfound />} />
         </Routes>

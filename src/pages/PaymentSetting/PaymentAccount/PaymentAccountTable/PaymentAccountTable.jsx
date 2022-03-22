@@ -16,6 +16,7 @@ import { Avatar } from "@mui/material";
 import { BasedColor } from "../../../../Controller/BasedColor";
 import axios from "axios";
 import { getMethod } from "../../../../services/api-services";
+import { useNavigate } from "react-router-dom";
 const PaymentAccountTable = ({num}) => {
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -38,7 +39,7 @@ const PaymentAccountTable = ({num}) => {
   }));
 
  
-
+  const navigate = useNavigate();
   const [paymentAccount_table,setPaymentAccountTable] = useState([]);
 
 
@@ -91,7 +92,11 @@ const PaymentAccountTable = ({num}) => {
                   <StyledTableCell align="right" >{row.name}</StyledTableCell>
                   <StyledTableCell align="right">
                   <Stack spacing={1} direction="row" sx={{justifyContent: 'flex-end'}}>
-                  <Button variant="contained">Edit</Button>
+                  <Button variant="contained"
+                  onClick={()=>{
+                    navigate(`/master/payment-setting/payment-account/edit/${row.id}`)
+                  }}
+                  >Edit</Button>
                    </Stack>
                   </StyledTableCell>
                   </StyledTableRow>
