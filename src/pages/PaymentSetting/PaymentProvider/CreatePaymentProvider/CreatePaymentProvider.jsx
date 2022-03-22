@@ -19,10 +19,9 @@ const CreatePaymentProvider = () => {
   const [payment_type, setPayment_type] = useState([]);
   const [payment_provider, setPayment_provider] = useState('');
   const [payment_typeValue, setPayment_typeValue] = useState('');
-  const [logo, setlogo] = useState('');
+  const [logo, setlogo] = useState({});
   const [country, setCountry] = useState([]);
 
-  console.log({logo});
 
   const payment_typeChange = (e) => setPayment_typeValue(e.target.value);
   const payment_providerChange = (e) => setPayment_provider(e.target.value);
@@ -38,10 +37,6 @@ const CreatePaymentProvider = () => {
       }
     }
   }
-
- 
-  
-
   const AlertToast = (toast, msg) => {
     return toast(msg);
   };
@@ -50,7 +45,6 @@ const CreatePaymentProvider = () => {
     FetchPayment_type();
     return () => setPayment_type([]);
   }, []);
-  console.log(logo)
   const submitHandler = async (e) => {
     e.preventDefault();
     if (!payment_typeValue || !payment_provider ||!logo ||!country) {
@@ -58,17 +52,23 @@ const CreatePaymentProvider = () => {
       return;
     }
     try {
-   
-
-      const response = await axios.request(PostMethod(`/api/dashboard/payment-providers`,
-       {
-        payment_type_id: payment_typeValue,
-        name: payment_provider,
-        logo,
-        countries:country
-      }
+      let fd = new FormData();
+      fd.append("payment_type_id",payment_typeValue);
+      fd.append("name",payment_provider);
+      fd.append("logo",logo);
+      fd.append("countries",JSON.stringify(country));
+      const response = await axios.request(PostProvider(`/api/dashboard/payment-providers`,
+      fd
       ));
       console.log(response);
+      // if(response.data.status==="success"){
+      // setPayment_provider("");
+      // setPayment_typeValue("");
+      // setlogo({});
+      // setCountry([]);
+      // AlertToast(toast.success,response.data.message)
+      // }
+      
     } catch (error) {
       console.log(error.response.data.message)
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
@@ -76,6 +76,7 @@ const CreatePaymentProvider = () => {
       }
     }
   };
+
 
 
   return (
