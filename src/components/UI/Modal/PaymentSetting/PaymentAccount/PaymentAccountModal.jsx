@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { FormControl,Select,MenuItem, TextField, Avatar } from "@mui/material";
 import axios from "axios";
-import { getMethod } from "../../../../../services/api-services";
+import { getMethod, PostMethod } from "../../../../../services/api-services";
 import { logoutHandler } from "../../../../Sidebar/Sidebar";
 import classes from "./PaymentAccountModal.module.css"
 const style = {
@@ -34,6 +34,11 @@ export default function PaymentAccountModal({
   // --------PaymentProvider-------------------------//
   const [payment_provider,setPayment_provider] = useState([]);
   const [payment_providerValue,setPayment_providerValue] = useState("");
+  const [name,setName] = useState("");
+  const [account,setAccount] = useState("");
+
+  const nameChange = e=>setName(e.target.value);
+  const accountChange = e=>setAccount(e.target.value);
 
   const Payment_ProviderChange = (e)=>setPayment_providerValue(e.target.value);
   const Payment_Method = async()=>{
@@ -47,7 +52,9 @@ export default function PaymentAccountModal({
       }
     }
   };
-  
+  console.log("name",name);
+  console.log("account",account);
+  console.log("id",payment_typeValue)
   const FetchPayment_provider = async()=>{
     try{
       const response = await axios.request(getMethod(`/api/dashboard/payment-providers`));
@@ -57,6 +64,22 @@ export default function PaymentAccountModal({
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
       logoutHandler();
       }
+    }
+  }
+  
+  const createHandler =async()=>{
+    try{
+    const response =await axios.request(PostMethod("/api/dashboard/payment-accounts",{
+      payment_provider_id:payment_typeValue,
+      name,
+      account_no:account
+    }));
+    console.log(response);
+    }catch(error){
+      // if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+      // logoutHandler();
+      return;
+      // }
     }
   }
 
@@ -69,9 +92,9 @@ export default function PaymentAccountModal({
     }
   },[]);
 // To get exact paymentProvider under the Parent Payment Type
-  const FilterPayment_Provider = payment_provider.filter((c)=>c.payment_type===payment_typeValue);
+  const FilterPayment_Provider = payment_provider.filter((c)=>c.payment_type_id===payment_typeValue);
   // console.log({FilterPayment_Provider});
- console.log(payment_provider);
+//  console.log(payment_provider);
   return (
     <div>
       <Modal
@@ -99,7 +122,7 @@ export default function PaymentAccountModal({
               onChange={Payment_typeChange}
             > 
               {payment_type.map((item,index)=>(
-                  <MenuItem key={index} value={item.name}>{item.name}</MenuItem>
+                  <MenuItem key={index} value={item.id}>{item.name}</MenuItem>
               ))}
             </Select>
             </FormControl>
@@ -124,12 +147,12 @@ export default function PaymentAccountModal({
         </FormControl>
         <FormControl sx={{width:"100%"}} className={classes["form-container"]}>
         <label className={classes["form-label"]}>Account or Phone Number</label>
-        <TextField  size="small"   />
+        <TextField  size="small" onChange={accountChange}   />
         </FormControl>
         
         <FormControl sx={{width:"100%"}} className={classes["form-container"]}>
         <label className={classes["form-label"]}>Name</label>
-        <TextField  size="small"   />
+        <TextField  size="small" onChange={nameChange}   />
         </FormControl>
             
             <div className={classes["btn-container"]}>
@@ -138,7 +161,7 @@ export default function PaymentAccountModal({
                 color="success"
                 onClick={() => {
                   handleClose();
-                
+                  createHandler();
                 }}
               >
                 Create

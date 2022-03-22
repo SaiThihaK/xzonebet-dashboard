@@ -4,7 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 import Card from "../../../../components/UI/Card";
-import { getMethod, PostMethod, PostProvider } from "../../../../services/api-services";
+import { getMethod, PostProvider } from "../../../../services/api-services";
 import classes from "./CreatePaymentProvider.module.css"
 
 import { ToastContainer, toast } from 'react-toastify';
