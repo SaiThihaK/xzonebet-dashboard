@@ -53,16 +53,21 @@ const CreatePaymentProvider = () => {
     }
     try {
       let fd = new FormData();
-      fd.append("image",logo);
-      const response = await axios.request(PostMethod(`/api/dashboard/payment-providers`,
-       {
-        payment_type_id: payment_typeValue,
-        name: payment_provider,
-        logo:fd,
-        countries:country
-      }
+      fd.append("payment_type_id",payment_typeValue);
+      fd.append("name",payment_provider);
+      fd.append("logo",logo);
+      fd.append("countries",JSON.stringify(country));
+      const response = await axios.request(PostProvider(`/api/dashboard/payment-providers`,
+      fd
       ));
-      console.log(response);
+      console.log(response.status);
+      if(response.status === "200"){
+      setPayment_provider("");
+      setPayment_typeValue("");
+      setlogo({});
+      setCountry([]);
+      }
+      
     } catch (error) {
       console.log(error.response.data.message)
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
@@ -71,7 +76,7 @@ const CreatePaymentProvider = () => {
     }
   };
 
- console.log(logo);
+
 
   return (
     <div className={classes["soccer-setting-container"]}>

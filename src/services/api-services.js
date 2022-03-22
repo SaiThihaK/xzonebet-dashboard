@@ -111,7 +111,7 @@ export const PostProvider = (route, data) => {
   const res = {
     method: "POST",
     url: `${REACT_APP_DOMAIN}${route}`,
-    data,
+    data: data,
     headers: {
       // "Content-Type": "multipart/form-data",
       Accept: "application/json",
