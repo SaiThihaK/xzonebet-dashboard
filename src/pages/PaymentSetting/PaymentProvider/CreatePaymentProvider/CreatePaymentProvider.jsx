@@ -19,10 +19,9 @@ const CreatePaymentProvider = () => {
   const [payment_type, setPayment_type] = useState([]);
   const [payment_provider, setPayment_provider] = useState('');
   const [payment_typeValue, setPayment_typeValue] = useState('');
-  const [logo, setlogo] = useState('');
+  const [logo, setlogo] = useState({});
   const [country, setCountry] = useState([]);
 
-  console.log({logo});
 
   const payment_typeChange = (e) => setPayment_typeValue(e.target.value);
   const payment_providerChange = (e) => setPayment_provider(e.target.value);
@@ -38,10 +37,6 @@ const CreatePaymentProvider = () => {
       }
     }
   }
-
- 
-  
-
   const AlertToast = (toast, msg) => {
     return toast(msg);
   };
@@ -50,7 +45,6 @@ const CreatePaymentProvider = () => {
     FetchPayment_type();
     return () => setPayment_type([]);
   }, []);
-  console.log(logo)
   const submitHandler = async (e) => {
     e.preventDefault();
     if (!payment_typeValue || !payment_provider ||!logo ||!country) {
@@ -58,13 +52,13 @@ const CreatePaymentProvider = () => {
       return;
     }
     try {
-   
-
+      let fd = new FormData();
+      fd.append("image",logo);
       const response = await axios.request(PostMethod(`/api/dashboard/payment-providers`,
        {
         payment_type_id: payment_typeValue,
         name: payment_provider,
-        logo,
+        logo:fd,
         countries:country
       }
       ));
@@ -77,6 +71,7 @@ const CreatePaymentProvider = () => {
     }
   };
 
+ console.log(logo);
 
   return (
     <div className={classes["soccer-setting-container"]}>
