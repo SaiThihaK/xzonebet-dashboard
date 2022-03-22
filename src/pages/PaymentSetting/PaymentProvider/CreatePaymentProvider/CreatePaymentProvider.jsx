@@ -60,13 +60,14 @@ const CreatePaymentProvider = () => {
       const response = await axios.request(PostProvider(`/api/dashboard/payment-providers`,
       fd
       ));
-      console.log(response.status);
-      if(response.status === "200"){
-      setPayment_provider("");
-      setPayment_typeValue("");
-      setlogo({});
-      setCountry([]);
-      }
+      console.log(response);
+      // if(response.data.status==="success"){
+      // setPayment_provider("");
+      // setPayment_typeValue("");
+      // setlogo({});
+      // setCountry([]);
+      // AlertToast(toast.success,response.data.message)
+      // }
       
     } catch (error) {
       console.log(error.response.data.message)
