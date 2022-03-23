@@ -65,8 +65,6 @@ return ()=>setPayment_type("");
           <h1 className={classes["card-title"]} >Edit Payment Provider(Coming Soon)</h1>
         </div>
         <div className={classes["card-body"]}>
-         
-           
            <FormControl sx={{marginTop:5}} fullWidth>
                <Select size="small" value={payment_typeValue} onChange={payment_typeChange}>
                    {
@@ -79,6 +77,7 @@ return ()=>setPayment_type("");
                     ))
                    }
                </Select>
+
            </FormControl>
            <FormControl sx={{marginTop:5}} fullWidth>
             <label>Provider</label>
@@ -89,8 +88,10 @@ return ()=>setPayment_type("");
             <label>Provider Logo</label>
             <TextField style={{ border: "none" }} variant="standard"   type="file" accept="image/png, image/jpeg" onChange={logoChange} />
           </FormControl>
+
           <SelectCoun country={country} setCountry={setCountry} />
-          <Button variant="contained" onClick={EditHandler}  style={{ marginTop: 60,width:700 }}>Edit</Button>
+
+          <Button variant="contained" onClick={EditHandler}  style={{ marginTop: 60 }} fullWidth>Edit</Button>
         </div>
       </Card>
     </div>

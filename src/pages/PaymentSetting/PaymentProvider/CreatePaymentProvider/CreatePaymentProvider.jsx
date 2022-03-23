@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import Card from "../../../../components/UI/Card";
 import { getMethod, PostProvider } from "../../../../services/api-services";
 import classes from "./CreatePaymentProvider.module.css"
-
+import {useNavigate} from "react-router-dom"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SelectCoun from "./SelectCoun";
@@ -21,6 +21,8 @@ const CreatePaymentProvider = () => {
   const [payment_typeValue, setPayment_typeValue] = useState('');
   const [logo, setlogo] = useState({});
   const [country, setCountry] = useState([]);
+
+  const navigate = useNavigate();
 
 
   const payment_typeChange = (e) => setPayment_typeValue(e.target.value);
@@ -61,13 +63,14 @@ const CreatePaymentProvider = () => {
       fd
       ));
       console.log(response);
-      // if(response.data.status==="success"){
-      // setPayment_provider("");
-      // setPayment_typeValue("");
-      // setlogo({});
-      // setCountry([]);
-      // AlertToast(toast.success,response.data.message)
-      // }
+      if(response.data.status==="success"){
+      setPayment_provider("");
+      setPayment_typeValue("");
+      setlogo({});
+      setCountry([]);
+      AlertToast(toast.success,response.data.message)
+      // navigate("/master/payment-setting/payment-provider")
+      }
       
     } catch (error) {
       console.log(error.response.data.message)
@@ -99,7 +102,7 @@ const CreatePaymentProvider = () => {
           </FormControl>
           <FormControl sx={{marginTop:5}} fullWidth>
             <label>Payment Provider</label>
-            <TextField size="small"  onChange={payment_providerChange} />
+            <TextField size="small" value={payment_provider}  onChange={payment_providerChange} />
           </FormControl>
           <FormControl sx={{marginTop:5}} fullWidth>
             <label>Choose Provider Logo</label>
