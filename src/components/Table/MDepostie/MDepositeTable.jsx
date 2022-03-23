@@ -53,7 +53,6 @@ const MDepositeTable = ({setNum,num}) => {
      setToggle(true);
    }
 
-   
 
  const handleClose = (id)=>{
    if(id===ID){
@@ -81,11 +80,13 @@ const MDepositeTable = ({setNum,num}) => {
         AlertToast(toast.success,response.data.message);
         setID("");
         setNum(num+1);
+        setValue("")
       }
       if(response.data.status === "error"){
         AlertToast(toast.error,response.data.message);
         setID("");
         setNum(num+1);
+        setValue("");
       }
       }catch(error){
        if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
@@ -96,6 +97,7 @@ const MDepositeTable = ({setNum,num}) => {
    }
   if(value === "pending"){
     setID("");
+    setValue("");
   }
  } 
  const fetchUserDeposite = async()=>{
@@ -115,7 +117,7 @@ const MDepositeTable = ({setNum,num}) => {
    return ()=>{
      setUser_deposite([])
    }
- },[])
+ },[num])
   return (
     <div className={classes["table-margin"]}>
       <Card>
