@@ -17,6 +17,10 @@ import axios from "axios"
 import {getMethod} from "../../../../services/api-services"
 import { logoutHandler } from "../../../../components/Sidebar/Sidebar";
 import { BasedColor } from "../../../../Controller/BasedColor";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { PaymentType } from "../../../../features/PaymentSetting";
+
 const PaymentProviderTable = () => {
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -40,6 +44,8 @@ const PaymentProviderTable = () => {
   }));
   // State
   const [payment_provider,setPayment_provider] = useState([]);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const FetchPayment_type = async()=>{
     try{
       const response = await  axios.request(getMethod(`api/dashboard/payment-providers`));
@@ -92,7 +98,7 @@ const PaymentProviderTable = () => {
                     <StyledTableCell component="th" scope="row">
                     {row.id}
                   </StyledTableCell>
-                  <StyledTableCell align="center" >{row.payment_type.name}</StyledTableCell>
+                  <StyledTableCell align="center" >{row.payment_type}</StyledTableCell>
                   <StyledTableCell align="center" >{row.name}</StyledTableCell>
                   <StyledTableCell align="center" >
                       <div className={classes["logo-container"]}>
@@ -102,7 +108,10 @@ const PaymentProviderTable = () => {
                   </StyledTableCell>
                   <StyledTableCell align="right">
                   <Stack spacing={1} direction="row" sx={{justifyContent: 'flex-end'}}>
-                  <Button variant="contained">Edit</Button>
+                  <Button variant="contained" onClick={()=>{
+                    navigate(`/master/payment-setting/payment-provider/edit/${row.id}`)
+                    dispatch(PaymentType(row.payment_type))
+                  }}>Edit</Button>
                    </Stack>
                   </StyledTableCell>
                   </StyledTableRow>

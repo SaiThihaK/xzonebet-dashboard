@@ -48,13 +48,17 @@ console.log("name",name);
 console.log("account",account);
 
 const {id} = useParams();
+
+useEffect(()=>{
+
+},[id])
 console.log(id);
   return (
     <div className={classes["soccer-setting-container"]}>
       <ToastContainer />
       <Card>
         <div className={classes["card-header"]}>
-          <h1 className={classes["card-title"]} >Edit Payment Provider</h1>
+          <h1 className={classes["card-title"]}>Edit Payment PaymentAccount(Coming Soon)</h1>
         </div>
         <div className={classes["card-body"]}>
          
