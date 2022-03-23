@@ -15,8 +15,9 @@ import { BasedColor } from "../../../Controller/BasedColor";
 import axios from "axios";
 import { getMethod, PostMethod } from "../../../services/api-services";
 import { logoutHandler } from "../../Sidebar/Sidebar";
-
 import { toast } from "react-toastify";
+import DepositeModal from "../../UI/Modal/DepositeModal/DepositeModal";
+
 
 
 
@@ -38,8 +39,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     border: 0,
   },
 }));
-const MDepositeTable = ({setNum,num}) => { 
-
+const MDepositeTable = ({setNum,num}) => {
+   const [open,setOpen] = useState(false);
    const [value,setValue] = useState("");
    const [ID,setID] = useState(null);
    const [toggle,setToggle] = useState(false);
@@ -47,13 +48,13 @@ const MDepositeTable = ({setNum,num}) => {
 
    const onChangeValue = (e)=>setValue(e.target.value);
    const AlertToast = (toast,msg)=> toast(msg);
- const handleClick = (id)=>{
+   const openHandler = ()=>setOpen(true);
+   const closeHandler = ()=>setOpen(false);
+   const handleClick = (id)=>{
    setID(id);
    if(id===ID){
      setToggle(true);
    }
-
-
  const handleClose = (id)=>{
    if(id===ID){
      setToggle(false);
@@ -98,6 +99,11 @@ const MDepositeTable = ({setNum,num}) => {
   if(value === "pending"){
     setID("");
     setValue("");
+    return;
+  }
+  if(value === "re-ject"){
+    openHandler();
+    return;
   }
  } 
  const fetchUserDeposite = async()=>{
@@ -181,6 +187,16 @@ const MDepositeTable = ({setNum,num}) => {
         </Table>
       </TableContainer>
       </Card>
+     <DepositeModal 
+     open={open}
+     closeHandler={closeHandler}
+     num={num}
+     setNum={setNum}
+     id={ID}
+     AlertToast={AlertToast}
+     setID={setID}
+     setValue={setValue}
+     />
     </div>
   );
 };
