@@ -7,9 +7,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import Stack from "@mui/material/Stack";
+
 import classes from "./MDepositeTable.module.css";
-import { Button, FormControl, MenuItem, Select } from "@mui/material";
+import { Button, FormControl, MenuItem, Select,Pagination } from "@mui/material";
 import Card from "../../UI/Card";
 import { BasedColor } from "../../../Controller/BasedColor";
 import axios from "axios";
@@ -45,7 +45,8 @@ const MDepositeTable = ({setNum,num}) => {
    const [ID,setID] = useState(null);
    const [toggle,setToggle] = useState(false);
    const [user_deposite,setUser_deposite] = useState([]);
-
+   const [page,setPage] = useState(1);
+   const [totalPage,setTotalPage] = useState("");
    const onChangeValue = (e)=>setValue(e.target.value);
    const AlertToast = (toast,msg)=> toast(msg);
    const openHandler = ()=>setOpen(true);
@@ -108,8 +109,9 @@ const MDepositeTable = ({setNum,num}) => {
  } 
  const fetchUserDeposite = async()=>{
    try{
-    const response = await axios.request(getMethod("api/user-deposit?sortColumn=id&sortDirection=asc&limit=10&status=pending"));
-    console.log(response.data.data);
+    const response = await axios.request(getMethod(`api/user-deposit?sortColumn=id&sortDirection=asc&limit=10&status=pending&page=${page}`));
+    console.log(response.data.meta);
+    setTotalPage(response.data.meta.last_page);
     setUser_deposite(response.data.data)
    }catch(error){
     if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
@@ -123,12 +125,12 @@ const MDepositeTable = ({setNum,num}) => {
    return ()=>{
      setUser_deposite([])
    }
- },[num])
+ },[num,page])
   return (
     <div className={classes["table-margin"]}>
       <Card>
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 700 }} aria-label="customized table">
+        <Table sx={{ minWidth: 700}} aria-label="customized table">
           <TableHead>
             <TableRow>
               <StyledTableCell>No</StyledTableCell>
@@ -186,6 +188,16 @@ const MDepositeTable = ({setNum,num}) => {
           </TableBody>
         </Table>
       </TableContainer>
+      <div className={classes["pagination"]}>
+      <Pagination
+        count={totalPage}
+        style={{ marginTop: 20, backgroundColor: "white" }}
+        color="primary"
+        onChange={(e) => {
+          setPage(e.target.textContent);
+        }}
+      />
+    </div>
       </Card>
      <DepositeModal 
      open={open}
