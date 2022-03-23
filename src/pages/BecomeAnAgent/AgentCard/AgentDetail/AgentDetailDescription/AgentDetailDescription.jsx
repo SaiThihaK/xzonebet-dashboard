@@ -9,7 +9,7 @@ const AgentDetailDescription = () => {
 const [user,setUser] = useState("");
 const fetchUserDetail = async()=>{
   try{
-    const {data} = await axios.request(getMethod(`/api/affiliate-register-lists/${id}`));
+    const {data} = await axios.request(getMethod(`api/affiliate-register-lists/${id}`));
     // console.log(data.data);
     setUser(data.data);
 

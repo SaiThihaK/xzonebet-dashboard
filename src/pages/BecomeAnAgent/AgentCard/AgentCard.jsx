@@ -35,7 +35,7 @@ const AgentCard = ({
     else{
       try{
        
-        const url = `/api/affiliate-register-lists/${status}/${user.id}`;
+        const url = `api/affiliate-register-lists/${status}/${user.id}`;
         const {data} = await axios.request(PostMethod(
           url,{user_type:age}
         ));

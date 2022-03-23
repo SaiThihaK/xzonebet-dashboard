@@ -29,7 +29,7 @@ const CreatePaymentProvider = () => {
 
   const FetchPayment_type = async () => {
     try {
-      const response = await axios.request(getMethod(`/api/dashboard/payment-types`));
+      const response = await axios.request(getMethod(`api/dashboard/payment-types`));
       setPayment_type(response.data.data);
     } catch (error) {
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
@@ -57,7 +57,7 @@ const CreatePaymentProvider = () => {
       fd.append("name",payment_provider);
       fd.append("logo",logo);
       fd.append("countries",JSON.stringify(country));
-      const response = await axios.request(PostProvider(`/api/dashboard/payment-providers`,
+      const response = await axios.request(PostProvider(`api/dashboard/payment-providers`,
       fd
       ));
       console.log(response);

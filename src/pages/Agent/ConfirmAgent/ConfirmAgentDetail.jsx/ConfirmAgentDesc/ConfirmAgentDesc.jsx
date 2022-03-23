@@ -15,7 +15,7 @@ const ConfirmAgentDesc = ({userInfo}) => {
     try{
    
    const response = await axios.request(
-    PostMethod(`/api/affiliate-register-lists/confirm/${userInfo.id}`,
+    PostMethod(`api/affiliate-register-lists/confirm/${userInfo.id}`,
        {master_id:2}
    ));
   //  console.log(response);

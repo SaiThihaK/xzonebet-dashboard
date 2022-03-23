@@ -13,7 +13,7 @@ const CancelMaster = () => {
   const [cancelMasters,setCancelMaster] = useState([]);
   const fetchCancelMaster = async()=>{
     try{
-      const {data} = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=deposit-rejet&form_type=master'));
+      const {data} = await axios.request(getMethod('api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=deposit-rejet&form_type=master'));
       setCancelMaster(data.data);
 
     }catch(error){

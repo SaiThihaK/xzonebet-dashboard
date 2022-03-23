@@ -22,7 +22,7 @@ const CancelMasterDetail = () => {
 
   const fetchMasterDetail = async()=>{
     try{
-      const {data} = await axios.request(getMethod(`/api/affiliate-register-lists/${id}`));
+      const {data} = await axios.request(getMethod(`api/affiliate-register-lists/${id}`));
       setCancelMaster(data.data);
 
     }catch(error){

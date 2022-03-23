@@ -21,7 +21,7 @@ const PaymentType = () => {
    
   const FetchPaymentType = async()=>{
     try{
-      const response = await axios.request(getMethod(`/api/dashboard/payment-types`));
+      const response = await axios.request(getMethod(`api/dashboard/payment-types`));
       setPayment_type(response.data.data);
 
     }catch(error){

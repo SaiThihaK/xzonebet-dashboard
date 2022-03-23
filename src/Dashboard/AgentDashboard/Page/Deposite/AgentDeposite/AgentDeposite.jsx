@@ -17,7 +17,7 @@ const [paymentId,setPaymentId] = React.useState(1);
 
 const fetchProviders = async()=>{
 try{
- const {data} = await axios.request(getMethod(`/api/dashboard/payment-providers`));
+ const {data} = await axios.request(getMethod(`api/dashboard/payment-providers`));
     // console.log(data.data)
  setProvider(data.data);
 }catch(error){
@@ -30,7 +30,7 @@ try{
 const fetchPaymentType = async()=>{
 try{
 
-    const {data} = await axios.request(getMethod("/api/dashboard/payment-types"));
+    const {data} = await axios.request(getMethod("api/dashboard/payment-types"));
     setPaymentType(data.data);
     // console.log(data.data);
 }catch(error){

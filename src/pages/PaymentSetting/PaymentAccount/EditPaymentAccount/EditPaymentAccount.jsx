@@ -35,7 +35,7 @@ try{
 let fd = new FormData();
 fd.append("name",name);
 fd.append("account_no",account);
-const response = await axios.request(PatchMethod(`/api/dashboard/payment-providers/${id}`,
+const response = await axios.request(PatchMethod(`api/dashboard/payment-providers/${id}`,
 fd
 ));
 console.log(response)

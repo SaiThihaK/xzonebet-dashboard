@@ -46,7 +46,7 @@ export default function PaymentAccountModal({
   const Payment_ProviderChange = (e)=>setPayment_providerValue(e.target.value);
   const Payment_Method = async()=>{
     try{
-      const response = await axios.request(getMethod(`/api/dashboard/payment-types`));
+      const response = await axios.request(getMethod(`api/dashboard/payment-types`));
       // console.log(response.data.data);
       setPayment_type(response.data.data);
     }catch(error){
@@ -59,7 +59,7 @@ export default function PaymentAccountModal({
   const FetchPayment_provider = async()=>{
     try{
      
-      const response = await axios.request(getMethod(`/api/dashboard/payment-providers`));
+      const response = await axios.request(getMethod(`api/dashboard/payment-providers`));
       // console.log(response.data.data);
       setPayment_provider(response.data.data);
     }catch(error){
@@ -82,7 +82,7 @@ export default function PaymentAccountModal({
       console.log("payment_provider_id",payment_providerValue);
       console.log("name",name);
       console.log("account_no",account);
-    const response =await axios.request(PostMethod("/api/dashboard/payment-accounts",fd));
+    const response =await axios.request(PostMethod("api/dashboard/payment-accounts",fd));
   
     if(response.data.status){
       ToastAlert(toast.success,response.data.message)

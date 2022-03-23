@@ -44,7 +44,7 @@ const PaymentAccountTable = ({num}) => {
 
 
   const fetch_PaymentAccount = async()=>{
-    const response = await axios.request(getMethod(`/api/dashboard/payment-accounts`));
+    const response = await axios.request(getMethod(`api/dashboard/payment-accounts`));
     // console.log(response.data.data);
     setPaymentAccountTable(response.data.data);
   }

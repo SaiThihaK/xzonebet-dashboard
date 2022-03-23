@@ -13,7 +13,7 @@ const PandingMaster = () => {
   const [pendingMasters,setPendingMaster] = useState([]);
   const fetchPendingMaster = async()=>{
     try{
-      const {data} = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=master'));
+      const {data} = await axios.request(getMethod('api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=master'));
       setPendingMaster(data.data);
     }catch(error){
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {

@@ -44,7 +44,7 @@ const submitHandler = async(e)=>{
     return;
   }
   try{
-   const response = await axios.request(PatchMethod(`/api/dashboard/payment-types/${id}`,
+   const response = await axios.request(PatchMethod(`api/dashboard/payment-types/${id}`,
    {name:type}));
    if(response.data.status==="success"){
   setType('');

@@ -9,7 +9,7 @@ const AllUser = () => {
   const [allUsers,setAllUsers] = useState([]);
   const FetchUser = async()=>{
     try{
-      const response = await axios.request(getMethod("/api/users?sortColumn=id&sortDirection=desc&limit=30"));
+      const response = await axios.request(getMethod("api/users?sortColumn=id&sortDirection=desc&limit=30"));
     //   console.log(response.data.data);
       setAllUsers(response.data.data);
     }catch(error){

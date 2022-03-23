@@ -32,7 +32,7 @@ const MasterDepositCancel = ({ open, handleClose,setNum,id,num,alertToast}) => {
   }
   try{
   const {data} = await axios.request(
-  PostMethod(`/api/affiliate-register-lists/deposit-rejet/${id}`,
+  PostMethod(`api/affiliate-register-lists/deposit-rejet/${id}`,
   {accounting_remark:accounting_remark}
   ));
   // console.log(data);

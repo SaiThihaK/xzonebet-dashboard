@@ -21,7 +21,7 @@ const ConfirmMasterDetail = () => {
 
   const fetchMasterDetail = async()=>{
     try{
-      const {data} = await axios.request(getMethod(`/api/affiliate-register-lists/${id}`));
+      const {data} = await axios.request(getMethod(`api/affiliate-register-lists/${id}`));
       setConfirmMaster(data.data);
     }catch(error){
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {

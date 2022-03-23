@@ -14,7 +14,7 @@ const BecomeAnAgent = () => {
   const [num,setNum] = useState(0);
   const FetchpendingMaster = async()=>{
     try{
-      const {data} = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=pending'));
+      const {data} = await axios.request(getMethod('api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=pending'));
       setPending(data.data);
 
     }catch(error){

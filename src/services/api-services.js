@@ -9,7 +9,7 @@ const { REACT_APP_DOMAIN } = process.env;
 // ------------------------Login API ---------------------------
 export const login = {
   method: "post",
-  url: `${REACT_APP_DOMAIN}/api/login`,
+  url: `${REACT_APP_DOMAIN}api/login`,
   headers: {
     Accept: "application/json",
   },

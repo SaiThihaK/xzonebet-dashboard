@@ -12,7 +12,7 @@ const CancelAgent = () => {
   const [cancelMasters,setCancelMaster] = useState([]);
   const fetchCancelMaster = async()=>{
     try{
-      const {data} = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-rejet&form_type=master'));
+      const {data} = await axios.request(getMethod('api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-rejet&form_type=master'));
       setCancelMaster(data.data);
     }catch(error){
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {

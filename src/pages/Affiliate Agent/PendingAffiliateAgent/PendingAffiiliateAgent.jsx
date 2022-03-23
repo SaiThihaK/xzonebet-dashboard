@@ -12,7 +12,7 @@ const PendingAffiliateAgent = () => {
     const [pendingMasters,setPendingMaster] = useState([]);
     const fetchPendingMaster = async()=>{
       try{
-        const {data} = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=affiliate-agent'));
+        const {data} = await axios.request(getMethod('api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=affiliate-agent'));
         setPendingMaster(data.data);
 
       }catch(error){

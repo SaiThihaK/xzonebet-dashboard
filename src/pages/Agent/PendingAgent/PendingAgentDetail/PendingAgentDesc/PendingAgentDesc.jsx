@@ -13,7 +13,7 @@ const PendingAgentDesc = ({userInfo}) => {
       };
     const fetchCompleteMaster = async()=>{
       try{
-        const {data} = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=complete&form_type=master'));
+        const {data} = await axios.request(getMethod('api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=complete&form_type=master'));
         setCompleteMasters(data.data);
 
       }catch(error){

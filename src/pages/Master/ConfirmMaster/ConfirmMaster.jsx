@@ -12,7 +12,7 @@ const ConfirmMaster = () => {
   const [confirmMasters,setConfirmMasters] = useState([]);
   const fetchConfirmMaster = async()=>{
     try{
-      const {data} = await axios.request(getMethod(`/api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=deposit-confirm&form_type=master`));
+      const {data} = await axios.request(getMethod(`api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=deposit-confirm&form_type=master`));
       setConfirmMasters(data.data);
     }catch(error){
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
