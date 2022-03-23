@@ -27,11 +27,8 @@ export default function SelectCoun({country,setCountry}) {
 
 
   const [coun,setCoun] = React.useState([]);
-  
- 
-
   const fetchCountries = async()=>{
-    axios.request(getMethod(`/api/countries`))
+    axios.request(getMethod(`api/countries`))
     .then(function (response) {
       setCoun(response.data.data);
     });

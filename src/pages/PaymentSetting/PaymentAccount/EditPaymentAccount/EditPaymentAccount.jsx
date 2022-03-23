@@ -2,14 +2,9 @@ import { FormControl, MenuItem, Select, TextField, Button } from "@mui/material"
 
 import axios from "axios";
 import { useEffect, useState } from "react";
-
-
-
 import classes from "./EditPaymentAccount.module.css"
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import { logoutHandler } from "../../../../components/Sidebar/Sidebar";
 import Card from "../../../../components/UI/Card";
 import { useParams } from "react-router-dom";
@@ -29,16 +24,18 @@ const accountChange = e=>setAccount(e.target.value);
  
 const logoChange = (e) => setlogo(e.target.files[0]);
 
-
+const ToastAlert = (toast,msg)=>toast(msg);
 const EditHandler = async()=>{
 try{
 let fd = new FormData();
 fd.append("name",name);
 fd.append("account_no",account);
+fd.append("payment_provider_id",id);
 const response = await axios.request(PatchMethod(`api/dashboard/payment-providers/${id}`,
 fd
 ));
-console.log(response)
+console.log(response);
+ToastAlert(toast.error("comming soon"));
 }catch(error){
    console.log(error.response.data.message);
         if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
@@ -57,7 +54,7 @@ console.log(id);
       <ToastContainer />
       <Card>
         <div className={classes["card-header"]}>
-          <h1 className={classes["card-title"]} >Payment Provider</h1>
+          <h1 className={classes["card-title"]} >Edit Payment Provider</h1>
         </div>
         <div className={classes["card-body"]}>
          
