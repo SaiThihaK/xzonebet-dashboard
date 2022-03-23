@@ -7,18 +7,22 @@ import PaymentTypeModal from "../../../components/UI/Modal/PaymentSetting/Paymen
 import PaymentProviderModal from "../../../components/UI/Modal/PaymentSetting/PaymentProvider/PaymentProviderModal";
 import PaymentProviderTable from "./PaymentProviderTable/PaymentProviderTable";
 import {useNavigate}from "react-router-dom"
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const PaymentProvider = () => {
-  const [open,setOpen] = useState(false);
-  const [payment_type,setPayment_type] = useState("");
-  const [payment_provider,setPayment_provider] = useState("");
   const navigate = useNavigate();
-  const handleOpen = ()=>setOpen(true);
-  const handleClose = ()=>setOpen(false);
+  // const [open,setOpen] = useState(false);
+  // const [payment_type,setPayment_type] = useState("");
+  // const [payment_provider,setPayment_provider] = useState("");
+  // const handleOpen = ()=>setOpen(true);
+  // const handleClose = ()=>setOpen(false);
 
   return (
     
     <div className={classes["soccer-setting-container"]}>
+      <ToastContainer />
       <Card>
         <div className={classes["card-header"]}>
           <h1 className={classes["card-title"]}>Payment Provider</h1>
