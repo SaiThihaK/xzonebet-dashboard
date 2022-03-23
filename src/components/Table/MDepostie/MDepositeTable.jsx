@@ -8,47 +8,52 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
-
 import classes from "./MDepositeTable.module.css";
 import { Button, FormControl, MenuItem, Select } from "@mui/material";
 import Card from "../../UI/Card";
 import { BasedColor } from "../../../Controller/BasedColor";
+import axios from "axios";
+import { getMethod, PostMethod } from "../../../services/api-services";
+import { logoutHandler } from "../../Sidebar/Sidebar";
 
-const MDepositeTable = () => { 
+import { toast } from "react-toastify";
+
+
+
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: BasedColor.tableHead,
+    color: theme.palette.common.white,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}));
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  "&:nth-of-type(odd)": {
+    backgroundColor: theme.palette.action.hover,
+  },
+  // hide last border
+  "&:last-child td, &:last-child th": {
+    border: 0,
+  },
+}));
+const MDepositeTable = ({setNum,num}) => { 
 
    const [value,setValue] = useState("");
    const [ID,setID] = useState(null);
    const [toggle,setToggle] = useState(false);
-const DummyArr = [
-  {id:"1",name:"Yoshi",provider:"K-pay",ammount:"3000",phone:"0934387483",transiitionId:"342834283",status:"active",payment_date:"22/3/2022"},
-  {id:"2",name:"Yoshi",provider:"K-pay",ammount:"3000",phone:"0934387483",transiitionId:"342834283",status:"active",payment_date:"22/3/2022"},
-  {id:"3",name:"Yoshi",provider:"K-pay",ammount:"3000",phone:"0934387483",transiitionId:"342834283",status:"active",payment_date:"22/3/2022"}
-]
-   const onChangeValue = (e)=>setValue(e.target.value);
-  const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    [`&.${tableCellClasses.head}`]: {
-      backgroundColor: BasedColor.tableHead,
-      color: theme.palette.common.white,
-    },
-    [`&.${tableCellClasses.body}`]: {
-      fontSize: 14,
-    },
-  }));
+   const [user_deposite,setUser_deposite] = useState([]);
 
-  const StyledTableRow = styled(TableRow)(({ theme }) => ({
-    "&:nth-of-type(odd)": {
-      backgroundColor: theme.palette.action.hover,
-    },
-    // hide last border
-    "&:last-child td, &:last-child th": {
-      border: 0,
-    },
-  }));
+   const onChangeValue = (e)=>setValue(e.target.value);
+   const AlertToast = (toast,msg)=> toast(msg);
  const handleClick = (id)=>{
    setID(id);
    if(id===ID){
      setToggle(true);
    }
+
+   
 
  const handleClose = (id)=>{
    if(id===ID){
@@ -56,6 +61,61 @@ const DummyArr = [
    }
  }
  }
+ const filterUser = user_deposite.filter((user)=>{
+  if(user.id === ID){
+  return user
+  }
+ });
+
+ console.log(filterUser);
+
+ const confirmHandler = async()=>{
+   if(value === "approve"){
+     console.log("approve")
+    try{
+      const response = await axios.request(PostMethod(`api/user-deposit/action/${ID}`,{
+        status:"confirm"
+      }));
+      console.log(response);
+      if(response.data.status==="success"){
+        AlertToast(toast.success,response.data.message);
+        setID("");
+        setNum(num+1);
+      }
+      if(response.data.status === "error"){
+        AlertToast(toast.error,response.data.message);
+        setID("");
+        setNum(num+1);
+      }
+      }catch(error){
+       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+         logoutHandler();
+         }
+       }
+       return;
+   }
+  if(value === "pending"){
+    setID("");
+  }
+ } 
+ const fetchUserDeposite = async()=>{
+   try{
+    const response = await axios.request(getMethod("api/user-deposit?sortColumn=id&sortDirection=asc&limit=10&status=pending"));
+    console.log(response.data.data);
+    setUser_deposite(response.data.data)
+   }catch(error){
+    if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+      logoutHandler();
+      }
+    }
+   }
+
+ useEffect(()=>{
+   fetchUserDeposite();
+   return ()=>{
+     setUser_deposite([])
+   }
+ },[])
   return (
     <div className={classes["table-margin"]}>
       <Card>
@@ -64,8 +124,8 @@ const DummyArr = [
           <TableHead>
             <TableRow>
               <StyledTableCell>No</StyledTableCell>
-              <StyledTableCell align="left">Agent-ID</StyledTableCell>
-              <StyledTableCell align="left">Agent Name</StyledTableCell>
+              <StyledTableCell align="left">user-ID</StyledTableCell>
+              <StyledTableCell align="left">User Name</StyledTableCell>
               <StyledTableCell align="left">Payment Provider</StyledTableCell>
               <StyledTableCell align="left">Amount</StyledTableCell>
               <StyledTableCell align="left">Phone/Account</StyledTableCell>
@@ -77,30 +137,34 @@ const DummyArr = [
             </TableRow>
           </TableHead>
           <TableBody>
-           {DummyArr.map((a,index)=>(
+           {user_deposite.map((user,index)=>(
               <StyledTableRow key={index}>
                 <StyledTableCell component="th" scope="row">
                 {index+1}
                 </StyledTableCell>
-                <StyledTableCell align="left">{a.id}</StyledTableCell>
-                <StyledTableCell align="left">{a.name}</StyledTableCell>
-                <StyledTableCell align="left">K-pay</StyledTableCell>
-                <StyledTableCell align="left">30000</StyledTableCell>
-                <StyledTableCell align="left">093468326</StyledTableCell>
+                <StyledTableCell align="left">{user.user_id}</StyledTableCell>
+                <StyledTableCell align="left">{user.account_name}</StyledTableCell>
+                <StyledTableCell align="left">{user.payment_provider_name}</StyledTableCell>
+                <StyledTableCell align="left">{user.amount}</StyledTableCell>
+                <StyledTableCell align="left">{user.account_no}</StyledTableCell>
                 <StyledTableCell align="left">
-                345353536
+                {user.transaction_no}
                 </StyledTableCell>
                 <StyledTableCell align="left">
                  {
-                     ID !==a.id ?
-                     (<Button onClick={()=>handleClick(a.id)}   size="small" color="success" variant="contained">Pending</Button>)
+                     ID !==user.id ?
+                     (
+                     <Button onClick={()=>handleClick(user.id)}   size="small" color="success" variant="contained">
+                       {user.status}
+                     </Button>
+                     )
                      :(<FormControl className={classes["form-control"]}>
                      <Select value={value} onChange={onChangeValue} size="small">
                          <MenuItem value="pending">Pending</MenuItem>
                          <MenuItem value="approve">Approve</MenuItem>
-                         <MenuItem value="reject">Reject</MenuItem>
+                         <MenuItem value="re-ject">Reject</MenuItem>
                      </Select>
-                     <Button onClick={()=>{setID(null)}}>Confirm</Button>
+                     <Button onClick={confirmHandler}>Confirm</Button>
                      </FormControl>)
                  }
                
