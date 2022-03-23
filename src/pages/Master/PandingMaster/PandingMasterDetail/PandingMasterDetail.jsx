@@ -41,7 +41,7 @@ const PandingMasterDetail = () => {
     else{
       try{
         
-        const url = `/api/affiliate-register-lists/deposit-pending/${id}`;
+        const url = `api/affiliate-register-lists/deposit-pending/${id}`;
         const response = await axios.request(PostMethod(
           url,
           {
@@ -73,7 +73,7 @@ const PandingMasterDetail = () => {
 
   const fetchMasterDetail = async()=>{
     try{
-      const {data} = await axios.request(getMethod(`/api/affiliate-register-lists/${id}`));
+      const {data} = await axios.request(getMethod(`api/affiliate-register-lists/${id}`));
       setPendingMaster(data.data);
     }catch(error){
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {

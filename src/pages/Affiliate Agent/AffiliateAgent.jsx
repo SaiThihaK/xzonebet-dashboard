@@ -15,7 +15,7 @@ const AffiliateAgent = () => {
   const fetchPending = async()=>{
     try{
 
-      const pending = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=affiliate-agent'));
+      const pending = await axios.request(getMethod('api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=affiliate-agent'));
       setPendingMaster(pending.data.data.length);
     }catch(error){
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {

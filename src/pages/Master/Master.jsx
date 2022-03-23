@@ -14,7 +14,7 @@ const Master = () => {
  
   const fetchPending = async()=>{
     try{
-      const pending = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=master'));
+      const pending = await axios.request(getMethod('api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=master'));
       setPendingMaster(pending.data.data.length);
     }catch(error){
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
@@ -24,7 +24,7 @@ const Master = () => {
   };
   const fetchConfirm = async()=>{
     try{
-      const confirm = await axios.request(getMethod(`/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-confirm&form_type=master`));
+      const confirm = await axios.request(getMethod(`api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-confirm&form_type=master`));
       setConfirmMaster(confirm.data.data.length);
     }catch(error){
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
@@ -35,7 +35,7 @@ const Master = () => {
   };
   const fetchComplete = async()=>{
     try{
-      const complete = await axios.request(getMethod(`/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=complete&form_type=master`));
+      const complete = await axios.request(getMethod(`api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=complete&form_type=master`));
       setCompleteMaster(complete.data.data.length);
     }catch(error){
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
@@ -45,7 +45,7 @@ const Master = () => {
   };
   const fetchCancel = async()=>{
   try{
-    const cancel = await axios.request(getMethod(`/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-rejet&form_type=master`));
+    const cancel = await axios.request(getMethod(`api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-rejet&form_type=master`));
     setCancelMaster(cancel.data.data.length);
 
   }catch(error){

@@ -15,7 +15,7 @@ const Agent = () => {
   const fetchPending = async()=>{
     try{
 
-      const pending = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=agent'));
+      const pending = await axios.request(getMethod('api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=agent'));
       // console.log(pending);
       setPendingMaster(pending.data.data.length);
     }catch(error){
@@ -26,7 +26,7 @@ const Agent = () => {
   };
   const fetchConfirm = async()=>{
     try{
-      const confirm = await axios.request(getMethod(`/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-confirm&form_type=agent`));
+      const confirm = await axios.request(getMethod(`api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-confirm&form_type=agent`));
       setConfirmMaster(confirm.data.data.length);
 
     }catch(error){
@@ -38,7 +38,7 @@ const Agent = () => {
   const fetchComplete = async()=>{
     try{
 
-      const complete = await axios.request(getMethod(`/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=complete&form_type=agent`));
+      const complete = await axios.request(getMethod(`api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=complete&form_type=agent`));
       setCompleteMaster(complete.data.data.length);
     }catch(error){
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
@@ -48,7 +48,7 @@ const Agent = () => {
   };
   const fetchCancel = async()=>{
     try{
-      const cancel = await axios.request(getMethod(`/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-rejet&form_type=agent`));
+      const cancel = await axios.request(getMethod(`api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-rejet&form_type=agent`));
       setCancelMaster(cancel.data.data.length);
 
     }catch(error){

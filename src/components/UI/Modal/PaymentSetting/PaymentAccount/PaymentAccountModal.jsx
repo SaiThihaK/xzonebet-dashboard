@@ -7,9 +7,12 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { FormControl,Select,MenuItem, TextField, Avatar } from "@mui/material";
 import axios from "axios";
-import { getMethod } from "../../../../../services/api-services";
+import { getMethod, PostMethod } from "../../../../../services/api-services";
 import { logoutHandler } from "../../../../Sidebar/Sidebar";
 import classes from "./PaymentAccountModal.module.css"
+import { ToastAlert } from "../../../../../Controller/ToastAlert";
+import { toast } from "react-toastify";
+import { refreshPage } from "../../../../../Controller/RefreshPage";
 const style = {
   position: "absolute",
   top: "50%",
@@ -34,11 +37,16 @@ export default function PaymentAccountModal({
   // --------PaymentProvider-------------------------//
   const [payment_provider,setPayment_provider] = useState([]);
   const [payment_providerValue,setPayment_providerValue] = useState("");
+  const [name,setName] = useState("");
+  const [account,setAccount] = useState("");
+
+  const nameChange = e=>setName(e.target.value);
+  const accountChange = e=>setAccount(e.target.value);
 
   const Payment_ProviderChange = (e)=>setPayment_providerValue(e.target.value);
   const Payment_Method = async()=>{
     try{
-      const response = await axios.request(getMethod(`/api/dashboard/payment-types`));
+      const response = await axios.request(getMethod(`api/dashboard/payment-types`));
       // console.log(response.data.data);
       setPayment_type(response.data.data);
     }catch(error){
@@ -50,13 +58,43 @@ export default function PaymentAccountModal({
   
   const FetchPayment_provider = async()=>{
     try{
-      const response = await axios.request(getMethod(`/api/dashboard/payment-providers`));
+     
+      const response = await axios.request(getMethod(`api/dashboard/payment-providers`));
       // console.log(response.data.data);
       setPayment_provider(response.data.data);
     }catch(error){
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
       logoutHandler();
       }
+    }
+  }
+  
+  const createHandler =async()=>{
+    try{
+      if(!name || !payment_providerValue || !account){
+        ToastAlert(toast.warning,"Please fill all the field")
+        return;
+      }
+      let fd = new FormData();
+      fd.append("payment_provider_id",payment_providerValue);
+      fd.append("name",name);
+      fd.append("account_no",account);
+      console.log("payment_provider_id",payment_providerValue);
+      console.log("name",name);
+      console.log("account_no",account);
+    const response =await axios.request(PostMethod("api/dashboard/payment-accounts",fd));
+  
+    if(response.data.status){
+      ToastAlert(toast.success,response.data.message)
+      setNum(num+1);
+      handleClose();
+    }
+    }catch(error){
+       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+       logoutHandler();
+      return;
+     }
+     ToastAlert(toast.error,error.response.data.message)
     }
   }
 
@@ -69,9 +107,9 @@ export default function PaymentAccountModal({
     }
   },[]);
 // To get exact paymentProvider under the Parent Payment Type
-  const FilterPayment_Provider = payment_provider.filter((c)=>c.payment_type===payment_typeValue);
+  const FilterPayment_Provider = payment_provider.filter((c)=>c.payment_type_id===payment_typeValue);
   // console.log({FilterPayment_Provider});
- console.log(payment_provider);
+//  console.log(payment_provider);
   return (
     <div>
       <Modal
@@ -99,7 +137,7 @@ export default function PaymentAccountModal({
               onChange={Payment_typeChange}
             > 
               {payment_type.map((item,index)=>(
-                  <MenuItem key={index} value={item.name}>{item.name}</MenuItem>
+                  <MenuItem key={index} value={item.id}>{item.name}</MenuItem>
               ))}
             </Select>
             </FormControl>
@@ -115,7 +153,7 @@ export default function PaymentAccountModal({
           sx={{ backgroundColor: "#f3f3f3" }}
         >
           {FilterPayment_Provider && FilterPayment_Provider.map((item,index)=>(
-              <MenuItem key={index} value={item.name} style={{display:"flex"}}>
+              <MenuItem key={index} value={item.id} style={{display:"flex"}}>
                 <Avatar src={FilterPayment_Provider.logo} size="sm" alt="logo" variant="square" />
                 <p>{item.name}</p>
               </MenuItem>
@@ -124,12 +162,12 @@ export default function PaymentAccountModal({
         </FormControl>
         <FormControl sx={{width:"100%"}} className={classes["form-container"]}>
         <label className={classes["form-label"]}>Account or Phone Number</label>
-        <TextField  size="small"   />
+        <TextField  size="small" onChange={accountChange}   />
         </FormControl>
         
         <FormControl sx={{width:"100%"}} className={classes["form-container"]}>
         <label className={classes["form-label"]}>Name</label>
-        <TextField  size="small"   />
+        <TextField  size="small" onChange={nameChange}   />
         </FormControl>
             
             <div className={classes["btn-container"]}>
@@ -138,7 +176,7 @@ export default function PaymentAccountModal({
                 color="success"
                 onClick={() => {
                   handleClose();
-                
+                  createHandler();
                 }}
               >
                 Create

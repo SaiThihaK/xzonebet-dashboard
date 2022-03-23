@@ -19,7 +19,7 @@ const CompleteMasterDetail = () => {
 
   const fetchMasterDetail = async()=>{
     try{
-      const {data} = await axios.request(getMethod(`/api/affiliate-register-lists/${id}`));
+      const {data} = await axios.request(getMethod(`api/affiliate-register-lists/${id}`));
       setCompleteMaster(data.data);
 
     }catch(error){

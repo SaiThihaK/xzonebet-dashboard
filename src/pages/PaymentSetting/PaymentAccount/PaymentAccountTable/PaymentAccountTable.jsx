@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { styled } from "@mui/material/styles";
@@ -14,7 +14,10 @@ import Button from "@mui/material/Button";
 import classes from "./PaymentAccountTable.module.css";
 import { Avatar } from "@mui/material";
 import { BasedColor } from "../../../../Controller/BasedColor";
-const PaymentAccountTable = () => {
+import axios from "axios";
+import { getMethod } from "../../../../services/api-services";
+import { useNavigate } from "react-router-dom";
+const PaymentAccountTable = ({num}) => {
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: BasedColor.tableHead,
@@ -36,24 +39,23 @@ const PaymentAccountTable = () => {
   }));
 
  
-
-  // const rows = [
-  //   createData(
-  //     1,
-  //     15,
-  //     "LION",
-  //     "xyz@gmail.com",
-  //     '555-555-5555',
-  //     "MMK",
-  //     <Stack spacing={1} direction="row" sx={{justifyContent: 'flex-end'}}>
-  //       <Button variant="contained">Edit</Button>
-  //       <Button variant="contained" color="success">Confirm</Button>
-  //   </Stack>
-  //   ),
-  // ];
+  const navigate = useNavigate();
+  const [paymentAccount_table,setPaymentAccountTable] = useState([]);
 
 
-  const Arr = [{id:"1",payment_type:"E-wallet",payment_provider:"Wave",provider_logo:"https://play-lh.googleusercontent.com/rPq4GMCZy12WhwTlanEu7RzxihYCgYevQHVHLNha1VcY5SU1uLKHMd060b4VEV1r-OQ",acc_num:"4322344fd",name:"Sai"}];
+  const fetch_PaymentAccount = async()=>{
+    const response = await axios.request(getMethod(`api/dashboard/payment-accounts`));
+    // console.log(response.data.data);
+    setPaymentAccountTable(response.data.data);
+  }
+
+
+  useEffect(()=>{
+  fetch_PaymentAccount();
+  return ()=>setPaymentAccountTable([]);
+  },[num]);
+
+  // console.log(paymentAccount_table);
  
   return (
     <div className={classes["table-container"]}>
@@ -72,25 +74,13 @@ const PaymentAccountTable = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {/* {rows.map((row, index) => (
-                <StyledTableRow key={index}>
-                  <StyledTableCell component="th" scope="row">
-                    {row.id}
-                  </StyledTableCell>
-                  <StyledTableCell align="right">{row.userid}</StyledTableCell>
-                  <StyledTableCell align="right">{row.name}</StyledTableCell>
-                  <StyledTableCell align="right">{row.email}</StyledTableCell>
-                  <StyledTableCell align="right">{row.phone}</StyledTableCell>
-                  <StyledTableCell align="right">{row.currency}</StyledTableCell>
-                  <StyledTableCell align="right">{row.action}</StyledTableCell>
-                </StyledTableRow>
-              ))} */}
-              {Arr.map((row,index)=>(
+              
+              {paymentAccount_table.map((row,index)=>(
                    <StyledTableRow key={index}>
                     <StyledTableCell component="th" scope="row">
                     {row.id}
                   </StyledTableCell>
-                  <StyledTableCell align="right" >{row.payment_type}</StyledTableCell>
+                  <StyledTableCell align="right" >{row?.payment_type}</StyledTableCell>
                   <StyledTableCell align="right" >{row.payment_provider}</StyledTableCell>
                   <StyledTableCell align="right" >
                       <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
@@ -98,11 +88,15 @@ const PaymentAccountTable = () => {
                       </div>
                       
                   </StyledTableCell>
-                  <StyledTableCell align="right" >{row.acc_num}</StyledTableCell>
+                  <StyledTableCell align="right" >{row.account_no}</StyledTableCell>
                   <StyledTableCell align="right" >{row.name}</StyledTableCell>
                   <StyledTableCell align="right">
                   <Stack spacing={1} direction="row" sx={{justifyContent: 'flex-end'}}>
-                  <Button variant="contained">Edit</Button>
+                  <Button variant="contained"
+                  onClick={()=>{
+                    navigate(`/master/payment-setting/payment-account/edit/${row.id}`)
+                  }}
+                  >Edit</Button>
                    </Stack>
                   </StyledTableCell>
                   </StyledTableRow>

@@ -42,7 +42,7 @@ const PaymentProviderTable = () => {
   const [payment_provider,setPayment_provider] = useState([]);
   const FetchPayment_type = async()=>{
     try{
-      const response = await  axios.request(getMethod(`/api/dashboard/payment-providers`));
+      const response = await  axios.request(getMethod(`api/dashboard/payment-providers`));
       // console.log(response.data.data);
       setPayment_provider(response.data.data);
 

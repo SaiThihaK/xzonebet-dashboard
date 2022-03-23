@@ -15,7 +15,7 @@ const ComfirmMasterDesc = ({userInfo}) => {
     try{
    const response = await axios.request(
      
-    PostMethod(`/api/affiliate-register-lists/confirm/${userInfo.id}`,
+    PostMethod(`api/affiliate-register-lists/confirm/${userInfo.id}`,
        {super_master_id:1},
    ));
   //  console.log(response);

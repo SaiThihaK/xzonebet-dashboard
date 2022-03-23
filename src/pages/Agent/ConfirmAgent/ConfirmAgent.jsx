@@ -12,7 +12,7 @@ const ConfirmAgent = () => {
   const [confirmMasters,setConfirmMasters] = useState([]);
   const fetchConfirmMaster = async()=>{
     try{
-      const {data} = await axios.request(getMethod('/api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=deposit-confirm&form_type=agent'));
+      const {data} = await axios.request(getMethod('api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=deposit-confirm&form_type=agent'));
       setConfirmMasters(data.data);
 
     }catch(error){

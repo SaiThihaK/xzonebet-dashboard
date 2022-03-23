@@ -29,7 +29,7 @@ function refreshPage() {
 }
 export const logoutHandler = async() => {
   try{
-    const response = await axios.request(PostMethod(`/api/logout`))
+    const response = await axios.request(PostMethod(`api/logout`))
     if(response.data.status === "success"){
       localStorage.removeItem('status');
       localStorage.removeItem('jToken');
