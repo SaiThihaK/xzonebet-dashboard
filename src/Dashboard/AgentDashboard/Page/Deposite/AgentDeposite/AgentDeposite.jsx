@@ -7,6 +7,7 @@ import {  List, ListItemButton, ListItemText,ListItemIcon,Grid} from '@mui/mater
 
 import PaymentIcon from '@mui/icons-material/Payment';
 import { logoutHandler } from '../../../../../components/Sidebar/Sidebar';
+import AgentDepositeModal from '../../../../../components/UI/Modal/DepositeModal/AgentDepositeModal/AgentDepositeModal';
 
 
 
@@ -14,6 +15,10 @@ export default function AgentDeposite() {
 const [provider,setProvider] = React.useState([]);
 const [paymentType,setPaymentType] = React.useState([]);
 const [paymentId,setPaymentId] = React.useState(1);
+const [open,setOpen] = React.useState(false);
+
+const openHandler =()=>setOpen(true);
+const closeHandler = ()=>setOpen(false);
 
 const fetchProviders = async()=>{
 try{
@@ -91,7 +96,17 @@ const FilterPayment_Provider = provider.filter((c)=>c.payment_type_id === paymen
      <Grid  container spacing={3} className={classes["provider-grid"]}>
   {
       FilterPayment_Provider && FilterPayment_Provider.map((prov,index)=>(
-          <Grid item xs={3} key={index}>
+          <Grid 
+          item 
+          xs={3} 
+          key={index}
+          className={classes["provider-card"]}
+           onClick={()=>{
+               openHandler()
+           }}
+           >
+              
+              
               <Card>
               <img src={prov.logo ? prov.logo : "https://cdn.logojoy.com/wp-content/uploads/2018/05/30160306/447.png"} 
               alt="provider_logo"   width="100%" />
@@ -99,16 +114,16 @@ const FilterPayment_Provider = provider.filter((c)=>c.payment_type_id === paymen
               <span>{prov.name}</span>
               </div>
               </Card>
+
+
               </Grid>
- 
-  
-        
       ))
   }
        </Grid>
     </Card>
     </Grid>
     </Grid>
+    <AgentDepositeModal open={open} closeHandler={closeHandler} />
     </div>
   );
 }

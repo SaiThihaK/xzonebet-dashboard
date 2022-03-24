@@ -68,7 +68,7 @@ const MDepositeTable = ({setNum,num}) => {
   }
  });
 
- console.log(filterUser);
+//  console.log(filterUser);
 
  const confirmHandler = async()=>{
    if(value === "approve"){
@@ -110,7 +110,7 @@ const MDepositeTable = ({setNum,num}) => {
  const fetchUserDeposite = async()=>{
    try{
     const response = await axios.request(getMethod(`api/user-deposit?sortColumn=id&sortDirection=asc&limit=10&status=pending&page=${page}`));
-    console.log(response.data.meta);
+    // console.log(response.data.meta);
     setTotalPage(response.data.meta.last_page);
     setUser_deposite(response.data.data)
    }catch(error){

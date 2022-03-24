@@ -9,7 +9,8 @@
 :root {
   --text-color: rgb(44, 44, 44);
   --bg-color: white;
-  --main-color: #242526;
+  /* --main-color: #242526; */
+  --main-color: #252831;
   --secondary-color: #ba1e23;
   /* --secondary-hover: #034e03; /
   / --background-color:  rgb(3, 54, 3); */
