@@ -75,7 +75,7 @@ const MDepositeTable = ({setNum,num}) => {
      console.log("approve")
     try{
       const response = await axios.request(PostMethod(`api/user-deposit/action/${ID}`,{
-        status:"confirm"
+        status:"approve"
       }));
       console.log(response);
       if(response.data.status==="success"){
