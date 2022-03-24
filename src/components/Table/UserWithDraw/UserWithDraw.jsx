@@ -14,11 +14,13 @@ import { Button, FormControl, MenuItem, Select,Pagination, Stack } from "@mui/ma
 import axios from "axios";
 
 
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import { getMethod } from "../../../services/api-services";
 import Card from "../../UI/Card";
 import { BasedColor } from "../../../Controller/BasedColor";
 import { logoutHandler } from "../../Sidebar/Sidebar";
+import ApproveActionModal from "../../UI/Modal/UserWithDraw/ApproveActionModal";
+import RejectActionModal from "../../UI/Modal/UserWithDraw/RejectActionModal";
 
 
 
@@ -44,12 +46,17 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 const UserWithDrawTable = ({}) => {
    const [open,setOpen] = useState(false);
+   const [cancelopen,setCancelOpen] = useState(false);
    const [page,setPage] = useState(1);
    const [totalPage,setTotalPage] = useState();
    const AlertToast = (toast,msg)=> toast(msg);
    const openHandler = ()=>setOpen(true);
    const closeHandler = ()=>setOpen(false);
+   const CancelopenHandler = ()=>setCancelOpen(true);
+   const CancelcloseHandler = ()=>setCancelOpen(false);
    const [userWithDraw,setUserWithDraw] = useState([]);
+   const [id,setId] = useState("");
+   const [num,setNum] = useState(0);
  
  const fetchUserWithDraw = async()=>{
    try{
@@ -69,10 +76,12 @@ const UserWithDrawTable = ({}) => {
    return ()=>{
     setUserWithDraw([])
    }
- },[page]);
+ },[page,num]);
  console.log(userWithDraw);
+
   return (
     <div className={classes["table-margin"]}>
+        <ToastContainer />
       <Card>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700}} aria-label="customized table">
@@ -106,10 +115,16 @@ const UserWithDrawTable = ({}) => {
        
                 <StyledTableCell align="right" >
                 <Stack spacing={1} direction="row" sx={{display:'block'}}>
-                     <Button   size="small"  variant="contained">
+                     <Button onClick={()=>{
+                         openHandler();
+                         setId(user.id)
+                     }}  size="small"  variant="contained">
                        Approve
                      </Button>
-                     <Button   size="small" color="error" variant="contained">
+                     <Button onClick={(e)=>{
+                        CancelopenHandler()
+                         setId(user.id)
+                     }}   size="small" color="error" variant="contained">
                        Reject
                     </Button>
                     </Stack>
@@ -131,6 +146,22 @@ const UserWithDrawTable = ({}) => {
       />
     </div>
       </Card>
+      <ApproveActionModal 
+      open={open} 
+      handleClose={closeHandler} 
+      id={id} 
+      AlertToast={AlertToast}
+      num={num}
+      setNum={setNum}
+      />
+      <RejectActionModal 
+      open={cancelopen} 
+      handleClose={CancelcloseHandler} 
+      id={id} 
+      AlertToast={AlertToast}
+      num={num}
+      setNum={setNum}
+      />
     </div>
   );
 };

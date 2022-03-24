@@ -136,7 +136,7 @@ const MasterDepositTable = () => {
           </TableBody>
         </Table>
         <MasterDepositCancel open={open} handleClose={handleClose} setNum={setNum} id={id} num={num} handleAmmount={handleAmmount} alertToast={alertToast}/>
-        <MasterDepositeConfirm open={confirmOpen} handleClose={confirmCloseHandler} setNum={setNum} num={num} submitHandler={confirmHandler} id={id}  />
+        <MasterDepositeConfirm open={confirmOpen} handleClose={confirmCloseHandler} setNum={setNum} num={num} submitHandler={confirmHandler} id={id} />
       </TableContainer>
     </div>
   );
