@@ -1,0 +1,13 @@
+.table-margin {
+  margin-top: 5px;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

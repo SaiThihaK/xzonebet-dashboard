@@ -1,31 +1,19 @@
-import React from "react";
+import React, { useState } from 'react'
+import PageTitleCard from '../../components/UI/PageTitleCard/PageTitleCard'
 import TextField from "@mui/material/TextField"; 
-import classes from "./ATransitionHistory.module.css";
+import classes from "./UserWithDraw.module.css";
 import { Button } from "@mui/material";
 import { DateRangePicker, LocalizationProvider } from "@mui/lab";
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import Box from '@mui/material/Box';
-import Card from "../../../../components/UI/Card";
-import TransitionHistoryTable from "../../../MasterDashboard/Page/TransitionHistory/TransitionHistoryTable/TransitionHistoryTable";
+import UserWithDrawTable from '../../components/Table/UserWithDraw/UserWithDraw';
 
 
-
-const ATransitionHistory = () => {
-  // let today = new Date();
-  // let Todate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-
-    const [value, setValue] = React.useState([null, null]);
-
-    
-  
-  // console.log(value)
+const UserWithDraw = () => {
+    const [value,setValue] = useState([null,null])
   return (
-    
-    <div className={classes["soccer-setting-container"]}>
-      <Card>
-        <div className={classes["card-header"]}>
-          <h1 className={classes["card-title"]}>Transition History</h1>
-        </div>
+    <div>
+        <PageTitleCard title="User With Draw">
         <div className={classes["card-body"]}>
           <div className={classes["table-container"]}>
             <div className={classes["search-header-flex"]}>
@@ -59,13 +47,12 @@ const ATransitionHistory = () => {
     </LocalizationProvider>
     </div>
             </div>
-      <TransitionHistoryTable />
           </div>
         </div>
-      </Card>
+        <UserWithDrawTable />
+        </PageTitleCard>
     </div>
-  );
-};
+  )
+}
 
-export default ATransitionHistory;
- 
+export default UserWithDraw

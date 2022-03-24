@@ -12,17 +12,19 @@ import classes from "./TransitionHistoryTable.module.css";
 import { Button } from "@mui/material";
 import { BasedColor } from "../../../../../Controller/BasedColor";
 
+
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor:BasedColor.tableHead,
+    color: theme.palette.common.white,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}));
 const TransitionHistoryTable = () => {
-    const [open, setOpen] = useState(false);
-  const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    [`&.${tableCellClasses.head}`]: {
-      backgroundColor:BasedColor.tableHead,
-      color: theme.palette.common.white,
-    },
-    [`&.${tableCellClasses.body}`]: {
-      fontSize: 14,
-    },
-  }));
+  
+
 
   const filterArr = [23,"HellFire","Yolo",23,45,"reiyrieuy"];
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
