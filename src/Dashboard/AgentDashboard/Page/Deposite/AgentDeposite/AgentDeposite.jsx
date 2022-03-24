@@ -76,10 +76,10 @@ const FilterPayment_Provider = provider.filter((c)=>c.payment_type_id === paymen
                 setPaymentId(payment.id)
             }}
             sx={{marginBottom:1}}
-            style={paymentId === payment.id ?  {borderLeft:"3px solid rgb(255, 0, 0)"}: {}}
+            className={`${classes["list-item"]} ${paymentId === payment.id ? classes["active"] :""}`}
             >
                 <ListItemIcon>
-                    <PaymentIcon/>
+                    <PaymentIcon className={classes["list-icon"]}/>
                 </ListItemIcon>
                 <ListItemText primary={payment.name} />
             </ListItemButton>
@@ -105,8 +105,6 @@ const FilterPayment_Provider = provider.filter((c)=>c.payment_type_id === paymen
                openHandler()
            }}
            >
-              
-              
               <Card>
               <img src={prov.logo ? prov.logo : "https://cdn.logojoy.com/wp-content/uploads/2018/05/30160306/447.png"} 
               alt="provider_logo"   width="100%" />
