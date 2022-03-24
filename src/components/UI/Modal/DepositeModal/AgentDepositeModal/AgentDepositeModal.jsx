@@ -112,7 +112,8 @@ const confirmHandler = async()=>{
            
            <div className={classes["form-group-desc"]}>
           <label htmlFor="">Amount (Min. 1000.00 MMK)</label>
-           <TextField 
+           <TextField
+           value={amount}
            size="small" className={classes["form-group-desc-input"]}
            placeholder="1000.00"
            onChange={(e)=>setAmount(e.target.value)}
@@ -121,7 +122,8 @@ const confirmHandler = async()=>{
 
           <div className={classes["form-group-desc"]}>
           <label htmlFor="">{provDetail?.payment_provider} Account Number</label>
-           <TextField 
+           <TextField
+           value={account_no}
            size="small" className={classes["form-group-desc-input"]}
            placeholder={`${provDetail?.payment_provider} phone number`}
            onChange={(e)=>setAccount_no(e.target.value)}          />
@@ -129,7 +131,8 @@ const confirmHandler = async()=>{
           </div>
           <div className={classes["form-group-desc"]}>
           <label htmlFor="">Transition ID</label>
-           <TextField 
+           <TextField
+           value={transaction_no}
            size="small" className={classes["form-group-desc-input"]}
            placeholder="20 digit"
            onChange={(e)=>setTransition_no(e.target.value)}
