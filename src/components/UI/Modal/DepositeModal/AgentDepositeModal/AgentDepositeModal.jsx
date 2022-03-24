@@ -23,7 +23,7 @@ const AgentDepositeModal = ({
   closeHandler ,
 }) => {
 
-const [copyText,setCopyText] = useState("");
+
 const bankNumberCopy =()=>{
     navigator.clipboard.writeText("Bank Number")
 }
@@ -71,9 +71,7 @@ const BankAccountCopy = ()=>{
            placeholder="20 digit"
            />
           </div>
-
-
-           </div>
+          </div>
            <div className={classes["account"]}>
            <p>CB pay ဖုန်းနံပါတ်-&nbsp;Bank Number
             <Tooltip title="Copy" placement="right-end">
