@@ -24,7 +24,7 @@ const ProfileDetail = () => {
           <div className={classes["form-group-desc"]}>
           <label htmlFor="">Name </label>
           :<p>&nbsp;&nbsp;Han Zar Moe Win</p>
-        </div>
+          </div>
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Date of Birth </label>
           :<p>&nbsp;&nbsp;20/12/1998</p>
