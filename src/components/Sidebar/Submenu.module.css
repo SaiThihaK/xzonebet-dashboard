@@ -11,7 +11,7 @@
   background-color: #15171c;
 }
 .menuItem:hover {
-  background-color: #252831;
+  background-color: var(--main-color);
   border-left: 4px solid #d1cdd8;
   cursor: pointer;
 }
@@ -32,9 +32,10 @@
   transition: 0.3s;
 }
 .sub-list:hover {
-  background-color: #632ce4;
+  background-color: var(--main-color);
   cursor: pointer;
+  border-left: 4px solid #d1cdd8;
 }
 .active {
-  background-color: #632ce4;
+  background-color: var(--main-color);
 }
