@@ -44,7 +44,7 @@ const DepositeModal = ({
   PostMethod(`api/user-deposit/action/${id}`,
 
   {
-    status:"re-jet",
+    status:"rejected",
     remark:accounting_remark
   }
   ));

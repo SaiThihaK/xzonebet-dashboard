@@ -8,7 +8,8 @@ import {  List, ListItemButton, ListItemText,ListItemIcon,Grid} from '@mui/mater
 import PaymentIcon from '@mui/icons-material/Payment';
 import { logoutHandler } from '../../../../../components/Sidebar/Sidebar';
 import AgentDepositeModal from '../../../../../components/UI/Modal/DepositeModal/AgentDepositeModal/AgentDepositeModal';
-
+import {  ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function AgentDeposite() {
@@ -16,6 +17,7 @@ const [provider,setProvider] = React.useState([]);
 const [paymentType,setPaymentType] = React.useState([]);
 const [paymentId,setPaymentId] = React.useState(1);
 const [open,setOpen] = React.useState(false);
+const [providerId,setProviderId] = React.useState();
 
 
 const openHandler =()=>setOpen(true);
@@ -55,10 +57,11 @@ React.useEffect(()=>{
     }
 },[]);
 const FilterPayment_Provider = provider.filter((c)=>c.payment_type_id === paymentId);
-
-console.log(FilterPayment_Provider)
+const AlertToast = (toast,msg)=>{return toast(msg)};
+// console.log(FilterPayment_Provider)
   return (
       <div>
+          <ToastContainer />
           <div className={classes["card-header"]}>
           <h1 className={classes["card-title"]}>Agent Deposite</h1>
      </div>
@@ -104,6 +107,7 @@ console.log(FilterPayment_Provider)
           className={classes["provider-card"]}
            onClick={()=>{
                openHandler();
+               setProviderId(prov.id)
            }}
            >
               <Card>
@@ -122,7 +126,12 @@ console.log(FilterPayment_Provider)
     </Card>
     </Grid>
     </Grid>
-    <AgentDepositeModal open={open} closeHandler={closeHandler} />
+    <AgentDepositeModal 
+    open={open} 
+    closeHandler={closeHandler} 
+    id={providerId} 
+    AlertToast={AlertToast}
+    />
     </div>
   );
 }
