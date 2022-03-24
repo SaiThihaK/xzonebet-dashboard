@@ -85,6 +85,7 @@ import Position from "./pages/AdminTeamAccount/Position/Position";
 import CreatePosition from "./pages/AdminTeamAccount/Position/CreatePosition/CreatePosition";
 import EditPaymentAccount from "./pages/PaymentSetting/PaymentAccount/EditPaymentAccount/EditPaymentAccount";
 import EditPaymentProvider from "./pages/PaymentSetting/PaymentProvider/EditPaymentProvider/EditPaymentProvider";
+import UserWithDraw from "./pages/UserWithDraw/UserWithDraw";
 
 function App() {
   const DashboardRouting = () => {
@@ -421,6 +422,7 @@ function App() {
             path="/agent/transition-history"
             element={<ATransitionHistory />}
           />
+          <Route exact path="/agent/user-withdraw" element={<UserWithDraw />} />
           <Route path="*" element={<Notfound />} />
         </Routes>
       );
