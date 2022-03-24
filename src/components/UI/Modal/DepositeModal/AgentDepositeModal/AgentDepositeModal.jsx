@@ -1,24 +1,12 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
-
+import {ContentCopy} from '@mui/icons-material';
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import classes from "./AgentDepositeModal.module.css"
-import { Avatar, Button, FormControl, TextField } from "@mui/material";
+import { Avatar, Button, FormControl, Icon, IconButton, TextField, Tooltip } from "@mui/material";
 
-
-
-
-const AgentDepositeModal = ({ 
-  open, 
-  closeHandler ,
- 
-
-  
-}) => {
-  
-
-  const style = {
+const style = {
     position: "absolute",
     top: "40%",
     left: "60%",
@@ -30,6 +18,18 @@ const AgentDepositeModal = ({
     p: 4,
   }
   
+const AgentDepositeModal = ({ 
+  open, 
+  closeHandler ,
+}) => {
+
+
+const bankNumberCopy =()=>{
+    navigator.clipboard.writeText("Bank Number")
+}
+const BankAccountCopy = ()=>{
+    navigator.clipboard.writeText("Bank Account")
+}
   return (
     <div>
       <Modal
@@ -71,16 +71,28 @@ const AgentDepositeModal = ({
            placeholder="20 digit"
            />
           </div>
-
-
-           </div>
+          </div>
            <div className={classes["account"]}>
-           <p>CB pay ဖုန်းနံပါတ်</p>
-           <p>CB pay နာမည်</p>
+           <p>CB pay ဖုန်းနံပါတ်-&nbsp;Bank Number
+            <Tooltip title="Copy" placement="right-end">
+            <IconButton onClick={bankNumberCopy}>
+               <ContentCopy />
+           </IconButton> 
+            </Tooltip> 
+          
+            </p>
+           <p>CB pay နာမည်-&nbsp;Bank  Account
+           <Tooltip title="Copy" placement="right-end">
+           <IconButton onClick={BankAccountCopy}>
+                  <ContentCopy />
+              </IconButton>
+            </Tooltip>
+              
+            </p>
            </div>
            
-           <FormControl className={classes["btn-container"]} fullWidth>
-           <Button variant="contained">Confirm</Button>
+           <FormControl fullWidth style={{marginTop:20}}>
+           <Button variant="contained" onClick={closeHandler}>Confirm</Button>
            </FormControl>
         </Box>
       </Modal>

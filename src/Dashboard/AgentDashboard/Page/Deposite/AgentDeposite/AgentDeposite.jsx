@@ -17,6 +17,7 @@ const [paymentType,setPaymentType] = React.useState([]);
 const [paymentId,setPaymentId] = React.useState(1);
 const [open,setOpen] = React.useState(false);
 
+
 const openHandler =()=>setOpen(true);
 const closeHandler = ()=>setOpen(false);
 
@@ -55,7 +56,7 @@ React.useEffect(()=>{
 },[]);
 const FilterPayment_Provider = provider.filter((c)=>c.payment_type_id === paymentId);
 
-// console.log(FilterPayment_Provider)
+console.log(FilterPayment_Provider)
   return (
       <div>
           <div className={classes["card-header"]}>
@@ -76,10 +77,10 @@ const FilterPayment_Provider = provider.filter((c)=>c.payment_type_id === paymen
                 setPaymentId(payment.id)
             }}
             sx={{marginBottom:1}}
-            style={paymentId === payment.id ?  {borderLeft:"3px solid rgb(255, 0, 0)"}: {}}
+            className={`${classes["list-item"]} ${paymentId === payment.id ? classes["active"] :""}`}
             >
                 <ListItemIcon>
-                    <PaymentIcon/>
+                    <PaymentIcon className={classes["list-icon"]}/>
                 </ListItemIcon>
                 <ListItemText primary={payment.name} />
             </ListItemButton>
@@ -102,11 +103,9 @@ const FilterPayment_Provider = provider.filter((c)=>c.payment_type_id === paymen
           key={index}
           className={classes["provider-card"]}
            onClick={()=>{
-               openHandler()
+               openHandler();
            }}
            >
-              
-              
               <Card>
               <img src={prov.logo ? prov.logo : "https://cdn.logojoy.com/wp-content/uploads/2018/05/30160306/447.png"} 
               alt="provider_logo"   width="100%" />
