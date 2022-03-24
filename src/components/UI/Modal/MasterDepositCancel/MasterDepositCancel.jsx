@@ -10,24 +10,25 @@ import { PostMethod } from "../../../../services/api-services";
 import { toast } from "react-toastify";
 import { logoutHandler } from "../../../Sidebar/Sidebar";
 
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "1px solid #FFF",
+  borderRadius: "0.5rem",
+  p: 4,
+};
+
 const MasterDepositCancel = ({ open, handleClose,setNum,id,num,alertToast}) => {
   const [accounting_remark,setAccounting_remark] = useState("");
-
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "1px solid #FFF",
-    borderRadius: "0.5rem",
-    p: 4,
-  };
 
   const confirmHandler = async(e)=>{
   e.preventDefault();
   if(!accounting_remark){
+    alertToast(toast.warning,"Please enter remark")
     return;
   }
   try{
@@ -39,12 +40,14 @@ const MasterDepositCancel = ({ open, handleClose,setNum,id,num,alertToast}) => {
   if(data.status="success"){
     handleClose();
     setNum(num+1);
-    alertToast(data.message);
+    alertToast(toast.success(data.message));
+    setAccounting_remark('');
     return;
   }
   if(data.status="error"){
     handleClose();
-    // alertToast(data.message);
+    alertToast(toast.error(data.message));
+    setAccounting_remark('');
     return;
   }
   }catch(error){
@@ -79,7 +82,9 @@ const MasterDepositCancel = ({ open, handleClose,setNum,id,num,alertToast}) => {
             }} name="" 
             id="" placeholder="example ...."
               rows="5"
+              value={accounting_remark}
                onChange={(e)=>setAccounting_remark(e.target.value)}
+               
                />
             <Stack
               direction="row"

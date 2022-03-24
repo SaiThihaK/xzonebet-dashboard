@@ -15,26 +15,30 @@ import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getMethod, PostMethod } from "../../../services/api-services";
-import { FormControl, MenuItem, Select } from "@mui/material";
+
 import MasterDepositeConfirm from "../../../components/UI/Modal/MasterDeposite/MasterDepositeConfirm";
 import { logoutHandler } from "../../../components/Sidebar/Sidebar";
 import { BasedColor } from "../../../Controller/BasedColor";
+import CustomPagination from "../../../components/Pagination/CustomPagination";
 const MasterDepositTable = () => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const [rowData,setRowData] = useState([]);
+    const [totalPage,setTotalPage] = useState(0);
+    const [page,setPage] =  useState(1);
   //  Comfirm
   const [confirmOpen,setConfirmOpen] = useState(false);
   const confirmOpenHandler = ()=>setConfirmOpen(true);
   const confirmCloseHandler = ()=>setConfirmOpen(false);
+ 
 
   // -----------------
   const [ammount,setAmmount] = useState('');
   const handleAmmount = (e)=>setAmmount(e.target.value);
   // console.log(ammount);
     const [id,setId] = useState(0);
-    const alertToast = (message) => toast(message);
+    const AlertToast = (toast,message) => toast(message);
     const [num,setNum] = useState(0);
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -57,18 +61,23 @@ const MasterDepositTable = () => {
   }));
   const fetchData = async()=>{
     try{
-      const {data} = await axios.request(getMethod(`api/affiliate-register-lists-detail?sortColumn=updated_at&sortDirection=desc&limit=30&status=deposit-pending`));
-      setRowData(data.data)
+      const {data} = await axios.request(getMethod(`api/affiliate-register-lists-detail?sortColumn=updated_at&sortDirection=desc&limit=10&status=deposit-pending&page=${page}`));
+      setRowData(data.data);
+      // console.log(data);
+      setTotalPage(data.meta.last_page);
     }catch(error){
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
       logoutHandler();
       }
     }
   }
-
+console.log(page)
   useEffect(()=>{
     fetchData();
-  },[num])
+    return ()=>{
+      setRowData([])
+    }
+  },[num,page])
   const confirmHandler = async(id)=>{
     try{
     const response = await axios.request(
@@ -77,14 +86,19 @@ const MasterDepositTable = () => {
     ));
   
     if(response.data.status="success"){
-      alertToast(response.data.message.toUpperCase());
+      AlertToast(toast.success(response.data.message));
       setNum(num+1);
+      return;
+    }
+    if(response.data.status="error"){
+      AlertToast(toast.error(response.data.message));
       return;
     }
     }catch(error){
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
       logoutHandler();
       }
+      return;
     }
   }
 
@@ -135,9 +149,10 @@ const MasterDepositTable = () => {
             ))}
           </TableBody>
         </Table>
-        <MasterDepositCancel open={open} handleClose={handleClose} setNum={setNum} id={id} num={num} handleAmmount={handleAmmount} alertToast={alertToast}/>
+        <MasterDepositCancel open={open} handleClose={handleClose} setNum={setNum} id={id} num={num} handleAmmount={handleAmmount} alertToast={AlertToast}/>
         <MasterDepositeConfirm open={confirmOpen} handleClose={confirmCloseHandler} setNum={setNum} num={num} submitHandler={confirmHandler} id={id} />
       </TableContainer>
+      <CustomPagination totalPage={totalPage} setPage={setPage}/>
     </div>
   );
 };
