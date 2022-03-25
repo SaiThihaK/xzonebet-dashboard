@@ -5,12 +5,13 @@ import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { FormControl, InputLabel, Select, Stack, TextField } from "@mui/material";
+import { FormControl,  Select,  TextField } from "@mui/material";
 import { MenuItem } from "@material-ui/core";
 import axios from "axios";
 import { getMethod, PostMethod } from "../../../services/api-services";
 import { logoutHandler } from "../../Sidebar/Sidebar";
-
+import { TextFields } from "@mui/icons-material";
+import {toast} from "react-toastify"
 
 const style = {
   position: "absolute",
@@ -23,48 +24,6 @@ const style = {
   p: 4,
   borderRadius: 3,
 };
-const AlertToast = (toast,msg)=>toast(msg);
-
-const getUnitChange = async()=>{
-    try{
-        const response = await axios.request(getMethod(""));
-        console.log(response);
-    }catch(error){
-        if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
-            logoutHandler();
-            }
-          }
-}
-
-// const confirmHandler = async()=>{
-//     try{
-//         if(){
-//             AlertToast(toast.warning,"Please fill all the fields")
-//             return;
-//         }
-//    else{
-//     const response = await axios.request(PostMethod(""),{
-
-//     });
-//     console.log(respones);
-//     if(response.data.status==="success"){
-//         AlertToast(toast.success,response.data.message);
-//         handleClose();
-//         return;
-//     };
-//     if(response.data.status === "error"){
-//         AlertToast(toast.error,response.data.message);
-//         handleClose();
-//         return;
-//     }
-//    }
-//     }catch(error){
-//         if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
-//             logoutHandler();
-//             }
-//           }
-//     }
-// }
 
 
 export default function UnitChangeModal({
@@ -72,6 +31,54 @@ export default function UnitChangeModal({
   open,
 }) {
   const UnitChangeArr = [{name:"Promotion Unit"},{name:"Main Unit"},{name:"Diamond Unit"}];
+  const [amount,setAmount] = React.useState();
+  React.useEffect(()=>{
+    getUnitChange();
+    },[])
+   
+    const getUnitChange = async()=>{
+        try{
+            const response = await axios.request(getMethod("api/wallet/admin-create-record?sortColumn=id&sortDirection=desc&limit=10"));
+            console.log(response);
+        }catch(error){
+            if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+                logoutHandler();
+                }
+              }
+    }
+
+    const AlertToast = (toast,msg)=>toast(msg);
+    const confirmHandler = async()=>{
+        try{
+            if(!amount){
+                AlertToast(toast.warning,"Please fill all the fields")
+                return;
+            }
+       else{
+        const response = await axios.request(PostMethod("api/wallet/admin-create"),{
+         amount
+        });
+        console.log(response);
+        if(response.data.status==="success"){
+            AlertToast(toast.success,response.data.message);
+            handleClose();
+            return;
+        };
+        if(response.data.status === "error"){
+            AlertToast(toast.error,response.data.message);
+            handleClose();
+            return;
+        }
+       }
+        }catch(error){
+            if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+                logoutHandler();
+                }
+              }
+        }
+
+
+
   return (
     <div>
       <Modal
@@ -125,7 +132,9 @@ export default function UnitChangeModal({
             </FormControl>
             <FormControl style={{ marginTop: 20}} fullWidth>
               <label style={{marginBottom:10}} >Enter your Amount</label>
-              <TextField size="small"  />
+              <TextField size="small" value={amount} onChange={(e)=>{
+                  setAmount(e.target.value)
+              }}  />
             </FormControl>
            <div style={{display:"flex",justifyContent:"flex-end"}}>
            <Button
