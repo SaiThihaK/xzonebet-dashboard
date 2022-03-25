@@ -16,10 +16,10 @@ import axios from "axios";
 import { PostMethod } from "../../../services/api-services";
 import { InputLabel } from "@mui/material";
 import { logoutHandler } from "../../../components/Sidebar/Sidebar";
+import {toast} from "react-toastify"
 const AgentCard = ({
   user,
   num,
-  alertToast,
   setNum
 }) => {
   const [age, setAge] = React.useState("");
@@ -27,22 +27,28 @@ const AgentCard = ({
   const handleChange = (event) => {
     setAge(event.target.value);
   };
-
+  const AlertToast = (toast,msg) => toast(msg);
   // console.log(user)
   const submitHandler = async(e)=>{
     e.preventDefault();
-    if(!age)return;
+    if(!age){
+      AlertToast(toast.warning,"User-type is required");
+      return
+    }
     else{
       try{
-       
         const url = `api/affiliate-register-lists/${status}/${user.id}`;
         const {data} = await axios.request(PostMethod(
           url,{user_type:age}
         ));
         if(data.status = "success"){
-        alertToast(data.message);
+        AlertToast(toast.success,data.message);
         setNum(num+1);
         return;
+        }
+        if(data.status = "error"){
+          AlertToast(toast.success,data.message);
+         return;
         };
       }catch(error){
         if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
@@ -84,8 +90,9 @@ const AgentCard = ({
               value={age}
               onChange={handleChange}
               size="small"
-              labelId="demo-simple-select-label"
+              labelid="demo-simple-select-label"
               id="demo-simple-select"
+              label="Choose"
               inputProps={{ "aria-label": "Without label" }}
               sx={{ backgroundColor: "#f3f3f3" }}
             >

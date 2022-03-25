@@ -40,7 +40,6 @@ fd
 console.log(response);
 ToastAlert(toast.error("comming soon"));
 }catch(error){
-   console.log(error.response.data.message);
         if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
         logoutHandler();
         }

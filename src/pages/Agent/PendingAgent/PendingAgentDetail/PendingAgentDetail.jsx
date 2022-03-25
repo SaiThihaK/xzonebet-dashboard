@@ -20,7 +20,7 @@ const PendingAgentDetail = () => {
   const [transition_id,setTransition_id] = useState("");
   const [amount,setAmount] = useState("");
   const  [currency,setCurrency] = useState("");
-  const alertToast = (message) =>toast(message);
+  const alertToast = (message) =>message;
   // Enjoyment
   const [username,setUserName] = useState("");
   const [password,setPassword] = useState("");
@@ -34,7 +34,7 @@ const PendingAgentDetail = () => {
   const submitHandler = async(e)=>{
     e.preventDefault();
     if(!real_name ||!payment_name||!payment_type||!transition_id||!amount||!currency||!username||!password||!deposit_percent ||!withdraw_percent){
-      alertToast("Please Fill All the Field")
+      alertToast(toast.warning("Please Fill All the Field"));
       return;
     }
     else{
@@ -58,10 +58,12 @@ const PendingAgentDetail = () => {
         ));
         // console.log(response.data.status);
         if(response.data.status === "success"){
-          alertToast(response.data.message);
+          alertToast(toast.success(response.data.message));
           return;
         }
-        return;
+        if(response.data.status === "error"){
+          alertToast(toast.error(response.data.message))
+        }
       }catch(error){
         if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
         logoutHandler();

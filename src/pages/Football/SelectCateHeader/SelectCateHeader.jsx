@@ -31,8 +31,7 @@ const SelectCateHeader = () => {
           <FormControl size="small" sx={{ width: "100%", marginRight: "5px" }}>
             <InputLabel id="demo-simple-select-label">ID</InputLabel>
             <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
+            id="demo-simple-select-label"
               value={age}
               label="ID"
               onChange={handleChange}
@@ -47,7 +46,7 @@ const SelectCateHeader = () => {
               Betting Status
             </InputLabel>
             <Select
-              labelId="demo-simple-select-label"
+              labelid="demo-simple-select-label"
               id="demo-simple-select"
               value={bettingStatus}
               label="Betting Status"
@@ -75,7 +74,7 @@ const SelectCateHeader = () => {
           <FormControl size="small" sx={{ width: "100%" }}>
             <InputLabel id="demo-simple-select-label">Bet Winner</InputLabel>
             <Select
-              labelId="demo-simple-select-label"
+              labelid="demo-simple-select-label"
               id="demo-simple-select"
               value={betWinner}
               label="Bet Winner"

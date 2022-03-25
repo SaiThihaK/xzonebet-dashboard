@@ -83,12 +83,14 @@ const MDepositeTable = ({setNum,num}) => {
         setID("");
         setNum(num+1);
         setValue("")
+        return;
       }
       if(response.data.status === "error"){
         AlertToast(toast.error,response.data.message);
         setID("");
         setNum(num+1);
         setValue("");
+        return;
       }
       }catch(error){
        if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {

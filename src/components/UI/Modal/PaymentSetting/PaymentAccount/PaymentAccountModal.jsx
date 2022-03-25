@@ -84,10 +84,15 @@ export default function PaymentAccountModal({
       console.log("account_no",account);
     const response =await axios.request(PostMethod("api/dashboard/payment-accounts",fd));
   
-    if(response.data.status){
+    if(response.data.status === "success"){
       ToastAlert(toast.success,response.data.message)
       setNum(num+1);
       handleClose();
+      return;
+    }
+    if(response.data.status ==="error"){
+      ToastAlert(toast.error,response.data.message)
+      return;
     }
     }catch(error){
        if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {

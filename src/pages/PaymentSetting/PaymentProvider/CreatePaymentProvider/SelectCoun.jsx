@@ -56,7 +56,7 @@ export default function SelectCoun({country,setCountry}) {
       <FormControl sx={{ width:"100%" }}>
         <label>Select Country</label>
         <Select
-          labelId="demo-multiple-checkbox-label"
+          labelid="demo-multiple-checkbox-label"
           id="demo-multiple-checkbox"
           multiple
           value={country}

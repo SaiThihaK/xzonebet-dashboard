@@ -2,13 +2,14 @@ import { Button } from "@mui/material";
 import axios from "axios";
 import React from "react";
 import classes from "./ComfirmMasterDesc.module.css";
-import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { PostMethod } from "../../../../../services/api-services";
 import { logoutHandler } from "../../../../../components/Sidebar/Sidebar";
 
+
 const ComfirmMasterDesc = ({userInfo}) => {
-    const alertToast = (message) =>toast(message,alertToast);
+    const alertToast = (toast,msg) =>toast(msg);
     // console.log(userInfo.id);
    const confirmHandler = async()=>{
   //  console.log("confirm");
@@ -20,9 +21,13 @@ const ComfirmMasterDesc = ({userInfo}) => {
    ));
   //  console.log(response);
    if(response.data.status="success"){
-     alertToast(response.data.message)
+     alertToast(toast.success,response.data.message);
+     return;
    }
-   return;
+    if(response.data.status === "error"){
+      alertToast(toast.error,response.data.message);
+      return;
+    }
    }catch(error){
     if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
     logoutHandler();

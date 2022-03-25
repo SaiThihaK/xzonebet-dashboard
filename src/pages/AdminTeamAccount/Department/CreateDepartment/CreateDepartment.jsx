@@ -30,7 +30,7 @@ const functionArr = [
             <div className={classes["form-contol"]}>
             <label>Choose Function</label>
             <Select
-          labelId="demo-multiple-checkbox-label"
+          labelid="demo-multiple-checkbox-label"
           id="demo-multiple-checkbox"
           multiple
           value={functionName}
