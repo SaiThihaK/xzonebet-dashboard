@@ -1,5 +1,5 @@
 import * as React from 'react';
-import classes from "./AgentDeposite.module.css"
+
 import Card from '../../../../../components/UI/Card';
 import axios from 'axios';
 import { getMethod } from '../../../../../services/api-services';
@@ -10,7 +10,7 @@ import { logoutHandler } from '../../../../../components/Sidebar/Sidebar';
 import AgentDepositeModal from '../../../../../components/UI/Modal/DepositeModal/AgentDepositeModal/AgentDepositeModal';
 import {  ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import classes from "./AgentDeposite.module.css";
 
 export default function AgentDeposite() {
 const [provider,setProvider] = React.useState([]);
@@ -56,6 +56,8 @@ React.useEffect(()=>{
         setPaymentType([]);
     }
 },[]);
+
+console.log(paymentType);
 const FilterPayment_Provider = provider.filter((c)=>c.payment_type_id === paymentId);
 const AlertToast = (toast,msg)=>{return toast(msg)};
 // console.log(FilterPayment_Provider)

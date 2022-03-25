@@ -86,8 +86,8 @@ console.log(page)
     ));
   
     if(response.data.status="success"){
-      AlertToast(toast.success(response.data.message));
       setNum(num+1);
+      AlertToast(toast.success(response.data.message));
       return;
     }
     if(response.data.status="error"){

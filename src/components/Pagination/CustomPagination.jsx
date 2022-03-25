@@ -11,7 +11,7 @@ const CustomPagination = ({totalPage,setPage}) => {
         marginTop:30,
         }}>
         <Pagination
-        count={parseInt(totalPage)}
+        count={totalPage}
         onChange={(e)=> setPage(e.target.textContent)}
         color="primary"
         />

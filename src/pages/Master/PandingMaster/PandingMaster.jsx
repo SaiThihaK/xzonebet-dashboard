@@ -1,13 +1,14 @@
 import React from "react";
 import Card from '../../../components/UI/Card';
 import Grid from "@mui/material/Grid";
-
+import 'react-toastify/dist/ReactToastify.css';
 import classes from './PandingMaster.module.css';
 import { useState, useEffect   } from "react";
 import axios from "axios";
 import MasterCard from "../../../components/MasterCard/MasterCard";
 import { getMethod } from "../../../services/api-services";
 import { logoutHandler } from "../../../components/Sidebar/Sidebar";
+import { ToastContainer } from "react-toastify";
 
 const PandingMaster = () => {
   const [pendingMasters,setPendingMaster] = useState([]);
@@ -29,6 +30,7 @@ const PandingMaster = () => {
   return (
     <div className={classes["soccer-setting-container"]}>
       <Card>
+        <ToastContainer />
         <div className={classes["card-header"]}>
           <h1 className={classes["card-title"]}>Pending Masters</h1>
         </div>

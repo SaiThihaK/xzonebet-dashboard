@@ -47,6 +47,7 @@ const Login = () => {
           localStorage.setItem('lToken',res.data.data['l_token']);
           localStorage.setItem('type',res.data.data['type']);
           refreshPage();
+          window.location.assign("/")
         break;
         case "error":
           setErrorMsg(res.data.message);

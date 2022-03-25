@@ -1,6 +1,5 @@
 import Sidebar from "./components/Sidebar/Sidebar";
 import Container from "./components/Container/Container";
-import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Overview from "./pages/Overview";
 import GameSetting from "./pages/GameSetting/GameSetting";
@@ -86,7 +85,7 @@ import CreatePosition from "./pages/AdminTeamAccount/Position/CreatePosition/Cre
 import EditPaymentAccount from "./pages/PaymentSetting/PaymentAccount/EditPaymentAccount/EditPaymentAccount";
 import EditPaymentProvider from "./pages/PaymentSetting/PaymentProvider/EditPaymentProvider/EditPaymentProvider";
 import UserWithDraw from "./pages/UserWithDraw/UserWithDraw";
-
+import "./App.css";
 function App() {
   const DashboardRouting = () => {
     if (type === "admin") {
