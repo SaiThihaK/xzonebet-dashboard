@@ -15,6 +15,7 @@ import { getMethod } from "../../../../services/api-services";
 import {toast} from "react-toastify";
 import { logoutHandler } from "../../../../components/Sidebar/Sidebar";
 import axios from "axios";
+import { ChangeDate } from "../../../../Controller/ChangeDate";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -84,8 +85,8 @@ const fetchUnit = async()=>{
                 <StyledTableCell component="th" scope="row">
                   {index+1}
                 </StyledTableCell>
-                <StyledTableCell align="right">--</StyledTableCell>
-                <StyledTableCell align="right">--</StyledTableCell>
+                <StyledTableCell align="right">{ChangeDate(row.created_at)}</StyledTableCell>
+                <StyledTableCell align="right">{row.user_id}</StyledTableCell>
                 <StyledTableCell align="right">--</StyledTableCell>
 
                 <StyledTableCell align="right">{row.amount}</StyledTableCell>
