@@ -7,6 +7,8 @@ import { Button, TextField } from '@mui/material';
 import Card from '../../../components/UI/Card';
 import UnitEditModal from '../../../components/UI/UnitSetting/UnitEditModal';
 import UnitChangeModal from '../../../components/UI/UnitSetting/UnitChangeModal';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const UnitValue = () => {
   const [Kopen, KsetOpen] = React.useState(false);
@@ -35,6 +37,7 @@ const UnitValue = () => {
  
   return (
     <div className={classes["soccer-setting-container"]}>
+      <ToastContainer />
       <Card>
         <div className={classes["card-header"]}>
           <h1 className={classes["card-title"]}>Unit Value</h1>

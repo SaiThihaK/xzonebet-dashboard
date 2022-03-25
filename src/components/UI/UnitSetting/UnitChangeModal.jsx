@@ -8,8 +8,9 @@ import Typography from "@mui/material/Typography";
 import { FormControl, InputLabel, Select, Stack, TextField } from "@mui/material";
 import { MenuItem } from "@material-ui/core";
 import axios from "axios";
-import { getMethod } from "../../../services/api-services";
-import { ContactMailTwoTone } from "@mui/icons-material";
+import { getMethod, PostMethod } from "../../../services/api-services";
+import { logoutHandler } from "../../Sidebar/Sidebar";
+
 
 const style = {
   position: "absolute",
@@ -22,12 +23,48 @@ const style = {
   p: 4,
   borderRadius: 3,
 };
+const AlertToast = (toast,msg)=>toast(msg);
 
 const getUnitChange = async()=>{
-    const response = await axios.request(getMethod(""));
-    console.log(response);
+    try{
+        const response = await axios.request(getMethod(""));
+        console.log(response);
+    }catch(error){
+        if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+            logoutHandler();
+            }
+          }
 }
 
+// const confirmHandler = async()=>{
+//     try{
+//         if(){
+//             AlertToast(toast.warning,"Please fill all the fields")
+//             return;
+//         }
+//    else{
+//     const response = await axios.request(PostMethod(""),{
+
+//     });
+//     console.log(respones);
+//     if(response.data.status==="success"){
+//         AlertToast(toast.success,response.data.message);
+//         handleClose();
+//         return;
+//     };
+//     if(response.data.status === "error"){
+//         AlertToast(toast.error,response.data.message);
+//         handleClose();
+//         return;
+//     }
+//    }
+//     }catch(error){
+//         if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+//             logoutHandler();
+//             }
+//           }
+//     }
+// }
 
 
 export default function UnitChangeModal({
@@ -56,10 +93,10 @@ export default function UnitChangeModal({
                 </Typography>
             </div>
             <Typography id="transition-modal-title" variant="body1" style={{color:"var(--secondary-color)"}}>
-            you can change promiton unit to main unit , main unit to diamond unit, diamond unit to main unit
+            you can change Promiton unit to Main unit , Main unit to Diamond unit, Diamond unit to Main unit
             </Typography>
             <FormControl style={{ marginTop: 20}} fullWidth>
-              <label style={{marginBottom:10}} >From</label>
+              <label component="span"  style={{marginBottom:10}} >From</label>
               <Select size="small">
                {
                    UnitChangeArr.map((unit,index)=>(
