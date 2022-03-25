@@ -106,6 +106,7 @@ const MDepositeTable = ({setNum,num}) => {
   }
   if(value === "re-ject"){
     openHandler();
+    
     return;
   }
  } 

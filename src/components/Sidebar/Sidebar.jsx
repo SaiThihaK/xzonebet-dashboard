@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SidebarData } from "./SidebarData";
 import Submenu from "./Submenu";
 import Avatar from "@mui/material/Avatar";
@@ -18,7 +18,7 @@ import classes from "./Sidebar.module.css";
 import { IconContext } from "react-icons/lib";
 import { AgentSidebarData } from "../../Dashboard/AgentDashboard/AgentSideBarData";
 import { MasterSidebarData } from "../../Dashboard/MasterDashboard/MasterSideBarData";
-import { PostMethod } from "../../services/api-services";
+import { PostMethod,getMethod } from "../../services/api-services";
 import axios from "axios"
 
 
@@ -83,6 +83,25 @@ const Sidebar = () => {
     ))
   }
   }
+  const [userData,setUserData] = useState([]);
+  const fetchUnit = async()=>{
+    try{
+      const response = await axios.request(getMethod("api/get-login-user"));
+      console.log(response.data.data)
+      setUserData(response.data.data)
+    }catch(error){
+      if (error.response.status === 401 || error.response.data.message === "Unauthenticated."){
+        logoutHandler();
+      }
+    }
+
+  }
+ useEffect(()=>{
+  fetchUnit();
+  return()=>{
+    setUserData([]);
+  }
+ },[])
   return (
     <IconContext.Provider value={{ color: "#FFF" }}>
       <div className={classes.container}>
@@ -185,6 +204,39 @@ const Sidebar = () => {
           {/* y<h1 style={{ color: "#FFF" }}>Logo</h1> */}
         </div>
         <div className={classes.sidebarWrap}>
+        <div className={classes.menuItem}>
+       <div>
+         <span className={classes.sidebarLabel}>
+           Diamond Unit-
+           {
+             userData?.wallet?.diamond_unit
+           }
+         </span>
+       </div>
+       
+      </div>
+      <div className={classes.menuItem}>
+       <div>
+         <span className={classes.sidebarLabel}>
+           Main Unit-
+           {
+             userData?.wallet?.main_unit
+           }
+         </span>
+       </div>
+       
+      </div>
+      <div className={classes.menuItem}>
+       <div>
+         <span className={classes.sidebarLabel}>
+           Promotion Unit-
+           {
+             userData?.wallet?.promotion_unit
+           }
+         </span>
+       </div>
+       
+      </div>
         {/* {SidebarData.map((item, index) => (
            <Submenu item={item} key={index} />)
           )} */}
