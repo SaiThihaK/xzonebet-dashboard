@@ -60,12 +60,9 @@
   transform: scale(0.95);
 }
 .active {
-  /* background-color: var(--live-header);
-  color: white; */
-  border-left: 3px solid var(--secondary-color);
-}
-/* .active svg {
-  fill: white;
+  background-color: var(--live-header);
+  color: white;
+  /* border-left: 3px solid var(--secondary-color); */
 }
 
 .list-item:hover {
@@ -74,4 +71,7 @@
 }
 .list-item:hover svg {
   fill: white;
-} */
+}
+.active svg {
+  fill: white;
+}

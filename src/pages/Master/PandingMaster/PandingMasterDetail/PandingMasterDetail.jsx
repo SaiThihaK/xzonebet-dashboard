@@ -21,7 +21,7 @@ const PandingMasterDetail = () => {
   const [transition_id,setTransition_id] = useState("");
   const [amount,setAmount] = useState("");
   const  [currency,setCurrency] = useState("");
-  const alertToast = (message) =>toast(message);
+  const alertToast = (toast,message) =>toast(message);
   // Enjoyment
   const [superMaster,setSuperMaster] = useState("");
   const [username,setUserName] = useState("");
@@ -29,18 +29,17 @@ const PandingMasterDetail = () => {
   const [deposit_percent,setDeposite_percent] = useState("");
   const [withdraw_percent,setWidthDraw_percent] = useState("");
   // Crypto
-
+ const navigate = useNavigate();
   
   const {id} = useParams();
   const submitHandler = async(e)=>{
     e.preventDefault();
     if(!real_name ||!payment_name||!transition_id||!amount||!currency||!username||!password||!deposit_percent ||!withdraw_percent){
-      alertToast("Please Fill All the Field")
+      alertToast(toast.warning,"Please Fill All the Field")
       return;
     }
     else{
       try{
-        
         const url = `api/affiliate-register-lists/deposit-pending/${id}`;
         const response = await axios.request(PostMethod(
           url,
@@ -59,13 +58,28 @@ const PandingMasterDetail = () => {
         ));
         // console.log(response.data.status);
         if(response.data.status === "success"){
-          alertToast(response.data.message);
+          setReal_Name("");
+          setPayment_Name("");
+          setTransition_id("");
+          setAmount("");
+          setSuperMaster("");
+          setUserName("");
+          setPassword("");
+          setDeposite_percent("");
+          setWidthDraw_percent("");
+          navigate("/account/master/panding-master")
+          alertToast(toast.success(response.data.message));
+          return;
+        }
+        if(response.data.status === "error"){
+          alertToast(toast.error(response.data.message));
           return;
         }
         return;
       }catch(error){
         if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
         logoutHandler();
+        return;
         }
       }
     }
@@ -129,6 +143,7 @@ const PandingMasterDetail = () => {
                         onChange={(e)=>setReal_Name(e.target.value)}
                         sx={{ width: 200 }}
                         variant="standard"
+                        value={real_name}
                       />
                     </p>
                   </div>
@@ -160,6 +175,7 @@ const PandingMasterDetail = () => {
                         onChange={(e)=>setPayment_Name(e.target.value)}
                         sx={{width:200}}
                         variant="standard"
+                        value={payment_name}
                       />
                     </p>
                   </div>
@@ -173,6 +189,7 @@ const PandingMasterDetail = () => {
                         label="Transition"
                         sx={{ width: 200 }}
                         variant="standard"
+                        value={transition_id}
                       />
                     </p>
                   </div>
@@ -186,6 +203,7 @@ const PandingMasterDetail = () => {
                         label="Amount"
                         sx={{ width: 200 }}
                         variant="standard"
+                        value={amount}
                       />
                     </p>
                   </div>
@@ -200,6 +218,7 @@ const PandingMasterDetail = () => {
                         label="Currency"
                         sx={{ width: 200 }}
                         variant="standard"
+                        value={currency}
                       />
                       </FormControl>
                     </p>
@@ -252,6 +271,7 @@ const PandingMasterDetail = () => {
                         onChange={(e)=>setUserName(e.target.value)}
                         sx={{ width: 200 }}
                         variant="standard"
+                        value={username}
                       />
                     </p>
                   </div>
@@ -263,7 +283,8 @@ const PandingMasterDetail = () => {
                         <TextField
                         onChange={(e)=>setPassword(e.target.value)}
                         label="Password" 
-                        sx={{ width: 200 }}  
+                        sx={{ width: 200 }}
+                        value={password}  
                          variant="standard" />
                      
                     </p>
@@ -278,6 +299,7 @@ const PandingMasterDetail = () => {
                         label="Deposite Percentage"
                         sx={{width:200}}
                         variant="standard"
+                        value={deposit_percent}
                       />
                     </p>
                   </div>
@@ -291,6 +313,7 @@ const PandingMasterDetail = () => {
                         label="Withdraw Percentage"
                         sx={{ width: 200 }}
                         variant="standard"
+                        value={withdraw_percent}
                       />
                     </p>
                   </div>
