@@ -8,7 +8,7 @@ import { PostMethod } from "../../../../../services/api-services";
 import { logoutHandler } from "../../../../../components/Sidebar/Sidebar";
 
 const ConfirmAgentDesc = ({userInfo}) => {
-    const alertToast = (message) =>toast(message,alertToast);
+    const alertToast = (message) => message;
     // console.log(userInfo.id);
    const confirmHandler = async()=>{
   //  console.log("confirm");
@@ -20,9 +20,13 @@ const ConfirmAgentDesc = ({userInfo}) => {
    ));
   //  console.log(response);
    if(response.data.status="success"){
-     alertToast(response.data.message)
+     alertToast(toast.success(response.data.message))
+     return;
    }
-   return;
+   if(response.data.status = "error"){
+     alertToast(toast.error(response.data.message));
+     return;
+   }
    }catch(error){
     if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
     logoutHandler();

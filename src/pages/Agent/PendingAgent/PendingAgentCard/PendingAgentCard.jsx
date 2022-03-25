@@ -63,7 +63,7 @@ const PendingAgentCard = ({user,path}) => {
           <FormControl fullWidth>
   <InputLabel id="demo-simple-select-label" size="small" >Master</InputLabel>
   <Select
-    labelId="demo-simple-select-label"
+    labelid="demo-simple-select-label"
     id="demo-simple-select"
     value={master}
     label="Choose"

@@ -51,6 +51,9 @@ const submitHandler = async(e)=>{
      setNum(num+1)
      return;
    }
+   if(response.data.status === "error"){
+     ToastAlert(toast.error(response.data.message))
+   }
   }catch(error){
     if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
     logoutHandler();

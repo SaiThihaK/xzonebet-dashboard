@@ -23,10 +23,10 @@ const BecomeAnAgent = () => {
       }
     }
   }
- const alertToast = (message) =>toast(message);
+
   useEffect(()=>{
     FetchpendingMaster();
-    return ()=>setPending([]);
+    // return ()=>setPending([]);
   },[num])
   return (
     <div className={classes["soccer-setting-container"]}>
@@ -39,7 +39,7 @@ const BecomeAnAgent = () => {
           <ToastContainer />
           <Grid container spacing={3}>
              {pending.length !==0 ? pending.map((user)=>(<AgentCard 
-             key={user.id} user={user} num={num} setNum={setNum} alertToast={alertToast} />)) 
+             key={user.id} user={user} num={num} setNum={setNum}  />)) 
              :<div
               className={classes["loading-container"]}
               ><CircularProgress size={100} thickness={1}/></div>}
