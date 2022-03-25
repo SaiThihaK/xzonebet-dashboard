@@ -109,7 +109,7 @@ const MDepositeTable = ({setNum,num}) => {
  } 
  const fetchUserDeposite = async()=>{
    try{
-    const response = await axios.request(getMethod(`api/user-deposit?sortColumn=id&sortDirection=asc&limit=10&status=pending&page=${page}`));
+    const response = await axios.request(getMethod(`api/user-deposit?sortColumn=id&sortDirection=desc&limit=10&status=pending&page=${page}`));
     // console.log(response.data.meta);
     setTotalPage(response.data.meta.last_page);
     setUser_deposite(response.data.data)

@@ -6,6 +6,7 @@ import classes from './UnitValue.module.css';
 import { Button, TextField } from '@mui/material';
 import Card from '../../../components/UI/Card';
 import UnitEditModal from '../../../components/UI/UnitSetting/UnitEditModal';
+import UnitChangeModal from '../../../components/UI/UnitSetting/UnitChangeModal';
 
 const UnitValue = () => {
   const [Kopen, KsetOpen] = React.useState(false);
@@ -22,6 +23,11 @@ const UnitValue = () => {
   const [Mvalue,MsetValue] = useState("6000");
   const MhandleOpen = ()=>MsetOpen(true);
   const MhandleClose = ()=>MsetOpen(false);
+
+
+  const [unitchangeOpen,setUnitchangeOpen] = useState(false);
+  const unitchangeOpenHandler = ()=>setUnitchangeOpen(true);
+  const unitChangeCloseHandler = ()=>setUnitchangeOpen(false);
 
   
 
@@ -77,9 +83,12 @@ const UnitValue = () => {
             <UnitEditModal open={Mopen}  handleClose={MhandleClose} unitFrom="1Diamond" unitTo={Mvalue} setValue={MsetValue} unit="Main" />
             </div>
         </Card>
-        {/* <div style={{widht:"100%",marginTop:30,display:"flex",justifyContent:"flex-end"}}>
-            <Button variant='contained' color="primary">Confirm</Button>
-        </div> */}
+        <div style={{widht:"100%",marginTop:30,display:"flex",justifyContent:"flex-end"}}>
+            <Button variant='contained' 
+            onClick={unitchangeOpenHandler}
+            color="primary">Unit Change</Button>
+        </div>
+        <UnitChangeModal open={unitchangeOpen} handleClose={unitChangeCloseHandler} />
     </div>
   )
 }
