@@ -20,7 +20,7 @@ import MasterDepositeConfirm from "../../../components/UI/Modal/MasterDeposite/M
 import { logoutHandler } from "../../../components/Sidebar/Sidebar";
 import { BasedColor } from "../../../Controller/BasedColor";
 import CustomPagination from "../../../components/Pagination/CustomPagination";
-const MasterDepositTable = () => {
+const MasterDepositTable = (filterId) => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -71,10 +71,14 @@ const MasterDepositTable = () => {
       }
     }
   }
-console.log(page)
+ 
+ 
   useEffect(()=>{
     fetchData();
   },[num,page])
+
+ 
+
   const confirmHandler = async(id)=>{
     try{
     const response = await axios.request(
@@ -92,6 +96,7 @@ console.log(page)
       return;
     }
     }catch(error){
+      console.log(error)
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
       logoutHandler();
       }
@@ -99,8 +104,10 @@ console.log(page)
     }
   }
 
-  const filterArr = rowData.map((r)=>([r.id,r.name,r.payment_type,r.payment_name,r.transition_id,r.amount]));
 
+
+const filterIddata = rowData.filter((data)=>data.id === filterId);
+console.log("filter",filterIddata)
   return (
     <div className={classes["table-margin"]}>
       <ToastContainer />
@@ -121,25 +128,27 @@ console.log(page)
             </TableRow>
           </TableHead>
           <TableBody>
-            {filterArr.map((row, index) => (
-              <StyledTableRow key={index}>
+            {rowData
+            .map((row, index) => (
+              <StyledTableRow key={index}
+              >
                 <StyledTableCell component="th" scope="row">
                   {index+1}
                 </StyledTableCell>
-                <StyledTableCell align="right">{row[0]}</StyledTableCell>
-                <StyledTableCell align="right">{row[1]}</StyledTableCell>
-                <StyledTableCell align="right">{row[2]}</StyledTableCell>
-                <StyledTableCell align="right">{row[3]}</StyledTableCell>
+                <StyledTableCell align="right">{row.id}</StyledTableCell>
+                <StyledTableCell align="right">{row.name}</StyledTableCell>
+                <StyledTableCell align="right">{row.payment_type}</StyledTableCell>
+                <StyledTableCell align="right">{row.payment_name}</StyledTableCell>
                 <StyledTableCell align="right">
-                  {row[4]}
+                  {row.transition_id}
                 </StyledTableCell>
-                <StyledTableCell align="right">{row[5]}</StyledTableCell>
+                <StyledTableCell align="right">{row.amount}</StyledTableCell>
                 <StyledTableCell align="right">
                 <Stack spacing={1} direction="row" sx={{display:'block'}}>
         <Button variant="contained" color="success" size="small" onClick={()=>{
-          confirmOpenHandler();setId(row[0])}
+          confirmOpenHandler();setId(row.id)}
           }>Confirm</Button>
-        <Button variant="outlined" onClick={()=>{handleOpen();setId(row[0])}} color="error" size="small">Reject</Button>
+        <Button variant="outlined" onClick={()=>{handleOpen();setId(row.id)}} color="error" size="small">Reject</Button>
          </Stack> 
         </StyledTableCell>
         </StyledTableRow>

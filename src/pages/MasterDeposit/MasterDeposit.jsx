@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 
@@ -11,6 +11,7 @@ const MasterDeposit = () => {
     { label: "Agent" },
     { label: "User" },
   ];
+  const [filterId,setFilterId] = useState("");
   return (
     <div className={classes["soccer-setting-container"]}>
       <Card>
@@ -39,11 +40,14 @@ const MasterDeposit = () => {
                   id="outlined-basic"
                   label="Search ID"
                   variant="outlined"
+                  value={filterId}
+                  
+                  onChange={(e)=>setFilterId(e.target.value)}
                 />
               </div>
             </div>
 
-            <MasterDepositTable />
+            <MasterDepositTable filterId={filterId} />
           </div>
         </div>
       </Card>
