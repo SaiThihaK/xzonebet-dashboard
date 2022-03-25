@@ -119,13 +119,17 @@ const MDepositeTable = ({setNum,num}) => {
       }
     }
    }
-
+   const ChangeDate=(date)=>{
+    const dateNo=new Date(date);
+    return dateNo.toISOString().replace(/([^T]+)T([^\.]+).*/g, '$1 $2') 
+  };
  useEffect(()=>{
    fetchUserDeposite();
    return ()=>{
      setUser_deposite([])
    }
- },[num,page])
+ },[num,page]);
+ console.log(user_deposite);
   return (
     <div className={classes["table-margin"]}>
       <Card>
@@ -180,7 +184,9 @@ const MDepositeTable = ({setNum,num}) => {
                
                 </StyledTableCell>
                 <StyledTableCell align="left">
-                 22-3-2022
+                {
+                  ChangeDate(user.created_at)
+                }
                 </StyledTableCell>
         </StyledTableRow>
                   ))}

@@ -59,14 +59,15 @@
 .provider-card:hover {
   transform: scale(0.95);
 }
+/* 
 .active {
-  background-color: var(--live-header);
-  color: white;
-  /* border-left: 3px solid var(--secondary-color); */
+   background-color: var(--live-header);
+  color: white; 
+  border-left: 3px solid var(--secondary-color);
 }
 
 .list-item:hover {
-  background-color: var(--live-header);
+  background-color: var(--secondary-color);
   color: white;
 }
 .list-item:hover svg {
@@ -75,3 +76,4 @@
 .active svg {
   fill: white;
 }
+*/

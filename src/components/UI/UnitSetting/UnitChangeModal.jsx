@@ -123,6 +123,10 @@ export default function UnitChangeModal({
                }
               </Select>
             </FormControl>
+            <FormControl style={{ marginTop: 20}} fullWidth>
+              <label style={{marginBottom:10}} >Enter your Amount</label>
+              <TextField size="small"  />
+            </FormControl>
            <div style={{display:"flex",justifyContent:"flex-end"}}>
            <Button
                 variant="contained"
