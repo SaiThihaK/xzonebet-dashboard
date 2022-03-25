@@ -125,9 +125,6 @@ const MDepositeTable = ({setNum,num}) => {
   };
  useEffect(()=>{
    fetchUserDeposite();
-   return ()=>{
-     setUser_deposite([])
-   }
  },[num,page]);
  console.log(user_deposite);
   return (

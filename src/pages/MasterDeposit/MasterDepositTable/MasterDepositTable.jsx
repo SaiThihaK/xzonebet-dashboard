@@ -74,9 +74,6 @@ const MasterDepositTable = () => {
 console.log(page)
   useEffect(()=>{
     fetchData();
-    return ()=>{
-      setRowData([])
-    }
   },[num,page])
   const confirmHandler = async(id)=>{
     try{
