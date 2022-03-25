@@ -78,11 +78,12 @@ const AlertToast = (toast,msg)=>{return toast(msg)};
       component="nav"
     >
         {paymentType.map((payment,index)=>(
-            <ListItemButton key={index} onClick={()=>{
+            <ListItemButton key={index} onClick={(e)=>{
                 setPaymentId(payment.id)
+           
             }}
             sx={{marginBottom:1}}
-            className={`${classes["list-item"]} ${paymentId === payment.id ? classes["active"] :""}`}
+            style={payment.id === paymentId ? {borderLeft:"solid 3px var(--secondary-color"}:{}}
             >
                 <ListItemIcon>
                     <PaymentIcon className={classes["list-icon"]}/>
