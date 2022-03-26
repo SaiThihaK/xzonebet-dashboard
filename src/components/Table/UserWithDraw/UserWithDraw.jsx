@@ -73,9 +73,9 @@ const UserWithDrawTable = ({}) => {
 
  useEffect(()=>{
     fetchUserWithDraw();
-   return ()=>{
-    setUserWithDraw([])
-   }
+  //  return ()=>{
+  //   setUserWithDraw([])
+  //  }
  },[page,num]);
  console.log(userWithDraw);
 

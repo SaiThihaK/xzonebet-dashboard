@@ -49,7 +49,6 @@ export default function TransferToModal({
                 color="error"
                 onClick={() => {
                   handleClose();
-                  toggleClose();
                 }}
               >
                 Cancel

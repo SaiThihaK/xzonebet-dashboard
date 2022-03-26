@@ -1,4 +1,4 @@
-import Sidebar from "./components/Sidebar/Sidebar";
+import Sidebar, { logoutHandler } from "./components/Sidebar/Sidebar";
 import Container from "./components/Container/Container";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Overview from "./pages/Overview";
@@ -425,6 +425,8 @@ function App() {
           <Route path="*" element={<Notfound />} />
         </Routes>
       );
+    } else {
+      logoutHandler();
     }
     // if (type === "agent") {
     //   <Routes>
