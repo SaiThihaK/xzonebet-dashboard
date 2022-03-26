@@ -147,8 +147,16 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
    try{
     const response = await axios.request(getMethod(`api/user-deposit?sortColumn=id&sortDirection=desc&limit=10&page=${page}${filterStatus}`));
     // console.log(response.data.meta);
-    setTotalPage(response.data.meta.last_page);
-    setUser_deposite(response.data.data)
+    if(response.data.status==="success"){
+      setTotalPage(response.data.meta.last_page);
+      setUser_deposite(response.data.data);
+      return;
+    }
+    if(response.data.status==="error"){
+      AlertToast(toast.error,response.data.message);
+      return;
+    }
+  
    }catch(error){
     if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
       logoutHandler();

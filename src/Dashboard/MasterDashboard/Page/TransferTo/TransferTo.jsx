@@ -23,18 +23,28 @@ const [note,setNote] = useState("");
 const AlertToast = (msg)=>msg;
 const tansferUser = async()=>{
     try{
-        const response = await axios.request(getMethod(`api/users/${id}`));
-        console.log(response.data.data.id);
-        console.log(id)
-        setTransfer_acc(response.data.data);
-        if(response.data.data.id == id){
-            setToggle(true);
+        if(!id){
+            AlertToast(toast.warning("please type id to find the user"))
         }
+        const response = await axios.request(getMethod(`api/users/${id}`));
+        console.log(response);
+        if(response.data.status === "success"){
+            console.log(id);
+            setTransfer_acc(response.data.data);
+            if(response.data.data.id == id){
+                setToggle(true);
+                return;
+            }
+        }
+      if(response.data.status === "error"){
+       AlertToast(toast.error("User is not found"))
+      }
+       
     }catch(error){
         console.log(error);
     }
 }
-console.log(toggle)
+
 const transferHandler = async()=>{
     if(!amount){
         AlertToast(toast.error("Please Enter the amount u want to exchange"));

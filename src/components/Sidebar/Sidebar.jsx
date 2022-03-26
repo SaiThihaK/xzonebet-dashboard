@@ -24,6 +24,7 @@ import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import axios from "axios"
+import { SuperMasterSidebarData } from "../../Dashboard/SuperMaster/SuperMasterSideBarData";
 
 
 function refreshPage() {
@@ -85,6 +86,11 @@ const Sidebar = () => {
       <Submenu item={item} key={index} />)
      );
   }
+  if(dashboard==="super_master"){
+    return SuperMasterSidebarData.map((item,index)=>(
+      <Submenu item={item} key={index} />
+    ))
+  }
   if(dashboard==="master"){
     return MasterSidebarData.map((item,index)=>(
       <Submenu item={item} key={index} />
@@ -95,6 +101,7 @@ const Sidebar = () => {
       <Submenu item={item} key={index} />
     ))
   }
+  
   }
   const [userData,setUserData] = useState([]);
   const fetchUnit = async()=>{
@@ -248,7 +255,23 @@ const Sidebar = () => {
           {/* y<h1 style={{ color: "#FFF" }}>Logo</h1> */}
         </div>
         <div className={classes.sidebarWrap}>
-        
+        <div className={classes.menuItem}>
+          <div>
+            <span className={classes.sidebarLabel}>UserID-{userData?.id}</span>
+          </div>
+          </div>
+
+          <div className={classes.menuItem}>
+          <div>
+            <span className={classes.sidebarLabel}>User Name-{userData?.agent?.name}</span>
+          </div>
+          </div>
+
+          <div className={classes.menuItem}>
+          <div>
+            <span className={classes.sidebarLabel}>Main Unit-{userData?.wallet?.main_unit}</span>
+          </div>
+          </div>
         {/* {SidebarData.map((item, index) => (
            <Submenu item={item} key={index} />)
           )} */}
