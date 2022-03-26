@@ -47,8 +47,16 @@ export default function PaymentAccountModal({
   const Payment_Method = async()=>{
     try{
       const response = await axios.request(getMethod(`api/dashboard/payment-types`));
+      if(response.data.status==="success"){
+        setPayment_type(response.data.data);
+        return;
+      }
+      if(response.data.status==="error"){
+        ToastAlert(toast.error,response.data.message);
+        return
+      }
       // console.log(response.data.data);
-      setPayment_type(response.data.data);
+    
     }catch(error){
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
       logoutHandler();

@@ -30,6 +30,7 @@ export default function UnitChangeModal({
   handleClose,
   open,
 }) {
+  const AlertToast = (toast,msg)=>toast(msg);
   const UnitChangeArr = [{name:"Promotion Unit"},{name:"Main Unit"},{name:"Diamond Unit"}];
   const [amount,setAmount] = React.useState();
   React.useEffect(()=>{
@@ -47,7 +48,7 @@ export default function UnitChangeModal({
               }
     }
 
-    const AlertToast = (toast,msg)=>toast(msg);
+
     const confirmHandler = async()=>{
         try{
             if(!amount){

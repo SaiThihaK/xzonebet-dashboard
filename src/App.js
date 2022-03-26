@@ -431,6 +431,39 @@ function App() {
           <Route path="*" element={<Notfound />} />
         </Routes>
       );
+    }
+    if (type === "super_master") {
+      return (
+        <Routes>
+          <Route path="/" exact element={<Overview />} />
+          <Route path="*" element={<Notfound />} />
+          <Route
+            exact
+            path="/super_master/transfer-to"
+            element={<TransferTo />}
+          />
+          <Route
+            exact
+            path="/super_master/deposite/user-deposite"
+            element={<ADeposite />}
+          />
+          {/* <Route
+            exact
+            path="/super_master/deposite/agent-deposite"
+            element={<AgentDeposite />}
+          /> */}
+          <Route
+            exact
+            path="/super_master/transition-history"
+            element={<ATransitionHistory />}
+          />
+          <Route
+            exact
+            path="/super_master/user-withdraw"
+            element={<UserWithDraw />}
+          />
+        </Routes>
+      );
     } else {
       logoutHandler();
     }

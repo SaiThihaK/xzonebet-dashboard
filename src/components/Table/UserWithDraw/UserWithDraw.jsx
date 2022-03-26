@@ -21,6 +21,7 @@ import { BasedColor } from "../../../Controller/BasedColor";
 import { logoutHandler } from "../../Sidebar/Sidebar";
 import ApproveActionModal from "../../UI/Modal/UserWithDraw/ApproveActionModal";
 import RejectActionModal from "../../UI/Modal/UserWithDraw/RejectActionModal";
+import CustomPagination from "../../Pagination/CustomPagination";
 
 
 
@@ -48,7 +49,7 @@ const UserWithDrawTable = ({}) => {
    const [open,setOpen] = useState(false);
    const [cancelopen,setCancelOpen] = useState(false);
    const [page,setPage] = useState(1);
-   const [totalPage,setTotalPage] = useState();
+   const [totalPage,setTotalPage] = useState(0);
    const AlertToast = (toast,msg)=> toast(msg);
    const openHandler = ()=>setOpen(true);
    const closeHandler = ()=>setOpen(false);
@@ -57,13 +58,20 @@ const UserWithDrawTable = ({}) => {
    const [userWithDraw,setUserWithDraw] = useState([]);
    const [id,setId] = useState("");
    const [num,setNum] = useState(0);
- 
+
  const fetchUserWithDraw = async()=>{
    try{
     const response = await axios.request(getMethod(`api/user-withdraw?sortColumn=id&sortDirection=desc&limit=20&status=pending&page=${page}`));
     // console.log(response.data.meta);
-    setTotalPage(response.data.meta.last_page);
-    setUserWithDraw(response.data.data)
+    if(response.data.status === "success"){
+      setTotalPage(response.data.meta.last_page);
+    setUserWithDraw(response.data.data);
+    return;
+    }
+    if(response.data.status === "error"){
+      AlertToast(toast.error,response.data.message);
+      return;
+    }
    }catch(error){
     if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
       logoutHandler();
@@ -135,17 +143,9 @@ const UserWithDrawTable = ({}) => {
           </TableBody>
         </Table>
       </TableContainer>
-      <div className={classes["pagination"]}>
-      <Pagination
-        count={parseInt(totalPage)}
-        style={{ marginTop: 20, backgroundColor: "white" }}
-        color="primary"
-        onChange={(e) => {
-          setPage(e.target.textContent);
-        }}
-      />
-    </div>
+     
       </Card>
+      <CustomPagination setPage={setPage} totalPage={totalPage} />
       <ApproveActionModal 
       open={open} 
       handleClose={closeHandler} 
