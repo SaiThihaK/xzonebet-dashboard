@@ -8,6 +8,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
+import {Button} from "@mui/material"
 // import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
@@ -19,6 +20,9 @@ import { IconContext } from "react-icons/lib";
 import { AgentSidebarData } from "../../Dashboard/AgentDashboard/AgentSideBarData";
 import { MasterSidebarData } from "../../Dashboard/MasterDashboard/MasterSideBarData";
 import { PostMethod,getMethod } from "../../services/api-services";
+import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import axios from "axios"
 
 
@@ -55,9 +59,18 @@ const dashboard = localStorage.getItem('type');
 const Sidebar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-  // const userInfo = useSelector(userInfo);
+  const [unitMenu,setUnitMenu] = useState(null);
+  const unitOpen = Boolean(unitMenu)
+  
 
-  // console.log({userInfo});
+  const unitMenuOpen = (event)=>{
+    setUnitMenu(event.currentTarget)
+  }
+
+  const unitMenuClose = ()=>{
+    setUnitMenu(null);
+  }
+  
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -108,79 +121,36 @@ const Sidebar = () => {
         <ul className={classes["header-noti-icons"]}>
         {/*----------------------- Unit-------------------- */}
         <li>
-            <Tooltip title="Profile">
-              <IconButton
-                onClick={handleClick}
-                size="small"
-                aria-controls={open ? "unit-menu" : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? "true" : undefined}
-              >
-               <h2>Unit</h2>
-              </IconButton>
-            </Tooltip>
-            <Menu
-              anchorEl={anchorEl}
-              id="unit-menu"
-              open={open}
-              onClose={handleClose}
-              onClick={handleClose}
-              PaperProps={{
-                elevation: 0,
-                sx: {
-                  overflow: "visible",
-                  filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-                  mt: 1.5,
-                  "& .MuiAvatar-root": {
-                    width: 32,
-                    height: 32,
-                    ml: -0.5,
-                    mr: 1,
-                  },
-                  "&:before": {
-                    content: '""',
-                    display: "block",
-                    position: "absolute",
-                    top: 0,
-                    right: 14,
-                    width: 10,
-                    height: 10,
-                    bgcolor: "background.paper",
-                    transform: "translateY(-50%) rotate(45deg)",
-                    zIndex: 0,
-                  },
-                },
-              }}
-              transformOrigin={{ horizontal: "right", vertical: "top" }}
-              anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-            >
-              <MenuItem>
-               Main Unit
-              </MenuItem>
-              <MenuItem>
-                <Avatar /> My account
-              </MenuItem>
-              <Divider />
-              {/* <MenuItem>
-                <ListItemIcon>
-                  <PersonAdd fontSize="small" />
-                </ListItemIcon>
-                Add another account
-              </MenuItem> */}
-              <MenuItem>
-                <ListItemIcon>
-                  <Settings fontSize="small" />
-                </ListItemIcon>
-                Settings
-              </MenuItem>
-              <MenuItem onClick={logoutHandler}>
-                <ListItemIcon>
-                  <Logout fontSize="small" />
-                </ListItemIcon>
-                Logout
-              </MenuItem>
-            </Menu>
-            </li>
+        <Button
+        id="basic-button"
+        aria-controls={open ? 'basic-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        onClick={unitMenuOpen}
+        color="error"
+        size="large"
+        variant="contained"
+        startIcon = {<CurrencyExchangeIcon />}
+        endIcon = {unitMenu ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon/>}
+        style={{transition:"all ease-in-out 0.4s"}}
+      >
+        Unit
+      </Button>
+      <Menu
+    
+        id="basic-menu"
+        anchorEl={unitMenu}
+        open={unitOpen}
+        onClose={unitMenuClose}
+        MenuListProps={{
+          'aria-labelledby': 'basic-button',
+        }}
+      >
+        <MenuItem onClick={unitMenuClose}>Promotion Unit-{userData?.wallet?.promotion_unit}</MenuItem>
+        <MenuItem onClick={unitMenuClose}>Main Unit-{userData?.wallet?.main_unit}</MenuItem>
+        <MenuItem onClick={unitMenuClose}>Diamond Unit-{userData?.wallet?.diamond_unit}</MenuItem>
+      </Menu>
+          </li>
           <li>
             <button className={classes['header-icon']}>
               <AiIcons.AiOutlineBell color="#9b9b9b" size="23px" />
@@ -278,39 +248,7 @@ const Sidebar = () => {
           {/* y<h1 style={{ color: "#FFF" }}>Logo</h1> */}
         </div>
         <div className={classes.sidebarWrap}>
-        <div className={classes.menuItem}>
-       <div>
-         <span className={classes.sidebarLabel}>
-           Diamond Unit-
-           {
-             userData?.wallet?.diamond_unit
-           }
-         </span>
-       </div>
-       
-      </div>
-      <div className={classes.menuItem}>
-       <div>
-         <span className={classes.sidebarLabel}>
-           Main Unit-
-           {
-             userData?.wallet?.main_unit
-           }
-         </span>
-       </div>
-       
-      </div>
-      <div className={classes.menuItem}>
-       <div>
-         <span className={classes.sidebarLabel}>
-           Promotion Unit-
-           {
-             userData?.wallet?.promotion_unit
-           }
-         </span>
-       </div>
-       
-      </div>
+        
         {/* {SidebarData.map((item, index) => (
            <Submenu item={item} key={index} />)
           )} */}

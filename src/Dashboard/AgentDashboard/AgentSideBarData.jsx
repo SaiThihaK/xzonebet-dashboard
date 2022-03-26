@@ -103,7 +103,7 @@ export const AgentSidebarData = [
     },
     {
         title: "Transfer To",
-        path: "/agent/trnsfer to",
+        path: "/agent/transfer-to",
         icon: <FaIcons.FaUserFriends/>
     },
     {

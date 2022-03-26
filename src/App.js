@@ -416,6 +416,7 @@ function App() {
             path="/agent/deposite/agent-deposite"
             element={<AgentDeposite />}
           />
+          <Route exact path="/agent/transfer-to" element={<TransferTo />} />
           <Route
             exact
             path="/agent/transition-history"

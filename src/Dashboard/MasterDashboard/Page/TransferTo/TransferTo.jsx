@@ -36,6 +36,10 @@ const tansferUser = async()=>{
 }
 console.log(toggle)
 const transferHandler = async()=>{
+    if(!amount){
+        AlertToast(toast.error("Please Enter the amount u want to exchange"));
+        return;
+    }
     try{
     const response = await axios.request(PostMethod(`api/wallet/transfer-unit`,{
         amount,
@@ -51,13 +55,15 @@ const transferHandler = async()=>{
     setId("")
     setToggle(false);
     handleOpen();
+    return;
     }
     if(response.data.status === "error"){
         AlertToast(toast.error(response.data.message));
+        return;
         // setTransfer_acc({});
     }
     }catch(error){
-        console.log(error.response.data.message)
+        AlertToast(toast.error(error.response.data.message));
     }
 }
 
@@ -87,7 +93,7 @@ return(
        <TextField className={classes["form-input"]} type="number" value={amount} onChange={(e)=>setAmount(e.target.value)} />
      
        <label style={{marginTop:20}}>Note</label>
-       <textarea rows={7} style={{padding:20}} value={note} onChange={(e)=>setNote(e.target.value)}/>
+       <textarea rows={7} style={{padding:20,fontSize:16}} value={note} onChange={(e)=>setNote(e.target.value)}/>
        
        <div className={classes['btn']}>
            <Button variant="contained" onClick={()=>{
