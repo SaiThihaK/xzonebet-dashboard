@@ -39,14 +39,14 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     border: 0,
   },
 }));
-const MDepositeTable = ({setNum,num}) => {
+const MDepositeTable = ({setNum,num,filterStatus}) => {
    const [open,setOpen] = useState(false);
    const [value,setValue] = useState("");
    const [ID,setID] = useState(null);
    const [toggle,setToggle] = useState(false);
    const [user_deposite,setUser_deposite] = useState([]);
    const [page,setPage] = useState(1);
-   const [totalPage,setTotalPage] = useState("");
+   const [totalPage,setTotalPage] = useState(0);
    const onChangeValue = (e)=>setValue(e.target.value);
    const AlertToast = (toast,msg)=> toast(msg);
    const openHandler = ()=>setOpen(true);
@@ -62,13 +62,8 @@ const MDepositeTable = ({setNum,num}) => {
    }
  }
  }
- const filterUser = user_deposite.filter((user)=>{
-  if(user.id === ID){
-  return user
-  }
- });
 
-//  console.log(filterUser);
+
 
  const confirmHandler = async()=>{
    if(value === "approve"){
@@ -110,9 +105,47 @@ const MDepositeTable = ({setNum,num}) => {
     return;
   }
  } 
+
+ const differStatus = (user)=>{
+   if(user.status === "pending"){
+     return <StyledTableCell align="left">
+     {
+         ID !==user.id ?
+         (
+         <Button onClick={()=>handleClick(user.id)}    color="success" variant="contained">
+           {user.status}
+         </Button>
+         )
+         :(<FormControl className={classes["form-control"]}>
+         <Select value={value} onChange={onChangeValue} size="small">
+             <MenuItem value="pending">Pending</MenuItem>
+             <MenuItem value="approve">Approve</MenuItem>
+             <MenuItem value="re-ject">Reject</MenuItem>
+         </Select>
+         <Button onClick={confirmHandler}>Confirm</Button>
+         </FormControl>)
+     }
+   
+    </StyledTableCell> 
+   }
+   if(user.status === "approve"){
+     return  <StyledTableCell align="left">
+       <Button variant="contained" >Approve</Button>
+     </StyledTableCell>
+   }
+   if(user.status === "rejected"){
+    return  <StyledTableCell align="left">
+      <Button variant="contained" color="error">Reject</Button>
+    </StyledTableCell>
+  }
+ }
+ 
+
+
+
  const fetchUserDeposite = async()=>{
    try{
-    const response = await axios.request(getMethod(`api/user-deposit?sortColumn=id&sortDirection=desc&limit=10&status=pending&page=${page}`));
+    const response = await axios.request(getMethod(`api/user-deposit?sortColumn=id&sortDirection=desc&limit=10&page=${page}${filterStatus}`));
     // console.log(response.data.meta);
     setTotalPage(response.data.meta.last_page);
     setUser_deposite(response.data.data)
@@ -128,7 +161,7 @@ const MDepositeTable = ({setNum,num}) => {
   };
  useEffect(()=>{
    fetchUserDeposite();
- },[num,page]);
+ },[num,page,filterStatus]);
  console.log(user_deposite);
   return (
     <div className={classes["table-margin"]}>
@@ -164,7 +197,10 @@ const MDepositeTable = ({setNum,num}) => {
                 <StyledTableCell align="left">
                 {user.transaction_no}
                 </StyledTableCell>
-                <StyledTableCell align="left">
+                {
+                  differStatus(user)
+                }
+                {/* <StyledTableCell align="left">
                  {
                      ID !==user.id ?
                      (
@@ -182,7 +218,7 @@ const MDepositeTable = ({setNum,num}) => {
                      </FormControl>)
                  }
                
-                </StyledTableCell>
+                </StyledTableCell> */}
                 <StyledTableCell align="left">
                 {
                   ChangeDate(user.created_at)
