@@ -308,6 +308,11 @@ function App() {
             element={<UnitValue />}
           />
           <Route exact path="/unit-setting/currency" element={<Currency />} />
+          <Route
+            exact
+            path="/unit-setting/unit-history"
+            element={<TransitionHistory />}
+          />
           {/* Payment Setting */}
 
           <Route
