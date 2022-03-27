@@ -99,36 +99,36 @@ export const SidebarData = [
         icon: <FaIcons.FaUserFriends/>
     },
     
-    // {
-    //     title: 'Payment Setting',
-    //     path: '/payment-setting',
-    //     icon: <AiIcons.AiFillSetting />,
-    //     iconClosed: <RiIcons.RiArrowDownSFill/>,
-    //     iconOpened: <RiIcons.RiArrowUpSFill/>,
-    //     subNav : [
-    //         {
-    //             title: 'Payment Type',
-    //             path: '/payment-setting/payment-value',
-    //             icon: <IoIcons.IoIosArrowForward />,
-    //         },
-    //         {
-    //             title: 'Payment Provider',
-    //             path: '/payment-setting/payment-provider',
-    //             icon: <IoIcons.IoIosArrowForward />,
-    //         },
-    //         {
-    //             title: 'Payment Account',
-    //             path: '/payment-setting/payment-account',
-    //             icon: <IoIcons.IoIosArrowForward />,
-    //         },
+    {
+        title: 'Payment Setting',
+        path: '/payment-setting',
+        icon: <AiIcons.AiFillSetting />,
+        iconClosed: <RiIcons.RiArrowDownSFill/>,
+        iconOpened: <RiIcons.RiArrowUpSFill/>,
+        subNav : [
+            {
+                title: 'Payment Type',
+                path: '/payment-setting/payment-value',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+            {
+                title: 'Payment Provider',
+                path: '/payment-setting/payment-provider',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+            {
+                title: 'Payment Account',
+                path: '/payment-setting/payment-account',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
            
-    //         {
-    //             title: 'Payment  Announcement',
-    //             path: '/payment-setting/payment-announcement',
-    //             icon: <IoIcons.IoIosArrowForward />,
-    //         },
-    //     ]
-    // },
+            {
+                title: 'Payment  Announcement',
+                path: '/payment-setting/payment-announcement',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+        ]
+    },
     {
        title:"Unit Setting",
        path:"unit-setting",

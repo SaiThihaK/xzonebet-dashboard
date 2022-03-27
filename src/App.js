@@ -314,6 +314,41 @@ function App() {
             element={<TransitionHistory />}
           />
           {/* Payment Setting */}
+          <Route
+            exact
+            path="/payment-setting/payment-value"
+            element={<PaymentType />}
+          />
+          <Route
+            exact
+            path="/payment-setting/payment-provider"
+            element={<PaymentProvider />}
+          />
+          <Route
+            exact
+            path="/payment-setting/payment-provider/create"
+            element={<CreatePaymentProvider />}
+          />
+          <Route
+            exact
+            path="/payment-setting/payment-provider/edit/:id"
+            element={<EditPaymentProvider />}
+          />
+          <Route
+            exact
+            path="/payment-setting/payment-announcement"
+            element={<PaymentAnnouncement />}
+          />
+          <Route
+            exact
+            path="/payment-setting/payment-account"
+            element={<PaymentAccount />}
+          />
+          <Route
+            exact
+            path="/payment-setting/payment-account/edit/:id"
+            element={<EditPaymentAccount />}
+          />
 
           <Route
             exact
@@ -356,7 +391,16 @@ function App() {
             path="/master/bank-setting/payment-account"
             element={<MPaymentAccount />}
           />
-          <Route exact path="/master/deposite" element={<MDeposite />} />
+          <Route
+            exact
+            path="/master/deposite/user-deposite"
+            element={<ADeposite />}
+          />
+          <Route
+            exact
+            path="/master/deposite/agent-deposite"
+            element={<AgentDeposite />}
+          />
           <Route exact path="/master/profile" element={<MProfile />} />
           <Route exact path="master/profile/edit" element={<EditProfile />} />
           <Route exact path="/master/transfer-to" element={<TransferTo />} />
