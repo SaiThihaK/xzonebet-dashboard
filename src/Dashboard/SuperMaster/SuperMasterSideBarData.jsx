@@ -126,6 +126,42 @@ export const SuperMasterSidebarData = [
         // ]
     },
     {
+        title: 'Account',
+        path: '/account',
+        icon: <RiIcons.RiAccountPinCircleFill />,
+        iconClosed: <RiIcons.RiArrowDownSFill/>,
+        iconOpened: <RiIcons.RiArrowUpSFill/>,
+        subNav : [
+            
+            {
+                title: 'Master',
+                path: '/account/master',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+            {
+                title: 'Agent',
+                path: '/account/agent',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+            {
+                title: 'Affiliate Agent',
+                path: '/account/affiliate-agent',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+            {
+                title: 'User',
+                path: '/account/user',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+            
+        ]
+    },
+    {
+        title: "Become An Agent",
+        path: "/become-an-agent",
+        icon: <RiIcons.RiAccountPinCircleFill/>
+    },
+    {
         title: "Deposite",
         path: "/super_master/deposite",
         icon: <FaIcons.FaMoneyCheckAlt />,

@@ -462,6 +462,145 @@ function App() {
             path="/super_master/user-withdraw"
             element={<UserWithDraw />}
           />
+          <Route path="/account/master" exact element={<Master />} />
+          <Route
+            path="/account/affiliate-agent"
+            exact
+            element={<AffiliateAgent />}
+          />
+          <Route
+            path="/account/affiliate-agent/pending-affiliate-agent"
+            element={<PendingAffiliateAgent />}
+          />
+          <Route
+            path="/account/affiliate-agent/pending-affiliate-agent/detail/:id"
+            element={<PendingAffiliateAgentDetail />}
+          />
+          {/* Agent */}
+          <Route path="/account/agent" exact element={<Agent />} />
+          <Route
+            path="/account/agent/pending-agent"
+            exact
+            element={<PendingAgent />}
+          />
+          <Route
+            path="/account/agent/pending-agent/detail/:id"
+            exact
+            element={<PendingAgentDetail />}
+          />
+          <Route
+            path="/account/agent/confirm-agent"
+            exact
+            element={<ConfirmAgent />}
+          />
+          <Route
+            path="/account/agent/confirm-agent/detail/:id"
+            exact
+            element={<ConfirmAgentDetail />}
+          />
+          <Route
+            path="/account/agent/complete-agent"
+            exact
+            element={<CompleteAgent />}
+          />
+          <Route
+            path="/account/agent/complete-agent/detail/:id"
+            exact
+            element={<CompleteAgentDetail />}
+          />
+          <Route
+            path="/account/agent/cancel-agent"
+            exact
+            element={<CancelAgent />}
+          />
+          <Route
+            path="/account/agent/cancel-agent/detail/:id"
+            exact
+            element={<CancelAgentDetail />}
+          />
+          {/* CompleteAgent Table */}
+          <Route
+            path="/account/agent/complete-agent/transition-table"
+            element={<AgentTransition />}
+          />
+          {/* Agent */}
+          {/* Pending Master */}
+          <Route
+            path="/account/master/panding-master"
+            exact
+            element={<PandingMaster />}
+          />
+          <Route
+            path="/account/master/panding-master/detail/:id"
+            exact
+            element={<PandingMasterDetail />}
+          />
+          {/* Confirm Master(sai) */}
+          <Route
+            path="/account/master/confirm-master"
+            exact
+            element={<ConfirmMaster />}
+          />
+          <Route
+            path="/account/master/confirm-master/detail/:id"
+            exact
+            element={<ConfirmMasterDetail />}
+          />
+          {/* Confirm Master(sai) */}
+
+          {/* complete Master */}
+          <Route
+            path="/account/master/complete-master"
+            exact
+            element={<CompleteMaster />}
+          />
+          <Route
+            path="/account/master/complete-master/detail/:id"
+            exact
+            element={<CompleteMasterDetail />}
+          />
+          <Route
+            path="/account/master/complete-master/agent-table"
+            exact
+            element={<CompleteMasterTable />}
+          />
+          <Route
+            path="/account/master/complete-master/transition-table"
+            exact
+            element={<Transition />}
+          />
+
+          {/* complete Master */}
+          {/* Cancel Master */}
+          <Route
+            path="/account/master/cancel-master"
+            exact
+            element={<CancelMaster />}
+          />
+          <Route path="/become-an-agent" exact element={<BecomeAnAgent />} />
+          <Route
+            path="/become-an-agent/detail/:id"
+            exact
+            element={<AgentDetail />}
+          />
+          <Route
+            path="/account/master/cancel-master/detail/:id"
+            exact
+            element={<CancelMasterDetail />}
+          />
+          {/* Cancel Master */}
+          <Route
+            path="/accounting/master-deposit"
+            exact
+            element={<MasterDeposit />}
+          />
+          <Route path="/account/user" exact element={<Users />} />
+          <Route
+            path="/account/user/active-user"
+            exact
+            element={<ActiveUser />}
+          />
+          <Route path="/account/user/all-user" exact element={<AllUser />} />
         </Routes>
       );
     } else {
