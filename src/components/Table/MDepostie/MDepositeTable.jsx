@@ -182,12 +182,13 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
               <StyledTableCell align="left">user-ID</StyledTableCell>
               <StyledTableCell align="left">Account Name</StyledTableCell>
               <StyledTableCell align="left">Phone/Account No</StyledTableCell>
-              <StyledTableCell align="left">Payment Provider</StyledTableCell>
-              <StyledTableCell align="left">Amount</StyledTableCell>
-             
               <StyledTableCell align="left">
                 Transition ID
               </StyledTableCell>
+              <StyledTableCell align="left">Payment Provider</StyledTableCell>
+              <StyledTableCell align="left">Amount</StyledTableCell>
+             
+              
               <StyledTableCell align="left">Status</StyledTableCell>
               <StyledTableCell align="left">Payment Date</StyledTableCell>
             </TableRow>
@@ -201,12 +202,13 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
                 <StyledTableCell align="left">{user.user_id}</StyledTableCell>
                 <StyledTableCell align="left">{user.account_name}</StyledTableCell>
                 <StyledTableCell align="left">{user.account_no}</StyledTableCell>
-                <StyledTableCell align="left">{user.payment_provider_name}</StyledTableCell>
-                <StyledTableCell align="left">{user.amount}</StyledTableCell>
-                
                 <StyledTableCell align="left">
                 {user.transaction_no}
                 </StyledTableCell>
+                <StyledTableCell align="left">{user.payment_provider_name}</StyledTableCell>
+                <StyledTableCell align="left">{user.amount}</StyledTableCell>
+                
+            
                 {
                   differStatus(user)
                 }
