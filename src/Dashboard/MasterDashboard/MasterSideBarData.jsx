@@ -111,36 +111,36 @@ export const MasterSidebarData = [
         path: "/master/profit",
         icon: <FaIcons.FaUserFriends/>
     },
-    {
-        title: 'Payment Setting',
-        path: '/master/payment-setting',
-        icon: <AiIcons.AiFillSetting />,
-        iconClosed: <RiIcons.RiArrowDownSFill/>,
-        iconOpened: <RiIcons.RiArrowUpSFill/>,
-        subNav : [
-            {
-                title: 'Payment Type',
-                path: '/master/payment-setting/payment-value',
-                icon: <IoIcons.IoIosArrowForward />,
-            },
-            {
-                title: 'Payment Provider',
-                path: '/master/payment-setting/payment-provider',
-                icon: <IoIcons.IoIosArrowForward />,
-            },
-            {
-                title: 'Payment Account',
-                path: '/master/payment-setting/payment-account',
-                icon: <IoIcons.IoIosArrowForward />,
-            },
+    // {
+    //     title: 'Payment Setting',
+    //     path: '/master/payment-setting',
+    //     icon: <AiIcons.AiFillSetting />,
+    //     iconClosed: <RiIcons.RiArrowDownSFill/>,
+    //     iconOpened: <RiIcons.RiArrowUpSFill/>,
+    //     subNav : [
+    //         {
+    //             title: 'Payment Type',
+    //             path: '/master/payment-setting/payment-value',
+    //             icon: <IoIcons.IoIosArrowForward />,
+    //         },
+    //         {
+    //             title: 'Payment Provider',
+    //             path: '/master/payment-setting/payment-provider',
+    //             icon: <IoIcons.IoIosArrowForward />,
+    //         },
+    //         {
+    //             title: 'Payment Account',
+    //             path: '/master/payment-setting/payment-account',
+    //             icon: <IoIcons.IoIosArrowForward />,
+    //         },
            
-            {
-                title: 'Payment  Announcement',
-                path: '/master/payment-setting/payment-announcement',
-                icon: <IoIcons.IoIosArrowForward />,
-            },
-        ]
-    },
+    //         {
+    //             title: 'Payment  Announcement',
+    //             path: '/master/payment-setting/payment-announcement',
+    //             icon: <IoIcons.IoIosArrowForward />,
+    //         },
+    //     ]
+    // },
     {
         title: 'Transfer To',
         path: '/master/transfer-to',
@@ -163,7 +163,21 @@ export const MasterSidebarData = [
     {
         title: "Deposite",
         path: "/master/deposite",
-        icon: <RiIcons.RiAccountPinCircleFill/>
+        icon: <FaIcons.FaMoneyCheckAlt />,
+        iconClosed: <RiIcons.RiArrowDownSFill/>,
+        iconOpened: <RiIcons.RiArrowUpSFill/>,
+        subNav : [
+            {
+                title: 'User Deposite',
+                path: '/master/deposite/user-deposite',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+            {
+                title:"Agent Deposite",
+                path:'/master/deposite/agent-deposite',
+                icon: <IoIcons.IoIosArrowForward />,              
+            }
+        ]
     },
     {
         title: "Bank Setting",
