@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
-
-
+import React, { useEffect, useState } from 'react';
 import classes from './UnitValue.module.css';
-
 import { Button, TextField } from '@mui/material';
 import Card from '../../../components/UI/Card';
 import UnitEditModal from '../../../components/UI/UnitSetting/UnitEditModal';
 import UnitChangeModal from '../../../components/UI/UnitSetting/UnitChangeModal';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer,toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from "axios"
+import {getMethod} from "../../../services/api-services";
 
 const UnitValue = () => {
   const [Kopen, KsetOpen] = React.useState(false);
@@ -30,10 +29,61 @@ const UnitValue = () => {
   const [unitchangeOpen,setUnitchangeOpen] = useState(false);
   const unitchangeOpenHandler = ()=>setUnitchangeOpen(true);
   const unitChangeCloseHandler = ()=>setUnitchangeOpen(false);
-
   
 
+  const [userData,setUserData] = useState([]);
+  const [getUnitChange,setgetUnitChange] = useState([]);
+  const [num,setNum] = useState(0);
+  const AlertToast = msg => msg;
+
+  const fetchUnit = async()=>{
+    try{
+      const response = await axios.request(getMethod("api/get-login-user"));
+      if(response.data.status==="success"){
+        console.log(response.data.data)
+        setUserData(response.data.data);
+        return;
+      }
+      if(response.data.status === "error"){
+      AlertToast(toast.error(response.data.message));
+      return;
+      }
+    }catch(error){
+     
+    }
+
+  }
+ const getChangeUnit = async()=>{
+   try{
+     const response = await axios.request(getMethod("api/wallet/wallet-setting"));
+     console.log(response);
+     if(response.data.status==="success"){
+      setgetUnitChange(response.data.data);
+      return;
+     }
+     if(response.data.status === "error"){
+       AlertToast(toast.error(response.data.message))
+     }
+   }catch(error){
+     console.log(error)
+   }
+ }
+  useEffect(()=>{
+    fetchUnit();
+    getChangeUnit();
+  },[num])
   
+console.log(userData);
+
+const totalUnit = ()=>{
+  if(userData && getUnitChange){
+    let totalUnit = userData?.wallet?.main_unit 
+    + (userData?.wallet?.promotion_unit*getUnitChange?.main_to_promotion_rate)
+    +(userData?.wallet?.diamond_unit*userData?.wallet?.diamond_unit);
+    return totalUnit;
+  }
+
+}
  
   return (
     <div className={classes["soccer-setting-container"]}>
@@ -43,18 +93,23 @@ const UnitValue = () => {
           <h1 className={classes["card-title"]}>Unit Value</h1>
         </div >
         <div className={classes["card-body"]}>
-            <h2  className={classes["card-body-title"]}>Total Unit - 3424432</h2>
+            <h2  className={classes["card-body-title"]}>Total Unit - {totalUnit()}</h2>
             <div className={classes["card-body-container"]}>
              {/* UnitValueDesc */}
              <div className={classes["total-unit-container"]}>
              <div className={classes["form-group"]} >
-           <label htmlFor="">Promotion Unit </label>:<p>&nbsp;&nbsp;787800</p>
+           <label htmlFor="">Promotion Unit 
+           </label>:<p>&nbsp;&nbsp;{userData?.wallet?.promotion_unit}</p>
             </div>
             <div className={classes["form-group"]}>
-           <label htmlFor="">Main Unit </label>:<p>&nbsp;&nbsp;787800</p>
+           <label htmlFor="">Main Unit </label>:<p>&nbsp;&nbsp;
+           {userData?.wallet?.main_unit}
+           </p>
             </div>
             <div className={classes["form-group"]}>
-           <label htmlFor="">Diamond Unit </label>:<p>&nbsp;&nbsp;787800</p>
+           <label htmlFor="">Diamond Unit </label>:<p>&nbsp;&nbsp;
+           {userData?.wallet?.diamond_unit}
+           </p>
             </div>
              </div>
              <div>
@@ -62,28 +117,28 @@ const UnitValue = () => {
              <div className={classes["form-group"]}>
            <label htmlFor="">1Main </label>:
            <div>
-               &nbsp;{Kvalue}&nbsp;MMK
+               &nbsp;{getUnitChange?.main_unit_value_by_mmk}&nbsp;MMK
                &nbsp;<Button variant='contained' size="small" onClick={KhandleOpen}  >Edit</Button>
            </div>
             </div>
             <div className={classes["form-group"]}>
            <label htmlFor="">1 Main </label>:
-           <div>&nbsp;{PUvalue}&nbsp;PU
+           <div>&nbsp;{getUnitChange?.main_to_promotion_rate}&nbsp;PU
            &nbsp;<Button variant='contained' size="small" onClick={PUhandleOpen}  >Edit</Button>
            </div>
             </div>
             <div className={classes["form-group"]}>
-           <label htmlFor="">1 Diamond </label>:
-           <div>&nbsp;{Mvalue}&nbsp;Main
+           <label htmlFor="">1 Main </label>:
+           <div>&nbsp;{getUnitChange?.main_to_diamond_rate}&nbsp;DU
            &nbsp;<Button variant='contained' size="small" onClick={MhandleOpen}  >Edit</Button></div>
             </div>
              </div>
              </div>
              {/* UnitValueDesc */}
             </div>
-            <UnitEditModal open={Kopen}  handleClose={KhandleClose} unitFrom="1Main" unitTo={Kvalue} setValue={KsetValue} unit="MMK" />
-            <UnitEditModal open={PUopen}  handleClose={PUhandleClose} unitFrom="1Main" unitTo={PUvalue} setValue={PUsetValue} unit="PU" />
-            <UnitEditModal open={Mopen}  handleClose={MhandleClose} unitFrom="1Diamond" unitTo={Mvalue} setValue={MsetValue} unit="Main" />
+            <UnitEditModal  num={num} setNum={setNum} open={Kopen} value={getUnitChange?.main_unit_value_by_mmk}  handleClose={KhandleClose} unitFrom="1Main" unitTo={getUnitChange?.main_unit_value_by_mmk} setValue={KsetValue} unit="MMK" />
+            <UnitEditModal num={num} setNum={setNum} open={PUopen} value={getUnitChange?.main_to_promotion_rate} handleClose={PUhandleClose} unitFrom="1Main" unitTo={getUnitChange?.main_to_promotion_rate} setValue={PUsetValue} unit="PU" />
+            <UnitEditModal num={num} setNum={setNum} open={Mopen} value={getUnitChange?.main_to_diamond_rate} handleClose={MhandleClose} unitFrom="1Main" unitTo={getUnitChange?.main_to_diamond_rate} setValue={MsetValue} unit="DU" />
             </div>
         </Card>
         <div style={{widht:"100%",marginTop:30,display:"flex",justifyContent:"flex-end"}}>

@@ -6,6 +6,9 @@ import Fade from "@mui/material/Fade";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { FormControl, InputLabel, TextField } from "@mui/material";
+import { PatchMethod } from "../../../services/api-services";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const style = {
   position: "absolute",
@@ -20,15 +23,54 @@ const style = {
 };
 
 export default function UnitEditModal({
-  handleOpen,
   handleClose,
   open,
   unitTo,
   unitFrom,
   setValue,
   unit,
+  value,
+  setNum,
+  num,
 }) {
   const [changeValue, setChangeValue] = React.useState("");
+  const AlertToast = (msg) => msg;
+  const differUnit = () => {
+    if (unit === "MMK") {
+      return { main_unit_value_by_mmk: changeValue };
+    }
+    if (unit === "PU") {
+      return { main_to_promotion_rate: changeValue };
+    }
+    if (unit === "DU") {
+      return { main_to_diamond_rate: changeValue };
+    }
+    return "false";
+  };
+  console.log("unitTo", unitTo);
+  const PatchUnitChange = async () => {
+    try {
+      const response = await axios.request(
+        PatchMethod("api/wallet/wallet-setting", differUnit())
+      );
+      if (response.data.status === "success") {
+        AlertToast(toast.success(response.data.message));
+        setNum(num + 1);
+        handleClose();
+        return;
+      }
+      if (response.data.status === "error") {
+        AlertToast(toast.error(response.data.message));
+        return;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  console.log(differUnit());
+  console.log("value", changeValue);
+
   return (
     <div>
       <Modal
@@ -51,7 +93,7 @@ export default function UnitEditModal({
               <TextField
                 type="number"
                 onChange={(e) => setChangeValue(e.target.value)}
-                label={unit}
+                value={changeValue}
               />
               <Button
                 variant="contained"
@@ -62,8 +104,9 @@ export default function UnitEditModal({
                   marginLeft: 200,
                 }}
                 onClick={() => {
-                  handleClose();
-                  setValue(changeValue);
+                  // handleClose();
+                  // setValue(changeValue);
+                  PatchUnitChange();
                 }}
               >
                 Confirm
