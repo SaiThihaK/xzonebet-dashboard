@@ -146,7 +146,7 @@ export const AgentSidebarData = [
     },
     {
         title: "Bank Account",
-        path: "/agent/bank-account",
+        path: '/payment-setting/payment-account',
         icon: <AiIcons.AiFillBank/>
     },
     

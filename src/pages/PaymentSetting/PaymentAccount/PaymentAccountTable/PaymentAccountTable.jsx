@@ -94,7 +94,7 @@ const PaymentAccountTable = ({num}) => {
                   <Stack spacing={1} direction="row" sx={{justifyContent: 'flex-end'}}>
                   <Button variant="contained"
                   onClick={()=>{
-                    navigate(`/master/payment-setting/payment-account/edit/${row.id}`)
+                    navigate(`/payment-setting/payment-account/edit/${row.id}`)
                   }}
                   >Edit</Button>
                    </Stack>

@@ -181,17 +181,10 @@ export const MasterSidebarData = [
     },
     {
         title: "Bank Setting",
-        path: "/master/bank-setting",
+        path: '/payment-setting/payment-account',
         icon: <AiIcons.AiFillSetting />,
         iconClosed: <RiIcons.RiArrowDownSFill/>,
         iconOpened: <RiIcons.RiArrowUpSFill/>,
-        subNav : [
-            {
-                title: 'Payment Account',
-                path: '/master/bank-setting/payment-account',
-                icon: <IoIcons.IoIosArrowForward />,
-            },
-        ]
     },
     
 ]
