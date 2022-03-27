@@ -31,23 +31,30 @@ export default function UnitChangeModal({
   open,
 }) {
   const AlertToast = (toast,msg)=>toast(msg);
-  const UnitChangeArr = [{name:"Promotion Unit"},{name:"Main Unit"},{name:"Diamond Unit"}];
-  const [amount,setAmount] = React.useState();
+
+  const [amount,setAmount] = React.useState("");
+  const [fromUnit,setFromUnit] = React.useState("");
+  const [toUnit,setToUnit] = React.useState("");
   React.useEffect(()=>{
-    getUnitChange();
+
     },[])
    
-    const getUnitChange = async()=>{
-        try{
-            const response = await axios.request(getMethod("api/wallet/admin-create-record?sortColumn=id&sortDirection=desc&limit=10"));
-            console.log(response);
-        }catch(error){
-            if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
-                logoutHandler();
-                }
-              }
-    }
-
+    const UnitChangeArr = [
+      {name:"Promotion Unit",value:"promotion_unit",changeUnit:[{
+        name:"Main Unit",value:"main_unit"
+      }]},
+      {name:"Main Unit",value:'main_unit',changeUnit:[{
+        name:"Diamond Unit",value:"diamond_unit"
+      }]},
+      {name:"Diamond Unit",value:"diamond_unit",changeUnit:[{
+        name:"Main Unit",value:"main_unit"
+      }]}
+    ];
+      const filterToArray = UnitChangeArr.filter((unit)=>{
+        if(unit.value===fromUnit){
+          return unit
+        }
+      })
 
     const confirmHandler = async()=>{
         try{
@@ -56,12 +63,18 @@ export default function UnitChangeModal({
                 return;
             }
        else{
-        const response = await axios.request(PostMethod("api/wallet/admin-create"),{
-         amount
-        });
+        const response = await axios.request(PostMethod("api/wallet/unit-exchange",{
+         amount,
+         from_unit_type:fromUnit,
+         to_unit_type:toUnit,
+        }));
         console.log(response);
         if(response.data.status==="success"){
             AlertToast(toast.success,response.data.message);
+            handleClose();
+            setAmount("");
+            setFromUnit("");
+            setToUnit("");
             handleClose();
             return;
         };
@@ -72,6 +85,7 @@ export default function UnitChangeModal({
         }
        }
         }catch(error){
+          console.log(error.response)
             if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
                 logoutHandler();
                 }
@@ -79,7 +93,8 @@ export default function UnitChangeModal({
         }
 
 
-
+//  console.log("FilterArr",filterToArray[0].changeUnit);
+//  console.log("fromUnit",fromUnit);
   return (
     <div>
       <Modal
@@ -105,10 +120,10 @@ export default function UnitChangeModal({
             </Typography>
             <FormControl style={{ marginTop: 20}} fullWidth>
               <label component="span"  style={{marginBottom:10}} >From</label>
-              <Select size="small">
+              <Select size="small" value={fromUnit} onChange={(e)=>{setFromUnit(e.target.value)}}>
                {
                    UnitChangeArr.map((unit,index)=>(
-                       <MenuItem value={unit.name} key={index}>
+                       <MenuItem value={unit.value} key={index}>
                        {
                            unit.name
                        }
@@ -119,10 +134,10 @@ export default function UnitChangeModal({
             </FormControl>
             <FormControl style={{ marginTop: 20}} fullWidth>
               <label style={{marginBottom:10}} >To</label>
-              <Select size="small">
+              <Select size="small" value={toUnit} onChange={(e)=>setToUnit(e.target.value)}>
                {
-                   UnitChangeArr.map((unit,index)=>(
-                       <MenuItem value={unit.name} key={index}>
+                filterToArray && filterToArray[0]?.changeUnit?.map((unit,index)=>(
+                       <MenuItem value={unit.value} key={index}>
                        {
                            unit.name
                        }
@@ -148,6 +163,7 @@ export default function UnitChangeModal({
                 }}
                 onClick={() => {
                   handleClose();
+                  confirmHandler();
                   
                 }}
               >
