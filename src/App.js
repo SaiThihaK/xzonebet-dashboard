@@ -393,6 +393,16 @@ function App() {
           />
           <Route
             exact
+            path="/payment-setting/payment-account"
+            element={<PaymentAccount />}
+          />
+          <Route
+            exact
+            path="/payment-setting/payment-account/edit/:id"
+            element={<EditPaymentAccount />}
+          />
+          <Route
+            exact
             path="/master/deposite/user-deposite"
             element={<ADeposite />}
           />
@@ -472,6 +482,17 @@ function App() {
             element={<ATransitionHistory />}
           />
           <Route exact path="/agent/user-withdraw" element={<UserWithDraw />} />
+
+          <Route
+            exact
+            path="/payment-setting/payment-account"
+            element={<PaymentAccount />}
+          />
+          <Route
+            exact
+            path="/payment-setting/payment-account/edit/:id"
+            element={<EditPaymentAccount />}
+          />
           <Route path="*" element={<Notfound />} />
         </Routes>
       );
@@ -485,6 +506,16 @@ function App() {
             exact
             path="/super_master/transfer-to"
             element={<TransferTo />}
+          />
+          <Route
+            exact
+            path="/payment-setting/payment-account"
+            element={<PaymentAccount />}
+          />
+          <Route
+            exact
+            path="/payment-setting/payment-account/edit/:id"
+            element={<EditPaymentAccount />}
           />
           <Route
             exact

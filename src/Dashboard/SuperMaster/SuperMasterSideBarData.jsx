@@ -182,7 +182,7 @@ export const SuperMasterSidebarData = [
     },
     {
         title: "Bank Account",
-        path: "/super_master/bank-account",
+        path: '/payment-setting/payment-account',
         icon: <AiIcons.AiFillBank/>
     },
     
