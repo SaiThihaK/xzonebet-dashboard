@@ -71,6 +71,7 @@ const UnitValue = () => {
   useEffect(()=>{
     fetchUnit();
     getChangeUnit();
+    totalUnit();
   },[num])
   
 console.log(userData);

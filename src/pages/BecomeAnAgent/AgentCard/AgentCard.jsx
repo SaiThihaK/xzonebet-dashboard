@@ -27,19 +27,17 @@ const AgentCard = ({
   const handleChange = (event) => {
     setAge(event.target.value);
   };
+
+  console.log(user)
   const AlertToast = (toast,msg) => toast(msg);
   // console.log(user)
   const submitHandler = async(e)=>{
     e.preventDefault();
-    if(!age){
-      AlertToast(toast.warning,"User-type is required");
-      return
-    }
-    else{
+    
       try{
-        const url = `api/affiliate-register-lists/${status}/${user.id}`;
+        const url = `api/affiliate-register-lists/${status || "accept"}/${user.id}`;
         const {data} = await axios.request(PostMethod(
-          url,{user_type:age}
+          url,{user_type:age || user.form_type}
         ));
         if(data.status = "success"){
         AlertToast(toast.success,data.message);
@@ -57,7 +55,7 @@ const AgentCard = ({
       }
     }
 
-  }
+
  
   return (
     <Grid item xs={3}>
@@ -84,21 +82,21 @@ const AgentCard = ({
             {user.name}
           </Typography>
             <FormControl sx={{ width: "100%" }}>
-             <InputLabel labelId="demo-simple-select-label"
-              id="demo-simple-select" size="small">Choose</InputLabel>
+             {/* <InputLabel labelid="demo-simple-select-label"
+              id="demo-simple-select" size="small">{user.form_type}</InputLabel> */}
             <Select
-              value={age}
+              value={age || user.form_type}
               onChange={handleChange}
               size="small"
               labelid="demo-simple-select-label"
               id="demo-simple-select"
-              label="Choose"
+              // label={user.form_type}
               inputProps={{ "aria-label": "Without label" }}
               sx={{ backgroundColor: "#f3f3f3" }}
             >
               <MenuItem value={"master"} onClick={()=>setStatus("accept")}>Master</MenuItem>
               <MenuItem value={"agent"} onClick={()=>setStatus("accept")}>Agent</MenuItem>
-              <MenuItem value={"affiliate-agent"} onClick={()=>setStatus("accept")}>affiliate Agent</MenuItem>
+              <MenuItem value={"affiliate-agent"} onClick={()=>setStatus("accept")}>Affiliate Agent</MenuItem>
               <MenuItem value={"reject"} onClick={()=>setStatus("rejet")}>Cancel</MenuItem>
             </Select>
           </FormControl>
