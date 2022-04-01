@@ -1,0 +1,21 @@
+.container{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    /* border: 1px solid var(--text-color); */
+    transition: all 0.2s ease-in-out;
+    min-height: 100px;
+}
+.img-container{
+    padding: 5px;
+    width: 100%;
+}
+.img-container img{
+    width: 100%;
+    /* margin-top: 20px; */
+    height: 100%;
+}
+
+.func-desc{
+    margin-top: 10px;
+    padding: 0px 10px;
+}
