@@ -1,0 +1,31 @@
+.container{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    border: 1px solid var(--text-color);
+    transition: all 0.2s ease-in-out;
+}
+.img-container img{
+    width: 100%;
+    height: 100%;
+}
+.form-group-desc {
+    display: flex;
+    align-items: center;
+    color: rgb(65, 65, 65);
+    margin-bottom: 10px;
+  }
+  
+  .form-group-desc label {
+    width: 200px;
+    font-size: 15px;
+  }
+  .form-group-desc p {
+    font-size: 15px;
+  }
+  .form-container {
+    padding: 30px;
+  }
+  
+.container:hover{
+transform: scale(0.98);
+}
