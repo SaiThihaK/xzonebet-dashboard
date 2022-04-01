@@ -1,8 +1,13 @@
 .container{
     display: grid;
     grid-template-columns: 30% 70%;
-    border: 1px solid var(--text-color);
+    border: 1px solid #808080;
     transition: all 0.2s ease-in-out;
+    min-height: 150px;
+    
+}
+.img-container{
+    padding: 5px;
 }
 .img-container img{
     width: 100%;
