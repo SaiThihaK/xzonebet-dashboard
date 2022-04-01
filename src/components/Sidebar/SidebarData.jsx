@@ -184,7 +184,7 @@ export const SidebarData = [
         ]
     },
     {
-        title: "Become An Agent",
+        title: "Become A Partner",
         path: "/become-an-agent",
         icon: <RiIcons.RiAccountPinCircleFill/>
     },
@@ -220,7 +220,7 @@ export const SidebarData = [
                 icon: <IoIcons.IoIosArrowForward />,
             },
             {
-                title: 'Affiliate Agent Setting',
+                title: 'Affiliate Setting',
                 path: '/setting/affiliate-agent-setting',
                 icon: <IoIcons.IoIosArrowForward />,
             },
