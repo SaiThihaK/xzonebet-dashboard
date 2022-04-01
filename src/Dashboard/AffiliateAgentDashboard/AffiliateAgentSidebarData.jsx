@@ -6,7 +6,7 @@ import * as RiIcons from 'react-icons/ri';
 
 export const AffiliateAgentSidebarData  = [
     {
-        title: 'Affiliate Agent DashBoard',
+        title: 'Affiliate DashBoard',
         path: '/',
         icon: <AiIcons.AiFillHome />,
         iconClosed: <RiIcons.RiArrowDownSFill/>,
@@ -102,27 +102,39 @@ export const AffiliateAgentSidebarData  = [
         // ]
     },
     {
+        title: 'Withdraw',
+        path: '/agent/user-withdraw',
+        icon: <RiIcons.RiCoinsLine/>,
+        iconClosed: <RiIcons.RiArrowDownSFill/>,
+        iconOpened: <RiIcons.RiArrowUpSFill/>,
+    },
+    {
         title: "Affiliate User",
         path: "/affiliate-agent/affiliate-user",
         icon: <FaIcons.FaUserFriends/>
     },
     {
-        title: 'Profit',
-        path: '/affiliate-agent/profit',
-        icon: <RiIcons.RiCoinsLine/>,
+        title: "Deposite",
+        path: "/agent/deposite",
+        icon: <FaIcons.FaMoneyCheckAlt />,
         iconClosed: <RiIcons.RiArrowDownSFill/>,
         iconOpened: <RiIcons.RiArrowUpSFill/>,
-        // subNav : [
-        //     {
-        //         title: 'Game Setting',
-        //         path: '/setting/game-setting',
-        //         icon: <IoIcons.IoIosArrowForward />,
-        //     },
-        //     {
-        //         title: 'Soccer Setting',
-        //         path: '/setting/soccer-setting',
-        //         icon: <IoIcons.IoIosArrowForward />,
-        //     },
-        // ]
+        subNav : [
+            {
+                title: 'User Deposite',
+                path: '/agent/deposite/user-deposite',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+            {
+                title:"Agent Deposite",
+                path:'/agent/deposite/agent-deposite',
+                icon: <IoIcons.IoIosArrowForward />,              
+            }
+        ]
+    },
+    {
+        title: "Betting",
+        path: "/affiliate-agent/betting",
+        icon: <FaIcons.FaUserFriends/>
     },
 ]

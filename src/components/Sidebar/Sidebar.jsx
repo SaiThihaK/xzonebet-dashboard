@@ -25,6 +25,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import axios from "axios"
 import { SuperMasterSidebarData } from "../../Dashboard/SuperMaster/SuperMasterSideBarData";
+import { AffiliateAgentSidebarData } from "../../Dashboard/AffiliateAgentDashboard/AffiliateAgentSidebarData";
 
 
 function refreshPage() {
@@ -98,6 +99,11 @@ const Sidebar = () => {
   }
   if(dashboard==="agent"){
     return AgentSidebarData.map((item,index)=>(
+      <Submenu item={item} key={index} />
+    ))
+  }
+  if(dashboard==="affiliate-agent"){
+    return AffiliateAgentSidebarData.map((item,index)=>(
       <Submenu item={item} key={index} />
     ))
   }
@@ -255,26 +261,40 @@ const Sidebar = () => {
           {/* y<h1 style={{ color: "#FFF" }}>Logo</h1> */}
         </div>
         <div className={classes.sidebarWrap}>
+        {
+          localStorage.getItem("type") !== "admin" && 
+       
+       
         <div className={classes.menuItem}>
           <div>
-            <span className={classes.sidebarLabel}>UserID-{userData?.id}</span>
+            <span className={classes.sidebarLabel}>ID-{userData?.id}</span>
           </div>
           </div>
+}
+{
+          localStorage.getItem("type") !== "admin" && 
+       
 
           <div className={classes.menuItem}>
           <div>
-            <span className={classes.sidebarLabel}>User Name-{userData?.agent?.name}</span>
+            <span className={classes.sidebarLabel}>Name-{userData?.agent?.name}</span>
           </div>
           </div>
-
+}
+{
+          localStorage.getItem("type") !== "admin" && 
+       
           <div className={classes.menuItem}>
           <div>
             <span className={classes.sidebarLabel}>Main Unit-{userData?.wallet?.main_unit}</span>
           </div>
           </div>
+}
         {/* {SidebarData.map((item, index) => (
            <Submenu item={item} key={index} />)
           )} */}
+        
+  
           {DifDashboard()}
         </div>
       </div>

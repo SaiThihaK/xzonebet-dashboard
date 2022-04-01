@@ -684,6 +684,29 @@ function App() {
           <Route path="/account/user/all-user" exact element={<AllUser />} />
         </Routes>
       );
+    }
+    if (type === "affiliate-agent") {
+      return (
+        <Routes>
+          <Route path="*" element={<Notfound />} />
+          <Route
+            exact
+            path="/affiliate-agent/transition-history"
+            element={<TransitionHistory />}
+          />
+          <Route exact path="/agent/user-withdraw" element={<UserWithDraw />} />
+          <Route
+            exact
+            path="/agent/deposite/user-deposite"
+            element={<ADeposite />}
+          />
+          <Route
+            exact
+            path="/agent/deposite/agent-deposite"
+            element={<AgentDeposite />}
+          />
+        </Routes>
+      );
     } else {
       logoutHandler();
     }
