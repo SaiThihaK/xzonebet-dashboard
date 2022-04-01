@@ -86,6 +86,7 @@ import EditPaymentAccount from "./pages/PaymentSetting/PaymentAccount/EditPaymen
 import EditPaymentProvider from "./pages/PaymentSetting/PaymentProvider/EditPaymentProvider/EditPaymentProvider";
 import UserWithDraw from "./pages/UserWithDraw/UserWithDraw";
 import "./App.css";
+import AdminAccount from "./pages/AdminTeamAccount/AdminAccount/AdminAccount";
 function App() {
   const DashboardRouting = () => {
     if (type === "admin") {
@@ -376,6 +377,11 @@ function App() {
             exact
             path="/admin-team-account/position/create-position"
             element={<CreatePosition />}
+          />
+          <Route
+            exact
+            path="/admin-team-account/admin-account"
+            element={<AdminAccount />}
           />
           <Route path="*" element={<Notfound />} />
         </Routes>
