@@ -383,6 +383,11 @@ function App() {
             path="/admin-team-account/admin-account"
             element={<AdminAccount />}
           />
+          <Route
+            exact
+            path="/transition-history"
+            element={<TransitionHistory />}
+          />
           {/* Deposite */}
           <Route exact path="/deposite" element={<ADeposite />} />
           <Route path="*" element={<Notfound />} />

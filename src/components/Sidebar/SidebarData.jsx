@@ -227,6 +227,13 @@ export const SidebarData = [
         ]
     },
     {
+        title: 'Transition History',
+        path: '/transition-history',
+        icon: <FaIcons.FaLayerGroup />,
+        iconClosed: <RiIcons.RiArrowDownSFill/>,
+        iconOpened: <RiIcons.RiArrowUpSFill/>,
+    },
+    {
         title: "Deposite",
         path: "/deposite",
         icon: <RiIcons.RiAccountPinCircleFill/>
