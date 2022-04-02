@@ -7,6 +7,7 @@ import axios from "axios";
 import MasterCard from "../../../components/MasterCard/MasterCard";
 import { getMethod } from "../../../services/api-services";
 import { logoutHandler } from "../../../components/Sidebar/Sidebar";
+import MemberCard from "../../../components/MemberCard/MemberCard";
 
 const CancelAgent = () => {
   const [cancelMasters,setCancelMaster] = useState([]);
@@ -32,10 +33,19 @@ const CancelAgent = () => {
           <h1 className={classes["card-title"]}>Cancel Agents</h1>
         </div>
         <div className={classes["card-body"]}>
-          <Grid container spacing={3}>
+          {/* <Grid container spacing={3}>
            {cancelMasters.length !==0 && cancelMasters.map((cancelMaster)=>
            (<MasterCard key={cancelMaster?.id} user ={cancelMaster} path="/account/agent/cancel-agent/detail/" />)
            )}
+          </Grid> */}
+          <Grid container spacing={5}>
+          {
+              cancelMasters.length  !==0 && cancelMasters.map((master,index)=>(
+                <Grid item xs={6} key={index}>
+                  <MemberCard partner={master} path={"/account/agent/cancel-agent/detail/"} />
+                </Grid>
+  ))
+            }
           </Grid>
         </div>
       </Card>
