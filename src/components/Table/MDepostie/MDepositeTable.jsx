@@ -67,7 +67,7 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
 
  const confirmHandler = async()=>{
    if(value === "approve"){
-     console.log("approve")
+    //  console.log("approve")
     try{
       const response = await axios.request(PostMethod(`api/user-deposit/action/${ID}`,{
         status:"approve"
@@ -118,7 +118,7 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
          )
          :(<FormControl className={classes["form-control"]}>
          <Select value={value} onChange={onChangeValue} size="small">
-             <MenuItem value="pending">Pending</MenuItem>
+             {/* <MenuItem value="pending">Pending</MenuItem> */}
              <MenuItem value="approve">Approve</MenuItem>
              <MenuItem value="re-ject">Reject</MenuItem>
          </Select>
