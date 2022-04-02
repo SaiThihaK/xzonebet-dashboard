@@ -226,5 +226,11 @@ export const SidebarData = [
             },
         ]
     },
+    {
+        title: "Deposite",
+        path: "/deposite",
+        icon: <RiIcons.RiAccountPinCircleFill/>
+    },
+
     
 ]

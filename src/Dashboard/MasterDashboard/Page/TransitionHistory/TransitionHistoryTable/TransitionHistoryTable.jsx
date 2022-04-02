@@ -16,6 +16,7 @@ import axios from "axios";
 import { getMethod } from "../../../../../services/api-services";
 import CustomPagination from "../../../../../components/Pagination/CustomPagination";
 import { ChangeDate } from "../../../../../Controller/ChangeDate";
+import { logoutHandler } from "../../../../../components/Sidebar/Sidebar";
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -38,16 +39,11 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 const TransitionHistoryTable = () => {
-  
-  
 
-  const filterArr = [23,"HellFire","Yolo",23,45,"reiyrieuy"];
- 
- 
-  
     const [page,setPage] = React.useState(1);
     const [totalPage,setTotalPage]  = React.useState(0);
     const [transferData,setTransferData] = React.useState([]);
+    const [userData,setUserData] = React.useState([]);
 
   const getTransitionData = async()=>{
     try{
@@ -62,8 +58,27 @@ const TransitionHistoryTable = () => {
  
   }
 
+  const fetchUnit = async()=>{
+    try{
+      const response = await axios.request(getMethod("api/get-login-user"));
+      if(response.data.status === "success"){
+        // console.log(response.data.data);
+         setUserData(response.data.data);
+      }
+      
+    }catch(error){
+      console.log(error.response.data.message)
+      if (error.response.status === 401 || error.response.data.message === "Unauthenticated."){
+        logoutHandler
+        ();
+      }
+    }
+
+  }
+
   useEffect(()=>{
     getTransitionData();
+    fetchUnit();
     return ()=>{
       setTransferData([])
     }
@@ -84,12 +99,12 @@ const TransitionHistoryTable = () => {
               <StyledTableCell align="right">Date</StyledTableCell>
               <StyledTableCell align="right">Transfer Amount</StyledTableCell>
          
-              <StyledTableCell align="right">Ammount</StyledTableCell>
+             
               <StyledTableCell align="right">
                 From
               </StyledTableCell>
               <StyledTableCell align="right">To</StyledTableCell>
-              <StyledTableCell align="right">Status</StyledTableCell>
+              <StyledTableCell align="right">Transition Name / Note</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -99,16 +114,15 @@ const TransitionHistoryTable = () => {
                   {index+1}
                 </StyledTableCell>
                 <StyledTableCell align="right">{row.id}</StyledTableCell>
-                <StyledTableCell align="right">{ChangeDate(row.created_at)}</StyledTableCell>
+                <StyledTableCell align="right">{row.created_at}</StyledTableCell>
                 <StyledTableCell align="right">{row.transfer_amount}</StyledTableCell>
-                <StyledTableCell align="right">--</StyledTableCell>
                 <StyledTableCell align="right">{row.sender_user_id}</StyledTableCell>
                
                 <StyledTableCell align="right">{row.receiver_user_id}</StyledTableCell>
                 <StyledTableCell align="right">
-                  <Button  size="small" variant="contained">
-                  With Draw
-                  </Button>
+                  {
+                    row.transaction_name
+                  }
                 </StyledTableCell>
         </StyledTableRow>
             ))}
