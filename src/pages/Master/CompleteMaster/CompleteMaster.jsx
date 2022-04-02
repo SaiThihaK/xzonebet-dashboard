@@ -7,6 +7,7 @@ import axios from "axios";
 import MasterCard from "../../../components/MasterCard/MasterCard";
 import { getMethod } from "../../../services/api-services";
 import { logoutHandler } from "../../../components/Sidebar/Sidebar";
+import MemberCard from "../../../components/MemberCard/MemberCard";
 
 
 const CompleteMaster = () => {
@@ -34,10 +35,19 @@ const CompleteMaster = () => {
           <h1 className={classes["card-title"]}>Complete Masters</h1>
         </div>
         <div className={classes["card-body"]}>
-          <Grid container spacing={3}>
+          {/* <Grid container spacing={3}>
            {completeMasters.length !==0 && completeMasters.map((completeMaster)=>
            (<MasterCard key={completeMaster?.id} user={completeMaster} path="/account/master/complete-master/detail/" />)
            )}
+          </Grid> */}
+           <Grid container spacing={5}>
+            {
+              completeMasters.length  !==0 && completeMasters.map((master,index)=>(
+                <Grid item xs={6} key={index}>
+                  <MemberCard partner={master} path={"/account/master/confirm-master/detail/"} />
+                </Grid>
+  ))
+            }
           </Grid>
         </div>
       </Card>
