@@ -61,8 +61,9 @@ const TransitionHistoryTable = () => {
   const fetchUnit = async()=>{
     try{
       const response = await axios.request(getMethod("api/get-login-user"));
+      console.log(response)
       if(response.data.status === "success"){
-        // console.log(response.data.data);
+        console.log("data",response.data.data);
          setUserData(response.data.data);
       }
       
@@ -115,7 +116,10 @@ const TransitionHistoryTable = () => {
                 </StyledTableCell>
                 <StyledTableCell align="right">{row.id}</StyledTableCell>
                 <StyledTableCell align="right">{row.created_at}</StyledTableCell>
-                <StyledTableCell align="right">{row.transfer_amount}</StyledTableCell>
+                <StyledTableCell align="right" 
+                style={userData?.id === row.receiver_user_id ? {color:'green'}:{color:"red"}}>
+                  {userData?.id===row.receiver_user_id ? "+":"-"}{row.transfer_amount}
+                  </StyledTableCell>
                 <StyledTableCell align="right">{row.sender_user_id}</StyledTableCell>
                
                 <StyledTableCell align="right">{row.receiver_user_id}</StyledTableCell>
