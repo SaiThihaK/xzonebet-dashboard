@@ -26,9 +26,14 @@ const closeHandler = ()=>setOpen(false);
 const fetchProviders = async()=>{
 try{
  const {data} = await axios.request(getMethod(`api/dashboard/payment-providers`));
-    // console.log(data.data)
+ if(data.status === "success"){
+ // console.log(data.data)
  setProvider(data.data);
+ return;
+ }
+   
 }catch(error){
+    console.log(error.response.data.message);
     if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
     logoutHandler();
     }
@@ -37,11 +42,15 @@ try{
 
 const fetchPaymentType = async()=>{
 try{
-
+    
     const {data} = await axios.request(getMethod("api/dashboard/payment-types"));
-    setPaymentType(data.data);
-    // console.log(data.data);
+    if(data.status === "success"){
+        setPaymentType(data.data);
+        // console.log(data.data);
+        return;
+    }
 }catch(error){
+    console.log(error.response.data.message)
     if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
     logoutHandler();
     }

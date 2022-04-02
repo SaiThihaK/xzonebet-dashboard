@@ -165,10 +165,11 @@ const Sidebar = () => {
         MenuListProps={{
           'aria-labelledby': 'basic-button',
         }}
-      >
-        <MenuItem onClick={unitMenuClose}>Promotion Unit-{userData?.wallet?.promotion_unit}</MenuItem>
-        <MenuItem onClick={unitMenuClose}>Main Unit-{userData?.wallet?.main_unit}</MenuItem>
-        <MenuItem onClick={unitMenuClose}>Diamond Unit-{userData?.wallet?.diamond_unit}</MenuItem>
+      >  
+      {/* <MenuItem onClick={unitMenuClose}>Promotion Unit-{userData?.wallet?.promotion_unit}</MenuItem>  */}
+         <MenuItem  disabled className={classes["menu-item"]}>Promotion Unit-{userData?.wallet?.promotion_unit}</MenuItem>
+         <MenuItem  disabled className={classes["menu-item"]}>Main Unit-{userData?.wallet?.main_unit}</MenuItem>
+        <MenuItem   disabled className={classes["menu-item"]}>Diamond Unit-{userData?.wallet?.diamond_unit}</MenuItem>
       </Menu>
           </li>
           <li>

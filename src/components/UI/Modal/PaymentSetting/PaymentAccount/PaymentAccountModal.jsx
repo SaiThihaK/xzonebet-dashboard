@@ -68,9 +68,13 @@ export default function PaymentAccountModal({
     try{
      
       const response = await axios.request(getMethod(`api/dashboard/payment-providers`));
-      // console.log(response.data.data);
-      setPayment_provider(response.data.data);
+      if(response.data.status === "success"){
+          // console.log(response.data.data);
+          setPayment_provider(response.data.data);
+          return;
+      }
     }catch(error){
+      console.log(error.response.data.message)
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
       logoutHandler();
       }

@@ -46,10 +46,15 @@ const [unitTableData,setUnitTableData] = useState([]);
 const fetchUnit = async()=>{
     try{
       const response =await axios.request((getMethod("api/wallet/admin-create-record?sortColumn=id&sortDirection=desc&limit=10")));
-      console.log(response);
-      setUnitTableData(response.data.data);
+      if(response.data.status==="success"){
+        console.log(response);
+        setUnitTableData(response.data.data);
+        return;
+      }
+    
     }catch(error){
       console.log(error);
+      console.log(error.response.data.message)
       if(error.response.statusText ==="error"){
         AlertToast(toast.error(error.response.data.message))
         return;

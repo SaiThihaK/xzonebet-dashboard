@@ -15,8 +15,14 @@ const CompleteAgent = () => {
   const fetchCompleteMaster = async()=>{
     try{
       const {data} = await axios.request(getMethod('api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=complete&form_type=agent'));
-      setCompleteMasters(data.data);
+      if(data.status==="success"){
+        setCompleteMasters(data.data);
+        return;
+      }
+
     }catch(error){
+      console.log(error);
+      console.log(error.response.data.message)
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
       logoutHandler();
       }

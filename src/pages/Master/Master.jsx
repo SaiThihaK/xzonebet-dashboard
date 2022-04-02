@@ -15,8 +15,14 @@ const Master = () => {
   const fetchPending = async()=>{
     try{
       const pending = await axios.request(getMethod('api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=master'));
-      setPendingMaster(pending.data.data.length);
+      if(pending.data.status==="success"){
+        setPendingMaster(pending.data.data.length);
+        return;
+      }
+      
     }catch(error){
+      console.log(error);
+      console.log(error.response.data.message)
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
       logoutHandler();
       }
@@ -25,8 +31,14 @@ const Master = () => {
   const fetchConfirm = async()=>{
     try{
       const confirm = await axios.request(getMethod(`api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-confirm&form_type=master`));
-      setConfirmMaster(confirm.data.data.length);
+      if(confirm.data.status==="success"){
+        setConfirmMaster(confirm.data.data.length);
+        return;
+      }
+      
     }catch(error){
+      console.log(error);
+      console.log(error.response.data.message)
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
       logoutHandler();
       }
@@ -36,8 +48,14 @@ const Master = () => {
   const fetchComplete = async()=>{
     try{
       const complete = await axios.request(getMethod(`api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=complete&form_type=master`));
-      setCompleteMaster(complete.data.data.length);
+      if(complete.data.status==="success"){
+        setCompleteMaster(complete.data.data.length);
+        return;
+      }
+       
     }catch(error){
+      console.log(error);
+      console.log(error.response.data.message)
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
       logoutHandler();
       }
@@ -46,9 +64,15 @@ const Master = () => {
   const fetchCancel = async()=>{
   try{
     const cancel = await axios.request(getMethod(`api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-rejet&form_type=master`));
-    setCancelMaster(cancel.data.data.length);
+    if(cancel.data.status==="success"){
+      setCancelMaster(cancel.data.data.length);
+      return;
+    }
+
 
   }catch(error){
+    console.log(error);
+    console.loeg(error.response.data.message)
     if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
     logoutHandler();
     }

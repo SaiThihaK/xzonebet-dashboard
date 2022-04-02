@@ -45,8 +45,17 @@ const PaymentAccountTable = ({num}) => {
 
   const fetch_PaymentAccount = async()=>{
     const response = await axios.request(getMethod(`api/dashboard/payment-accounts`));
+    try{
+      if(response.data.status==="success"){
+        setPaymentAccountTable(response.data.data);
+      }
+    }catch(error){
+      console.log(error);
+      console.log(error.response.data.message)
+    }
+    
     // console.log(response.data.data);
-    setPaymentAccountTable(response.data.data);
+  
   }
 
 

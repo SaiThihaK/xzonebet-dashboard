@@ -15,9 +15,15 @@ const CancelMaster = () => {
   const fetchCancelMaster = async()=>{
     try{
       const {data} = await axios.request(getMethod('api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=deposit-rejet&form_type=master'));
-      setCancelMaster(data.data);
+      if(data.status==="success"){
+        setCancelMaster(data.data);
+        return;
+      }
+
 
     }catch(error){
+      console.log(error)
+      console.log(error.response.data.message)
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
       logoutHandler();
       }

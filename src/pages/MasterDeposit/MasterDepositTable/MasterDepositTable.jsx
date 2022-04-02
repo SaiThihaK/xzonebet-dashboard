@@ -62,10 +62,16 @@ const MasterDepositTable = (filterId) => {
   const fetchData = async()=>{
     try{
       const {data} = await axios.request(getMethod(`api/affiliate-register-lists-detail?sortColumn=updated_at&sortDirection=desc&limit=10&status=deposit-pending&page=${page}`));
-      setRowData(data.data);
+      if(data.status==="success"){
+        setRowData(data.data);
+        setTotalPage(data.meta.last_page);
+      }
+
       // console.log(data);
-      setTotalPage(data.meta.last_page);
+    
     }catch(error){
+      console.log(error);
+      console.log(error.response.data.message)
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
       logoutHandler();
       }

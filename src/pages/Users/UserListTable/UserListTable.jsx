@@ -90,7 +90,7 @@ return ResDate;
               </TableRow>
             </TableHead>
             <TableBody>
-              {allUsers.map((row, index) => (
+              {allUsers?.map((row, index) => (
                 <StyledTableRow key={index}>
                   <StyledTableCell component="th" scope="row">
                     {index+1}
