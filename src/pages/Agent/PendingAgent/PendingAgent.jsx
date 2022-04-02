@@ -7,6 +7,7 @@ import axios from "axios";
 import PendingAgentCard from "./PendingAgentCard/PendingAgentCard";
 import { getMethod } from "../../../services/api-services";
 import { logoutHandler } from "../../../components/Sidebar/Sidebar";
+import MemberCard from "../../../components/MemberCard/MemberCard";
 
 const PendingAgent = () => {
   const [pendingMasters,setPendingMaster] = useState([]);
@@ -36,11 +37,20 @@ const PendingAgent = () => {
           <h1 className={classes["card-title"]}>Pending Agents</h1>
         </div>
         <div className={classes["card-body"]}>
-          <Grid container spacing={3}>
+          {/* <Grid container spacing={3}>
            {pendingMasters.length !==0 && pendingMasters.map((pendingMaster)=>
            (
              <PendingAgentCard key={pendingMaster?.id} user={pendingMaster} path={"/account/agent/pending-agent/detail/"} />)
            )}
+          </Grid> */}
+          <Grid container spacing={5}>
+            {
+              pendingMasters.length  !==0 && pendingMasters.map((master,index)=>(
+                <Grid item xs={6} key={index}>
+                  <MemberCard partner={master} path={"/account/agent/pending-agent/detail/"} />
+                </Grid>
+  ))
+            }
           </Grid>
         </div>
       </Card>

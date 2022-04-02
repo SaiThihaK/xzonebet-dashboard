@@ -1,26 +1,30 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Card from '../UI/Card';
 import classes from "./MemberCard.module.css"
 
-const MemberCard = () => {
+const MemberCard = ({partner,path}) => {
   return (
    
+    <Link to={path+partner.id}>
+  
     <div className={classes["container"]}>
         <div className={classes["img-container"]}>
             <img src='https://icon-library.com/images/user-icon-jpg/user-icon-jpg-14.jpg' alt="admin team account" />
         </div>
         <div   className={classes["form-container"]}>
       <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Unit </label>:<p>&nbsp;&nbsp;fsdagfasdgsdag</p>
+          <label htmlFor="">Name </label>:<p>&nbsp;&nbsp;{partner?.name ||  ""}</p>
         </div>
         <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Email </label>:<p>&nbsp;&nbsp;vgrdfghsfdgfsd</p>
+          <label htmlFor="">Email </label>:<p>&nbsp;&nbsp;{partner?.email ||  ""}</p>
         </div>
         <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Phone </label>:<p>&nbsp;&nbsp;vgrdfghsfdgfsd</p>
+          <label htmlFor="">Phone </label>:<p>&nbsp;&nbsp;{partner?.phone ||  ""}</p>
         </div>
       </div>
     </div>
+    </Link>
   )
 }
 

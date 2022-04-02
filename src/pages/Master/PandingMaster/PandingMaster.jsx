@@ -9,6 +9,7 @@ import MasterCard from "../../../components/MasterCard/MasterCard";
 import { getMethod } from "../../../services/api-services";
 import { logoutHandler } from "../../../components/Sidebar/Sidebar";
 import { ToastContainer } from "react-toastify";
+import MemberCard from "../../../components/MemberCard/MemberCard";
 
 const PandingMaster = () => {
   const [pendingMasters,setPendingMaster] = useState([]);
@@ -35,11 +36,24 @@ const PandingMaster = () => {
           <h1 className={classes["card-title"]}>Pending Masters</h1>
         </div>
         <div className={classes["card-body"]}>
-          <Grid container spacing={3}>
+          {/* <Grid container spacing={3}>
            {pendingMasters.length !==0 && pendingMasters.map((pendingMaster)=>
            (<MasterCard key={pendingMaster?.id} user={pendingMaster} path={"/account/master/panding-master/detail/"} />)
            )}
-          </Grid>
+          </Grid> */}
+          {
+            <Grid container spacing={5}>
+              {
+              
+                pendingMasters.length !==0 && pendingMasters.map((master,index)=>(
+                 <Grid item xs={6} key={index}>
+                    <MemberCard partner={master} path={"/account/master/panding-master/detail/"} />
+                   </Grid>
+                 
+                ))
+              }
+            </Grid>
+          }
         </div>
       </Card>
     </div>

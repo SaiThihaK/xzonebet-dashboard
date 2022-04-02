@@ -1,6 +1,6 @@
 .container{
   display: grid;
-  grid-template-columns: 40% 50%;
+  grid-template-columns: 40% 60%;
   border: 1px solid var(--text-color);
   transition: all 0.2s ease-in-out;
   min-height: 100px;
@@ -20,14 +20,14 @@
   }
   
   .form-group-desc label {
-    width: 200px;
+    width: 50px;
     font-size: 15px;
   }
   .form-group-desc p {
     font-size: 15px;
   }
   .form-container {
-    padding: 30px;
+   padding: 30px 5px;
   }
   
 .container:hover{

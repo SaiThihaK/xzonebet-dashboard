@@ -7,6 +7,7 @@ import axios from "axios";
 import MasterCard from "../../../components/MasterCard/MasterCard";
 import { getMethod } from "../../../services/api-services";
 import { logoutHandler } from "../../../components/Sidebar/Sidebar";
+import MemberCard from "../../../components/MemberCard/MemberCard";
 
 const ConfirmMaster = () => {
   const [confirmMasters,setConfirmMasters] = useState([]);
@@ -31,10 +32,19 @@ const ConfirmMaster = () => {
           <h1 className={classes["card-title"]}>Confirm Masters</h1>
         </div>
         <div className={classes["card-body"]}>
-          <Grid container spacing={3}>
+          {/* <Grid container spacing={3}>
            {confirmMasters.length !==0 && confirmMasters.map((confirmMaster)=>
            (<MasterCard key={confirmMaster?.id} user={confirmMaster} path="/account/master/confirm-master/detail/" />)
            )}
+          </Grid> */}
+          <Grid container spacing={5}>
+            {
+              confirmMasters.length !==0 && confirmMasters.map((master,index)=>(
+                <Grid item xs={6} key={index}>
+                  <MemberCard partner={master} path={"/account/master/confirm-master/detail/"} />
+                </Grid>
+  ))
+            }
           </Grid>
         </div>
       </Card>
