@@ -32,6 +32,7 @@ const [provDetail,setProvDetail] = useState([]);
 const [amount,setAmount] = useState("");
 const [account_no,setAccount_no] = useState("");
 const [transaction_no,setTransition_no] = useState("");
+const [account_name,setAccountName] = useState("");
 // console.log(id)
 const fetchProviderDetail = async()=>{
   try{
@@ -58,7 +59,7 @@ return ()=>{
 },[id])
 
 const confirmHandler = async()=>{
-  if(!amount || !account_no || !transaction_no){
+  if(!amount || !account_no || !transaction_no || !account_name){
     AlertToast(toast.warning("Please Fill all the field"))
   }
   console.log("payment_account_id",provDetail.id)
@@ -68,7 +69,7 @@ const confirmHandler = async()=>{
       account_no,
       transaction_no,
       payment_account_id:provDetail.id,
-      account_name:provDetail.name
+      account_name,
     }))
     console.log(response.data.status);
     if(response.data.status==="success"){
@@ -76,6 +77,7 @@ const confirmHandler = async()=>{
       setAmount("");
       setAccount_no("");
       setTransition_no("");
+      setAccountName("")
       return;
     }
     if(response.data.status==="error"){
@@ -129,6 +131,19 @@ const confirmHandler = async()=>{
            onChange={(e)=>setAccount_no(e.target.value)}          />
           
           </div>
+
+          
+          <div className={classes["form-group-desc"]}>
+          <label htmlFor="">{provDetail?.payment_provider} Account Name</label>
+           <TextField
+           value={account_name}
+           size="small" className={classes["form-group-desc-input"]}
+           placeholder={`${provDetail?.payment_provider} account Name`}
+           onChange={(e)=>setAccountName(e.target.value)}          />
+          
+          </div>
+          
+          
           <div className={classes["form-group-desc"]}>
           <label htmlFor="">Transition ID</label>
            <TextField

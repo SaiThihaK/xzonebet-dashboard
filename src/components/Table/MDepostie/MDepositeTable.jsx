@@ -150,6 +150,7 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
     if(response.data.status==="success"){
       setTotalPage(response.data.meta.last_page);
       setUser_deposite(response.data.data);
+      console.log(response.data.data)
       return;
     }
     if(response.data.status==="error"){
@@ -158,6 +159,8 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
     }
   
    }catch(error){
+     console.log(error.response.data.message)
+
     if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
       logoutHandler();
       }
@@ -179,7 +182,7 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
           <TableHead>
             <TableRow>
               <StyledTableCell>No</StyledTableCell>
-              <StyledTableCell align="left">user-ID</StyledTableCell>
+              <StyledTableCell align="left">User-ID</StyledTableCell>
               <StyledTableCell align="left">Account Name</StyledTableCell>
               <StyledTableCell align="left">Phone/Account No</StyledTableCell>
               <StyledTableCell align="left">

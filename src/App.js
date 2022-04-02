@@ -383,6 +383,8 @@ function App() {
             path="/admin-team-account/admin-account"
             element={<AdminAccount />}
           />
+          {/* Deposite */}
+          <Route exact path="/deposite" element={<ADeposite />} />
           <Route path="*" element={<Notfound />} />
         </Routes>
       );
@@ -523,11 +525,11 @@ function App() {
             path="/payment-setting/payment-account/edit/:id"
             element={<EditPaymentAccount />}
           />
-          <Route
+          {/* <Route
             exact
             path="/super_master/deposite/user-deposite"
             element={<ADeposite />}
-          />
+          /> */}
           {/* <Route
             exact
             path="/super_master/deposite/agent-deposite"

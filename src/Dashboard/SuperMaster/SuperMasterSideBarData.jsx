@@ -161,25 +161,25 @@ export const SuperMasterSidebarData = [
         path: "/become-an-agent",
         icon: <RiIcons.RiAccountPinCircleFill/>
     },
-    {
-        title: "Deposite",
-        path: "/super_master/deposite",
-        icon: <FaIcons.FaMoneyCheckAlt />,
-        iconClosed: <RiIcons.RiArrowDownSFill/>,
-        iconOpened: <RiIcons.RiArrowUpSFill/>,
-        subNav : [
-            {
-                title: 'User Deposite',
-                path: '/super_master/deposite/user-deposite',
-                icon: <IoIcons.IoIosArrowForward />,
-            },
-            // {
-            //     title:"Agent Deposite",
-            //     path:'/super_master/deposite/agent-deposite',
-            //     icon: <IoIcons.IoIosArrowForward />,              
-            // }
-        ]
-    },
+    // {
+    //     title: "Deposite",
+    //     path: "/super_master/deposite",
+    //     icon: <FaIcons.FaMoneyCheckAlt />,
+    //     iconClosed: <RiIcons.RiArrowDownSFill/>,
+    //     iconOpened: <RiIcons.RiArrowUpSFill/>,
+    //     subNav : [
+    //         {
+    //             title: 'User Deposite',
+    //             path: '/super_master/deposite/user-deposite',
+    //             icon: <IoIcons.IoIosArrowForward />,
+    //         },
+    //         // {
+    //         //     title:"Agent Deposite",
+    //         //     path:'/super_master/deposite/agent-deposite',
+    //         //     icon: <IoIcons.IoIosArrowForward />,              
+    //         // }
+    //     ]
+    // },
     {
         title: "Bank Account",
         path: '/payment-setting/payment-account',

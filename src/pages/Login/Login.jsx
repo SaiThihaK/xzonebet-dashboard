@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { login } from "../../services/api-services";
 import "./Login.css";
-
+import ForgetPasswordModal from "../../components/ForgetPasswordModal/ForgetPasswordModal";
 
 
 function refreshPage() {
@@ -21,7 +21,11 @@ const Login = () => {
   const loginPhone = useRef();
   const loginPassword = useRef();
 
+  // 
+  const [open,setOpen] = useState(false);
   
+  const handleOpen = ()=>setOpen(true);
+  const handleClose = ()=>setOpen(false);
   function validateEmail(email) {
     var re = /\S+@\S+\.\S+/;
     return re.test(email);
@@ -145,7 +149,7 @@ const Login = () => {
                 <input type="submit" value="Sing In" />
               </p>
               <p>
-                <a href="">Forget Password?</a>
+                <p onClick={handleOpen}>Forget Password?</p>
               </p>
             </form>
             <div>
@@ -156,6 +160,7 @@ const Login = () => {
             </div>
           </div>
         </div>
+        <ForgetPasswordModal open={open} handleClose={handleClose}/>
       </div>
     </div>
   );

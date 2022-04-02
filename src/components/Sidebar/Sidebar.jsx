@@ -26,6 +26,8 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import axios from "axios"
 import { SuperMasterSidebarData } from "../../Dashboard/SuperMaster/SuperMasterSideBarData";
 import { AffiliateAgentSidebarData } from "../../Dashboard/AffiliateAgentDashboard/AffiliateAgentSidebarData";
+import { useDispatch } from "react-redux";
+import { getUserInfo } from "../../features/UserInfo";
 
 
 function refreshPage() {
@@ -63,6 +65,7 @@ const Sidebar = () => {
   const open = Boolean(anchorEl);
   const [unitMenu,setUnitMenu] = useState(null);
   const unitOpen = Boolean(unitMenu)
+  const dispatch = useDispatch();
   
 
   const unitMenuOpen = (event)=>{
@@ -113,8 +116,12 @@ const Sidebar = () => {
   const fetchUnit = async()=>{
     try{
       const response = await axios.request(getMethod("api/get-login-user"));
-      console.log(response.data.data)
-      setUserData(response.data.data)
+      if(response.data.status === "success"){
+        // console.log(response.data.data);
+         setUserData(response.data.data);
+         dispatch(getUserInfo(response.data.data))
+      }
+      
     }catch(error){
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated."){
         logoutHandler();
