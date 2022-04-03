@@ -5,9 +5,7 @@ import classes from "./MemberCard.module.css"
 
 const MemberCard = ({partner,path}) => {
   return (
-   
-    <Link to={path+partner.id}>
-  
+     <Link to={path+partner?.id || "1"}> 
     <div className={classes["container"]}>
         <div className={classes["img-container"]}>
             <img src='https://icon-library.com/images/user-icon-jpg/user-icon-jpg-14.jpg' alt="admin team account" />
@@ -24,7 +22,7 @@ const MemberCard = ({partner,path}) => {
         </div>
       </div>
     </div>
-    </Link>
+    </Link> 
   )
 }
 
