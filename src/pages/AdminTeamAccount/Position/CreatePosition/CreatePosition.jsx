@@ -80,7 +80,7 @@ const functionArr = [
             
         {
           functionArr.map((func,index)=>(
-            <Grid item xs={4}>
+            <Grid item xs={4} key={index}>
             <OdooFunction />
             </Grid>
 

@@ -13,6 +13,7 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import classes from "./DepartmentTable.module.css";
 import { BasedColor } from "../../../../Controller/BasedColor";
+import {useNavigate} from "react-router-dom";
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -35,6 +36,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     },
   }));
 const DepartmentTable = ({name,position,salary,percentage,status,data}) => {
+  const navigate = useNavigate();
   return (
     <div>
         <div className={classes["table-margin"]}>
@@ -72,7 +74,9 @@ const DepartmentTable = ({name,position,salary,percentage,status,data}) => {
                   </StyledTableCell> }
                   <StyledTableCell align="left">
                   <Stack spacing={1} direction="row" >
-        <Button variant="contained">Detail</Button>
+        <Button variant="contained" onClick={()=>{
+          navigate("/odoo-function-detail")
+        }}>Detail</Button>
         <Button variant="outlined" color="error">Ban</Button>
         <Button variant="outlined" color="success">Unban</Button>
     </Stack></StyledTableCell>
