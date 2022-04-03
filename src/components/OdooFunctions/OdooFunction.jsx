@@ -3,7 +3,7 @@ import React from 'react';
 import Card from "../UI/Card"
 import  classes from "./OdooFunction.module.css"
 
-const OdooFunction = () => {
+const OdooFunction = ({added}) => {
   // https://miro.medium.com/max/1140/1*NjyitbwN6fZhRPpH6CRNlQ.png
   return (
    <div>
@@ -17,10 +17,20 @@ const OdooFunction = () => {
       <p className={classes["func-desc"]}>
       This is function 1 is responsible for creating teams.
       </p>
-     <Stack direction="row" style={{marginTop:30}}>
-       <Button color="success">add</Button>
-       {/* <Button color="error">remove</Button> */}
-     </Stack>
+      {
+        added ?  (
+        <Stack direction="row" style={{marginTop:30}}>
+        <Button color="success">added</Button>
+        <Button color="error">remove</Button>
+      </Stack>
+      ) : (
+        <Stack direction="row" style={{marginTop:30}}>
+        <Button color="success">add</Button>
+        {/* <Button color="error">remove</Button> */}
+      </Stack>
+      )
+      }
+    
       </div>
     </div>
      </Card>

@@ -90,6 +90,7 @@ import AdminAccount from "./pages/AdminTeamAccount/AdminAccount/AdminAccount";
 import HrDepartment from "./pages/HrDepartment/HrDepartment";
 import HrPosition from "./pages/HrPosition/HrPosition";
 import HrEmployee from "./pages/HrEmployee/HrEmployee";
+import DetailFunction from "./pages/DetailFunction/DetailFunction";
 function App() {
   const DashboardRouting = () => {
     if (type === "admin") {
@@ -735,6 +736,7 @@ function App() {
             path="/admin-team-account/position/create-position"
             element={<CreatePosition />}
           />
+          <Route path="/odoo-function-detail" element={<DetailFunction />} />
         </Routes>
       );
     } else {
