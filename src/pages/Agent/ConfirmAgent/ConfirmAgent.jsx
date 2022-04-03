@@ -14,9 +14,13 @@ const ConfirmAgent = () => {
   const fetchConfirmMaster = async()=>{
     try{
       const {data} = await axios.request(getMethod('api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=deposit-confirm&form_type=agent'));
-      setConfirmMasters(data.data);
-
+      if(data.status==="success"){
+        setConfirmMasters(data.data);
+        return;
+      }
     }catch(error){
+      console.log(error);
+      console.log(error.response.data.message)
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
       logoutHandler();
       }

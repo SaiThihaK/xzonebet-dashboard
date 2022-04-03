@@ -22,9 +22,14 @@ const PaymentType = () => {
   const FetchPaymentType = async()=>{
     try{
       const response = await axios.request(getMethod(`api/dashboard/payment-types`));
-      setPayment_type(response.data.data);
+      if(response.data.status==="success"){
+        setPayment_type(response.data.data);
+        return;
+      }
+ 
 
     }catch(error){
+      console.log(error)
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
       logoutHandler();
       }

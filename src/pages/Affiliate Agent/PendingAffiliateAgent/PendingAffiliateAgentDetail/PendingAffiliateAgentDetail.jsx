@@ -12,9 +12,15 @@ const [user,setUser] = useState("");
 const fetchUserDetail = async()=>{
   try{
     const {data} = await axios.request(getMethod(`api/affiliate-register-lists/${id}`));
+    if(data.status==="success"){
     // console.log(data.data);
     setUser(data.data);
+    return;
+    }
+
   }catch(error){
+    console.log(error);
+    console.log(error.response.data.message)
     if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
     logoutHandler();
     }

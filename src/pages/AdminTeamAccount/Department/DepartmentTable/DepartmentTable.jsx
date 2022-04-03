@@ -34,7 +34,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
       border: 0,
     },
   }));
-const DepartmentTable = () => {
+const DepartmentTable = ({name,position,salary,percentage,status,data}) => {
   return (
     <div>
         <div className={classes["table-margin"]}>
@@ -42,42 +42,42 @@ const DepartmentTable = () => {
           <Table sx={{ minWidth: 700 }} aria-label="customized table">
             <TableHead>
               <TableRow>
-                <StyledTableCell>No.</StyledTableCell>
-                <StyledTableCell align="left">Name</StyledTableCell>
+                <StyledTableCell>No.</StyledTableCell> 
+                {name &&<StyledTableCell align="left">Name</StyledTableCell>}
                 <StyledTableCell align="left">Department Name</StyledTableCell>
-                <StyledTableCell align="left">Position</StyledTableCell>
-                <StyledTableCell align="left">Salary</StyledTableCell>
-                <StyledTableCell align="left">Percentage</StyledTableCell>
-                <StyledTableCell align="left">Status</StyledTableCell>
+              {position && <StyledTableCell align="left">Position</StyledTableCell> }
+               {salary && <StyledTableCell align="left">Salary</StyledTableCell> }
+              {percentage &&  <StyledTableCell align="left">Percentage</StyledTableCell> }
+              {status &&  <StyledTableCell align="left">Status</StyledTableCell> }
                 <StyledTableCell align="left">Action</StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-          
+          {data?.map((row,index)=>(
+            
                 <StyledTableRow>
                   <StyledTableCell component="th" scope="row">
                     1
                   </StyledTableCell>
-                  <StyledTableCell align="left">Roger</StyledTableCell>
-                  <StyledTableCell align="left">HR Department</StyledTableCell>
-                  <StyledTableCell align="left">Head Office</StyledTableCell>
-                  <StyledTableCell align="left">1000USD</StyledTableCell>
-                  <StyledTableCell align="left">-</StyledTableCell>
-                  <StyledTableCell align="left">
+                  {name &&<StyledTableCell align="left">Roger</StyledTableCell>}
+                  <StyledTableCell align="left">{row.name}</StyledTableCell>
+                {position && <StyledTableCell align="left">Head Office</StyledTableCell> }
+                {percentage && <StyledTableCell align="left">1000USD</StyledTableCell> }
+                 {salary &&<StyledTableCell align="left">-</StyledTableCell>}
+                 {status && <StyledTableCell align="left"> 
                       <Button 
                       variant="contained" color="success"
                       size="small"
                       >Active</Button>
-                  </StyledTableCell>
+                  </StyledTableCell> }
                   <StyledTableCell align="left">
                   <Stack spacing={1} direction="row" >
         <Button variant="contained">Detail</Button>
         <Button variant="outlined" color="error">Ban</Button>
         <Button variant="outlined" color="success">Unban</Button>
     </Stack></StyledTableCell>
-       
-                </StyledTableRow>
-        
+</StyledTableRow>
+                    ))}
             </TableBody>
           </Table>
         </TableContainer>

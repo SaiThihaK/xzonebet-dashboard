@@ -94,3 +94,14 @@
   margin-left: 10px;
   font-size: 15px;
 }
+.unit_container{
+  position: absolute;
+  top:90%;
+  background-color: var(--secondary-color);
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+.unit_container p{
+  margin-bottom: 20px;
+  
+}

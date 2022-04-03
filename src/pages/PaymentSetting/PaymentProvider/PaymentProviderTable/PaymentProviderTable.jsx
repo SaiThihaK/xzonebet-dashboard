@@ -49,10 +49,16 @@ const PaymentProviderTable = () => {
   const FetchPayment_type = async()=>{
     try{
       const response = await  axios.request(getMethod(`api/dashboard/payment-providers`));
+      if(response.data.status==="success"){
+        setPayment_provider(response.data.data);
+        return;
+      }
       // console.log(response.data.data);
-      setPayment_provider(response.data.data);
+    
 
     }catch(error){
+      console.log(error);
+      console.log(error.response.data.message)
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
       logoutHandler();
       }

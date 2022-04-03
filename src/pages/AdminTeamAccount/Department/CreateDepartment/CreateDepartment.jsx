@@ -1,5 +1,6 @@
-import { Button, Checkbox, ListItemText, MenuItem, Select, TextField } from '@mui/material'
+import { Button, Checkbox, Grid, ListItemText, MenuItem, Select, TextField } from '@mui/material'
 import React, { useState } from 'react'
+import OdooFunction from '../../../../components/OdooFunctions/OdooFunction'
 import PageTitleCard from '../../../../components/UI/PageTitleCard/PageTitleCard'
 import classes from "./CreateDepartment.module.css"
 
@@ -29,7 +30,7 @@ const functionArr = [
 
             <div className={classes["form-contol"]}>
             <label>Choose Function</label>
-            <Select
+            {/* <Select
           labelid="demo-multiple-checkbox-label"
           id="demo-multiple-checkbox"
           multiple
@@ -47,8 +48,23 @@ const functionArr = [
              </ListItemText>
             </MenuItem>
           ))}
-        </Select>
-            </div>
+        </Select> */}
+       
+                    <Grid container spacing={5}>
+
+            
+{
+  functionArr.map((func,index)=>(
+    <Grid item xs={4}>
+    <OdooFunction />
+    </Grid>
+
+
+  ))
+}
+</Grid>
+</div>
+            
         <div className={classes["btn-container"]}>
         <Button variant="contained">Create</Button>
         </div>

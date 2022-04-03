@@ -47,8 +47,18 @@ ToastAlert(toast.error("comming soon"));
 }
 
 const FetchPayment_type = async()=>{
+  try{
     const response = await axios.request(getMethod("api/dashboard/payment-types"));
-    setPayment_type(response.data.data);
+    if(response.data.status==="success"){
+      setPayment_type(response.data.data);
+      return
+    }
+
+  }catch(error){
+  console.log(error);
+  console.log(error.response.data.message)
+  }
+    
 }
 
 

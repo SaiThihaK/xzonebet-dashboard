@@ -17,8 +17,14 @@ const Agent = () => {
 
       const pending = await axios.request(getMethod('api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=agent'));
       // console.log(pending);
-      setPendingMaster(pending.data.data.length);
+      if(pending.data.status=== "success"){
+        setPendingMaster(pending.data.data.length);
+        return;
+      }
+    
     }catch(error){
+      console.log(error);
+      console.log(error.response.data.message)
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
       logoutHandler();
       }
@@ -27,9 +33,15 @@ const Agent = () => {
   const fetchConfirm = async()=>{
     try{
       const confirm = await axios.request(getMethod(`api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-confirm&form_type=agent`));
-      setConfirmMaster(confirm.data.data.length);
+      if(confirm.data.status==="success"){
+        setConfirmMaster(confirm.data.data.length);
+        return;
+      }
+
 
     }catch(error){
+      console.log(error);
+      console.log(error.response.data.message);
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
       logoutHandler();
       }
@@ -39,8 +51,13 @@ const Agent = () => {
     try{
 
       const complete = await axios.request(getMethod(`api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=complete&form_type=agent`));
-      setCompleteMaster(complete.data.data.length);
+      if(complete.data.status==="success"){
+        setCompleteMaster(complete.data.data.length);
+        return;
+      }
     }catch(error){
+      console.log(error);
+      console.log(error.response.data.message)
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
       logoutHandler();
       }
@@ -49,9 +66,15 @@ const Agent = () => {
   const fetchCancel = async()=>{
     try{
       const cancel = await axios.request(getMethod(`api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-rejet&form_type=agent`));
-      setCancelMaster(cancel.data.data.length);
+      if(cancel.data.status==="success"){
+        setCancelMaster(cancel.data.data.length);
+        return;
+      }
+
 
     }catch(error){
+      console.log(error);
+      console.log(error.response.data.message)
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
       logoutHandler();
       }

@@ -9,11 +9,14 @@ const ActiveUsers = () => {
   const [allUsers,setAllUsers] = useState([]);
   const FetchUser = async()=>{
     try{
-      const response = await axios.request(getMethod("/api/users?sortColumn=id&sortDirection=desc&limit=30"));
-      // console.log(response.data.data);
-      setAllUsers(response.data.data);
-
+      const response = await axios.request(getMethod("api/users?sortColumn=id&sortDirection=desc&limit=30"));
+      if(response.data.status === "success"){
+        console.log(response);
+        setAllUsers(response.data.data);
+        return;
+      }
     }catch(error){
+      console.log(error.response.data.message)
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
       logoutHandler();
       }

@@ -48,16 +48,20 @@ const TransitionHistoryTable = () => {
   const getTransitionData = async()=>{
     try{
       const response = await axios.request(getMethod(`api/wallet/transfer-record?sortColumn=id&sortDirection=desc&limit=10&page=${page}`));
-      console.log(response.data.data);
-      setTotalPage(response.data.meta.last_page);
-      setTransferData(response.data.data);
+      if(response.data.status === "success"){
+        console.log(response.data.data);
+        setTotalPage(response.data.meta.last_page);
+        setTransferData(response.data.data);
+        return;
+      }
+
     }catch(error){
-      console.log(error);
+      console.log(error.response.data.message);
+      console.log(error.response.data.message)
     }
 
  
   }
-
   const fetchUnit = async()=>{
     try{
       const response = await axios.request(getMethod("api/get-login-user"));
@@ -65,6 +69,7 @@ const TransitionHistoryTable = () => {
       if(response.data.status === "success"){
         console.log("data",response.data.data);
          setUserData(response.data.data);
+         return;
       }
       
     }catch(error){
@@ -117,15 +122,15 @@ const TransitionHistoryTable = () => {
                 <StyledTableCell align="right">{row.id}</StyledTableCell>
                 <StyledTableCell align="right">{row.created_at}</StyledTableCell>
                 <StyledTableCell align="right" 
-                style={userData?.id === row.receiver_user_id ? {color:'green'}:{color:"red"}}>
-                  {userData?.id===row.receiver_user_id ? "+":"-"}{row.transfer_amount}
+                style={userData?.id === row.receiver_user.id ? {color:'green'}:{color:"red"}}>
+                  {userData?.id===row.receiver_user.id ? "+":"-"}{row.transfer_amount}
                   </StyledTableCell>
-                <StyledTableCell align="right">{row.sender_user_id}</StyledTableCell>
+                <StyledTableCell align="right">{row.sender_user.name}</StyledTableCell>
                
-                <StyledTableCell align="right">{row.receiver_user_id}</StyledTableCell>
+                <StyledTableCell align="right">{row.receiver_user.name}</StyledTableCell>
                 <StyledTableCell align="right">
                   {
-                    row.transaction_name
+                    row.transaction_name || row.note
                   }
                 </StyledTableCell>
         </StyledTableRow>
