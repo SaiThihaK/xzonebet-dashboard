@@ -8,7 +8,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
-import {Button} from "@mui/material"
+import {Button, Card} from "@mui/material"
 // import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
@@ -28,6 +28,7 @@ import { SuperMasterSidebarData } from "../../Dashboard/SuperMaster/SuperMasterS
 import { AffiliateAgentSidebarData } from "../../Dashboard/AffiliateAgentDashboard/AffiliateAgentSidebarData";
 import { useDispatch } from "react-redux";
 import { getUserInfo } from "../../features/UserInfo";
+import { HrSidebarData } from "../../Dashboard/HrDashboard/HrSidebarData";
 
 
 function refreshPage() {
@@ -63,13 +64,13 @@ const dashboard = localStorage.getItem('type');
 const Sidebar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-  const [unitMenu,setUnitMenu] = useState(null);
+  const [unitMenu,setUnitMenu] = useState(false);
   const unitOpen = Boolean(unitMenu)
   const dispatch = useDispatch();
   
 
   const unitMenuOpen = (event)=>{
-    setUnitMenu(event.currentTarget)
+    setUnitMenu(!unitMenu)
   }
 
   const unitMenuClose = ()=>{
@@ -110,6 +111,11 @@ const Sidebar = () => {
       <Submenu item={item} key={index} />
     ))
   }
+  if(dashboard ==="HR"){
+    return HrSidebarData.map((item,index)=>
+      (<Submenu item={item} key={index} />)
+    )
+  }
   
   }
   const [userData,setUserData] = useState([]);
@@ -130,7 +136,7 @@ const Sidebar = () => {
 
   }
  useEffect(()=>{
-  fetchUnit();
+  // fetchUnit();
   return()=>{
     setUserData([]);
   }
@@ -142,13 +148,10 @@ const Sidebar = () => {
         {/*----------------------- Unit-------------------- */}
         <li>
         <Button
-        id="basic-button"
-        aria-controls={open ? 'basic-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
+        
         onClick={unitMenuOpen}
         color="error"
-        size="large"
+        
         variant="contained"
         startIcon = {<CurrencyExchangeIcon />}
         endIcon = {unitMenu ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon/>}
@@ -156,21 +159,13 @@ const Sidebar = () => {
       >
         Unit
       </Button>
-      <Menu
-    
-        id="basic-menu"
-        anchorEl={unitMenu}
-        open={unitOpen}
-        onClose={unitMenuClose}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button',
-        }}
-      >  
-      {/* <MenuItem onClick={unitMenuClose}>Promotion Unit-{userData?.wallet?.promotion_unit}</MenuItem>  */}
-         <MenuItem  disabled className={classes["menu-item"]}>Promotion Unit-{userData?.wallet?.promotion_unit}</MenuItem>
-         <MenuItem  disabled className={classes["menu-item"]}>Main Unit-{userData?.wallet?.main_unit}</MenuItem>
-        <MenuItem   disabled className={classes["menu-item"]}>Diamond Unit-{userData?.wallet?.diamond_unit}</MenuItem>
-      </Menu>
+      {unitMenu &&<Card className={classes["unit_container"]}>
+        <p>Promotion Unit-{userData?.wallet?.promotion_unit}</p>
+        <p>Main Unit-{userData?.wallet?.main_unit}</p>
+        <p>Diamond Unit-{userData?.wallet?.diamond_unit}</p>
+        
+      </Card>
+      }
           </li>
           <li>
             <button className={classes['header-icon']}>

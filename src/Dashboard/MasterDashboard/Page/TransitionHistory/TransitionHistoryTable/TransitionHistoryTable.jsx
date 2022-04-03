@@ -62,7 +62,6 @@ const TransitionHistoryTable = () => {
 
  
   }
-
   const fetchUnit = async()=>{
     try{
       const response = await axios.request(getMethod("api/get-login-user"));

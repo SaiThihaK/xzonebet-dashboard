@@ -19,7 +19,7 @@ const OdooFunction = () => {
       </p>
      <Stack direction="row" style={{marginTop:30}}>
        <Button color="success">add</Button>
-       <Button color="error">remove</Button>
+       {/* <Button color="error">remove</Button> */}
      </Stack>
       </div>
     </div>

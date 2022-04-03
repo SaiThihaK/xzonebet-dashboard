@@ -19,7 +19,7 @@ const Department = () => {
              >Create Department</Button>
          </div>
          </div>
-         <DepartmentTable />
+         <DepartmentTable name position status percentage salary />
         </PageTitleCard>
         
     </div>

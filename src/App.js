@@ -87,6 +87,9 @@ import EditPaymentProvider from "./pages/PaymentSetting/PaymentProvider/EditPaym
 import UserWithDraw from "./pages/UserWithDraw/UserWithDraw";
 import "./App.css";
 import AdminAccount from "./pages/AdminTeamAccount/AdminAccount/AdminAccount";
+import HrDepartment from "./pages/HrDepartment/HrDepartment";
+import HrPosition from "./pages/HrPosition/HrPosition";
+import HrEmployee from "./pages/HrEmployee/HrEmployee";
 function App() {
   const DashboardRouting = () => {
     if (type === "admin") {
@@ -711,6 +714,26 @@ function App() {
             exact
             path="/agent/deposite/agent-deposite"
             element={<AgentDeposite />}
+          />
+        </Routes>
+      );
+    }
+    if (type === "HR") {
+      return (
+        <Routes>
+          <Route path="*" element={<Notfound />} />
+          <Route path="/" exact element={<Overview />} />
+          <Route exact path="/department" element={<HrDepartment />} />
+          <Route exact path="/position" element={<HrPosition />} />
+          <Route exact path="/employee" element={<HrEmployee />} />
+          <Route
+            exact
+            path="/admin-team-account/department/create-department"
+            element={<CreateDepartment />}
+          />
+          <Route
+            path="/admin-team-account/position/create-position"
+            element={<CreatePosition />}
           />
         </Routes>
       );

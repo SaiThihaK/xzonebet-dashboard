@@ -29,7 +29,7 @@ const ConfirmMasterDetail = () => {
 
     }catch(error){
       console.log(error);
-      console.log(error.response.data.message)
+      console.log(error.response.data.message);
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
       logoutHandler();
       }
