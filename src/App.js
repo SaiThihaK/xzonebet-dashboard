@@ -754,6 +754,8 @@ function App() {
           <Route path="*" element={<Notfound />} />
           <Route path="/" exact element={<Overview />} />
           <Route path="/accounting/deposit" exact element={<MasterDeposit />} />
+          <Route path="/account-title" exact element={<AccountTitle />} />
+          <Route path="/account-data" exact element={<AccountData />} />
         </Routes>
       );
     } else {

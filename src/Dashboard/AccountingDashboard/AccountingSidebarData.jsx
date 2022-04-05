@@ -49,8 +49,8 @@ export const AccountingSidebarData = [
         // ]
     },
     {
-        title: 'Account Date',
-        path: '/account-date',
+        title: 'Account Data',
+        path: '/account-data',
         icon: <RiIcons.RiMoneyDollarCircleLine />,
         iconClosed: <RiIcons.RiArrowDownSFill/>,
         iconOpened: <RiIcons.RiArrowUpSFill/>,
