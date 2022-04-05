@@ -1,0 +1,24 @@
+.form-control{
+    display: flex;
+    margin-top: 20px;
+    width: 100%;
+}
+.form-control p{
+    width: 200px;
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+textarea{
+    padding: 10px 20px;
+    font-size: 18px;
+    border:1px solid rgb(158, 157, 157);
+    border-radius: 5px;
+}
