@@ -29,6 +29,7 @@ import { AffiliateAgentSidebarData } from "../../Dashboard/AffiliateAgentDashboa
 import { useDispatch } from "react-redux";
 import { getUserInfo } from "../../features/UserInfo";
 import { HrSidebarData } from "../../Dashboard/HrDashboard/HrSidebarData";
+import { AccountingSidebarData } from "../../Dashboard/AccountingDashboard/AccountingSidebarData";
 
 
 function refreshPage() {
@@ -115,6 +116,12 @@ const Sidebar = () => {
     return HrSidebarData.map((item,index)=>
       (<Submenu item={item} key={index} />)
     )
+  }
+  if(dashboard ==="Accounting"){
+    return AccountingSidebarData.map((item,index)=>
+    (<Submenu item={item} key={index} />)
+    )
+
   }
   
   }

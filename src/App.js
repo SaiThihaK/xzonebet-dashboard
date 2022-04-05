@@ -289,11 +289,7 @@ function App() {
             element={<CancelMasterDetail />}
           />
           {/* Cancel Master */}
-          <Route
-            path="/accounting/master-deposit"
-            exact
-            element={<MasterDeposit />}
-          />
+          <Route path="/accounting/deposit" exact element={<MasterDeposit />} />
           <Route path="/account/user" exact element={<Users />} />
           <Route
             path="/account/user/active-user"
@@ -394,6 +390,13 @@ function App() {
           />
           {/* Deposite */}
           <Route exact path="/deposite" element={<ADeposite />} />
+          {/* -------------------------HR------------------------*/}
+          <Route path="*" element={<Notfound />} />
+          <Route path="/" exact element={<Overview />} />
+          <Route exact path="/department" element={<HrDepartment />} />
+          <Route exact path="/position" element={<HrPosition />} />
+          <Route exact path="/employee" element={<HrEmployee />} />
+          <Route path="/odoo-function-detail" element={<DetailFunction />} />
           <Route path="*" element={<Notfound />} />
         </Routes>
       );
@@ -737,6 +740,15 @@ function App() {
             element={<CreatePosition />}
           />
           <Route path="/odoo-function-detail" element={<DetailFunction />} />
+        </Routes>
+      );
+    }
+    if (type === "Accounting") {
+      return (
+        <Routes>
+          <Route path="*" element={<Notfound />} />
+          <Route path="/" exact element={<Overview />} />
+          <Route path="/accounting/deposit" exact element={<MasterDeposit />} />
         </Routes>
       );
     } else {
