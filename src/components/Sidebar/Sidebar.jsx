@@ -65,6 +65,7 @@ const dashboard = localStorage.getItem('type');
 const Sidebar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+  const [render,setRender] = useState(false);
   const [unitMenu,setUnitMenu] = useState(false);
   const unitOpen = Boolean(unitMenu)
   const dispatch = useDispatch();
@@ -143,36 +144,43 @@ const Sidebar = () => {
 
   }
  useEffect(()=>{
-  // fetchUnit();
+  fetchUnit();
   return()=>{
     setUserData([]);
   }
- },[])
+ },[render])
   return (
     <IconContext.Provider value={{ color: "#FFF" }}>
       <div className={classes.container}>
         <ul className={classes["header-noti-icons"]}>
         {/*----------------------- Unit-------------------- */}
-        <li>
-        <Button
-        
-        onClick={unitMenuOpen}
+        <li className={classes["unit"]}>
+        {/* <Button
+        // onClick={()=>{
+        //   unitMenuOpen();
+        //   setRender(!render)
+        // }}
         color="error"
-        
         variant="contained"
         startIcon = {<CurrencyExchangeIcon />}
         endIcon = {unitMenu ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon/>}
         style={{transition:"all ease-in-out 0.4s"}}
       >
         Unit
-      </Button>
-      {unitMenu &&<Card className={classes["unit_container"]}>
-        <p>Promotion Unit-{userData?.wallet?.promotion_unit}</p>
-        <p>Main Unit-{userData?.wallet?.main_unit}</p>
-        <p>Diamond Unit-{userData?.wallet?.diamond_unit}</p>
-        
+      </Button> */}
+      <div className={classes["main-unit"]}>
+      <p>Promotion Unit-{userData?.wallet?.promotion_unit}</p>
+      </div>
+         
+      <Card className={classes["unit_container"]}>
+        <p><span>Promotion Unit</span>-{userData?.wallet?.promotion_unit}</p>
+        <p>
+          <span> Main Unit</span>
+         -{userData?.wallet?.main_unit}</p>
+        <p>
+        <span>Diamond Unit</span>  
+        -{userData?.wallet?.diamond_unit}</p>
       </Card>
-      }
           </li>
           <li>
             <button className={classes['header-icon']}>

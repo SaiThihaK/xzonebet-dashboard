@@ -94,14 +94,27 @@
   margin-left: 10px;
   font-size: 15px;
 }
+.main-unit{
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+}
+.unit:hover  .unit_container{
+display: block;
+}
 .unit_container{
   position: absolute;
   top:90%;
-  background-color: var(--secondary-color);
-  padding: 10px 20px;
+  background-color: white;
+  padding: 10px 15px;
   border-radius: 10px;
+  display: none;
+  transition: all 1s ease-in-out;
 }
 .unit_container p{
   margin-bottom: 20px;
-  
+}
+.unit_container p span{
+  width: 200px;
 }
