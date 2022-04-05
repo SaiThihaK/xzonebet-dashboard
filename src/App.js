@@ -91,6 +91,9 @@ import HrDepartment from "./pages/HrDepartment/HrDepartment";
 import HrPosition from "./pages/HrPosition/HrPosition";
 import HrEmployee from "./pages/HrEmployee/HrEmployee";
 import DetailFunction from "./pages/DetailFunction/DetailFunction";
+import AccountTitle from "./pages/AccountTitle/AccountTitle";
+import AccountData from "./pages/AccountData/AccountData";
+import { AccountingSidebarData } from "./Dashboard/AccountingDashboard/AccountingSidebarData";
 function App() {
   const DashboardRouting = () => {
     if (type === "admin") {
@@ -290,6 +293,8 @@ function App() {
           />
           {/* Cancel Master */}
           <Route path="/accounting/deposit" exact element={<MasterDeposit />} />
+          <Route path="/account-title" exact element={<AccountTitle />} />
+          <Route path="/account-data" exact element={<AccountData />} />
           <Route path="/account/user" exact element={<Users />} />
           <Route
             path="/account/user/active-user"

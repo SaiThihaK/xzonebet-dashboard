@@ -88,12 +88,12 @@ export const SidebarData = [
             },
             {
                 title: 'Account Title',
-                path: '/accounting/title',
+                path: '/account-title',
                 icon: <IoIcons.IoIosArrowForward />,
             },
             {
                 title: 'Account Data',
-                path: '/accounting/data',
+                path: '/account-data',
                 icon: <IoIcons.IoIosArrowForward />,
             },
            
