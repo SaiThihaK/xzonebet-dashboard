@@ -82,21 +82,47 @@ export const SidebarData = [
         iconOpened: <RiIcons.RiArrowUpSFill/>,
         subNav : [
             {
-                title: 'Master Deposit',
-                path: '/accounting/master-deposit',
+                title: 'Deposite',
+                path: '/accounting/deposit',
                 icon: <IoIcons.IoIosArrowForward />,
             },
             {
-                title: 'Reports',
-                path: '/accounting/reports',
+                title: 'Account Title',
+                path: '/accounting/title',
                 icon: <IoIcons.IoIosArrowForward />,
             },
+            {
+                title: 'Account Data',
+                path: '/accounting/data',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+           
         ]
     },
     {
         title: "HR",
         path: "/HR",
-        icon: <FaIcons.FaUserFriends/>
+        icon: <FaIcons.FaUserFriends/>,
+        icon: <AiIcons.AiFillSetting />,
+        iconClosed: <RiIcons.RiArrowDownSFill/>,
+        iconOpened: <RiIcons.RiArrowUpSFill/>,
+        subNav : [
+            {
+                title: 'Department',
+                path: '/department',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+            {
+                title: 'Position',
+                path: '/position',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+            {
+                title: 'Employee',
+                path: '/employee',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+        ]
     },
     
     {
@@ -238,6 +264,37 @@ export const SidebarData = [
         path: "/deposite",
         icon: <RiIcons.RiAccountPinCircleFill/>
     },
+
+    {
+        title: 'Report',
+        path: '/report',
+        icon: <FaIcons.FaLayerGroup />,
+        iconClosed: <RiIcons.RiArrowDownSFill/>,
+        iconOpened: <RiIcons.RiArrowUpSFill/>,
+        subNav :[
+            {
+                title: "Betting Report",
+                path: "/betting-report",
+                icon: <RiIcons.RiAccountPinCircleFill/>
+            },
+            {
+                title: "Finance Report",
+                path: "/finance-report",
+                icon: <RiIcons.RiAccountPinCircleFill/>
+            },
+            {
+                title: "Account Report",
+                path: "/betting-report",
+                icon: <RiIcons.RiAccountPinCircleFill/>
+            },
+            {
+                title: "Log History",
+                path: "/log-history",
+                icon: <RiIcons.RiAccountPinCircleFill/>
+            },
+        ]
+    },
+    
 
     
 ]

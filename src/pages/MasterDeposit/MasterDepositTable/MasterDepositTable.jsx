@@ -20,6 +20,8 @@ import MasterDepositeConfirm from "../../../components/UI/Modal/MasterDeposite/M
 import { logoutHandler } from "../../../components/Sidebar/Sidebar";
 import { BasedColor } from "../../../Controller/BasedColor";
 import CustomPagination from "../../../components/Pagination/CustomPagination";
+import { gridColumnsTotalWidthSelector } from "@mui/x-data-grid";
+import { ChangeDate } from "../../../Controller/ChangeDate";
 const MasterDepositTable = (filterId) => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
@@ -65,6 +67,11 @@ const MasterDepositTable = (filterId) => {
       if(data.status==="success"){
         setRowData(data.data);
         setTotalPage(data.meta.last_page);
+        return;
+      }
+      if(data.status==="error"){
+        AlertToast(toast.error,data.message)
+        return;
       }
 
       // console.log(data);
@@ -110,7 +117,7 @@ const MasterDepositTable = (filterId) => {
     }
   }
 
-
+console.log(rowData)
 
 const filterIddata = rowData.filter((data)=>data.id === filterId);
 console.log("filter",filterIddata)
@@ -130,6 +137,7 @@ console.log("filter",filterIddata)
                 Transition&nbsp;ID
               </StyledTableCell>
               <StyledTableCell align="right">Amount</StyledTableCell>
+              <StyledTableCell align="right">Date</StyledTableCell>
               <StyledTableCell align="right">Action</StyledTableCell>
             </TableRow>
           </TableHead>
@@ -149,8 +157,9 @@ console.log("filter",filterIddata)
                   {row.transition_id}
                 </StyledTableCell>
                 <StyledTableCell align="right">{row.amount}</StyledTableCell>
+                <StyledTableCell align="right">{ChangeDate(row.created_at)}</StyledTableCell>
                 <StyledTableCell align="right">
-                <Stack spacing={1} direction="row" sx={{display:'block'}}>
+                <Stack spacing={1} direction="row">
         <Button variant="contained" color="success" size="small" onClick={()=>{
           confirmOpenHandler();setId(row.id)}
           }>Confirm</Button>
