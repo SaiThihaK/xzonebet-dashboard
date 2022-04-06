@@ -19,6 +19,7 @@ import { toast } from "react-toastify";
 import DepositeModal from "../../UI/Modal/DepositeModal/DepositeModal";
 import { useDispatch, useSelector } from "react-redux";
 import { getRender, selectedRender } from "../../../features/render";
+import CustomGetFunction from "../../../services/CustomGetFunction";
 
 
 
@@ -46,9 +47,9 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
    const [value,setValue] = useState("");
    const [ID,setID] = useState(null);
    const [toggle,setToggle] = useState(false);
-   const [user_deposite,setUser_deposite] = useState([]);
+  
    const [page,setPage] = useState(1);
-   const [totalPage,setTotalPage] = useState(0);
+
    const onChangeValue = (e)=>setValue(e.target.value);
    const AlertToast = (toast,msg)=> toast(msg);
    const openHandler = ()=>setOpen(true);
@@ -147,38 +148,13 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
  
 
 
+ const {data,pagination} = CustomGetFunction(`api/user-deposit?sortColumn=id&sortDirection=desc&limit=10&page=${page}${filterStatus}`,[num,page,filterStatus])
 
- const fetchUserDeposite = async()=>{
-   try{
-    const response = await axios.request(getMethod(`api/user-deposit?sortColumn=id&sortDirection=desc&limit=10&page=${page}${filterStatus}`));
-    // console.log(response.data.meta);
-    if(response.data.status==="success"){
-      setTotalPage(response.data.meta.last_page);
-      setUser_deposite(response.data.data);
-      console.log(response.data.data)
-      return;
-    }
-    if(response.data.status==="error"){
-      AlertToast(toast.error,response.data.message);
-      return;
-    }
-  
-   }catch(error){
-     console.log(error.response.data.message)
-
-    if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
-      logoutHandler();
-      }
-    }
-   }
    const ChangeDate=(date)=>{
     const dateNo=new Date(date);
     return dateNo.toISOString().replace(/([^T]+)T([^\.]+).*/g, '$1 $2') 
   };
- useEffect(()=>{
-   fetchUserDeposite();
- },[num,page,filterStatus]);
- console.log(user_deposite);
+ 
   return (
     <div className={classes["table-margin"]}>
       <Card>
@@ -202,7 +178,7 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
             </TableRow>
           </TableHead>
           <TableBody>
-           {user_deposite.map((user,index)=>(
+           {data?.map((user,index)=>(
               <StyledTableRow key={index}>
                 <StyledTableCell component="th" scope="row">
                 {index+1}
@@ -252,7 +228,7 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
       </TableContainer>
       <div className={classes["pagination"]}>
       <Pagination
-        count={totalPage}
+        count={pagination?.meta?.last_page}
         style={{ marginTop: 20, backgroundColor: "white" }}
         color="primary"
         onChange={(e) => {

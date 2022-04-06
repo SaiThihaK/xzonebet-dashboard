@@ -82,8 +82,8 @@ const UnitValue = () => {
   const totalUnit = () => {
     if (userData && getUnitChange) {
       let totalUnit = userData?.wallet?.main_unit
-        + (userData?.wallet?.promotion_unit * getUnitChange?.main_to_promotion_rate)
-        + (userData?.wallet?.diamond_unit * userData?.wallet?.diamond_unit);
+        + (userData?.wallet?.promotion_unit/getUnitChange?.main_to_promotion_rate)
+        + (userData?.wallet?.diamond_unit * userData?.wallet?.main_to_diamond_rate);
       return totalUnit;
     }
 

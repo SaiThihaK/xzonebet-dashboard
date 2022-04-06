@@ -7,6 +7,7 @@ import Card from "../../../../components/UI/Card";
 import SuperMasterDesc from "../../../SuperMaster/SuperMasterCard/SuperMasterDetail/SuperMasterDesc/SuperMasterDesc";
 import { getMethod } from "../../../../services/api-services";
 import { logoutHandler } from "../../../../components/Sidebar/Sidebar";
+import CustomGetFunction from "../../../../services/CustomGetFunction";
 const CancelAgentDetail = () => {
   const [age, setAge] = React.useState("");
   const [cancelMaster,setCancelMaster] = useState([]);
@@ -19,31 +20,8 @@ const CancelAgentDetail = () => {
   // console.log(id);
  
  
-
-  const fetchMasterDetail = async()=>{
-    try{
-      const {data} = await axios.request(getMethod(`api/affiliate-register-lists/${id}`));
-      if(data.status==="success"){
-        setCancelMaster(data.data);
-        return;
-      }
-
-    }catch(error){
-      console.log(error);
-      console.log(error.response.data.message)
-      if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
-      logoutHandler();
-      }
-    }
-  }
-  useEffect(()=>{
-    fetchMasterDetail();
-    return ()=>setCancelMaster([]);
-  },[id]);
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
+ const {data} = CustomGetFunction(`api/affiliate-register-lists/${id}`,[id]);
+ 
   return (
     <div className={classes["soccer-setting-container"]}>
       <Card>
@@ -51,7 +29,7 @@ const CancelAgentDetail = () => {
           <h1 className={classes["card-title"]}>Cancel Agent Form Detail</h1>
         </div>
         <div className={classes["card-body"]}>
-          <SuperMasterDesc userInfo={cancelMaster} />
+          <SuperMasterDesc userInfo={data} />
         </div>
       </Card>
     </div>

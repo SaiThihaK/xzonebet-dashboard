@@ -8,34 +8,12 @@ import PendingAgentCard from "./PendingAgentCard/PendingAgentCard";
 import { getMethod } from "../../../services/api-services";
 import { logoutHandler } from "../../../components/Sidebar/Sidebar";
 import MemberCard from "../../../components/MemberCard/MemberCard";
+import CustomGetFunction from "../../../services/CustomGetFunction";
 
 const PendingAgent = () => {
-  const [pendingMasters,setPendingMaster] = useState([]);
-  
-  const fetchPending = async()=>{
-    try{
-      const pending = await axios.request(getMethod('api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=agent'));
-      if(pending.data.status==="success"){
-        setPendingMaster(pending.data.data);
-        return;
-      }
-      // console.log(pending)
-  
-
-    }catch(error){
-      console.log(error);
-      console.log(error.response.data.message)
-      if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
-      logoutHandler();
-      }
-    }
-  };
-//  console.log(pendingMasters);
  
-  useEffect(()=>{
-   fetchPending();
-   return ()=>setPendingMaster([]);
-  },[]);
+  const {data} = CustomGetFunction('api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=agent',[])
+ 
   return (
     <div className={classes["soccer-setting-container"]}>
       <Card>
@@ -51,7 +29,7 @@ const PendingAgent = () => {
           </Grid> */}
           <Grid container spacing={5}>
             {
-              pendingMasters.length  !==0 && pendingMasters.map((master,index)=>(
+              data.length  !==0 && data.map((master,index)=>(
                 <Grid item xs={6} key={index}>
                   <MemberCard partner={master} path={"/account/agent/pending-agent/detail/"} />
                 </Grid>
