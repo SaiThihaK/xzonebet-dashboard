@@ -17,6 +17,8 @@ import { getMethod, PostMethod } from "../../../services/api-services";
 import { logoutHandler } from "../../Sidebar/Sidebar";
 import { toast } from "react-toastify";
 import DepositeModal from "../../UI/Modal/DepositeModal/DepositeModal";
+import { useDispatch, useSelector } from "react-redux";
+import { getRender, selectedRender } from "../../../features/render";
 
 
 
@@ -51,6 +53,7 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
    const AlertToast = (toast,msg)=> toast(msg);
    const openHandler = ()=>setOpen(true);
    const closeHandler = ()=>setOpen(false);
+   const dispatch = useDispatch();
    const handleClick = (id)=>{
    setID(id);
    if(id===ID){
@@ -63,7 +66,8 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
  }
  }
 
-
+ const render = useSelector(selectedRender);
+ console.log(render)
 
  const confirmHandler = async()=>{
    if(value === "approve"){
@@ -77,7 +81,8 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
         AlertToast(toast.success,response.data.message);
         setID("");
         setNum(num+1);
-        setValue("")
+        setValue("");
+        dispatch(getRender({render: !render}))
         return;
       }
       if(response.data.status === "error"){
