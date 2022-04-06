@@ -97,7 +97,7 @@
 .main-unit{
   background-color: var(--secondary-color);
   color: white;
-  padding: 20px 30px;
+  padding: 20px 10px;
   border-radius: 10px;
 }
 .unit:hover  .unit_container{
@@ -108,7 +108,7 @@ display: block;
   top:90%;
   background-color: white;
   padding: 10px 15px;
-  border-radius: 10px;
+  border-radius: 20px;
   display: none;
   transition: all 1s ease-in-out;
 }

@@ -26,8 +26,8 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import axios from "axios"
 import { SuperMasterSidebarData } from "../../Dashboard/SuperMaster/SuperMasterSideBarData";
 import { AffiliateAgentSidebarData } from "../../Dashboard/AffiliateAgentDashboard/AffiliateAgentSidebarData";
-import { useDispatch } from "react-redux";
-import { getUserInfo } from "../../features/UserInfo";
+import { useDispatch, useSelector } from "react-redux";
+import {selectedRender} from "../../features/render"
 import { HrSidebarData } from "../../Dashboard/HrDashboard/HrSidebarData";
 import { AccountingSidebarData } from "../../Dashboard/AccountingDashboard/AccountingSidebarData";
 
@@ -65,10 +65,11 @@ const dashboard = localStorage.getItem('type');
 const Sidebar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-  const [render,setRender] = useState(false);
   const [unitMenu,setUnitMenu] = useState(false);
   const unitOpen = Boolean(unitMenu)
   const dispatch = useDispatch();
+  const render = useSelector(selectedRender);
+
   
 
   const unitMenuOpen = (event)=>{
@@ -133,7 +134,7 @@ const Sidebar = () => {
       if(response.data.status === "success"){
         // console.log(response.data.data);
          setUserData(response.data.data);
-         dispatch(getUserInfo(response.data.data))
+        //  dispatch(getUserInfo(response.data.data))
       }
       
     }catch(error){
@@ -145,9 +146,9 @@ const Sidebar = () => {
   }
  useEffect(()=>{
   fetchUnit();
-  return()=>{
-    setUserData([]);
-  }
+  // return()=>{
+  //   setUserData([]);
+  // }
  },[render])
   return (
     <IconContext.Provider value={{ color: "#FFF" }}>
@@ -169,7 +170,7 @@ const Sidebar = () => {
         Unit
       </Button> */}
       <div className={classes["main-unit"]}>
-      <p>Promotion Unit-{userData?.wallet?.promotion_unit}</p>
+      <p>Main Unit-{userData?.wallet?.main_unit}</p>
       </div>
          
       <Card className={classes["unit_container"]}>
