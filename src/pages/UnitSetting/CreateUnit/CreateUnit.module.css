@@ -36,20 +36,16 @@
 .soccer-setting-content-flex {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
+  justify-content: center;
   margin-right: -15px;
   margin-left: -15px;
 }
 .creadit-input {
   display: flex;
-  flex-direction: column;
   margin-top: 30px;
+  width: 100%;
 }
-.btn {
-  width: 100px;
-  margin-top: 30px;
-  margin-left: 200px;
-}
+
 .form-input {
   margin-left: 30px;
 }

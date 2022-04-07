@@ -118,7 +118,7 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
      {
          ID !==user.id ?
          (
-         <Button onClick={()=>handleClick(user.id)}    color="success" variant="contained">
+         <Button onClick={()=>handleClick(user.id)} style={{width:80}}    color="success" variant="contained">
            {user.status}
          </Button>
          )
@@ -136,12 +136,12 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
    }
    if(user.status === "approve"){
      return  <StyledTableCell align="left">
-       <Button variant="contained" >Approve</Button>
+       <p className={classes["btn"]} style={{backgroundColor:"blue"}} >Approve</p>
      </StyledTableCell>
    }
    if(user.status === "rejected"){
     return  <StyledTableCell align="left">
-      <Button variant="contained" color="error">Reject</Button>
+      <p className={classes["btn"]} style={{backgroundColor:"red"}} >Reject</p>
     </StyledTableCell>
   }
  }

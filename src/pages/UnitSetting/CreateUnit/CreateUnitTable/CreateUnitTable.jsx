@@ -15,7 +15,8 @@ import { getMethod } from "../../../../services/api-services";
 import {toast} from "react-toastify";
 import { logoutHandler } from "../../../../components/Sidebar/Sidebar";
 import axios from "axios";
-import { ChangeDate } from "../../../../Controller/ChangeDate";
+import { ChangeDate, getResDate } from "../../../../Controller/ChangeDate";
+import CustomGetFunction from "../../../../services/CustomGetFunction";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -41,36 +42,9 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 const CreateUnitTable = ({render}) => {
 
 const AlertToast = (toast,msg) => toast(msg);
-const [unitTableData,setUnitTableData] = useState([]);
 
-const fetchUnit = async()=>{
-    try{
-      const response =await axios.request((getMethod("api/wallet/admin-create-record?sortColumn=id&sortDirection=desc&limit=10")));
-      if(response.data.status==="success"){
-        console.log(response);
-        setUnitTableData(response.data.data);
-        return;
-      }
-    
-    }catch(error){
-      console.log(error);
-      console.log(error.response.data.message)
-      if(error.response.statusText ==="error"){
-        AlertToast(toast.error(error.response.data.message))
-        return;
-      }
-    if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
-            logoutHandler();
-            return;
-            }
-          }
-  }
+const {data}  = CustomGetFunction('api/wallet/admin-create-record?sortColumn=id&sortDirection=desc&limit=10',[render]);
 
-  useEffect(()=>{
-    fetchUnit();
-
-  },[render])
- 
   return (
     <div className={classes["table-margin"]}>
       <TableContainer component={Paper}>
@@ -85,12 +59,12 @@ const fetchUnit = async()=>{
             </TableRow>
           </TableHead>
           <TableBody>
-            {unitTableData.map((row, index) => (
+            {data.map((row, index) => (
               <StyledTableRow key={index}>
                 <StyledTableCell component="th" scope="row">
                   {index+1}
                 </StyledTableCell>
-                <StyledTableCell align="right">{ChangeDate(row.created_at)}</StyledTableCell>
+                <StyledTableCell align="right">{getResDate(row.created_at)}</StyledTableCell>
                 <StyledTableCell align="right">{row.user_id}</StyledTableCell>
                 <StyledTableCell align="right">--</StyledTableCell>
 

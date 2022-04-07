@@ -68,7 +68,8 @@ const UnitValue = () => {
       }
     } catch (error) {
       console.log(error);
-      console.log(error.response.data.message)
+ 
+      AlertToast(toast.error(error.response.data.message))
     }
   }
   useEffect(() => {
@@ -140,9 +141,9 @@ const UnitValue = () => {
             </div>
             {/* UnitValueDesc */}
           </div>
-          <UnitEditModal num={num} setNum={setNum} open={Kopen} value={getUnitChange?.main_unit_value_by_mmk} handleClose={KhandleClose} unitFrom="1Main" unitTo={getUnitChange?.main_unit_value_by_mmk} setValue={KsetValue} unit="MMK" />
-          <UnitEditModal num={num} setNum={setNum} open={PUopen} value={getUnitChange?.main_to_promotion_rate} handleClose={PUhandleClose} unitFrom="1Main" unitTo={getUnitChange?.main_to_promotion_rate} setValue={PUsetValue} unit="PU" />
-          <UnitEditModal num={num} setNum={setNum} open={Mopen} value={getUnitChange?.main_to_diamond_rate} handleClose={MhandleClose} unitFrom="1Main" unitTo={getUnitChange?.main_to_diamond_rate} setValue={MsetValue} unit="DU" />
+          <UnitEditModal num={num} setNum={setNum} open={Kopen}  handleClose={KhandleClose} unitFrom="1Main" unitTo={getUnitChange?.main_unit_value_by_mmk}  unit="MMK" />
+          <UnitEditModal num={num} setNum={setNum} open={PUopen}  handleClose={PUhandleClose} unitFrom="1Main" unitTo={getUnitChange?.main_to_promotion_rate} unit="PU" />
+          <UnitEditModal num={num} setNum={setNum} open={Mopen}  handleClose={MhandleClose} unitFrom="1Main" unitTo={getUnitChange?.main_to_diamond_rate}  unit="DU" />
         </div>
       </Card>
       <div style={{ widht: "100%", marginTop: 30, display: "flex", justifyContent: "flex-end" }}>

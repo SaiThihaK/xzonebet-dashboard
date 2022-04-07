@@ -78,9 +78,12 @@ const CreatePaymentProvider = () => {
       AlertToast(toast.success,response.data.message)
       // navigate("/master/payment-setting/payment-provider")
       }
-      
+      if(response.data.status==="error"){
+        AlertToast(toast.error,response.data.message)
+      }
     } catch (error) {
       console.log(error.response.data.message)
+      AlertToast(toast.error,error.response.data.message)
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
         logoutHandler();
       }

@@ -7,16 +7,18 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import Stack from "@mui/material/Stack";
+
 import classes from "./TransitionHistoryTable.module.css";
-import { Button } from "@mui/material";
+
 import { BasedColor } from "../../../../../Controller/BasedColor";
-import { ToastContainer,toast } from "react-toastify";
+
 import axios from "axios";
 import { getMethod } from "../../../../../services/api-services";
 import CustomPagination from "../../../../../components/Pagination/CustomPagination";
-import { ChangeDate } from "../../../../../Controller/ChangeDate";
+
 import { logoutHandler } from "../../../../../components/Sidebar/Sidebar";
+import CustomGetFunction from "../../../../../services/CustomGetFunction";
+import { getResDate } from "../../../../../Controller/ChangeDate";
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -44,24 +46,8 @@ const TransitionHistoryTable = () => {
     const [totalPage,setTotalPage]  = React.useState(0);
     const [transferData,setTransferData] = React.useState([]);
     const [userData,setUserData] = React.useState([]);
-
-  const getTransitionData = async()=>{
-    try{
-      const response = await axios.request(getMethod(`api/wallet/transfer-record?sortColumn=id&sortDirection=desc&limit=10&page=${page}`));
-      if(response.data.status === "success"){
-        console.log(response.data.data);
-        setTotalPage(response.data.meta.last_page);
-        setTransferData(response.data.data);
-        return;
-      }
-
-    }catch(error){
-      console.log(error.response.data.message);
-      console.log(error.response.data.message)
-    }
-
+  const {data,pagination} = CustomGetFunction(`api/wallet/transfer-record?sortColumn=id&sortDirection=desc&limit=10&page=${page}`,[page])
  
-  }
   const fetchUnit = async()=>{
     try{
       const response = await axios.request(getMethod("api/get-login-user"));
@@ -83,7 +69,6 @@ const TransitionHistoryTable = () => {
   }
 
   useEffect(()=>{
-    getTransitionData();
     fetchUnit();
     return ()=>{
       setTransferData([])
@@ -114,13 +99,13 @@ const TransitionHistoryTable = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {transferData.map((row, index) => (
+            {data?.map((row, index) => (
               <StyledTableRow key={index}>
                 <StyledTableCell component="th" scope="row">
                   {index+1}
                 </StyledTableCell>
                 <StyledTableCell align="right">{row.id}</StyledTableCell>
-                <StyledTableCell align="right">{row.created_at}</StyledTableCell>
+                <StyledTableCell align="right">{getResDate(row.created_at)}</StyledTableCell>
                 <StyledTableCell align="right" 
                 style={userData?.id === row.receiver_user.id ? {color:'green'}:{color:"red"}}>
                   {userData?.id===row.receiver_user.id ? "+":"-"}{row.transfer_amount}
@@ -138,7 +123,7 @@ const TransitionHistoryTable = () => {
           </TableBody>
         </Table>
       </TableContainer>
-      <CustomPagination totalPage={totalPage} setPage={setPage} />
+      <CustomPagination totalPage={pagination?.meta?.last_page} setPage={setPage} />
     </div>
   );
 };

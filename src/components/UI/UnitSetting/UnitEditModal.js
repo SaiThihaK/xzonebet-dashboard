@@ -27,9 +27,9 @@ export default function UnitEditModal({
   open,
   unitTo,
   unitFrom,
-  setValue,
+
   unit,
-  value,
+
   setNum,
   num,
 }) {
@@ -65,6 +65,7 @@ export default function UnitEditModal({
       }
     } catch (error) {
       console.log(error);
+      AlertToast(toast.error(error.response.data.message));
     }
   };
 
