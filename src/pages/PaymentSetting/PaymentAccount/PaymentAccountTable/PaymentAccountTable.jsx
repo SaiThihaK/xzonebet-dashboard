@@ -17,6 +17,7 @@ import { BasedColor } from "../../../../Controller/BasedColor";
 import axios from "axios";
 import { getMethod } from "../../../../services/api-services";
 import { useNavigate } from "react-router-dom";
+import CustomGetFunction from "../../../../services/CustomGetFunction";
 const PaymentAccountTable = ({num}) => {
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -42,27 +43,8 @@ const PaymentAccountTable = ({num}) => {
   const navigate = useNavigate();
   const [paymentAccount_table,setPaymentAccountTable] = useState([]);
 
-
-  const fetch_PaymentAccount = async()=>{
-    const response = await axios.request(getMethod(`api/dashboard/payment-accounts`));
-    try{
-      if(response.data.status==="success"){
-        setPaymentAccountTable(response.data.data);
-      }
-    }catch(error){
-      console.log(error);
-      console.log(error.response.data.message)
-    }
-    
-    // console.log(response.data.data);
-  
-  }
-
-
-  useEffect(()=>{
-  fetch_PaymentAccount();
-  return ()=>setPaymentAccountTable([]);
-  },[num]);
+  const {data} = CustomGetFunction(`api/dashboard/payment-accounts`,[num]);
+ 
 
   // console.log(paymentAccount_table);
  
@@ -84,7 +66,7 @@ const PaymentAccountTable = ({num}) => {
             </TableHead>
             <TableBody>
               
-              {paymentAccount_table.map((row,index)=>(
+              {data.map((row,index)=>(
                    <StyledTableRow key={index}>
                     <StyledTableCell component="th" scope="row">
                     {row.id}

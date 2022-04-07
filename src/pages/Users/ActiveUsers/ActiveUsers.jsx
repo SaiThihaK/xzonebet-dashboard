@@ -5,26 +5,12 @@ import Card from "../../../components/UI/Card";
 import { getMethod } from "../../../services/api-services";
 import UserListTable from "../UserListTable/UserListTable";
 import classes from "./ActiveUsers.module.css";
+import CustomGetFunction from "../../../services/CustomGetFunction"
 const ActiveUsers = () => {
   const [allUsers,setAllUsers] = useState([]);
-  const FetchUser = async()=>{
-    try{
-      const response = await axios.request(getMethod("api/users?sortColumn=id&sortDirection=desc&limit=30"));
-      if(response.data.status === "success"){
-        console.log(response);
-        setAllUsers(response.data.data);
-        return;
-      }
-    }catch(error){
-      console.log(error.response.data.message)
-      if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
-      logoutHandler();
-      }
-    }
-  }
-  useEffect(()=>{
-      FetchUser();
-  },[]);
+  const {data} = CustomGetFunction('api/users?sortColumn=id&sortDirection=desc&limit=30',[]);
+
+ 
   return (
     <div className={classes["soccer-setting-container"]}>
       <Card>
@@ -32,7 +18,7 @@ const ActiveUsers = () => {
           <h1 className={classes["card-title"]}>Active Users</h1>
         </div>
         <div className={classes["card-body"]}>
-            <UserListTable  allUsers={allUsers} />
+            <UserListTable  allUsers={data} />
         </div>
       </Card>
     </div>

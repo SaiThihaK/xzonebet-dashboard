@@ -100,7 +100,7 @@ return ResDate;
                   <StyledTableCell align="left">{row.email || row.phone}</StyledTableCell>
                   <StyledTableCell align="left">{row.balance}</StyledTableCell>
                   <StyledTableCell align="left">{row.country}</StyledTableCell>
-                  <StyledTableCell align="left" spacing={1} direction="row">&nbsp;{getResDate(row.created_at)}</StyledTableCell>
+                  <StyledTableCell align="left">&nbsp;{getResDate(row.created_at)}</StyledTableCell>
                   <StyledTableCell align="left">{row.type}</StyledTableCell>
                   <StyledTableCell align="left">{row.currency_type}</StyledTableCell>
                   <StyledTableCell align="left">

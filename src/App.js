@@ -93,7 +93,9 @@ import HrEmployee from "./pages/HrEmployee/HrEmployee";
 import DetailFunction from "./pages/DetailFunction/DetailFunction";
 import AccountTitle from "./pages/AccountTitle/AccountTitle";
 import AccountData from "./pages/AccountData/AccountData";
-import { AccountingSidebarData } from "./Dashboard/AccountingDashboard/AccountingSidebarData";
+
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function App() {
   const DashboardRouting = () => {
     if (type === "admin") {
@@ -771,6 +773,7 @@ function App() {
   return (
     <Router>
       <Sidebar />
+      <ToastContainer />
       <Container>{DashboardRouting()}</Container>
     </Router>
   );

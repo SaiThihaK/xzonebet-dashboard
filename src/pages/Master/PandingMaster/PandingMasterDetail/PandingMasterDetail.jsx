@@ -13,9 +13,10 @@ import SuperMasterDesc from "../../../SuperMaster/SuperMasterCard/SuperMasterDet
 import Card from "../../../../components/UI/Card";
 import { getMethod, PostMethod } from "../../../../services/api-services";
 import { logoutHandler } from "../../../../components/Sidebar/Sidebar";
+import CustomGetFunction from "../../../../services/CustomGetFunction";
 const PandingMasterDetail = () => {
   const [age,setAge] = useState();
-  const [pendingMaster,setPendingMaster] = useState([]);
+
   const [real_name,setReal_Name] = useState("");
   const [payment_name,setPayment_Name] = useState("");
   const [transition_id,setTransition_id] = useState("");
@@ -84,33 +85,8 @@ const PandingMasterDetail = () => {
       }
     }
   }
-
-  const fetchMasterDetail = async()=>{
-    try{
-      const {data} = await axios.request(getMethod(`api/affiliate-register-lists/${id}`));
-      if(data.status==="success"){
-        setPendingMaster(data.data);
-        return;
-      }
+ const {data} = CustomGetFunction(`api/affiliate-register-lists/${id}`,[id]);
   
-    }catch(error){
-      console.log(error);
-      console.log(error.response.data.message)
-      if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
-      logoutHandler();
-      }
-    }
-  }
-  useEffect(()=>{
-    fetchMasterDetail();
-    // fetchCrypto();
-    return ()=>setPendingMaster([]);
-  },[id]);
-   
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
-
   const supMaster = [{id:"1",name:"J-me"},{id:"2",name:"Mr.Harry Potter"},{id:"3",name:"Mr.Willson"}];
   // const fetchCrypto = async()=>{
   //   const {data} = await axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=100&page=1&sparkline=false");
@@ -123,7 +99,7 @@ const PandingMasterDetail = () => {
           <h1 className={classes["card-title"]}>Pending Master Form Detail</h1>
         </div>
         <div className={classes["card-body"]}>
-          <SuperMasterDesc userInfo={pendingMaster} />
+          <SuperMasterDesc userInfo={data} />
         </div>
       </Card>
       <div style={{marginTop: '20px'}}>
