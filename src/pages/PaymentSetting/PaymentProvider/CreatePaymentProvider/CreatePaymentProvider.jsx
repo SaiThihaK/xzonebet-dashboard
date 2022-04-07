@@ -11,6 +11,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SelectCoun from "./SelectCoun";
 import { logoutHandler } from "../../../../components/Sidebar/Sidebar";
+import CustomGetFunction from "../../../../services/CustomGetFunction";
 
 
 
@@ -28,7 +29,7 @@ const CreatePaymentProvider = () => {
   const payment_typeChange = (e) => setPayment_typeValue(e.target.value);
   const payment_providerChange = (e) => setPayment_provider(e.target.value);
   const logoChange = (e) => setlogo(e.target.files[0]);
-
+  const {data} = CustomGetFunction(`api/dashboard/payment-types`,[]);
   const FetchPayment_type = async () => {
     try {
       const response = await axios.request(getMethod(`api/dashboard/payment-types`));
@@ -77,9 +78,12 @@ const CreatePaymentProvider = () => {
       AlertToast(toast.success,response.data.message)
       // navigate("/master/payment-setting/payment-provider")
       }
-      
+      if(response.data.status==="error"){
+        AlertToast(toast.error,response.data.message)
+      }
     } catch (error) {
       console.log(error.response.data.message)
+      AlertToast(toast.error,error.response.data.message)
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
         logoutHandler();
       }
@@ -100,7 +104,7 @@ const CreatePaymentProvider = () => {
             <label>Payment Type</label>
             <Select value={payment_typeValue} size="small" onChange={payment_typeChange}>
               {
-                payment_type.map((a, index) => (
+                data.map((a, index) => (
                   <MenuItem key={index} value={a.id}>{a.name}</MenuItem>
                 ))
               }

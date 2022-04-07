@@ -10,35 +10,16 @@ import { getMethod } from "../../../services/api-services";
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { logoutHandler } from "../../../components/Sidebar/Sidebar";
+import CustomGetFunction from "../../../services/CustomGetFunction";
 
 
 const PaymentType = () => {
-  const [payment_type,setPayment_type]=useState([]);
+
   const [open,setOpen] = useState(false);
   const [num,setNum] = useState(0);
   const handleOpen = ()=>setOpen(true);
   const handleClose = ()=>setOpen(false);
-   
-  const FetchPaymentType = async()=>{
-    try{
-      const response = await axios.request(getMethod(`api/dashboard/payment-types`));
-      if(response.data.status==="success"){
-        setPayment_type(response.data.data);
-        return;
-      }
- 
-
-    }catch(error){
-      console.log(error)
-      if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
-      logoutHandler();
-      }
-    }
-  }
-//  console.log(payment_type)
-  useEffect(()=>{
-    FetchPaymentType()
-  },[num]);
+  const {data} = CustomGetFunction('api/dashboard/payment-types',[num]);
   return (
     
     <div className={classes["soccer-setting-container"]}>
@@ -58,7 +39,7 @@ const PaymentType = () => {
        
             </div>
           </div>
-          <PaymentTypeTable payment_type={payment_type} num={num} setNum={setNum}/>
+          <PaymentTypeTable payment_type={data} num={num} setNum={setNum}/>
         </div>
         <PaymentTypeModal open={open} handleClose={handleClose} num={num} setNum={setNum}  />
       </Card>

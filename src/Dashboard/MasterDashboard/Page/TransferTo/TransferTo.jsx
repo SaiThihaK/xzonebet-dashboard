@@ -3,30 +3,34 @@
 import { Button, FormControl, TextField } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer,toast } from "react-toastify";
 import Card from "../../../../components/UI/Card";
 import TransferToModal from "../../../../components/UI/Modal/TransferTo/TransferToModal";
+import { getRender, selectedRender } from "../../../../features/render";
 import { getMethod, PostMethod } from "../../../../services/api-services";
 import classes from "./TransferTo.module.css"
 
 
 const TransferTo = ()=>{
 
-const [open,setOpen] = useState(false);
-const handleOpen = ()=>setOpen(true);
-const handleClose = ()=>setOpen(false);
+
 const [toggle,setToggle] = useState(false);
 const [id,setId] = useState("");
 const [transfer_acc,setTransfer_acc] = useState([]);
 const  [amount ,setAmount] = useState(0);
 const [note,setNote] = useState("");
 const AlertToast = (msg)=>msg;
+const dispatch = useDispatch();
+const render = useSelector (selectedRender);
 const tansferUser = async()=>{
     try{
         if(!id){
             AlertToast(toast.warning("please type id to find the user"))
         }
-        const response = await axios.request(getMethod(`api/users/${id}`));
+        const response = await axios.request(PostMethod(`api/wallet/validate-transfer`,{
+            receiver_user_id:id,
+        }));
         console.log(response);
         if(response.data.status === "success"){
             console.log(id);
@@ -42,6 +46,7 @@ const tansferUser = async()=>{
        
     }catch(error){
         console.log(error);
+        AlertToast(toast.error(error.response.data.message))
     }
 }
 
@@ -64,7 +69,8 @@ const transferHandler = async()=>{
     setNote("");
     setId("")
     setToggle(false);
-    handleOpen();
+    
+    dispatch(getRender({render:!render}))
     return;
     }
     if(response.data.status === "error"){
@@ -91,10 +97,14 @@ return(
        <label>Transfer To Id Number</label>
        <TextField  size="small" value={id} onChange={(e)=>setId(e.target.value)}/>
        <div className={classes['btn']}>
-           <Button onClick={()=>{
+          {
+              !toggle &&
+           (<Button onClick={()=>{
             tansferUser();
            }} variant="contained">Submit</Button>
-       </div>
+       )
+        }
+        </div>
          </FormControl>
          
         { toggle &&<FormControl sx={{width:700}}>
@@ -113,7 +123,7 @@ return(
          </FormControl> }
     </div>
     </Card>
-    <TransferToModal open={open} handleClose={handleClose} />
+    {/* <TransferToModal open={open} handleClose={handleClose} /> */}
     </div>
 )
 

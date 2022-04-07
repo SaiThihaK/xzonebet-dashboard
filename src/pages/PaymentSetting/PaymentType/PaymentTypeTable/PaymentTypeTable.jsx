@@ -60,7 +60,7 @@ const handleClose = ()=>SetOpen(false);
             </TableHead>
             <TableBody>
              
-              {payment_type.map((row,index)=>(
+              {payment_type?.map((row,index)=>(
                    <StyledTableRow key={index}>
                     <StyledTableCell component="th" scope="row">
                     {row.id}

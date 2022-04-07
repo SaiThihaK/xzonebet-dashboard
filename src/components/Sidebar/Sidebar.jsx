@@ -30,6 +30,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {selectedRender} from "../../features/render"
 import { HrSidebarData } from "../../Dashboard/HrDashboard/HrSidebarData";
 import { AccountingSidebarData } from "../../Dashboard/AccountingDashboard/AccountingSidebarData";
+import CustomGetFunction from "../../services/CustomGetFunction";
 
 
 function refreshPage() {
@@ -127,60 +128,28 @@ const Sidebar = () => {
   }
   
   }
-  const [userData,setUserData] = useState([]);
-  const fetchUnit = async()=>{
-    try{
-      const response = await axios.request(getMethod("api/get-login-user"));
-      if(response.data.status === "success"){
-        // console.log(response.data.data);
-         setUserData(response.data.data);
-        //  dispatch(getUserInfo(response.data.data))
-      }
-      
-    }catch(error){
-      if (error.response.status === 401 || error.response.data.message === "Unauthenticated."){
-        logoutHandler();
-      }
-    }
 
-  }
- useEffect(()=>{
-  fetchUnit();
-  // return()=>{
-  //   setUserData([]);
-  // }
- },[render])
+  const {data} = CustomGetFunction("api/get-login-user",[render]);
+  
   return (
     <IconContext.Provider value={{ color: "#FFF" }}>
       <div className={classes.container}>
         <ul className={classes["header-noti-icons"]}>
         {/*----------------------- Unit-------------------- */}
         <li className={classes["unit"]}>
-        {/* <Button
-        // onClick={()=>{
-        //   unitMenuOpen();
-        //   setRender(!render)
-        // }}
-        color="error"
-        variant="contained"
-        startIcon = {<CurrencyExchangeIcon />}
-        endIcon = {unitMenu ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon/>}
-        style={{transition:"all ease-in-out 0.4s"}}
-      >
-        Unit
-      </Button> */}
+     
       <div className={classes["main-unit"]}>
-      <p>Main Unit-{userData?.wallet?.main_unit}</p>
+      <p>Main Unit-{data?.wallet?.main_unit}</p>
       </div>
          
       <Card className={classes["unit_container"]}>
-        <p><span>Promotion Unit</span>-{userData?.wallet?.promotion_unit}</p>
+        <p><span>Promotion Unit</span>-{data?.wallet?.promotion_unit}</p>
         <p>
           <span> Main Unit</span>
-         -{userData?.wallet?.main_unit}</p>
+         -{data?.wallet?.main_unit}</p>
         <p>
         <span>Diamond Unit</span>  
-        -{userData?.wallet?.diamond_unit}</p>
+        -{data?.wallet?.diamond_unit}</p>
       </Card>
           </li>
           <li>
@@ -286,7 +255,7 @@ const Sidebar = () => {
        
         <div className={classes.menuItem}>
           <div>
-            <span className={classes.sidebarLabel}>ID-{userData?.id}</span>
+            <span className={classes.sidebarLabel}>ID-{data?.id}</span>
           </div>
           </div>
 }
@@ -296,7 +265,7 @@ const Sidebar = () => {
 
           <div className={classes.menuItem}>
           <div>
-            <span className={classes.sidebarLabel}>Name-{userData?.agent?.name}</span>
+            <span className={classes.sidebarLabel}>Name-{data?.agent?.name}</span>
           </div>
           </div>
 }
@@ -305,7 +274,7 @@ const Sidebar = () => {
        
           <div className={classes.menuItem}>
           <div>
-            <span className={classes.sidebarLabel}>Main Unit-{userData?.wallet?.main_unit}</span>
+            <span className={classes.sidebarLabel}>Main Unit-{data?.wallet?.main_unit}</span>
           </div>
           </div>
 }

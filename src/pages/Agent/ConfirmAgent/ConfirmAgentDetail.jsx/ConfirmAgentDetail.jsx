@@ -12,6 +12,7 @@ import ConfirmAgentDesc from "./ConfirmAgentDesc/ConfirmAgentDesc";
 import Card from "../../../../components/UI/Card";
 import { getMethod } from "../../../../services/api-services";
 import { logoutHandler } from "../../../../components/Sidebar/Sidebar";
+import CustomGetFunction from "../../../../services/CustomGetFunction";
 
 
 const ConfirmAgentDetail = () => {
@@ -21,31 +22,7 @@ const ConfirmAgentDetail = () => {
   const alertToast = (message) => toast(message);
   // Enjoyment
  
-
-  const fetchMasterDetail = async()=>{
-    try{
-
-      const {data} = await axios.request(getMethod(`api/affiliate-register-lists/${id}`));
-      if(data.status==="success"){
-        setConfirmMaster(data.data);
-        return;
-      }
-  
-    }catch(error){
-      console.log(error.response.data.message);
-      console.log(error)
-      if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
-      logoutHandler();
-      }
-    }
-  }
-  useEffect(()=>{
-    fetchMasterDetail();
-    return ()=>setConfirmMaster([]);
-  },[id]);
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
+ const {data} =  CustomGetFunction(`api/affiliate-register-lists/${id}`,[id])
   return (
     <div className={classes["soccer-setting-container"]}>
       <ToastContainer />
@@ -54,7 +31,7 @@ const ConfirmAgentDetail = () => {
           <h1 className={classes["card-title"]}>Confirm Agent Form Detail</h1>
         </div>
         <div className={classes["card-body"]}>
-          <ConfirmAgentDesc userInfo={confirmMaster} alertToast={alertToast} />
+          <ConfirmAgentDesc userInfo={data} alertToast={alertToast} />
         </div>
       </Card>
     </div>

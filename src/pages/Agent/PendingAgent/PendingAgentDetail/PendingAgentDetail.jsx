@@ -11,6 +11,9 @@ import Card from "../../../../components/UI/Card";
 import PendingAgentDesc from "./PendingAgentDesc/PendingAgentDesc";
 import { getMethod, PostMethod } from "../../../../services/api-services";
 import { logoutHandler } from "../../../../components/Sidebar/Sidebar";
+import PageTitleCard from "../../../../components/UI/PageTitleCard/PageTitleCard";
+import { MenuItem, Select, TextField } from "@mui/material";
+import CustomGetFunction from "../../../../services/CustomGetFunction";
 const PendingAgentDetail = () => {
   const [age,setAge] = useState();
   const [pendingMaster,setPendingMaster] = useState([]);
@@ -26,18 +29,19 @@ const PendingAgentDetail = () => {
   const [password,setPassword] = useState("");
   const [deposit_percent,setDeposite_percent] = useState("");
   const [withdraw_percent,setWidthDraw_percent] = useState("");
+  const [superMaster,setSuperMaster] =  useState("");
   // Crypto
-  const [coin,setCoin] = useState([]);
- 
+
+  const supMaster = [{id:"1",name:"J-me"},{id:"2",name:"Mr.Harry Potter"},{id:"3",name:"Mr.Willson"}];
   // console.log(pendingMaster)
   const {id} = useParams();
   const submitHandler = async(e)=>{
     e.preventDefault();
-    if(!real_name ||!payment_name||!payment_type||!transition_id||!amount||!currency||!username||!password||!deposit_percent ||!withdraw_percent){
-      alertToast(toast.warning("Please Fill All the Field"));
-      return;
-    }
-    else{
+    // if(!real_name ||!payment_name||!payment_type||!transition_id||!amount||!currency||!username||!password||!deposit_percent ||!withdraw_percent){
+    //   alertToast(toast.warning("Please Fill All the Field"));
+    //   return;
+    // }
+    // else{
       try{
         
         const url = `api/affiliate-register-lists/deposit-pending/${id}`;
@@ -70,37 +74,12 @@ const PendingAgentDetail = () => {
         }
       }
    
-    }
+    // }
   }
-
-  const fetchMasterDetail = async()=>{
-    try{
-      const {data} = await axios.request(getMethod(`api/affiliate-register-lists/${id}`));
-      if(data.status==="success"){
-        setPendingMaster(data.data);
-      }
-
-    }catch(error){
-      console.log(error);
-      console.log(error.response.data.message)
-      if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
-      logoutHandler();
-      }
-    }
-  }
-  useEffect(()=>{
-    fetchMasterDetail();
-    // fetchCrypto();
-    return ()=>setPendingMaster([]);
-  },[id]);
-   
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
-  // const fetchCrypto = async()=>{
-  //   const {data} = await axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=100&page=1&sparkline=false");
-  //   setCoin(data);
-  // }
+  const {data} = CustomGetFunction(`api/affiliate-register-lists/${id}`,[id]);
+ 
+ 
+  
   return (
     <div className={classes["soccer-setting-container"]}>
       <Card>
@@ -108,11 +87,82 @@ const PendingAgentDetail = () => {
           <h1 className={classes["card-title"]}>Pending Agent Form Detail</h1>
         </div>
         <div className={classes["card-body"]}>
-          <PendingAgentDesc userInfo={pendingMaster} />
+          <PendingAgentDesc userInfo={data} />
         </div>
       </Card>
           <form>
           <ToastContainer />
+          <Card>
+          <div className={classes["card-header"]}>
+            <h1 className={classes["card-title"]}>Enjoyment</h1>
+          </div>
+          <div className={classes["card-body"]}>
+            <div>
+              <div>
+                <form action="" style={{ width: "500px" }}>
+                  <div className={classes["form-group-desc"]}>
+                    <label htmlFor="">User Name </label>:
+                    <p>
+                      &nbsp;&nbsp;
+                      {/* <input type="text" /> */}
+                      <TextField
+                        id="standard-basic"
+                        label="User Name"
+                        onChange={(e)=>setUserName(e.target.value)}
+                        sx={{ width: 200 }}
+                        variant="standard"
+                        value={username}
+                      />
+                    </p>
+                  </div>
+                  <div className={classes["form-group-desc"]}>
+                    <label htmlFor="">Password </label>:
+                    <p>
+                      &nbsp;&nbsp;
+                  
+                        <TextField
+                        onChange={(e)=>setPassword(e.target.value)}
+                        label="Password" 
+                        sx={{ width: 200 }}
+                        value={password}  
+                         variant="standard" />
+                     
+                    </p>
+                  </div>
+                  <div className={classes["form-group-desc"]}>
+                    <label htmlFor="">Deposite percentage </label>:
+                    <p>
+                      &nbsp;&nbsp;
+                      <TextField
+                        id="standard-basic"
+                        onChange={(e)=>setDeposite_percent(e.target.value)}
+                        label="Deposite Percentage"
+                        sx={{width:200}}
+                        variant="standard"
+                        value={deposit_percent}
+                      />
+                    </p>
+                  </div>
+                  <div className={classes["form-group-desc"]}>
+                    <label htmlFor="">Withdraw Percentage</label>:
+                    <p>
+                      &nbsp;&nbsp;
+                      <TextField
+                        id="standard-basic"
+                        onChange={(e)=>setWidthDraw_percent(e.target.value)}
+                        label="Withdraw Percentage"
+                        sx={{ width: 200 }}
+                        variant="standard"
+                        value={withdraw_percent}
+                      />
+                    </p>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </Card>
+       
           <div className={classes["card-column"]}>
         <div className={classes["btn-container"]}>
         <Button type="submit" onClick={(e)=>{submitHandler(e)}} variant="contained">Submit</Button>

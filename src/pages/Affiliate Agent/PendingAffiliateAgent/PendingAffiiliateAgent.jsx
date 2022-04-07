@@ -7,31 +7,13 @@ import axios from "axios";
 import { getMethod } from "../../../services/api-services";
 import MasterCard from "../../../components/MasterCard/MasterCard";
 import { logoutHandler } from "../../../components/Sidebar/Sidebar";
+import CustomGetFunction from "../../../services/CustomGetFunction";
+import MemberCard from "../../../components/MemberCard/MemberCard";
 
 const PendingAffiliateAgent = () => {
-    const [pendingMasters,setPendingMaster] = useState([]);
-    const fetchPendingMaster = async()=>{
-      try{
-        const {data} = await axios.request(getMethod('api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=affiliate-agent'));
-        if(data.status === "success"){
-          setPendingMaster(data.data);
-          return;
-        }
-  
-
-      }catch(error){
-        console.log(error);
-        console.log(error.response.data.message)
-        if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
-        logoutHandler();
-        }
-      }
-    };
-  //  console.log(pendingMasters);
-    useEffect(()=>{
-     fetchPendingMaster();
-     return ()=>setPendingMaster([]);
-    },[]);
+    
+    const {data} = CustomGetFunction("api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=affiliate-agent",[]);
+   
   return (
     <div className={classes["soccer-setting-container"]}>
       <Card>
@@ -39,11 +21,24 @@ const PendingAffiliateAgent = () => {
           <h1 className={classes["card-title"]}>Pending Affiliate Agents</h1>
         </div>
         <div className={classes["card-body"]}>
-          <Grid container spacing={3}>
-           {pendingMasters.length !==0 && pendingMasters.map((pendingMaster)=>
+          {/* <Grid container spacing={3}>
+           {data.length !==0 && data.map((pendingMaster)=>
            (<MasterCard key={pendingMaster?.id} user={pendingMaster} path={"/account/affiliate-agent/pending-affiliate-agent/detail/"} />)
            )}
-          </Grid>
+          </Grid> */}
+           {
+            <Grid container spacing={5}>
+              {
+              
+                data.length !==0 && data.map((master,index)=>(
+                 <Grid item xs={6} key={index}>
+                    <MemberCard partner={master} path={"/account/affiliate-agent/pending-affiliate-agent/detail/"} />
+                   </Grid>
+                 
+                ))
+              }
+            </Grid>
+          }
         </div>
       </Card>
     </div>

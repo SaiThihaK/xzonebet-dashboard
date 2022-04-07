@@ -12,7 +12,7 @@ import { logoutHandler } from "../../../../Sidebar/Sidebar";
 import classes from "./PaymentAccountModal.module.css"
 import { ToastAlert } from "../../../../../Controller/ToastAlert";
 import { toast } from "react-toastify";
-import { refreshPage } from "../../../../../Controller/RefreshPage";
+import CustomGetFunction from "../../../../../services/CustomGetFunction"
 const style = {
   position: "absolute",
   top: "50%",
@@ -44,6 +44,7 @@ export default function PaymentAccountModal({
   const accountChange = e=>setAccount(e.target.value);
 
   const Payment_ProviderChange = (e)=>setPayment_providerValue(e.target.value);
+  const {data} = CustomGetFunction('api/dashboard/payment-types',[]);
   const Payment_Method = async()=>{
     try{
       const response = await axios.request(getMethod(`api/dashboard/payment-types`));
@@ -153,7 +154,7 @@ export default function PaymentAccountModal({
               sx={{ backgroundColor: "#f3f3f3" }}
               onChange={Payment_typeChange}
             > 
-              {payment_type.map((item,index)=>(
+              {data.map((item,index)=>(
                   <MenuItem key={index} value={item.id}>{item.name}</MenuItem>
               ))}
             </Select>

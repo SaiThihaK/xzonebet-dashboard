@@ -20,8 +20,9 @@ import MasterDepositeConfirm from "../../../components/UI/Modal/MasterDeposite/M
 import { logoutHandler } from "../../../components/Sidebar/Sidebar";
 import { BasedColor } from "../../../Controller/BasedColor";
 import CustomPagination from "../../../components/Pagination/CustomPagination";
-import { gridColumnsTotalWidthSelector } from "@mui/x-data-grid";
+import CustomGetFunction from "../../../services/CustomGetFunction"
 import { ChangeDate } from "../../../Controller/ChangeDate";
+import CustomLoading from "../../../components/CustomLoading/CustomLoading";
 const MasterDepositTable = (filterId) => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
@@ -61,34 +62,8 @@ const MasterDepositTable = (filterId) => {
       border: 0,
     },
   }));
-  const fetchData = async()=>{
-    try{
-      const {data} = await axios.request(getMethod(`api/affiliate-register-lists-detail?sortColumn=updated_at&sortDirection=desc&limit=10&status=deposit-pending&page=${page}`));
-      if(data.status==="success"){
-        setRowData(data.data);
-        setTotalPage(data.meta.last_page);
-        return;
-      }
-      if(data.status==="error"){
-        AlertToast(toast.error,data.message)
-        return;
-      }
-
-      // console.log(data);
-    
-    }catch(error){
-      console.log(error);
-      console.log(error.response.data.message)
-      if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
-      logoutHandler();
-      }
-    }
-  }
- 
- 
-  useEffect(()=>{
-    fetchData();
-  },[num,page])
+  const {data,pagination} = CustomGetFunction(`api/affiliate-register-lists-detail?sortColumn=updated_at&sortDirection=desc&limit=10&status=deposit-pending&page=${page}`,[num,page])
+  
 
  
 
@@ -141,8 +116,9 @@ console.log("filter",filterIddata)
               <StyledTableCell align="right">Action</StyledTableCell>
             </TableRow>
           </TableHead>
+   
           <TableBody>
-            {rowData
+            {data
             .map((row, index) => (
               <StyledTableRow key={index}
               >
@@ -173,7 +149,7 @@ console.log("filter",filterIddata)
         <MasterDepositCancel open={open} handleClose={handleClose} setNum={setNum} id={id} num={num} handleAmmount={handleAmmount} alertToast={AlertToast}/>
         <MasterDepositeConfirm open={confirmOpen} handleClose={confirmCloseHandler} setNum={setNum} num={num} submitHandler={confirmHandler} id={id} />
       </TableContainer>
-      <CustomPagination totalPage={totalPage} setPage={setPage}/>
+      <CustomPagination totalPage={pagination?.meta?.last_page} setPage={setPage}/>
     </div>
   );
 };

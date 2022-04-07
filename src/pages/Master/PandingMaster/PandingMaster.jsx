@@ -10,30 +10,13 @@ import { getMethod } from "../../../services/api-services";
 import { logoutHandler } from "../../../components/Sidebar/Sidebar";
 import { ToastContainer } from "react-toastify";
 import MemberCard from "../../../components/MemberCard/MemberCard";
+import CustomGetFunction from "../../../services/CustomGetFunction";
 
 const PandingMaster = () => {
-  const [pendingMasters,setPendingMaster] = useState([]);
-  const fetchPendingMaster = async()=>{
-    try{
-      const {data} = await axios.request(getMethod('api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=master'));
-      if(data.status==="success"){
-        setPendingMaster(data.data);
-        return;
-      }
-      
-    }catch(error){
-      console.log(error);
-      console.log(error.response.data.message)
-      if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
-      logoutHandler();
-      }
-    }
-  };
-//  console.log(pendingMasters);
-  useEffect(()=>{
-   fetchPendingMaster();
-   return ()=>setPendingMaster([]);
-  },[]);
+
+  const {data} = CustomGetFunction('api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=master',[]);
+
+
   return (
     <div className={classes["soccer-setting-container"]}>
       <Card>
@@ -51,7 +34,7 @@ const PandingMaster = () => {
             <Grid container spacing={5}>
               {
               
-                pendingMasters.length !==0 && pendingMasters.map((master,index)=>(
+                data.length !==0 && data.map((master,index)=>(
                  <Grid item xs={6} key={index}>
                     <MemberCard partner={master} path={"/account/master/panding-master/detail/"} />
                    </Grid>

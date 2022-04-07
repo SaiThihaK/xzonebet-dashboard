@@ -8,32 +8,11 @@ import MasterCard from "../../../components/MasterCard/MasterCard";
 import { getMethod } from "../../../services/api-services";
 import { logoutHandler } from "../../../components/Sidebar/Sidebar";
 import MemberCard from "../../../components/MemberCard/MemberCard";
+import CustomGetFunction from "../../../services/CustomGetFunction";
 
 const ConfirmAgent = () => {
-  const [confirmMasters,setConfirmMasters] = useState([]);
-  const fetchConfirmMaster = async()=>{
-    try{
-      const {data} = await axios.request(getMethod('api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=deposit-confirm&form_type=agent'));
-      if(data.status==="success"){
-        setConfirmMasters(data.data);
-        return;
-      }
-    }catch(error){
-      console.log(error);
-      console.log(error.response.data.message)
-      if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
-      logoutHandler();
-      }
-    }
-  };
-  
-  // console.log(confirmMasters)
-
-
-  useEffect(()=>{
-   fetchConfirmMaster();
-   return ()=>setConfirmMasters([]);
-  },[]);
+  const {data} = CustomGetFunction("api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=deposit-confirm&form_type=agent",[])
+ 
   return (
     <div className={classes["soccer-setting-container"]}>
       <Card>
@@ -48,7 +27,7 @@ const ConfirmAgent = () => {
           </Grid> */}
            <Grid container spacing={5}>
             {
-              confirmMasters.length  !==0 && confirmMasters.map((master,index)=>(
+              data.length  !==0 && data.map((master,index)=>(
                 <Grid item xs={6} key={index}>
                   <MemberCard partner={master} path={"/account/agent/confirm-agent/detail/"} />
                 </Grid>

@@ -22,7 +22,7 @@ import { logoutHandler } from "../../Sidebar/Sidebar";
 import ApproveActionModal from "../../UI/Modal/UserWithDraw/ApproveActionModal";
 import RejectActionModal from "../../UI/Modal/UserWithDraw/RejectActionModal";
 import CustomPagination from "../../Pagination/CustomPagination";
-
+import CustomGetFunction from "../../../services/CustomGetFunction"
 
 
 
@@ -49,7 +49,7 @@ const UserWithDrawTable = ({}) => {
    const [open,setOpen] = useState(false);
    const [cancelopen,setCancelOpen] = useState(false);
    const [page,setPage] = useState(1);
-   const [totalPage,setTotalPage] = useState(0);
+
    const AlertToast = (toast,msg)=> toast(msg);
    const openHandler = ()=>setOpen(true);
    const closeHandler = ()=>setOpen(false);
@@ -58,34 +58,7 @@ const UserWithDrawTable = ({}) => {
    const [userWithDraw,setUserWithDraw] = useState([]);
    const [id,setId] = useState("");
    const [num,setNum] = useState(0);
-
- const fetchUserWithDraw = async()=>{
-   try{
-    const response = await axios.request(getMethod(`api/user-withdraw?sortColumn=id&sortDirection=desc&limit=20&status=pending&page=${page}`));
-    // console.log(response.data.meta);
-    if(response.data.status === "success"){
-      setTotalPage(response.data.meta.last_page);
-    setUserWithDraw(response.data.data);
-    return;
-    }
-    if(response.data.status === "error"){
-      AlertToast(toast.error,response.data.message);
-      return;
-    }
-   }catch(error){
-    if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
-      logoutHandler();
-      }
-    }
-   }
-
- useEffect(()=>{
-    fetchUserWithDraw();
-  //  return ()=>{
-  //   setUserWithDraw([])
-  //  }
- },[page,num]);
- console.log(userWithDraw);
+ const {data,pagination} =  CustomGetFunction(`api/user-withdraw?sortColumn=id&sortDirection=desc&limit=20&status=pending&page=${page}`,[page,num]);
 
   return (
     <div className={classes["table-margin"]}>
@@ -107,7 +80,7 @@ const UserWithDrawTable = ({}) => {
               
           </TableHead>
           <TableBody>
-           {userWithDraw.map((user,index)=>(
+           {data?.map((user,index)=>(
               <StyledTableRow key={index}>
                 <StyledTableCell component="th" scope="row">
                 {index+1}
@@ -145,7 +118,7 @@ const UserWithDrawTable = ({}) => {
       </TableContainer>
      
       </Card>
-      <CustomPagination setPage={setPage} totalPage={totalPage} />
+      <CustomPagination setPage={setPage} totalPage={pagination?.meta?.last_page} />
       <ApproveActionModal 
       open={open} 
       handleClose={closeHandler} 

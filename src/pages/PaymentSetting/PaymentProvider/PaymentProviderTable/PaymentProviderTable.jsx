@@ -20,6 +20,7 @@ import { BasedColor } from "../../../../Controller/BasedColor";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { PaymentType } from "../../../../features/PaymentSetting";
+import CustomGetFunction from "../../../../services/CustomGetFunction";
 
 const PaymentProviderTable = () => {
 
@@ -46,6 +47,7 @@ const PaymentProviderTable = () => {
   const [payment_provider,setPayment_provider] = useState([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const {data}  = CustomGetFunction("api/dashboard/payment-providers",[]);
   const FetchPayment_type = async()=>{
     try{
       const response = await  axios.request(getMethod(`api/dashboard/payment-providers`));
@@ -99,7 +101,7 @@ const PaymentProviderTable = () => {
                   <StyledTableCell align="right">{row.action}</StyledTableCell>
                 </StyledTableRow>
               ))} */}
-              {payment_provider.map((row,index)=>(
+              {data?.map((row,index)=>(
                    <StyledTableRow key={index}>
                     <StyledTableCell component="th" scope="row">
                     {row.id}

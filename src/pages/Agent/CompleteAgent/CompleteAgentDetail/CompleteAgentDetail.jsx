@@ -10,6 +10,7 @@ import Card from "../../../../components/UI/Card";
 import CompleteAgentDesc from "./CompleteAgentDesc/CompleteAgentDesc";
 import { getMethod } from "../../../../services/api-services";
 import { logoutHandler } from "../../../../components/Sidebar/Sidebar";
+import CustomGetFunction from "../../../../services/CustomGetFunction";
 const CompleteAgentDetail = () => {
   const [age, setAge] = React.useState("");
   const [completeMaster,setCompleteMaster] = useState([]);
@@ -17,31 +18,7 @@ const CompleteAgentDetail = () => {
   const navigate = useNavigate();
   // Enjoyment
   // console.log(id);
-
-  const fetchMasterDetail = async()=>{
-    try{
-      const {data} = await axios.request(getMethod(`api/affiliate-register-lists/${id}`));
-      if(data.status==="success"){
-        setCompleteMaster(data.data);
-        return;
-      }
-
-    }catch(error){
-      console.log(error);
-      console.log(error.response.data.message)
-      if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
-      logoutHandler();
-      }
-    }
-  }
-  useEffect(()=>{
-    fetchMasterDetail();
-    return ()=>setCompleteMaster([]);
-  },[id]);
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
+ const {data} = CustomGetFunction(`api/affiliate-register-lists/${id}`,[id]);
   return (
     <div className={classes["soccer-setting-container"]}>
       <Card>
@@ -49,7 +26,7 @@ const CompleteAgentDetail = () => {
           <h1 className={classes["card-title"]}>Complete Agent Form Detail</h1>
         </div>
         <div className={classes["card-body"]}>
-          <CompleteAgentDesc userInfo={completeMaster} /> 
+          <CompleteAgentDesc userInfo={data} /> 
         </div>
       </Card>
       <div className={classes["btn-container"]}>
