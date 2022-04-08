@@ -96,6 +96,8 @@ import AccountData from "./pages/AccountData/AccountData";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import NewAgent from "./Dashboard/MasterDashboard/Page/Agent/NewAgent/NewAgent";
+import NewAgentDetail from "./Dashboard/MasterDashboard/Page/Agent/NewAgent/NewAgentDetail/NewAgentDetail";
 function App() {
   const DashboardRouting = () => {
     if (type === "admin") {
@@ -442,6 +444,12 @@ function App() {
           <Route exact path="master/profile/edit" element={<EditProfile />} />
           <Route exact path="/master/transfer-to" element={<TransferTo />} />
           <Route exact path="/master/agent" element={<MAgent />} />
+          <Route exact path="/master/agent/new-agent" element={<NewAgent />} />
+          <Route
+            exact
+            path="/new-agent/detail/:1"
+            element={<NewAgentDetail />}
+          />
           <Route
             exact
             path="/master/transition-history"
