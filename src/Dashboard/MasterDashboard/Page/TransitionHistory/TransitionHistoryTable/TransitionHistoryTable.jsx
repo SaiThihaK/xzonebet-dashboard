@@ -7,15 +7,11 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-
 import classes from "./TransitionHistoryTable.module.css";
-
 import { BasedColor } from "../../../../../Controller/BasedColor";
-
 import axios from "axios";
 import { getMethod } from "../../../../../services/api-services";
 import CustomPagination from "../../../../../components/Pagination/CustomPagination";
-
 import { logoutHandler } from "../../../../../components/Sidebar/Sidebar";
 import CustomGetFunction from "../../../../../services/CustomGetFunction";
 import { getResDate } from "../../../../../Controller/ChangeDate";
@@ -43,7 +39,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 const TransitionHistoryTable = () => {
 
     const [page,setPage] = React.useState(1);
-    const [totalPage,setTotalPage]  = React.useState(0);
+
     const [transferData,setTransferData] = React.useState([]);
     const [userData,setUserData] = React.useState([]);
   const {data,pagination} = CustomGetFunction(`api/wallet/transfer-record?sortColumn=id&sortDirection=desc&limit=10&page=${page}`,[page])

@@ -91,7 +91,6 @@ const PendingAgentDetail = () => {
         </div>
       </Card>
           <form>
-          <ToastContainer />
           <Card>
           <div className={classes["card-header"]}>
             <h1 className={classes["card-title"]}>Enjoyment</h1>

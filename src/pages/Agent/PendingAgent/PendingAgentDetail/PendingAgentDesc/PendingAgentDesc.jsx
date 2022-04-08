@@ -61,15 +61,12 @@ const PendingAgentDesc = ({userInfo}) => {
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Choose Master </label>:
           <FormControl className={classes["select-container"]}>
-  <InputLabel  id="demo-simple-select-label" size="small"
-  className={classes["select-label"]}
-  >Choose Master</InputLabel>
+
   <Select
     labelId="demo-simple-select-label"
     id="demo-simple-select"
     value={master}
     size="small"
-    label="Choose"
     onChange={handleChange}
     variant="standard"
   > 
