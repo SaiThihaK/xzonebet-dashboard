@@ -97,20 +97,22 @@
 .main-unit{
   background-color: var(--secondary-color);
   color: white;
-  padding: 20px 10px;
-  border-radius: 10px;
+  padding: 10px 10px;
+  border-radius: 5px;
+  display: flex;
 }
 .unit:hover  .unit_container{
-display: block;
+  height: auto;
+  padding: 10px 15px;
 }
 .unit_container{
   position: absolute;
   top:90%;
   background-color: white;
-  padding: 10px 15px;
+
   border-radius: 20px;
-  display: none;
-  transition: all 1s ease-in-out;
+  height: 0;
+  transition: all 2s ease-in-out;
 }
 .unit_container p{
   margin-bottom: 20px;

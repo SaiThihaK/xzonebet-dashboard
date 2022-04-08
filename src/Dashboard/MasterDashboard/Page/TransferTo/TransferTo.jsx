@@ -2,13 +2,13 @@
 
 import { Button, FormControl, TextField } from "@mui/material";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ToastContainer,toast } from "react-toastify";
+import { toast } from "react-toastify";
 import Card from "../../../../components/UI/Card";
 import TransferToModal from "../../../../components/UI/Modal/TransferTo/TransferToModal";
 import { getRender, selectedRender } from "../../../../features/render";
-import { getMethod, PostMethod } from "../../../../services/api-services";
+import {  PostMethod } from "../../../../services/api-services";
 import classes from "./TransferTo.module.css"
 
 
@@ -62,14 +62,12 @@ const transferHandler = async()=>{
         receiver_user_id:transfer_acc?.id,
         unit_type:"main_unit",
     }));
-    console.log(response.data.status);
     if(response.data.status === "success"){
     AlertToast(toast.success(response.data.message));
     setAmount("");
     setNote("");
     setId("")
     setToggle(false);
-    
     dispatch(getRender({render:!render}))
     return;
     }
@@ -79,6 +77,7 @@ const transferHandler = async()=>{
         // setTransfer_acc({});
     }
     }catch(error){
+        console.log("error",error.response.data.message)
         AlertToast(toast.error(error.response.data.message));
     }
 }
@@ -87,7 +86,7 @@ const transferHandler = async()=>{
 
 return(
     <div className={classes["container"]}>
-        <ToastContainer />
+
         <Card>
      <div className={classes["card-header"]}>
           <h1 className={classes["card-title"]}>Transfer To</h1>

@@ -1,12 +1,16 @@
 import { Button } from "@mui/material";
 import axios from "axios";
 import React from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Card from "../../../../../components/UI/Card";
+import { userInfo } from "../../../../../features/UserInfo";
 import classes from "./ProfileDetail.module.css";
 
 const ProfileDetail = () => {
   const navigate = useNavigate();
+  const userData = useSelector(userInfo)
+  console.log(userData)
   return (
     <div>
         <div className={classes["agent-user-image-group"]}>
@@ -23,7 +27,7 @@ const ProfileDetail = () => {
           <Card>
           <div className={classes["form-group-desc"]}>
           <label htmlFor="">Name </label>
-          :<p>&nbsp;&nbsp;Han Zar Moe Win</p>
+          :<p>&nbsp;&nbsp;{userData?.agent?.name}</p>
           </div>
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Date of Birth </label>
@@ -39,7 +43,7 @@ const ProfileDetail = () => {
         </div>
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Phone</label>
-          :<p>&nbsp;&nbsp;09234728424</p>
+          :<p>&nbsp;&nbsp;{userData?.agent?.phone}</p>
         </div>
       </Card>
       {/* ---------------------------------------------------------------- */}

@@ -30,7 +30,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {selectedRender} from "../../features/render"
 import { HrSidebarData } from "../../Dashboard/HrDashboard/HrSidebarData";
 import { AccountingSidebarData } from "../../Dashboard/AccountingDashboard/AccountingSidebarData";
-import CustomGetFunction from "../../services/CustomGetFunction";
+import FetchUnit from "../../services/FetchUnit";
 
 
 function refreshPage() {
@@ -129,7 +129,8 @@ const Sidebar = () => {
   
   }
 
-  const {data} = CustomGetFunction("api/get-login-user",[render]);
+  const {data} = FetchUnit("api/get-login-user",[render]);
+  
   
   return (
     <IconContext.Provider value={{ color: "#FFF" }}>

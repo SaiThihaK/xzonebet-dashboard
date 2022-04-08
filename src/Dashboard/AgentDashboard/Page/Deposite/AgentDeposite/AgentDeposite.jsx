@@ -8,8 +8,6 @@ import {  List, ListItemButton, ListItemText,ListItemIcon,Grid} from '@mui/mater
 import PaymentIcon from '@mui/icons-material/Payment';
 import { logoutHandler } from '../../../../../components/Sidebar/Sidebar';
 import AgentDepositeModal from '../../../../../components/UI/Modal/DepositeModal/AgentDepositeModal/AgentDepositeModal';
-import {  ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import classes from "./AgentDeposite.module.css";
 
 export default function AgentDeposite() {
@@ -72,7 +70,7 @@ const AlertToast = (toast,msg)=>{return toast(msg)};
 // console.log(FilterPayment_Provider)
   return (
       <div>
-          <ToastContainer />
+
           <div className={classes["card-header"]}>
           <h1 className={classes["card-title"]}>Agent Deposite</h1>
      </div>
