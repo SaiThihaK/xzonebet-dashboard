@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from "react";
-import TextField from "@mui/material/TextField"; 
 import classes from "./PaymentAccount.module.css";
 import { Button } from "@mui/material";
 import Card from "../../../components/UI/Card";
 import PaymentAccountModal from "../../../components/UI/Modal/PaymentSetting/PaymentAccount/PaymentAccountModal";
 import PaymentAccountTable from "./PaymentAccountTable/PaymentAccountTable";
-import axios from "axios";
-import { getMethod } from "../../../services/api-services";
-import { ToastContainer } from "react-toastify";
 
 
 
@@ -25,7 +21,7 @@ const PaymentAccount = () => {
   return (
     
     <div className={classes["soccer-setting-container"]}>
-      <ToastContainer />
+ 
       <Card>
         <div className={classes["card-header"]}>
           <h1 className={classes["card-title"]}>Payment Account</h1>

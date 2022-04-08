@@ -3,7 +3,7 @@
 
 
 import { useEffect, useState } from "react";
-import { ToastContainer } from "react-toastify";
+
 import MDepositeTable from "../../../../components/Table/MDepostie/MDepositeTable";
 import Card from "../../../../components/UI/Card";
 import classes from "./ADeposite.module.css";
@@ -19,7 +19,7 @@ useEffect(()=>{
 },[num])
 return(
     <div>
-        <ToastContainer />
+
         <Card>
      <div className={classes["card-header"]}>
           <h1 className={classes["card-title"]}>User Deposite</h1>

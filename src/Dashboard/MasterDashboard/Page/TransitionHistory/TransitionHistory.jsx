@@ -21,7 +21,7 @@ const TransitionHistory = () => {
   return (
 
     <div className={classes["soccer-setting-container"]}>
-      <ToastContainer />
+
       <Card>
         <div className={classes["card-header"]}>
           <h1 className={classes["card-title"]}>Transition Table</h1>

@@ -20,6 +20,7 @@ import DepositeModal from "../../UI/Modal/DepositeModal/DepositeModal";
 import { useDispatch, useSelector } from "react-redux";
 import { getRender, selectedRender } from "../../../features/render";
 import CustomGetFunction from "../../../services/CustomGetFunction";
+import TableGetFunction from "../../../services/TableGetFunction";
 
 
 
@@ -148,7 +149,7 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
  
 
 
- const {data,pagination} = CustomGetFunction(`api/user-deposit?sortColumn=id&sortDirection=desc&limit=10&page=${page}${filterStatus}`,[num,page,filterStatus])
+ const {data,pagination} = TableGetFunction(`api/user-deposit?sortColumn=id&sortDirection=desc&limit=10&page=${page}${filterStatus}`,[num,page,filterStatus])
 
    const ChangeDate=(date)=>{
     const dateNo=new Date(date);

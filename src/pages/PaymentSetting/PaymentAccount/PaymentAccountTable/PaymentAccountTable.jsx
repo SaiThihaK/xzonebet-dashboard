@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import TextField from "@mui/material/TextField";
-import Autocomplete from "@mui/material/Autocomplete";
+
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -14,37 +13,38 @@ import Button from "@mui/material/Button";
 import classes from "./PaymentAccountTable.module.css";
 import { Avatar } from "@mui/material";
 import { BasedColor } from "../../../../Controller/BasedColor";
-import axios from "axios";
-import { getMethod } from "../../../../services/api-services";
 import { useNavigate } from "react-router-dom";
-import CustomGetFunction from "../../../../services/CustomGetFunction";
-const PaymentAccountTable = ({num}) => {
-  const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    [`&.${tableCellClasses.head}`]: {
-      backgroundColor: BasedColor.tableHead,
-      color: theme.palette.common.white,
-    },
-    [`&.${tableCellClasses.body}`]: {
-      fontSize: 14,
-    },
-  }));
 
-  const StyledTableRow = styled(TableRow)(({ theme }) => ({
-    "&:nth-of-type(odd)": {
-      backgroundColor: theme.palette.action.hover,
-    },
-    // hide last border
-    "&:last-child td, &:last-child th": {
-      border: 0,
-    },
-  }));
+import TableGetFunction from "../../../../services/TableGetFunction";
+import CustomPagination from "../../../../components/Pagination/CustomPagination";
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: BasedColor.tableHead,
+    color: theme.palette.common.white,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  "&:nth-of-type(odd)": {
+    backgroundColor: theme.palette.action.hover,
+  },
+  // hide last border
+  "&:last-child td, &:last-child th": {
+    border: 0,
+  },
+}));
+
+
+const PaymentAccountTable = ({num}) => {
 
  
   const navigate = useNavigate();
-  const [paymentAccount_table,setPaymentAccountTable] = useState([]);
-
-  const {data} = CustomGetFunction(`api/dashboard/payment-accounts`,[num]);
- 
+  const [page,setPage] = useState(1);
+  const {data,pagination} = TableGetFunction(`api/dashboard/payment-accounts?sortColumn=id&sortDirection=desc&limit=10&page=${page}`,[num,page]);
+  console.log(data)
 
   // console.log(paymentAccount_table);
  
@@ -95,6 +95,7 @@ const PaymentAccountTable = ({num}) => {
             </TableBody>
           </Table>
         </TableContainer>
+        <CustomPagination setPage={setPage} totalPage={pagination?.meta?.last_page} />
       </div>
     </div>
   );
