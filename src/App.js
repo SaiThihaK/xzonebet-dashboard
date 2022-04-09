@@ -538,6 +538,13 @@ function App() {
             path="/payment-setting/payment-account/edit/:id"
             element={<EditPaymentAccount />}
           />
+          <Route path="/account/user" exact element={<Users />} />
+          <Route
+            path="/account/user/active-user"
+            exact
+            element={<ActiveUser />}
+          />
+          <Route path="/account/user/all-user" exact element={<AllUser />} />
           <Route path="*" element={<Notfound />} />
         </Routes>
       );

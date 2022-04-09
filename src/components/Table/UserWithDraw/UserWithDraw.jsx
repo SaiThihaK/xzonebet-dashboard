@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from "react";
+import React,{ useState} from "react";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -7,22 +7,15 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-
 import classes from "./UserWithDraw.module.css";
-import { Button, FormControl, MenuItem, Select,Pagination, Stack } from "@mui/material";
-
-import axios from "axios";
-
-
-import { toast, ToastContainer } from "react-toastify";
-import { getMethod } from "../../../services/api-services";
+import { Button, Stack } from "@mui/material";
 import Card from "../../UI/Card";
 import { BasedColor } from "../../../Controller/BasedColor";
-import { logoutHandler } from "../../Sidebar/Sidebar";
 import ApproveActionModal from "../../UI/Modal/UserWithDraw/ApproveActionModal";
 import RejectActionModal from "../../UI/Modal/UserWithDraw/RejectActionModal";
 import CustomPagination from "../../Pagination/CustomPagination";
-import CustomGetFunction from "../../../services/CustomGetFunction"
+
+import TableGetFunction from "../../../services/TableGetFunction";
 
 
 
@@ -58,11 +51,11 @@ const UserWithDrawTable = ({}) => {
    const [userWithDraw,setUserWithDraw] = useState([]);
    const [id,setId] = useState("");
    const [num,setNum] = useState(0);
- const {data,pagination} =  CustomGetFunction(`api/user-withdraw?sortColumn=id&sortDirection=desc&limit=20&status=pending&page=${page}`,[page,num]);
+ const {data,pagination} =  TableGetFunction(`api/user-withdraw?sortColumn=id&sortDirection=desc&limit=20&status=pending&page=${page}`,[page,num]);
 
   return (
     <div className={classes["table-margin"]}>
-        <ToastContainer />
+ 
       <Card>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700}} aria-label="customized table">

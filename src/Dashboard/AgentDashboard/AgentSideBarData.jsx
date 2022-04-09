@@ -83,6 +83,11 @@ export const AgentSidebarData = [
         // ]
     },
     {
+        title: 'User',
+        path: '/account/user',
+        icon: <RiIcons.RiAccountPinCircleFill />,
+    },
+    {
         title: 'Transition History',
         path: '/agent/transition-history',
         icon: <FaIcons.FaLayerGroup />,
