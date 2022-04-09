@@ -115,7 +115,7 @@ const submitHandler = async()=>{
       </div>
       </Grid>
       </Grid> 
-      <div style={{padding:"20px 20px",marginTop:20,backgroundColor:"red",color:"white",borderRadius:"5px"}}>
+      <div style={{padding:"20px 20px",marginTop:20,backgroundColor:"#eee",color:"black",borderRadius:"5px"}}>
         <p>{data?.message}</p>
       </div>
       <div style={{display:"flex",justifyContent:"flex-end",marginTop:20}}>

@@ -447,6 +447,16 @@ function App() {
           <Route exact path="/master/agent/new-agent" element={<NewAgent />} />
           <Route
             exact
+            path="/master/agent/agents"
+            element={<CompleteAgent />}
+          />
+          <Route
+            exact
+            path="/account/agent/complete-agent/detail/:id"
+            element={<CompleteAgentDetail />}
+          />
+          <Route
+            exact
             path="/new-agent/detail/:1"
             element={<NewAgentDetail />}
           />
