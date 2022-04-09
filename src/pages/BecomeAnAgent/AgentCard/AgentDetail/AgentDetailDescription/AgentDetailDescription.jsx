@@ -64,9 +64,7 @@ const submitHandler = async()=>{
       <Grid container spacing={2}>
         <Grid item xs={6}>
         <div className={classes["form-container"]}>
-        <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Country </label>:<p>&nbsp;&nbsp;{data?.country}</p>
-        </div>
+       
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Email </label>:<p>&nbsp;&nbsp;{data?.email}</p>
         </div>
@@ -111,6 +109,9 @@ const submitHandler = async()=>{
           </div>
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Preferred Method to Contact </label>:<p>&nbsp;&nbsp;{data?.preferred_method_of_contract}</p>
+        </div>
+        <div className={classes["form-group-desc"]}>
+          <label htmlFor="">Country </label>:<p>&nbsp;&nbsp;{data?.country}</p>
         </div>
       </div>
       </Grid>

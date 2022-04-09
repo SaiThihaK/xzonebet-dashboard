@@ -192,7 +192,11 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
                 </StyledTableCell>
                 <StyledTableCell align="left">{user.payment_provider_name}</StyledTableCell>
                 <StyledTableCell align="left">{user.amount}</StyledTableCell>
-                
+                <StyledTableCell align="left">
+                {
+                  ChangeDate(user.created_at)
+                }
+                </StyledTableCell>
             
                 {
                   differStatus(user)
@@ -216,11 +220,7 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
                  }
                
                 </StyledTableCell> */}
-                <StyledTableCell align="left">
-                {
-                  ChangeDate(user.created_at)
-                }
-                </StyledTableCell>
+             
         </StyledTableRow>
                   ))}
         {/* --------------------------------------------------Test */}

@@ -14,9 +14,8 @@ import { BasedColor } from "../../../Controller/BasedColor";
 import ApproveActionModal from "../../UI/Modal/UserWithDraw/ApproveActionModal";
 import RejectActionModal from "../../UI/Modal/UserWithDraw/RejectActionModal";
 import CustomPagination from "../../Pagination/CustomPagination";
-
 import TableGetFunction from "../../../services/TableGetFunction";
-
+import {ChangeDate} from "../../../Controller/ChangeDate"
 
 
 
@@ -84,11 +83,13 @@ const UserWithDrawTable = ({}) => {
                 <StyledTableCell align="left">{user.amount}</StyledTableCell>
                 <StyledTableCell align="left">{user.account_no}</StyledTableCell>
                 <StyledTableCell align="left">
-                 22-3-2022
+                 {
+                   ChangeDate(user?.created_at)
+                 }
                 </StyledTableCell>
        
                 <StyledTableCell align="right" >
-                <Stack spacing={1} direction="row" sx={{display:'block'}}>
+                <Stack spacing={1} direction="row">
                      <Button onClick={()=>{
                          openHandler();
                          setId(user.id)

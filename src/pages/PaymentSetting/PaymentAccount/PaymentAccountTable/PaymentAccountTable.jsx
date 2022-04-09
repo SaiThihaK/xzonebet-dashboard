@@ -46,7 +46,7 @@ const PaymentAccountTable = ({num}) => {
   const {data,pagination} = TableGetFunction(`api/dashboard/payment-accounts?sortColumn=id&sortDirection=desc&limit=10&page=${page}`,[num,page]);
   console.log(data)
 
-  // console.log(paymentAccount_table);
+
  
   return (
     <div className={classes["table-container"]}>

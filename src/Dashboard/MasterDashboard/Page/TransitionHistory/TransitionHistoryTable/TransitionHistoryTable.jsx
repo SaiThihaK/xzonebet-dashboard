@@ -14,7 +14,7 @@ import { getMethod } from "../../../../../services/api-services";
 import CustomPagination from "../../../../../components/Pagination/CustomPagination";
 import { logoutHandler } from "../../../../../components/Sidebar/Sidebar";
 import CustomGetFunction from "../../../../../services/CustomGetFunction";
-import { getResDate } from "../../../../../Controller/ChangeDate";
+import { ChangeDate } from "../../../../../Controller/ChangeDate";
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -71,7 +71,7 @@ const TransitionHistoryTable = () => {
     }
   },[page])
   
- const AlertToast = msg =>msg;
+
 
 
   return (
@@ -101,7 +101,7 @@ const TransitionHistoryTable = () => {
                   {index+1}
                 </StyledTableCell>
                 <StyledTableCell align="right">{row.id}</StyledTableCell>
-                <StyledTableCell align="right">{getResDate(row.created_at)}</StyledTableCell>
+                <StyledTableCell align="right">{ChangeDate(row.created_at)}</StyledTableCell>
                 <StyledTableCell align="right" 
                 style={userData?.id === row.receiver_user.id ? {color:'green'}:{color:"red"}}>
                   {userData?.id===row.receiver_user.id ? "+":"-"}{row.transfer_amount}
