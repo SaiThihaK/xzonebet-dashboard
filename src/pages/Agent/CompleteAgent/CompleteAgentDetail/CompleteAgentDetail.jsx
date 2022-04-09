@@ -30,7 +30,7 @@ const CompleteAgentDetail = () => {
         </div>
       </Card>
       <div className={classes["btn-container"]}>
-        <Button variant="contained" onClick={()=>navigate("/account/agent/complete-agent/transition-table")} color="primary">Transition Table</Button>
+        <Button variant="contained" onClick={()=>navigate("/account/agent/complete-agent/transition-table")} color="primary">Transition History</Button>
       </div>
     </div>
   );

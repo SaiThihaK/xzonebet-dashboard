@@ -7,6 +7,7 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import Box from '@mui/material/Box';
 import Card from "../../UI/Card";
 import AgentTransitionTable from "./AgentTransitionTable/AgentTransitionTable";
+import TransitionHistoryTable from "../../../Dashboard/MasterDashboard/Page/TransitionHistory/TransitionHistoryTable/TransitionHistoryTable";
 const AgentTransition = () => {
   // let today = new Date();
   // let Todate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
@@ -54,7 +55,7 @@ const AgentTransition = () => {
     </LocalizationProvider>
     </div>
             </div>
-            <AgentTransitionTable />
+            <TransitionHistoryTable />
           </div>
         </div>
       </Card>

@@ -17,6 +17,7 @@ import { logoutHandler } from "../../../../components/Sidebar/Sidebar";
 import axios from "axios";
 import { ChangeDate, getResDate } from "../../../../Controller/ChangeDate";
 import CustomGetFunction from "../../../../services/CustomGetFunction";
+import TableGetFunction from "../../../../services/TableGetFunction";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -43,7 +44,7 @@ const CreateUnitTable = ({render}) => {
 
 const AlertToast = (toast,msg) => toast(msg);
 
-const {data}  = CustomGetFunction('api/wallet/admin-create-record?sortColumn=id&sortDirection=desc&limit=10',[render]);
+const {data}  = TableGetFunction('api/wallet/admin-create-record?sortColumn=id&sortDirection=desc&limit=10',[render]);
 
   return (
     <div className={classes["table-margin"]}>

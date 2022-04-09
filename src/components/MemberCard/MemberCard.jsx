@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Card from '../UI/Card';
 import classes from "./MemberCard.module.css"
 
-const MemberCard = ({partner,path}) => {
+const MemberCard = ({partner,path,status}) => {
   return (
      <Link to={path+partner?.id || "1"}> 
     <div className={classes["container"]}>
@@ -20,6 +20,11 @@ const MemberCard = ({partner,path}) => {
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Phone </label>:<p>&nbsp;&nbsp;{partner?.phone ||  ""}</p>
         </div>
+        {
+          status && <div className={classes["form-group-desc"]}>
+          <label htmlFor="">Form Type </label>:<p>&nbsp;&nbsp;{partner?.form_type||  ""}</p>
+        </div>
+        }
       </div>
     </div>
     </Link> 
