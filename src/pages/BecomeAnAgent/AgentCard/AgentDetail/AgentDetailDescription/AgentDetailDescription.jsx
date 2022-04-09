@@ -1,36 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link, useParams } from "react-router-dom";
 import Button from "@mui/material/Button";
 import classes from "./AgentDetailDescription.module.css";
-import axios from "axios";
-import { getMethod } from "../../../../../services/api-services";
-import { logoutHandler } from "../../../../../components/Sidebar/Sidebar";
+
+import CustomGetFunction from "../../../../../services/CustomGetFunction";
+import { Grid } from "@mui/material";
 const AgentDetailDescription = () => {
-const [user,setUser] = useState("");
-const fetchUserDetail = async()=>{
-  try{
-    const {data} = await axios.request(getMethod(`api/affiliate-register-lists/${id}`));
-    if(data.status==="success"){
-      setUser(data.data);
-      return;
-    }
-    // console.log(data.data);
-    
-
-  }catch(error){
-    console.log(error);
-    console.log(error.response.data.message)
-    if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
-    logoutHandler();
-    }
-  }
-}
-
-useEffect(()=>{
-  fetchUserDetail();
-  return ()=>setUser("");
-},[])
-const {id} = useParams();
+  const {id} = useParams();
+const {data} = CustomGetFunction(`api/affiliate-register-lists/${id}`,[id])
+console.log(data);
 // console.log(id)
   return (
     <div>
@@ -41,30 +19,40 @@ const {id} = useParams();
           alt=""
         />
         <div className={classes["agent-user-des"]}>
-          <h3>{user.name}</h3>
-          <span>ID - {user.id}</span>
+          <h3>{data?.name}</h3>
+          <span>ID - {data?.id}</span>
         </div>
       </div>
-      <div className={classes["form-container"]}>
+      <Grid container spacing={2}>
+        <Grid item xs={6}>
+        <div className={classes["form-container"]}>
         <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Email </label>:<p>&nbsp;&nbsp;{user.email}</p>
+          <label htmlFor="">Email </label>:<p>&nbsp;&nbsp;{data?.email}</p>
         </div>
         <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Phone </label>:<p>&nbsp;&nbsp;{user.phone}</p>
+          <label htmlFor="">Phone </label>:<p>&nbsp;&nbsp;{data?.phone}</p>
         </div>
         <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Country </label>:<p>&nbsp;&nbsp;{user.country}</p>
+          <label htmlFor="">Country </label>:<p>&nbsp;&nbsp;{data?.country}</p>
         </div>
+
         {/* <div className={classes["form-group-desc"]}>
           <label htmlFor="">Region </label>:<p>&nbsp;&nbsp;-</p>
         </div> */}
         <div className={classes["form-group-desc"]}>
-          <label htmlFor="">City </label>:<p>&nbsp;{user.city}&nbsp;</p>
+          <label htmlFor="">City </label>:<p>&nbsp;{data?.city}&nbsp;</p>
         </div>
+        </div>
+        </Grid>
+      </Grid>
+
+
+
+
         <Link to="/become-an-agent">
           <Button variant="contained">Back</Button>
         </Link>
-      </div>
+      
     </div>
   );
 };
