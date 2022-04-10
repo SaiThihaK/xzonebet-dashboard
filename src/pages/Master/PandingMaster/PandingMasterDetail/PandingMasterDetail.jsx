@@ -41,7 +41,7 @@ const PandingMasterDetail = () => {
     }
     else{
       try{
-        const url = `api/affiliate-register-lists/deposit-pending/${id}`;
+        const url = `api/affiliate-register-lists/master/deposit-pending/${id}`;
         const response = await axios.request(PostMethod(
           url,
           {
