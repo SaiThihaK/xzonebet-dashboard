@@ -6,29 +6,34 @@ import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { PostMethod } from "../../../../../services/api-services";
 import { logoutHandler } from "../../../../../components/Sidebar/Sidebar";
+import { useNavigate } from "react-router-dom";
+import { confirmDetail } from "../../../../../services/api-collection";
 
 
 const ComfirmMasterDesc = ({userInfo}) => {
-    const alertToast = (toast,msg) =>toast(msg);
+    const alertToast = (msg) =>msg;
+    const navigate = useNavigate();
     // console.log(userInfo.id);
    const confirmHandler = async()=>{
   //  console.log("confirm");
     try{
    const response = await axios.request(
      
-    PostMethod(`api/affiliate-register-lists/confirm/${userInfo.id}`,
+    PostMethod(confirmDetail+userInfo.id,
        {super_master_id:1},
    ));
   //  console.log(response);
    if(response.data.status="success"){
-     alertToast(toast.success,response.data.message);
+     alertToast(toast.success(response.data.message));
+     navigate("/account/master/confirm-master")
      return;
    }
     if(response.data.status === "error"){
-      alertToast(toast.error,response.data.message);
+      alertToast(toast.error(response.data.message));
       return;
     }
    }catch(error){
+     alertToast(toast.error(error.response.data.message))
     if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
     logoutHandler();
     }

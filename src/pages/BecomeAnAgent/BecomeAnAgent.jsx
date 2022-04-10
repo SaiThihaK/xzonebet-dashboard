@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Card from "../../components/UI/Card";
 import Grid from "@mui/material/Grid";
 import classes from "./BecomeAnAgent.module.css";
-import 'react-toastify/dist/ReactToastify.css';
+
 import TableGetFunction from "../../services/TableGetFunction"
 import MemberCard from "../../components/MemberCard/MemberCard";
+import { become_an_Partner } from "../../services/api-collection";
+
 const BecomeAnAgent = () => {
-
-
-
-  const {data} = TableGetFunction("api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=pending",[])
-
+ const {data} = TableGetFunction(become_an_Partner,[]);
+ 
   return (
     <div className={classes["soccer-setting-container"]}>
       <Card>

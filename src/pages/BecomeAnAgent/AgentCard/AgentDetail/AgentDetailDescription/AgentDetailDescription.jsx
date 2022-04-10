@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {  useNavigate, useParams } from "react-router-dom";
 import Button from "@mui/material/Button";
 import classes from "./AgentDetailDescription.module.css";
@@ -8,25 +8,37 @@ import { FormControl, Grid, InputLabel, MenuItem, Select } from "@mui/material";
 import { toast } from "react-toastify";
 import { logoutHandler } from "../../../../../components/Sidebar/Sidebar";
 import axios from "axios";
-import { PostMethod } from "../../../../../services/api-services";
+import { getMethod, PostMethod } from "../../../../../services/api-services";
+import { chooseMasterApi } from "../../../../../services/api-collection";
+
 const AgentDetailDescription = () => {
   const {id} = useParams();
   const [age, setAge] = useState("");
   const [status,setStatus] = useState("");
+  const [chooseMaster,setChooseMaster] = useState([]);
+  const [master_id,setMaster_id] = useState("");
   const navigate = useNavigate()
-const {data} = CustomGetFunction(`api/affiliate-register-lists/${id}`,[id])
-console.log(data);
+const {data} = CustomGetFunction(`api/affiliate-register-lists/${id}`,[id]);
+
 const handleChange = (event) => {
   setAge(event.target.value);
 };
 const AlertToast = msg=>msg;
+const diff_form_type = ()=>{
+  if(data?.form_type==="agent" || age==="agent"){
+    return {user_type:age || data?.form_type,master_id:1}
+  }
+  else{
+    return {user_type:age || data?.form_type}
+  }
+}
 const submitHandler = async()=>{
 
   
     try{
       const url = `api/affiliate-register-lists/${status || "accept"}/${data?.id}`;
       const response = await axios.request(PostMethod(
-        url,{user_type:age || data?.form_type}
+        url,diff_form_type()
       ));
       console.log(response)
       if(response.data.status = "success"){
@@ -46,8 +58,30 @@ const submitHandler = async()=>{
     }
   }
 
+const masters = async()=>{
+  try{
+  const response = await axios.request(getMethod(chooseMasterApi));
+  if(response.data.status==="success"){
+    console.log(response.data.data)
+    setChooseMaster(response.data.data);
+    return;
+  }
+  if(response.data.status==="error"){
+    AlertToast(toast.error(response.data.message));
+    return;
+  }
+  }catch(error){
+    AlertToast(toast.error(error.response.data.message))
+  }
+}
 
-
+useEffect(() => {
+masters();
+return () => {
+   setChooseMaster([])
+  }
+}, [id])
+console.log("master",chooseMaster)
   return (
     <div>
       <div className={classes["agent-user-image-group"]}>
@@ -113,6 +147,34 @@ const submitHandler = async()=>{
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Country </label>:<p>&nbsp;&nbsp;{data?.country}</p>
         </div>
+        { data?.form_type==="agent" || age === "agent"  && 
+        (<div className={classes["form-group-desc"]}>
+        <label htmlFor="">Choose Master </label>:
+        <FormControl sx={{ width: 200 }} style={{marginLeft:2}}>
+   
+             <InputLabel labelid="demo-simple-select-label"
+              id="demo-simple-select" size="small">1</InputLabel> 
+            <Select
+              value={master_id}
+             
+              size="small"
+              labelid="demo-simple-select-label"
+              id="demo-simple-select"
+              label="1"
+              onChange={(e)=>{setMaster_id(e.target.value)}}
+              inputProps={{ "aria-label": "Without label" }}
+              sx={{ backgroundColor: "#f3f3f3" }}
+            >
+            {
+              chooseMaster.map((master,index)=>(
+                <MenuItem value={master.id} key={index}>
+                  {master.id}
+                </MenuItem>
+              ))
+            }
+            </Select>
+          </FormControl>
+        </div>) }
       </div>
       </Grid>
       </Grid> 

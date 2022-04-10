@@ -30,6 +30,14 @@ const AgentCard = ({
 
   console.log(user)
   const AlertToast = (toast,msg) => toast(msg);
+  const diffForm_type = ()=>{
+    if(age==="agent" || form_type === "agent"){
+      return {user_type:age || user.form_type,master_id:1}
+    }
+    else{
+      return {user_type:age || user.form_type}
+    }
+  }
   // console.log(user)
   const submitHandler = async(e)=>{
     e.preventDefault();
@@ -37,7 +45,7 @@ const AgentCard = ({
       try{
         const url = `api/affiliate-register-lists/${status || "accept"}/${user.id}`;
         const {data} = await axios.request(PostMethod(
-          url,{user_type:age || user.form_type}
+          url,diffForm_type()
         ));
         if(data.status = "success"){
         AlertToast(toast.success,data.message);

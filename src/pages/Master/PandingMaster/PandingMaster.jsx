@@ -11,10 +11,11 @@ import { logoutHandler } from "../../../components/Sidebar/Sidebar";
 import { ToastContainer } from "react-toastify";
 import MemberCard from "../../../components/MemberCard/MemberCard";
 import CustomGetFunction from "../../../services/CustomGetFunction";
+import { pendingMasterApi } from "../../../services/api-collection";
 
 const PandingMaster = () => {
 
-  const {data} = CustomGetFunction('api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=master',[]);
+  const {data} = CustomGetFunction(pendingMasterApi,[]);
 
 
   return (

@@ -10,6 +10,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import Card from "../../../../components/UI/Card";
 import { getMethod } from "../../../../services/api-services";
 import { logoutHandler } from "../../../../components/Sidebar/Sidebar";
+import CustomGetFunction from "../../../../services/CustomGetFunction";
+import {AccountDetail} from "../../../../services/api-collection"
 
 const ConfirmMasterDetail = () => {
   const [age, setAge] = React.useState("");
@@ -18,6 +20,7 @@ const ConfirmMasterDetail = () => {
   const alertToast = (message) => toast(message);
   // Enjoyment
  
+  const {data} = CustomGetFunction(AccountDetail+id,[id])
 
   const fetchMasterDetail = async()=>{
     try{
@@ -50,7 +53,7 @@ const ConfirmMasterDetail = () => {
           <h1 className={classes["card-title"]}>Confirm Master Form Detail</h1>
         </div>
         <div className={classes["card-body"]}>
-          <ComfirmMasterDesc userInfo={confirmMaster} alertToast={alertToast} />
+          <ComfirmMasterDesc userInfo={data} alertToast={alertToast} />
         </div>
       </Card>
     </div>

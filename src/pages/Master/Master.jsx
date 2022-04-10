@@ -6,6 +6,8 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import { getMethod } from '../../services/api-services';
 import { logoutHandler } from '../../components/Sidebar/Sidebar';
+import { cancelMasterApi, completeMasterApi, confirmMasterApi, pendingMasterApi } from '../../services/api-collection';
+
 const Master = () => {
   const [pendingMaster,setPendingMaster] = useState([]);
   const [confirmMaster,setConfirmMaster] = useState([]);
@@ -14,7 +16,7 @@ const Master = () => {
  
   const fetchPending = async()=>{
     try{
-      const pending = await axios.request(getMethod('api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=master'));
+      const pending = await axios.request(getMethod(pendingMasterApi));
       if(pending.data.status==="success"){
         setPendingMaster(pending.data.data.length);
         return;
@@ -30,7 +32,7 @@ const Master = () => {
   };
   const fetchConfirm = async()=>{
     try{
-      const confirm = await axios.request(getMethod(`api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-confirm&form_type=master`));
+      const confirm = await axios.request(getMethod(confirmMasterApi));
       if(confirm.data.status==="success"){
         setConfirmMaster(confirm.data.data.length);
         return;
@@ -47,7 +49,7 @@ const Master = () => {
   };
   const fetchComplete = async()=>{
     try{
-      const complete = await axios.request(getMethod(`api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=complete&form_type=master`));
+      const complete = await axios.request(getMethod(completeMasterApi));
       if(complete.data.status==="success"){
         setCompleteMaster(complete.data.data.length);
         return;
@@ -63,7 +65,7 @@ const Master = () => {
   };
   const fetchCancel = async()=>{
   try{
-    const cancel = await axios.request(getMethod(`api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-rejet&form_type=master`));
+    const cancel = await axios.request(getMethod(cancelMasterApi));
     if(cancel.data.status==="success"){
       setCancelMaster(cancel.data.data.length);
       return;
