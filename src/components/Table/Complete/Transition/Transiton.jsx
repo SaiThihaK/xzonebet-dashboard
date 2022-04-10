@@ -7,6 +7,7 @@ import { Button } from "@mui/material";
 import { DateRangePicker, LocalizationProvider } from "@mui/lab";
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import Box from '@mui/material/Box';
+import TransitionHistoryTable from "../../../../Dashboard/MasterDashboard/Page/TransitionHistory/TransitionHistoryTable/TransitionHistoryTable";
 const Transition = () => {
   // let today = new Date();
   // let Todate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
@@ -54,7 +55,7 @@ const Transition = () => {
     </LocalizationProvider>
     </div>
             </div>
-            <TransitionTable />
+            <TransitionHistoryTable />
           </div>
         </div>
       </Card>

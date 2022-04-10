@@ -4,8 +4,7 @@ import classes from "./CompleteMasterDesc.module.css";
 
 
 const CompleteMasterDesc = ({userInfo}) => {
-
-   
+console.log("userInfo",userInfo)
   return (
     <div>
       <div className={classes["agent-user-image-group"]}>

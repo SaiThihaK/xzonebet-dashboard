@@ -33,7 +33,6 @@ import ConfirmMaster from "./pages/Master/ConfirmMaster/ConfirmMaster";
 import CancelMaster from "./pages/Master/CancelMaster/CancelMaster";
 
 import CompleteMaster from "./pages/Master/CompleteMaster/CompleteMaster";
-
 import Transition from "./components/Table/Complete/Transition/Transiton";
 import PandingMasterDetail from "./pages/Master/PandingMaster/PandingMasterDetail/PandingMasterDetail";
 import ConfirmMasterDetail from "./pages/Master/ConfirmMaster/ConfirmMasterDetail/ConfirmMasterDetail";
@@ -98,6 +97,9 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import NewAgent from "./Dashboard/MasterDashboard/Page/Agent/NewAgent/NewAgent";
 import NewAgentDetail from "./Dashboard/MasterDashboard/Page/Agent/NewAgent/NewAgentDetail/NewAgentDetail";
+import CompleteMasterDesc from "./pages/Master/CompleteMaster/CompleteMasterDetail/CompleteMasterDesc/CompleteMasterDesc";
+import TransitionHistoryTable from "./Dashboard/MasterDashboard/Page/TransitionHistory/TransitionHistoryTable/TransitionHistoryTable";
+import TransitionTable from "./components/Table/Complete/Transition/TransitonTable/TransitionTable";
 function App() {
   const DashboardRouting = () => {
     if (type === "admin") {

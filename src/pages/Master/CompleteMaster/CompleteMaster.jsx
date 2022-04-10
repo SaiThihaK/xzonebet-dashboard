@@ -9,10 +9,11 @@ import { getMethod } from "../../../services/api-services";
 import { logoutHandler } from "../../../components/Sidebar/Sidebar";
 import MemberCard from "../../../components/MemberCard/MemberCard";
 import CustomGetFunction from "../../../services/CustomGetFunction";
+import { completeMasterApi } from "../../../services/api-collection";
 
 
 const CompleteMaster = () => {
-  const {data} = CustomGetFunction(`api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=complete&form_type=master`,[]);
+  const {data} = CustomGetFunction(completeMasterApi,[]);
  console.log(data);
   return (
     <div className={classes["soccer-setting-container"]}>
@@ -30,7 +31,7 @@ const CompleteMaster = () => {
             {
               data.length  !==0 && data.map((master,index)=>(
                 <Grid item xs={6} key={index}>
-                  <MemberCard partner={master} path={"/account/master/confirm-master/detail/"} />
+                  <MemberCard partner={master} path={"/account/master/complete-master/detail/"} />
                 </Grid>
   ))
             }

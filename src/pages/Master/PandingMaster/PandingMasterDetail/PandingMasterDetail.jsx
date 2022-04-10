@@ -4,16 +4,17 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import classes from "./PandingMasterDetail.module.css";
 import {  useNavigate, useParams } from "react-router-dom";
-import { useEffect } from "react";
+
 import axios from "axios";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { InputLabel, MenuItem, Select } from "@mui/material";
+import {  toast } from 'react-toastify';
+
+import {  MenuItem, Select } from "@mui/material";
 import SuperMasterDesc from "../../../SuperMaster/SuperMasterCard/SuperMasterDetail/SuperMasterDesc/SuperMasterDesc";
 import Card from "../../../../components/UI/Card";
-import { getMethod, PostMethod } from "../../../../services/api-services";
+import { PostMethod } from "../../../../services/api-services";
 import { logoutHandler } from "../../../../components/Sidebar/Sidebar";
 import CustomGetFunction from "../../../../services/CustomGetFunction";
+import { pendingDetail,AccountDetail } from "../../../../services/api-collection";
 const PandingMasterDetail = () => {
   const [age,setAge] = useState();
 
@@ -41,7 +42,10 @@ const PandingMasterDetail = () => {
     }
     else{
       try{
-        const url = `api/affiliate-register-lists/master/deposit-pending/${id}`;
+
+        const url = pendingDetail + id;
+=======
+
         const response = await axios.request(PostMethod(
           url,
           {
@@ -78,6 +82,7 @@ const PandingMasterDetail = () => {
         }
         return;
       }catch(error){
+        alertToast(toast.error(error.response.data.message));
         if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
         logoutHandler();
         return;
@@ -85,7 +90,7 @@ const PandingMasterDetail = () => {
       }
     }
   }
- const {data} = CustomGetFunction(`api/affiliate-register-lists/${id}`,[id]);
+ const {data} = CustomGetFunction(AccountDetail+id,[id]);
   
   const supMaster = [{id:"1",name:"J-me"},{id:"2",name:"Mr.Harry Potter"},{id:"3",name:"Mr.Willson"}];
   // const fetchCrypto = async()=>{
@@ -104,7 +109,6 @@ const PandingMasterDetail = () => {
       </Card>
       <div style={{marginTop: '20px'}}>
           <form>
-          <ToastContainer />
           <div className={classes["card-column"]}>
         <Card>
           <div className={classes["card-header"]}>
@@ -184,6 +188,7 @@ const PandingMasterDetail = () => {
                         onChange={(e)=>setAmount(e.target.value)}
                         label="Amount"
                         sx={{ width: 200 }}
+                        type="number"
                         variant="standard"
                         value={amount}
                       />
@@ -279,6 +284,7 @@ const PandingMasterDetail = () => {
                         id="standard-basic"
                         onChange={(e)=>setDeposite_percent(e.target.value)}
                         label="Deposite Percentage"
+                        type="number"
                         sx={{width:200}}
                         variant="standard"
                         value={deposit_percent}
@@ -293,6 +299,7 @@ const PandingMasterDetail = () => {
                         id="standard-basic"
                         onChange={(e)=>setWidthDraw_percent(e.target.value)}
                         label="Withdraw Percentage"
+                        type="number"
                         sx={{ width: 200 }}
                         variant="standard"
                         value={withdraw_percent}

@@ -8,12 +8,13 @@ import MasterCard from "../../../components/MasterCard/MasterCard";
 import { getMethod } from "../../../services/api-services";
 import { logoutHandler } from "../../../components/Sidebar/Sidebar";
 import MemberCard from "../../../components/MemberCard/MemberCard";
+import { confirmMasterApi } from "../../../services/api-collection";
 
 const ConfirmMaster = () => {
   const [confirmMasters,setConfirmMasters] = useState([]);
   const fetchConfirmMaster = async()=>{
     try{
-      const {data} = await axios.request(getMethod(`api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=deposit-confirm&form_type=master`));
+      const {data} = await axios.request(getMethod(confirmMasterApi));
       if(data.status==="success"){
         setConfirmMasters(data.data);
         return;

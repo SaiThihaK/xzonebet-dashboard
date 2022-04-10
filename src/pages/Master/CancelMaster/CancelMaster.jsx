@@ -2,18 +2,13 @@ import React from "react";
 import Card from '../../../components/UI/Card';
 import Grid from "@mui/material/Grid";
 import classes from './CancelMaster.module.css';
-import { useState, useEffect   } from "react";
-import axios from "axios";
-
-import MasterCard from "../../../components/MasterCard/MasterCard";
-import { getMethod } from "../../../services/api-services";
-import { logoutHandler } from "../../../components/Sidebar/Sidebar";
 import MemberCard from "../../../components/MemberCard/MemberCard";
 import CustomGetFunction from "../../../services/CustomGetFunction";
+import { cancelMasterApi } from "../../../services/api-collection";
 
 const CancelMaster = () => {
-  const [cancelMasters,setCancelMaster] = useState([]);
-  const {data} = CustomGetFunction(`api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=deposit-rejet&form_type=master`,[]);
+
+  const {data} = CustomGetFunction(cancelMasterApi,[]);
 
  
   return (
