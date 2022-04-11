@@ -100,6 +100,7 @@ import NewAgentDetail from "./Dashboard/MasterDashboard/Page/Agent/NewAgent/NewA
 import CompleteMasterDesc from "./pages/Master/CompleteMaster/CompleteMasterDetail/CompleteMasterDesc/CompleteMasterDesc";
 import TransitionHistoryTable from "./Dashboard/MasterDashboard/Page/TransitionHistory/TransitionHistoryTable/TransitionHistoryTable";
 import TransitionTable from "./components/Table/Complete/Transition/TransitonTable/TransitionTable";
+import ConnectWithChat from "./pages/ConnectWithChat/ConnectWithChat";
 function App() {
   const DashboardRouting = () => {
     if (type === "admin") {
@@ -503,6 +504,7 @@ function App() {
             path="/master/payment-setting/payment-account/edit/:id"
             element={<EditPaymentAccount />}
           />
+          <Route path="/connect-with-chat" element={<ConnectWithChat />} />
           <Route path="*" element={<Notfound />} />
         </Routes>
       );
