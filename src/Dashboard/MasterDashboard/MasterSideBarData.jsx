@@ -186,5 +186,10 @@ export const MasterSidebarData = [
         iconClosed: <RiIcons.RiArrowDownSFill/>,
         iconOpened: <RiIcons.RiArrowUpSFill/>,
     },
+    {
+        title: "Connect with Chat",
+        path: '/connect-with-chat',
+        icon: <AiIcons.AiFillSetting />,
+    },
     
 ]
