@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {  useNavigate, useParams } from "react-router-dom";
 import Button from "@mui/material/Button";
 import classes from "./AgentDetailDescription.module.css";
-
+import CancelModal from "../../../../../components/CancelModal/CancelModal"
 import CustomGetFunction from "../../../../../services/CustomGetFunction";
 import { FormControl, Grid, InputLabel, MenuItem, Select } from "@mui/material";
 import { toast } from "react-toastify";
@@ -19,6 +19,10 @@ const AgentDetailDescription = () => {
   const [master_id,setMaster_id] = useState("");
   const [choose_superMaster,setChoose_superMaster] = useState([]);
   const [superMaster_id,setSuperMaster_id] = useState("");
+  const [remark,setRemark] = useState("");
+  const [open,setOpen] = useState(false);
+  const handleOpen = ()=>setOpen(true);
+  const handleClose = ()=>setOpen(false);
   const navigate = useNavigate()
 const {data} = CustomGetFunction(`api/affiliate-register-lists/${id}`,[id]);
 
@@ -30,12 +34,41 @@ const diff_form_type = ()=>{
   if(data?.form_type==="agent" || age==="agent"){
     return {user_type:age || data?.form_type,master_id:1}
   }
-  else{
+  if(data?.form_type==="master" || age==="master"){
     return {user_type:age || data?.form_type}
   }
+  if(status==="rejet"){
+    return {status:"rejected",rejected_reason:remark}
+  }
 }
+const cancelHandler = async()=>{
+      try{
+        const url = `api/affiliate-register-lists/${status || "accept"}/${data?.id}`;
+        const response = await axios.request(PostMethod(
+          url,diff_form_type()
+        ));
+        console.log(response)
+        if(response.data.status = "success"){
+        AlertToast(toast.success(data.message));
+        navigate("/become-an-agent")
+        return;
+        }
+        if(response.data.status = "error"){
+          AlertToast(toast.error(response.data.message));
+         return;
+        };
+      }catch(error){
+        AlertToast(toast.error(error.response.data.message));
+        if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+        logoutHandler();
+        }
+      }
+    }
 const submitHandler = async()=>{
-
+if(status==="rejet"){
+  handleOpen();
+  return;
+}
   
     try{
       const url = `api/affiliate-register-lists/${status || "accept"}/${data?.id}`;
@@ -94,6 +127,10 @@ const superMasters = async()=>{
   }
 }
 
+
+
+
+
 useEffect(() => {
 masters();
 superMasters();
@@ -102,7 +139,7 @@ return () => {
    setChoose_superMaster([]);
   }
 }, [id])
-console.log("form_type",data.form_type)
+
   return (
     <div>
       <div className={classes["agent-user-image-group"]}>
@@ -158,7 +195,7 @@ console.log("form_type",data.form_type)
               <MenuItem value={"master"} onClick={()=>setStatus("accept")}>Master</MenuItem>
               <MenuItem value={"agent"} onClick={()=>setStatus("accept")}>Agent</MenuItem>
               <MenuItem value={"affiliate-agent"} onClick={()=>setStatus("accept")}>Affiliate Agent</MenuItem>
-              <MenuItem value={"reject"} onClick={()=>setStatus("rejet")}>Cancel</MenuItem>
+              <MenuItem value={"reject"} onClick={()=>{setStatus("rejet");}}>Cancel</MenuItem>
             </Select>
           </FormControl>
           </div>
@@ -236,6 +273,7 @@ console.log("form_type",data.form_type)
       <div style={{display:"flex",justifyContent:"flex-end",marginTop:20}}>
           <Button variant="contained" onClick={submitHandler}>Submit</Button>
         </div>
+        <CancelModal open={open} handleClose={handleClose} remark={remark} setRemark={setRemark} submitHandler={cancelHandler}/>
     </div>
   );
 };
