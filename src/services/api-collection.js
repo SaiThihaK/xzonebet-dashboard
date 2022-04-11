@@ -20,3 +20,5 @@ export const become_an_Partner =
 // ChoosingMaster in Become an Partner form for agent
 export const chooseMasterApi =
   "api/agents?sortColumn=id&sortDirection=desc&limit=30&agent_level=master";
+export const chooseSuper_masterApi =
+  "api/agents?sortColumn=id&sortDirection=desc&limit=30&agent_level=super_master";

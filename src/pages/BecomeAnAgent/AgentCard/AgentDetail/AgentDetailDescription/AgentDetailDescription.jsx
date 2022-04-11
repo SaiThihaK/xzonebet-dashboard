@@ -9,14 +9,16 @@ import { toast } from "react-toastify";
 import { logoutHandler } from "../../../../../components/Sidebar/Sidebar";
 import axios from "axios";
 import { getMethod, PostMethod } from "../../../../../services/api-services";
-import { chooseMasterApi } from "../../../../../services/api-collection";
+import { chooseMasterApi, chooseSuper_masterApi } from "../../../../../services/api-collection";
 
 const AgentDetailDescription = () => {
   const {id} = useParams();
-  const [age, setAge] = useState("");
+  const [age, setAge] = useState('');
   const [status,setStatus] = useState("");
   const [chooseMaster,setChooseMaster] = useState([]);
   const [master_id,setMaster_id] = useState("");
+  const [choose_superMaster,setChoose_superMaster] = useState([]);
+  const [superMaster_id,setSuperMaster_id] = useState("");
   const navigate = useNavigate()
 const {data} = CustomGetFunction(`api/affiliate-register-lists/${id}`,[id]);
 
@@ -75,13 +77,32 @@ const masters = async()=>{
   }
 }
 
+const superMasters = async()=>{
+  try{
+  const response = await axios.request(getMethod(chooseSuper_masterApi));
+  if(response.data.status==="success"){
+    console.log(response.data.data)
+    setChoose_superMaster(response.data.data);
+    return;
+  }
+  if(response.data.status==="error"){
+    AlertToast(toast.error(response.data.message));
+    return;
+  }
+  }catch(error){
+    AlertToast(toast.error(error.response.data.message))
+  }
+}
+
 useEffect(() => {
 masters();
+superMasters();
 return () => {
-   setChooseMaster([])
+   setChooseMaster([]);
+   setChoose_superMaster([]);
   }
 }, [id])
-console.log("master",chooseMaster)
+console.log("form_type",data.form_type)
   return (
     <div>
       <div className={classes["agent-user-image-group"]}>
@@ -147,7 +168,8 @@ console.log("master",chooseMaster)
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Country </label>:<p>&nbsp;&nbsp;{data?.country}</p>
         </div>
-        { data?.form_type==="agent" || age === "agent"  && 
+        {/* master for agent */}
+        { data.form_type==="agent" || age === "agent"  && 
         (<div className={classes["form-group-desc"]}>
         <label htmlFor="">Choose Master </label>:
         <FormControl sx={{ width: 200 }} style={{marginLeft:2}}>
@@ -167,6 +189,36 @@ console.log("master",chooseMaster)
             >
             {
               chooseMaster.map((master,index)=>(
+                <MenuItem value={master.id} key={index}>
+                  {master.id}
+                </MenuItem>
+              ))
+            }
+            </Select>
+          </FormControl>
+        </div>) }
+
+      {/* super-master for masters */}
+      {  data.form_type==="master" ||   age === "master"  && 
+        (<div className={classes["form-group-desc"]}>
+        <label htmlFor="">Choose Super Master </label>:
+        <FormControl sx={{ width: 200 }} style={{marginLeft:2}}>
+   
+             <InputLabel labelid="demo-simple-select-label"
+              id="demo-simple-select" size="small">1</InputLabel> 
+            <Select
+              value={superMaster_id}
+             
+              size="small"
+              labelid="demo-simple-select-label"
+              id="demo-simple-select"
+              label="1"
+              onChange={(e)=>{setSuperMaster_id(e.target.value)}}
+              inputProps={{ "aria-label": "Without label" }}
+              sx={{ backgroundColor: "#f3f3f3" }}
+            >
+            {
+              choose_superMaster.map((master,index)=>(
                 <MenuItem value={master.id} key={index}>
                   {master.id}
                 </MenuItem>
