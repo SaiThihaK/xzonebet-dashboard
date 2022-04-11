@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import classes from "./MaungHeader.module.css";
+import MaungSettingEdit from "../../../components/UI/Modal/MaungSettingEdit/MaungSettingEdit";
 const MaungHeader = () => {
+  const [open,setOpen] = useState(false);
+  const handleOpen = ()=>setOpen(true);
+  const handleClose = ()=>setOpen(false);
+
+  const btnClick = ()=>{
+    handleClose();
+  }
   return (
-    <form action="">
-      <div className={classes["search-header-flex"]}>
+    <div style={{display:"flex",justifyContent:"flex-end",marginBottom:20}}>
+      {/* <div className={classes["search-header-flex"]}>
         <div className={classes.formGroup}>
           <TextField
             sx={{ width: 300 }}
@@ -20,7 +28,7 @@ const MaungHeader = () => {
             sx={{ width: 300 }}
             size="small"
             id="outlined-basic"
-            label="Percentage"
+            label="Tax"
             variant="outlined"
           />
         </div>
@@ -29,8 +37,11 @@ const MaungHeader = () => {
             Add
           </Button>
         </div>
-      </div>
-    </form>
+      </div> */}
+      
+  <Button onClick={handleOpen} variant="contained">Create Maung</Button>
+  <MaungSettingEdit open={open} handleClose={handleClose} btnName="Create Maung" btnClick={btnClick} />
+    </div>
   );
 };
 
