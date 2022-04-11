@@ -44,7 +44,6 @@ const PandingMasterDetail = () => {
       try{
 
         const url = pendingDetail + id;
-=======
 
         const response = await axios.request(PostMethod(
           url,
