@@ -10,10 +10,8 @@ import { Button, FormControl, Stack, TextField } from "@mui/material";
 const ConnectChatModal = ({ 
   open, 
   closeHandler,
-  id,
-  setId,
-  password,
-  setPassword,
+  idInputRef,
+  passwordInputRef
 }) => {
 
 
@@ -42,10 +40,10 @@ const ConnectChatModal = ({
             Login
           </Typography>
          <FormControl fullWidth style={{marginBottom:20}}>
-             <TextField size="small" value={id} onChange={(e)=>setId(e.target.value)}  placeholder="Enter Id"/>
+             <TextField size="small" ref={idInputRef}  placeholder="Enter Id"/>
          </FormControl>
          <FormControl fullWidth>
-             <TextField size="small" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Enter Password"/>
+             <TextField size="small" ref={passwordInputRef} placeholder="Enter Password"/>
          </FormControl>
          <Stack direction="row" spacing={2} style={{marginTop:30}}>
           <Button variant="contained">Connect with Chat</Button>

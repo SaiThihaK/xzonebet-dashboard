@@ -1,13 +1,13 @@
-import { Button, FormControl, TextField } from '@mui/material';
-import React, { useState } from 'react';
+import { Button } from '@mui/material';
+import React, { useRef, useState} from 'react';
 import PageTitleCard from '../../components/UI/PageTitleCard/PageTitleCard';
 import SuperMasterDesc from '../SuperMaster/SuperMasterCard/SuperMasterDetail/SuperMasterDesc/SuperMasterDesc';
 import classes from "./ConnectWithChat.module.css";
 import ConnectChatModal from "../../components/UI/Modal/ConnectChatModal/ConnectChatModal"
 const ConnectWithChat = () => {
+const idInputRef = useRef();
+const passwordInputRef = useRef();
 const [open,setOpen] = useState(false);
-const [id,setId] = useState("");
-const [password,setPassword] = useState("");
 const openHandler = ()=>setOpen(true);
 const closeHandler= ()=>setOpen(false);
 
@@ -22,8 +22,7 @@ const closeHandler= ()=>setOpen(false);
         </div>
 <ConnectChatModal 
 open={open} closeHandler={closeHandler}
-id={id} setId={setId}
-password={password} setPassword={setPassword}
+idInputRef={idInputRef} passwordInputRef={passwordInputRef}
  />
     </PageTitleCard>
   )
