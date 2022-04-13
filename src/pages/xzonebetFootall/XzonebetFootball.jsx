@@ -1,23 +1,21 @@
 import { Button } from '@mui/material'
 import React, { useState } from 'react'
-import XzonebetFootballModal from '../../components/UI/Modal/XzonebetFootballModal/XzonebetFootballModal'
-import PageTitleCard from '../../components/UI/PageTitleCard/PageTitleCard'
-import classes from "./XzonebetFootball.module.css"
-const XzonebetFootball = () => {
-const [open,setOpen] = useState(false);
 
-const openHandler = ()=>setOpen(true);
-const closeHandler = ()=>setOpen(false);
+import PageTitleCard from '../../components/UI/PageTitleCard/PageTitleCard'
+import UserCard from '../Users/UserCard/UserCard';
+import classes from "./XzonebetFootball.module.css";
+const XzonebetFootball = () => {
+
   return (
 <PageTitleCard title="XzoneBet-Football Setting">
-    <div className={classes["card-body"]}>
-    <div className={classes["btn-container"]}>
-    <Button variant="contained" onClick={openHandler}>
-    Create League
-    </Button>    
-    </div>
-    </div>
-    <XzonebetFootballModal open={open} closeHandler={closeHandler} />
+  <div className={classes['card-body']}>
+  <div className={classes['soccer-setting-content-flex']}>
+            <UserCard name="Country" bgColor="#2ED8B6" path="/game-setting/xzonebet-football-setting/country" />
+            <UserCard name="Leagues" bgColor="#2ED8B6" path="/game-setting/xzonebet-football-setting/leagues" />
+            <UserCard name="Teams" bgColor="#2ED8B6" path="/game-setting/xzonebet-football-setting/teams" />
+            <UserCard name="Fictures" bgColor="#2ED8B6" path="/game-setting/xzonebet-football-setting/ficture-setting" />
+           </div>
+  </div>
 </PageTitleCard>
   )
 }
