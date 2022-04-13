@@ -104,6 +104,8 @@ import ConnectWithChat from "./pages/ConnectWithChat/ConnectWithChat";
 import BecomeAnEmployee from "./pages/BecomeAnEmployee/BecomeAnEmployee";
 import EmployeeForm from "./pages/EmployeeForm/EmployeeForm";
 import Profit from "./pages/Profit/Profit";
+import XzonebetFootball from "./pages/xzonebetFootall/XzonebetFootball";
+import Country from "./pages/Country/Country";
 function App() {
   const DashboardRouting = () => {
     if (type === "admin") {
@@ -371,7 +373,16 @@ function App() {
             path="/game-setting/football-setting"
             element={<FootballSetting />}
           />
-
+          <Route
+            path="/game-setting/xzonebet-football-setting"
+            exact
+            element={<XzonebetFootball />}
+          />
+          <Route
+            path="/game-setting/xzonebet-football-setting/country"
+            exact
+            element={<Country />}
+          />
           {/*------------------------------ Admin Team Account------------------------------------------------ */}
           <Route
             exact
