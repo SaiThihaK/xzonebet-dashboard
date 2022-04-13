@@ -463,7 +463,7 @@ function App() {
           />
           <Route
             exact
-            path="/new-agent/detail/:1"
+            path="/new-agent/detail/:id"
             element={<NewAgentDetail />}
           />
           <Route

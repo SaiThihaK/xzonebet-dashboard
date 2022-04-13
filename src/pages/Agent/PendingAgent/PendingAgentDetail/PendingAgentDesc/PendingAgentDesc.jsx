@@ -4,33 +4,11 @@ import classes from "./PendingAgentDesc.module.css";
 import {  FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { getMethod } from "../../../../../services/api-services";
 import { logoutHandler } from "../../../../../components/Sidebar/Sidebar";
+import CustomGetFunction from "../../../../../services/CustomGetFunction";
 
 const PendingAgentDesc = ({userInfo}) => {
-    const [completeMasters,setCompleteMasters] = useState([]);
-    const [master, setMaster] = React.useState('');
-    const handleChange = (event) => {
-        setMaster(event.target.value);
-      };
-    const fetchCompleteMaster = async()=>{
-      try{
-        const {data} = await axios.request(getMethod('api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=complete&form_type=master'));
-        if(data.status==="success"){
-          setCompleteMasters(data.data);
-          return;
-        }
 
-
-      }catch(error){
-        console.log(error);
-        console.log(error.response.data.message)
-        if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
-        logoutHandler();
-        }
-      }
-      };
-      useEffect(()=>{
-        fetchCompleteMaster() ;
-      },[]);
+  const {data} = CustomGetFunction("api/agents?sortColumn=id&sortDirection=desc&limit=30&agent_level=master",[])
   return (
     <div>
       <div className={classes["agent-user-image-group"]}>
@@ -65,12 +43,10 @@ const PendingAgentDesc = ({userInfo}) => {
   <Select
     labelId="demo-simple-select-label"
     id="demo-simple-select"
-    value={master}
     size="small"
-    onChange={handleChange}
     variant="standard"
   > 
-  {completeMasters.map((master,index)=>(
+  {data.map((master,index)=>(
   <MenuItem key={index} value={master.id}>{master.name}</MenuItem>
   ))}
   </Select>

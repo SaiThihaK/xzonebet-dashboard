@@ -2,24 +2,21 @@ import { Grid } from '@mui/material'
 import React from 'react'
 import MemberCard from '../../../../../components/MemberCard/MemberCard'
 import PageTitleCard from '../../../../../components/UI/PageTitleCard/PageTitleCard'
+import CustomGetFunction from '../../../../../services/CustomGetFunction'
 import classes from "./NewAgent.module.css"
 
 const NewAgent = () => {
-    const employeeData = [
-        {name:" J-me"},
-        {name:"Node Samurai"},
-        {name:"Hacker Wa Tote"},
-        {name:"Swal Sone Ya Ye Yint Ko "}
-      ]
+  const {data} = CustomGetFunction("api/agents?sortColumn=id&sortDirection=desc&limit=30&agent_level=agent",[]);
+    
     
   return (
     <PageTitleCard title="New Agents">
-     <div className='card-body'>
+     <div className={classes["card-body"]}>
      {
             <Grid container spacing={5}>
               {
               
-              employeeData?.length !==0 && employeeData?.map((agent,index)=>(
+              data?.length !==0 && data?.map((agent,index)=>(
                  <Grid item xs={6} key={index}>
                     <MemberCard partner={agent} path={"/new-agent/detail/"} />
                    </Grid>
