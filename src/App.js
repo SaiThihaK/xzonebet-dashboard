@@ -105,7 +105,8 @@ import BecomeAnEmployee from "./pages/BecomeAnEmployee/BecomeAnEmployee";
 import EmployeeForm from "./pages/EmployeeForm/EmployeeForm";
 import Profit from "./pages/Profit/Profit";
 import XzonebetFootball from "./pages/xzonebetFootall/XzonebetFootball";
-import Country from "./pages/Country/Country";
+
+import Fixture from "./pages/Fixture/Fixture";
 function App() {
   const DashboardRouting = () => {
     if (type === "admin") {
@@ -378,11 +379,6 @@ function App() {
             exact
             element={<XzonebetFootball />}
           />
-          <Route
-            path="/game-setting/xzonebet-football-setting/country"
-            exact
-            element={<Country />}
-          />
           {/*------------------------------ Admin Team Account------------------------------------------------ */}
           <Route
             exact
@@ -423,6 +419,8 @@ function App() {
           <Route exact path="/position" element={<HrPosition />} />
           <Route exact path="/employee" element={<HrEmployee />} />
           <Route path="/odoo-function-detail" element={<DetailFunction />} />
+          {/* ---------------Xzonebet Football------------------ */}
+          <Route exact path="fixture" element={<Fixture />} />
           <Route path="*" element={<Notfound />} />
         </Routes>
       );
