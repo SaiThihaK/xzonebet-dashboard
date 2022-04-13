@@ -101,6 +101,9 @@ import CompleteMasterDesc from "./pages/Master/CompleteMaster/CompleteMasterDeta
 import TransitionHistoryTable from "./Dashboard/MasterDashboard/Page/TransitionHistory/TransitionHistoryTable/TransitionHistoryTable";
 import TransitionTable from "./components/Table/Complete/Transition/TransitonTable/TransitionTable";
 import ConnectWithChat from "./pages/ConnectWithChat/ConnectWithChat";
+import BecomeAnEmployee from "./pages/BecomeAnEmployee/BecomeAnEmployee";
+import EmployeeForm from "./pages/EmployeeForm/EmployeeForm";
+import Profit from "./pages/Profit/Profit";
 function App() {
   const DashboardRouting = () => {
     if (type === "admin") {
@@ -460,7 +463,7 @@ function App() {
           />
           <Route
             exact
-            path="/new-agent/detail/:1"
+            path="/new-agent/detail/:id"
             element={<NewAgentDetail />}
           />
           <Route
@@ -549,6 +552,7 @@ function App() {
             element={<ActiveUser />}
           />
           <Route path="/account/user/all-user" exact element={<AllUser />} />
+          <Route path="/profit" exact element={<Profit />} />
           <Route path="*" element={<Notfound />} />
         </Routes>
       );
@@ -776,6 +780,12 @@ function App() {
             element={<CreatePosition />}
           />
           <Route path="/odoo-function-detail" element={<DetailFunction />} />
+          <Route
+            path="become-an-employee"
+            exact
+            element={<BecomeAnEmployee />}
+          />
+          <Route path="/employee-form" exact element={<EmployeeForm />} />
         </Routes>
       );
     }

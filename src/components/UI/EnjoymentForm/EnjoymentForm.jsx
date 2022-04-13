@@ -4,11 +4,8 @@ import Card from '../Card'
 import PageTitleCard from '../PageTitleCard/PageTitleCard'
 import classes from "./EnjoymentForm.module.css"
 
-const EnjoymentForm = () => {
-  const [username,setUserName] = useState("");
-  const [password,setPassword] = useState("");
-  const [deposit_percent,setDeposite_percent] = useState("");
-  const [withdraw_percent,setWidthDraw_percent] = useState("");
+const EnjoymentForm = (props) => {
+  const {name,setName,password,setPassword,deposit,setDeposit,withDraw,setWithDraw} = props;
   return (
       <div style={{marginTop:30}}>
    <Card>
@@ -21,60 +18,66 @@ const EnjoymentForm = () => {
                 <form action="" style={{ width: "500px" }}>
                   <div className={classes["form-group-desc"]}>
                     <label htmlFor="">User Name </label>:
-                    <p>
+                    <div>
                       &nbsp;&nbsp;
-                      {/* <input type="text" /> */}
+                     
                       <TextField
                         id="standard-basic"
                         label="User Name"
-                        onChange={(e)=>setUserName(e.target.value)}
+                        value={name}
+                        onChange={(e)=>setName(e.target.value)}
                         sx={{ width: 200 }}
                         variant="standard"
-                        value={username}
+            
                       />
-                    </p>
+                    </div>
                   </div>
                   <div className={classes["form-group-desc"]}>
                     <label htmlFor="">Password </label>:
-                    <p>
+                    <div>
                       &nbsp;&nbsp;
-                  
                         <TextField
-                        onChange={(e)=>setPassword(e.target.value)}
+                         value={password}
+                         onChange={(e)=>setPassword(e.target.value)}
+                         
                         label="Password" 
                         sx={{ width: 200 }}
-                        value={password}  
+                         
                          variant="standard" />
                      
-                    </p>
+                    </div>
                   </div>
                   <div className={classes["form-group-desc"]}>
                     <label htmlFor="">Deposite percentage </label>:
-                    <p>
+                    <div>
                       &nbsp;&nbsp;
                       <TextField
                         id="standard-basic"
-                        onChange={(e)=>setDeposite_percent(e.target.value)}
+                        vslue={deposit}
+                        onChange={(e)=>setDeposit(e.target.value)}
                         label="Deposite Percentage"
+                        type="number"
                         sx={{width:200}}
                         variant="standard"
-                        value={deposit_percent}
+                
                       />
-                    </p>
+                    </div>
                   </div>
                   <div className={classes["form-group-desc"]}>
                     <label htmlFor="">Withdraw Percentage</label>:
-                    <p>
+                    <div>
                       &nbsp;&nbsp;
                       <TextField
                         id="standard-basic"
-                        onChange={(e)=>setWidthDraw_percent(e.target.value)}
+                        type="number"
+                        value={withDraw}
+                        onChange={(e)=>setWithDraw(e.target.value)}
                         label="Withdraw Percentage"
                         sx={{ width: 200 }}
                         variant="standard"
-                        value={withdraw_percent}
+                       
                       />
-                    </p>
+                    </div>
                   </div>
                 </form>
               </div>

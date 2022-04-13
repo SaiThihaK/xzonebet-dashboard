@@ -50,7 +50,7 @@ export const AgentSidebarData = [
     },
     {
         title: 'Profit',
-        path: '/agent/profit',
+        path: '/profit',
         icon: <RiIcons.RiMoneyDollarCircleLine />,
         iconClosed: <RiIcons.RiArrowDownSFill/>,
         iconOpened: <RiIcons.RiArrowUpSFill/>,
