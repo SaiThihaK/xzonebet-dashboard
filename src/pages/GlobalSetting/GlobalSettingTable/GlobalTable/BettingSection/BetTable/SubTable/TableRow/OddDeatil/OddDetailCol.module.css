@@ -1,0 +1,37 @@
+
+.betTable1 {
+  width: 50%;
+  border-right: 1px solid white;
+}
+.betHeader {
+  background: #dae8f1;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px  10px;
+  cursor: pointer;
+}
+.betHeader div  {
+  margin: 0 6px 0 7px;
+  color: rgb(0, 0,0);
+}
+.betHeader >i{
+  transform-origin: center;
+}
+.rowNone{
+  display: none;
+}
+.arrowRotate{
+  transform: rotate(180deg);
+  transform-origin: left;
+}
+.bgp {
+  margin-bottom: 1px;
+  height: fit-content;
+  
+}
+.betGroup {
+  display: none;
+  padding: 1px;
+  margin-top: 1px;
+}
+ 

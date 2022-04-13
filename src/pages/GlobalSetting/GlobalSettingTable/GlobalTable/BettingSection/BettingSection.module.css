@@ -1,0 +1,12 @@
+.betting_section{
+    display: flex;
+    background-color: var(--background-color);
+    padding: 5px 5px;
+             }
+.live_bet{
+width: 100%;
+               
+}
+.mb_10{
+margin-bottom: 10px;
+}

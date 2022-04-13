@@ -1,0 +1,51 @@
+name: AutoDeply(https://www.dashboard.xzonebet.online/)
+
+on:
+  push:
+    branches: [ dev ]
+  pull_request:
+    branches: [ dev ]
+
+jobs:
+
+  deploy-dev:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout
+
+        uses: actions/checkout@v2
+
+      - name: executing remote ssh commands using ssh key
+
+        uses: appleboy/ssh-action@master
+
+        with:
+
+          host: ${{ secrets.SSH_HOST_DEV }}
+
+          username: ${{ secrets.SSH_USERNAME_DEV }}
+
+          key: ${{ secrets.SSH_PRIVATE_KEY_DEV }}
+
+          script: |
+
+            cd /var/www/dashboard.xzonebet.online
+
+            git restore .
+
+            git clean -fd
+
+            git checkout dev
+
+            git pull origin dev
+
+            npm i
+
+            npm run build
+
+            scp -r ./build/* root@xzonebet.online:/var/www/dashboard.xzonebet.online
+
+            

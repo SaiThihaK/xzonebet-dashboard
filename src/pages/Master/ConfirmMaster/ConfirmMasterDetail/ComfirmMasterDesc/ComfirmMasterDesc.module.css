@@ -1,0 +1,49 @@
+.agent-user-image-group {
+  display: flex;
+  align-items: flex-end;
+}
+.agent-user-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 15px;
+  border-radius: 0.5rem;
+}
+.agent-user-des h3 {
+  margin-bottom: 3px;
+  font-size: 18px;
+  color: var(--text-color);
+}
+.agent-user-des span {
+  color: var(--text-color);
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+/* -------------------------- */
+.form-group-desc {
+  display: flex;
+  align-items: center;
+  color: rgb(65, 65, 65);
+  margin-bottom: 10px;
+}
+
+.form-group-desc label {
+  width: 200px;
+  font-size: 15px;
+}
+.form-group-desc p {
+  font-size: 15px;
+}
+.form-container {
+  padding: 30px;
+}
+.btn-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin-top: 30px;
+}
+.btn {
+  margin-left: 150px;
+}

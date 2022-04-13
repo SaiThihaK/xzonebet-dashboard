@@ -1,0 +1,29 @@
+.avatar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.form-group-desc {
+  display: flex;
+  align-items: center;
+  color: rgb(65, 65, 65);
+  margin-bottom: 10px;
+}
+.form-container {
+  margin-top: 30px;
+}
+.form-group-desc {
+  margin-bottom: 20px;
+}
+.form-group-desc label {
+  width: 300px;
+  font-size: 15px;
+}
+.form-group-desc-input {
+  width: 400px;
+}
+
+.btn-container {
+  margin-top: 20px;
+}

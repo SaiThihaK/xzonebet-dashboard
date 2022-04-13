@@ -11,7 +11,7 @@ const SoccerSettingCard = ({name,bgColor,path}) => {
       <Link to={path}>
       <div style={{backgroundColor: bgColor}} className={classes["item-card"]}>
         <div className={classes['card-icon-flex']}>
-          <h3>{name}</h3>
+          <p className={classes['card-label']}>{name}</p>
           <IoIcons.IoIosFootball style={{fontSize: "50px"}} />
         </div>
       </div>

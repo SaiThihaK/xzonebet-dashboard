@@ -1,0 +1,55 @@
+.soccer-setting-container {
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+}
+.card-header {
+  background-color: transparent;
+  border-bottom: none;
+  padding: 20px;
+  position: relative;
+  display: flex;
+}
+.card-body {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 50px;
+}
+.card-title {
+  margin-bottom: 0;
+  color: #333;
+  font-size: 15px;
+  font-weight: 700;
+  display: inline-block;
+  margin-right: 10px;
+  line-height: 1.1;
+  position: relative;
+}
+.card-title::after {
+  content: "";
+  background-color: #d2d2d2;
+  width: 60px;
+  height: 1px;
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+}
+.container {
+  padding: 20px;
+}
+.gird-item {
+  padding: 0px 20px;
+}
+.form-control {
+  margin-top: 20px;
+}
+.btn-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.form-container {
+  padding-bottom: 20px;
+  padding-right: 20px;
+}

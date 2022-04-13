@@ -1,0 +1,11 @@
+.betting-section {
+    display: flex;
+    background-color: var(--background-color);
+    padding: 40px 10px 0 10px;
+}
+.live-bet {
+    width: 100%;
+}
+.mb-10 {
+    margin-bottom: 10px;
+  }

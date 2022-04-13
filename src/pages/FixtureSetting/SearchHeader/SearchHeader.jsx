@@ -10,29 +10,29 @@ const SearchHeader = () => {
   const [fixturebydate, setFixturebydate] = useState([]);
   const [oddByDateState, setOddByDateState] = useState([]);
 
-  useEffect(() => {
-    axios
-      .request(fixtureBetting)
-      .then((res) => {
-        setFixturebydate(res.data.response);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [fixtureBetting]);
+  // useEffect(() => {
+  //   axios
+  //     .request(fixtureBetting)
+  //     .then((res) => {
+  //       setFixturebydate(res.data.response);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, [fixtureBetting]);
 
   // ------------------------- odd by date -----------------
-  useEffect(() => {
-    axios
-      .request(oddByBookmaker)
-      .then((res) => {
-        clear();
-        setOddByDateState(res.data.response);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [oddByBookmaker]);
+  // useEffect(() => {
+  //   axios
+  //     .request(oddByBookmaker)
+  //     .then((res) => {
+  //       clear();
+  //       setOddByDateState(res.data.response);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, [oddByBookmaker]);
 
   let temp = [];
   fixturebydate.map((el, index) => {
@@ -72,7 +72,7 @@ const SearchHeader = () => {
  
   return (
     <div className={classes["search-header-flex"]}>
-      <div className={classes.formGroup}>
+      {/* <div className={classes.formGroup}>
         <Autocomplete
           size="small"
           disablePortal
@@ -83,7 +83,7 @@ const SearchHeader = () => {
             <TextField {...params} label="Bookmarkers" />
           )}
         />
-      </div>
+      </div> */}
       <div className={classes.formGroup}>
         <Autocomplete
           size="small"

@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
 import classes from "./MaungSettingEdit.module.css";
-const MaungSettingEdit = ({ open, handleClose }) => {
+const MaungSettingEdit = ({ open, handleClose,title,btnName,btnClick }) => {
   const style = {
     position: "absolute",
     top: "50%",
@@ -28,21 +28,21 @@ const MaungSettingEdit = ({ open, handleClose }) => {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Maung Edit
+           {title}
           </Typography>
           <form action="">
             <TextField
               sx={{ width: "100%", mb: 1.5, mt: 2 }}
               size="small"
               id="outlined-basic"
-              label="Team number"
+              label="Matches"
               variant="outlined"
             />
             <TextField
               sx={{ width: "100%", mb: 1.5 }}
               size="small"
               id="outlined-basic"
-              label="Percent"
+              label="Tax"
               variant="outlined"
             />
             <Stack
@@ -50,10 +50,10 @@ const MaungSettingEdit = ({ open, handleClose }) => {
               spacing={2}
               sx={{ justifyContent: "center" }}
             >
-              <Button variant="contained" type="submit" color="success">
-                Save
+              <Button variant="contained" color="success" onClick={btnClick}>
+              {btnName}
               </Button>
-              <Button onClick={handleClose} variant="contained" color="error">
+              <Button  onClick={handleClose} variant="contained" color="error">
                 Cancel
               </Button>
             </Stack>

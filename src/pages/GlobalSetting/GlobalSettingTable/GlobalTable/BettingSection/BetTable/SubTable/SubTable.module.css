@@ -1,0 +1,127 @@
+.table-title{
+    display: flex;
+    background-color: #EEF4F8;
+              
+    align-items: center;
+    height: 33px;
+}
+.sport-logo i{
+    color: var(--main-color);
+    font-size: 22px;
+    margin-right: 10px;
+    margin-left: 15px;
+}
+          
+.country-logo img {
+  height: 22px;
+  margin-top: 5px;
+  margin-right: 10px;
+
+             
+}
+.league-name{
+    width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding-right: 10px;
+      font-size: 15px;
+    
+}
+.league-name >div{
+   margin-right: 10px;
+}
+.league-name:hover a{
+text-decoration: underline;
+}
+.bet-odds-title{
+    display: flex;
+   width: 100%;
+padding-bottom: 4px;
+   font-size: 0.8rem;
+   position: relative;
+}
+
+.left-table-item{
+    display: flex;
+    flex: 0 0 300px;
+    align-items: center;
+ }
+ .bet-odds-title> div{
+    flex: 1 1 16.6666%;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+}
+.market-dropdown{
+    width: 89px;
+    left: -7%;
+    position: absolute;
+    top: 35px;
+    background-color: #fff;
+    padding: 0;
+    background: #fff;
+    list-style: none;
+    text-align: left;
+    font-size: 0.9em;
+    white-space: normal;
+    color: #444;
+    border: 2px solid #EEF4F8;
+    z-index: 10;
+
+  }
+
+ .market-none{
+     display: none;
+ }
+    .market-dropdown::before{
+        position: absolute;
+        left: 50%;
+        top: -12px;
+        width: 0;
+        height: 0;
+        content: '';
+        border-left: 10px solid transparent;   
+        border-right: 12px solid transparent;
+        border-bottom: 12px solid  #EEF4F8;
+        transform: translateX(-50%);
+    }
+    .market-dropdown::after {
+position: absolute;
+        left: 50%;
+        top: -8px;
+        width: 0;
+        height: 0;
+        content: '';
+
+        border-right: 10px solid transparent;
+        border-left: 10px solid transparent;
+        border-bottom: 8px solid #fff;
+        transform: translateX(-50%);
+
+    }
+  .market-dropdown  > li{
+
+
+
+    cursor: pointer;
+    padding: 8px 5px;
+    border-bottom: 2px solid #EEF4F8;
+
+    transition: color 0.3s ease, background 0.3s ease;
+    transition: 0.3s;
+  }
+  .market-dropdown > li:hover{
+      background-color: #EEF4F8;
+  }
+  .bet_table_arrow{
+               
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 11px;
+    font-weight: 400
+} 
+.bet-odds-title > div:nth-last-child(-n+6) {
+    display: none;
+}
+

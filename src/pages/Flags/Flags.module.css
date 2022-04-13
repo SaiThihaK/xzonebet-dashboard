@@ -1,0 +1,19 @@
+.container{
+    width: 150px;
+    margin-top: 30px;
+    transition:all ease-in-out 0.5s;
+}
+
+.container img{
+    width: 100%;
+}
+
+.container p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container:hover{
+transform: scale(0.98);
+}

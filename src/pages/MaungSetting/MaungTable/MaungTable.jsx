@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+
+import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
@@ -10,103 +12,74 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import MaungSettingEdit from "../../../components/UI/Modal/MaungSettingEdit/MaungSettingEdit";
 import classes from "./MaungTable.module.css";
+import { BasedColor } from "../../../Controller/BasedColor";
+
+
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: BasedColor.tableHead,
+    color: theme.palette.common.white,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}));
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  "&:nth-of-type(odd)": {
+    backgroundColor: theme.palette.action.hover,
+  },
+  // hide last border
+  "&:last-child td, &:last-child th": {
+    border: 0,
+  },
+}));
+
 const MaungTable = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const maungData =  [
+    {id:1,match:"match-1",tax:"20%"},
+    {id:2,match:"match-2",tax:"20%"},
+    {id:3,match:"match-3",tax:"20%"},
+    {id:4,match:"match-4",tax:"20%"},
+    {id:5,match:"match-5",tax:"20%"},
+    
+];
+const btnClickHandler = ()=>{
+  handleClose();
+}
 
-  function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
-  }
-
-  const rows = [
-    createData(
-      "5",
-      159,
-      <Stack direction="row" spacing={2} sx={{ justifyContent: "flex-end" }}>
-        <Button onClick={handleOpen} variant="contained" color="success">
-          Edit
-        </Button>
-        <Button variant="contained" color="error">
-          Delete
-        </Button>
-      </Stack>
-    ),
-    createData(
-      "1",
-      237,
-      <Stack direction="row" spacing={2} sx={{ justifyContent: "flex-end" }}>
-        <Button variant="contained" color="success">
-          Edit
-        </Button>
-        <Button variant="contained" color="error">
-          Delete
-        </Button>
-      </Stack>
-    ),
-    createData(
-      "2",
-      262,
-      <Stack direction="row" spacing={2} sx={{ justifyContent: "flex-end" }}>
-        <Button variant="contained" color="success">
-          Edit
-        </Button>
-        <Button variant="contained" color="error">
-          Delete
-        </Button>
-      </Stack>
-    ),
-    createData(
-      "1",
-      305,
-      <Stack direction="row" spacing={2} sx={{ justifyContent: "flex-end" }}>
-        <Button variant="contained" color="success">
-          Edit
-        </Button>
-        <Button variant="contained" color="error">
-          Delete
-        </Button>
-      </Stack>
-    ),
-    createData(
-      "10",
-      10,
-      <Stack direction="row" spacing={2} sx={{ justifyContent: "flex-end" }}>
-        <Button variant="contained" color="success">
-          Edit
-        </Button>
-        <Button variant="contained" color="error">
-          Delete
-        </Button>
-      </Stack>
-    ),
-  ];
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Team Number</TableCell>
-            <TableCell align="right">Percentage</TableCell>
-            <TableCell align="right">Action</TableCell>
+            <StyledTableCell>Match</StyledTableCell>
+            <StyledTableCell align="right">Tax</StyledTableCell>
+            <StyledTableCell align="right">Action</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row,index) => (
-            <TableRow
+          {maungData.map((row,index) => (
+            <StyledTableRow
               key={index}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {row.name}
+                {row.match}
               </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-            </TableRow>
+              <TableCell align="right">{row.tax}</TableCell>
+              <TableCell align="left">
+                <Stack direction="row" spacing={1} style={{display:"flex",justifyContent:"flex-end"}}>
+                  <Button variant="contained" onClick={handleOpen} size="small">Edit</Button>
+                  <Button variant="contained" size="small" color="error">Ban</Button>
+                </Stack>
+              </TableCell>
+            </StyledTableRow>
           ))}
         </TableBody>
       </Table>
-      <MaungSettingEdit open={open} handleClose={handleClose}/>
+      <MaungSettingEdit title="Edit Maung" open={open} handleClose={handleClose} btnName="Edit" btnClick={btnClickHandler} />
     </TableContainer>
   );
 };

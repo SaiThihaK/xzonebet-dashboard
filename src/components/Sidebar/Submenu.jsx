@@ -13,11 +13,15 @@ const Submenu = ({ item }) => {
   // className={splitLocation[1] === "" ? "active" : ""}
 
   const [subnav, setSubnav] = useState(false);
-  const showSubNav = () => {
+  const  showSubNav = () => {
     setSubnav(!subnav);
   };
+
+
+  // console.log(subnav)
   return (
     <Fragment>
+      
       <Link to={item.subNav === undefined ? item.path : '#'}>
         <div className={classes.menuItem} onClick={item.subNav && showSubNav}>
           <div>

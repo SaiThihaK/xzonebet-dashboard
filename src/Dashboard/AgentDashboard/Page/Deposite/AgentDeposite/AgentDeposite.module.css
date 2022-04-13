@@ -1,0 +1,79 @@
+.soccer-setting-container {
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+}
+.card-header {
+  background-color: transparent;
+  border-bottom: none;
+  padding: 20px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+.card-body {
+  padding: 20px;
+}
+.card-title {
+  margin-bottom: 0;
+  color: #333;
+  font-size: 15px;
+  font-weight: 700;
+  display: inline-block;
+  margin-right: 10px;
+  line-height: 1.1;
+  position: relative;
+}
+.card-title::after {
+  content: "";
+  background-color: #d2d2d2;
+  width: 60px;
+  height: 1px;
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+}
+.payment-list {
+  border-left: 2px solid rgb(255, 0, 0);
+}
+.prov-container {
+  padding: 10px 20px;
+}
+.prov {
+  margin-top: 20px;
+}
+.prov-title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 5px;
+}
+
+.provider-grid {
+  padding: 20px;
+}
+
+.provider-card {
+  transition: all ease-in-out 0.2s;
+}
+.provider-card:hover {
+  transform: scale(0.95);
+}
+/* 
+.active {
+   background-color: var(--live-header);
+  color: white; 
+  border-left: 3px solid var(--secondary-color);
+}
+
+.list-item:hover {
+  background-color: var(--secondary-color);
+  color: white;
+}
+.list-item:hover svg {
+  fill: white;
+}
+.active svg {
+  fill: white;
+}
+*/

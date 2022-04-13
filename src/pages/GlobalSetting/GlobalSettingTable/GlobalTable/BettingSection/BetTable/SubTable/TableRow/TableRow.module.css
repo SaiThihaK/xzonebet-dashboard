@@ -1,0 +1,197 @@
+.table-body{
+    background-color: white;
+ display: flex;
+    align-items: center;
+}
+.table-content{
+              
+    flex: 0 0 300px;
+    border: 1px solid #EEF4F8;
+    padding: 10px 5px 0px 10px;
+}
+.table-content:hover .team-name{
+     text-decoration: underline;
+}
+.table-team-score{
+    display: flex;
+    justify-content: space-between;
+}
+.display-flex{
+    display: flex;
+               
+}
+.team-name{
+               
+    margin-left: 5px;
+        
+}
+
+.mb-3{
+    margin-bottom: 3px;
+}
+      
+.score .row{
+    display: flex;
+              
+}
+.row div{
+   width: 20px;
+   text-align: center;
+}
+.extra-active{
+    background-color: var(--main-color);
+    height: 26px;
+   
+}  
+.extra-active  i{
+    color: white !important;
+    transform: rotate(180deg) !important;
+}   
+         
+.match-info{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 5px;
+   
+    height: 30px;
+    line-height: 25px;
+}
+.star{
+width: 30px;
+}
+.star i{
+color:  #acdeff;
+font-size: 15px;
+
+
+margin-left:2px;
+}
+.color-green{
+color: var(--secondary-color);
+font-size: 0.9rem;
+}
+.color-blue{
+color: var(--main-color);
+font-size: 0.9rem;
+margin-right: 5px;
+}
+
+.match-status{
+display: flex;
+
+
+}
+.match-signal{
+position: relative;
+
+
+}
+.ball-svg svg{
+width: 22px;
+
+height: 22px;
+margin-left: 7px;
+}
+.match-signal svg{
+width: 22px;
+height: 22px;
+}
+.statistics{
+position: absolute;
+background-color: #fff;
+top: 34px;
+left: -55px;
+z-index: 10;
+box-shadow: 0px 0px 5px -1px rgba(0, 0, 0, 0.438);
+display: none;
+}
+.statistics-show{
+display: block;
+}
+.statistics::before{
+position: absolute;
+left: 50%;
+top: -11px;
+width: 0;
+height: 0;
+content: '';
+border-left: 10px solid transparent;
+border-right: 10px solid transparent;
+border-bottom: 12px solid #EEF4F8;
+transform: translateX(-50%);
+}
+.statistics::after {
+position: absolute;
+left: 50%;
+top: -7px;
+width: 0;
+height: 0;
+content: '';
+
+border-right: 10px solid transparent;
+border-left: 10px solid transparent;
+border-bottom: 8px solid #fff;
+transform: translateX(-50%);
+
+}
+
+.statistics a{
+display: flex;
+padding: 5px 10px;
+width: 140px;
+border: 1px solid #EEF4F8;
+align-items: center;
+font-size: 1.2rem;
+transition: 0.3s;
+cursor: pointer;
+}
+
+.statistics a:hover{
+background-color: var(--main-color);
+color: white;
+}
+.statistics a:hover i{
+color: white;
+}
+.statistics p{
+margin-left: 10px;
+font-size: 0.8rem;
+}
+.match-status > div{
+
+font-size: 0.9rem;
+text-decoration: underline;
+width: 27px;
+text-align: center;
+margin-left: 5px;
+cursor: pointer;
+}
+
+.match-status> div> i{
+color: black;
+}
+.bets-detail{
+position: relative;
+} 
+.bet-arrow {
+position: absolute;
+background: var(--main-color);
+width: 100%;
+height: 100%;
+left: 0px;
+top: 0px;
+line-height: 25px;
+color: white ;
+z-index: -1;
+}
+.detail-show{
+display: block !important;
+}
+.detail-active{
+z-index: 1;
+}
+
+.down{
+transition: background-color 0.3s;
+
+}

@@ -1,0 +1,24 @@
+.table-margin {
+  margin-top: 5px;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn{
+  width: 80px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding: 10px 30px;
+  border-radius: 5px;
+  text-transform:uppercase;
+
+}
