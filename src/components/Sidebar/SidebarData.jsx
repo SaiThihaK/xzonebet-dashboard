@@ -103,7 +103,6 @@ export const SidebarData = [
         title: "HR",
         path: "/HR",
         icon: <FaIcons.FaUserFriends/>,
-        icon: <AiIcons.AiFillSetting />,
         iconClosed: <RiIcons.RiArrowDownSFill/>,
         iconOpened: <RiIcons.RiArrowUpSFill/>,
         subNav : [
@@ -242,6 +241,11 @@ export const SidebarData = [
             {
                 title: 'Fixture',
                 path: '/fixture',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+            {
+                title: 'Opening bet',
+                path: '/opening-bet',
                 icon: <IoIcons.IoIosArrowForward />,
             },
             {
