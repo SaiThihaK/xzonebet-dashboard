@@ -10,6 +10,7 @@ import Paper from "@mui/material/Paper";
 import classes from "./FixtureTable.module.css";
 import { BasedColor } from "../../../Controller/BasedColor";
 import { Button } from "@mui/material";
+import NewbetModal from "../../../components/UI/Modal/Newbet/NewbetModal"
 
 
 
@@ -33,6 +34,9 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 const FixtureTable = () => {
+  const [open,setOpen] = useState(false);
+  const openHandler = ()=>setOpen(true);
+  const closeHandler = ()=>setOpen(false);
 
   return (
     <div className={classes["table-margin"]}>
@@ -57,17 +61,16 @@ const FixtureTable = () => {
                 </StyledTableCell>
                 <StyledTableCell align="right">eeew</StyledTableCell>
                 <StyledTableCell align="right">eee</StyledTableCell>
-        
                 <StyledTableCell align="right">eee</StyledTableCell>
-               
                 <StyledTableCell align="right">www</StyledTableCell>
                 <StyledTableCell align="right">
-                 <Button variant="contained">New Bet</Button>
+                 <Button onClick={openHandler} variant="contained">New Bet</Button>
                 </StyledTableCell>
         </StyledTableRow>
           </TableBody>
         </Table>
       </TableContainer>
+      <NewbetModal open={open} closeHandler={closeHandler} />
       {/* <CustomPagination totalPage={pagination?.meta?.last_page} setPage={setPage} /> */}
     </div>
   );

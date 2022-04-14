@@ -104,7 +104,6 @@ import ConnectWithChat from "./pages/ConnectWithChat/ConnectWithChat";
 import BecomeAnEmployee from "./pages/BecomeAnEmployee/BecomeAnEmployee";
 import EmployeeForm from "./pages/EmployeeForm/EmployeeForm";
 import Profit from "./pages/Profit/Profit";
-import XzonebetFootball from "./pages/xzonebetFootall/XzonebetFootball";
 
 import Fixture from "./pages/Fixture/Fixture";
 function App() {
@@ -374,11 +373,7 @@ function App() {
             path="/game-setting/football-setting"
             element={<FootballSetting />}
           />
-          <Route
-            path="/game-setting/xzonebet-football-setting"
-            exact
-            element={<XzonebetFootball />}
-          />
+
           {/*------------------------------ Admin Team Account------------------------------------------------ */}
           <Route
             exact
