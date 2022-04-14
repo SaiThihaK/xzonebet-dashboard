@@ -2,16 +2,23 @@
     display: flex;
     margin-top: 20px;
 }
+.team-container{
+    display: flex;
+}
 
-.container label{
-    width: 100px;
+.container label, 
+.team-container label
+{
+    width: 150px;
  
 }
 
 label{
-    font-size: 18px;
+    font-size: 14px;
 }
-
+ p{
+    font-size: 14px;
+}
 .btn-container{
     display: flex;
     justify-content: flex-end;
