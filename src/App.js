@@ -97,15 +97,14 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import NewAgent from "./Dashboard/MasterDashboard/Page/Agent/NewAgent/NewAgent";
 import NewAgentDetail from "./Dashboard/MasterDashboard/Page/Agent/NewAgent/NewAgentDetail/NewAgentDetail";
-import CompleteMasterDesc from "./pages/Master/CompleteMaster/CompleteMasterDetail/CompleteMasterDesc/CompleteMasterDesc";
-import TransitionHistoryTable from "./Dashboard/MasterDashboard/Page/TransitionHistory/TransitionHistoryTable/TransitionHistoryTable";
-import TransitionTable from "./components/Table/Complete/Transition/TransitonTable/TransitionTable";
+
 import ConnectWithChat from "./pages/ConnectWithChat/ConnectWithChat";
 import BecomeAnEmployee from "./pages/BecomeAnEmployee/BecomeAnEmployee";
 import EmployeeForm from "./pages/EmployeeForm/EmployeeForm";
 import Profit from "./pages/Profit/Profit";
 
 import Fixture from "./pages/Fixture/Fixture";
+import OpenningBet from "./pages/OpeningBet/OpenningBet";
 function App() {
   const DashboardRouting = () => {
     if (type === "admin") {
@@ -416,6 +415,7 @@ function App() {
           <Route path="/odoo-function-detail" element={<DetailFunction />} />
           {/* ---------------Xzonebet Football------------------ */}
           <Route exact path="fixture" element={<Fixture />} />
+          <Route exact path="/opening-bet" element={<OpenningBet />} />
           <Route path="*" element={<Notfound />} />
         </Routes>
       );

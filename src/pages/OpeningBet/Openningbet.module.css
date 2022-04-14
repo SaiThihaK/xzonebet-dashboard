@@ -1,0 +1,31 @@
+.card-body{
+    padding: 20px;
+}
+.table-container{
+    width: 100%;
+    margin-top: 30px;
+}
+
+
+.bet-amount{
+  
+    font-size: 14px;
+}
+.bet-amount span{
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+td{
+    padding-bottom: 20px;
+}
+
+.t-1,.t-2{
+    font-size: 18px;
+}
+
+.bet-amount:hover span{
+background-color: black;
+color: white;
+
+}
