@@ -1,0 +1,19 @@
+.container{
+    display: flex;
+    margin-top: 20px;
+}
+
+.container label{
+    width: 100px;
+ 
+}
+
+label{
+    font-size: 18px;
+}
+
+.btn-container{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
