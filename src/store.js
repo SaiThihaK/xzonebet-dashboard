@@ -6,6 +6,7 @@ import AgentSlice from "./features/agent";
 import UserInfoSlice from "./features/UserInfo";
 import PaymentSettingSlice from "./features/PaymentSetting";
 import RenderSlice from "./features/render";
+import CountrySlice from "./features/country";
 
 const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
     userInfo: UserInfoSlice,
     PaymentSetting: PaymentSettingSlice,
     render: RenderSlice,
+    country: CountrySlice,
   },
 });
 export default store;
