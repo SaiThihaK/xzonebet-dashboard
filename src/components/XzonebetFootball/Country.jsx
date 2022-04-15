@@ -1,16 +1,22 @@
 import { Select,MenuItem,FormControl} from '@mui/material'
 import React from 'react'
-
-const Country = () => {
-const coun = [{name:"Myanmar"},{name:"9e4ew"}]
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
+import { useDispatch } from 'react-redux';
+import { addCountry } from '../../features/country';
+const Country = ({country}) => {
+ const dispatch = useDispatch();
+ 
   return (
-    <FormControl fullWidth>
-   <Select   size='small'>
- {coun.map((coun,index)=>(
-     <MenuItem key={index}>{coun.name}</MenuItem>
- ))}
-   </Select>
-   </FormControl>
+<Autocomplete
+  disablePortal
+  onChange={(event, value) => { return dispatch(addCountry({data: value.name}))}   }
+  id="combo-box-demo"
+  options={country}
+  getOptionLabel={(option) => option.name}
+  sx={{ width: 300 }}
+  renderInput={(params) => <TextField {...params} label="Select Country" />}
+/>
   )
 }
 

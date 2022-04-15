@@ -11,6 +11,8 @@ import classes from "./FixtureTable.module.css";
 import { BasedColor } from "../../../Controller/BasedColor";
 import { Button } from "@mui/material";
 import NewbetModal from "../../../components/UI/Modal/Newbet/NewbetModal"
+import { ChangeDate, getResDate } from "../../../Controller/ChangeDate";
+import { Construction } from "@mui/icons-material";
 
 
 
@@ -33,40 +35,53 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     border: 0,
   },
 }));
-const FixtureTable = () => {
+const FixtureTable = ({bettingData}) => {
+  
+ console.log(bettingData);
   const [open,setOpen] = useState(false);
   const openHandler = ()=>setOpen(true);
   const closeHandler = ()=>setOpen(false);
-
   return (
     <div className={classes["table-margin"]}>
-
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
             <TableRow>
               <StyledTableCell>No.</StyledTableCell>
               <StyledTableCell align="right">Date</StyledTableCell>
-              <StyledTableCell align="right">Time</StyledTableCell>
-              <StyledTableCell align="right" style={{width:300}}>Team 1</StyledTableCell>
-              <StyledTableCell align="right" style={{width:300}}>Team 2</StyledTableCell>
+              {/* <StyledTableCell align="right">Time</StyledTableCell> */}
+              <StyledTableCell align="right">Country</StyledTableCell>
+              <StyledTableCell align="right">League</StyledTableCell>
+              <StyledTableCell align="right" >Team 1</StyledTableCell>
+              <StyledTableCell align="right" >Team 2</StyledTableCell>
               <StyledTableCell align="right"></StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
         
-              <StyledTableRow>
-                <StyledTableCell component="th" scope="row">
-              
+             
+                
+                   {bettingData.map((el,key)=>{
+                    return(  <StyledTableRow>
+                      <StyledTableCell align="right">{key+1}</StyledTableCell>
+                      <StyledTableCell align="right">{ChangeDate(el?.fixture?.date)}</StyledTableCell>
+                      <StyledTableCell align="right">{el?.league?.country}</StyledTableCell>
+                      <StyledTableCell align="right">{el?.league?.name}</StyledTableCell>
+                      <StyledTableCell align="right">{el?.teams?.home?.name}</StyledTableCell>
+                      <StyledTableCell align="right">{el?.teams?.away?.name}</StyledTableCell>
+                      <StyledTableCell align="right" sx={{width: "200px"}}>
+                 <Button onClick={openHandler}  variant="contained">New Bet</Button>
                 </StyledTableCell>
-                <StyledTableCell align="right">eeew</StyledTableCell>
+                      </StyledTableRow>
+                   )})}  
+                {/* <StyledTableCell align="right">eeew</StyledTableCell>
                 <StyledTableCell align="right">eee</StyledTableCell>
                 <StyledTableCell align="right">eee</StyledTableCell>
                 <StyledTableCell align="right">www</StyledTableCell>
                 <StyledTableCell align="right">
                  <Button onClick={openHandler} variant="contained">New Bet</Button>
-                </StyledTableCell>
-        </StyledTableRow>
+                </StyledTableCell> */}
+      
           </TableBody>
         </Table>
       </TableContainer>

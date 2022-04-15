@@ -4,8 +4,8 @@ let dt = new Date();
 let year = dt.getFullYear();
 let month = (dt.getMonth() + 1).toString().padStart(2, "0");
 let day = dt.getDate().toString().padStart(2, "0");
-
 const { REACT_APP_DOMAIN } = process.env;
+const date = new Date().toISOString().slice(0, 10);
 // ------------------------Login API ---------------------------
 export const login = {
   method: "post",
@@ -22,13 +22,38 @@ export const betting = {
     tz: "Asia/Yangon",
     include: "localTeam,visitorTeam,league",
   },
-
   headers: {
     "x-rapidapi-host": "football-pro.p.rapidapi.com",
     // "x-rapidapi-key": process.env.REACT_APP_API_KEY,
   },
 };
 
+// export const league = {
+//   method: "GET",
+//   url: "https://api-football-v1.p.rapidapi.com/v3/leagues",
+
+//   headers: {
+//     "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com",
+//     "X-RapidAPI-Key": "9b4fb89138mshdc697cc5d45c52fp1daa25jsne2be8889fabc",
+//   },
+// };
+export const country = {
+  method: "GET",
+  url: "https://api-football-v1.p.rapidapi.com/v3/countries",
+  headers: {
+    "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com",
+    "X-RapidAPI-Key": "9b4fb89138mshdc697cc5d45c52fp1daa25jsne2be8889fabc",
+  },
+};
+export const mmBetting = {
+  method: "GET",
+  url: "https://api-football-v1.p.rapidapi.com/v3/fixtures",
+  params: { date: date },
+  headers: {
+    "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com",
+    "X-RapidAPI-Key": "9b4fb89138mshdc697cc5d45c52fp1daa25jsne2be8889fabc",
+  },
+};
 // ------------------------------ Global Betting Table ----------------------
 
 export const globalBetting = {
@@ -45,9 +70,7 @@ export const globalBetting = {
     "x-rapidapi-key": "9b4fb89138mshdc697cc5d45c52fp1daa25jsne2be8889fabc",
   },
 };
-
 // ----------------------------All Countries------------------------------------
-
 export const Countries = {
   method: "GET",
   url: "https://api-football-v1.p.rapidapi.com/v3/countries",
