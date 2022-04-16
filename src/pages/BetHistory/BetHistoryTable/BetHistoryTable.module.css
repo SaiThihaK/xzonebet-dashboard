@@ -1,0 +1,43 @@
+table{
+width: 100%;
+background-color: hsla(300,2%,65%,.466);
+
+}
+
+th{
+    font-size: 14px;
+    color:#ff0000;
+
+}
+th div p:nth-child(2){
+    margin-top: 10px;
+    color: black;
+}
+td{
+    font-size: 14px;
+}
+.total{
+    background-color: #969696;
+    padding: 10px 10px;
+    color: white;
+    border-radius: 5px;
+}
+.main-table{
+    background-color: black;
+    color: white;
+}
+.main-table th div p:nth-child(2){
+    color: white;
+}
+.main-table svg{
+    fill: white;
+}
+
+.second-table{
+    background-color: hsla(300,2%,65%,.466);
+    
+}
+
+.second-table th{
+    color: black;
+}
