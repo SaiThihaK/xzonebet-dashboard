@@ -1,51 +1,51 @@
-name: AutoDeply(https://www.dashboard.xzonebettesting.online/)
+# name: AutoDeply(https://www.dashboard.xzonebettesting.online/)
 
-on:
-  push:
-    branches: [ testing ]
-  pull_request:
-    branches: [ testing ]
+# on:
+#   push:
+#     branches: [ testing ]
+#   pull_request:
+#     branches: [ testing ]
 
-jobs:
+# jobs:
 
-  deploy-dev:
+#   deploy-dev:
 
-    runs-on: ubuntu-latest
+#     runs-on: ubuntu-latest
 
-    steps:
+#     steps:
 
-      - name: Checkout
+#       - name: Checkout
 
-        uses: actions/checkout@v2
+#         uses: actions/checkout@v2
 
-      - name: executing remote ssh commands using ssh key
+#       - name: executing remote ssh commands using ssh key
 
-        uses: appleboy/ssh-action@master
+#         uses: appleboy/ssh-action@master
 
-        with:
+#         with:
 
-          host: ${{ secrets.SSH_HOST_DEV }}
+#           host: ${{ secrets.SSH_HOST_DEV }}
 
-          username: ${{ secrets.SSH_USERNAME_DEV }}
+#           username: ${{ secrets.SSH_USERNAME_DEV }}
 
-          key: ${{ secrets.SSH_PRIVATE_KEY_DEV }}
+#           key: ${{ secrets.SSH_PRIVATE_KEY_DEV }}
 
-          script: |
+#           script: |
 
-            cd /var/www/dashboard.xzonebettesting.online
+#             cd /var/www/dashboard.xzonebettesting.online
 
-            git restore .
+#             git restore .
 
-            git clean -fd
+#             git clean -fd
 
-            git checkout testing
+#             git checkout testing
 
-            git pull origin testing
+#             git pull origin testing
 
-            npm i
+#             npm i
 
-            npm run build
+#             npm run build
 
-            scp -r ./build/* root@xzonebet.online:/var/www/dashboard.xzonebettesting.online
+#             scp -r ./build/* root@xzonebet.online:/var/www/dashboard.xzonebettesting.online
 
             
