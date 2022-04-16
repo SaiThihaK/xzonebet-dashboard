@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import classes from "./NewbetModal.module.css"
-import { Button, FormControl, Grid, MenuItem, Select ,Stack} from "@mui/material";
+import { Button, FormControl, Grid, InputLabel, MenuItem, Select ,Stack} from "@mui/material";
 import TextField from '@mui/material/TextField';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
@@ -23,7 +23,7 @@ const style = {
 
 const NewbetModal = ({ open,bettingData, closeHandler,}) => {
   console.log(bettingData);
- 
+  
     const [value, setValue] = React.useState(new Date(bettingData?.fixture?.date));
 
     const handleChange = (newValue) =>
@@ -54,7 +54,7 @@ const NewbetModal = ({ open,bettingData, closeHandler,}) => {
             <Grid item xs={6} >
             <div className={classes["container"]}  >
         <label>Date and Time</label>
-    <p> {ChangeDate(bettingData?.fixture?.date)} </p>
+        <p>{ bettingData &&( ChangeDate(bettingData?.fixture?.date))}</p>
           </div>
             </Grid>
           </Grid>      
@@ -62,6 +62,20 @@ const NewbetModal = ({ open,bettingData, closeHandler,}) => {
 {/* <hr style={{margin:"20px 0px"}} /> */}
       <Grid container>
    <Grid item xs={6} style={{padding: 15 ,paddingLeft: 0}}>
+     
+   <div className={classes["team-container"]}> 
+   <label>Country</label>
+  <p>{bettingData?.league?.country}</p>
+    </div>
+    <div className={classes["team-container"]}> 
+  
+   <label>League</label>
+   <img src={bettingData?.league?.logo} style={{marginRight: "10px" }} width="30" alt="" />
+   <p>{  bettingData?.league?.name}</p>
+    </div>
+
+
+
      <div  className={classes["team-con"]} >
      <label>Team 1</label>
      <div style={{display : "flex", alignItems : "center"}}>
@@ -71,51 +85,66 @@ const NewbetModal = ({ open,bettingData, closeHandler,}) => {
    <p>{bettingData?.teams?.home?.name}</p>
    </div>
      </div>
-     <div style={{width:"100%",display:"flex",justifyContent:"center"}}>
-     <Select size="small" sx={{width:200}}>
+     <FormControl
+     style={{marginLeft:200,marginTop:20}}
+     >
+     <InputLabel id="demo-simple-select-label">Under/Over</InputLabel>
+     <Select 
+     labelId="demo-simple-select-label"
+     id="demo-simple-select"
+     label="Under/Over"
+     variant="outlined"
+     sx={{width:200}}>
+       size="small"
             <MenuItem>Over</MenuItem>
             <MenuItem>Under</MenuItem>
         </Select>
-     </div>
+     </FormControl>
 
   
-    <div className={classes["team-container"]}> 
-   <label>Country</label>
-  <p>{bettingData?.league?.country}</p>
-    </div>
-    <div className={classes["team-container"]}> 
-   <label>League</label>
-   <p>{  bettingData?.league?.name}</p>
-    </div>
+   
     </Grid>
          {/* ----------------Team 2------------------- */}
    <Grid item xs={6} style={{borderLeft:"1px solid gray",padding: "15px" , paddingRight: 0 }}>
-   <div className={classes["team-con"]}>
-     <label>Team 2</label>
-     <div style={{display : "flex", alignItems : "center"}}>
-
-    
-     <img src={bettingData?.teams?.away?.logo} style={{marginRight: "10px" }} width="30" alt="" />
-     <p>{bettingData?.teams?.away?.name}</p>
-     </div>
-     </div>
-     <div style={{width:"100%",display:"flex",justifyContent:"center"}}>
-     <Select size="small" sx={{width:200}}>
-            <MenuItem>Over</MenuItem>
-            <MenuItem>Under</MenuItem>
-        </Select>
-     </div>
-  
-      
-  <div className={classes["team-container"]}> 
+   <div className={classes["team-container"]}> 
    <label>Country</label>
    <p>{bettingData?.league?.country}</p>
     </div>
     
     <div className={classes["team-container"]}> 
    <label>League</label>
+   <img src={bettingData?.league?.logo} style={{marginRight: "10px" }} width="30" alt="" />
    <p>{bettingData?.league?.name}</p>
+   
     </div>
+   
+   
+   <div className={classes["team-con"]}>
+     <label>Team 2</label>
+     <div style={{display : "flex", alignItems : "center"}}>
+    
+    
+     <img src={bettingData?.teams?.away?.logo} style={{marginRight: "10px" }} width="30" alt="" />
+     <p>{bettingData?.teams?.away?.name}</p>
+     </div>
+     </div>
+     <FormControl
+     style={{marginLeft:200,marginTop:20}}
+     >
+     <InputLabel id="demo-simple-select-label">Under/Over</InputLabel>
+     <Select 
+     labelId="demo-simple-select-label"
+     id="demo-simple-select"
+     label="Under/Over"
+     variant="outlined"
+     sx={{width:200}}>
+            <MenuItem>Over</MenuItem>
+            <MenuItem>Under</MenuItem>
+        </Select>
+     </FormControl>
+  
+      
+  
     </Grid>
     </Grid>  
 <hr style={{margin:"20px 0px"}} />

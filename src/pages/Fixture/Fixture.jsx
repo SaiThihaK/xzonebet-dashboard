@@ -29,8 +29,6 @@ const Fixture = () => {
     const countryName=useSelector(state => state.country.data);
      const DateChangeHandler= (data)=>{
       setValue(data);
-    
-          
      }
     let leagueOption = (
       countryName !== ""
@@ -54,11 +52,9 @@ const Fixture = () => {
                 "9b4fb89138mshdc697cc5d45c52fp1daa25jsne2be8889fabc",
             },
           });
-    useEffect(() => {
-     
+    useEffect(() => { 
        axios.request(mmBetting).then(function (response) {
         setBettingData(response.data.response)
-      
       }).catch(function (error) {
         console.error(error);
       });
