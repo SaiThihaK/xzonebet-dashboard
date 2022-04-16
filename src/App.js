@@ -104,6 +104,7 @@ import Profit from "./pages/Profit/Profit";
 
 import Fixture from "./pages/Fixture/Fixture";
 import OpenningBet from "./pages/OpeningBet/OpenningBet";
+import BetHistory from "./pages/BetHistory/BetHistory";
 function App() {
   const DashboardRouting = () => {
     if (type === "admin") {
@@ -415,6 +416,7 @@ function App() {
           {/* ---------------Xzonebet Football------------------ */}
           <Route exact path="fixture" element={<Fixture />} />
           <Route exact path="/opening-bet" element={<OpenningBet />} />
+          <Route exact path="/fixture-bet-history" element={<BetHistory />} />
           <Route path="*" element={<Notfound />} />
         </Routes>
       );
