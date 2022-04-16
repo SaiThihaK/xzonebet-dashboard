@@ -39,7 +39,11 @@ const FixtureTable = ({bettingData}) => {
   
  console.log(bettingData);
   const [open,setOpen] = useState(false);
-  const openHandler = ()=>setOpen(true);
+  const [id,setId] = useState("");
+  const openHandler = (id)=>{setOpen(true)
+  setId(id);
+  }
+
   const closeHandler = ()=>setOpen(false);
   return (
     <div className={classes["table-margin"]}>
@@ -58,9 +62,7 @@ const FixtureTable = ({bettingData}) => {
             </TableRow>
           </TableHead>
           <TableBody>
-        
-             
-                
+                    
                    {bettingData.map((el,key)=>{
                     return(  <StyledTableRow key={key}>
                       <StyledTableCell align="right">{key+1}</StyledTableCell>
@@ -70,7 +72,7 @@ const FixtureTable = ({bettingData}) => {
                       <StyledTableCell align="right">{el?.teams?.home?.name}</StyledTableCell>
                       <StyledTableCell align="right">{el?.teams?.away?.name}</StyledTableCell>
                       <StyledTableCell align="right" sx={{width: "200px"}}>
-                 <Button onClick={openHandler}  variant="contained">New Bet</Button>
+                 <Button onClick={()=>{openHandler(key)}}  variant="contained">New Bet</Button>
                 </StyledTableCell>
                       </StyledTableRow>
                    )})}  
@@ -85,7 +87,7 @@ const FixtureTable = ({bettingData}) => {
           </TableBody>
         </Table>
       </TableContainer>
-      <NewbetModal open={open} closeHandler={closeHandler} />
+      <NewbetModal open={open} bettingData={bettingData[id]} closeHandler={closeHandler} />
       {/* <CustomPagination totalPage={pagination?.meta?.last_page} setPage={setPage} /> */}
     </div>
   );

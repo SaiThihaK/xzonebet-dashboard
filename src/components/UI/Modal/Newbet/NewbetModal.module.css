@@ -5,11 +5,18 @@
 .team-container{
     display: flex;
 }
-
+.team-con{
+    display: flex;
+    margin-bottom: 10px;
+}
+.team-con label{
+    padding-top: 5px;
+    width: 200px;
+}
 .container label, 
 .team-container label
 {
-    width: 150px;
+    width: 200px;
  
 }
 .team-container label{
