@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-
 const AgentSlice = createSlice({
   name: "agent",
   initialState: {

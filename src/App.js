@@ -97,7 +97,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import NewAgent from "./Dashboard/MasterDashboard/Page/Agent/NewAgent/NewAgent";
 import NewAgentDetail from "./Dashboard/MasterDashboard/Page/Agent/NewAgent/NewAgentDetail/NewAgentDetail";
-
 import ConnectWithChat from "./pages/ConnectWithChat/ConnectWithChat";
 import BecomeAnEmployee from "./pages/BecomeAnEmployee/BecomeAnEmployee";
 import EmployeeForm from "./pages/EmployeeForm/EmployeeForm";

@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from "react";
+import React,{useState} from "react";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -11,8 +11,8 @@ import classes from "./FixtureTable.module.css";
 import { BasedColor } from "../../../Controller/BasedColor";
 import { Button } from "@mui/material";
 import NewbetModal from "../../../components/UI/Modal/Newbet/NewbetModal"
-import { ChangeDate, getResDate } from "../../../Controller/ChangeDate";
-import { Construction } from "@mui/icons-material";
+import { ChangeDate } from "../../../Controller/ChangeDate";
+
 
 
 
@@ -62,7 +62,7 @@ const FixtureTable = ({bettingData}) => {
              
                 
                    {bettingData.map((el,key)=>{
-                    return(  <StyledTableRow>
+                    return(  <StyledTableRow key={key}>
                       <StyledTableCell align="right">{key+1}</StyledTableCell>
                       <StyledTableCell align="right">{ChangeDate(el?.fixture?.date)}</StyledTableCell>
                       <StyledTableCell align="right">{el?.league?.country}</StyledTableCell>
