@@ -12,7 +12,12 @@
     width: 150px;
  
 }
-
+.team-container label{
+    margin-top: 20px;
+}
+.team-container p{
+    margin-top: 20px;
+}
 label{
     font-size: 14px;
 }
