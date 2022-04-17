@@ -62,18 +62,26 @@ export const AccountingSidebarData = [
         icon: <FaIcons.FaLayerGroup />,
         iconClosed: <RiIcons.RiArrowDownSFill/>,
         iconOpened: <RiIcons.RiArrowUpSFill/>,
-        // subNav : [
-        //     {
-        //         title: 'Master Deposit',
-        //         path: '/accounting/master-deposit',
-        //         icon: <IoIcons.IoIosArrowForward />,
-        //     },
-        //     {
-        //         title: 'Reports',
-        //         path: '/accounting/reports',
-        //         icon: <IoIcons.IoIosArrowForward />,
-        //     },
-        // ]
+      
     },
+    {
+        title: 'All Bet',
+    path: '/all-bet',
+    icon: <FaIcons.FaLayerGroup />,
+    iconClosed: <RiIcons.RiArrowDownSFill/>,
+    iconOpened: <RiIcons.RiArrowUpSFill/>,
+    subNav : [
+            {
+                title: 'All Bet Income',
+                path: '/all-bet-income',
+            icon: <IoIcons.IoIosArrowForward />,
+            },
+            {
+                title: 'All Bet Outcome',
+                path: '/all-bet-outcome',
+            icon: <IoIcons.IoIosArrowForward />,
+            },
+        ]
+    }
 
 ]

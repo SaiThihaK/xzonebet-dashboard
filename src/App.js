@@ -106,6 +106,8 @@ import Fixture from "./pages/Fixture/Fixture";
 import OpenningBet from "./pages/OpeningBet/OpenningBet";
 import BetHistory from "./pages/BetHistory/BetHistory";
 import OpenbetResult from "./pages/OpenbetResult/OpenbetResult";
+import Allbetincome from "./pages/AllBetIncome/Allbetincome";
+import AllBetoutcome from "./pages/AllBetoutcome/AllBetoutcome";
 function App() {
   const DashboardRouting = () => {
     if (type === "admin") {
@@ -804,6 +806,8 @@ function App() {
           <Route path="/accounting/deposit" exact element={<MasterDeposit />} />
           <Route path="/account-title" exact element={<AccountTitle />} />
           <Route path="/account-data" exact element={<AccountData />} />
+          <Route path="/all-bet-income" exact element={<Allbetincome />} />
+          <Route path="/all-bet-outcome" exact element={<AllBetoutcome />} />
         </Routes>
       );
     } else {
