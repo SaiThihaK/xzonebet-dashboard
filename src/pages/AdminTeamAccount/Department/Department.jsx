@@ -8,6 +8,7 @@ import DepartmentTable from './DepartmentTable/DepartmentTable';
 
 const Department = () => {
     const navigate = useNavigate();
+    
   return (
     <div>
         <PageTitleCard title="Department">

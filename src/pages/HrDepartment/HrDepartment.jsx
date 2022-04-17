@@ -2,16 +2,14 @@ import { Button, TextField } from '@mui/material'
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import PageTitleCard from "../../components/UI/PageTitleCard/PageTitleCard"
+import CustomGetFunction from '../../services/CustomGetFunction';
 import DepartmentTable from '../AdminTeamAccount/Department/DepartmentTable/DepartmentTable';
 import classes from "./HrDepartment.module.css"
 const HrDepartment = () => {
   const navigate = useNavigate();
-  const departmentData = [
-    {name:"Provider"},
-    {name:"Accounting"},
-    {name:"Marketing"}
-    
-  ]
+  
+  const {data} = CustomGetFunction("api/departments",[]);
+  console.log(data)
   return (
     <div>
         <PageTitleCard title="Department">
@@ -23,7 +21,7 @@ const HrDepartment = () => {
              >Create Department</Button>
          </div>
          </div>
-          <DepartmentTable data={departmentData} />
+          <DepartmentTable data={data} />
         </PageTitleCard>
     </div>
   )

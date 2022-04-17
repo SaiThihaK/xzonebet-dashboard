@@ -2,7 +2,8 @@ import { Button, TextField } from '@mui/material';
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import PageTitleCard from '../../components/UI/PageTitleCard/PageTitleCard';
-import DepartmentTable from '../AdminTeamAccount/Department/DepartmentTable/DepartmentTable';
+import CustomGetFunction from '../../services/CustomGetFunction';
+import PositionTable from '../AdminTeamAccount/Position/PositionTable/PositionTable';
 import classes from "./HrPosition.module.css"
 const HrPosition = () => {
     const navigate = useNavigate();
@@ -11,6 +12,8 @@ const HrPosition = () => {
         {name:"Senior Account"},
         {name:"Junior Account"}
       ]
+  const {data} = CustomGetFunction("api/positions",[]);
+  console.log(data)
   return (
     <div>
         <PageTitleCard title="Position">
@@ -23,7 +26,7 @@ const HrPosition = () => {
          </div>
          </div>
 
-          <DepartmentTable position data={PositionData}  />
+          <PositionTable position data={data}  />
         </PageTitleCard>
     </div>
   )

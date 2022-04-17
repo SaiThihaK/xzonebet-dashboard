@@ -11,9 +11,9 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import classes from "./DepartmentTable.module.css";
-import { BasedColor } from "../../../../Controller/BasedColor";
+import classes from "./PositionTable.module.css";
 import {useNavigate} from "react-router-dom";
+import { BasedColor } from "../../../../Controller/BasedColor";
 import { IconButton } from "@mui/material";
 import { Edit } from "@mui/icons-material";
 
@@ -37,7 +37,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
       border: 0,
     },
   }));
-const DepartmentTable = ({name,position,salary,percentage,status,data}) => {
+const PositionTable = ({name,position,salary,percentage,status,data}) => {
   const navigate = useNavigate();
   return (
     <div>
@@ -81,7 +81,7 @@ const DepartmentTable = ({name,position,salary,percentage,status,data}) => {
         }}>Detail</Button>
         <Button variant="outlined" color="error">Ban</Button>
         <Button variant="outlined" color="success">Unban</Button>
-         <IconButton><Edit /></IconButton>
+        <IconButton><Edit /></IconButton>
     </Stack></StyledTableCell>
 </StyledTableRow>
                     ))}
@@ -93,4 +93,4 @@ const DepartmentTable = ({name,position,salary,percentage,status,data}) => {
   )
 }
 
-export default DepartmentTable
+export default PositionTable

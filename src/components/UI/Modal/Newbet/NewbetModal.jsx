@@ -81,6 +81,10 @@ const NewbetModal = ({ open, bettingData, closeHandler }) => {
       total_symbol1: newBet.total1,
       total_symbol2: newBet.total,
       total_symbol3: newBet.total2,
+      fixture_timestamp:  bettingData?.fixture?.timestamp,
+      league_id:  bettingData?.league?.id,
+
+      league_data: bettingData?.league,
     };
     try {
       const { data } = await axios.request(
@@ -98,6 +102,7 @@ const NewbetModal = ({ open, bettingData, closeHandler }) => {
         return;
       }
     } catch (error) {
+      toast.error(error.response.data.message)
       if (
         error.response.status === 401 ||
         error.response.data.message === "Unauthenticated."
