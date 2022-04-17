@@ -6,23 +6,58 @@ import classes from "./NewAgentDetail.module.css"
 import CustomGetFunction from '../../../../../../services/CustomGetFunction'
 import Card from '../../../../../../components/UI/Card'
 import { Button, Grid } from '@mui/material'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import { PostMethod } from '../../../../../../services/api-services'
+import { toast } from 'react-toastify'
+import axios from 'axios'
 
 const NewAgentDetail = () => {
 const [name,setName] = useState("");
 const [password,setPassword] = useState("");
 const [deposit,setDeposit] = useState("");
-const [withDraw,setWithDraw] = useState("")
+const [withDraw,setWithDraw] = useState("");
+const [masterId,setMasterId] = useState("");
 const {id} = useParams();
+const navigate = useNavigate();
   const {data} = CustomGetFunction(`api/agents/${id}`,[id]);
-  
-  const submitHandler = ()=>{
-    
+  const AlertToast = msg=>msg;
+  const submitHandler = async()=>{
+    console.log("username",name);
+    console.log("masterId",masterId);
+    console.log("password",password);
+    console.log("deposit",deposit);
+    console.log("withDraw",withDraw)
+    try{
+ const response = await axios.request(PostMethod(`api/affiliate-register-lists/confirm-as-agent/${id}`,{
+   username:name,
+   master_id:masterId,
+   password:password,
+   deposit_percent:deposit,
+   withdraw_percent:withDraw,
+ }));
+
+ if(response.data.status==="success"){
+   AlertToast(toast.success(response.data.message))
+   setName("");
+   setMasterId("");
+   setPassword("");
+   setDeposit("");
+   setWithDraw("");
+   navigate("/master/agent/new-agent")
+   return;
+ }
+ if(response.data.status==="error"){
+   AlertToast(toast.error(response.data.message))
+   return;
+ }
+    }catch(error){
+    AlertToast(toast.error(error.response.data.message))
+    }
   } 
   return (
    <PageTitleCard title="New Agent Form">
      <Grid container spacing={1} style={{padding:30}}>
-    <Grid item xs={6}><PendingAgentDesc userInfo={data} /></Grid>
+    <Grid item xs={6}><PendingAgentDesc userInfo={data} masterId={masterId} setMasterId={setMasterId} /></Grid>
     <Grid item xs={6}><EnjoymentForm
     name={name}
     setName={setName}
