@@ -7,7 +7,7 @@ import { Email,  Phone } from "@mui/icons-material";
 import classes from "./ForgetPasswordModal.module.css"
 import {PostMethod} from "../../services/api-services"
 import axios from "axios"
-import { toast } from "react-toastify";
+
 import { regexEmail, regexPhone, } from "../../Controller/Validation";
 
 
@@ -33,7 +33,8 @@ const [phoneValue,setPhoneValue] = useState("");
 const [error,setError] = useState("");
 const [successMsg,setSuccessMsg] = useState("");
 
-
+const [firstBox,setFirstBox] = useState(true);
+const [isCode,setIsCode] = useState(false);
 // 
 
 const postHandler = async()=>{
@@ -86,12 +87,15 @@ const postHandler = async()=>{
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
-      >
+      > 
+      {
+        firstBox && 
+    
         <Box sx={style}>
           <div>
             <h3>PASSWORD RECOVERY</h3>
           </div>
-             <Grid container className={classes["grid-container"]}>
+           <Grid container className={classes["grid-container"]}>
                <Grid item xs={6}>
                <div className={classes["tab"]} 
                onClick={toggleMail}
@@ -168,7 +172,10 @@ const postHandler = async()=>{
             <FormControl fullWidth style={{marginTop:30}}>
               <Button variant="contained" color="error" onClick={postHandler}>Create New Password</Button>
             </FormControl>
+         
+        
         </Box>
+}
       </Modal>
     </div>
   );
