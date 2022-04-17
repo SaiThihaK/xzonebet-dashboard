@@ -56,6 +56,7 @@ const Fixture = () => {
       .request(mmBetting)
       .then(function (response) {
         setBettingData(response.data.response);
+        console.log(response.data.response);
       })
       .catch(function (error) {
         console.error(error);

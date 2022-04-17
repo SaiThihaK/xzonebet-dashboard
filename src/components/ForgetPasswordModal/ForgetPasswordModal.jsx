@@ -7,8 +7,9 @@ import { Email,  Phone } from "@mui/icons-material";
 import classes from "./ForgetPasswordModal.module.css"
 import {PostMethod} from "../../services/api-services"
 import axios from "axios"
-
 import { regexEmail, regexPhone, } from "../../Controller/Validation";
+import ConfirmCodeModal from "../ConfirmCodeModal/ConfirmCodeModal";
+
 
 
 
@@ -32,9 +33,9 @@ const [emailValue,setEmailValue] = useState("");
 const [phoneValue,setPhoneValue] = useState("");
 const [error,setError] = useState("");
 const [successMsg,setSuccessMsg] = useState("");
-
-const [firstBox,setFirstBox] = useState(true);
-const [isCode,setIsCode] = useState(false);
+const [codeOpen,setCodeOpen] = useState(false);
+const codeOpenHandler = ()=>setCodeOpen(true);
+const codeCloseHandler = ()=>setCodeOpen(false);
 // 
 
 const postHandler = async()=>{
@@ -65,8 +66,9 @@ const postHandler = async()=>{
     if(response.data.status==="success"){
       setError("");
       setSuccessMsg(response.data.message);
-      setEmailValue("");
       setPhoneValue("");
+      handleClose();
+      codeOpenHandler();
       return;
     }
     if(response.data.status==="error"){
@@ -88,13 +90,13 @@ const postHandler = async()=>{
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       > 
-      {
-        firstBox && 
+      
     
         <Box sx={style}>
           <div>
             <h3>PASSWORD RECOVERY</h3>
           </div>
+          <>
            <Grid container className={classes["grid-container"]}>
                <Grid item xs={6}>
                <div className={classes["tab"]} 
@@ -172,10 +174,9 @@ const postHandler = async()=>{
             <FormControl fullWidth style={{marginTop:30}}>
               <Button variant="contained" color="error" onClick={postHandler}>Create New Password</Button>
             </FormControl>
-         
-        
+            </>
         </Box>
-}
+       
       </Modal>
     </div>
   );

@@ -34,7 +34,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 const FixtureTable = ({ bettingData }) => {
   console.log(bettingData);
-
   const [id, setId] = useState("");
   const [open, setOpen] = useState(false);
   const openHandler = (id) => {
