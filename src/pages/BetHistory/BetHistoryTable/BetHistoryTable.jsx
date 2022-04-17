@@ -42,7 +42,7 @@ const BetHistoryTable = () => {
     {
         isToggle && ( arr.map((k,index)=>(<table className={classes["second-table"]}>
         <tr>
-            <th><p>Time of processing Unsettled</p></th>
+            <th className={classes["bet-tip"]}><p>Time of processing Unsettled</p></th>
             <th><SportsSoccer /></th>
             <th>
             Football. UEFA Champions League
