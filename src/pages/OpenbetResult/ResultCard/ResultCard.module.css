@@ -1,0 +1,37 @@
+.card-body{
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+.card-body p{
+    font-size: 14px;
+    margin-top: 30px;
+}
+
+.title{
+    padding: 5px 15;
+    display: flex;
+
+    justify-content: space-between;
+   
+}
+.btn-container{
+    display: flex;
+    justify-content: center;
+ 
+}
+
+.btn-container button{
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+}
+
+.card{
+    width: 300px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color:  hsla(300,2%,65%,.466);
+}

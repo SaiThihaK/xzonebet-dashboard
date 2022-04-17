@@ -225,11 +225,7 @@ export const SidebarData = [
                 path: '/game-setting/football-setting',
                 icon: <IoIcons.IoIosArrowForward />,
             },
-            {
-                title:"XzoneBet Football Setting",
-                path:"/game-setting/xzonebet-football-setting",
-                icon: <IoIcons.IoIosArrowForward />,
-            }
+           
         ]
     },
     {
@@ -246,6 +242,11 @@ export const SidebarData = [
             {
                 title: 'Opening bet',
                 path: '/opening-bet',
+                icon: <IoIcons.IoIosArrowForward />,
+            },
+            {
+                title:"Opening bet result",
+                path:"/opening-bet-result",
                 icon: <IoIcons.IoIosArrowForward />,
             },
             {

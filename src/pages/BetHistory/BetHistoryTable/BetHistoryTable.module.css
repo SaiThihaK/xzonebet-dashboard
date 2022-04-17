@@ -40,4 +40,8 @@ td{
 
 .second-table th{
     color: black;
+    margin-bottom: 20px;
+}
+.bet-tip{
+    width: 150px;;
 }
