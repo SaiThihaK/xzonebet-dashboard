@@ -69,7 +69,7 @@ const PaymentAccountTable = ({num}) => {
               {data.map((row,index)=>(
                    <StyledTableRow key={index}>
                     <StyledTableCell component="th" scope="row">
-                    {row.id}
+                     {index}
                   </StyledTableCell>
                   <StyledTableCell align="right" >{row?.payment_type}</StyledTableCell>
                   <StyledTableCell align="right" >{row.payment_provider}</StyledTableCell>

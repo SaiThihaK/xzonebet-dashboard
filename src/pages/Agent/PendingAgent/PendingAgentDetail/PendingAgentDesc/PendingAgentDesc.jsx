@@ -6,7 +6,7 @@ import { getMethod } from "../../../../../services/api-services";
 import { logoutHandler } from "../../../../../components/Sidebar/Sidebar";
 import CustomGetFunction from "../../../../../services/CustomGetFunction";
 
-const PendingAgentDesc = ({userInfo}) => {
+const PendingAgentDesc = ({userInfo,masterId,setMasterId}) => {
 
   const {data} = CustomGetFunction("api/agents?sortColumn=id&sortDirection=desc&limit=30&agent_level=master",[])
   return (
@@ -45,6 +45,8 @@ const PendingAgentDesc = ({userInfo}) => {
     id="demo-simple-select"
     size="small"
     variant="standard"
+    value={masterId}
+    onChange={(e)=>{setMasterId(e.target.value)}}
   > 
   {data.map((master,index)=>(
   <MenuItem key={index} value={master.id}>{master.name}</MenuItem>
