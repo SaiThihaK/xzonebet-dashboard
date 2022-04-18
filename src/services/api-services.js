@@ -129,6 +129,19 @@ export const PatchMethod = (route, data) => {
   return res;
 };
 
+export const DeleteMethod = (route, data) => {
+  const res = {
+    method: "DELETE",
+    url: `${REACT_APP_DOMAIN}${route}`,
+    data,
+    headers: {
+      Accept: "application/json",
+      authorization: ltoken,
+    },
+  };
+  return res;
+};
+
 // -----------------------------Patch Method for CreatePayment Provider-------------------------//
 export const PostProvider = (route, data) => {
   const res = {

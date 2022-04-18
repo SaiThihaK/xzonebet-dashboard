@@ -1,6 +1,6 @@
 
 import { Button,TextField } from '@mui/material';
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import PageTitleCard from '../../../components/UI/PageTitleCard/PageTitleCard';
 import classes from "./Department.module.css";
@@ -8,6 +8,7 @@ import DepartmentTable from './DepartmentTable/DepartmentTable';
 
 const Department = () => {
     const navigate = useNavigate();
+
     
   return (
     <div>

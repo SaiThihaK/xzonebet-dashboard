@@ -1,6 +1,6 @@
 import React from "react";
 import classes from './ToggleBtn.module.css';
-const ToggleBtn = ({defaultChecked =false}) => {
+const ToggleBtn = ({defaultChecked =true}) => {
   return (
     <label className={classes["toggle-switch"]}>
       <input

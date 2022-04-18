@@ -3,10 +3,13 @@ import React, { useState } from 'react'
 import OdooFunction from '../../../../components/OdooFunctions/OdooFunction'
 import PageTitleCard from '../../../../components/UI/PageTitleCard/PageTitleCard'
 import classes from "./CreateDepartment.module.css"
-
+import {toast} from 'react-toastify'
+import axios from "axios"
+import {PostMethod} from "../../../../services/api-services"
 const CreateDepartment = () => {
 const [functionName,setFunctionName] = useState([]);
 const handleChange = (e)=>setFunctionName(e.target.value);
+const [name,setName] = useState("");
 const functionArr = [
     {id:1,name:"function1"},
     {id:2,name:"function2"},
@@ -18,6 +21,25 @@ const functionArr = [
     {id:8,name:"function8"},
     {id:9,name:"function9"}
 ]
+const createDepartment = async()=>{
+  try{
+ const response = await axios.request(PostMethod("api/departments",{
+   name
+ }));
+ if(response.data.status==="success"){
+   toast.success(response.data.message);
+   setName("");
+   return
+ }
+ if(response.data.status==="error"){
+   toast.error(response.data.message)
+ }
+  }catch(error){
+  toast.error(error.response.data.message)
+  }
+}
+
+
   return (
     <div>
         <PageTitleCard title="Create Department">
@@ -25,7 +47,7 @@ const functionArr = [
             
             <div className={classes["form-contol"]}>
             <label>Department</label>
-            <TextField size='small'/>
+            <TextField size='small' value={name} onChange={(e)=>{setName(e.target.value)}}/>
             </div>
 
             <div className={classes["form-contol"]}>
@@ -66,7 +88,7 @@ const functionArr = [
 </div>
             
         <div className={classes["btn-container"]}>
-        <Button variant="contained">Create</Button>
+        <Button variant="contained" onClick={createDepartment}>Create</Button>
         </div>
             </div>
         </PageTitleCard>
