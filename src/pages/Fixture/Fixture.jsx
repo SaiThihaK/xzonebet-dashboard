@@ -125,7 +125,7 @@ const Fixture = () => {
       <ToastContainer />
       <div className={classes["card-body"]}>
         <Grid container spacing={3}>
-          <Grid item xs={6}>
+          <Grid item xs={4}>
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DateRangePicker
                 startText="Check-in"
@@ -144,26 +144,30 @@ const Fixture = () => {
               />
             </LocalizationProvider>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={4}>
             {country !== [] && <Country country={countryData} />}
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={4}>
             <League league={leagueData} leagueIdHandler={leagueIdHandler} />
           </Grid>
-          <Grid item xs={6}>
-            <Button
-              variant="contained"
-              onClick={filterData}
-              size="large"
-              sx={{ float: "left", height: "50px" }}
-            >
-              Search
-            </Button>
-          </Grid>
+         
+           
+
           {/* <Grid item xs={12}>
    
     </Grid> */}
         </Grid>
+        <div className={classes["btn-container"]}>
+         <Button
+              variant="contained"
+              onClick={filterData}
+              size="large"
+            >
+              Search
+            </Button>
+         </div>
+       
+
 
         {bettingData !== [] && <FixtureTable bettingData={bettingData} />}
       </div>
