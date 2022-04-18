@@ -78,17 +78,19 @@ const UnitValue = () => {
     totalUnit();
   }, [num])
 
-  console.log(userData);
+  console.log("userData",userData);
 
   const totalUnit = () => {
     if (userData && getUnitChange) {
-      let totalUnit = userData?.wallet?.main_unit
-        + (userData?.wallet?.promotion_unit/getUnitChange?.main_to_promotion_rate)
-        + (userData?.wallet?.diamond_unit * userData?.wallet?.main_to_diamond_rate);
+      let promo_to_main = userData?.wallet?.promotion_unit/getUnitChange?.main_to_promotion_rate;
+      let diamond_to_main = userData?.wallet?.diamond_unit * getUnitChange?.main_to_diamond_rate;
+      let main =userData?.wallet?.main_unit;
+      let totalUnit = promo_to_main + diamond_to_main + main;
+      
       return totalUnit;
     }
-
   }
+
 
   return (
     <div className={classes["soccer-setting-container"]}>

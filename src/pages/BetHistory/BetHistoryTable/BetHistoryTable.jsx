@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import classes from "./BetHistoryTable.module.css"
 import {Delete, KeyboardArrowDown, KeyboardArrowUp, SportsSoccer} from '@mui/icons-material';
 import { IconButton } from '@mui/material';
-const BetHistoryTable = () => {
+const BetHistoryTable = ({data}) => {
     const [isToggle,setToggle] = useState(false);
     const toggleHandler = ()=>setToggle(!isToggle);
+
+    console.log(data)
     const arr = ["1","2"];
   return (
       <div style={{marginTop:10}}>
@@ -22,7 +24,7 @@ const BetHistoryTable = () => {
                 </div></th>
             <th><div>
                 <p>Bet</p>
-                <p>2000MMK</p>
+                <p>{data?.amount}MMK</p>
                 </div></th>
             <th><div>
                 <p>Bet Type</p>
@@ -40,7 +42,7 @@ const BetHistoryTable = () => {
         </tr>
     </table>
     {
-        isToggle && ( arr.map((k,index)=>(<table className={classes["second-table"]}>
+        isToggle && ( data?.bet_fixtures?.map((k,index)=>(<table className={classes["second-table"]}>
         <tr>
             <th className={classes["bet-tip"]}><p>Time of processing Unsettled</p></th>
             <th><SportsSoccer /></th>

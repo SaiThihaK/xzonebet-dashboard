@@ -61,7 +61,6 @@ useEffect(()=>{
 
   return (
     <div className={classes["soccer-setting-container"]}>
-      <ToastContainer />
       <Card>
         <div className={classes["card-header"]}>
           <h1 className={classes["card-title"]}>Create Unit</h1>

@@ -19,6 +19,7 @@ import { Edit } from "@mui/icons-material";
 import { DeleteMethod } from "../../../../services/api-services";
 import axios from "axios";
 import { toast } from "react-toastify";
+import ToggleBtn from "../../../../components/UI/ToggleBtn/ToggleBtn";
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -98,10 +99,10 @@ const PositionTable = ({name,position,salary,percentage,status,data,render,setRe
         <Button variant="contained" onClick={()=>{
           navigate("/odoo-function-detail")
         }}>Detail</Button>
-        <Button variant="outlined" color="error" onClick={()=>{
-          banPosition(row.id)
-        }} >Ban</Button>
-        <Button variant="outlined" color="success">Unban</Button>
+        
+        <IconButton onClick={()=>{
+          banPosition(row?.id)
+        }}><ToggleBtn/></IconButton>
         <IconButton><Edit /></IconButton>
     </Stack></StyledTableCell>
 </StyledTableRow>

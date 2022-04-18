@@ -15,7 +15,7 @@ const Country = ({country}) => {
   options={country}
   getOptionLabel={(option) => option.name}
   sx={{ width: 300 }}
-  renderInput={(params) => <TextField {...params} label="Select Country" />}
+  renderInput={(params) => <TextField size='small' {...params} label="Select Country" />}
 />
   )
 }
