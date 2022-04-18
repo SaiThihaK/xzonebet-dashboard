@@ -16,6 +16,9 @@ import {useNavigate} from "react-router-dom";
 import { BasedColor } from "../../../../Controller/BasedColor";
 import { IconButton } from "@mui/material";
 import { Edit } from "@mui/icons-material";
+import { DeleteMethod } from "../../../../services/api-services";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -37,8 +40,24 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
       border: 0,
     },
   }));
-const PositionTable = ({name,position,salary,percentage,status,data}) => {
+const PositionTable = ({name,position,salary,percentage,status,data,render,setRender}) => {
   const navigate = useNavigate();
+  console.log(data);
+  const banPosition = async(id)=>{
+    try{
+  const response = await axios.request(DeleteMethod(`api/positions/${id}`));
+  if(response.data.status==="success"){
+  toast.success(response.data.message);
+  setRender(!render);
+  }
+  if(response.data.status==="error"){
+    toast.error(response.data.message)
+  }
+    }catch(error){
+      toast.error(error.response.data.message)
+    }
+  }
+
   return (
     <div>
         <div className={classes["table-margin"]}>
@@ -64,7 +83,7 @@ const PositionTable = ({name,position,salary,percentage,status,data}) => {
                     {index+1}
                   </StyledTableCell>
                   {name &&<StyledTableCell align="left">Roger</StyledTableCell>}
-                  <StyledTableCell align="left">{row?.name}</StyledTableCell>
+                  <StyledTableCell align="left">{row?.department?.name}</StyledTableCell>
                 {position && <StyledTableCell align="left">{row?.name}</StyledTableCell> }
                 {percentage && <StyledTableCell align="left">1000USD</StyledTableCell> }
                  {salary &&<StyledTableCell align="left">-</StyledTableCell>}
@@ -79,7 +98,9 @@ const PositionTable = ({name,position,salary,percentage,status,data}) => {
         <Button variant="contained" onClick={()=>{
           navigate("/odoo-function-detail")
         }}>Detail</Button>
-        <Button variant="outlined" color="error">Ban</Button>
+        <Button variant="outlined" color="error" onClick={()=>{
+          banPosition(row.id)
+        }} >Ban</Button>
         <Button variant="outlined" color="success">Unban</Button>
         <IconButton><Edit /></IconButton>
     </Stack></StyledTableCell>

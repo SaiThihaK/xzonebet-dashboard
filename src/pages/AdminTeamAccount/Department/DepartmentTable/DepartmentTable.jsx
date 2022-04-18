@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect } from "react";
 
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
@@ -16,6 +16,10 @@ import { BasedColor } from "../../../../Controller/BasedColor";
 import {useNavigate} from "react-router-dom";
 import { IconButton } from "@mui/material";
 import { Edit } from "@mui/icons-material";
+import { toast } from "react-toastify";
+import axios from "axios";
+import { DeleteMethod } from "../../../../services/api-services";
+import ToggleBtn from "../../../../components/UI/ToggleBtn/ToggleBtn";
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -37,8 +41,30 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
       border: 0,
     },
   }));
-const DepartmentTable = ({name,position,salary,percentage,status,data}) => {
+
+
+
+const DepartmentTable = ({name,position,salary,percentage,status,data,render,setRender}) => {
   const navigate = useNavigate();
+ 
+
+  const banDepartment = async(id)=>{
+    try{
+  const response = await axios.request(DeleteMethod(`api/departments/${id}`));
+  if(response.data.status==="success"){
+  toast.success(response.data.message);
+  setRender(!render);
+  }
+  if(response.data.status==="error"){
+    toast.error(response.data.message)
+  }
+    }catch(error){
+      toast.error(error.response.data.message)
+    }
+  }
+
+
+
   return (
     <div>
         <div className={classes["table-margin"]}>
@@ -79,8 +105,8 @@ const DepartmentTable = ({name,position,salary,percentage,status,data}) => {
         <Button variant="contained" onClick={()=>{
           navigate("/odoo-function-detail")
         }}>Detail</Button>
-        <Button variant="outlined" color="error">Ban</Button>
-        <Button variant="outlined" color="success">Unban</Button>
+        
+      <IconButton onClick={()=>{banDepartment(row.id)}}><ToggleBtn/></IconButton>
          <IconButton><Edit /></IconButton>
     </Stack></StyledTableCell>
 </StyledTableRow>

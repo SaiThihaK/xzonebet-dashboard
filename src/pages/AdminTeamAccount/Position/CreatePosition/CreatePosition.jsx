@@ -1,16 +1,19 @@
-import { Button, Checkbox, Grid, ListItemText, MenuItem, Select } from '@mui/material'
+import { Button, Checkbox, Grid, ListItemText, MenuItem, Select, TextField } from '@mui/material'
+import axios from 'axios'
 import React, { useState } from 'react'
+import { toast } from 'react-toastify'
 import OdooFunction from '../../../../components/OdooFunctions/OdooFunction'
 import PageTitleCard from '../../../../components/UI/PageTitleCard/PageTitleCard'
+import { PostMethod } from '../../../../services/api-services'
+import CustomGetFunction from '../../../../services/CustomGetFunction'
 import classes from "./CreatePosition.module.css"
 
 const CreatePosition = () => {
 const [department,setDepartment] = useState("");
+const [position,setPosition] = useState("");
 const [functionName,setFunctionName] = useState([]);
+const {data}  = CustomGetFunction("api/departments",[]);
 
-const handleChange = (e)=>{
-    setDepartment(e.target.value);
-}
 const functionHandle = (e)=>{
     setFunctionName(e.target.value)
 };
@@ -31,6 +34,30 @@ const functionArr = [
     {id:8,name:"function8"},
     {id:9,name:"function9"}
 ];
+
+const CreatePosition = async()=>{
+  try{
+const response =await axios.request(PostMethod("api/positions",{
+  department_id:department,
+  name:position,
+}));
+if(response.data.status==="success"){
+  toast.success(response.data.message);
+  setDepartment("");
+  setPosition("");
+  return;
+}
+if(response.data.status === "error"){
+  toast.error(response.data.message);
+  return;
+}
+  }catch(error){
+    toast.error(error.response.data.message);
+  }
+}
+
+
+
   return (
     <div>
         <PageTitleCard title="Create Position">
@@ -39,11 +66,12 @@ const functionArr = [
          <label>Choose Department</label>
          <Select 
          size='small'
-         onChange={handleChange}
+        
          value={department}
+         onChange={(e)=>{setDepartment(e.target.value)}}
          >
         {
-            Department.map((dep,index)=>(
+            data.map((dep,index)=>(
                 <MenuItem key={index} value={dep.id}>
                 {
                     dep.name
@@ -53,6 +81,12 @@ const functionArr = [
         }
          </Select>
         </div>
+       
+      <div className={classes['form-contol']}>
+     <label>Position Name</label>
+     <TextField size='small' value={position} onChange={(e)=>{setPosition(e.target.value)}}/>
+       </div>
+     
         {/* <div className={classes["form-contol"]}>
             <label>Choose Function</label>
             <Select
@@ -89,7 +123,7 @@ const functionArr = [
         }
         </Grid>
         <div className={classes["btn-container"]}>
-        <Button variant="contained">Create</Button>
+        <Button variant="contained" onClick={CreatePosition}>Create</Button>
         </div>
         </div>
         </PageTitleCard>

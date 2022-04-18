@@ -2,8 +2,7 @@ import { Button, Grid, TextField } from '@mui/material'
 import React from 'react'
 import MemberCard from '../../components/MemberCard/MemberCard'
 import PageTitleCard from '../../components/UI/PageTitleCard/PageTitleCard';
-
-import DepartmentTable from '../AdminTeamAccount/Department/DepartmentTable/DepartmentTable'
+import CustomGetFunction from '../../services/CustomGetFunction';
 import { useNavigate } from 'react-router-dom';
 import classes from "./HrEmployee.module.css"
 
@@ -16,7 +15,9 @@ const HrEmployee = () => {
         {name:"Graphic Designer"}
       ]
     
-  return (
+    
+    
+    return (
     <div>
         <PageTitleCard title="employee">
         <div className={classes["card-body"]}>
@@ -31,9 +32,9 @@ const HrEmployee = () => {
             <Grid container spacing={5}>
               {
               
-                employeeData.length !==0 && employeeData.map((master,index)=>(
+                employeeData.length !==0 && employeeData.map((data,index)=>(
                  <Grid item xs={6} key={index}>
-                    <MemberCard partner={master} path={"/account/master/panding-master/detail/"} />
+                    <MemberCard partner={data} path={"/account/master/panding-master/detail/"} />
                    </Grid>
                  
                 ))
