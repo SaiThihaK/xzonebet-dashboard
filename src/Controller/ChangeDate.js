@@ -8,3 +8,6 @@ export const getResDate = (date) => {
   let ResDate = d.toISOString().split("T")[0];
   return ResDate;
 };
+export const changeTimestamp = (date) => {
+  return new Date(date * 1000).toLocaleString().split(",");
+};
