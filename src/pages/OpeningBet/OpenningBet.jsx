@@ -5,7 +5,11 @@ import classes from "./Openningbet.module.css";
 import { Avatar, Button, Stack } from "@mui/material";
 import { ArrowUpward, ArrowDownward } from "@mui/icons-material";
 import NewbetModal from "../../components/UI/Modal/Newbet/NewbetModal";
+import CustomGetFunction from "../../services/CustomGetFunction";
+import { changeTimestamp } from "../../Controller/ChangeDate";
 const OpenningBet = () => {
+  const { data } = CustomGetFunction("api/football-fixtures", []);
+  console.log(data);
   const [open, setOpen] = useState(false);
   const openHandler = () => {
     setOpen(true);
@@ -47,37 +51,36 @@ const OpenningBet = () => {
             <th>U</th>
             <th></th>
           </tr>
-
-          {array.map((bet, index) => (
+          {data.map((bet, index) => (
             <tr key={index} className={classes["body-row"]}>
               <td>
-                <p>22-4-2022</p>
-                <p>02:33:56</p>
+                <p>{changeTimestamp(bet.fixture_timestamp)[0]}</p>
+                <p>{changeTimestamp(bet.fixture_timestamp)[1]}</p>
               </td>
               <td className={classes["teams"]}>
                 <p className={classes["t-1"]}>
-                  Team OG
+                  {bet?.over_team_data?.name}
                   <ArrowUpward style={{ fontSize: 14, color: "green" }} />
                 </p>
                 <p className={classes["t-2"]}>
-                  Team Nigma galaxy
+                  {bet?.under_team_data?.name}
                   <ArrowDownward style={{ fontSize: 14, color: "red" }} />
                 </p>
               </td>
               <td className={classes["bet-amount"]} align="center">
-                <span>3.4</span>
+                <span>{bet?.body}</span>
               </td>
               <td className={classes["bet-amount"]} align="center">
-                <span>3.4</span>
+                <span>{bet?.body}</span>
               </td>
               <td className={classes["bet-amount"]} align="center">
-                <span>3.4</span>
+                <span>O</span>
               </td>
               <td className={classes["bet-amount"]} align="center">
-                <span>3.4</span>
+                <span>{bet?.total}</span>
               </td>
               <td className={classes["bet-amount"]} align="center">
-                <span>3.4</span>
+                <span>U</span>
               </td>
               <td align="center">
                 <Button onClick={openHandler} size="small" variant="contained">
