@@ -1,6 +1,5 @@
 
-import React, { useEffect } from "react";
-
+import React from "react";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -63,8 +62,6 @@ const DepartmentTable = ({name,position,salary,percentage,status,data,render,set
     }
   }
 
-
-
   return (
     <div>
         <div className={classes["table-margin"]}>
@@ -94,11 +91,8 @@ const DepartmentTable = ({name,position,salary,percentage,status,data,render,set
                 {position && <StyledTableCell align="left">{row?.name}</StyledTableCell> }
                 {percentage && <StyledTableCell align="left">1000USD</StyledTableCell> }
                  {salary &&<StyledTableCell align="left">-</StyledTableCell>}
-                 {status && <StyledTableCell align="left"> 
-                      <Button 
-                      variant="contained" color="success"
-                      size="small"
-                      >Active</Button>
+                 {status && <StyledTableCell align="center"> 
+                      <div className={classes["active"]}>Active</div>
                   </StyledTableCell> }
                   <StyledTableCell align="left">
                   <Stack spacing={1} direction="row" >

@@ -5,9 +5,12 @@ import { useNavigate } from 'react-router-dom';
 import PageTitleCard from '../../../components/UI/PageTitleCard/PageTitleCard';
 import classes from "./Department.module.css";
 import DepartmentTable from './DepartmentTable/DepartmentTable';
+import CustomGetFunction from "../../../services/CustomGetFunction"
 
 const Department = () => {
+    const [render,setRender] = useState(false);
     const navigate = useNavigate();
+    const {data} = CustomGetFunction("api/departments",[])
 
     
   return (
@@ -21,7 +24,7 @@ const Department = () => {
              >Create Department</Button>
          </div>
          </div>
-         <DepartmentTable name position status percentage salary />
+         <DepartmentTable name position status percentage salary data={data} render={render} setRender={setRender} />
         </PageTitleCard>
         
     </div>

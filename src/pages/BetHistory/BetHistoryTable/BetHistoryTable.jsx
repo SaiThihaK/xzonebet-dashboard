@@ -43,10 +43,11 @@ const BetHistoryTable = ({data}) => {
     </table>
     {
         isToggle && ( data?.bet_fixtures?.map((k,index)=>(<table className={classes["second-table"]}>
-        <tr>
+        <tr className={classes["detail-table"]}>
             <th className={classes["bet-tip"]}><p>Time of processing Unsettled</p></th>
-            <th><SportsSoccer /></th>
-            <th>
+            <th></th>
+            <th className={classes["detail-league"]}>
+            <SportsSoccer style={{marginRight:10}}/>
             Football. UEFA Champions League
                 <br/>
              Liverpool - Benfica
