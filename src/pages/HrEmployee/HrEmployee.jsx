@@ -15,7 +15,8 @@ const HrEmployee = () => {
         {name:"Graphic Designer"}
       ]
     
-    
+    const {data} = CustomGetFunction("api/employees",[]);
+    console.log("employee",data);
     
     return (
     <div>
