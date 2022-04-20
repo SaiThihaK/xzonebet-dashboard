@@ -1,32 +1,49 @@
-import { Button } from '@mui/material'
-import React from 'react'
-import Card from '../../../components/UI/Card'
-import classes from "./ResultCard.module.css"
+import { Button } from "@mui/material";
+import React from "react";
+import Card from "../../../components/UI/Card";
+import { changeTimestamp } from "../../../Controller/ChangeDate";
+import classes from "./ResultCard.module.css";
 
-const ResultCard = () => {
+const ResultCard = ({ resultData }) => {
   return (
     <div className={classes["card"]}>
-  <div className={classes["title"]}>
-      <p>Premier League</p>
-      <p>2022-04-02 <br/>20:30:00</p>
-  </div>
-        <div className={classes["card-body"]}>
+      <div className={classes["title"]}>
+        <p>Premier League</p>
+        <p>
+          {changeTimestamp(resultData.fixture_timestamp)[0]}
+          <br />
+          {changeTimestamp(resultData.fixture_timestamp)[1]}
+        </p>
+      </div>
+      <div className={classes["card-body"]}>
         <div>
-        <img with="50" height="50" src="https://cdn.sportmonks.com/images/soccer/teams/8/8.png" alt='img' />
-        <p>Liver Pool</p>
+          <img
+            with="50"
+            height="50"
+            src={resultData.over_team_data.logo}
+            alt="img"
+          />
+          <p>{resultData.over_team_data.name}</p>
         </div>
-       
+
         <p>2:1</p>
         <div>
-        <img width="50" height="50" src="https://cdn.sportmonks.com/images/soccer/teams/14/14.png" alt="team-logo" />
-        <p>Manchester United</p>
+          <img
+            width="50"
+            height="50"
+            src={resultData.under_team_data.logo}
+            alt="team-logo"
+          />
+          <p>{resultData.under_team_data.name}</p>
         </div>
-        </div>
-        <div className={classes['btn-container']}>
-          <Button variant="contained" style={{width:20,fontSize:12}}>Confirm</Button>
-        </div>
+      </div>
+      <div className={classes["btn-container"]}>
+        <Button variant="contained" style={{ width: 20, fontSize: 12 }}>
+          Confirm
+        </Button>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default ResultCard
+export default ResultCard;

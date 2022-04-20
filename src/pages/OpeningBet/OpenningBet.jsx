@@ -7,14 +7,15 @@ import { ArrowUpward, ArrowDownward } from "@mui/icons-material";
 import NewbetModal from "../../components/UI/Modal/Newbet/NewbetModal";
 import CustomGetFunction from "../../services/CustomGetFunction";
 import { changeTimestamp } from "../../Controller/ChangeDate";
+import NewbetModal1 from "../../components/UI/Modal/Newbet/NewbetModal1";
 const OpenningBet = () => {
   const { data } = CustomGetFunction("api/football-fixtures", []);
-  console.log(data);
   const [open, setOpen] = useState(false);
-  const openHandler = () => {
+  const [id, setId] = useState(null);
+  const openHandler = (id) => {
+    setId(id);
     setOpen(true);
   };
-
   const closeHandler = () => setOpen(false);
   const array = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
   return (
@@ -83,7 +84,13 @@ const OpenningBet = () => {
                 <span>U</span>
               </td>
               <td align="center">
-                <Button onClick={openHandler} size="small" variant="contained">
+                <Button
+                  onClick={() => {
+                    openHandler(index);
+                  }}
+                  size="small"
+                  variant="contained"
+                >
                   Edit
                 </Button>
               </td>
@@ -91,7 +98,11 @@ const OpenningBet = () => {
           ))}
         </table>
       </div>
-      <NewbetModal open={open} closeHandler={closeHandler} />
+      <NewbetModal1
+        open={open}
+        bettingData={data[id]}
+        closeHandler={closeHandler}
+      />
     </PageTitleCard>
   );
 };
