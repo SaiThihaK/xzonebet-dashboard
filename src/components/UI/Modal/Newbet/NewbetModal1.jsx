@@ -16,7 +16,7 @@ import TextField from "@mui/material/TextField";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DateTimePicker from "@mui/lab/DateTimePicker";
-import { ChangeDate } from "../../../../Controller/ChangeDate";
+import { ChangeDate, changeTimestamp } from "../../../../Controller/ChangeDate";
 import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
 import { PostMethod } from "../../../../services/api-services";
@@ -32,12 +32,11 @@ const style = {
   borderRadius: "0.5rem",
   p: 4,
 };
-
-const NewbetModal = ({ open, bettingData, closeHandler }) => {
+const NewbetModal1 = ({ open, bettingData, closeHandler }) => {
   console.log(bettingData);
   const [newBet, setNewBet] = React.useState({
-    oddType: "",
-    oddType1: "",
+    oddType: "over",
+    oddType1: "under",
     body: "",
     body1: "",
     body2: "",
@@ -45,6 +44,7 @@ const NewbetModal = ({ open, bettingData, closeHandler }) => {
     total1: "",
     total2: "",
   });
+
   const handleChange = (prop) => (event) => {
     setNewBet({ ...newBet, [prop]: event.target.value });
   };
@@ -68,27 +68,25 @@ const NewbetModal = ({ open, bettingData, closeHandler }) => {
       overTeam = "away";
       underTeam = "home";
     }
-    const addBetData = {
-      fixture_id: bettingData?.fixture?.id,
-      over_team_id: bettingData?.teams?.[overTeam]?.id,
-      over_team_data: bettingData?.teams?.[overTeam],
-      under_team_data: bettingData?.teams?.[underTeam],
-      under_team_id: bettingData?.teams?.[underTeam]?.id,
-      body_symbol1: newBet.body1,
-      body_symbol2: newBet.body,
-      body_symbol3: newBet.body2,
-      total_symbol1: newBet.total1,
-      total_symbol2: newBet.total,
-      total_symbol3: newBet.total2,
-      fixture_timestamp: bettingData?.fixture?.timestamp,
-      league_id: bettingData?.league?.id,
+    // const addBetData = {
+    //   fixture_id: bettingData?.fixture?.id,
+    //   over_team_id: bettingData?.teams?.[overTeam]?.id,
+    //   over_team_data: bettingData?.teams?.[overTeam],
+    //   under_team_data: bettingData?.teams?.[underTeam],
+    //   under_team_id: bettingData?.teams?.[underTeam]?.id,
+    //   body_symbol1: newBet.body1,
+    //   body_symbol2: newBet.body,
+    //   body_symbol3: newBet.body2,
+    //   total_symbol1: newBet.total1,
+    //   total_symbol2: newBet.total,
+    //   total_symbol3: newBet.total2,
+    //   fixture_timestamp: bettingData?.fixture?.timestamp,
+    //   league_id: bettingData?.league?.id,
 
-      league_data: bettingData?.league,
-    };
+    //   league_data: bettingData?.league,
+    // };
     try {
-      const { data } = await axios.request(
-        PostMethod(`api/football-fixtures`, addBetData)
-      );
+      const { data } = await axios.request(PostMethod(`api/football-fixtures`));
 
       if ((data.status = "success")) {
         toast.success(data.message);
@@ -137,14 +135,18 @@ const NewbetModal = ({ open, bettingData, closeHandler }) => {
               <div className={classes["container"]}>
                 <label>Match Title</label>
                 <p>
-                  {`${bettingData?.teams?.home?.name} and ${bettingData?.teams?.away?.name}`}{" "}
+                  {`${bettingData?.over_team_data?.name} and ${bettingData?.under_team_data?.name}`}{" "}
                 </p>
               </div>
             </Grid>
             <Grid item xs={6}>
               <div className={classes["container"]}>
                 <label>Date and Time</label>
-                {/* <p>{bettingData && ChangeDate(bettingData?.fixture?.date)}</p> */}
+                <p>
+                  {`${changeTimestamp(bettingData?.fixture_timestamp)[0]} | ${
+                    changeTimestamp(bettingData?.fixture_timestamp)[1]
+                  }`}
+                </p>
               </div>
             </Grid>
           </Grid>
@@ -154,31 +156,37 @@ const NewbetModal = ({ open, bettingData, closeHandler }) => {
             <Grid item xs={6} style={{ padding: 15, paddingLeft: 0 }}>
               <div className={classes["team-container"]}>
                 <label>Country</label>
+                {/* <img
+                  src={bettingData?.league_data?.flag}
+                  style={{ marginRight: "10px" }}
+                  width="30"
+                  alt=""
+                /> */}
                 <p style={{ marginBottom: "10px" }}>
-                  {bettingData?.league?.country}
+                  {bettingData?.league_data?.country}
                 </p>
               </div>
               <div className={classes["team-container"]}>
                 <label>League</label>
                 <img
-                  src={bettingData?.league?.logo}
+                  src={bettingData?.league_data?.logo}
                   style={{ marginRight: "10px" }}
                   width="30"
                   alt=""
                 />
-                <p>{bettingData?.league?.name}</p>
+                <p>{bettingData?.league_data?.name}</p>
               </div>
 
               <div className={classes["team-con"]}>
                 <label>Team 1</label>
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <img
-                    src={bettingData?.teams?.home?.logo}
+                    src={bettingData?.over_team_data?.logo}
                     style={{ marginRight: "10px" }}
                     width="30"
                     alt=""
                   />
-                  <p>{bettingData?.teams?.home?.name}</p>
+                  <p>{bettingData?.over_team_data?.name}</p>
                 </div>
               </div>
               <FormControl style={{ marginLeft: 200, marginTop: 20 }}>
@@ -194,7 +202,6 @@ const NewbetModal = ({ open, bettingData, closeHandler }) => {
                   value={newBet.oddType}
                   onChange={handleChange("oddType")}
                 >
-                  size="small"
                   <MenuItem value="over">Over</MenuItem>
                   <MenuItem value="under">Under</MenuItem>
                 </Select>
@@ -213,31 +220,30 @@ const NewbetModal = ({ open, bettingData, closeHandler }) => {
               <div className={classes["team-container"]}>
                 <label>Country</label>
                 <p style={{ marginBottom: "10px" }}>
-                  {bettingData?.league?.country}
+                  {bettingData?.league_data?.country}
                 </p>
               </div>
-
               <div className={classes["team-container"]}>
                 <label>League</label>
                 <img
-                  src={bettingData?.league?.logo}
+                  src={bettingData?.league_data?.logo}
                   style={{ marginRight: "10px" }}
                   width="30"
                   alt=""
                 />
-                <p>{bettingData?.league?.name}</p>
+                <p>{bettingData?.league_data?.name}</p>
               </div>
 
               <div className={classes["team-con"]}>
                 <label>Team 2</label>
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <img
-                    src={bettingData?.teams?.away?.logo}
+                    src={bettingData?.under_team_data?.logo}
                     style={{ marginRight: "10px" }}
                     width="30"
                     alt=""
                   />
-                  <p>{bettingData?.teams?.away?.name}</p>
+                  <p>{bettingData?.under_team_data?.name}</p>
                 </div>
               </div>
               <FormControl style={{ marginLeft: 200, marginTop: 20 }}>
@@ -410,4 +416,4 @@ const NewbetModal = ({ open, bettingData, closeHandler }) => {
   );
 };
 
-export default NewbetModal;
+export default NewbetModal1;
