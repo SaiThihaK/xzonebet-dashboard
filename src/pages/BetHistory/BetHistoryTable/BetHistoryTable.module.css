@@ -1,20 +1,37 @@
 table{
 width: 100%;
+padding:5px 5px;
 background-color: hsla(300,2%,65%,.466);
+font-size: 12px;
 
 }
-
-th{
-    font-size: 14px;
+.main-table-item{
     color:#ff0000;
-
+    width: 200px;
+    font-size: 12px;
 }
+
+.main-table-item p{
+    font-size: 12px;
+    padding: 5px 0px;
+    width: 100%;
+}
+.main-table-item-wide{
+    width: 350px;
+    color: #ff0000;
+    font-size: 12px;
+}
+.main-table-item-wide p{
+    padding: 5px 0px; 
+}
+
+
 th div p:nth-child(2){
     margin-top: 10px;
     color: black;
 }
 td{
-    font-size: 14px;
+    font-size: 12px;
 }
 .total{
     background-color: #969696;
@@ -28,6 +45,7 @@ td{
 }
 .main-table th div p:nth-child(2){
     color: white;
+   
 }
 .main-table svg{
     fill: white;
@@ -35,17 +53,26 @@ td{
 
 .second-table{
     background-color: hsla(300,2%,65%,.466);
+    border: 1px solid black;
     
 }
 
-.second-table th{
-    color: black;
-    margin-bottom: 20px;
-}
+
 .bet-tip{
-    width: 150px;;
+ width: 200px;
+}
+.bet-tip p{
+font-size: 12px;
 }
 
 .detail-league{
-    width: 350px;
+    width: 300px;
+    font-size: 12px;
+    padding-left: 10px;
+}
+.second-table-item{
+    width: 200px;
+    color: black;
+    margin-bottom: 20px;
+    font-size: 12px;
 }

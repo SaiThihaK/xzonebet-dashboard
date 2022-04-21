@@ -18,14 +18,14 @@ const BetHistoryTable = ({ data }) => {
     <div style={{ marginTop: 10 }}>
       <table className={isToggle && classes["main-table"]}>
         <tr>
-          <th>William Willson</th>
+          <th className={classes["main-table-item"]}>William Willson</th>
           <th>
-            <div>
+            <div className={classes["main-table-item"]}>
               <p>№ 26194777845</p>
               <p>from {ChangeDate(data?.created_at)}</p>
             </div>
           </th>
-          <th>
+          <th className={classes["main-table-item-wide"]}>
             <div>
               <p>
                 {" "}
@@ -42,19 +42,19 @@ const BetHistoryTable = ({ data }) => {
               </p>
             </div>
           </th>
-          <th>
+          <th className={classes["main-table-item"]}>
             <div>
               <p>Bet</p>
               <p>{data?.amount}MMK</p>
             </div>
           </th>
-          <th>
+          <th className={classes["main-table-item"]}>
             <div>
               <p>Bet Type</p>
               <p>{data?.bet_fixtures.length === 1 ? "body" : "maung"}</p>
             </div>
           </th>
-          <th>
+          <th className={classes["main-table-item"]}>
             <div>
               <p>Bet Slip Status</p>
               <p>Unsettled</p>
@@ -80,12 +80,12 @@ const BetHistoryTable = ({ data }) => {
         data?.bet_fixtures?.map((k, index) => (
           <table className={classes["second-table"]}>
             <tr className={classes["detail-table"]}>
+            <th className={classes["second-table-item"]}></th>
               <th className={classes["bet-tip"]}>
                 <p>Time of processing Unsettled</p>
               </th>
-              <th></th>
               <th className={classes["detail-league"]}>
-                <SportsSoccer style={{ marginRight: 10 }} />
+                {/* <SportsSoccer style={{ marginRight: 10 }} /> */}
                 {k.football_fixture?.league_data?.country}
                 {". "}
                 {k.football_fixture?.league_data?.name}
@@ -103,15 +103,14 @@ const BetHistoryTable = ({ data }) => {
                 Status: Not started yet
                 <br />
               </th>
-              <th>Results</th>
-              <th>Event {k.bet_type}</th>
-              <th>Event Status Unsettled</th>
+              <th className={classes["second-table-item"]}>Results</th>
+              <th className={classes["second-table-item"]}>Event {k.bet_type}</th>
+              <th className={classes["second-table-item"]}>Event Status Unsettled</th>
               <p className={classes["total"]} style={{ marginTop: 20 }}>
                 {k?.football_fixture?.body}
               </p>
 
-              <th></th>
-              <th></th>
+             
             </tr>
           </table>
         ))}
