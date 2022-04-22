@@ -4,7 +4,6 @@ import {
   Delete,
   KeyboardArrowDown,
   KeyboardArrowUp,
-  SportsSoccer,
 } from "@mui/icons-material";
 import { changeTimestamp } from "../../../Controller/ChangeDate";
 import { ChangeDate } from "../../../Controller/ChangeDate";
@@ -28,17 +27,19 @@ const BetHistoryTable = ({ data }) => {
           <th className={classes["main-table-item-wide"]}>
             <div>
               <p>
-                {" "}
+                {/* {" "}
                 {data?.bet_fixtures[0].football_fixture?.league_data?.country}
                 {". "}
-                {data?.bet_fixtures[0].football_fixture?.league_data?.name}
+                {data?.bet_fixtures[0].football_fixture?.league_data?.name} */}
+                Category
               </p>
               <p>
-                {" "}
+                {/* {" "}
                 {
                   data?.bet_fixtures[0].football_fixture?.over_team_data?.name
                 } -{" "}
-                {data?.bet_fixtures[0].football_fixture?.under_team_data?.name}
+                {data?.bet_fixtures[0].football_fixture?.under_team_data?.name} */}
+                 Sport/Football
               </p>
             </div>
           </th>

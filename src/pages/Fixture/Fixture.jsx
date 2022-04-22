@@ -14,8 +14,8 @@ import { Button, Grid } from "@mui/material";
 import { country, mmBetting } from "../../services/api-services";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { ChangeDate, getResDate } from "../../Controller/ChangeDate";
-import { ToastContainer } from "react-toastify";
+import {  getResDate } from "../../Controller/ChangeDate";
+import { toast, ToastContainer } from "react-toastify";
 const Fixture = () => {
   const [value, setValue] = useState([null, null]);
   const [bettingData, setBettingData] = useState([]);
@@ -56,7 +56,7 @@ const Fixture = () => {
       .request(mmBetting)
       .then(function (response) {
         setBettingData(response.data.response);
-        console.log(response.data.response);
+        // console.log(response.data.response);
       })
       .catch(function (error) {
         console.error(error);
@@ -75,15 +75,20 @@ const Fixture = () => {
       .request(leagueOption)
       .then(function (response) {
         setLeagueData(response.data.response);
-        console.log(response.data.response);
+        // console.log(response.data.response);
       })
       .catch(function (error) {
         console.error(error);
       });
   }, [countryName]);
   const filterData = () => {
-    console.log(value, leagueId);
-
+   console.log("date",value);
+   console.log("leagueId",leagueId)
+   if( leagueId.length ===0){
+     console.log("it works")
+     toast.warning(" need certain date and League to filter");
+     return;
+   }
     const options = {
       method: "GET",
       url: "https://api-football-v1.p.rapidapi.com/v3/fixtures",
@@ -161,7 +166,6 @@ const Fixture = () => {
          <Button
               variant="contained"
               onClick={filterData}
-              size="large"
             >
               Search
             </Button>
