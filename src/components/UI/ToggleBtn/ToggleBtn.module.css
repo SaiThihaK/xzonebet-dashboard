@@ -40,8 +40,8 @@
 }
 
 .checkbox:checked + .switch-btn {
-  background-color: #5351bd;
-  box-shadow: 0 0 8px 0  #5351bd;
+  background-color: lightgreen;
+  box-shadow: 0 0 8px 0  lightgreen;
 }
 .checkbox:checked + .switch-btn::before {
   left: calc(100% - 4px);
