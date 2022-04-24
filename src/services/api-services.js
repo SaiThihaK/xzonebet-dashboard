@@ -48,7 +48,7 @@ export const country = {
 export const mmBetting = {
   method: "GET",
   url: "https://api-football-v1.p.rapidapi.com/v3/fixtures",
-  params: { date: '2022-04-20' },
+  params: { date: date },
   headers: {
     "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com",
     "X-RapidAPI-Key": "9b4fb89138mshdc697cc5d45c52fp1daa25jsne2be8889fabc",
