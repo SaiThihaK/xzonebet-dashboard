@@ -13,11 +13,9 @@ import {
   Stack,
 } from "@mui/material";
 import TextField from "@mui/material/TextField";
-import AdapterDateFns from "@mui/lab/AdapterDateFns";
-import LocalizationProvider from "@mui/lab/LocalizationProvider";
-import DateTimePicker from "@mui/lab/DateTimePicker";
-import { ChangeDate, changeTimestamp } from "../../../../Controller/ChangeDate";
-import { toast, ToastContainer } from "react-toastify";
+
+import { changeTimestamp } from "../../../../Controller/ChangeDate";
+import { toast } from "react-toastify";
 import axios from "axios";
 import { PostMethod } from "../../../../services/api-services";
 import { logoutHandler } from "../../../Sidebar/Sidebar";
@@ -34,20 +32,33 @@ const style = {
 };
 const NewbetModal1 = ({ open, bettingData, closeHandler }) => {
   console.log(bettingData);
+  const handleSplit = (str) => {
+    let totalNumber =[];
+    return [...totalNumber,{numbers:str?.split(/[+\-\=]/)}];
+
+  }
+  
+const totalNumber = handleSplit(bettingData?.total);
+console.log("numbers",totalNumber);
+
+
+
   const [newBet, setNewBet] = React.useState({
     oddType: "over",
     oddType1: "under",
-    body: "",
+    body:  "",
     body1: "",
     body2: "",
     total: "",
     total1: "",
     total2: "",
   });
+  console.log("bettingData",bettingData);
 
   const handleChange = (prop) => (event) => {
     setNewBet({ ...newBet, [prop]: event.target.value });
   };
+
   const addNewBet = async (e) => {
     e.preventDefault();
     for (const property in newBet) {
@@ -55,7 +66,7 @@ const NewbetModal1 = ({ open, bettingData, closeHandler }) => {
         if (property === "body1") {
           continue;
         }
-        toast.error("please fill all the data");
+        toast.warning("please fill all the data");
         return;
       }
     }
