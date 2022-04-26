@@ -16,6 +16,7 @@ const BetHistoryTable = ({ data }) => {
   return (
     <div style={{ marginTop: 10 }}>
       <table className={isToggle && classes["main-table"]}>
+        <tablehead>
         <tr>
           <th className={classes["main-table-item"]}>William Willson</th>
           <th>
@@ -76,10 +77,12 @@ const BetHistoryTable = ({ data }) => {
             </IconButton>
           </th>
         </tr>
+        </tablehead>
       </table>
       {isToggle &&
         data?.bet_fixtures?.map((k, index) => (
-          <table className={classes["second-table"]}>
+          <table className={classes["second-table"]} key={index}>
+            <tablehead>
             <tr className={classes["detail-table"]}>
             <th className={classes["second-table-item"]}></th>
               <th className={classes["bet-tip"]}>
@@ -110,9 +113,8 @@ const BetHistoryTable = ({ data }) => {
               <p className={classes["total"]} style={{ marginTop: 20 }}>
                 {k?.football_fixture?.body}
               </p>
-
-             
             </tr>
+            </tablehead>
           </table>
         ))}
     </div>
