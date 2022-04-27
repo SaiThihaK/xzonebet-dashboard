@@ -15,11 +15,12 @@ import classes from "./PositionTable.module.css";
 import {useNavigate} from "react-router-dom";
 import { BasedColor } from "../../../../Controller/BasedColor";
 import { IconButton } from "@mui/material";
-import { Edit } from "@mui/icons-material";
+import { Delete, Edit } from "@mui/icons-material";
 import { DeleteMethod } from "../../../../services/api-services";
 import axios from "axios";
 import { toast } from "react-toastify";
 import ToggleBtn from "../../../../components/UI/ToggleBtn/ToggleBtn";
+import Nodata from "../../../../components/Nodata/Nodata";
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -62,54 +63,60 @@ const PositionTable = ({name,position,salary,percentage,status,data,render,setRe
   return (
     <div>
         <div className={classes["table-margin"]}>
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 700 }} aria-label="customized table">
-            <TableHead>
-              <TableRow>
-                <StyledTableCell>No.</StyledTableCell> 
-                {name &&<StyledTableCell align="left">name</StyledTableCell>}
-                <StyledTableCell align="left">Department Name</StyledTableCell>
-              {position && <StyledTableCell align="left">Position</StyledTableCell> }
-               {salary && <StyledTableCell align="left">Salary</StyledTableCell> }
-              {percentage &&  <StyledTableCell align="left">Percentage</StyledTableCell> }
-              {status &&  <StyledTableCell align="left">Status</StyledTableCell> }
-                <StyledTableCell align="left">Action</StyledTableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-          {data?.map((row,index)=>(
+          {
+            data.length !==0 ? (<TableContainer component={Paper}>
+              <Table sx={{ minWidth: 700 }} aria-label="customized table">
+                <TableHead>
+                  <TableRow>
+                    <StyledTableCell>No.</StyledTableCell> 
+                    {name &&<StyledTableCell align="left">name</StyledTableCell>}
+                    <StyledTableCell align="left">Department Name</StyledTableCell>
+                  {position && <StyledTableCell align="left">Position</StyledTableCell> }
+                   {salary && <StyledTableCell align="left">Salary</StyledTableCell> }
+                  {percentage &&  <StyledTableCell align="left">Percentage</StyledTableCell> }
+                  {status &&  <StyledTableCell align="left">Status</StyledTableCell> }
+                    <StyledTableCell align="left">Action</StyledTableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+              {data?.map((row,index)=>(
+                
+                    <StyledTableRow key={index}>
+                      <StyledTableCell component="th" scope="row">
+                        {index+1}
+                      </StyledTableCell>
+                      {name &&<StyledTableCell align="left">Roger</StyledTableCell>}
+                      <StyledTableCell align="left">{row?.department?.name}</StyledTableCell>
+                    {position && <StyledTableCell align="left">{row?.name}</StyledTableCell> }
+                    {percentage && <StyledTableCell align="left">1000USD</StyledTableCell> }
+                     {salary &&<StyledTableCell align="left">-</StyledTableCell>}
+                     {status && <StyledTableCell align="left"> 
+                          <Button 
+                          variant="contained" color="success"
+                          size="small"
+                          >Active</Button>
+                      </StyledTableCell> }
+                      <StyledTableCell align="left">
+                      <Stack spacing={1} direction="row" >
+            <Button variant="contained" onClick={()=>{
+              navigate("/odoo-function-detail")
+            }}>Detail</Button>
             
-                <StyledTableRow key={index}>
-                  <StyledTableCell component="th" scope="row">
-                    {index+1}
-                  </StyledTableCell>
-                  {name &&<StyledTableCell align="left">Roger</StyledTableCell>}
-                  <StyledTableCell align="left">{row?.department?.name}</StyledTableCell>
-                {position && <StyledTableCell align="left">{row?.name}</StyledTableCell> }
-                {percentage && <StyledTableCell align="left">1000USD</StyledTableCell> }
-                 {salary &&<StyledTableCell align="left">-</StyledTableCell>}
-                 {status && <StyledTableCell align="left"> 
-                      <Button 
-                      variant="contained" color="success"
-                      size="small"
-                      >Active</Button>
-                  </StyledTableCell> }
-                  <StyledTableCell align="left">
-                  <Stack spacing={1} direction="row" >
-        <Button variant="contained" onClick={()=>{
-          navigate("/odoo-function-detail")
-        }}>Detail</Button>
+            <IconButton onClick={()=>{
+              banPosition(row?.id)
+            }}><Delete />
+            </IconButton>
+            
+            <IconButton><Edit /></IconButton>
+        </Stack>
+        </StyledTableCell>
+    </StyledTableRow>
+                        ))}
+                </TableBody>
+              </Table>
+            </TableContainer>):(<Nodata />)
+          }
         
-        <IconButton onClick={()=>{
-          banPosition(row?.id)
-        }}><ToggleBtn/></IconButton>
-        <IconButton><Edit /></IconButton>
-    </Stack></StyledTableCell>
-</StyledTableRow>
-                    ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
         </div>
     </div>
   )

@@ -7,40 +7,26 @@ import PageTitleCard from '../../../../components/UI/PageTitleCard/PageTitleCard
 import { PostMethod } from '../../../../services/api-services'
 import CustomGetFunction from '../../../../services/CustomGetFunction'
 import classes from "./CreatePosition.module.css"
-
+import Nodata from '../../../../components/Nodata/Nodata'
 const CreatePosition = () => {
 const [department,setDepartment] = useState("");
 const [position,setPosition] = useState("");
 const [functionName,setFunctionName] = useState([]);
+
 const {data}  = CustomGetFunction("api/departments",[]);
 
-const functionHandle = (e)=>{
-    setFunctionName(e.target.value)
-};
-const Department = [
-    {id:1,name:"IT Department"},
-    {id:2,name:"HR Department"},
-    {id:3,name:"Main Department"}
-];
-
-const functionArr = [
-    {id:1,name:"function1"},
-    {id:2,name:"function2"},
-    {id:3,name:"function3"}, 
-    {id:4,name:"function4"},
-    {id:5,name:"function5"},
-    {id:6,name:"function6"},
-    {id:7,name:"function7"},
-    {id:8,name:"function8"},
-    {id:9,name:"function9"}
-];
+console.log(data);
 
 const CreatePosition = async()=>{
   try{
 const response =await axios.request(PostMethod("api/positions",{
-  department_id:department,
+  department_id:department.id,
   name:position,
+  permissions:functionName
 }));
+console.log(department.id);
+console.log(position);
+console.log(functionName)
 if(response.data.status==="success"){
   toast.success(response.data.message);
   setDepartment("");
@@ -56,8 +42,12 @@ if(response.data.status === "error"){
   }
 }
 
-
-
+const OdooClick = (name)=>{
+  setFunctionName((prevState)=>([
+    ...prevState,name
+  ]))
+}
+console.log("department",department)
   return (
     <div>
         <PageTitleCard title="Create Position">
@@ -72,7 +62,7 @@ if(response.data.status === "error"){
          >
         {
             data.map((dep,index)=>(
-                <MenuItem key={index} value={dep.id}>
+                <MenuItem key={index} value={dep}>
                 {
                     dep.name
                 }
@@ -109,19 +99,17 @@ if(response.data.status === "error"){
           ))}
         </Select>
             </div> */}
-            <Grid container spacing={5}>
-
+            {
+              department?.permissions?.length !==0 ? (<Grid container spacing={5}>
+                { department?.permissions?.map((func,index)=>(
+                          <Grid item xs={4} key={index}>
+                          <OdooFunction func={func} OdooClick={OdooClick} />
+                          </Grid>
+                        ))
+                      }
+                      </Grid>):(<Nodata />)
+            }
             
-        {
-          functionArr.map((func,index)=>(
-            <Grid item xs={4} key={index}>
-            <OdooFunction func={func} />
-            </Grid>
-
-
-          ))
-        }
-        </Grid>
         <div className={classes["btn-container"]}>
         <Button variant="contained" onClick={CreatePosition}>Create</Button>
         </div>

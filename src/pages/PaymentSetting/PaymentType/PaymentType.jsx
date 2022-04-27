@@ -11,7 +11,7 @@ import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { logoutHandler } from "../../../components/Sidebar/Sidebar";
 import CustomGetFunction from "../../../services/CustomGetFunction";
-
+import CustomLoading from "../../../components/CustomLoading/CustomLoading";
 
 const PaymentType = () => {
 
@@ -19,7 +19,7 @@ const PaymentType = () => {
   const [num,setNum] = useState(0);
   const handleOpen = ()=>setOpen(true);
   const handleClose = ()=>setOpen(false);
-  const {data} = CustomGetFunction('api/dashboard/payment-types',[num]);
+  const {data,loading} = CustomGetFunction('api/dashboard/payment-types',[num]);
   return (
     
     <div className={classes["soccer-setting-container"]}>
@@ -39,7 +39,10 @@ const PaymentType = () => {
        
             </div>
           </div>
-          <PaymentTypeTable payment_type={data} num={num} setNum={setNum}/>
+          {
+            loading ?( <PaymentTypeTable payment_type={data} num={num} setNum={setNum}/>):(<CustomLoading />)
+          }
+
         </div>
         <PaymentTypeModal open={open} handleClose={handleClose} num={num} setNum={setNum}  />
       </Card>
