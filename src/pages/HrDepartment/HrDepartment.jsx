@@ -1,6 +1,7 @@
 import { Button, TextField } from '@mui/material'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import CustomLoading from '../../components/CustomLoading/CustomLoading';
 import PageTitleCard from "../../components/UI/PageTitleCard/PageTitleCard"
 import CustomGetFunction from '../../services/CustomGetFunction';
 import DepartmentTable from '../AdminTeamAccount/Department/DepartmentTable/DepartmentTable';
@@ -8,8 +9,8 @@ import classes from "./HrDepartment.module.css"
 const HrDepartment = () => {
   const navigate = useNavigate();
   const [render,setRender] = useState(false);
-  const {data} = CustomGetFunction("api/departments",[render]);
-  console.log(data)
+  const {data,loading} = CustomGetFunction("api/departments",[render]);
+  console.log("loading",loading)
   return (
     <div>
         <PageTitleCard title="Department">
@@ -21,7 +22,10 @@ const HrDepartment = () => {
              >Create Department</Button>
          </div>
          </div>
-          <DepartmentTable data={data} render={render} setRender={setRender} />
+         {
+          loading?(<DepartmentTable data={data} render={render} setRender={setRender} />)
+          :(<CustomLoading  />)
+         } 
         </PageTitleCard>
     </div>
   )

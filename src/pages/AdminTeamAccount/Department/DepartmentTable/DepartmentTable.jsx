@@ -14,11 +14,12 @@ import classes from "./DepartmentTable.module.css";
 import { BasedColor } from "../../../../Controller/BasedColor";
 import {useNavigate} from "react-router-dom";
 import { IconButton } from "@mui/material";
-import { Edit } from "@mui/icons-material";
+import { Delete, Edit } from "@mui/icons-material";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { DeleteMethod } from "../../../../services/api-services";
 import ToggleBtn from "../../../../components/UI/ToggleBtn/ToggleBtn";
+import Nodata from "../../../../components/Nodata/Nodata";
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -66,7 +67,8 @@ const DepartmentTable = ({name,position,salary,percentage,status,data,render,set
     <div>
         <div className={classes["table-margin"]}>
         <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 700 }} aria-label="customized table">
+          {
+            data.length !==0 ? (<Table sx={{ minWidth: 700 }} aria-label="customized table">
             <TableHead>
               <TableRow>
                 <StyledTableCell>No.</StyledTableCell> 
@@ -95,18 +97,20 @@ const DepartmentTable = ({name,position,salary,percentage,status,data,render,set
                       <div className={classes["active"]}>Active</div>
                   </StyledTableCell> }
                   <StyledTableCell align="left">
-                  <Stack spacing={1} direction="row" >
-        <Button variant="contained" onClick={()=>{
+                  <Stack spacing={3} direction="row" >
+        <Button variant="contained" size="small" onClick={()=>{
           navigate("/odoo-function-detail")
         }}>Detail</Button>
         
-      <IconButton onClick={()=>{banDepartment(row.id)}}><ToggleBtn/></IconButton>
+      <IconButton onClick={()=>{banDepartment(row.id)}}><Delete/></IconButton>
          <IconButton><Edit /></IconButton>
     </Stack></StyledTableCell>
 </StyledTableRow>
                     ))}
             </TableBody>
-          </Table>
+          </Table>) :(<Nodata />)
+          }
+          
         </TableContainer>
         </div>
     </div>
