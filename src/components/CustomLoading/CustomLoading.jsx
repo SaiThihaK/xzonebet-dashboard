@@ -1,11 +1,13 @@
 import * as React from 'react';
-import CircularProgress from '@mui/material/CircularProgress';
+import { Box, LinearProgress } from '@mui/material';
 
 
 export default function CustomLoading({size,thickness}) {
   return (
-    <div style={{display:"flex",justifyContent:"center",alignContent:"center"}}>
-      <CircularProgress size={size} thickness={thickness} />
+    <div style={{display:"flex",justifyContent:"center",alignContent:"center",width:"100%"}}>
+       <Box sx={{ width: '100%' }}>
+      <LinearProgress />
+    </Box>
     </div>
   );
 }

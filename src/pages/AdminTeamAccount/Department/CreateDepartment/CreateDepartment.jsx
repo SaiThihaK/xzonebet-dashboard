@@ -6,29 +6,26 @@ import classes from "./CreateDepartment.module.css"
 import {toast} from 'react-toastify'
 import axios from "axios"
 import {PostMethod} from "../../../../services/api-services"
+import CustomGetFunction from '../../../../services/CustomGetFunction';
+import CustomLoading from '../../../../components/CustomLoading/CustomLoading';
+import Nodata from '../../../../components/Nodata/Nodata'
+import { useNavigate } from 'react-router-dom'
 const CreateDepartment = () => {
 const [functionName,setFunctionName] = useState([]);
-const handleChange = (e)=>setFunctionName(e.target.value);
 const [name,setName] = useState("");
-const functionArr = [
-    {id:1,name:"function1"},
-    {id:2,name:"function2"},
-    {id:3,name:"function3"},
-    {id:4,name:"function4"},
-    {id:5,name:"function5"},
-    {id:6,name:"function6"},
-    {id:7,name:"function7"},
-    {id:8,name:"function8"},
-    {id:9,name:"function9"}
-]
+const navigate = useNavigate();
+const {data,loading } = CustomGetFunction("api/admin/permissions",[])
 const createDepartment = async()=>{
   try{
  const response = await axios.request(PostMethod("api/departments",{
-   name
+   name,
+   permissions:functionName
  }));
  if(response.data.status==="success"){
    toast.success(response.data.message);
    setName("");
+   setFunctionName([]);
+   navigate("/department")
    return
  }
  if(response.data.status==="error"){
@@ -39,7 +36,12 @@ const createDepartment = async()=>{
   }
 }
 
-
+const OdooClick = (name)=>{
+  setFunctionName((prevState)=>([
+    ...prevState,name
+  ]))
+}
+console.log(functionName)
   return (
     <div>
         <PageTitleCard title="Create Department">
@@ -71,20 +73,27 @@ const createDepartment = async()=>{
             </MenuItem>
           ))}
         </Select> */}
-       
-                    <Grid container spacing={5}>
-
-            
 {
-  functionArr.map((func,index)=>(
-    <Grid item xs={4} key={index}>
-    <OdooFunction func={func} />
-    </Grid>
-
-
-  ))
+  loading ? (
+  <>
+  {
+    data.length !== 0 ? ( <Grid container spacing={5}>
+      {
+       data?.map((func,index)=>(
+         <Grid item xs={4} key={index}>
+         <OdooFunction func={func} OdooClick={ OdooClick}/>
+         </Grid>
+       ))
+     }
+     
+     
+     </Grid>):(<Nodata />)
+  }
+ 
+   </>
+   ):(<CustomLoading />)
 }
-</Grid>
+
 </div>
             
         <div className={classes["btn-container"]}>

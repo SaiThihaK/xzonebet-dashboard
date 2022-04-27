@@ -1,0 +1,11 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+}
+.container p{
+    font-size: 1rem;
+    color: gray;
+    font-weight: 700;
+}
