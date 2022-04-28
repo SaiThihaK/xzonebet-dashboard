@@ -18,6 +18,7 @@ import axios from "axios";
 import { ChangeDate, getResDate } from "../../../../Controller/ChangeDate";
 import CustomGetFunction from "../../../../services/CustomGetFunction";
 import TableGetFunction from "../../../../services/TableGetFunction";
+import Nodata from "../../../../components/Nodata/Nodata";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -40,42 +41,43 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const CreateUnitTable = ({render}) => {
+const CreateUnitTable = ({data}) => {
 
-const AlertToast = (toast,msg) => toast(msg);
 
-const {data}  = TableGetFunction('api/wallet/admin-create-record?sortColumn=id&sortDirection=desc&limit=10',[render]);
+
 
   return (
     <div className={classes["table-margin"]}>
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 700 }} aria-label="customized table">
-          <TableHead>
-            <TableRow>
-              <StyledTableCell>No.</StyledTableCell>
-              <StyledTableCell align="right">Date</StyledTableCell>
-              <StyledTableCell align="right">User Id</StyledTableCell>
-              <StyledTableCell align="right">User Name</StyledTableCell>
-              <StyledTableCell align="right">Amount</StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {data.map((row, index) => (
-              <StyledTableRow key={index}>
-                <StyledTableCell component="th" scope="row">
-                  {index+1}
-                </StyledTableCell>
-                <StyledTableCell align="right">{getResDate(row.created_at)}</StyledTableCell>
-                <StyledTableCell align="right">{row.user_id}</StyledTableCell>
-                <StyledTableCell align="right">--</StyledTableCell>
-
-                <StyledTableCell align="right">{row.amount}</StyledTableCell>
-          
-        </StyledTableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      {
+        data?.length !==0 ? (<TableContainer component={Paper}>
+          <Table sx={{ minWidth: 700 }} aria-label="customized table">
+            <TableHead>
+              <TableRow>
+                <StyledTableCell>No.</StyledTableCell>
+                <StyledTableCell align="right">Date</StyledTableCell>
+                <StyledTableCell align="right">User Id</StyledTableCell>
+                <StyledTableCell align="right">User Name</StyledTableCell>
+                <StyledTableCell align="right">Amount</StyledTableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {data.map((row, index) => (
+                <StyledTableRow key={index}>
+                  <StyledTableCell component="th" scope="row">
+                    {index+1}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">{getResDate(row.created_at)}</StyledTableCell>
+                  <StyledTableCell align="right">{row.user_id}</StyledTableCell>
+                  <StyledTableCell align="right">--</StyledTableCell>
+  
+                  <StyledTableCell align="right">{row.amount}</StyledTableCell>
+            
+          </StyledTableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>):(<Nodata />)
+      }
     </div>
   );
 };
