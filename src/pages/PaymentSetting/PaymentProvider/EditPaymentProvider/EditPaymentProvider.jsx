@@ -10,12 +10,12 @@ import { getMethod, PatchMethod } from "../../../../services/api-services";
 import { useParams } from "react-router-dom";
 import { logoutHandler } from "../../../../components/Sidebar/Sidebar";
 import SelectCoun from "../CreatePaymentProvider/SelectCoun";
+import CustomGetFunction from "../../../../services/CustomGetFunction";
 
 
 const EditPaymentProvider = () => {
 const [logo,setlogo] = useState({});
 const [country, setCountry] = useState([]);
-const [payment_type,setPayment_type] = useState([]);
 const [payment_typeValue,setPayment_typeValue] = useState("");
 const [providerValue,setProviderValue] = useState("")
 
@@ -40,32 +40,14 @@ fd
 console.log(response);
 ToastAlert(toast.error("comming soon"));
 }catch(error){
+        toast.error(error.response.data.message)
         if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
         logoutHandler();
         }
       }   
 }
 
-const FetchPayment_type = async()=>{
-  try{
-    const response = await axios.request(getMethod("api/dashboard/payment-types"));
-    if(response.data.status==="success"){
-      setPayment_type(response.data.data);
-      return
-    }
-
-  }catch(error){
-  console.log(error);
-  console.log(error.response.data.message)
-  }
-    
-}
-
-
-useEffect(()=>{
-FetchPayment_type();
-return ()=>setPayment_type("");
-},[id])
+ const {data} = CustomGetFunction("api/dashboard/payment-types",[id])
   return (
     <div className={classes["soccer-setting-container"]}>
       <ToastContainer />
@@ -77,7 +59,7 @@ return ()=>setPayment_type("");
            <FormControl sx={{marginTop:5}} fullWidth>
                <Select size="small" value={payment_typeValue} onChange={payment_typeChange}>
                    {
-                    payment_type?.map((paym,index)=>(
+                    data?.map((paym,index)=>(
                         <MenuItem key={index} value={paym.id}>
                             {
                                 paym.name

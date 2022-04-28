@@ -9,7 +9,8 @@ import PaymentProviderTable from "./PaymentProviderTable/PaymentProviderTable";
 import {useNavigate}from "react-router-dom"
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-
+import CustomGetFunction from "../../../services/CustomGetFunction";
+import CustomLoading from "../../../components/CustomLoading/CustomLoading"
 
 const PaymentProvider = () => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const PaymentProvider = () => {
   // const [payment_provider,setPayment_provider] = useState("");
   // const handleOpen = ()=>setOpen(true);
   // const handleClose = ()=>setOpen(false);
-
+  const {data,loading}  = CustomGetFunction("api/dashboard/payment-providers",[]);
   return (
     
     <div className={classes["soccer-setting-container"]}>
@@ -29,10 +30,14 @@ const PaymentProvider = () => {
         </div>
         <div className={classes["card-body"]}>
           <div className={classes["table-container"]}>
-          <div style={{display:"flex",justifyContent:"flex-end"}}>
+          <div style={{display:"flex",justifyContent:"flex-end",marginBottom:20}}>
             <Button variant="contained" onClick={()=>navigate("/payment-setting/payment-provider/create")}>Create Provider</Button>
           </div>
-         <PaymentProviderTable />
+         
+         {
+           loading ? (  <PaymentProviderTable data={data} />):(<CustomLoading />)
+         }
+       
         </div>
         </div>
         {/* <PaymentProviderModal 

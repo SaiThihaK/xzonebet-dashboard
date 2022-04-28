@@ -5,6 +5,7 @@ import PageTitleCard from '../../components/UI/PageTitleCard/PageTitleCard';
 import CustomGetFunction from '../../services/CustomGetFunction';
 import PositionTable from '../AdminTeamAccount/Position/PositionTable/PositionTable';
 import classes from "./HrPosition.module.css"
+import CustomLoading from "../../components/CustomLoading/CustomLoading"
 const HrPosition = () => {
     const navigate = useNavigate();
     const PositionData = [
@@ -13,7 +14,7 @@ const HrPosition = () => {
         {name:"Junior Account"}
       ];
       const [render,setRender] = useState(false);
-  const {data} = CustomGetFunction("api/positions",[render]);
+  const {data,loading} = CustomGetFunction("api/positions",[render]);
   console.log(data)
   
   return (
@@ -27,8 +28,10 @@ const HrPosition = () => {
              >Create Position</Button>
          </div>
          </div>
-
-          <PositionTable position data={data} render={render} setRender={setRender} />
+        {
+          loading ?(<PositionTable position data={data} render={render} setRender={setRender} />):(<CustomLoading />)
+        }
+          
         </PageTitleCard>
     </div>
   )

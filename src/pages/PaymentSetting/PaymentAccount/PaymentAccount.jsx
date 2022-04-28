@@ -4,6 +4,8 @@ import { Button } from "@mui/material";
 import Card from "../../../components/UI/Card";
 import PaymentAccountModal from "../../../components/UI/Modal/PaymentSetting/PaymentAccount/PaymentAccountModal";
 import PaymentAccountTable from "./PaymentAccountTable/PaymentAccountTable";
+import TableGetFunction from "../../../services/TableGetFunction";
+import CustomLoading from "../../../components/CustomLoading/CustomLoading";
 
 
 
@@ -14,6 +16,8 @@ const PaymentAccount = () => {
   const [num,setNum] = useState(0);
   const handleOpen = ()=>setOpen(true);
   const handleClose = ()=>setOpen(false);
+  const [page,setPage] = useState(1);
+  const {data,pagination,loading} = TableGetFunction(`api/dashboard/payment-accounts?sortColumn=id&sortDirection=desc&limit=10&page=${page}`,[num,page]);
  
   useEffect(()=>{
 
@@ -28,10 +32,13 @@ const PaymentAccount = () => {
         </div>
         <div className={classes["card-body"]}>
           <div className={classes["table-container"]}>
-          <div style={{display:"flex",justifyContent:"flex-end"}}>
+          <div style={{display:"flex",justifyContent:"flex-end",marginBottom:20}}>
             <Button variant="contained" onClick={handleOpen}>Create Payment Account</Button>
           </div>
-         <PaymentAccountTable num={num} setNum={setNum}/>
+          {
+            loading ?( <PaymentAccountTable data={data} pagination={pagination} setPage={setPage}/>):(<CustomLoading />)
+                    }
+        
         </div>
         </div>
         <PaymentAccountModal 

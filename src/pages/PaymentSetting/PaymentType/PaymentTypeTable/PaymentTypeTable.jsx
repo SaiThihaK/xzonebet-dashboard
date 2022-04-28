@@ -14,6 +14,7 @@ import Button from "@mui/material/Button";
 import classes from "./PaymentTypeTable.module.css";
 import EditPaymentModal from "../../../../components/UI/Modal/PaymentSetting/PaymentType/EditPaymentTypeModal";
 import { BasedColor } from "../../../../Controller/BasedColor";
+import Nodata from "../../../../components/Nodata/Nodata";
 const PaymentTypeTable = ({payment_type,num,setNum}) => {
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -49,36 +50,39 @@ const handleClose = ()=>SetOpen(false);
   return (
     <div className={classes["table-container"]}>
       <div className={classes["table-margin"]}>
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 700 }} aria-label="customized table">
-            <TableHead>
-              <TableRow>
-                <StyledTableCell align="left">No.</StyledTableCell>
-                <StyledTableCell align="left">Payment Type</StyledTableCell>
-                <StyledTableCell align="right">Action</StyledTableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-             
-              {payment_type?.map((row,index)=>(
-                   <StyledTableRow key={index}>
-                    <StyledTableCell component="th" scope="row">
-                    {row.id}
-                  </StyledTableCell>
-
-                  <StyledTableCell align="left" >{row.name}</StyledTableCell>
-                  <StyledTableCell align="right">
-                  <Stack spacing={1} direction="row" sx={{justifyContent: 'flex-end'}}>
-                  <Button variant="contained" onClick={()=>{handleOpen();setTypeId(row.id)}}>Edit</Button>
-                   </Stack>
-                  </StyledTableCell>
-                  </StyledTableRow>
-                                  
-              ))}
-            </TableBody>
-          
-          </Table>
-        </TableContainer>
+        {
+          payment_type?.length !==0 ?( <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 700 }} aria-label="customized table">
+              <TableHead>
+                <TableRow>
+                  <StyledTableCell align="left">No.</StyledTableCell>
+                  <StyledTableCell align="left">Payment Type</StyledTableCell>
+                  <StyledTableCell align="right">Action</StyledTableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+               
+                {payment_type?.map((row,index)=>(
+                     <StyledTableRow key={index}>
+                      <StyledTableCell component="th" scope="row">
+                      {row.id}
+                    </StyledTableCell>
+  
+                    <StyledTableCell align="left" >{row.name}</StyledTableCell>
+                    <StyledTableCell align="right">
+                    <Stack spacing={1} direction="row" sx={{justifyContent: 'flex-end'}}>
+                    <Button variant="contained" onClick={()=>{handleOpen();setTypeId(row.id)}}>Edit</Button>
+                     </Stack>
+                    </StyledTableCell>
+                    </StyledTableRow>
+                                    
+                ))}
+              </TableBody>
+            
+            </Table>
+          </TableContainer>):(<Nodata />)
+        }
+       
         <EditPaymentModal open={open} handleClose={handleClose} num={num} setNum={setNum} id={typeId} />
       </div>
     </div>

@@ -12,7 +12,8 @@ import { logoutHandler } from '../../../components/Sidebar/Sidebar';
 import { PostMethod } from '../../../services/api-services';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRender, selectedRender } from '../../../features/render';
-
+import TableGetFunction from '../../../services/TableGetFunction';
+import CustomLoading from '../../../components/CustomLoading/CustomLoading';
 const CreateUnit = () => {
 const render = useSelector(selectedRender);
 const dispatch = useDispatch()
@@ -58,7 +59,7 @@ const createHandler = async()=>{
 useEffect(()=>{
 
 },[num])
-
+const {data,loading}  = TableGetFunction('api/wallet/admin-create-record?sortColumn=id&sortDirection=desc&limit=10',[render]);
   return (
     <div className={classes["soccer-setting-container"]}>
       <Card>
@@ -86,7 +87,10 @@ useEffect(()=>{
         </form>
         </div>
       </Card>
-      <CreateUnitTable render={num}/>
+      {
+        loading ? ( <CreateUnitTable data={data}/>):(<CustomLoading />)
+      }
+     
     </div>
   )
 }

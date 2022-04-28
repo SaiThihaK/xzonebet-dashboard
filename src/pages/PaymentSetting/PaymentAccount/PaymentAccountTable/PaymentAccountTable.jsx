@@ -11,12 +11,12 @@ import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import classes from "./PaymentAccountTable.module.css";
-import { Avatar } from "@mui/material";
+import { Avatar, IconButton } from "@mui/material";
 import { BasedColor } from "../../../../Controller/BasedColor";
 import { useNavigate } from "react-router-dom";
-
-import TableGetFunction from "../../../../services/TableGetFunction";
 import CustomPagination from "../../../../components/Pagination/CustomPagination";
+import Nodata from "../../../../components/Nodata/Nodata";
+import { Delete, Edit } from "@mui/icons-material";
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: BasedColor.tableHead,
@@ -38,20 +38,18 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 
-const PaymentAccountTable = ({num}) => {
-
- 
-  const navigate = useNavigate();
-  const [page,setPage] = useState(1);
-  const {data,pagination} = TableGetFunction(`api/dashboard/payment-accounts?sortColumn=id&sortDirection=desc&limit=10&page=${page}`,[num,page]);
-  console.log(data)
+const PaymentAccountTable = ({data,pagination,setPage}) => {
+const navigate = useNavigate();
+console.log(data)
 
 
  
   return (
     <div className={classes["table-container"]}>
-      <div className={classes["table-margin"]}>
-        <TableContainer component={Paper}>
+ 
+        {
+          data?.length !== 0 ? (<div className={classes["table-margin"]}>
+            <TableContainer component={Paper}>
           <Table sx={{ minWidth: 700 }} aria-label="customized table">
             <TableHead>
               <TableRow>
@@ -83,11 +81,12 @@ const PaymentAccountTable = ({num}) => {
                   <StyledTableCell align="right" >{row.name}</StyledTableCell>
                   <StyledTableCell align="right">
                   <Stack spacing={1} direction="row" sx={{justifyContent: 'flex-end'}}>
-                  <Button variant="contained"
+                  <IconButton
                   onClick={()=>{
                     navigate(`/payment-setting/payment-account/edit/${row.id}`)
                   }}
-                  >Edit</Button>
+                  ><Edit /></IconButton>
+                  <IconButton><Delete /></IconButton>
                    </Stack>
                   </StyledTableCell>
                   </StyledTableRow>
@@ -96,7 +95,9 @@ const PaymentAccountTable = ({num}) => {
           </Table>
         </TableContainer>
         <CustomPagination setPage={setPage} totalPage={pagination?.meta?.last_page} />
-      </div>
+      </div>):(<Nodata />)
+        }
+        
     </div>
   );
 };
