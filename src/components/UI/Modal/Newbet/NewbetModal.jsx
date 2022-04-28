@@ -71,6 +71,7 @@ const NewbetModal = ({ open, bettingData, closeHandler }) => {
     const addBetData = {
       fixture_id: bettingData?.fixture?.id,
       over_team_id: bettingData?.teams?.[overTeam]?.id,
+      home_team_id: bettingData?.teams?.home?.id,
       over_team_data: bettingData?.teams?.[overTeam],
       under_team_data: bettingData?.teams?.[underTeam],
       under_team_id: bettingData?.teams?.[underTeam]?.id,
