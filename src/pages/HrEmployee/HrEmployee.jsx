@@ -5,7 +5,6 @@ import PageTitleCard from '../../components/UI/PageTitleCard/PageTitleCard';
 import CustomGetFunction from '../../services/CustomGetFunction';
 import { useNavigate } from 'react-router-dom';
 import classes from "./HrEmployee.module.css"
-
 const HrEmployee = () => {
     const navigate = useNavigate();
     const employeeData = [
