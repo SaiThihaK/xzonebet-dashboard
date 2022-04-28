@@ -23,6 +23,7 @@ import CustomPagination from "../../../components/Pagination/CustomPagination";
 import CustomGetFunction from "../../../services/CustomGetFunction"
 import { ChangeDate } from "../../../Controller/ChangeDate";
 import CustomLoading from "../../../components/CustomLoading/CustomLoading";
+import Nodata from "../../../components/Nodata/Nodata"
 const MasterDepositTable = (filterId) => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
@@ -62,7 +63,7 @@ const MasterDepositTable = (filterId) => {
       border: 0,
     },
   }));
-  const {data,pagination} = CustomGetFunction(`api/affiliate-register-lists-detail?sortColumn=updated_at&sortDirection=desc&limit=10&status=deposit-pending&page=${page}`,[num,page])
+  const {data,pagination,loading} = CustomGetFunction(`api/affiliate-register-lists-detail?sortColumn=updated_at&sortDirection=desc&limit=10&status=deposit-pending&page=${page}`,[num,page])
   
 
  
@@ -85,6 +86,8 @@ const MasterDepositTable = (filterId) => {
     }
     }catch(error){
       console.log(error)
+      toast.error(error.response.data.message)
+      console.log(error.response.data.message)
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
       logoutHandler();
       }
@@ -96,9 +99,12 @@ console.log(rowData)
 
 const filterIddata = rowData.filter((data)=>data.id === filterId);
 console.log("filter",filterIddata)
-  return (
-    <div className={classes["table-margin"]}>
-      <ToastContainer />
+  return (<>
+  {
+    loading ? ( <div className={classes["table-margin"]}>
+    <ToastContainer />
+    {
+      data.length !==0 ? (<div>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
@@ -150,7 +156,14 @@ console.log("filter",filterIddata)
         <MasterDepositeConfirm open={confirmOpen} handleClose={confirmCloseHandler} setNum={setNum} num={num} submitHandler={confirmHandler} id={id} />
       </TableContainer>
       <CustomPagination totalPage={pagination?.meta?.last_page} setPage={setPage}/>
-    </div>
+      </div>):(<Nodata />)
+    }
+    
+  </div>):(<CustomLoading />)
+  }
+
+   
+    </>
   );
 };
 

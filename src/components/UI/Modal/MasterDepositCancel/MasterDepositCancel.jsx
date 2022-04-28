@@ -51,6 +51,7 @@ const MasterDepositCancel = ({ open, handleClose,setNum,id,num,alertToast}) => {
     return;
   }
   }catch(error){
+    toast.error(error.response.data.message)
     if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
     logoutHandler();
     }

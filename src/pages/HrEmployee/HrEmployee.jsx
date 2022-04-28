@@ -4,7 +4,9 @@ import MemberCard from '../../components/MemberCard/MemberCard'
 import PageTitleCard from '../../components/UI/PageTitleCard/PageTitleCard';
 import CustomGetFunction from '../../services/CustomGetFunction';
 import { useNavigate } from 'react-router-dom';
-import classes from "./HrEmployee.module.css"
+import classes from "./HrEmployee.module.css";
+import Nodata from '../../components/Nodata/Nodata';
+import CustomLoading from '../../components/CustomLoading/CustomLoading';
 const HrEmployee = () => {
     const navigate = useNavigate();
     const employeeData = [
@@ -14,8 +16,8 @@ const HrEmployee = () => {
         {name:"Graphic Designer"}
       ]
     
-    const {data} = CustomGetFunction("api/employees",[]);
-    console.log("employee",data);
+    const {data,loading} = CustomGetFunction("api/employees",[]); 
+    console.log(data);
     
     return (
     <div>
@@ -28,18 +30,24 @@ const HrEmployee = () => {
              >Create Employee</Button> 
          </div>
          </div>
-            {/* <DepartmentTable data={employeeData}/> */}
-            <Grid container spacing={5}>
-              {
-              
-                employeeData.length !==0 && employeeData.map((data,index)=>(
-                 <Grid item xs={6} key={index}>
-                    <MemberCard partner={data} path={"/account/master/panding-master/detail/"} />
-                   </Grid>
-                 
-                ))
-              }
-            </Grid>
+          {
+            loading ? ( <>
+            {
+              data?.length !== 0 ?( <Grid container spacing={5}>
+                {
+                   data?.map((data,index)=>(
+                   <Grid item xs={6} key={index}>
+                      <MemberCard partner={data} path={"/account/master/panding-master/detail/"} />
+                     </Grid>
+                   
+                    ))
+                }
+              </Grid>):(<Nodata />)
+            }
+           
+            </>):(<CustomLoading />)
+          } 
+         
         </PageTitleCard>
     </div>
   )

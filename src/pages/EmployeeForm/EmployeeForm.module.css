@@ -1,0 +1,25 @@
+.card-body{
+    padding:20px;
+}
+.form-Control{
+display: flex;
+margin-bottom: 20px;
+}
+
+.form-Control label{
+    width: 150px;
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: 600;
+}
+.grid-template{
+display: grid;
+grid-template-columns: 1fr 1fr;
+grid-gap: 50px;
+}
+
+.btn-container{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
