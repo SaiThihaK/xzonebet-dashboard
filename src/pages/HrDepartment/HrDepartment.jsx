@@ -22,10 +22,13 @@ const HrDepartment = () => {
              >Create Department</Button>
          </div>
          </div>
+         <div className={classes["table-margin"]}>
          {
           loading?(<DepartmentTable data={data} render={render} setRender={setRender} />)
           :(<CustomLoading  />)
          } 
+         </div>
+        
         </PageTitleCard>
     </div>
   )
