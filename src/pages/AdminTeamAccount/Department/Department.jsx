@@ -6,11 +6,11 @@ import PageTitleCard from '../../../components/UI/PageTitleCard/PageTitleCard';
 import classes from "./Department.module.css";
 import DepartmentTable from './DepartmentTable/DepartmentTable';
 import CustomGetFunction from "../../../services/CustomGetFunction"
-
+import CustomLoading from "../../../components/CustomLoading/CustomLoading"
 const Department = () => {
     const [render,setRender] = useState(false);
     const navigate = useNavigate();
-    const {data} = CustomGetFunction("api/departments",[])
+    const {data,loading} = CustomGetFunction("api/departments",[render])
 
     
   return (
@@ -24,7 +24,13 @@ const Department = () => {
              >Create Department</Button>
          </div>
          </div>
-         <DepartmentTable name position status percentage salary data={data} render={render} setRender={setRender} />
+         <div className={classes["table-margin"]}>
+         {
+           loading ? ( <DepartmentTable name position status percentage salary data={data} render={render} setRender={setRender} />):(<CustomLoading />)
+         }
+         </div>
+        
+    
         </PageTitleCard>
         
     </div>

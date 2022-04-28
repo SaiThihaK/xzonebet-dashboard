@@ -28,9 +28,12 @@ const HrPosition = () => {
              >Create Position</Button>
          </div>
          </div>
-        {
+         <div className={classes["table-margin"]}>
+         {
           loading ?(<PositionTable position data={data} render={render} setRender={setRender} />):(<CustomLoading />)
         }
+         </div>
+        
           
         </PageTitleCard>
     </div>
