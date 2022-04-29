@@ -15,11 +15,7 @@ const OpenbetResult = () => {
       <div className={classes["card-body"]}>
         {loading ? (
           <Grid container rowSpacing={3}>
-            {data
-              .filter((element, index) => {
-                return Date.now() > element.fixture_timestamp;
-              })
-              .map((item, index) => (
+            {data.map((item, index) => (
                 <Grid item xs={4}>
                   <ResultCard key={index} resultData={item} />
                 </Grid>
