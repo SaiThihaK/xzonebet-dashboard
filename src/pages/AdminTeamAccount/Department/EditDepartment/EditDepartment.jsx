@@ -4,7 +4,7 @@ import PageTitleCard from '../../../../components/UI/PageTitleCard/PageTitleCard
 import CustomGetFunction from '../../../../services/CustomGetFunction';
 import classes from "./EditDepartment.module.css";
 import CustomLoading from '../../../../components/CustomLoading/CustomLoading';
-import { Select, TextField } from '@mui/material';
+import { MenuItem, Select, TextField } from '@mui/material';
 import axios from 'axios';
 import { getMethod } from '../../../../services/api-services';
 import { toast } from 'react-toastify';
@@ -15,6 +15,8 @@ const EditDepartment = () => {
     const [position,setPosition] = useState([]);
     console.log(id);
   const {data,loading} = CustomGetFunction(`api/departments/${id}`,[id]);
+
+  console.log(data)
 
   const fetchDepartment = async()=>{
     const response = await axios.request(getMethod("api/departments"));
@@ -63,7 +65,15 @@ const fetchPosition = async()=>{
 <div className={classes["form-Control"]}>
 <label>Department</label>
 <Select fullWidth size="small">
-
+{
+    department?.map((dep,index)=>(
+        <MenuItem value={dep} key={index}>
+         {
+             dep.name 
+         }
+        </MenuItem>
+    ))
+}
 </Select>
 </div>
           </div>):(<CustomLoading />)

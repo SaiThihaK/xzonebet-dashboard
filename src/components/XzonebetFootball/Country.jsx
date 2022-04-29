@@ -14,7 +14,7 @@ const Country = ({country}) => {
   id="combo-box-demo"
   options={country}
   getOptionLabel={(option) => option.name}
-  sx={{ width: 300 }}
+fullWidth
   renderInput={(params) => <TextField size='small' {...params} label="Select Country" />}
 />
   )

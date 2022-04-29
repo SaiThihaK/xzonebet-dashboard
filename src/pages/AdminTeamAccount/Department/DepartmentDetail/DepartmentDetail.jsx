@@ -6,6 +6,7 @@ import CustomGetFunction from '../../../../services/CustomGetFunction'
 import { Grid } from '@mui/material';
 import CustomLoading from '../../../../components/CustomLoading/CustomLoading'
 import OdooFunction from '../../../../components/OdooFunctions/OdooFunction'
+import Nodata from '../../../../components/Nodata/Nodata'
 const DepartmentDetail = () => {
     const {id} = useParams();
     const {data,loading} = CustomGetFunction(`api/departments/${id}`,[id]);
@@ -15,15 +16,21 @@ const DepartmentDetail = () => {
         <div className={classes["card-body"]}>
             
          {
-          loading ? (<Grid container>
-           {
-               data?.positions?.map((position,index)=>(
-                <Grid item xs={3} key={index}>
-               <OdooFunction added func={position} />
-                </Grid>  
-               ))
-           }
-          </Grid>):(<CustomLoading />)
+          loading ? (
+            <>
+          {
+            data?.permissions?.length !==0 ?( <Grid container>
+              {
+                  data?.permissions?.map((position,index)=>(
+                   <Grid item xs={3} key={index}>
+                  <OdooFunction added func={position} />
+                   </Grid>  
+                  ))
+              }
+             </Grid>):(<Nodata />)
+          }
+          </>
+         ):(<CustomLoading />)
          }  
         </div>
     </PageTitleCard>

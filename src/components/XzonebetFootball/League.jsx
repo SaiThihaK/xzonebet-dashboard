@@ -23,7 +23,7 @@ const League = ({league,leagueIdHandler}) => {
       {option.name}
     </Box>
   )}
-  sx={{ width: 300 }}
+fullWidth
   renderInput={(params) => <TextField size='small' {...params} label="Select League" />}
 />
   )

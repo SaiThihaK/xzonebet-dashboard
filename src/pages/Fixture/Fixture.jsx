@@ -3,7 +3,7 @@ import PageTitleCard from "../../components/UI/PageTitleCard/PageTitleCard";
 import classes from "./Fixture.module.css";
 import TextField from "@mui/material/TextField";
 
-import { DateRangePicker, LocalizationProvider } from "@mui/lab";
+import { DateRangePicker, DesktopDatePicker, LocalizationProvider } from "@mui/lab";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import { Box } from "@mui/system";
 import Country from "../../components/XzonebetFootball/Country";
@@ -17,8 +17,8 @@ import { useSelector } from "react-redux";
 import {  getResDate } from "../../Controller/ChangeDate";
 import { toast, ToastContainer } from "react-toastify";
 import CustomLoading from "../../components/CustomLoading/CustomLoading"
+
 const Fixture = () => {
-  const [value, setValue] = useState([null, null]);
   const [bettingData, setBettingData] = useState([]);
   const [countryData, setCountryData] = useState([]);
   const [leagueData, setLeagueData] = useState([]);
@@ -28,9 +28,14 @@ const Fixture = () => {
     setLeagueId(id);
   };
   const countryName = useSelector((state) => state.country.data);
-  const DateChangeHandler = (data) => {
-    setValue(data);
+  const [value, setValue] = React.useState(new Date());
+
+  const handleChange = (newValue) => {
+    setValue(newValue);
   };
+
+  console.log(value)
+
   let leagueOption =
     countryName !== ""
       ? {
@@ -87,6 +92,8 @@ const Fixture = () => {
         console.error(error);
       });
   }, [countryName]);
+
+
   const filterData = () => {
    console.log("date",value);
    console.log("leagueId",leagueId)
@@ -101,8 +108,8 @@ const Fixture = () => {
       params: {
         league: leagueId,
         season: "2021",
-        from: getResDate(value[0]),
-        to: getResDate(value[1]),
+        from: getResDate(new Date()),
+        to: getResDate(value),
         timezone: "Asia/Yangon",
       },
       headers: {
@@ -137,46 +144,42 @@ const Fixture = () => {
     <PageTitleCard title="Fixture">
       <ToastContainer />
       <div className={classes["card-body"]}>
-        <Grid container spacing={3}>
+        <Grid container spacing={1}>
           <Grid item xs={4}>
             <LocalizationProvider dateAdapter={AdapterDateFns}>
-              <DateRangePicker
-                startText="Check-in"
-                endText="Check-out"
-                value={value}
-                onChange={(newValue) => {
-                  DateChangeHandler(newValue);
-                }}
-                renderInput={(startProps, endProps) => (
-                  <React.Fragment>
-                    <TextField {...startProps} variant="standard" />
-                    <Box sx={{ mx: 2 }}> to </Box>
-                    <TextField {...endProps} variant="standard" />
-                  </React.Fragment>
-                )}
-              />
+               <DesktopDatePicker
+          label="Date desktop"
+          inputFormat="MM/dd/yyyy"
+          value={value}
+          onChange={handleChange}
+          renderInput={(params) => <TextField {...params} fullWidth />}
+        />
             </LocalizationProvider>
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={3}>
             {country !== [] && <Country country={countryData} />}
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={3}>
             <League league={leagueData} leagueIdHandler={leagueIdHandler} />
           </Grid>
-        </Grid>
+          <Grid item xs={2}>
         <div className={classes["btn-container"]}>
          <Button
               variant="contained"
               onClick={filterData}
+              size="large"
             >
               Search
             </Button>
          </div>
-       
-
-
+        </Grid>
+        </Grid>
+        <div style={{marginTop:20}}>
         { loading ?  (<FixtureTable bettingData={bettingData} />) :(<CustomLoading />)
         }
+        </div>
+
+        
       </div>
     </PageTitleCard>
   );

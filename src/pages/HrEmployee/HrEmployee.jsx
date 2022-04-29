@@ -30,7 +30,7 @@ const HrEmployee = () => {
              >Create Employee</Button> 
          </div>
          </div>
-          {
+         {
             loading ? ( <>
             {
               data?.length !== 0 ?( <Grid container spacing={5}>
@@ -47,6 +47,8 @@ const HrEmployee = () => {
            
             </>):(<CustomLoading />)
           } 
+         
+      
          
         </PageTitleCard>
     </div>
