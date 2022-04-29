@@ -6,22 +6,29 @@ import PageTitleCard from "../../components/UI/PageTitleCard/PageTitleCard";
 import CustomGetFunction from "../../services/CustomGetFunction";
 import CustomLoading from "../../components/CustomLoading/CustomLoading";
 const OpenbetResult = () => {
-  const { data,loading } = CustomGetFunction("api/football-bettings/result", []);
-  console.log(data);
-  const arr = ["1", "2", "3", "4", "5"];
+  const { data, loading } = CustomGetFunction(
+    "api/football-bettings/result",
+    []
+  );
+
   return (
     <PageTitleCard title="Opening bet Result">
       <div className={classes["card-body"]}>
-        {
-          loading ? (<Grid container rowSpacing={3}>
-            {data.map((item, index) => (
-              <Grid item xs={4}>
-                <ResultCard key={index} resultData={item} />
-              </Grid>
-            ))}
-          </Grid>):(<CustomLoading />)
-        }
-        
+        {loading ? (
+          <Grid container rowSpacing={3}>
+            {data
+              .filter((element, index) => {
+                return Date.now() > element.fixture_timestamp;
+              })
+              .map((item, index) => (
+                <Grid item xs={4}>
+                  <ResultCard key={index} resultData={item} />
+                </Grid>
+              ))}
+          </Grid>
+        ) : (
+          <CustomLoading />
+        )}
       </div>
     </PageTitleCard>
   );
