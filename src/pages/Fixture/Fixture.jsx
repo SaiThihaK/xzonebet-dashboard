@@ -16,12 +16,14 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import {  getResDate } from "../../Controller/ChangeDate";
 import { toast, ToastContainer } from "react-toastify";
+import CustomLoading from "../../components/CustomLoading/CustomLoading"
 const Fixture = () => {
   const [value, setValue] = useState([null, null]);
   const [bettingData, setBettingData] = useState([]);
   const [countryData, setCountryData] = useState([]);
   const [leagueData, setLeagueData] = useState([]);
   const [leagueId, setLeagueId] = useState([]);
+  const [loading,setLoading] = useState(false);
   const leagueIdHandler = (id) => {
     setLeagueId(id);
   };
@@ -52,14 +54,18 @@ const Fixture = () => {
           },
         };
   useEffect(() => {
+    setLoading(false);
     axios
       .request(mmBetting)
       .then(function (response) {
+        
         setBettingData(response.data.response);
+        setLoading(true);
         // console.log(response.data.response);
       })
       .catch(function (error) {
         console.error(error);
+        setLoading(true)
       });
 
     axios
@@ -107,11 +113,13 @@ const Fixture = () => {
 
     axios
       .request(options)
-      .then(function (response) {
+      .then(function (response) { 
+        setLoading(true);
         setBettingData(response.data.response);
       })
       .catch(function (error) {
         console.error(error);
+        setLoading(true);
       });
   };
   // const addLeague=(data)=>{
@@ -155,12 +163,6 @@ const Fixture = () => {
           <Grid item xs={4}>
             <League league={leagueData} leagueIdHandler={leagueIdHandler} />
           </Grid>
-         
-           
-
-          {/* <Grid item xs={12}>
-   
-    </Grid> */}
         </Grid>
         <div className={classes["btn-container"]}>
          <Button
@@ -173,7 +175,8 @@ const Fixture = () => {
        
 
 
-        {bettingData !== [] && <FixtureTable bettingData={bettingData} />}
+        { loading ?  (<FixtureTable bettingData={bettingData} />) :(<CustomLoading />)
+        }
       </div>
     </PageTitleCard>
   );

@@ -23,12 +23,12 @@ import { PostMethod } from "../../../../services/api-services";
 import { logoutHandler } from "../../../Sidebar/Sidebar";
 const style = {
   position: "absolute",
+  overflowY: 'scroll',
   top: "50%",
   left: "60%",
   transform: "translate(-50%, -50%)",
   width: 900,
   bgcolor: "background.paper",
-  border: "1px solid #FFF",
   borderRadius: "0.5rem",
   p: 4,
 };
@@ -93,6 +93,16 @@ const NewbetModal = ({ open, bettingData, closeHandler }) => {
 
       if ((data.status = "success")) {
         toast.success(data.message);
+        setNewBet({
+          oddType: "",
+          oddType1: "",
+          body: "",
+          body1: "",
+          body2: "",
+          total: "",
+          total1: "",
+          total2: "",
+        })
         closeHandler();
         return;
       }
