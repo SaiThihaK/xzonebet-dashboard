@@ -13,6 +13,7 @@ import { Button } from "@mui/material";
 import NewbetModal from "../../../components/UI/Modal/Newbet/NewbetModal";
 import { ChangeDate } from "../../../Controller/ChangeDate";
 import Nodata from "../../../components/Nodata/Nodata"
+import CustomGetFunction from "../../../services/CustomGetFunction"
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: BasedColor.tableHead,
@@ -33,14 +34,15 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 const FixtureTable = ({ bettingData }) => {
-  console.log(bettingData);
+  console.log("betting",bettingData);
   const [id, setId] = useState("");
   const [open, setOpen] = useState(false);
   const openHandler = (id) => {
     setOpen(true);
     setId(id);
   };
-
+  const { data } = CustomGetFunction("api/football-fixtures", []);
+  
   const closeHandler = () => setOpen(false);
   return (
     <div className={classes["table-margin"]}>
@@ -80,25 +82,19 @@ const FixtureTable = ({ bettingData }) => {
                       {el?.teams?.away?.name}
                     </StyledTableCell>
                     <StyledTableCell align="right" sx={{ width: "200px" }}>
-                      <Button
-                        onClick={() => {
-                          openHandler(key);
-                        }}
-                        variant="contained"
-                      >
-                        New Bet
-                      </Button>
+                    <Button
+                      onClick={() => {
+                    openHandler(key);
+                                 }}
+                variant="contained"
+                                >
+                           New Bet
+                          </Button>
+                  
                     </StyledTableCell>
                   </StyledTableRow>
                 );
               })}
-              {/* <StyledTableCell align="right">eeew</StyledTableCell>
-                  <StyledTableCell align="right">eee</StyledTableCell>
-                  <StyledTableCell align="right">eee</StyledTableCell>
-                  <StyledTableCell align="right">www</StyledTableCell>
-                  <StyledTableCell align="right">
-                   <Button onClick={openHandler} variant="contained">New Bet</Button>
-                  </StyledTableCell> */}
             </TableBody>
           </Table>
         </TableContainer>):(<Nodata />)

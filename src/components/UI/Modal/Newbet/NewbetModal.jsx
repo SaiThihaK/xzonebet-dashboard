@@ -155,7 +155,7 @@ const NewbetModal = ({ open, bettingData, closeHandler }) => {
             <Grid item xs={6}>
               <div className={classes["container"]}>
                 <label>Date and Time</label>
-                {/* <p>{bettingData && ChangeDate(bettingData?.fixture?.date)}</p> */}
+                <p>{bettingData && ChangeDate(bettingData?.fixture?.date)}</p>
               </div>
             </Grid>
           </Grid>

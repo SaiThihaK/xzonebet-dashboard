@@ -5,12 +5,12 @@ import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { FormControl,  Select,  TextField } from "@mui/material";
-import { MenuItem } from "@material-ui/core";
+import { FormControl,  Select,  TextField,MenuItem } from "@mui/material";
+
 import axios from "axios";
 import { getMethod, PostMethod } from "../../../services/api-services";
 import { logoutHandler } from "../../Sidebar/Sidebar";
-import { TextFields } from "@mui/icons-material";
+
 import {toast} from "react-toastify"
 
 const style = {
