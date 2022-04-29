@@ -7,10 +7,9 @@ import CustomGetFunction from "../../services/CustomGetFunction";
 import CustomLoading from "../../components/CustomLoading/CustomLoading";
 const OpenbetResult = () => {
   const { data, loading } = CustomGetFunction(
-    "api/football-bettings/result",
+    "api/football-fixtures?status=active&source=backend",
     []
   );
-
   return (
     <PageTitleCard title="Opening bet Result">
       <div className={classes["card-body"]}>
