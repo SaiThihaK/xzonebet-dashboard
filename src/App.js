@@ -108,6 +108,8 @@ import BetHistory from "./pages/BetHistory/BetHistory";
 import OpenbetResult from "./pages/OpenbetResult/OpenbetResult";
 import Allbetincome from "./pages/AllBetIncome/Allbetincome";
 import AllBetoutcome from "./pages/AllBetoutcome/AllBetoutcome";
+import DepartmentDetail from "./pages/AdminTeamAccount/Department/DepartmentDetail/DepartmentDetail";
+import EditDepartment from "./pages/AdminTeamAccount/Department/EditDepartment/EditDepartment";
 function App() {
   const DashboardRouting = () => {
     if (type === "admin") {
@@ -386,6 +388,16 @@ function App() {
             exact
             path="/admin-team-account/department/create-department"
             element={<CreateDepartment />}
+          />
+          <Route
+            exact
+            path="/admin-team-account/department/department-detail/:id"
+            element={<DepartmentDetail />}
+          />
+          <Route
+            exact
+            path="/admin-team-account/department/edit-department/:id"
+            element={<EditDepartment />}
           />
           <Route
             exact

@@ -99,11 +99,13 @@ const DepartmentTable = ({name,position,salary,percentage,status,data,render,set
                   <StyledTableCell align="left">
                   <Stack spacing={3} direction="row" >
         <Button variant="contained" size="small" onClick={()=>{
-          navigate("/odoo-function-detail")
+          navigate(`/admin-team-account/department/department-detail/${row.id}`)
         }}>Detail</Button>
         
       <IconButton onClick={()=>{banDepartment(row.id)}}><Delete/></IconButton>
-         <IconButton><Edit /></IconButton>
+         <IconButton
+         onClick={()=>{navigate(`/admin-team-account/department/edit-department/${row.id}`)}}
+         ><Edit /></IconButton>
     </Stack></StyledTableCell>
 </StyledTableRow>
                     ))}
