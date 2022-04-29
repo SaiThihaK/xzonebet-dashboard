@@ -76,7 +76,6 @@ const ResultCard = ({ resultData }) => {
           />
           <p>{resultData.over_team_data.name}</p>
         </div>
-
         <p>
           {`${dataResult?.home === undefined ? "" : dataResult?.home} ${
             dataResult?.away === undefined ? "" : dataResult?.away
@@ -94,7 +93,7 @@ const ResultCard = ({ resultData }) => {
       </div>
       <div className={classes["btn-container"]}>
         <Button
-          onClick={comfirmHandler}
+          onClick={fetchDetail}
           variant="contained"
           style={{ width: 20, fontSize: 12 }}
         >
