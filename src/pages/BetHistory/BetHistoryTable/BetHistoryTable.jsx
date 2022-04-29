@@ -21,7 +21,7 @@ const BetHistoryTable = ({ data }) => {
           <th className={classes["main-table-item"]}>William Willson</th>
           <th>
             <div className={classes["main-table-item"]}>
-              <p>№ 26194777845</p>
+              <p>id - {data.id}</p>
               <p>from {ChangeDate(data?.created_at)}</p>
             </div>
           </th>
@@ -47,7 +47,7 @@ const BetHistoryTable = ({ data }) => {
           <th className={classes["main-table-item"]}>
             <div>
               <p>Bet</p>
-              <p>{data?.amount}MMK</p>
+              <p>{data?.stake}MMK</p>
             </div>
           </th>
           <th className={classes["main-table-item"]}>
@@ -59,12 +59,12 @@ const BetHistoryTable = ({ data }) => {
           <th className={classes["main-table-item"]}>
             <div>
               <p>Bet Slip Status</p>
-              <p>Unsettled</p>
+              <p>{data?.total_bet_result?.bet_status}</p>
             </div>
           </th>
           <th>
             {" "}
-            <p className={classes["total"]}>19990</p>
+            <p className={classes["total"]}>{data?.total_bet_result?.bet_amount}</p>
           </th>
           <th>
             <IconButton>
@@ -86,7 +86,14 @@ const BetHistoryTable = ({ data }) => {
             <tr className={classes["detail-table"]}>
             <th className={classes["second-table-item"]}></th>
               <th className={classes["bet-tip"]}>
-                <p>Time of processing Unsettled</p>
+             <p> Start date and time:</p>
+             <p>{`${
+                  changeTimestamp(k.football_fixture?.fixture_timestamp)[0]
+                }`}</p>
+                <p>{`${
+                  changeTimestamp(k.football_fixture?.fixture_timestamp)[1]
+                }`}</p>
+               
               </th>
               <th className={classes["detail-league"]}>
                 {/* <SportsSoccer style={{ marginRight: 10 }} /> */}
@@ -97,21 +104,19 @@ const BetHistoryTable = ({ data }) => {
                 {k.football_fixture?.over_team_data?.name} -{" "}
                 {k.football_fixture?.under_team_data?.name}
                 <br />
-                Start date and time:{" "}
-                {`${
-                  changeTimestamp(k.football_fixture?.fixture_timestamp)[0]
-                } | ${
-                  changeTimestamp(k.football_fixture?.fixture_timestamp)[1]
-                }`}
-                <br />
-                Status: Not started yet
+              
+                
+                {k?.football_fixture?.body}
                 <br />
               </th>
-              <th className={classes["second-table-item"]}>Results</th>
-              <th className={classes["second-table-item"]}>Event {k.bet_type}</th>
-              <th className={classes["second-table-item"]}>Event Status Unsettled</th>
+              <th className={classes["second-table-item"]}>
+                <div>Results</div>
+              <div> {k.football_fixture?.goals?.over} {' - '} {k.football_fixture?.goals?.under}  </div>
+              </th>
+              <th className={classes["second-table-item"]}>Event <div>{k.bet_type}</div> </th>
+              <th className={classes["second-table-item"]}>Event Status <div>{k?.bet_result?.status}</div></th>
               <p className={classes["total"]} style={{ marginTop: 20 }}>
-                {k?.football_fixture?.body}
+                {k.bet_result.amount ? (k.bet_result.amount) :(k?.bet_result?.status) }
               </p>
             </tr>
             </tablehead>

@@ -12,7 +12,7 @@ import { BasedColor } from "../../../Controller/BasedColor";
 import { Button } from "@mui/material";
 import NewbetModal from "../../../components/UI/Modal/Newbet/NewbetModal";
 import { ChangeDate } from "../../../Controller/ChangeDate";
-
+import Nodata from "../../../components/Nodata/Nodata"
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: BasedColor.tableHead,
@@ -44,63 +44,66 @@ const FixtureTable = ({ bettingData }) => {
   const closeHandler = () => setOpen(false);
   return (
     <div className={classes["table-margin"]}>
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 700 }} aria-label="customized table">
-          <TableHead>
-            <TableRow>
-              <StyledTableCell>No.</StyledTableCell>
-              <StyledTableCell align="right">Date</StyledTableCell>
-              {/* <StyledTableCell align="right">Time</StyledTableCell> */}
-              <StyledTableCell align="right">Country</StyledTableCell>
-              <StyledTableCell align="right">League</StyledTableCell>
-              <StyledTableCell align="right">Team 1</StyledTableCell>
-              <StyledTableCell align="right">Team 2</StyledTableCell>
-              <StyledTableCell align="right"></StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {bettingData.map((el, key) => {
-              return (
-                <StyledTableRow key={key}>
-                  <StyledTableCell align="right">{key + 1}</StyledTableCell>
+      {
+        bettingData?.length !==0 ? (<TableContainer component={Paper}>
+          <Table sx={{ minWidth: 700 }} aria-label="customized table">
+            <TableHead>
+              <TableRow>
+                <StyledTableCell>No.</StyledTableCell>
+                <StyledTableCell align="right">Date</StyledTableCell>
+                {/* <StyledTableCell align="right">Time</StyledTableCell> */}
+                <StyledTableCell align="right">Country</StyledTableCell>
+                <StyledTableCell align="right">League</StyledTableCell>
+                <StyledTableCell align="right">Team 1</StyledTableCell>
+                <StyledTableCell align="right">Team 2</StyledTableCell>
+                <StyledTableCell align="right"></StyledTableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {bettingData.map((el, key) => {
+                return (
+                  <StyledTableRow key={key}>
+                    <StyledTableCell align="right">{key + 1}</StyledTableCell>
+                    <StyledTableCell align="right">
+                      {ChangeDate(el?.fixture?.date)}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
+                      {el?.league?.country}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
+                      {el?.league?.name}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
+                      {el?.teams?.home?.name}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
+                      {el?.teams?.away?.name}
+                    </StyledTableCell>
+                    <StyledTableCell align="right" sx={{ width: "200px" }}>
+                      <Button
+                        onClick={() => {
+                          openHandler(key);
+                        }}
+                        variant="contained"
+                      >
+                        New Bet
+                      </Button>
+                    </StyledTableCell>
+                  </StyledTableRow>
+                );
+              })}
+              {/* <StyledTableCell align="right">eeew</StyledTableCell>
+                  <StyledTableCell align="right">eee</StyledTableCell>
+                  <StyledTableCell align="right">eee</StyledTableCell>
+                  <StyledTableCell align="right">www</StyledTableCell>
                   <StyledTableCell align="right">
-                    {ChangeDate(el?.fixture?.date)}
-                  </StyledTableCell>
-                  <StyledTableCell align="right">
-                    {el?.league?.country}
-                  </StyledTableCell>
-                  <StyledTableCell align="right">
-                    {el?.league?.name}
-                  </StyledTableCell>
-                  <StyledTableCell align="right">
-                    {el?.teams?.home?.name}
-                  </StyledTableCell>
-                  <StyledTableCell align="right">
-                    {el?.teams?.away?.name}
-                  </StyledTableCell>
-                  <StyledTableCell align="right" sx={{ width: "200px" }}>
-                    <Button
-                      onClick={() => {
-                        openHandler(key);
-                      }}
-                      variant="contained"
-                    >
-                      New Bet
-                    </Button>
-                  </StyledTableCell>
-                </StyledTableRow>
-              );
-            })}
-            {/* <StyledTableCell align="right">eeew</StyledTableCell>
-                <StyledTableCell align="right">eee</StyledTableCell>
-                <StyledTableCell align="right">eee</StyledTableCell>
-                <StyledTableCell align="right">www</StyledTableCell>
-                <StyledTableCell align="right">
-                 <Button onClick={openHandler} variant="contained">New Bet</Button>
-                </StyledTableCell> */}
-          </TableBody>
-        </Table>
-      </TableContainer>
+                   <Button onClick={openHandler} variant="contained">New Bet</Button>
+                  </StyledTableCell> */}
+            </TableBody>
+          </Table>
+        </TableContainer>):(<Nodata />)
+      }
+      
       <NewbetModal
         open={open}
         bettingData={bettingData[id]}
