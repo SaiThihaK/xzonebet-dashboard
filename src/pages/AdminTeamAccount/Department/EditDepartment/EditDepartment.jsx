@@ -4,78 +4,74 @@ import PageTitleCard from '../../../../components/UI/PageTitleCard/PageTitleCard
 import CustomGetFunction from '../../../../services/CustomGetFunction';
 import classes from "./EditDepartment.module.css";
 import CustomLoading from '../../../../components/CustomLoading/CustomLoading';
-import {  MenuItem, Select } from '@mui/material';
+import {  Button, Grid, MenuItem, Select, TextField } from '@mui/material';
 import axios from 'axios';
-import { getMethod } from '../../../../services/api-services';
+import { getMethod, PatchMethod, PostMethod } from '../../../../services/api-services';
 import { toast } from 'react-toastify';
+import OdooFunction from '../../../../components/OdooFunctions/OdooFunction';
+import { positions } from '@mui/system';
+
 const EditDepartment = () => {
     const {id} = useParams();
-    const [department,setDepartment] = useState([]);
-    const [position,setPosition] = useState([]);
+    const {data,loading} = CustomGetFunction(`api/departments/${id}`,[id]);
+    const [department,setDepartment] = useState("");
+    const [functioName,setFunctionName] = useState("");
     const [permission,setPermission] = useState([]);
-    console.log(id);
-  const {data,loading} = CustomGetFunction(`api/departments/${id}`,[id]);
+  console.log(data)
+  const OdooClick = (name)=>{
+    setFunctionName((prevState)=>([
+      ...prevState,name
+    ]))
+  }
+ console.log("functionName",functioName) 
 
-  console.log(data);
-
-  const fetchDepartment = async()=>{
-    const response = await axios.request(getMethod("api/departments"));
-    try{
-        if(response.data.status === "success"){
-            setDepartment(response.data.data);
-            return;
-        }
-        if(response.data.status==="error"){
-            toast.error(response.data.data.message);
-            return;
-        }
-    }catch(error){
-        toast.error(error.response.data.message);
-    }
+const fetchPermission = async()=>{
+try{
+const response = await axios.request(getMethod("api/admin/permissions"));
+if(response.data.status==="success"){
+    setPermission(response.data.data);
+    return;
 }
-const fetchPosition = async()=>{
-        const response = await axios.request(getMethod("api/positions"));
-        try{
-            if(response.data.status === "success"){
-                setPosition(response.data.data);
-                return;
-            }
-            if(response.data.status==="error"){
-                toast.error(response.data.data.message);
-                return;
-            }
-        }catch(error){
-            toast.error(error.response.data.message);
-        }
-    } 
-
-const fetchPermisson = async()=>{
-    try{
-        const response = await axios.request(getMethod("api/admin/permissions"));
-        console.log("response",response)
-        if(response.data.status==="success"){
-        setPermission(response.data.data);
-        console.log("permission",permission);
-        return;
-        }
-        if(response.data.status==="error"){
-            toast.error(response.data.message)
-        }
-        }catch(error){
-           toast.error(error.response.data.message)
-        }
+if(response.data.status === "error"){
+    toast.error(response.data.message);
+    return;
+}
+}catch(error){
+    toast.error(error.response.data.message)
+}
 }
 
-    React.useEffect(()=>{
-        fetchDepartment();
-        fetchPosition();
-        fetchPermisson();
+
+    React.useEffect(()=>{ 
+        fetchPermission();
         return ()=>{
-            setDepartment([]);
-            setPosition([]);
-            setPermission([]);
+        setPermission([]);
         }
         },[id]);
+
+const EditHandler = async()=>{
+    try{
+const response = await axios.request(PatchMethod(`api/departments/${id}`,{
+name:department,
+permissions:functioName
+}));
+if(response.data.status === "success"){
+    toast.success(response.data.message);
+    setDepartment("");
+    setPermission([]);
+    return;
+}
+if(response.data.status === "error"){
+    toast.error(response.data.message);
+    return;
+}
+    }catch(error){
+        toast.error(error.response.data.message)
+    }
+}
+
+
+
   
   return (
     <PageTitleCard title="Edit Department">
@@ -83,35 +79,30 @@ const fetchPermisson = async()=>{
       {
           loading ? (
           <div>
-<div style={{marginBottom:20}}>
+<div className={classes["form-Control"]}>
 <label>Department</label>
-<Select fullWidth size="small">
+<TextField
+   inputProps={{
+    autoComplete: 'off'
+ }}
+
+size="small" fullWidth value={department} onChange={(e)=>{setDepartment(e.target.value)}} />
+</div>
+<div className={classes["form-Control"]}>
+<Grid container>
 {
-    department?.map((dep,index)=>(
-        <MenuItem value={dep} key={index}>
-         {
-             dep.name 
-         }
-        </MenuItem>
+    permission?.map((perm,index)=>(
+        <Grid item xs={4} key={index}>
+            <OdooFunction func={perm} OdooClick={ OdooClick} />
+        </Grid>
     ))
 }
-</Select>
-<div style={{marginBottom:20}}>
-<label>Position</label>
-<Select fullWidth size="small">
-    {
-        position.map((pos,index)=>(
-        <MenuItem key={index} value={pos.id}>
-       {
-           pos.name
-       }
-        </MenuItem>    
-        ))
-    }
-</Select>
+</Grid>
 </div>
+<div className={classes["btn-container"]}>
+<Button variant="contained" onClick={EditHandler}>Edit</Button>
 </div>
-          </div>):(<CustomLoading />)
+</div>):(<CustomLoading />)
       }
      </div>
     </PageTitleCard>

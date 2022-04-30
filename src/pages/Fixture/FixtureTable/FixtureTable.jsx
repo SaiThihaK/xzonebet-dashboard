@@ -95,28 +95,27 @@ return (<div>new bet</div>)
                       {el?.teams?.away?.name}
                     </StyledTableCell>
                     <StyledTableCell align="right" sx={{ width: "200px" }}>
-                      
                         <p>hellow</p>
-                        {
-                          // ()=>{
-                          // response = data?.map((fix)=>{
-                          //     if(fix?.fixture?.id === id){
-                          //       return true
-                          //     }
-                          //     if(response){
-                          //       console.log(true);
-                          //     }else{
-                          //       console.log(false);
-                          //     }
+                        {/* {
+                          ()=>{
+                          response = data?.map((fix)=>{
+                              if(fix?.fixture?.id === id){
+                                return true
+                              }
+                              if(response){
+                                console.log(true);
+                              }else{
+                                console.log(false);
+                              }
 
-                          //   }) } }
-                           
+                            }) } }
+                            */}
                         
 
                       {/* {()=>{
                         console.log("fixture",el?.fixture?.id)
                         FetchNewBet(el?.fixture?.id)}} */}
-                   
+                     
                     
                     {/* <Button
                       onClick={() => {

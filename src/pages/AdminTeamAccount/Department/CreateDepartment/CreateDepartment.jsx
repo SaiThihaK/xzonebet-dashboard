@@ -42,6 +42,8 @@ const OdooClick = (name)=>{
   ]))
 }
 
+
+
 console.log(functionName)
 
   return (
@@ -83,7 +85,7 @@ console.log(functionName)
       {
        data?.map((func,index)=>(
          <Grid item xs={4} key={index}>
-         <OdooFunction func={func} OdooClick={ OdooClick}/>
+         <OdooFunction func={func} OdooClick={ OdooClick} />
          </Grid>
        ))
      }
