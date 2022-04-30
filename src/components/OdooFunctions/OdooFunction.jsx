@@ -8,7 +8,6 @@ const OdooFunction = ({added,func, OdooClick}) => {
   const isaddHandler = ()=>setIsadded(true);
   const isremoveHanlder = ()=>setIsadded(false);
   // https://miro.medium.com/max/1140/1*NjyitbwN6fZhRPpH6CRNlQ.png
-console.log(func)
   return (
     
    <div>

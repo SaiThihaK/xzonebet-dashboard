@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import { useParams } from 'react-router-dom';
 import PageTitleCard from '../../../../components/UI/PageTitleCard/PageTitleCard';
 import CustomGetFunction from '../../../../services/CustomGetFunction';
 import classes from "./EditDepartment.module.css";
 import CustomLoading from '../../../../components/CustomLoading/CustomLoading';
-import { MenuItem, Select, TextField } from '@mui/material';
+import {  MenuItem, Select } from '@mui/material';
 import axios from 'axios';
 import { getMethod } from '../../../../services/api-services';
 import { toast } from 'react-toastify';
-
 const EditDepartment = () => {
     const {id} = useParams();
     const [department,setDepartment] = useState([]);
     const [position,setPosition] = useState([]);
+    const [permission,setPermission] = useState([]);
     console.log(id);
   const {data,loading} = CustomGetFunction(`api/departments/${id}`,[id]);
 
-  console.log(data)
+  console.log(data);
 
   const fetchDepartment = async()=>{
     const response = await axios.request(getMethod("api/departments"));
@@ -48,21 +48,42 @@ const fetchPosition = async()=>{
             toast.error(error.response.data.message);
         }
     } 
+
+const fetchPermisson = async()=>{
+    try{
+        const response = await axios.request(getMethod("api/admin/permissions"));
+        console.log("response",response)
+        if(response.data.status==="success"){
+        setPermission(response.data.data);
+        console.log("permission",permission);
+        return;
+        }
+        if(response.data.status==="error"){
+            toast.error(response.data.message)
+        }
+        }catch(error){
+           toast.error(error.response.data.message)
+        }
+}
+
     React.useEffect(()=>{
         fetchDepartment();
         fetchPosition();
+        fetchPermisson();
         return ()=>{
             setDepartment([]);
             setPosition([]);
+            setPermission([]);
         }
-        },[id])  
+        },[id]);
   
   return (
     <PageTitleCard title="Edit Department">
      <div className={classes["card-body"]}>
       {
-          loading ? (<div>
-<div className={classes["form-Control"]}>
+          loading ? (
+          <div>
+<div style={{marginBottom:20}}>
 <label>Department</label>
 <Select fullWidth size="small">
 {
@@ -75,6 +96,20 @@ const fetchPosition = async()=>{
     ))
 }
 </Select>
+<div style={{marginBottom:20}}>
+<label>Position</label>
+<Select fullWidth size="small">
+    {
+        position.map((pos,index)=>(
+        <MenuItem key={index} value={pos.id}>
+       {
+           pos.name
+       }
+        </MenuItem>    
+        ))
+    }
+</Select>
+</div>
 </div>
           </div>):(<CustomLoading />)
       }

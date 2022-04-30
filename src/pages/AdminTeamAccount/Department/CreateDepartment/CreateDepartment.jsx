@@ -1,4 +1,4 @@
-import { Button, Checkbox, Grid, ListItemText, MenuItem, Select, TextField } from '@mui/material'
+import { Button,  Grid,  TextField } from '@mui/material'
 import React, { useState } from 'react'
 import OdooFunction from '../../../../components/OdooFunctions/OdooFunction'
 import PageTitleCard from '../../../../components/UI/PageTitleCard/PageTitleCard'
@@ -41,7 +41,9 @@ const OdooClick = (name)=>{
     ...prevState,name
   ]))
 }
+
 console.log(functionName)
+
   return (
     <div>
         <PageTitleCard title="Create Department">
