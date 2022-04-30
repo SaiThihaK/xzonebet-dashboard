@@ -41,6 +41,19 @@ const FixtureTable = ({ bettingData }) => {
     setOpen(true);
     setId(id);
   };
+  const { data} = CustomGetFunction("api/football-fixtures", []);
+  let response = false;
+const FetchNewBet = (id)=>{
+  response = data?.map((fix)=>{
+  if(fix?.fixture?.id === id){
+    return true
+  }
+}); 
+if(response){
+  return (<div>exist</div>)
+}
+return (<div>new bet</div>)
+}
 
   
   const closeHandler = () => setOpen(false);
@@ -82,14 +95,37 @@ const FixtureTable = ({ bettingData }) => {
                       {el?.teams?.away?.name}
                     </StyledTableCell>
                     <StyledTableCell align="right" sx={{ width: "200px" }}>
-                    <Button
+                      
+                        <p>hellow</p>
+                        {
+                          // ()=>{
+                          // response = data?.map((fix)=>{
+                          //     if(fix?.fixture?.id === id){
+                          //       return true
+                          //     }
+                          //     if(response){
+                          //       console.log(true);
+                          //     }else{
+                          //       console.log(false);
+                          //     }
+
+                          //   }) } }
+                           
+                        
+
+                      {/* {()=>{
+                        console.log("fixture",el?.fixture?.id)
+                        FetchNewBet(el?.fixture?.id)}} */}
+                   
+                    
+                    {/* <Button
                       onClick={() => {
                     openHandler(key);
                                  }}
                 variant="contained"
                                 >
                            New Bet
-                          </Button>
+                          </Button> */}
                   
                     </StyledTableCell>
                   </StyledTableRow>

@@ -8,8 +8,6 @@ import {  MenuItem, Select } from '@mui/material';
 import axios from 'axios';
 import { getMethod } from '../../../../services/api-services';
 import { toast } from 'react-toastify';
-
-
 const EditDepartment = () => {
     const {id} = useParams();
     const [department,setDepartment] = useState([]);
@@ -18,7 +16,7 @@ const EditDepartment = () => {
     console.log(id);
   const {data,loading} = CustomGetFunction(`api/departments/${id}`,[id]);
 
-  console.log(data)
+  console.log(data);
 
   const fetchDepartment = async()=>{
     const response = await axios.request(getMethod("api/departments"));
