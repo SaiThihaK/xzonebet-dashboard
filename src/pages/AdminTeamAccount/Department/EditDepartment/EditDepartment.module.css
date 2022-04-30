@@ -4,3 +4,7 @@
 .form-Control{
     margin-bottom: 20px;
 }
+.btn-container{
+    display: flex;
+    justify-content:flex-end;
+}

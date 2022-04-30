@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Card from "../UI/Card"
 import  classes from "./OdooFunction.module.css"
 
-const OdooFunction = ({added,func, OdooClick}) => {
+const OdooFunction = ({added,func, OdooClick,OdooRemove}) => {
   const [isadded,setIsadded] = useState(added);
   const isaddHandler = ()=>setIsadded(true);
   const isremoveHanlder = ()=>setIsadded(false);
@@ -29,13 +29,15 @@ const OdooFunction = ({added,func, OdooClick}) => {
         isadded ?  (
         <Stack direction="row" style={{marginTop:10,fontSize:12}}>
         {/* <Button color="success">added</Button> */}
-        <Button color="error" onClick={isremoveHanlder}>remove</Button>
+        <Button color="error" onClick={()=>{
+          isremoveHanlder();
+          }}>remove</Button>
       </Stack>
       ) : (
         <Stack direction="row" style={{marginTop:10,fontSize:12}}>
         <Button color="success" onClick={()=>{
-          isaddHandler()
-          OdooClick(func.id)
+          isaddHandler();
+         OdooClick(func.id)
           ;}}>add</Button>
         {/* <Button color="error">remove</Button> */}
       </Stack>
