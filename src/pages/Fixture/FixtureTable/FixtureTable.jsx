@@ -41,7 +41,7 @@ const FixtureTable = ({ bettingData }) => {
     setOpen(true);
     setId(id);
   };
-  const { data } = CustomGetFunction("api/football-fixtures", []);
+
   
   const closeHandler = () => setOpen(false);
   return (

@@ -13,12 +13,11 @@ import Button from "@mui/material/Button";
 import classes from "./DepartmentTable.module.css";
 import { BasedColor } from "../../../../Controller/BasedColor";
 import {useNavigate} from "react-router-dom";
-import { IconButton } from "@mui/material";
+import { Chip, IconButton } from "@mui/material";
 import { Delete, Edit } from "@mui/icons-material";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { DeleteMethod } from "../../../../services/api-services";
-import ToggleBtn from "../../../../components/UI/ToggleBtn/ToggleBtn";
 import Nodata from "../../../../components/Nodata/Nodata";
 
 
@@ -61,7 +60,9 @@ const DepartmentTable = ({name,position,salary,percentage,status,data,render,set
     }catch(error){
       toast.error(error.response.data.message)
     }
-  }
+  } 
+
+  console.log(data)
 
   return (
     <div>
@@ -90,17 +91,28 @@ const DepartmentTable = ({name,position,salary,percentage,status,data,render,set
                   </StyledTableCell>
                   {name &&<StyledTableCell align="left">Roger</StyledTableCell>}
                   <StyledTableCell align="left">{row?.name}</StyledTableCell>
-                {position && <StyledTableCell align="left">{row?.name}</StyledTableCell> }
+                {position && <StyledTableCell align="left">
+                  {
+                    row?.positions.map((pos,index)=>(
+                      <Chip label={pos?.name} variant="outlined" size="small" color="primary" key={index}/>
+                    ))
+                  }
+                
+                </StyledTableCell> }
                 {percentage && <StyledTableCell align="left">1000USD</StyledTableCell> }
                  {salary &&<StyledTableCell align="left">-</StyledTableCell>}
                  {status && <StyledTableCell align="center"> 
                       <div className={classes["active"]}>Active</div>
                   </StyledTableCell> }
-                  <StyledTableCell align="left">
-                  <Stack spacing={3} direction="row" >
-        <Button variant="contained" size="small" onClick={()=>{
+                  <StyledTableCell align="left" sx={{width:50}}>
+                  <Stack direction="row" >
+        <Button variant="contained"
+        style={{padding:"5px 10px",fontSize:13}} 
+         onClick={()=>{
           navigate(`/admin-team-account/department/department-detail/${row.id}`)
-        }}>Detail</Button>
+        }}>
+          Detail
+        </Button>
         
       <IconButton onClick={()=>{banDepartment(row.id)}}><Delete/></IconButton>
          <IconButton
