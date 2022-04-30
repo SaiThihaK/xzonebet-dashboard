@@ -1,0 +1,12 @@
+.card-body{
+    padding: 20px;
+}
+.form-control{
+    margin-bottom: 20px;
+}
+.btn-container{
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
