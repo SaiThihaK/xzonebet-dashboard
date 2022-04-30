@@ -59,7 +59,7 @@ const PositionTable = ({name,position,salary,percentage,status,data,render,setRe
       toast.error(error.response.data.message)
     }
   }
-
+ console.log("position",data);
   return (
     <div>
         <div className={classes["table-margin"]}>
@@ -107,7 +107,11 @@ const PositionTable = ({name,position,salary,percentage,status,data,render,setRe
             }}><Delete />
             </IconButton>
             
-            <IconButton><Edit /></IconButton>
+            <IconButton
+            onClick={()=>{
+              navigate(`/admin-team-account/position/edit-position/${row.id}`)
+            }}
+            ><Edit /></IconButton>
         </Stack>
         </StyledTableCell>
     </StyledTableRow>

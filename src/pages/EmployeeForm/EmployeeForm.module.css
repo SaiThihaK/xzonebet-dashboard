@@ -23,3 +23,20 @@ grid-gap: 50px;
     justify-content: flex-end;
     align-items: center;
 }
+.title-form{
+    display: flex;
+}
+
+.title-form h3{
+    flex-grow: 1;
+}
+
+.plus-box{
+
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+.form{
+    transition: all 1s ease-in-out;
+}

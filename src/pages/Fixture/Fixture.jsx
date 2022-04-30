@@ -148,7 +148,7 @@ const Fixture = () => {
           <Grid item xs={4}>
             <LocalizationProvider dateAdapter={AdapterDateFns}>
                <DesktopDatePicker
-          label="Date desktop"
+          label="Choose Date"
           inputFormat="MM/dd/yyyy"
           value={value}
           onChange={handleChange}

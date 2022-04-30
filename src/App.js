@@ -110,6 +110,7 @@ import Allbetincome from "./pages/AllBetIncome/Allbetincome";
 import AllBetoutcome from "./pages/AllBetoutcome/AllBetoutcome";
 import DepartmentDetail from "./pages/AdminTeamAccount/Department/DepartmentDetail/DepartmentDetail";
 import EditDepartment from "./pages/AdminTeamAccount/Department/EditDepartment/EditDepartment";
+import EditPosition from "./pages/AdminTeamAccount/Position/EditPosition/EditPosition";
 function App() {
   const DashboardRouting = () => {
     if (type === "admin") {
@@ -408,6 +409,11 @@ function App() {
             exact
             path="/admin-team-account/position/create-position"
             element={<CreatePosition />}
+          />
+          <Route
+            exact
+            path="/admin-team-account/position/edit-position/:id"
+            element={<EditPosition />}
           />
           <Route
             exact
