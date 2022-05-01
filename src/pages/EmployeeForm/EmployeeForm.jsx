@@ -8,7 +8,8 @@ import { PostProvider } from '../../services/api-services';
 import CustomGetFunction from '../../services/CustomGetFunction';
 import classes from "./EmployeeForm.module.css"
 import {AddBox,ArrowDropDown} from "@mui/icons-material"
-import { DateRangePicker, DesktopDatePicker, LocalizationProvider } from "@mui/lab";
+import {  DesktopDatePicker, LocalizationProvider } from "@mui/lab";
+import { getResDate } from '../../Controller/ChangeDate';
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 const EmployeeForm = () => {
   const {data} = CustomGetFunction("api/departments",[]);
@@ -77,6 +78,22 @@ const EmployeeForm = () => {
       toast.warning("Please enter skill");
       return;
     }
+    let work_histories = [{
+      position:expPosition,
+      company_name:companyName,
+      start_date:getResDate(expStartDate),
+      end_date:getResDate(expEndDate),
+      description:description
+    }];
+    console.log("work",work_histories);
+  let educations = [{
+    degree:eduDegree,
+    school:eduSchool,
+    start_date:getResDate(eduStartDate),
+    end_date:getResDate(eduEndDate),
+    note:note
+  }];
+  console.log("education",educations)
     try{
       let formdata = new FormData();
       formdata.append("user_id",userId);
@@ -88,6 +105,8 @@ const EmployeeForm = () => {
       formdata.append("phone",phone);
       formdata.append("address",address);
       formdata.append("skill",skill);
+      formdata.append("work_histories",work_histories[0]);
+      formdata.append("educations",educations[0]);
    const response = await axios.request(PostProvider("api/employees",formdata));
    if(response.data.status==="success"){
      toast.success(response.data.message);
@@ -164,6 +183,11 @@ const EmployeeForm = () => {
         <label>Choose Provider Logo</label>
         <TextField variant="standard" type="file" accept="image/png, image/jpeg" onChange={logoChange} fullWidth />
             </div>
+            {/*==================================================Skill=======================================================  */}
+            <div className={classes["form-Control-des"]}>
+       <label>Skill</label>
+       <textarea rows="6" cols="50" value={skill} onChange={(e)=>{setSkill(e.target.value)}} />
+       </div>
    </div>
    {/*--------------------------Second Part----------------------*/}
    <div>
@@ -299,7 +323,7 @@ const EmployeeForm = () => {
       </form>
     }
   <div className={classes["btn-container"]}>
-    <Button variant="contained">Submit</Button>
+    <Button variant="contained" onClick={submitHandler}>Submit</Button>
   </div>
 
    </div>
