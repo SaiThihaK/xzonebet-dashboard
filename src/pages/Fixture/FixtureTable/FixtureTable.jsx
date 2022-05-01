@@ -95,7 +95,7 @@ return (<div>new bet</div>)
                       {el?.teams?.away?.name}
                     </StyledTableCell>
                     <StyledTableCell align="right" sx={{ width: "200px" }}>
-                        <p>hellow</p>
+                        
                         {/* {
                           ()=>{
                           response = data?.map((fix)=>{
@@ -117,14 +117,14 @@ return (<div>new bet</div>)
                         FetchNewBet(el?.fixture?.id)}} */}
                      
                     
-                    {/* <Button
+                    <Button
                       onClick={() => {
                     openHandler(key);
                                  }}
                 variant="contained"
                                 >
                            New Bet
-                          </Button> */}
+                          </Button>
                   
                     </StyledTableCell>
                   </StyledTableRow>

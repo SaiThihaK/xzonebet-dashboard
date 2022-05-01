@@ -8,7 +8,7 @@ import TextField from '@mui/material/TextField';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import {DateRangePicker} from "@mui/lab"
-
+import * as FaIcons from "react-icons/fa";
 const Dashboard = () => {
   const [value, setValue] = React.useState([null, null]);
 
@@ -21,10 +21,10 @@ const Dashboard = () => {
         </div>
         <div className={classes["card-body"]}>
             <div className={classes['soccer-setting-content-flex']}>
-            <UserCard name="Betting Amount" bgColor="#2ED8B6" path="affiliate-agent-percentage" />
-            <UserCard name="User All" bgColor="#2ED8B6" path="affiliate-agent-percentage" />
-            <UserCard name="Agent All" bgColor="#2ED8B6" path="affiliate-agent-percentage" />
-            <UserCard name="Master All" bgColor="#2ED8B6" path="affiliate-agent-percentage" />
+            <UserCard name="Betting Amount" bgColor="#2ED8B6" path="affiliate-agent-percentage" icon={ <FaIcons.FaUsers style={{fontSize: "50px"}} />}    />
+            <UserCard name="User All" bgColor="#2ED8B6" path="affiliate-agent-percentage"   icon={ <FaIcons.FaUsers style={{fontSize: "50px"}} />} />
+            <UserCard name="Agent All" bgColor="#2ED8B6" path="affiliate-agent-percentage" icon={ <FaIcons.FaUsers style={{fontSize: "50px"}} />}   />
+            <UserCard name="Master All" bgColor="#2ED8B6" path="affiliate-agent-percentage" icon={ <FaIcons.FaUsers style={{fontSize: "50px"}} />}  />
            </div>
         </div>
       </Card>

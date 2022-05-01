@@ -59,7 +59,6 @@ import Currency from "./pages/UnitSetting/Currency/Currency";
 import AllUser from "./pages/Users/AllUser/AllUser";
 import MPaymentAccount from "./Dashboard/MasterDashboard/Page/BankSetting/PaymentAccount/MPaymentAccount";
 import ABankAccount from "./Dashboard/AgentDashboard/Page/BankAccount/ABankAccount";
-import MDeposite from "./Dashboard/MasterDashboard/Page/Deposite/MDeposite";
 import ADeposite from "./Dashboard/AgentDashboard/Page/Deposite/ADeposite";
 import MProfile from "./Dashboard/MasterDashboard/Page/Profile/MProfile";
 import { type } from "./services/Token";
@@ -111,6 +110,7 @@ import AllBetoutcome from "./pages/AllBetoutcome/AllBetoutcome";
 import DepartmentDetail from "./pages/AdminTeamAccount/Department/DepartmentDetail/DepartmentDetail";
 import EditDepartment from "./pages/AdminTeamAccount/Department/EditDepartment/EditDepartment";
 import EditPosition from "./pages/AdminTeamAccount/Position/EditPosition/EditPosition";
+import XzonebetFootball from "./pages/Xzonebetfootball/XzonebetFootball";
 function App() {
   const DashboardRouting = () => {
     if (type === "admin") {
@@ -435,10 +435,31 @@ function App() {
           <Route exact path="/employee" element={<HrEmployee />} />
           <Route path="/odoo-function-detail" element={<DetailFunction />} />
           {/* ---------------Xzonebet Football------------------ */}
-          <Route exact path="fixture" element={<Fixture />} />
-          <Route exact path="/opening-bet" element={<OpenningBet />} />
-          <Route exact path="/fixture-bet-history" element={<BetHistory />} />
-          <Route exact path="/opening-bet-result" element={<OpenbetResult />} />
+          <Route
+            exact
+            path="xzonebet-football"
+            element={<XzonebetFootball />}
+          />
+          <Route
+            exact
+            path="/xzonebet-football/fixture"
+            element={<Fixture />}
+          />
+          <Route
+            exact
+            path="/xzonebet-football/opening-bet"
+            element={<OpenningBet />}
+          />
+          <Route
+            exact
+            path="/xzonebet-football/fixture-bet-history"
+            element={<BetHistory />}
+          />
+          <Route
+            exact
+            path="/xzonebet-football/opening-bet-result"
+            element={<OpenbetResult />}
+          />
           <Route path="*" element={<Notfound />} />
         </Routes>
       );

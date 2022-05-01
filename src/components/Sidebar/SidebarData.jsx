@@ -229,31 +229,16 @@ export const SidebarData = [
         ]
     },
     {
-        title: 'Xzonebet Football',
+        title: 'Pre-bet',
         icon: <AiIcons.AiFillSetting />,
         iconClosed: <RiIcons.RiArrowDownSFill/>,
         iconOpened: <RiIcons.RiArrowUpSFill/>,
         subNav : [
             {
-                title: 'Fixture',
-                path: '/fixture',
+                title: 'Xzonebet football',
+                path: '/xzonebet-football',
                 icon: <IoIcons.IoIosArrowForward />,
             },
-            {
-                title: 'Opening bet',
-                path: '/opening-bet',
-                icon: <IoIcons.IoIosArrowForward />,
-            },
-            {
-                title:"Opening bet result",
-                path:"/opening-bet-result",
-                icon: <IoIcons.IoIosArrowForward />,
-            },
-            {
-                title:"Fixture bet history",
-                path:"/fixture-bet-history",
-                icon: <IoIcons.IoIosArrowForward />,
-            }
         ]
     },
     {
