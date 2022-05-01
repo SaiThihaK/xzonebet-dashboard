@@ -298,7 +298,9 @@ const EmployeeForm = () => {
        </div>
       </form>
     }
-
+  <div className={classes["btn-container"]}>
+    <Button variant="contained">Submit</Button>
+  </div>
 
    </div>
   </PageTitleCard>
