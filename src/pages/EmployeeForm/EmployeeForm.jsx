@@ -30,12 +30,19 @@ const EmployeeForm = () => {
   // working exp state
   const [expPosition,setExpPosition] = useState("");
   const [companyName,setCompanyName] = useState("");
-  const [expStartDate,setExpStartDate] = useState("");
-  const [expEndDate,setEndDate]     = useState("");
-
+  const [expStartDate,setExpStartDate] = useState(new Date());
+  const [expEndDate,setExpEndDate]     = useState(new Date());
+  const [description,setDescription] = useState("");
+  // Education
+  const [eduDegree,setEduDegree] = useState("");
+  const [eduSchool,setEduSchool] = useState("");
+  const [eduStartDate,setEduStartDate] = useState(new Date());
+  const [eduEndDate,setEduEndDate] = useState(new Date());
+  const [note,setNote] = useState("");
   // ------------------------Condition---------------------------------------------------
   const [isPersonal,setIsPersonal] = useState(false);
   const [isWorkingExp,setWorkingExp] = useState(false);
+  const [isEducation,setIsEducation] = useState(false);
   const submitHandler = async(e)=>{
     e.preventDefault();
     if(!userId){
@@ -224,17 +231,75 @@ const EmployeeForm = () => {
       <TextField size="small" fullWidth value={companyName} onChange={(e)=>{setCompanyName(e.target.value)}}/>
        </div>
        </div>
-       {/* ----------------------------From-Date----------------------------------------------------- */}
+      {/* ----------------------------------------------------------Form-Date---------------------------------------- */}
       <div className={classes["grid-template"]}>
+        {/* -----------------------------Start Date----------------------------------------------------------------- */}
       <div  className={classes["form-Control"]}>
       <label>Start Date</label>
      <DatePicker value={expStartDate} setValue={setExpStartDate} />
        </div>
-      </div> 
-      
-      
+     
+      {/* --------------------------------------------------End Date------------------------------ */}
+      <div  className={classes["form-Control"]}>
+      <label>End Date</label>
+     <DatePicker value={expEndDate} setValue={setExpEndDate} />
+       </div>
+       </div>
+       {/*----------------------------------------------Description------------------------------------  */}
+       <div className={classes["form-Control-des"]}>
+       <label>Description</label>
+       <textarea rows="6" cols="50" value={description} onChange={(e)=>{setDescription(e.target.value)}} />
+       </div>
       </form>
     }
+    <div className={classes["title-form"]}>
+     <h3>Education</h3>
+     <div className={classes["plus-box"]}>
+   <IconButton onClick={()=>{setIsEducation((prev)=>!prev)}}>
+    {
+     isEducation ? <ArrowDropDown/> :  <AddBox/>
+    }
+     </IconButton>
+    
+     </div>
+    </div>
+     {/* ----------------------------------------Education----------------------------------------- */}
+     {
+      isEducation && <form className={classes["form"]}>
+       <div className={classes["grid-template"]}>
+       <div  className={classes["form-Control"]}>
+      <label>Degree</label>
+      <TextField size="small" fullWidth value={eduDegree} onChange={(e)=>{setEduDegree(e.target.value)}}/>
+       </div>
+       {/* --------------------------------School---------------------------------------------------- */}
+       <div  className={classes["form-Control"]}>
+      <label>School</label>
+      <TextField size="small" fullWidth value={eduSchool} onChange={(e)=>{setEduSchool(e.target.value)}}/>
+       </div>
+       </div>
+      {/* ----------------------------------------------------------Form-Date---------------------------------------- */}
+      <div className={classes["grid-template"]}>
+        {/* -----------------------------Start Date----------------------------------------------------------------- */}
+      <div  className={classes["form-Control"]}>
+      <label>Start Date</label>
+     <DatePicker value={eduStartDate} setValue={setEduStartDate} />
+       </div>
+     
+      {/* --------------------------------------------------End Date------------------------------ */}
+      <div  className={classes["form-Control"]}>
+      <label>End Date</label>
+     <DatePicker value={eduEndDate} setValue={setEduEndDate} />
+       </div>
+       </div>
+       {/*----------------------------------------------Description------------------------------------  */}
+       <div className={classes["form-Control-des"]}>
+       <label>Note</label>
+       <textarea rows="6" cols="50" value={note} onChange={(e)=>{setNote(e.target.value)}} />
+       </div>
+      </form>
+    }
+
+
    </div>
   </PageTitleCard>
   )
@@ -245,11 +310,14 @@ export default EmployeeForm
 
 
 export const DatePicker = ({value,setValue})=>{
+  const handleChange = (newValue) => {
+    setValue(newValue);
+  };
   return(<LocalizationProvider dateAdapter={AdapterDateFns}>
     <DesktopDatePicker
 inputFormat="MM/dd/yyyy"
 value={value}
-onChange={(e)=>{setValue(e.target.value)}}
+onChange={handleChange}
 renderInput={(params) => <TextField {...params} fullWidth size='small' />}
 />
  </LocalizationProvider>)

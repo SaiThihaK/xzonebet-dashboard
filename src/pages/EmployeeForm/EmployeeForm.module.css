@@ -12,6 +12,9 @@ margin-bottom: 20px;
     margin-top: 10px;
     font-weight: 600;
 }
+
+
+
 .grid-template{
 display: grid;
 grid-template-columns: 1fr 1fr;
@@ -39,4 +42,22 @@ grid-gap: 50px;
 }
 .form{
     transition: all 1s ease-in-out;
+    margin-bottom: 20px;
+}
+.form-Control-des{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.form-Control-des label{
+    width: 150px;
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: 600;
+    margin-bottom: 10px; 
+}
+
+.form-Control-des textarea{
+    width: 100%;
 }
