@@ -1,16 +1,22 @@
 import React from 'react';
-import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
-import * as IoIcons from 'react-icons/io';
-import * as RiIcons from 'react-icons/ri';
+import {AiFillHome} from "react-icons/ai"
+import {
+    RiArrowDownSFill,
+    RiArrowUpSFill,
+    RiMoneyDollarCircleLine,
+    RiAccountPinCircleFill,
+} from "react-icons/ri"
+import {IoIosArrowForward} from "react-icons/io"
+import {FaLayerGroup} from "react-icons/fa"
+
 
 export const AccountingSidebarData = [
     {
         title: 'Accounting DashBoard',
         path: '/',
-        icon: <AiIcons.AiFillHome />,
-        iconClosed: <RiIcons.RiArrowDownSFill/>,
-        iconOpened: <RiIcons.RiArrowUpSFill/>,
+        icon: <AiFillHome />,
+        iconClosed: <RiArrowDownSFill/>,
+        iconOpened: <RiArrowUpSFill/>,
         // subNav : [
         //     {
         //         title: 'User',
@@ -27,9 +33,9 @@ export const AccountingSidebarData = [
     {
         title: 'Account Title',
         path: '/account-title',
-        icon: <RiIcons.RiAccountPinCircleFill />,
-        iconClosed: <RiIcons.RiArrowDownSFill/>,
-        iconOpened: <RiIcons.RiArrowUpSFill/>,
+        icon: <RiAccountPinCircleFill />,
+        iconClosed: <RiArrowDownSFill/>,
+        iconOpened: <RiArrowUpSFill/>,
         // subNav : [
         //     {
         //         title: 'Football',
@@ -51,35 +57,35 @@ export const AccountingSidebarData = [
     {
         title: 'Account Data',
         path: '/account-data',
-        icon: <RiIcons.RiMoneyDollarCircleLine />,
-        iconClosed: <RiIcons.RiArrowDownSFill/>,
-        iconOpened: <RiIcons.RiArrowUpSFill/>,
+        icon: <RiMoneyDollarCircleLine />,
+        iconClosed: <RiArrowDownSFill/>,
+        iconOpened: <RiArrowUpSFill/>,
      
     },
     {
         title: 'Deposite',
         path: '/accounting/deposit',
-        icon: <FaIcons.FaLayerGroup />,
-        iconClosed: <RiIcons.RiArrowDownSFill/>,
-        iconOpened: <RiIcons.RiArrowUpSFill/>,
+        icon: <FaLayerGroup />,
+        iconClosed: <RiArrowDownSFill/>,
+        iconOpened: <RiArrowUpSFill/>,
       
     },
     {
         title: 'All Bet',
     path: '/all-bet',
-    icon: <FaIcons.FaLayerGroup />,
-    iconClosed: <RiIcons.RiArrowDownSFill/>,
-    iconOpened: <RiIcons.RiArrowUpSFill/>,
+    icon: <FaLayerGroup />,
+    iconClosed: <RiArrowDownSFill/>,
+    iconOpened: <RiArrowUpSFill/>,
     subNav : [
             {
                 title: 'All Bet Income',
                 path: '/all-bet-income',
-            icon: <IoIcons.IoIosArrowForward />,
+            icon: <IoIosArrowForward />,
             },
             {
                 title: 'All Bet Outcome',
                 path: '/all-bet-outcome',
-            icon: <IoIcons.IoIosArrowForward />,
+            icon: <IoIosArrowForward />,
             },
         ]
     }

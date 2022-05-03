@@ -1,64 +1,72 @@
 import React from 'react';
-import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
-import * as IoIcons from 'react-icons/io';
-import * as RiIcons from 'react-icons/ri';
+import {AiFillHome} from "react-icons/ai"
+import {
+    RiArrowDownSFill,
+    RiArrowUpSFill,
+    RiCoinsLine,
+    RiAccountPinCircleFill,
+    RiMoneyDollarCircleLine,
+} from "react-icons/ri"
+import {IoIosArrowForward} from "react-icons/io"
+import {FaLayerGroup,FaUserFriends } from "react-icons/fa"
+import {AiFillBank } from "react-icons/ai"
+
 
 export const SuperMasterSidebarData = [
     {
         title: 'SuperMaster DashBoard',
         path: '/',
-        icon: <AiIcons.AiFillHome />,
-        iconClosed: <RiIcons.RiArrowDownSFill/>,
-        iconOpened: <RiIcons.RiArrowUpSFill/>,
+        icon: <AiFillHome />,
+        iconClosed: <RiArrowDownSFill/>,
+        iconOpened: <RiArrowUpSFill/>,
         // subNav : [
         //     {
         //         title: 'User',
         //         path: '/user',
-        //         icon: <IoIcons.IoIosArrowForward />,
+        //         icon: <IoIosArrowForward />,
         //     },
         //     {
         //         title: 'Revenue',
         //         path: '/revenue',
-        //         icon: <IoIcons.IoIosArrowForward />,
+        //         icon: <IoIosArrowForward />,
         //     },
         // ]
     },
     {
         title: 'Profile',
         path: '/super_master/profile',
-        icon: <RiIcons.RiAccountPinCircleFill />,
-        iconClosed: <RiIcons.RiArrowDownSFill/>,
-        iconOpened: <RiIcons.RiArrowUpSFill/>,
+        icon: <RiAccountPinCircleFill />,
+        iconClosed: <RiArrowDownSFill/>,
+        iconOpened: <RiArrowUpSFill/>,
         // subNav : [
         //     {
         //         title: 'Football',
         //         path: '/betting/football',
-        //         icon: <IoIcons.IoIosArrowForward />,
+        //         icon: <IoIosArrowForward />,
         //     },
         //     {
         //         title: '2D',
         //         path: '/betting/2d',
-        //         icon: <IoIcons.IoIosArrowForward />,
+        //         icon: <IoIosArrowForward />,
         //     },
         //     {
         //         title: '3D',
         //         path: '/betting/3d',
-        //         icon: <IoIcons.IoIosArrowForward />,
+        //         icon: <IoIosArrowForward />,
         //     },
         // ]
     },
     {
         title: 'Profit',
         path: '/super_master/profit',
-        icon: <RiIcons.RiMoneyDollarCircleLine />,
-        iconClosed: <RiIcons.RiArrowDownSFill/>,
-        iconOpened: <RiIcons.RiArrowUpSFill/>,
+        icon: <RiMoneyDollarCircleLine />,
+        iconClosed: <RiArrowDownSFill/>,
+        iconOpened: <RiArrowUpSFill/>,
         // subNav : [
         //     {
         //         title: 'Super Master',
         //         path: '/account/super-master',
-        //         icon: <IoIcons.IoIosArrowForward />,
+        //         icon: <IoIosArrowForward />,
         //     },
         //     {
         //         title: 'Master',
@@ -85,9 +93,9 @@ export const SuperMasterSidebarData = [
     {
         title: 'Transition History',
         path: '/super_master/transition-history',
-        icon: <FaIcons.FaLayerGroup />,
-        iconClosed: <RiIcons.RiArrowDownSFill/>,
-        iconOpened: <RiIcons.RiArrowUpSFill/>,
+        icon: <FaLayerGroup />,
+        iconClosed: <RiArrowDownSFill/>,
+        iconOpened: <RiArrowUpSFill/>,
         // subNav : [
         //     {
         //         title: 'Master Deposit',
@@ -104,14 +112,14 @@ export const SuperMasterSidebarData = [
     {
         title: "Transfer To",
         path: "/super_master/transfer-to",
-        icon: <FaIcons.FaUserFriends/>
+        icon: <FaUserFriends/>
     },
     {
         title: 'User Withdraw',
         path: '/super_master/user-withdraw',
-        icon: <RiIcons.RiCoinsLine/>,
-        iconClosed: <RiIcons.RiArrowDownSFill/>,
-        iconOpened: <RiIcons.RiArrowUpSFill/>,
+        icon: <RiCoinsLine/>,
+        iconClosed: <RiArrowDownSFill/>,
+        iconOpened: <RiArrowUpSFill/>,
         // subNav : [
         //     {
         //         title: 'Game Setting',
@@ -128,30 +136,30 @@ export const SuperMasterSidebarData = [
     {
         title: 'Account',
         path: '/account',
-        icon: <RiIcons.RiAccountPinCircleFill />,
-        iconClosed: <RiIcons.RiArrowDownSFill/>,
-        iconOpened: <RiIcons.RiArrowUpSFill/>,
+        icon: <RiAccountPinCircleFill />,
+        iconClosed: <RiArrowDownSFill/>,
+        iconOpened: <RiArrowUpSFill/>,
         subNav : [
             
             {
                 title: 'Master',
                 path: '/account/master',
-                icon: <IoIcons.IoIosArrowForward />,
+                icon: <IoIosArrowForward />,
             },
             {
                 title: 'Agent',
                 path: '/account/agent',
-                icon: <IoIcons.IoIosArrowForward />,
+                icon: <IoIosArrowForward />,
             },
             {
                 title: 'Affiliate Agent',
                 path: '/account/affiliate-agent',
-                icon: <IoIcons.IoIosArrowForward />,
+                icon: <IoIosArrowForward />,
             },
             {
                 title: 'User',
                 path: '/account/user',
-                icon: <IoIcons.IoIosArrowForward />,
+                icon: <IoIosArrowForward />,
             },
             
         ]
@@ -159,31 +167,31 @@ export const SuperMasterSidebarData = [
     {
         title: "Become An Agent",
         path: "/become-an-agent",
-        icon: <RiIcons.RiAccountPinCircleFill/>
+        icon: <RiAccountPinCircleFill/>
     },
     // {
     //     title: "Deposite",
     //     path: "/super_master/deposite",
-    //     icon: <FaIcons.FaMoneyCheckAlt />,
-    //     iconClosed: <RiIcons.RiArrowDownSFill/>,
-    //     iconOpened: <RiIcons.RiArrowUpSFill/>,
+    //     icon: <FaMoneyCheckAlt />,
+    //     iconClosed: <RiArrowDownSFill/>,
+    //     iconOpened: <RiArrowUpSFill/>,
     //     subNav : [
     //         {
     //             title: 'User Deposite',
     //             path: '/super_master/deposite/user-deposite',
-    //             icon: <IoIcons.IoIosArrowForward />,
+    //             icon: <IoIosArrowForward />,
     //         },
     //         // {
     //         //     title:"Agent Deposite",
     //         //     path:'/super_master/deposite/agent-deposite',
-    //         //     icon: <IoIcons.IoIosArrowForward />,              
+    //         //     icon: <IoIosArrowForward />,              
     //         // }
     //     ]
     // },
     {
         title: "Bank Account",
         path: '/payment-setting/payment-account',
-        icon: <AiIcons.AiFillBank/>
+        icon: <AiFillBank/>
     },
     
 ]

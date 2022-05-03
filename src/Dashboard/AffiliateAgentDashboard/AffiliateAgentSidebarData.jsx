@@ -1,69 +1,76 @@
 import React from 'react';
-import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
-import * as IoIcons from 'react-icons/io';
-import * as RiIcons from 'react-icons/ri';
+import {AiFillHome} from "react-icons/ai"
+import {
+    RiArrowDownSFill,
+    RiArrowUpSFill,
+    RiCoinsLine,
+    RiMoneyDollarCircleLine,
+    RiAccountPinCircleFill,
+} from "react-icons/ri"
+import {IoIosArrowForward} from "react-icons/io"
+import {FaLayerGroup,FaUserFriends,FaMoneyCheckAlt} from "react-icons/fa"
+
 
 export const AffiliateAgentSidebarData  = [
     {
         title: 'Affiliate DashBoard',
         path: '/',
-        icon: <AiIcons.AiFillHome />,
-        iconClosed: <RiIcons.RiArrowDownSFill/>,
-        iconOpened: <RiIcons.RiArrowUpSFill/>,
+        icon: <AiFillHome />,
+        iconClosed: <RiArrowDownSFill/>,
+        iconOpened: <RiArrowUpSFill/>,
         // subNav : [
         //     {
         //         title: 'User',
         //         path: '/user',
-        //         icon: <IoIcons.IoIosArrowForward />,
+        //         icon: <IoIosArrowForward />,
         //     },
         //     {
         //         title: 'Revenue',
         //         path: '/revenue',
-        //         icon: <IoIcons.IoIosArrowForward />,
+        //         icon: <IoIosArrowForward />,
         //     },
         // ]
     },
     {
         title: 'Profile',
         path: '/affiliate-agent/profile',
-        icon: <RiIcons.RiAccountPinCircleFill />,
-        iconClosed: <RiIcons.RiArrowDownSFill/>,
-        iconOpened: <RiIcons.RiArrowUpSFill/>,
+        icon: <RiAccountPinCircleFill />,
+        iconClosed: <RiArrowDownSFill/>,
+        iconOpened: <RiArrowUpSFill/>,
         // subNav : [
         //     {
         //         title: 'Football',
         //         path: '/betting/football',
-        //         icon: <IoIcons.IoIosArrowForward />,
+        //         icon: <IoIosArrowForward />,
         //     },
         //     {
         //         title: '2D',
         //         path: '/betting/2d',
-        //         icon: <IoIcons.IoIosArrowForward />,
+        //         icon: <IoIosArrowForward />,
         //     },
         //     {
         //         title: '3D',
         //         path: '/betting/3d',
-        //         icon: <IoIcons.IoIosArrowForward />,
+        //         icon: <IoIosArrowForward />,
         //     },
         // ]
     },
     {
         title: 'Profit',
         path: '/affiliate-agent/profit',
-        icon: <RiIcons.RiMoneyDollarCircleLine />,
-        iconClosed: <RiIcons.RiArrowDownSFill/>,
-        iconOpened: <RiIcons.RiArrowUpSFill/>,
+        icon: <RiMoneyDollarCircleLine />,
+        iconClosed: <RiArrowDownSFill/>,
+        iconOpened: <RiArrowUpSFill/>,
         // subNav : [
         //     {
         //         title: 'Super Master',
         //         path: '/account/super-master',
-        //         icon: <IoIcons.IoIosArrowForward />,
+        //         icon: <IoIosArrowForward />,
         //     },
         //     {
         //         title: 'Master',
         //         path: '/account/master',
-        //         icon: <IoIcons.IoIosArrowForward />,
+        //         icon: <IoIosArrowForward />,
         //     },
         //     {
         //         title: 'Agent',
@@ -85,9 +92,9 @@ export const AffiliateAgentSidebarData  = [
     {
         title: 'Transition History',
         path: '/affiliate-agent/transition-history',
-        icon: <FaIcons.FaLayerGroup />,
-        iconClosed: <RiIcons.RiArrowDownSFill/>,
-        iconOpened: <RiIcons.RiArrowUpSFill/>,
+        icon: <FaLayerGroup />,
+        iconClosed: <RiArrowDownSFill/>,
+        iconOpened: <RiArrowUpSFill/>,
         // subNav : [
         //     {
         //         title: 'Master Deposit',
@@ -104,37 +111,37 @@ export const AffiliateAgentSidebarData  = [
     {
         title: 'Withdraw',
         path: '/agent/user-withdraw',
-        icon: <RiIcons.RiCoinsLine/>,
-        iconClosed: <RiIcons.RiArrowDownSFill/>,
-        iconOpened: <RiIcons.RiArrowUpSFill/>,
+        icon: <RiCoinsLine/>,
+        iconClosed: <RiArrowDownSFill/>,
+        iconOpened: <RiArrowUpSFill/>,
     },
     {
         title: "Affiliate User",
         path: "/affiliate-agent/affiliate-user",
-        icon: <FaIcons.FaUserFriends/>
+        icon: <FaUserFriends/>
     },
     {
         title: "Deposite",
         path: "/agent/deposite",
-        icon: <FaIcons.FaMoneyCheckAlt />,
-        iconClosed: <RiIcons.RiArrowDownSFill/>,
-        iconOpened: <RiIcons.RiArrowUpSFill/>,
+        icon: <FaMoneyCheckAlt />,
+        iconClosed: <RiArrowDownSFill/>,
+        iconOpened: <RiArrowUpSFill/>,
         subNav : [
             {
                 title: 'User Deposite',
                 path: '/agent/deposite/user-deposite',
-                icon: <IoIcons.IoIosArrowForward />,
+                icon: <IoIosArrowForward />,
             },
             {
                 title:"Agent Deposite",
                 path:'/agent/deposite/agent-deposite',
-                icon: <IoIcons.IoIosArrowForward />,              
+                icon: <IoIosArrowForward />,              
             }
         ]
     },
     {
         title: "Betting",
         path: "/affiliate-agent/betting",
-        icon: <FaIcons.FaUserFriends/>
+        icon: <FaUserFriends/>
     },
 ]
