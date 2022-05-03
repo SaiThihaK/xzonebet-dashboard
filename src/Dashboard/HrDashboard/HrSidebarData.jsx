@@ -1,43 +1,47 @@
 import React from 'react';
-import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
-import * as IoIcons from 'react-icons/io';
-import * as RiIcons from 'react-icons/ri';
+import {AiFillHome} from "react-icons/ai"
+import {
+   
+    RiAccountPinCircleFill,
+    RiMoneyDollarCircleLine
+} from "react-icons/ri"
+import {FaLayerGroup} from "react-icons/fa"
+
 
 export const HrSidebarData  = [
     {
         title: 'HR DashBoard',
         path: '/',
-        icon: <AiIcons.AiFillHome />,
+        icon: <AiFillHome />,
        
     },
     {
         title: 'Department',
         path: '/department',
-        icon: <RiIcons.RiAccountPinCircleFill />,
+        icon: <RiAccountPinCircleFill />,
       
     },
     {
         title: 'Position',
         path: '/position',
-        icon: <RiIcons.RiMoneyDollarCircleLine />,
+        icon: <RiMoneyDollarCircleLine />,
         
     },
     {
         title: 'Employee',
         path: '/employee',
-        icon: <FaIcons.FaLayerGroup />,
+        icon: <FaLayerGroup />,
         
     },
     {
         title:"Become an Employee",
         path:"/become-an-employee",
-        icon: <FaIcons.FaLayerGroup />,
+        icon: <FaLayerGroup />,
     },
     {
         title:"Employee Form",
         path:"/employee-form",
-        icon: <FaIcons.FaLayerGroup />,
+        icon: <FaLayerGroup />,
     }
 
 ]
