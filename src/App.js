@@ -111,6 +111,7 @@ import DepartmentDetail from "./pages/AdminTeamAccount/Department/DepartmentDeta
 import EditDepartment from "./pages/AdminTeamAccount/Department/EditDepartment/EditDepartment";
 import EditPosition from "./pages/AdminTeamAccount/Position/EditPosition/EditPosition";
 import XzonebetFootball from "./pages/Xzonebetfootball/XzonebetFootball";
+import AllSport from "./pages/AllSport/AllSport";
 function App() {
   const DashboardRouting = () => {
     if (type === "admin") {
@@ -434,7 +435,10 @@ function App() {
           <Route exact path="/position" element={<HrPosition />} />
           <Route exact path="/employee" element={<HrEmployee />} />
           <Route path="/odoo-function-detail" element={<DetailFunction />} />
+          {/* ======================================All Sports===================================================== */}
+          <Route path="/all-sports" exact element={<AllSport />} />
           {/* ---------------Xzonebet Football------------------ */}
+
           <Route
             exact
             path="xzonebet-football"

@@ -16,7 +16,7 @@ const OpenbetResult = () => {
         {loading ? (
           <Grid container rowSpacing={3}>
             {data.map((item, index) => (
-                <Grid item xs={4}>
+                <Grid item xs={4} key={index}>
                   <ResultCard key={index} resultData={item} />
                 </Grid>
               ))}
