@@ -28,7 +28,7 @@ const MasterDepositCancel = ({ open, handleClose,setNum,id,num,alertToast}) => {
   const confirmHandler = async(e)=>{
   e.preventDefault();
   if(!accounting_remark){
-    alertToast(toast.warning,"Please enter remark")
+    toast.warning("Please enter remark")
     return;
   }
   try{
@@ -40,13 +40,13 @@ const MasterDepositCancel = ({ open, handleClose,setNum,id,num,alertToast}) => {
   if(data.status="success"){
     handleClose();
     setNum(num+1);
-    alertToast(toast.success(data.message));
+    toast.success(data.message);
     setAccounting_remark('');
     return;
   }
   if(data.status="error"){
     handleClose();
-    alertToast(toast.error(data.message));
+  toast.error(data.message);
     setAccounting_remark('');
     return;
   }
