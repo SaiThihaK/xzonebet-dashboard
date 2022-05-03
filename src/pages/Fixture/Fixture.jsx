@@ -91,7 +91,7 @@ const Fixture = () => {
       .catch(function (error) {
         console.error(error);
       });
-  }, [countryName]);
+  }, []);
 
 
   const filterData = () => {

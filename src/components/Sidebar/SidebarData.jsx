@@ -9,6 +9,7 @@ import {
 import {IoIosArrowForward,IoIosFootball} from "react-icons/io"
 import {FaLayerGroup,FaUserFriends} from "react-icons/fa"
 import {AiFillSetting } from "react-icons/ai"
+import {MdSportsBasketball} from "react-icons/md"
 export const SidebarData = [
     {
         title: 'DashBoard',
@@ -231,6 +232,21 @@ export const SidebarData = [
             },
            
         ]
+    },
+    {
+        title: 'All Sports',
+        path: '/all-sports',
+        icon: <MdSportsBasketball />,
+        // iconClosed: <RiArrowDownSFill/>,
+        // iconOpened: <RiArrowUpSFill/>,
+        // subNav : [
+        //     {
+        //         title: 'Football Setting',
+        //         path: '/game-setting/football-setting',
+        //         icon: <IoIosArrowForward />,
+        //     },
+           
+        // ]
     },
     {
         title: 'Pre-bet',

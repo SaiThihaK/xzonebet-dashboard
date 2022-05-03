@@ -1,0 +1,12 @@
+.btn-container{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.card-body{
+    padding: 20px;
+}
+.table-margin{
+margin-top: 20px;
+}
