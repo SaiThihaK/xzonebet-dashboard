@@ -1,0 +1,17 @@
+.form-container,
+.btn-container {
+  margin-top: 20px;
+}
+.form-label {
+  margin-bottom: 5px;
+}
+.btn-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

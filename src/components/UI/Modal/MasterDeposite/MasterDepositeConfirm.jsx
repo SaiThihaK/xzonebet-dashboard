@@ -33,7 +33,7 @@ const MasterDepositeConfirm = ({ open, handleClose,id,submitHandler,handleAmmoun
             Enter the amount
           </Typography>
           <form action="">
-            <TextField sx={{width:"100%",margin:"10px 0px"}} label="Ammount" onChange={handleAmmount}  />
+            <TextField sx={{width:"100%",margin:"10px 0px"}} label="Ammount" onChange={handleAmmount} type="number"  />
             <Stack
               direction="row"
               spacing={3}
