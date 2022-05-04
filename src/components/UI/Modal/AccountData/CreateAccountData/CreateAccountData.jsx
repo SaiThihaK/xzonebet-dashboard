@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { TextField, MenuItem, Select,FormControl, Button } from "@mui/material";
 import classes from "./CreateAccountData.module.css"
-import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import Date from "./Date";
-
+// import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
+// import AdapterDateFns from '@mui/lab/AdapterDateFns';
+// import LocalizationProvider from '@mui/lab/LocalizationProvider';
+// import Date from "./Date";
+import {getResDate} from "../../../../../Controller/ChangeDate"
 const accountTitle = [
   {name:"NetWorth"},
   {name:"Betting"},
@@ -38,6 +38,14 @@ const CreateAccountDataModal = ({
    const [number,setNumber] = useState("");
    const [description,setDescription] = useState("");
    const [att_File,setAtt_File] = useState();
+
+   const [time,setTime] = useState("");
+    
+   useEffect(()=>{
+ let date =new Date();
+ setTime(date.toLocaleDateString());
+   },[]);
+
   return (
     <div>
       <Modal
@@ -50,14 +58,16 @@ const CreateAccountDataModal = ({
           <Typography className={classes["title"]} id="modal-modal-title" variant="h6" component="h2" >
             Create Account Data
           </Typography>
-        
+         <div className={classes["center-date"]}>
+        <p>{time}</p>
+         </div>
          <AccountTitle account_title={account_title} setAccount_title={setAccount_title} />
          <Account account={account} setAccount={setAccount} />
         
-         <div  className={classes["form-control"]}>
+         {/* <div  className={classes["form-control"]}>
          <p>Date</p>
          <Date />
-         </div>
+         </div> */}
          <Number number={number} setNumber={setNumber} />
          <AttachFile att_File={att_File} setAtt_File={setAtt_File} />
          <Description description={description} setDescription={setDescription} />
@@ -98,7 +108,7 @@ const AccountTitle = ({account_title,setAccount_title})=>{
 const Account = ({account,setAccount})=>{
   return(
     <div className={classes["form-control"]}>
-    <p>Account</p>
+    <p>Amount</p>
     <FormControl fullWidth>
     <TextField size="small" value={account} onChange={(e)=>{setAccount(e.target.value)}} />
     </FormControl>
@@ -109,7 +119,7 @@ const Account = ({account,setAccount})=>{
 const Number = ({number,setNumber})=>{
   return(
     <div className={classes["form-control"]}>
-    <p>Number</p>
+    <p>Account Number</p>
     <FormControl fullWidth>
     <TextField size="small" value={number} onChange={(e)=>{setNumber(e.target.value)}} />
     </FormControl>
