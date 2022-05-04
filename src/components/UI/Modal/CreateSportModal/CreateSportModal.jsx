@@ -11,6 +11,8 @@ import { toast } from "react-toastify";
 
 const style = {
   position: "absolute",
+  overflowY: "auto",
+  maxHeight: "calc(100vh - 150px)",
   top: "50%",
   left: "60%",
   transform: "translate(-50%, -50%)",

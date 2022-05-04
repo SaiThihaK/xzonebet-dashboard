@@ -23,6 +23,8 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 600,
   bgcolor: "background.paper",
+  overflowY: "auto",
+  maxHeight: "calc(100vh - 150px)",
   // border: "1px solid #FFF",
   borderRadius: "10px",
   p: 4,

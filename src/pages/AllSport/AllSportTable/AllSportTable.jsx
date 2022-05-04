@@ -13,6 +13,7 @@ export default function AllSportTable({data,render,setRender}) {
 const [open,setOpen] = React.useState(false);
 const openHandler = ()=>setOpen(true);
 const handleClose = ()=>setOpen(false);
+const [id,setId] = React.useState("");
 const deleteHandler = async(id)=>{
   try{
     const response = await axios.request(DeleteMethod(`api/sport-categories/${id}`));
@@ -67,7 +68,7 @@ const deleteHandler = async(id)=>{
       renderCell: (params) => {
           return (
           <Stack direction="row" spacing={4} style={{display:"flex",justifyContent:"center"}}>
-           <IconButton onClick={()=>openHandler()}><Edit/></IconButton>
+           <IconButton onClick={()=>{openHandler();setId(params.row.id)}}><Edit/></IconButton>
           <IconButton onClick={()=>deleteHandler(params.row.id)}><Delete/></IconButton>    
           </Stack>
           );
@@ -84,7 +85,7 @@ const deleteHandler = async(id)=>{
         columns={columns}
         rowsPerPageOptions={[5]}
       />):(<Nodata />)}
-    <EditSportModal open={open}  handleClose={handleClose} render={render} setRender={setRender} /> 
+    <EditSportModal open={open}  handleClose={handleClose} render={render} setRender={setRender} id={id} /> 
     </div>
   );
 }

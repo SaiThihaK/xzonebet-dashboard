@@ -41,7 +41,7 @@ const Login = () => {
     }
     axios.request(login,login.data = input)
     .then(res => {
-      // console.log(res);
+      console.log("login",res);
       switch(res.data.status){
         case "success":
           // console.log('login success');
