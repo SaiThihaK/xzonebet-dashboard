@@ -24,7 +24,7 @@ const style = {
   width: 600,
   bgcolor: "background.paper",
   overflowY: "auto",
-  maxHeight: "calc(100vh - 150px)",
+  maxHeight: "calc(100vh - 100px)",
   // border: "1px solid #FFF",
   borderRadius: "10px",
   p: 4,

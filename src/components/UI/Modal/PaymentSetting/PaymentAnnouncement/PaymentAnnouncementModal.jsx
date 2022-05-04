@@ -17,6 +17,8 @@ const style = {
   boxShadow: 24,
   p: 4,
   borderRadius: 3,
+  overflowY: "auto",
+  maxHeight: "calc(100vh - 100px)",
 };
 
 export default function PaymentAnnouncementModal({
