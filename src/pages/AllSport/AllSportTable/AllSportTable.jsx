@@ -83,7 +83,6 @@ const deleteHandler = async(id)=>{
       {data.length !==0 ? ( <DataGrid
         rows={data}
         columns={columns}
-        rowsPerPageOptions={[5]}
       />):(<Nodata />)}
     <EditSportModal open={open}  handleClose={handleClose} render={render} setRender={setRender} id={id} /> 
     </div>

@@ -7,6 +7,7 @@ import classes from "./Department.module.css";
 import DepartmentTable from './DepartmentTable/DepartmentTable';
 import CustomGetFunction from "../../../services/CustomGetFunction"
 import CustomLoading from "../../../components/CustomLoading/CustomLoading"
+import DepartmentDataTable from './DepartmentDataTable/DepartmentDataTable';
 const Department = () => {
     const [render,setRender] = useState(false);
     const navigate = useNavigate();
@@ -26,7 +27,7 @@ const Department = () => {
          </div>
          <div className={classes["table-margin"]}>
          {
-           loading ? ( <DepartmentTable name position status percentage salary data={data} render={render} setRender={setRender} />):(<CustomLoading />)
+           loading ? ( <DepartmentDataTable  data={data} render={render} setRender={setRender} />):(<CustomLoading />)
          }
          </div>
         
