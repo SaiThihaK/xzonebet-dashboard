@@ -137,6 +137,7 @@ export default function PaymentAccountModal({
         onClose={handleClose}
         closeAfterTransition
         BackdropComponent={Backdrop}
+        disableScrollLock={true}
         BackdropProps={{
           timeout: 500,
         }}
