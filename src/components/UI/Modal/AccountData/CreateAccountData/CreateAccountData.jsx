@@ -3,13 +3,13 @@ import Box from "@mui/material/Box";
 
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import { TextField, MenuItem, Select,FormControl, Button } from "@mui/material";
+import { TextField, MenuItem, Select,FormControl, Button, FormGroup, FormControlLabel,Checkbox, Stack } from "@mui/material";
 import classes from "./CreateAccountData.module.css"
 // import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
 // import AdapterDateFns from '@mui/lab/AdapterDateFns';
 // import LocalizationProvider from '@mui/lab/LocalizationProvider';
 // import Date from "./Date";
-import {getResDate} from "../../../../../Controller/ChangeDate"
+
 const accountTitle = [
   {name:"NetWorth"},
   {name:"Betting"},
@@ -38,8 +38,8 @@ const CreateAccountDataModal = ({
    const [number,setNumber] = useState("");
    const [description,setDescription] = useState("");
    const [att_File,setAtt_File] = useState();
-
    const [time,setTime] = useState("");
+   const [value,setValue] = useState("");
     
    useEffect(()=>{
  let date =new Date();
@@ -70,6 +70,7 @@ const CreateAccountDataModal = ({
          </div> */}
          <Number number={number} setNumber={setNumber} />
          <AttachFile att_File={att_File} setAtt_File={setAtt_File} />
+         <OnOff  value={value} setValue={setValue} />
          <Description description={description} setDescription={setDescription} />
      
         <div style={{display:"flex",justifyContent:"flex-end",marginTop:20}}>
@@ -119,7 +120,7 @@ const Account = ({account,setAccount})=>{
 const Number = ({number,setNumber})=>{
   return(
     <div className={classes["form-control"]}>
-    <p>Account Number</p>
+    <p>Vocher Number</p>
     <FormControl fullWidth>
     <TextField size="small" value={number} onChange={(e)=>{setNumber(e.target.value)}} />
     </FormControl>
@@ -149,3 +150,18 @@ const Description = ({description,setDescription})=>{
     </div>
   )
 }
+
+const OnOff = ({value,setValue})=>{
+  return(
+    <div className={classes["form-control"]}>
+      <p></p>
+      <FormControl fullWidth>
+        <Select size="small" value={value} onChange={(e)=>setValue(e.target.value)}>
+          <MenuItem value="On">On</MenuItem>
+          <MenuItem value="Off">Off</MenuItem>
+        </Select>
+      </FormControl>
+    </div>
+  )
+}
+

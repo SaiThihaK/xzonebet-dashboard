@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import CustomLoading from '../../components/CustomLoading/CustomLoading';
 import PageTitleCard from "../../components/UI/PageTitleCard/PageTitleCard"
 import CustomGetFunction from '../../services/CustomGetFunction';
+import DepartmentDataTable from '../AdminTeamAccount/Department/DepartmentDataTable/DepartmentDataTable';
 import DepartmentTable from '../AdminTeamAccount/Department/DepartmentTable/DepartmentTable';
 import classes from "./HrDepartment.module.css"
 const HrDepartment = () => {
@@ -24,7 +25,7 @@ const HrDepartment = () => {
          </div>
          <div className={classes["table-margin"]}>
          {
-          loading?(<DepartmentTable data={data} render={render} setRender={setRender} />)
+          loading?(<DepartmentDataTable data={data} render={render} setRender={setRender} />)
           :(<CustomLoading  />)
          } 
          </div>

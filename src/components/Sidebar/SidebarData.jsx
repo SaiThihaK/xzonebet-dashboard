@@ -44,41 +44,32 @@ export const SidebarData = [
         ]
     },
     
-    {
-        title: 'Account',
-        path: '/account',
-        icon: <RiAccountPinCircleFill />,
-        iconClosed: <RiArrowDownSFill/>,
-        iconOpened: <RiArrowUpSFill/>,
-        subNav : [
+
             {
                 title: 'Super Master',
                 path: '/account/super-master',
-                icon: <IoIosArrowForward />,
+                icon: <RiGroupLine />,
             },
             {
                 title: 'Master',
                 path: '/account/master',
-                icon: <IoIosArrowForward />,
+                icon: <RiGroupLine />,
             },
             {
                 title: 'Agent',
                 path: '/account/agent',
-                icon: <IoIosArrowForward />,
+                icon: <RiGroupLine />,
             },
             {
                 title: 'Affiliate Agent',
                 path: '/account/affiliate-agent',
-                icon: <IoIosArrowForward />,
+                icon: <RiGroupLine />,
             },
             {
                 title: 'User',
                 path: '/account/user',
-                icon: <IoIosArrowForward />,
+                icon: <RiGroupLine />,
             },
-            
-        ]
-    },
     {
         title: 'Accounting',
         path: '/accounting',
