@@ -10,9 +10,6 @@ import axios from "axios"
 import { regexEmail, regexPhone, } from "../../Controller/Validation";
 import ConfirmCodeModal from "../ConfirmCodeModal/ConfirmCodeModal";
 
-
-
-
 const style = {
   position: "absolute",
   top: "50%",

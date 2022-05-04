@@ -5,7 +5,7 @@
 }
 .form-control p{
     width: 200px;
-    font-size: 18px;
+    font-size: 16px;
     margin-top: 5px;
 }
 
@@ -21,4 +21,13 @@ textarea{
     font-size: 18px;
     border:1px solid rgb(158, 157, 157);
     border-radius: 5px;
+}
+.center-date p{
+    font-size: 18px;
+    font-weight: 700;
+}
+.center-date{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
