@@ -22,6 +22,8 @@ const style = {
   minHeight:380,
   bgcolor: "background.paper",
   borderRadius: "0.5rem",
+  overflowY: "auto",
+  maxHeight: "calc(100vh - 100px)",
   p: 4,
 };
 

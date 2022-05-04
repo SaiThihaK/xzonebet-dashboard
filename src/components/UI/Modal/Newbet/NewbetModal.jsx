@@ -31,6 +31,8 @@ const style = {
   bgcolor: "background.paper",
   borderRadius: "0.5rem",
   p: 4,
+  overflowY: "auto",
+  maxHeight: "calc(100vh - 100px)",
 };
 
 const NewbetModal = ({ open, bettingData, closeHandler }) => {

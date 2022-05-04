@@ -21,6 +21,8 @@ const ConnectChatModal = ({
     left: "60%",
     transform: "translate(-50%, -50%)",
     width: 400,
+    overflowY: "auto",
+    maxHeight: "calc(100vh - 100px)",
     bgcolor: "background.paper",
     border: "1px solid #FFF",
     borderRadius: "0.5rem",

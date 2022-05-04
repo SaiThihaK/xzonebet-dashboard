@@ -16,6 +16,8 @@ const MaungSettingEdit = ({ open, handleClose,title,btnName,btnClick }) => {
     bgcolor: "background.paper",
     border: "1px solid #FFF",
     borderRadius: "0.5rem",
+    overflowY: "auto",
+  maxHeight: "calc(100vh - 100px)",
     p: 4,
   };
   return (

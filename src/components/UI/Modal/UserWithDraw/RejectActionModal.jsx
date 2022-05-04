@@ -29,6 +29,8 @@ const RejectActionModal = ({
     border: "1px solid #FFF",
     borderRadius: "0.5rem",
     p: 4,
+    overflowY: "auto",
+    maxHeight: "calc(100vh - 100px)",
   };
 
   const [remark,setRemark] = useState("");
