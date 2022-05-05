@@ -9,13 +9,13 @@ const UserDetail = () => {
   return (
   <PageTitleCard title="User Detail">
       <div className={classes["card-body"]}>
-      <SuperMasterDesc />
+      <SuperMasterDesc master agent />
       </div>
       <Stack direction="row" 
       style={{display:"flex",justifyContent:"center",paddingBottom:20}}
       spacing={6}
       >
-    <Button variant="contained">Bet List</Button>
+    <Button variant="contained">Bet History</Button>
     <Button variant="contained" onClick={()=>{navigate("/deposite-withdraw-table")}}>Deposite/WithDraw</Button>
       </Stack>
   </PageTitleCard>

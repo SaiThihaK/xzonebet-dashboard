@@ -1,47 +1,33 @@
-import { Card, Grid, List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
+import { Button } from '@mui/material'
 import React from 'react'
 import PageTitleCard from '../../../components/UI/PageTitleCard/PageTitleCard'
-import classes from "./UserDetailDesTable.module.css"
-import { Payment } from '@mui/icons-material'
+import classes from "./UserDetailDesTable.module.css";
+import {useState} from "react"
+
+import UserWithDrawTable from '../../../components/Table/UserWithDraw/UserWithDraw';
+import AgentDeposite from '../../../Dashboard/AgentDashboard/Page/Deposite/AgentDeposite/AgentDeposite';
+import MDepositeTable from '../../../components/Table/MDepostie/MDepositeTable';
+
 const UserDetailDesTable = () => {
- const MenuItem = [
-{
-     name:"WithDraw"
-},
-{
-    name:"Deposite"
-}
-]
+ const [isDeposite,setIsDeposite] = useState(false);
   return (
     <PageTitleCard title="User Deposite/WithDraw">
         <div className={classes["card-body"]}>
-        <Grid container spacing={3}>
-        <Grid item xs={4}>
-        <Card>
-     <List
-      sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper',padding:"10px" }}
-      component="nav"
-    >
-        {MenuItem.map((item,index)=>(
-            <ListItemButton key={index} 
-            sx={{marginBottom:1}}
-            >
-                <ListItemIcon>
-                    <Payment className={classes["list-icon"]}/>
-                </ListItemIcon>
-                <ListItemText primary={item.name}  />
-            </ListItemButton>
-        ))}
-    </List>
-        </Card>
-        </Grid>
-        <Grid xs={8}>
-            <Card>
-                Hello
-            </Card>
-        </Grid>
-        </Grid>
+        <div className={classes["btn-container"]}>
+        <Button variant="outlined" onClick={()=>setIsDeposite(!isDeposite)}>
+       {
+           isDeposite ? "WithDraw" : "Deposite"
+       }
+        </Button>
+        
         </div>
+        <div className={classes["table-margin"]}>
+          {
+              isDeposite ? <MDepositeTable/> : <UserWithDrawTable />
+          }
+        </div>
+        </div>
+      
     </PageTitleCard>
   )
 }
