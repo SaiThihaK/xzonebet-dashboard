@@ -112,6 +112,8 @@ import EditDepartment from "./pages/AdminTeamAccount/Department/EditDepartment/E
 import EditPosition from "./pages/AdminTeamAccount/Position/EditPosition/EditPosition";
 import XzonebetFootball from "./pages/Xzonebetfootball/XzonebetFootball";
 import AllSport from "./pages/AllSport/AllSport";
+import UserDetail from "./pages/Users/UserDetail/UserDetail";
+import UserDetailDesTable from "./pages/Users/UserDetailDesTable/UserDetailDesTable";
 function App() {
   const DashboardRouting = () => {
     if (type === "admin") {
@@ -320,6 +322,16 @@ function App() {
             element={<ActiveUser />}
           />
           <Route path="/account/user/all-user" exact element={<AllUser />} />
+          <Route
+            path="/account/user/user-detail/:id"
+            exact
+            element={<UserDetail />}
+          />
+          <Route
+            exact
+            path="/deposite-withdraw-table"
+            element={<UserDetailDesTable />}
+          />
           {/* Unit Setting */}
           <Route
             exact
@@ -604,6 +616,11 @@ function App() {
             element={<ActiveUser />}
           />
           <Route path="/account/user/all-user" exact element={<AllUser />} />
+          <Route
+            path="/account/user/user-detail/:id"
+            exact
+            element={<UserDetail />}
+          />
           <Route path="/profit" exact element={<Profit />} />
           <Route path="*" element={<Notfound />} />
         </Routes>

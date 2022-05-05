@@ -1,14 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { logoutHandler } from "../../../components/Sidebar/Sidebar";
 import Card from "../../../components/UI/Card";
-import { getMethod } from "../../../services/api-services";
-import UserListTable from "../UserListTable/UserListTable";
 import classes from "./ActiveUsers.module.css";
 import CustomGetFunction from "../../../services/CustomGetFunction"
+import UserDataGridTable from "../UserDataGridTable/UserDataGridTable";
+import CustomLoading from "../../../components/CustomLoading/CustomLoading";
 const ActiveUsers = () => {
-  const [allUsers,setAllUsers] = useState([]);
-  const {data} = CustomGetFunction('api/users?sortColumn=id&sortDirection=desc&limit=30',[]);
+
+  const {data,loading} = CustomGetFunction('api/users?sortColumn=id&sortDirection=desc&limit=30',[]);
 
  
   return (
@@ -18,7 +17,9 @@ const ActiveUsers = () => {
           <h1 className={classes["card-title"]}>Active Users</h1>
         </div>
         <div className={classes["card-body"]}>
-            <UserListTable  allUsers={data} />
+          {
+            loading ? <UserDataGridTable data={data} /> :<CustomLoading />
+          }
         </div>
       </Card>
     </div>
