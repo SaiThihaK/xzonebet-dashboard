@@ -2,7 +2,8 @@ import axios from "axios";
 import React from "react";
 import classes from "./SuperMasterDesc.module.css";
 
-const SuperMasterDesc = ({userInfo}) => {
+const SuperMasterDesc = (props) => {
+  const {userInfo,master,agent} = props;
   return (
     <div>
       <div className={classes["agent-user-image-group"]}>
@@ -29,6 +30,16 @@ const SuperMasterDesc = ({userInfo}) => {
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">City </label>:<p>&nbsp;&nbsp;{userInfo?.city}</p>
         </div>
+        {
+          master && <div className={classes["form-group-desc"]}>
+          <label htmlFor="">Master </label>:<p>&nbsp;&nbsp;1006</p>
+        </div>
+        }
+        {
+          agent && <div className={classes["form-group-desc"]}>
+          <label htmlFor="">Agent </label>:<p>&nbsp;&nbsp;1007</p>
+        </div>
+        }
       </div>
     </div>
   );
