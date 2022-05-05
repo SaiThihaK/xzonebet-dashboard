@@ -43,33 +43,121 @@ export const SidebarData = [
             },
         ]
     },
-    
-
+    {
+        title: 'Bet List',
+        path: '/betlist',
+        icon: <IoIosFootball />,
+        iconClosed: <RiArrowDownSFill/>,
+        iconOpened: <RiArrowUpSFill/>,
+        subNav : [
             {
-                title: 'Super Master',
-                path: '/account/super-master',
-                icon: <RiGroupLine />,
+                title: 'Football',
+                path: '/betlist/football',
+                icon: <IoIosArrowForward />,
             },
             {
-                title: 'Master',
-                path: '/account/master',
-                icon: <RiGroupLine />,
+                title: '2D',
+                path: '/betlist/2d',
+                icon: <IoIosArrowForward />,
             },
             {
-                title: 'Agent',
-                path: '/account/agent',
-                icon: <RiGroupLine />,
+                title: '3D',
+                path: '/betting/3d',
+                icon: <IoIosArrowForward />,
+            },
+        ]
+    },
+    {
+        title: 'Payment Setting',
+        path: '/payment-setting',
+        icon: <AiFillSetting />,
+        iconClosed: <RiArrowDownSFill/>,
+        iconOpened: <RiArrowUpSFill/>,
+        subNav : [
+            {
+                title: 'Payment Type',
+                path: '/payment-setting/payment-value',
+                icon: <IoIosArrowForward />,
             },
             {
-                title: 'Affiliate Agent',
-                path: '/account/affiliate-agent',
-                icon: <RiGroupLine />,
+                title: 'Payment Provider',
+                path: '/payment-setting/payment-provider',
+                icon: <IoIosArrowForward />,
             },
             {
-                title: 'User',
-                path: '/account/user',
-                icon: <RiGroupLine />,
+                title: 'Payment Account',
+                path: '/payment-setting/payment-account',
+                icon: <IoIosArrowForward />,
             },
+           
+            {
+                title: 'Payment  Announcement',
+                path: '/payment-setting/payment-announcement',
+                icon: <IoIosArrowForward />,
+            },
+        ]
+    },
+    {
+        title:"Unit Setting",
+        path:"unit-setting",
+        icon: <AiFillSetting />,
+        iconClosed: <RiArrowDownSFill/>,
+         iconOpened: <RiArrowUpSFill/>,
+         subNav : [
+             {
+                 title: 'Create Unit',
+                 path: '/unit-setting/create-unit',
+                 icon: <IoIosArrowForward />,
+             },
+             {
+                 title: 'Unit Value',
+                 path: '/unit-setting/unit-value',
+                 icon: <IoIosArrowForward />,
+             },
+             {
+                 title: 'Currency',
+                 path: '/unit-setting/currency',
+                 icon: <IoIosArrowForward />,
+             },
+             {
+                 title: 'Unit History',
+                 path: '/unit-setting/unit-history',
+                 icon: <IoIosArrowForward />,
+             },
+            
+         ]
+     },
+     {
+        title: 'Super Master',
+        path: '/account/super-master',
+        icon: <RiGroupLine />,
+    },
+    {
+        title: 'Master',
+        path: '/account/master',
+        icon: <RiGroupLine />,
+    },
+    {
+        title: 'Agent',
+        path: '/account/agent',
+        icon: <RiGroupLine />,
+    },
+    {
+        title: 'Affiliate Agent',
+        path: '/account/affiliate-agent',
+        icon: <RiGroupLine />,
+    },
+    {
+        title: 'User',
+        path: '/account/user',
+        icon: <RiGroupLine />,
+    },
+    {
+        title: "Become A Partner",
+        path: "/become-an-agent",
+        icon: <RiAccountPinCircleFill/>
+    },
+            
     {
         title: 'Accounting',
         path: '/accounting',
@@ -119,96 +207,6 @@ export const SidebarData = [
             },
         ]
     },
-    
-    {
-        title: 'Payment Setting',
-        path: '/payment-setting',
-        icon: <AiFillSetting />,
-        iconClosed: <RiArrowDownSFill/>,
-        iconOpened: <RiArrowUpSFill/>,
-        subNav : [
-            {
-                title: 'Payment Type',
-                path: '/payment-setting/payment-value',
-                icon: <IoIosArrowForward />,
-            },
-            {
-                title: 'Payment Provider',
-                path: '/payment-setting/payment-provider',
-                icon: <IoIosArrowForward />,
-            },
-            {
-                title: 'Payment Account',
-                path: '/payment-setting/payment-account',
-                icon: <IoIosArrowForward />,
-            },
-           
-            {
-                title: 'Payment  Announcement',
-                path: '/payment-setting/payment-announcement',
-                icon: <IoIosArrowForward />,
-            },
-        ]
-    },
-    {
-       title:"Unit Setting",
-       path:"unit-setting",
-       icon: <AiFillSetting />,
-       iconClosed: <RiArrowDownSFill/>,
-        iconOpened: <RiArrowUpSFill/>,
-        subNav : [
-            {
-                title: 'Create Unit',
-                path: '/unit-setting/create-unit',
-                icon: <IoIosArrowForward />,
-            },
-            {
-                title: 'Unit Value',
-                path: '/unit-setting/unit-value',
-                icon: <IoIosArrowForward />,
-            },
-            {
-                title: 'Currency',
-                path: '/unit-setting/currency',
-                icon: <IoIosArrowForward />,
-            },
-            {
-                title: 'Unit History',
-                path: '/unit-setting/unit-history',
-                icon: <IoIosArrowForward />,
-            },
-           
-        ]
-    },
-    {
-        title: 'Bet List',
-        path: '/betlist',
-        icon: <IoIosFootball />,
-        iconClosed: <RiArrowDownSFill/>,
-        iconOpened: <RiArrowUpSFill/>,
-        subNav : [
-            {
-                title: 'Football',
-                path: '/betlist/football',
-                icon: <IoIosArrowForward />,
-            },
-            {
-                title: '2D',
-                path: '/betlist/2d',
-                icon: <IoIosArrowForward />,
-            },
-            {
-                title: '3D',
-                path: '/betting/3d',
-                icon: <IoIosArrowForward />,
-            },
-        ]
-    },
-    {
-        title: "Become A Partner",
-        path: "/become-an-agent",
-        icon: <RiAccountPinCircleFill/>
-    },
     {
         title: 'Game Setting',
         path: '/game-setting',
@@ -224,6 +222,7 @@ export const SidebarData = [
            
         ]
     },
+    
     {
         title: 'All Sports',
         path: '/all-sports',
