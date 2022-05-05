@@ -1,14 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { logoutHandler } from "../../../components/Sidebar/Sidebar";
+import CustomLoading from "../../../components/CustomLoading/CustomLoading";
 import Card from "../../../components/UI/Card";
-import { getMethod } from "../../../services/api-services";
 import CustomGetFunction from "../../../services/CustomGetFunction";
-import UserListTable from "../UserListTable/UserListTable";
+import UserDataGridTable from "../UserDataGridTable/UserDataGridTable";
+
 import classes from "./AllUser.module.css";
 const AllUser = () => {
 
-  const {data} = CustomGetFunction('api/users?sortColumn=id&sortDirection=desc&limit=30',[]);
+  const {data,loading} = CustomGetFunction('api/users?sortColumn=id&sortDirection=desc&limit=30',[]);
 
   
   return (
@@ -18,7 +18,9 @@ const AllUser = () => {
           <h1 className={classes["card-title"]}>All Users</h1>
         </div>
         <div className={classes["card-body"]}>
-            <UserListTable allUsers={data}/>
+          {
+            loading ? <UserDataGridTable data={data} /> : <CustomLoading />
+          }
         </div>
       </Card>
     </div>
