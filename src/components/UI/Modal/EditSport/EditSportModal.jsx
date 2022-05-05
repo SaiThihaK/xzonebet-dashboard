@@ -54,7 +54,7 @@ const EditHandler = async()=>{
  formdata.append("img",logo);
  formdata.append("description",description);
  const response = await axios.request(PostMethod(`api/sport-categories/${id}`,formdata));
- console.log(formdata)
+ console.log(response);
   }catch(error){
     toast.error(error.response.data.message);
     if(error.response.data.status==="401"){

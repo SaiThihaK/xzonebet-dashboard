@@ -11,12 +11,13 @@ import classes from "./TransitionHistoryTable.module.css";
 import { BasedColor } from "../../../../../Controller/BasedColor";
 import axios from "axios";
 import { getMethod } from "../../../../../services/api-services";
-import CustomPagination from "../../../../../components/Pagination/CustomPagination";
 import { logoutHandler } from "../../../../../components/Sidebar/Sidebar";
 import CustomGetFunction from "../../../../../services/CustomGetFunction";
-import { ChangeDate } from "../../../../../Controller/ChangeDate";
+import { ChangeDate, getResDate } from "../../../../../Controller/ChangeDate";
 import CustomLoading from "../../../../../components/CustomLoading/CustomLoading";
 import Nodata from "../../../../../components/Nodata/Nodata";
+import { DataGrid } from "@mui/x-data-grid";
+
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor:BasedColor.tableHead,
@@ -68,7 +69,57 @@ const TransitionHistoryTable = () => {
     }
   },[page])
   
-
+  const columns = [
+    {
+  field: "id",
+  headerName: 'ID',
+  width: 100,
+  headerAlign: 'center',
+  editable: false,
+   },
+   {
+    field: "date",
+    headerName: 'Date',
+    width: 200,
+    headerAlign: 'center',
+    editable: false,
+    renderCell:(params)=>ChangeDate(params.row.created_at)
+     },
+     {
+      field: "transfer-amount",
+      headerName: 'Transfer Amount',
+      width: 150,
+      headerAlign: 'center',
+      editable: false,
+      renderCell:(params)=><div  style={userData?.id === params.row.receiver_user.id ? {color:'green'}:{color:"red"}}>
+      {userData?.id===params.row.receiver_user.id ? "+":"-"}{params.row.transfer_amount}
+      </div>
+       },
+       {
+        field: "from",
+        headerName: 'From',
+        width: 150,
+        headerAlign: 'center',
+        editable: false,
+        renderCell:(params)=>params.row.sender_user.name
+         },
+         {
+          field: "to",
+          headerName: 'To',
+          width: 150,
+          headerAlign: 'center',
+          editable: false,
+          renderCell:(params)=>params.row.receiver_user.name
+           },
+           {
+            field: "transition Name-note",
+            headerName: 'Transition Name/Note',
+            width: 300,
+            headerAlign: 'center',
+            editable: false,
+            renderCell:(params)=>params.row.transaction_name || params.row.note
+             },
+  ]
 
 
   return (
@@ -76,7 +127,7 @@ const TransitionHistoryTable = () => {
     {
       loading ? (<div className={classes["table-margin"]}>
         
-        {
+        {/* {
           data.length !==0 ? (<div>
             <TableContainer component={Paper}>
               <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -120,6 +171,10 @@ const TransitionHistoryTable = () => {
             </TableContainer>
             <CustomPagination totalPage={pagination?.meta?.last_page} setPage={setPage} />
             </div>):(<Nodata />)
+        } */}
+       
+        {
+        data.length !== 0 ? (<DataGrid columns={columns} rows={data} />) : (<Nodata />)
         }
         
     </div>):(<CustomLoading />)
