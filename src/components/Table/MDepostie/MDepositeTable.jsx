@@ -20,7 +20,7 @@ import DepositeModal from "../../UI/Modal/DepositeModal/DepositeModal";
 import { useDispatch, useSelector } from "react-redux";
 import { getRender, selectedRender } from "../../../features/render";
 import CustomGetFunction from "../../../services/CustomGetFunction";
-import TableGetFunction from "../../../services/TableGetFunction";
+import CustomLoading from "../../../components/CustomLoading/CustomLoading"
 
 
 
@@ -149,7 +149,7 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
  
 
 
- const {data,pagination} = TableGetFunction(`api/user-deposit?sortColumn=id&sortDirection=desc&limit=10&page=${page}${filterStatus}`,[num,page,filterStatus])
+ const {data,pagination,loading} = CustomGetFunction(`api/user-deposit?sortColumn=id&sortDirection=desc&limit=10&page=${page}${filterStatus}`,[num,page,filterStatus])
 
    const ChangeDate=(date)=>{
     const dateNo=new Date(date);
@@ -158,7 +158,10 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
  
   return (
     <div className={classes["table-margin"]}>
+    {
+      loading ? ( <div className={classes["table-margin"]}>
       <Card>
+       
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700}} aria-label="customized table">
           <TableHead>
@@ -248,7 +251,9 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
      setID={setID}
      setValue={setValue}
      />
-    </div>
+    </div>) : (<CustomLoading />)
+    }
+   </div>
   );
 };
 
