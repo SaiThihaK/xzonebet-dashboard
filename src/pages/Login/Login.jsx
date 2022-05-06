@@ -3,7 +3,7 @@ import axios from "axios";
 import { login } from "../../services/api-services";
 import "./Login.css";
 import ForgetPasswordModal from "../../components/ForgetPasswordModal/ForgetPasswordModal";
-
+import {AiOutlineEye,AiOutlineEyeInvisible} from "react-icons/ai"
 
 function refreshPage() {
   setTimeout(()=>{
@@ -20,7 +20,8 @@ const Login = () => {
   const loginName = useRef();
   const loginPhone = useRef();
   const loginPassword = useRef();
-
+  const [showPassword,setShowPassword] = useState(false);
+  const showPwhandler = ()=>setShowPassword(!showPassword);
   // 
   const [open,setOpen] = useState(false);
   
@@ -59,7 +60,7 @@ const Login = () => {
         default:
       }
     })
-    .catch(err => setErrorUserName( "The selected email is invalid."))
+    .catch(err => setErrorUserName(err.response.data.message))
   },[userloginname,loginpass])
 
 
@@ -98,7 +99,7 @@ const Login = () => {
       {/* ---------------------------Phone Login------------------------------------ */}
               {
                 showPh ?(
-                  <p>
+                  <div>
                   <label>
                     Phone<span>*</span>
                   </label>
@@ -111,10 +112,10 @@ const Login = () => {
                     onChange={loginNameHandler}
                   />
                 <span className="errorMessage">{errorUserName}</span>
-                </p>
+                </div>
                 ) :
               // ----------------------------Email Login-------------------
-                 (<p>
+                 (<div>
                 <label>
                   Email address or id<span>*</span>
                 </label>
@@ -127,35 +128,40 @@ const Login = () => {
                   onChange={loginNameHandler}
                 />
                 <span className="errorMessage">{errorUserName}</span>
-              </p>)
+              </div>)
                }
              
               {/*-----------------------------------Password------------------------- */}
-              <p>
+              <div className="Input-field">
+                
                 <label>
                   Password<span>*</span>
                 </label>
+                {
+                  showPassword ?<AiOutlineEye onClick={showPwhandler}  className="icon"/> : <AiOutlineEyeInvisible className="icon" onClick={showPwhandler}  />
+                }
+                
                 <input
-                  type="password"
                   ref={loginPassword}
                   placeholder="Password"
+                  type={showPassword ? "password" :"type"}
                   required
                   autoComplete="off"
                   onChange={loginNameHandler}
                 />
                 <span className="errorMessage">{errorMsg}</span>
-              </p>
-              <p>
+              </div>
+              <div>
                 <input type="submit" value="Sing In" />
-              </p>
-              <p>
+              </div>
+              <div>
                 <p onClick={handleOpen}>Forget Password?</p>
-              </p>
+              </div>
             </form>
             <div>
               {showPh?
-              ( <p onClick={()=>setshowPh(false)}>
-                login with e-mail</p>):(<p onClick={()=>setshowPh(true)}>login with phone? Click here</p>)
+              ( <div onClick={()=>setshowPh(false)}>
+                login with e-mail</div>):(<p onClick={()=>setshowPh(true)}>login with phone? Click here</p>)
               }
             </div>
           </div>
