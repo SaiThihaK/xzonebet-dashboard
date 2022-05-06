@@ -76,7 +76,7 @@ const deleteHandler = async(id)=>{
     },
    
   ];
-  
+ 
   
   return (
     <div style={{ height:"60vh", width: '100%' }}>

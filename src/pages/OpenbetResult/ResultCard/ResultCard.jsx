@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, CircularProgress, IconButton } from "@mui/material";
 import React, { useState } from "react";
 import Card from "../../../components/UI/Card";
 import { changeTimestamp } from "../../../Controller/ChangeDate";
@@ -7,10 +7,13 @@ import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
 import { PostMethod } from "../../../services/api-services";
 import { logoutHandler } from "../../../components/Sidebar/Sidebar";
+import {BiShow} from "react-icons/bi"
+import Nodata from "../../../components/Nodata/Nodata";
 const ResultCard = ({ resultData }) => {
-  const [dataResult, setDataResult] = useState(null);
+  const [dataResult, setDataResult] = useState([]);
+  const [loading,setLoading] =  useState(true);
   const comfirmHandler = async () => {
-    if (dataResult !== null) {
+    if (dataResult.length !==0) {
       return;
     }
     const options = {
@@ -22,13 +25,16 @@ const ResultCard = ({ resultData }) => {
         "X-RapidAPI-Key": "9b4fb89138mshdc697cc5d45c52fp1daa25jsne2be8889fabc",
       },
     };
+    setLoading(true);
     axios
       .request(options)
       .then(function (response) {
+        setLoading(false)
         setDataResult(response.data.response[0].goals);
       })
       .catch(function (error) {
         console.error(error);
+        setLoading(false)
       });
   };
   const fetchDetail = async () => {
@@ -57,7 +63,7 @@ const ResultCard = ({ resultData }) => {
     }
   };
   return (
-    <div className={classes["card"]} onMouseOver={comfirmHandler}>
+    <div className={classes["card"]} >
       <div className={classes["title"]}>
         <p>Premier League</p>
         <p>
@@ -67,7 +73,7 @@ const ResultCard = ({ resultData }) => {
         </p>
       </div>
       <div className={classes["card-body"]}>
-        <div>
+        <div className={classes["home-team"]}>
           <img
             with="50"
             height="50"
@@ -76,12 +82,14 @@ const ResultCard = ({ resultData }) => {
           />
           <p>{resultData.over_team_data.name}</p>
         </div>
-        <p>
-          {`${dataResult?.home === undefined ? "" : dataResult?.home} ${
-            dataResult?.away === undefined ? "" : dataResult?.away
-          }`}{" "}
-        </p>
-        <div>
+  
+  <div className={classes["goals"]}>
+     <p className={classes["Homegoal"]}>{dataResult?.home === undefined ? "" : dataResult?.home}</p>
+     <p className={classes["bt"]}>-</p>
+     <p className={classes["Awaygoal"]}>{dataResult?.away === undefined ? "" : dataResult?.away}</p>
+  </div>
+
+        <div className={classes["away-team"]}>
           <img
             width="50"
             height="50"
@@ -91,6 +99,8 @@ const ResultCard = ({ resultData }) => {
           <p>{resultData.under_team_data.name}</p>
         </div>
       </div>
+
+
       <div className={classes["btn-container"]}>
         <Button
           onClick={fetchDetail}
@@ -99,6 +109,8 @@ const ResultCard = ({ resultData }) => {
         >
           Confirm
         </Button>
+        <IconButton onClick={comfirmHandler} 
+        ><BiShow /></IconButton>
       </div>
     </div>
   );
