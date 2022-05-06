@@ -39,14 +39,15 @@ export default function EditSportModal({
   const {data} = KSHFunction(`api/sport-categories/${id}`,[id]);
   console.log(data);
 
+
  useEffect(()=>{
-   setname(data?.name);
-   setDescription(data?.description);
+   setname(data?.name || "");
+   setDescription(data?.description || "");
    return ()=>{
      setname("");
      setDescription("");
    }
- },[id])
+ },[id,data])
 const EditHandler = async()=>{
   try{
  let formdata = new FormData();

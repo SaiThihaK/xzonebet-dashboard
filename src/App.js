@@ -114,6 +114,7 @@ import XzonebetFootball from "./pages/Xzonebetfootball/XzonebetFootball";
 import AllSport from "./pages/AllSport/AllSport";
 import UserDetail from "./pages/Users/UserDetail/UserDetail";
 import UserDetailDesTable from "./pages/Users/UserDetailDesTable/UserDetailDesTable";
+import BalanceSheet from "./pages/BalanceSheet/BalanceSheet";
 function App() {
   const DashboardRouting = () => {
     if (type === "admin") {
@@ -315,6 +316,11 @@ function App() {
           <Route path="/accounting/deposit" exact element={<MasterDeposit />} />
           <Route path="/account-title" exact element={<AccountTitle />} />
           <Route path="/account-data" exact element={<AccountData />} />
+          <Route
+            path="/accounting/balance-sheet"
+            exact
+            element={<BalanceSheet />}
+          />
           <Route path="/account/user" exact element={<Users />} />
           <Route
             path="/account/user/active-user"
@@ -797,6 +803,11 @@ function App() {
             path="/accounting/master-deposit"
             exact
             element={<MasterDeposit />}
+          />
+          <Route
+            path="/accounting/balance-sheet"
+            exact
+            element={<BalanceSheet />}
           />
           <Route path="/account/user" exact element={<Users />} />
           <Route

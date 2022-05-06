@@ -180,6 +180,11 @@ export const SidebarData = [
                 path: '/account-data',
                 icon: <IoIosArrowForward />,
             },
+            {
+              title:"Balance Sheet",
+              path:"accounting/balance-sheet",
+              icon: <IoIosArrowForward />,
+            }
            
         ]
     },
