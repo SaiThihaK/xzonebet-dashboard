@@ -166,7 +166,6 @@ const Login = () => {
             </div>
           </div>
         </div>
-        <ForgetPasswordModal open={open} handleClose={handleClose}/>
       </div>
     </div>
   );
