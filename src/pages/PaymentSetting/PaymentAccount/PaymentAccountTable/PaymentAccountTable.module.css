@@ -8,4 +8,6 @@
 }
 .table-margin {
   margin-top: 5px;
+  height: 80vh;
+  width: 100%;
 }
