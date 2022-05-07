@@ -85,7 +85,7 @@ const EmployeeForm = () => {
       end_date:getResDate(expEndDate),
       description:description
     }];
-    console.log("work",work_histories);
+
   let educations = [{
     degree:eduDegree,
     school:eduSchool,
@@ -93,20 +93,24 @@ const EmployeeForm = () => {
     end_date:getResDate(eduEndDate),
     note:note
   }];
-  console.log("education",educations)
+
     try{
       let formdata = new FormData();
-      formdata.append("user_id",userId);
-      formdata.append("department_id",department?.id);
-      formdata.append("position_id",position);
-      formdata.append("avatar",logo);
-      formdata.append("name",name);
-      formdata.append("email",email);
-      formdata.append("phone",phone);
-      formdata.append("address",address);
-      formdata.append("skill",skill);
-      formdata.append("work_histories",work_histories[0]);
-      formdata.append("educations",educations[0]);
+      formdata.append("user_id",JSON.stringify(userId));
+      formdata.append("department_id",JSON.stringify(department?.id));
+      formdata.append("position_id",JSON.stringify(position));
+      formdata.append("avatar",JSON.stringify(logo));
+      formdata.append("name",JSON.stringify(name));
+      formdata.append("email",JSON.stringify(email));
+      formdata.append("phone",JSON.stringify(phone));
+      formdata.append("address",JSON.stringify(address));
+      formdata.append("country",JSON.stringify(country));
+      formdata.append("city",JSON.stringify(city));
+      formdata.append('state',JSON.stringify(state));
+      formdata.append("skill",JSON.stringify(skill));
+      formdata.append("work_histories",JSON.stringify(work_histories));
+      formdata.append("educations",JSON.stringify(educations));
+      console.log("formdata",formdata.getAll());
    const response = await axios.request(PostProvider("api/employees",formdata));
    if(response.data.status==="success"){
      toast.success(response.data.message);
@@ -121,6 +125,7 @@ const EmployeeForm = () => {
      return
    }
    if(response.data.status==="error"){
+    
      toast.error(response.data.message);
      return;
    }
