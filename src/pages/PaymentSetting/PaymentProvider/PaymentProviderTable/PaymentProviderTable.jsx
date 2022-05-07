@@ -100,7 +100,6 @@ const PaymentProviderTable = ({data}) => {
                  </IconButton>
                   </Stack>
     },
-    
   ]
  console.log("data",data);
   return (
