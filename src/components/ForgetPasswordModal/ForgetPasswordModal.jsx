@@ -1,17 +1,19 @@
 import React, { useState } from "react";
-import Box from "@mui/material/Box";
+
 import Modal from "@mui/material/Modal";
 
-import { Button, FormControl, Grid,IconButton, InputAdornment, TextField } from "@mui/material";
-import { Email,  Phone } from "@mui/icons-material";
-import classes from "./ForgetPasswordModal.module.css"
-import {PostMethod} from "../../services/api-services"
-import axios from "axios"
-import { regexEmail, regexPhone, } from "../../Controller/Validation";
-import ConfirmCodeModal from "../ConfirmCodeModal/ConfirmCodeModal";
+import { Button, FormControl, Grid,IconButton, InputAdornment, StepLabel, TextField } from "@mui/material";
+import Box from '@mui/material/Box';
+import Stepper from '@mui/material/Stepper';
+import Step from '@mui/material/Step';
+import StepButton from '@mui/material/StepButton';
+import Typography from '@mui/material/Typography';
+
 
 const style = {
   position: "absolute",
+
+  maxHeight: "calc(100vh - 150px)",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
@@ -24,63 +26,53 @@ const style = {
   p: 4,
 };
 
-const ForgetPasswordModal= ({ open, handleClose}) => {
-const [toggle,setToggle] = useState(true);
-const toggleMail = ()=>setToggle(true);
-const togglePhone = ()=>setToggle(false);
-const [emailValue,setEmailValue] = useState("");
-const [phoneValue,setPhoneValue] = useState("");
-const [error,setError] = useState("");
-const [successMsg,setSuccessMsg] = useState("");
-const [codeOpen,setCodeOpen] = useState(false);
-const codeOpenHandler = ()=>setCodeOpen(true);
-const codeCloseHandler = ()=>setCodeOpen(false);
-// 
+const steps = ['Enter Email or Phone', 'Create an ad group', 'Create an ad'];
 
-const postHandler = async()=>{
-  const api = toggle ? "api/send-email-otp":"api/send-sms-otp";
-  const  body = toggle ? {email:emailValue} : {phoen:phoneValue};
-  setError("");
-  setSuccessMsg("");
-  if(toggle){
-    if(!regexEmail.test(emailValue)){
-      setError("");
-      console.log("checking Email");
-      setError("Invalid Email");
-      return;
-     }
-  }
- if(!toggle){
-  if(regexPhone.test(phoneValue)){
-    setError("");
-     console.log("checking phone")
-     setError("Invalid Phone");
-     return;
-   }
- }
- 
-  try{
-    const response = await axios.request(PostMethod(api,body));
-    console.log(response);
-    if(response.data.status==="success"){
-      setError("");
-      setSuccessMsg(response.data.message);
-      setPhoneValue("");
-      handleClose();
-      codeOpenHandler();
-      return;
+const ForgetPasswordModal= ({ open, handleClose}) => {
+  const [activeStep, setActiveStep] = React.useState(0);
+  const [skipped, setSkipped] = React.useState(new Set());
+
+  const isStepOptional = (step) => {
+    return step === 1;
+  };
+
+  const isStepSkipped = (step) => {
+    return skipped.has(step);
+  };
+
+  const handleNext = () => {
+    let newSkipped = skipped;
+    if (isStepSkipped(activeStep)) {
+      newSkipped = new Set(newSkipped.values());
+      newSkipped.delete(activeStep);
     }
-    if(response.data.status==="error"){
-      setError(response.data.message)
-      return;
+
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    setSkipped(newSkipped);
+  };
+
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
+  const handleSkip = () => {
+    if (!isStepOptional(activeStep)) {
+      // You probably want to guard against something like this,
+      // it should never occur unless someone's actively trying to break something.
+      throw new Error("You can't skip a step that isn't optional.");
     }
-   
-  }catch(error){
-   setError(error.response.data.message);
-   return;
-  }
- 
-}
+
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    setSkipped((prevSkipped) => {
+      const newSkipped = new Set(prevSkipped.values());
+      newSkipped.add(activeStep);
+      return newSkipped;
+    });
+  };
+
+  const handleReset = () => {
+    setActiveStep(0);
+  };
   return (
     <div>
       <Modal
@@ -95,85 +87,62 @@ const postHandler = async()=>{
           <div>
             <h3>PASSWORD RECOVERY</h3>
           </div>
-          <>
-           <Grid container className={classes["grid-container"]}>
-               <Grid item xs={6}>
-               <div className={classes["tab"]} 
-               onClick={toggleMail}
-                style={
-                 toggle? {color:"white",fill:"white",backgroundColor:"var(--secondary-color)"} : {color:"var(--secondary-color)",fill:"var(--secondary-color)",backgroundColor:"white"}
-               }
-               >
-               <Email /> Email 
-               </div>
-               </Grid>
-               <Grid item xs={6}>
-               <div className={classes["tab"]} onClick={togglePhone} 
-               style={
-                 !toggle? {color:"white",fill:"white",backgroundColor:"var(--secondary-color)"} : {color:"var(--secondary-color)",fill:"var(--secondary-color)",backgroundColor:"white"}
-               }
-               >
-               <Phone />Phone
-               </div>
-               </Grid>
-             </Grid>
-            {/* ----------------Input Grid */}
-            <Grid container spacing={1}>
-              <Grid item xs={6} style={{marginTop:30}}>
-                <FormControl fullWidth>
-                <TextField
-              
-                size="small" placeholder={toggle?"Enter Your Email":"Enter Your Phone"} 
-                
-                id="input-with-icon-adornment"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                     {
-                       toggle ? <Email /> : <Phone />
-                     }
-                    </InputAdornment>
-                 ),
-                }}
-                value={toggle?emailValue:phoneValue}
-                onChange={(e)=>{
-                  if(toggle){
-                    setEmailValue(e.target.value);
-                  
-                    return;
-                  }
-                  else{
-                    setPhoneValue(e.target.value);
-                    return
-                  }
-                }}
-                />
-                </FormControl>
+          <Box sx={{ width: '100%' }}>
+      <Stepper activeStep={activeStep}>
+        {steps.map((label, index) => {
+          const stepProps = {};
+          const labelProps = {};
+          if (isStepOptional(index)) {
+            labelProps.optional = (
+              <Typography variant="caption">Optional</Typography>
+            );
+          }
+          if (isStepSkipped(index)) {
+            stepProps.completed = false;
+          }
+          return (
+            <Step key={label} {...stepProps}>
+              <StepLabel {...labelProps}>{label}</StepLabel>
+            </Step>
+          );
+        })}
+      </Stepper>
+      {activeStep === steps.length ? (
+        <React.Fragment>
+          <Typography sx={{ mt: 2, mb: 1 }}>
+            All steps completed - you&apos;re finished
+          </Typography>
+          <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+            <Box sx={{ flex: '1 1 auto' }} />
+            <Button onClick={handleReset}>Reset</Button>
+          </Box>
+        </React.Fragment>
+      ) : (
+        <React.Fragment>
+          <Typography sx={{ mt: 2, mb: 1 }}>Step {activeStep + 1}</Typography>
+          <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+            <Button
+              color="inherit"
+              disabled={activeStep === 0}
+              onClick={handleBack}
+              sx={{ mr: 1 }}
+            >
+              Back
+            </Button>
+            <Box sx={{ flex: '1 1 auto' }} />
+            {isStepOptional(activeStep) && (
+              <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
+                Skip
+              </Button>
+            )}
 
-              </Grid>
-              <Grid item xs={6} style={{marginTop:30}}>
-                <p>
-                To recover your password, enter the {toggle? "E-mail address":"Phone number"} you used for registration.
-                </p>
-                <p className={classes["second-text"]}>
-                We will send you an {toggle ? "E-mail":"SMS"} with further instructions.
-                </p>
-              </Grid>
-            </Grid>
-            {
-              successMsg && (<div style={{display:"flex",justifyContent:"center",alignItems:"center",marginTop:20}}>
-              <p style={{color:"green"}}>{successMsg}</p>
-            </div>)
-            }
-            {
-              error && (<div style={{display:"flex",justifyContent:"center",alignItems:"center",marginTop:20}}>
-                <p style={{color:"var(--secondary-color)"}}>{error}</p>
-              </div>)
-            }
-            <FormControl fullWidth style={{marginTop:30}}>
-              <Button variant="contained" color="error" onClick={postHandler}>Create New Password</Button>
-            </FormControl>
-            </>
+            <Button onClick={handleNext}>
+              {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+            </Button>
+          </Box>
+        </React.Fragment>
+      )}
+    </Box>
         </Box>
        
       </Modal>
