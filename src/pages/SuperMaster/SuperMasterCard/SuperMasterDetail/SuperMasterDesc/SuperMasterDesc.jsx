@@ -8,7 +8,7 @@ const SuperMasterDesc = (props) => {
     <div>
       <div className={classes["agent-user-image-group"]}>
         <img
-          src="https://icon-library.com/images/user-icon-jpg/user-icon-jpg-14.jpg"
+          src={userInfo?.avatar || "https://icon-library.com/images/user-icon-jpg/user-icon-jpg-14.jpg"}
           className={classes["agent-user-image"]}
           alt=""
         />
