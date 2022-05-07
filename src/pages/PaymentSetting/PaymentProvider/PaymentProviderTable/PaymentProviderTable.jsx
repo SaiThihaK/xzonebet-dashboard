@@ -23,6 +23,7 @@ import { PaymentType } from "../../../../features/PaymentSetting";
 import CustomGetFunction from "../../../../services/CustomGetFunction";
 import Nodata from "../../../../components/Nodata/Nodata";
 import { Delete, Edit } from "@mui/icons-material";
+import { DataGrid } from "@mui/x-data-grid";
 const PaymentProviderTable = ({data}) => {
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -49,54 +50,111 @@ const PaymentProviderTable = ({data}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-
+  const columns = [
+    {
+      field: "id",
+      headerName: 'Provider ID',
+      width: 100,
+      headerAlign: 'center',
+      editable: false,
+    },
+    {
+      field: "payment_type",
+      headerName: 'Payment Type',
+      width: 200,
+      headerAlign: 'center',
+      editable: false,
+    },
+    {
+      field: "name",
+      headerName: 'Payment Provider',
+      width: 200,
+      headerAlign: 'center',
+      editable: false,
+    },
+    {
+      field: "logo",
+      headerName: 'Logo',
+      width: 150,
+      headerAlign: 'center',
+      editable: false,
+      renderCell:(params)=> <div className={classes["logo-container"]}>
+                     <Avatar className={classes['logo']} src={params.row.logo} variant="square" alt=""/>
+                    </div>
+    },
+    {
+      field: "action",
+      headerName: 'Action',
+      width: 150,
+      headerAlign: 'center',
+      editable: false,
+      renderCell:(params)=>  <Stack spacing={1} direction="row" sx={{justifyContent: 'flex-end'}}>
+              <IconButton onClick={()=>{
+                   navigate(`/payment-setting/payment-provider/edit/${params.row.id}`)
+                   dispatch(PaymentType(params.row.payment_type))
+                 }}>
+                 <Edit />
+                 </IconButton>
+                 <IconButton>
+                   <Delete />
+                 </IconButton>
+                  </Stack>
+    },
+    
+  ]
+ console.log("data",data);
   return (
     <div className={classes["table-container"]}>
       <div className={classes["table-margin"]}>
         {
-          data?.length !==0 ?( <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 700 }} aria-label="customized table">
-              <TableHead>
-                <TableRow>
-                  <StyledTableCell align="left">No.</StyledTableCell>
-                  <StyledTableCell align="center">Payment Type</StyledTableCell>
-                  <StyledTableCell align="center">Payment Provider</StyledTableCell>
-                  <StyledTableCell align="center">Provider Logo</StyledTableCell>
-                  <StyledTableCell align="right">Action</StyledTableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {data?.map((row,index)=>(
-                     <StyledTableRow key={index}>
-                      <StyledTableCell component="th" scope="row">
-                      {row.id}
-                    </StyledTableCell>
-                    <StyledTableCell align="center" >{row.payment_type}</StyledTableCell>
-                    <StyledTableCell align="center" >{row.name}</StyledTableCell>
-                    <StyledTableCell align="center" >
-                        <div className={classes["logo-container"]}>
-                        <Avatar className={classes['logo']} src={row.logo} variant="square" alt=""/>
-                        </div>
+          data?.length !==0 ?( 
+          // <TableContainer component={Paper}>
+          //   <Table sx={{ minWidth: 700 }} aria-label="customized table">
+          //     <TableHead>
+          //       <TableRow>
+          //         <StyledTableCell align="left">No.</StyledTableCell>
+          //         <StyledTableCell align="center">Payment Type</StyledTableCell>
+          //         <StyledTableCell align="center">Payment Provider</StyledTableCell>
+          //         <StyledTableCell align="center">Provider Logo</StyledTableCell>
+          //         <StyledTableCell align="right">Action</StyledTableCell>
+          //       </TableRow>
+          //     </TableHead>
+          //     <TableBody>
+          //       {data?.map((row,index)=>(
+          //            <StyledTableRow key={index}>
+          //             <StyledTableCell component="th" scope="row">
+          //             {row.id}
+          //           </StyledTableCell>
+          //           <StyledTableCell align="center" >{row.payment_type}</StyledTableCell>
+          //           <StyledTableCell align="center" >{row.name}</StyledTableCell>
+          //           <StyledTableCell align="center" >
+          //               <div className={classes["logo-container"]}>
+          //               <Avatar className={classes['logo']} src={row.logo} variant="square" alt=""/>
+          //               </div>
                         
-                    </StyledTableCell>
-                    <StyledTableCell align="right">
-                    <Stack spacing={1} direction="row" sx={{justifyContent: 'flex-end'}}>
-                    <IconButton onClick={()=>{
-                      navigate(`/payment-setting/payment-provider/edit/${row.id}`)
-                      dispatch(PaymentType(row.payment_type))
-                    }}>
-                    <Edit />
-                    </IconButton>
-                    <IconButton>
-                      <Delete />
-                    </IconButton>
-                     </Stack>
-                    </StyledTableCell>
-                    </StyledTableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>):(<Nodata />)
+          //           </StyledTableCell>
+          //           <StyledTableCell align="right">
+          //           <Stack spacing={1} direction="row" sx={{justifyContent: 'flex-end'}}>
+          //           <IconButton onClick={()=>{
+          //             navigate(`/payment-setting/payment-provider/edit/${row.id}`)
+          //             dispatch(PaymentType(row.payment_type))
+          //           }}>
+          //           <Edit />
+          //           </IconButton>
+          //           <IconButton>
+          //             <Delete />
+          //           </IconButton>
+          //            </Stack>
+          //           </StyledTableCell>
+          //           </StyledTableRow>
+          //       ))}
+          //     </TableBody>
+          //   </Table>
+          // </TableContainer>
+          <div className={classes["margin-table"]}>
+           <DataGrid rows={data} columns={columns} />
+          </div>
+          ):(<Nodata />)
         }
        
       </div>
