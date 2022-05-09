@@ -2,6 +2,7 @@
 import React from "react";
 
 import { styled } from "@mui/material/styles";
+import { DataGrid } from '@mui/x-data-grid';
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
@@ -60,9 +61,59 @@ const PositionTable = ({name,position,salary,percentage,status,data,render,setRe
     }
   }
  console.log("position",data);
+
+ const columns = [
+  {
+    field: "id",
+    headerName: 'No',
+    width: 100,
+    headerAlign: 'center',
+    editable: false,
+
+  },
+  {
+    field:"department_Name",
+    headerName:"Department Name",
+    width:200,
+    headerAlign:"center",
+    editable:false,
+    renderCell:(params)=>params.row?.department?.name
+  },
+  {
+    field:"name",
+    headerName:"Position",
+    width:200,
+    headerAlign:"center",
+    editable:false,
+  },
+  {
+    field:"action",
+    headerName:"Action",
+    width:300,
+    headerAlign:"center",
+    renderCell:(params)=> 
+    <Stack spacing={1} direction="row" >
+    <Button 
+    className={classes["button"]}
+    variant="contained"  onClick={()=>{
+      navigate("/odoo-function-detail")
+    }}>Detail</Button>
+    <IconButton onClick={()=>{
+      banPosition(params.row?.id)
+    }}><Delete />
+    </IconButton>
+    <IconButton
+    onClick={()=>{
+      navigate(`/admin-team-account/position/edit-position/${params.row.id}`)
+    }}
+    ><Edit /></IconButton>
+</Stack>
+  }
+ ]
+
   return (
-    <div>
-        <div className={classes["table-margin"]}>
+    <div className={classes["table-margin"]}>
+        {/* <div className={classes["table-margin"]}>
           {
             data.length !==0 ? (<TableContainer component={Paper}>
               <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -121,7 +172,10 @@ const PositionTable = ({name,position,salary,percentage,status,data,render,setRe
             </TableContainer>):(<Nodata />)
           }
         
-        </div>
+        </div> */}
+        {
+          data.length !==0 ? (<DataGrid columns={columns} rows={data} />):(<Nodata />)
+        }
     </div>
   )
 }
