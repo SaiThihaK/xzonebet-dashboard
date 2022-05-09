@@ -9,13 +9,6 @@ import Nodata from '../../components/Nodata/Nodata';
 import CustomLoading from '../../components/CustomLoading/CustomLoading';
 const HrEmployee = () => {
     const navigate = useNavigate();
-    const employeeData = [
-        {name:"Chief Marketing Manager"},
-        {name:"Digital Marketing"},
-        {name:"Content Writer"},
-        {name:"Graphic Designer"}
-      ]
-    
     const {data,loading} = CustomGetFunction("api/employees",[]); 
     console.log(data);
     
@@ -37,7 +30,7 @@ const HrEmployee = () => {
                 {
                    data?.map((data,index)=>(
                    <Grid item xs={6} key={index}>
-                      <MemberCard partner={data} path={"/account/master/panding-master/detail/"} />
+                      <MemberCard partner={data} path={`/employee/employee-detail/${data.id}`} />
                      </Grid>
                    
                     ))

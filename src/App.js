@@ -115,6 +115,7 @@ import AllSport from "./pages/AllSport/AllSport";
 import UserDetail from "./pages/Users/UserDetail/UserDetail";
 import UserDetailDesTable from "./pages/Users/UserDetailDesTable/UserDetailDesTable";
 import BalanceSheet from "./pages/BalanceSheet/BalanceSheet";
+import EmployeeDetail from "./pages/HrEmployee/EmployeeDetail/EmployeeDetail";
 function App() {
   const DashboardRouting = () => {
     if (type === "admin") {
@@ -842,7 +843,7 @@ function App() {
         </Routes>
       );
     }
-    if (type === "HR") {
+    if (type === "hr") {
       return (
         <Routes>
           <Route path="*" element={<Notfound />} />
@@ -850,6 +851,11 @@ function App() {
           <Route exact path="/department" element={<HrDepartment />} />
           <Route exact path="/position" element={<HrPosition />} />
           <Route exact path="/employee" element={<HrEmployee />} />
+          <Route
+            exacct
+            path="/employee/employee-detail/:id"
+            element={<EmployeeDetail />}
+          />
           <Route
             exact
             path="/admin-team-account/department/create-department"

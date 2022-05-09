@@ -115,7 +115,7 @@ const Sidebar = () => {
       <Submenu item={item} key={index} />
     ))
   }
-  if(dashboard ==="HR"){
+  if(dashboard ==="hr"){
     return HrSidebarData.map((item,index)=>
       (<Submenu item={item} key={index} />)
     )
