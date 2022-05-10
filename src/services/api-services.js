@@ -82,7 +82,7 @@ export const Countries = {
 // -----------------------------------Currency for Currency Exchange-----------------
 export const Currency = {
   method: "GET",
-  url: "https://v6.exchangerate-api.com/v6/f08f01b448f9b740baf0b750/latest/MMK",
+  url: "https://v6.exchangerate-api.com/v6/f08f01b448f9b740baf0b750/latest/USD",
 };
 // ------------------------------------Crypto-Currency-------------------
 export const Crypto = {
