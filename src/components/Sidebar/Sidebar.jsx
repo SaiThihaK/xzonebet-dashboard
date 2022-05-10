@@ -261,7 +261,7 @@ const Sidebar = () => {
           </div>
 }
 {
-          localStorage.getItem("type") !== "admin" && 
+          localStorage.getItem("type") !== "admin"  && 
           <div className={classes.menuItem}>
           <div>
             <span className={classes.sidebarLabel}>Name-{data?.agent?.name || data?.name}</span>
