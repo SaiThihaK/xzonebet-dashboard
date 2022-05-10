@@ -11,7 +11,6 @@ const HrEmployee = () => {
     const navigate = useNavigate();
     const {data,loading} = CustomGetFunction("api/employees",[]); 
     console.log(data);
-    
     return (
     <div>
         <PageTitleCard title="employee">
@@ -28,9 +27,9 @@ const HrEmployee = () => {
             {
               data?.length !== 0 ?( <Grid container spacing={5}>
                 {
-                   data?.map((data,index)=>(
+                   data?.map((employee,index)=>(
                    <Grid item xs={6} key={index}>
-                      <MemberCard partner={data} path={`/employee/employee-detail/${data.id}`} />
+                      <MemberCard partner={employee} path={`/employee/employee-detail/${employee.position?.id}`} />
                      </Grid>
                    
                     ))

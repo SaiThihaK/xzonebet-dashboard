@@ -57,7 +57,7 @@ const [coun,setCoun] = useState([]);
                   =
                 </TableCell>
                 <TableCell align="left">
-                {`${currency[c]} MMK`}
+                {`${currency[c]} USD`}
                   </TableCell>
                   </TableRow>
               ))
