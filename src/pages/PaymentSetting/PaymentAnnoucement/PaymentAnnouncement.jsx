@@ -23,6 +23,9 @@ const handleClose= ()=>setOpen(false);
 const [render,setRender] = useState(false);
 const {data,loading} = CustomGetFunction("api/admin/configuration-setting",[render]);
 console.log(data);
+useEffect(()=>{
+  setTextValue(data?.payment_announcement_withdraw)
+  },[])
 const changeAnnouncement = async()=>{
   try{
 const response = await axios.request(PostMethod("api/admin/change-configuration-setting",{
@@ -55,18 +58,19 @@ return(
             {!open ? (<p className={classes["card-text"]}>
                 {data?.payment_announcement_withdraw}
              </p>):(
-               <textarea   onChange={(e)=>setTextValue(e.target.value)}   rows="8" cols="105" />
+               <textarea value={textValue}   onChange={(e)=>setTextValue(e.target.value)}   rows="8" cols="105" />
                )}
                
         </div>
+   
     </Card>
     {open &&<Stack direction="row" spacing={3} style={{display:"flex",justifyContent:"flex-end",marginTop:20,marginRight:20}}>
-    <Button onClick={()=>{handleClose();changeAnnouncement()}} variant="contained" >Confirm</Button>
+    <Button onClick={()=>{handleClose();changeAnnouncement();}} variant="contained" >Confirm</Button>
     <Button onClick={()=>{handleClose()}}  variant="contained" color="error">Cancel</Button>
     </Stack> }
     {!open &&<Stack direction="row" spacing={3} style={{display:"flex",justifyContent:"flex-end",marginTop:20,marginRight:20}}>
      <Button onClick={handleOpen} variant="contained" color="success">Edit</Button>
-     </Stack> }
+     </Stack> } 
   </div>
   <DepositeAnnouncement data={data} text={depositeText} setText={setDepositeText} render={render} setRender={setRender} />
   </>
