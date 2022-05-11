@@ -17,30 +17,30 @@ export const HrSidebarData  = [
     },
     {
         title: 'Department',
-        path: '/department',
+        path: '/dashboard/department',
         icon: <RiAccountPinCircleFill />,
       
     },
     {
         title: 'Position',
-        path: '/position',
+        path: '/dashboard/position',
         icon: <RiMoneyDollarCircleLine />,
         
     },
     {
         title: 'Employee',
-        path: '/employee',
+        path: '/dashboard/employee',
         icon: <FaLayerGroup />,
         
     },
     {
         title:"Become an Employee",
-        path:"/become-an-employee",
+        path:"/dashboard/become-an-employee",
         icon: <FaLayerGroup />,
     },
     {
         title:"Employee Form",
-        path:"/employee-form",
+        path:"/dashboard/employee-form",
         icon: <FaLayerGroup />,
     }
 

@@ -968,7 +968,7 @@ function App() {
             element={<DetailFunction />}
           />
           <Route
-            path="become-an-employee"
+            path="/dashboard/become-an-employee"
             exact
             element={<BecomeAnEmployee />}
           />
