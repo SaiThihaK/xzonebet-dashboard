@@ -2,13 +2,12 @@ import React from "react";
 import Card from "../../components/UI/Card";
 import Grid from "@mui/material/Grid";
 import classes from "./BecomeAnAgent.module.css";
-
 import TableGetFunction from "../../services/TableGetFunction"
 import MemberCard from "../../components/MemberCard/MemberCard";
 import { become_an_Partner } from "../../services/api-collection";
-
+import CustomLoading from "../../components/CustomLoading/CustomLoading";
 const BecomeAnAgent = () => {
- const {data} = TableGetFunction(become_an_Partner,[]);
+ const {data,loading} = TableGetFunction(become_an_Partner,[]);
  
   return (
     <div className={classes["soccer-setting-container"]}>
@@ -16,7 +15,8 @@ const BecomeAnAgent = () => {
         <div className={classes["card-header"]}>
           <h1 className={classes["card-title"]}>Become an Partner </h1>
         </div>
-        <div className={classes["card-body"]}>
+        {
+          loading ? ( <div className={classes["card-body"]}>
           
           
           {/* <Grid container spacing={3}>
@@ -32,14 +32,16 @@ const BecomeAnAgent = () => {
               
                 data.length !==0 && data.map((master,index)=>(
                  <Grid item xs={6} key={index}>
-                    <MemberCard partner={master} path={"/become-an-agent/detail/"} status />
+                    <MemberCard partner={master} path={"/dashboard/become-an-agent/detail/"} status />
                    </Grid>
                  
                 ))
               }
             </Grid>
           }
-        </div>
+        </div>):(<CustomLoading />)
+        }
+       
       </Card>
     </div>
   );

@@ -27,7 +27,7 @@ const CancelMaster = () => {
             {
               data.length  !==0 && data.map((master,index)=>(
                 <Grid item xs={6} key={index}>
-                  <MemberCard partner={master} path={"/account/master/cancel-master/detail/"} />
+                  <MemberCard partner={master} path={"/dashboard/account/master/cancel-master/detail/"} />
                 </Grid>
   ))
             }

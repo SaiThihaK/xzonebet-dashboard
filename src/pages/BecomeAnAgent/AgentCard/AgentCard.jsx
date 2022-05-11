@@ -53,7 +53,7 @@ const AgentCard = ({
         return;
         }
         if(data.status = "error"){
-          AlertToast(toast.success,data.message);
+          AlertToast(toast.error,data.message);
          return;
         };
       }catch(error){
@@ -75,7 +75,7 @@ const AgentCard = ({
             height="140px"
             image="https://icon-library.com/images/user-icon-jpg/user-icon-jpg-14.jpg"
           />
-          <Link to={`/become-an-agent/detail/${user.id}`}>
+          <Link to={`/dashboard/become-an-agent/detail/${user.id}`}>
             <button className={classes["view-detail"]}>
               <FaIcons.FaEye />
             </button>

@@ -31,7 +31,7 @@ const CompleteAgent = () => {
             {
               data.length  !==0 && data.map((master,index)=>(
                 <Grid item xs={6} key={index}>
-                  <MemberCard partner={master} path={"/account/agent/complete-agent/detail/1"} />
+                  <MemberCard partner={master} path={"/dashboard/account/agent/complete-agent/detail/1"} />
                 </Grid>
   ))
             }
