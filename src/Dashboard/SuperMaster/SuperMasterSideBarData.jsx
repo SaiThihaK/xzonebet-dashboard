@@ -34,7 +34,7 @@ export const SuperMasterSidebarData = [
     },
     {
         title: 'Profile',
-        path: '/super_master/profile',
+        path: '/dashboard/super_master/profile',
         icon: <RiAccountPinCircleFill />,
         iconClosed: <RiArrowDownSFill/>,
         iconOpened: <RiArrowUpSFill/>,
@@ -58,7 +58,7 @@ export const SuperMasterSidebarData = [
     },
     {
         title: 'Profit',
-        path: '/super_master/profit',
+        path: '/dashboard/super_master/profit',
         icon: <RiMoneyDollarCircleLine />,
         iconClosed: <RiArrowDownSFill/>,
         iconOpened: <RiArrowUpSFill/>,
@@ -92,7 +92,7 @@ export const SuperMasterSidebarData = [
     },
     {
         title: 'Transition History',
-        path: '/super_master/transition-history',
+        path: '/dashboard/super_master/transition-history',
         icon: <FaLayerGroup />,
         iconClosed: <RiArrowDownSFill/>,
         iconOpened: <RiArrowUpSFill/>,
@@ -111,12 +111,12 @@ export const SuperMasterSidebarData = [
     },
     {
         title: "Transfer To",
-        path: "/super_master/transfer-to",
+        path: "/dashboard/super_master/transfer-to",
         icon: <FaUserFriends/>
     },
     {
         title: 'User Withdraw',
-        path: '/super_master/user-withdraw',
+        path: '/dashboard/super_master/user-withdraw',
         icon: <RiCoinsLine/>,
         iconClosed: <RiArrowDownSFill/>,
         iconOpened: <RiArrowUpSFill/>,
@@ -143,22 +143,22 @@ export const SuperMasterSidebarData = [
             
             {
                 title: 'Master',
-                path: '/account/master',
+                path: '/dashboard/account/master',
                 icon: <IoIosArrowForward />,
             },
             {
                 title: 'Agent',
-                path: '/account/agent',
+                path: '/dashboard/account/agent',
                 icon: <IoIosArrowForward />,
             },
             {
                 title: 'Affiliate Agent',
-                path: '/account/affiliate-agent',
+                path: '/dashboard/account/affiliate-agent',
                 icon: <IoIosArrowForward />,
             },
             {
                 title: 'User',
-                path: '/account/user',
+                path: '/dashboard/account/user',
                 icon: <IoIosArrowForward />,
             },
             
@@ -166,7 +166,7 @@ export const SuperMasterSidebarData = [
     },
     {
         title: "Become An Agent",
-        path: "/become-an-agent",
+        path: "/dashboard/become-an-agent",
         icon: <RiAccountPinCircleFill/>
     },
     // {
@@ -190,7 +190,7 @@ export const SuperMasterSidebarData = [
     // },
     {
         title: "Bank Account",
-        path: '/payment-setting/payment-account',
+        path: '/dashboard/payment-setting/payment-account',
         icon: <AiFillBank/>
     },
     

@@ -32,7 +32,7 @@ const BecomeAnAgent = () => {
               
                 data.length !==0 && data.map((master,index)=>(
                  <Grid item xs={6} key={index}>
-                    <MemberCard partner={master} path={"/become-an-agent/detail/"} status />
+                    <MemberCard partner={master} path={"/dashboard/become-an-agent/detail/"} status />
                    </Grid>
                  
                 ))

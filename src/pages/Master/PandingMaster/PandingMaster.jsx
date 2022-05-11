@@ -37,7 +37,7 @@ const PandingMaster = () => {
               
                 data.length !==0 && data.map((master,index)=>(
                  <Grid item xs={6} key={index}>
-                    <MemberCard partner={master} path={"/account/master/panding-master/detail/"} />
+                    <MemberCard partner={master} path={"/dashboard/account/master/panding-master/detail/"} />
                    </Grid>
                  
                 ))

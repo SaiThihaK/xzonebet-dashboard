@@ -48,7 +48,7 @@ const ConfirmMaster = () => {
             {
               confirmMasters.length !==0 && confirmMasters.map((master,index)=>(
                 <Grid item xs={6} key={index}>
-                  <MemberCard partner={master} path={"/account/master/confirm-master/detail/"} />
+                  <MemberCard partner={master} path={"/dashboard/account/master/confirm-master/detail/"} />
                 </Grid>
   ))
             }
