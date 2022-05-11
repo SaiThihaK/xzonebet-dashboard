@@ -5,6 +5,7 @@ import ResultCard from "./ResultCard/ResultCard";
 import PageTitleCard from "../../components/UI/PageTitleCard/PageTitleCard";
 import CustomGetFunction from "../../services/CustomGetFunction";
 import CustomLoading from "../../components/CustomLoading/CustomLoading";
+import Nodata from "../../components/Nodata/Nodata"
 const OpenbetResult = () => {
   const [render,setRender] =  useState(false);
   const { data, loading } = CustomGetFunction(
@@ -13,7 +14,8 @@ const OpenbetResult = () => {
   );
   return (
     <PageTitleCard title="Opening bet Result">
-      <div className={classes["card-body"]}>
+      {
+        data.length !==0 ? ( <div className={classes["card-body"]}>
         {loading ? (
           <Grid container rowSpacing={3}>
             {data.map((item, index) => (
@@ -25,7 +27,9 @@ const OpenbetResult = () => {
         ) : (
           <CustomLoading />
         )}
-      </div>
+      </div>):(<Nodata />)
+      }
+     
     </PageTitleCard>
   );
 };
