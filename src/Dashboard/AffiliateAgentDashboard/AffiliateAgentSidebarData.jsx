@@ -33,7 +33,7 @@ export const AffiliateAgentSidebarData  = [
     },
     {
         title: 'Profile',
-        path: '/affiliate-agent/profile',
+        path: '/dashboard/affiliate-agent/profile',
         icon: <RiAccountPinCircleFill />,
         iconClosed: <RiArrowDownSFill/>,
         iconOpened: <RiArrowUpSFill/>,
@@ -57,7 +57,7 @@ export const AffiliateAgentSidebarData  = [
     },
     {
         title: 'Profit',
-        path: '/affiliate-agent/profit',
+        path: '/dashboard/affiliate-agent/profit',
         icon: <RiMoneyDollarCircleLine />,
         iconClosed: <RiArrowDownSFill/>,
         iconOpened: <RiArrowUpSFill/>,
@@ -91,7 +91,7 @@ export const AffiliateAgentSidebarData  = [
     },
     {
         title: 'Transition History',
-        path: '/affiliate-agent/transition-history',
+        path: '/dashboard/affiliate-agent/transition-history',
         icon: <FaLayerGroup />,
         iconClosed: <RiArrowDownSFill/>,
         iconOpened: <RiArrowUpSFill/>,
@@ -110,14 +110,14 @@ export const AffiliateAgentSidebarData  = [
     },
     {
         title: 'Withdraw',
-        path: '/agent/user-withdraw',
+        path: '/dashboard/agent/user-withdraw',
         icon: <RiCoinsLine/>,
         iconClosed: <RiArrowDownSFill/>,
         iconOpened: <RiArrowUpSFill/>,
     },
     {
         title: "Affiliate User",
-        path: "/affiliate-agent/affiliate-user",
+        path: "/dashboard/affiliate-agent/affiliate-user",
         icon: <FaUserFriends/>
     },
     {
@@ -129,19 +129,19 @@ export const AffiliateAgentSidebarData  = [
         subNav : [
             {
                 title: 'User Deposite',
-                path: '/agent/deposite/user-deposite',
+                path: '/dashboard/agent/deposite/user-deposite',
                 icon: <IoIosArrowForward />,
             },
             {
                 title:"Agent Deposite",
-                path:'/agent/deposite/agent-deposite',
+                path:'/dashboard/agent/deposite/agent-deposite',
                 icon: <IoIosArrowForward />,              
             }
         ]
     },
     {
         title: "Betting",
-        path: "/affiliate-agent/betting",
+        path: "/dashboard/affiliate-agent/betting",
         icon: <FaUserFriends/>
     },
 ]
