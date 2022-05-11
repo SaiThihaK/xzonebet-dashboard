@@ -51,6 +51,7 @@ if(response.data.status==="error"){
    
 
  </PageTitleCard>
+ <div className={classes["card-body"]}>
  {open &&<Stack direction="row" spacing={3} style={{display:"flex",justifyContent:"flex-end",marginTop:20,marginRight:20}}>
     <Button onClick={()=>{handleClose();changeAnnouncement();}} variant="contained" >Confirm</Button>
     <Button onClick={()=>{handleClose()}}  variant="contained" color="error">Cancel</Button>
@@ -58,6 +59,7 @@ if(response.data.status==="error"){
     {!open &&<Stack direction="row" spacing={3} style={{display:"flex",justifyContent:"flex-end",marginTop:20,marginRight:20}}>
      <Button onClick={handleOpen} variant="contained" color="success">Edit</Button>
      </Stack> } 
+    </div>
 </>
  
   )
