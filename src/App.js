@@ -867,7 +867,7 @@ function App() {
           />
           <Route path="/dashboard/odoo-function-detail" element={<DetailFunction />} />
           <Route
-            path="become-an-employee"
+            path="/dashboard/become-an-employee"
             exact
             element={<BecomeAnEmployee />}
           />
