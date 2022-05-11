@@ -12,7 +12,7 @@ const Position = () => {
         <div className={classes["body"]}>
         <div className={classes["btn-group"]}>
             <Button 
-            onClick={()=>navigate("/admin-team-account/position/create-position")}
+            onClick={()=>navigate("/dashboard/admin-team-account/position/create-position")}
             variant='contained'
             >Create Position</Button>
         </div>

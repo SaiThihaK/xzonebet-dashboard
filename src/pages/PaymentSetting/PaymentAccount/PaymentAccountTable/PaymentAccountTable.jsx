@@ -116,7 +116,7 @@ const columns = [
     renderCell:(params)=> <Stack spacing={1} direction="row" sx={{justifyContent: 'flex-end'}}>
     <IconButton
     onClick={()=>{
-      navigate(`/payment-setting/payment-account/edit/${params.row.id}`)
+      navigate(`/dashboard/payment-setting/payment-account/edit/${params.row.id}`)
     }}
     ><Edit />
     </IconButton>

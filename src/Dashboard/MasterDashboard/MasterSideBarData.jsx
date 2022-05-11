@@ -32,7 +32,7 @@ export const MasterSidebarData = [
     },
     {
         title: 'Profile',
-        path: '/master/profile',
+        path: '/dashboard/master/profile',
         icon: <IoIosFootball />,
         iconClosed: <RiArrowDownSFill/>,
         iconOpened: <RiArrowUpSFill/>,
@@ -56,12 +56,12 @@ export const MasterSidebarData = [
     },
     {
         title: 'Security Imformation',
-        path: '/master/security-imformation',
+        path: '/dashboard/master/security-imformation',
         icon: <IoIosFootball />,
     },
     {
         title: 'Agent',
-        path: '/master/agent',
+        path: '/dashboard/master/agent',
         icon: <RiAccountPinCircleFill />,
         iconClosed: <RiArrowDownSFill/>,
         iconOpened: <RiArrowUpSFill/>,
@@ -95,7 +95,7 @@ export const MasterSidebarData = [
     },
     {
         title: 'Transition History',
-        path: '/master/transition-history',
+        path: '/dashboard/master/transition-history',
         icon: <FaLayerGroup />,
         iconClosed: <RiArrowDownSFill/>,
         iconOpened: <RiArrowUpSFill/>,
@@ -114,7 +114,7 @@ export const MasterSidebarData = [
     },
     {
         title: "Profit",
-        path: "/master/profit",
+        path: "/dashboard/master/profit",
         icon: <FaUserFriends/>
     },
     // {
@@ -149,7 +149,7 @@ export const MasterSidebarData = [
     // },
     {
         title: 'Transfer To',
-        path: '/master/transfer-to',
+        path: '/dashboard/master/transfer-to',
         icon: <AiFillSetting />,
         iconClosed: <RiArrowDownSFill/>,
         iconOpened: <RiArrowUpSFill/>,
@@ -175,26 +175,26 @@ export const MasterSidebarData = [
         subNav : [
             {
                 title: 'User Deposite',
-                path: '/master/deposite/user-deposite',
+                path: '/dashboard/master/deposite/user-deposite',
                 icon: <IoIosArrowForward />,
             },
             {
                 title:"Agent Deposite",
-                path:'/master/deposite/agent-deposite',
+                path:'/dashboard/master/deposite/agent-deposite',
                 icon: <IoIosArrowForward />,              
             }
         ]
     },
     {
         title: "Bank Setting",
-        path: '/payment-setting/payment-account',
+        path: '/dashboard/payment-setting/payment-account',
         icon: <AiFillSetting />,
         iconClosed: <RiArrowDownSFill/>,
         iconOpened: <RiArrowUpSFill/>,
     },
     {
         title: "Connect with Chat",
-        path: '/connect-with-chat',
+        path: '/dashboard/connect-with-chat',
         icon: <AiFillSetting />,
     },
     

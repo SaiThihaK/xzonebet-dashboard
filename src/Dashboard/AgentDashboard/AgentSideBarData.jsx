@@ -33,7 +33,7 @@ export const AgentSidebarData = [
     },
     {
         title: 'Profile',
-        path: '/agent/profile',
+        path: '/dashboard/agent/profile',
         icon: <RiAccountPinCircleFill />,
         iconClosed: <RiArrowDownSFill/>,
         iconOpened: <RiArrowUpSFill/>,
@@ -57,7 +57,7 @@ export const AgentSidebarData = [
     },
     {
         title: 'Profit',
-        path: '/profit',
+        path: '/dashboard/profit',
         icon: <RiMoneyDollarCircleLine/>,
         iconClosed: <RiArrowDownSFill/>,
         iconOpened: <RiArrowUpSFill/>,
@@ -91,12 +91,12 @@ export const AgentSidebarData = [
     },
     {
         title: 'User',
-        path: '/account/user',
+        path: '/dashboard/account/user',
         icon: <RiAccountPinCircleFill />,
     },
     {
         title: 'Transition History',
-        path: '/agent/transition-history',
+        path: '/dashboard/agent/transition-history',
         icon: <FaLayerGroup />,
         iconClosed: <RiArrowDownSFill/>,
         iconOpened: <RiArrowUpSFill/>,
@@ -115,12 +115,12 @@ export const AgentSidebarData = [
     },
     {
         title: "Transfer To",
-        path: "/agent/transfer-to",
+        path: "/dashboard/agent/transfer-to",
         icon: <FaUserFriends/>
     },
     {
         title: 'User Withdraw',
-        path: '/agent/user-withdraw',
+        path: '/dashboard/agent/user-withdraw',
         icon: <RiCoinsLine/>,
         iconClosed: <RiArrowDownSFill/>,
         iconOpened: <RiArrowUpSFill/>,
@@ -146,19 +146,19 @@ export const AgentSidebarData = [
         subNav : [
             {
                 title: 'User Deposite',
-                path: '/agent/deposite/user-deposite',
+                path: '/dashboard/agent/deposite/user-deposite',
                 icon: <IoIosArrowForward />,
             },
             {
                 title:"Agent Deposite",
-                path:'/agent/deposite/agent-deposite',
+                path:'/dashboard/agent/deposite/agent-deposite',
                 icon: <IoIosArrowForward />,              
             }
         ]
     },
     {
         title: "Bank Account",
-        path: '/payment-setting/payment-account',
+        path: '/dashboard/payment-setting/payment-account',
         icon: <AiFillBank/>
     },
     

@@ -52,14 +52,14 @@ const banDepartment = async(id)=>{
               <Button variant="contained"
               style={{padding:"5px 10px",fontSize:13}} 
                onClick={()=>{
-                navigate(`/admin-team-account/department/department-detail/${params.row.id}`)
+                navigate(`/dashboard/admin-team-account/department/department-detail/${params.row.id}`)
               }}>
                 Detail
               </Button>
               
             <IconButton onClick={()=>{banDepartment(params.row.id)}}><Delete/></IconButton>
                <IconButton
-               onClick={()=>{navigate(`/admin-team-account/department/edit-department/${params.row.id}`)}}
+               onClick={()=>{navigate(`/dashboard/admin-team-account/department/edit-department/${params.row.id}`)}}
                ><Edit /></IconButton>
           </Stack>
           }

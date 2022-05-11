@@ -90,7 +90,7 @@ const PaymentProviderTable = ({data}) => {
       editable: false,
       renderCell:(params)=>  <Stack spacing={1} direction="row" sx={{justifyContent: 'flex-end'}}>
               <IconButton onClick={()=>{
-                   navigate(`/payment-setting/payment-provider/edit/${params.row.id}`)
+                   navigate(`/dashboard/payment-setting/payment-provider/edit/${params.row.id}`)
                    dispatch(PaymentType(params.row.payment_type))
                  }}>
                  <Edit />

@@ -28,17 +28,17 @@ export const SidebarData = [
         subNav : [
             {
                 title: 'Department',
-                path: '/admin-team-account/department',
+                path: '/dashboard/admin-team-account/department',
                 icon: <IoIosArrowForward />,
             },
             {
                 title: 'Position',
-                path: '/admin-team-account/position',
+                path: '/dashboard/admin-team-account/position',
                 icon: <IoIosArrowForward />,
             },
             {
                 title: 'Admin Account',
-                path: '/admin-team-account/admin-account',
+                path: '/dashboard/admin-team-account/admin-account',
                 icon: <IoIosArrowForward />,
             },
         ]
@@ -52,17 +52,17 @@ export const SidebarData = [
         subNav : [
             {
                 title: 'Football',
-                path: '/betlist/football',
+                path: '/dashboard/betlist/football',
                 icon: <IoIosArrowForward />,
             },
             {
                 title: '2D',
-                path: '/betlist/2d',
+                path: '/dashboard/betlist/2d',
                 icon: <IoIosArrowForward />,
             },
             {
                 title: '3D',
-                path: '/betting/3d',
+                path: '/dashboard/betting/3d',
                 icon: <IoIosArrowForward />,
             },
         ]
@@ -76,23 +76,23 @@ export const SidebarData = [
         subNav : [
             {
                 title: 'Payment Type',
-                path: '/payment-setting/payment-value',
+                path: '/dashboard/payment-setting/payment-value',
                 icon: <IoIosArrowForward />,
             },
             {
                 title: 'Payment Provider',
-                path: '/payment-setting/payment-provider',
+                path: '/dashboard/payment-setting/payment-provider',
                 icon: <IoIosArrowForward />,
             },
             {
                 title: 'Payment Account',
-                path: '/payment-setting/payment-account',
+                path: '/dashboard/payment-setting/payment-account',
                 icon: <IoIosArrowForward />,
             },
            
             {
                 title: 'Payment  Announcement',
-                path: '/payment-setting/payment-announcement',
+                path: '/dashboard/payment-setting/payment-announcement',
                 icon: <IoIosArrowForward />,
             },
         ]
@@ -106,22 +106,22 @@ export const SidebarData = [
          subNav : [
              {
                  title: 'Create Unit',
-                 path: '/unit-setting/create-unit',
+                 path: '/dashboard/unit-setting/create-unit',
                  icon: <IoIosArrowForward />,
              },
              {
                  title: 'Unit Value',
-                 path: '/unit-setting/unit-value',
+                 path: '/dashboard/unit-setting/unit-value',
                  icon: <IoIosArrowForward />,
              },
              {
                  title: 'Currency',
-                 path: '/unit-setting/currency',
+                 path: '/dashboard/unit-setting/currency',
                  icon: <IoIosArrowForward />,
              },
              {
                  title: 'Unit History',
-                 path: '/unit-setting/unit-history',
+                 path: '/dashboard/unit-setting/unit-history',
                  icon: <IoIosArrowForward />,
              },
             
@@ -129,32 +129,32 @@ export const SidebarData = [
      },
      {
         title: 'Super Master',
-        path: '/account/super-master',
+        path: '/dashboard/account/super-master',
         icon: <RiGroupLine />,
     },
     {
         title: 'Master',
-        path: '/account/master',
+        path: '/dashboard/account/master',
         icon: <RiGroupLine />,
     },
     {
         title: 'Agent',
-        path: '/account/agent',
+        path: '/dashboard/account/agent',
         icon: <RiGroupLine />,
     },
     {
         title: 'Affiliate Agent',
-        path: '/account/affiliate-agent',
+        path: '/dashboard/account/affiliate-agent',
         icon: <RiGroupLine />,
     },
     {
         title: 'User',
-        path: '/account/user',
+        path: '/dashboard/account/user',
         icon: <RiGroupLine />,
     },
     {
         title: "Become A Partner",
-        path: "/become-an-agent",
+        path: "/dashboard/become-an-agent",
         icon: <RiAccountPinCircleFill/>
     },
             
@@ -167,22 +167,22 @@ export const SidebarData = [
         subNav : [
             {
                 title: 'Deposite',
-                path: '/accounting/deposit',
+                path: '/dashboard/accounting/deposit',
                 icon: <IoIosArrowForward />,
             },
             {
                 title: 'Account Title',
-                path: '/account-title',
+                path: '/dashboard/account-title',
                 icon: <IoIosArrowForward />,
             },
             {
                 title: 'Account Data',
-                path: '/account-data',
+                path: '/dashboard/account-data',
                 icon: <IoIosArrowForward />,
             },
             {
               title:"Balance Sheet",
-              path:"accounting/balance-sheet",
+              path:"/dashboard/accounting/balance-sheet",
               icon: <IoIosArrowForward />,
             }
            
@@ -197,17 +197,17 @@ export const SidebarData = [
         subNav : [
             {
                 title: 'Department',
-                path: '/department',
+                path: '/dashboard/department',
                 icon: <IoIosArrowForward />,
             },
             {
                 title: 'Position',
-                path: '/position',
+                path: '/dashboard/position',
                 icon: <IoIosArrowForward />,
             },
             {
                 title: 'Employee',
-                path: '/employee',
+                path: '/dashboard/employee',
                 icon: <IoIosArrowForward />,
             },
         ]
@@ -221,7 +221,7 @@ export const SidebarData = [
         subNav : [
             {
                 title: 'Football Setting',
-                path: '/game-setting/football-setting',
+                path: '/dashboard/game-setting/football-setting',
                 icon: <IoIosArrowForward />,
             },
            
@@ -230,7 +230,7 @@ export const SidebarData = [
     
     {
         title: 'All Sports',
-        path: '/all-sports',
+        path: '/dashboard/all-sports',
         icon: <MdSportsBasketball />,
         // iconClosed: <RiArrowDownSFill/>,
         // iconOpened: <RiArrowUpSFill/>,
@@ -251,7 +251,7 @@ export const SidebarData = [
         subNav : [
             {
                 title: 'Xzonebet football',
-                path: '/xzonebet-football',
+                path: '/dashboard/xzonebet-football',
                 icon: <IoIosArrowForward />,
             },
         ]
@@ -264,7 +264,7 @@ export const SidebarData = [
         subNav : [
             {
                 title: 'Live Sports',
-                path: '/live-sports',
+                path: '/dashboard/live-sports',
                 icon: <IoIosArrowForward />,
             },
         ]
@@ -279,31 +279,31 @@ export const SidebarData = [
         subNav : [
             {
                 title: 'Game Setting',
-                path: '/setting/game-setting',
+                path: '/dashboard/setting/game-setting',
                 icon: <IoIosArrowForward />,
             },
             {
                 title: 'Football Setting',
-                path: '/setting/soccer-setting',
+                path: '/dashboard/setting/soccer-setting',
                 icon: <IoIosArrowForward />,
             },
             {
                 title: 'Affiliate Setting',
-                path: '/setting/affiliate-agent-setting',
+                path: '/dashboard/setting/affiliate-agent-setting',
                 icon: <IoIosArrowForward />,
             },
         ]
     },
     {
         title: 'Transition History',
-        path: '/transition-history',
+        path: '/dashboard/transition-history',
         icon: <FaLayerGroup />,
         iconClosed: <RiArrowDownSFill/>,
         iconOpened: <RiArrowUpSFill/>,
     },
     {
         title: "Deposite",
-        path: "/deposite",
+        path: "/dashboard/deposite",
         icon: <RiAccountPinCircleFill/>
     },
 
@@ -316,22 +316,22 @@ export const SidebarData = [
         subNav :[
             {
                 title: "Betting Report",
-                path: "/betting-report",
+                path: "/dashboard/betting-report",
                 icon: <RiAccountPinCircleFill/>
             },
             {
                 title: "Finance Report",
-                path: "/finance-report",
+                path: "/dashboard/finance-report",
                 icon: <RiAccountPinCircleFill/>
             },
             {
                 title: "Account Report",
-                path: "/betting-report",
+                path: "/dashboard/betting-report",
                 icon: <RiAccountPinCircleFill/>
             },
             {
                 title: "Log History",
-                path: "/log-history",
+                path: "/dashboard/log-history",
                 icon: <RiAccountPinCircleFill/>
             },
         ]

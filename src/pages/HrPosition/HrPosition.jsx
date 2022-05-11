@@ -24,7 +24,7 @@ const HrPosition = () => {
              <TextField size='small' sx={{width:600}}/>
          <div className={classes["create-btn"]}>
              <Button variant="contained"
-             onClick={()=>navigate("/admin-team-account/position/create-position")}
+             onClick={()=>navigate("/dashboard/admin-team-account/position/create-position")}
              >Create Position</Button>
          </div>
          </div>
