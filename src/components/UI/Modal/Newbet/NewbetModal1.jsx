@@ -32,7 +32,7 @@ const style = {
   overflowY: "auto",
   maxHeight: "calc(100vh - 100px)",
 };
-const NewbetModal1 = ({ open, bettingData, closeHandler }) => {
+const  NewbetModal1 = ({ open, bettingData, closeHandler,render,setRender }) => {
   console.log(bettingData);
   const handleSplit = (str) => {
     let totalNumber =[];
@@ -102,15 +102,18 @@ console.log("numbers",totalNumber);
 
       if ((data.status = "success")) {
         toast.success(data.message);
-        // setNewBet(oddType: "over",
-        // oddType1: "under",
-        // body:  "",
-        // body1: "",
-        // body2: "",
-        // total: "",
-        // total1: "",
-        // total2: "",)
         closeHandler();
+        setNewBet({oddType: "over",
+        oddType1: "under",
+        body:  "",
+        body1: "",
+        body2: "",
+        total: "",
+        total1: "",
+        total2: ""})
+        setRender(!render);
+
+   
         return;
       }
       if ((data.status = "error")) {
