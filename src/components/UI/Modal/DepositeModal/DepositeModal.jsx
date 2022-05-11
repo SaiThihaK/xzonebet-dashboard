@@ -41,7 +41,7 @@ const DepositeModal = ({
   }
   try{
   const {data} = await axios.request(
-  PostMethod(`api/user-deposit/action/${id}`,
+  PostMethod(`api/deposit/action/${id}`,
 
   {
     status:"rejected",

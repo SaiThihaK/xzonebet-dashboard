@@ -75,7 +75,7 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
    if(value === "approve"){
     //  console.log("approve")
     try{
-      const response = await axios.request(PostMethod(`api/user-deposit/action/${ID}`,{
+      const response = await axios.request(PostMethod(`api/deposit/action/${ID}`,{
         status:"approve"
       }));
       console.log(response);
@@ -96,6 +96,7 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
       }
       }catch(error){
        if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+         toast.error(error.response.data.message)
          logoutHandler();
          }
        }
@@ -106,9 +107,8 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
     setValue("");
     return;
   }
-  if(value === "re-ject"){
+  if(value === "rejected"){
     openHandler();
-    
     return;
   }
  } 
@@ -127,7 +127,7 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
          <Select value={value} onChange={onChangeValue} size="small">
              {/* <MenuItem value="pending">Pending</MenuItem> */}
              <MenuItem value="approve">Approve</MenuItem>
-             <MenuItem value="re-ject">Reject</MenuItem>
+             <MenuItem value="rejected">Reject</MenuItem>
          </Select>
          <Button onClick={confirmHandler}>Confirm</Button>
          </FormControl>)
@@ -149,8 +149,8 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
  
 
 
- const {data,pagination,loading} = CustomGetFunction(`api/user-deposit?sortColumn=id&sortDirection=desc&limit=10&page=${page}${filterStatus}`,[num,page,filterStatus])
-
+ const {data,pagination,loading} = CustomGetFunction(`api/deposit-receive?sortColumn=id&sortDirection=desc&limit=20&page=${page}${filterStatus}`,[num,page,filterStatus])
+ console.log(data);
    const ChangeDate=(date)=>{
     const dateNo=new Date(date);
     return dateNo.toISOString().replace(/([^T]+)T([^\.]+).*/g, '$1 $2') 
@@ -187,7 +187,7 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
                 <StyledTableCell component="th" scope="row">
                 {index+1}
                 </StyledTableCell>
-                <StyledTableCell align="left">{user.user_id}</StyledTableCell>
+                <StyledTableCell align="left">{user.submit_user?.id}</StyledTableCell>
                 <StyledTableCell align="left">{user.account_name}</StyledTableCell>
                 <StyledTableCell align="left">{user.account_no}</StyledTableCell>
                 <StyledTableCell align="left">
