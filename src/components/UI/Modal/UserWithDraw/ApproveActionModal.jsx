@@ -43,9 +43,11 @@ const ApproveActionModal = ({
     try{
     const {data} = await axios.request(
     PostMethod(`api/user-withdraw/action/approve/${id}`,
-    {setTransition_no}
+    {
+      transaction_no:transaction_no
+    }
     ));
-    // console.log(data);
+    console.log(data);
     if(data.status="success"){
       handleClose();
       setNum(num+1);
@@ -58,6 +60,7 @@ const ApproveActionModal = ({
       return;
     }
     }catch(error){
+      toast.error(error.response.data.message)
       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
       logoutHandler();
       }
