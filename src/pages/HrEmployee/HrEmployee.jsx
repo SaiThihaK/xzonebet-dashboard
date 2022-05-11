@@ -29,7 +29,7 @@ const HrEmployee = () => {
                 {
                    data?.map((employee,index)=>(
                    <Grid item xs={6} key={index}>
-                      <MemberCard partner={employee} path={`/employee/employee-detail/${employee.position?.id}`} />
+                      <MemberCard partner={employee} path={`/dashboard/employee/employee-detail/${employee.position?.id}`} />
                      </Grid>
                    
                     ))

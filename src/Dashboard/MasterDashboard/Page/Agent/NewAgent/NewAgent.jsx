@@ -18,7 +18,7 @@ const NewAgent = () => {
               
               data?.length !==0 && data?.map((agent,index)=>(
                  <Grid item xs={6} key={index}>
-                    <MemberCard partner={agent} path={"/new-agent/detail/"} />
+                    <MemberCard partner={agent} path={"/dashboard/new-agent/detail/"} />
                    </Grid>
                  
                 ))

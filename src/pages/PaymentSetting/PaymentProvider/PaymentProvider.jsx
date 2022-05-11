@@ -31,7 +31,7 @@ const PaymentProvider = () => {
         <div className={classes["card-body"]}>
           <div className={classes["table-container"]}>
           <div style={{display:"flex",justifyContent:"flex-end",marginBottom:20}}>
-            <Button variant="contained" onClick={()=>navigate("/payment-setting/payment-provider/create")}>Create Provider</Button>
+            <Button variant="contained" onClick={()=>navigate("/dashboard/payment-setting/payment-provider/create")}>Create Provider</Button>
           </div>
          
          {

@@ -109,14 +109,14 @@ const DepartmentTable = ({name,position,salary,percentage,status,data,render,set
         <Button variant="contained"
         style={{padding:"5px 10px",fontSize:13}} 
          onClick={()=>{
-          navigate(`/admin-team-account/department/department-detail/${row.id}`)
+          navigate(`/dashboard/admin-team-account/department/department-detail/${row.id}`)
         }}>
           Detail
         </Button>
         
       <IconButton onClick={()=>{banDepartment(row.id)}}><Delete/></IconButton>
          <IconButton
-         onClick={()=>{navigate(`/admin-team-account/department/edit-department/${row.id}`)}}
+         onClick={()=>{navigate(`/dashboard/admin-team-account/department/edit-department/${row.id}`)}}
          ><Edit /></IconButton>
     </Stack></StyledTableCell>
 </StyledTableRow>

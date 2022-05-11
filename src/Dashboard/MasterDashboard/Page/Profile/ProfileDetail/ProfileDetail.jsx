@@ -21,7 +21,7 @@ const ProfileDetail = () => {
         />
         </div>
         <div className={classes['btn-container']}>
-          <Button onClick={()=>navigate("/master/profile/edit")} variant="contained">Edit</Button>
+          <Button onClick={()=>navigate("/dashboard/master/profile/edit")} variant="contained">Edit</Button>
         </div>
       <div className={classes["grid-container"]}>
           <Card>

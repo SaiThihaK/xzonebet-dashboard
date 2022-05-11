@@ -22,7 +22,7 @@ const UserDetail = () => {
       spacing={6}
       >
     <Button variant="contained">Bet History</Button>
-    <Button variant="contained" onClick={()=>{navigate("/deposite-withdraw-table")}}>Deposite/WithDraw</Button>
+    <Button variant="contained" onClick={()=>{navigate("/dashboard/deposite-withdraw-table")}}>Deposite/WithDraw</Button>
       </Stack>
   </PageTitleCard>
   )

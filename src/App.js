@@ -122,158 +122,158 @@ function App() {
       return (
         <Routes>
           <Route path="/" exact element={<Dashboard />} />
-          <Route path="/setting/game-setting" exact element={<GameSetting />} />
+          <Route path="/dashboard/setting/game-setting" exact element={<GameSetting />} />
           <Route
-            path="/setting/soccer-setting"
+            path="/dashboard/setting/soccer-setting"
             exact
             element={<SoccerSetting />}
           />
           <Route
-            path="/setting/soccer-setting/fixture-betting"
+            path="/dashboard/setting/soccer-setting/fixture-betting"
             exact
             element={<FixtureSetting />}
           />
           <Route
-            path="/setting/soccer-setting/global-betting"
+            path="/dashboard/setting/soccer-setting/global-betting"
             exact
             element={<GlobalSetting />}
           />
           <Route
-            path="/setting/soccer-setting/global-betting/edit-betting"
+            path="/dashboard/setting/soccer-setting/global-betting/edit-betting"
             exact
             element={<GlobalSettingEditBetting />}
           />
           <Route
-            path="/setting/soccer-setting/global-betting/search-betting"
+            path="/dashboard/setting/soccer-setting/global-betting/search-betting"
             exact
             element={<GlobalSettingTable />}
           />
           <Route
-            path="/setting/soccer-setting/maung-setting"
+            path="/dashboard/setting/soccer-setting/maung-setting"
             exact
             element={<MaungSetting />}
           />
           <Route
-            path="/setting/affiliate-agent-setting"
+            path="/dashboard/setting/affiliate-agent-setting"
             exact
             element={<AffiliateAgentSetting />}
           />
           <Route
-            path="setting/affiliate-agent-setting/affiliate-agent-percentage"
+            path="/dashboard/setting/affiliate-agent-setting/affiliate-agent-percentage"
             element={<AffiliateAgentPercentage />}
           />
           <Route
-            path="setting/affiliate-agent-setting/affiliate-user-percentage"
+            path="/dashboard/setting/affiliate-agent-setting/affiliate-user-percentage"
             element={<AffiliateUserPercentage />}
           />
-          <Route path="/betlist/football" exact element={<Football />} />
-          <Route path="/betlist/2d" exact element={<Twod />} />
-          <Route path="/betlist/2d/time" exact element={<Time />} />
+          <Route path="/dashboard/betlist/football" exact element={<Football />} />
+          <Route path="/dashboard/betlist/2d" exact element={<Twod />} />
+          <Route path="/dashboard/betlist/2d/time" exact element={<Time />} />
           <Route
-            path="/betlist/2d/close-number"
+            path="/dashboard/betlist/2d/close-number"
             exact
             element={<TwodCloseNumber />}
           />
-          <Route path="/betlist/3d" exact element={<Threed />} />
-          <Route path="/betlist/3d/time" exact element={<ThreedTime />} />
+          <Route path="/dashboard/betlist/3d" exact element={<Threed />} />
+          <Route path="/dashboard/betlist/3d/time" exact element={<ThreedTime />} />
           <Route
-            path="/betlist/3d/close-number"
+            path="/dashboard/betlist/3d/close-number"
             exact
             element={<ThreedCloseNumber />}
           />
-          <Route path="/become-an-agent" exact element={<BecomeAnAgent />} />
+          <Route path="/dashboard/become-an-agent" exact element={<BecomeAnAgent />} />
           <Route
-            path="/become-an-agent/detail/:id"
+            path="/dashboard/become-an-agent/detail/:id"
             exact
             element={<AgentDetail />}
           />
-          <Route path="/account/super-master" exact element={<SuperMaster />} />
+          <Route path="/dashboard/account/super-master" exact element={<SuperMaster />} />
           <Route
-            path="account/super-master/detail/:id"
+            path="/dashboard/account/super-master/detail/:id"
             exact
             element={<SuperMasterDetail />}
           />
-          <Route path="/account/master" exact element={<Master />} />
+          <Route path="/dashboard/account/master" exact element={<Master />} />
           <Route
-            path="/account/affiliate-agent"
+            path="/dashboard/account/affiliate-agent"
             exact
             element={<AffiliateAgent />}
           />
           <Route
-            path="/account/affiliate-agent/pending-affiliate-agent"
+            path="/dashboard/account/affiliate-agent/pending-affiliate-agent"
             element={<PendingAffiliateAgent />}
           />
           <Route
-            path="/account/affiliate-agent/pending-affiliate-agent/detail/:id"
+            path="/dashboard/account/affiliate-agent/pending-affiliate-agent/detail/:id"
             element={<PendingAffiliateAgentDetail />}
           />
           {/* Agent */}
-          <Route path="/account/agent" exact element={<Agent />} />
+          <Route path="/dashboard/account/agent" exact element={<Agent />} />
           <Route
-            path="/account/agent/pending-agent"
+            path="/dashboard/account/agent/pending-agent"
             exact
             element={<PendingAgent />}
           />
           <Route
-            path="/account/agent/pending-agent/detail/:id"
+            path="/dashboard/account/agent/pending-agent/detail/:id"
             exact
             element={<PendingAgentDetail />}
           />
           <Route
-            path="/account/agent/confirm-agent"
+            path="/dashboard/account/agent/confirm-agent"
             exact
             element={<ConfirmAgent />}
           />
           <Route
-            path="/account/agent/confirm-agent/detail/:id"
+            path="/dashboard/account/agent/confirm-agent/detail/:id"
             exact
             element={<ConfirmAgentDetail />}
           />
           <Route
-            path="/account/agent/complete-agent"
+            path="/dashboard/account/agent/complete-agent"
             exact
             element={<CompleteAgent />}
           />
           <Route
-            path="/account/agent/complete-agent/detail/:id"
+            path="/dashboard/account/agent/complete-agent/detail/:id"
             exact
             element={<CompleteAgentDetail />}
           />
           <Route
-            path="/account/agent/cancel-agent"
+            path="/dashboard/account/agent/cancel-agent"
             exact
             element={<CancelAgent />}
           />
           <Route
-            path="/account/agent/cancel-agent/detail/:id"
+            path="/dashboard/account/agent/cancel-agent/detail/:id"
             exact
             element={<CancelAgentDetail />}
           />
           {/* CompleteAgent Table */}
           <Route
-            path="/account/agent/complete-agent/transition-table"
+            path="/dashboard/account/agent/complete-agent/transition-table"
             element={<AgentTransition />}
           />
           {/* Agent */}
           {/* Pending Master */}
           <Route
-            path="/account/master/panding-master"
+            path="/dashboard/account/master/panding-master"
             exact
             element={<PandingMaster />}
           />
           <Route
-            path="/account/master/panding-master/detail/:id"
+            path="/dashboard/account/master/panding-master/detail/:id"
             exact
             element={<PandingMasterDetail />}
           />
           {/* Confirm Master(sai) */}
           <Route
-            path="/account/master/confirm-master"
+            path="/dashboard/account/master/confirm-master"
             exact
             element={<ConfirmMaster />}
           />
           <Route
-            path="/account/master/confirm-master/detail/:id"
+            path="/dashboard/account/master/confirm-master/detail/:id"
             exact
             element={<ConfirmMasterDetail />}
           />
@@ -281,22 +281,22 @@ function App() {
 
           {/* complete Master */}
           <Route
-            path="/account/master/complete-master"
+            path="/dashboard/account/master/complete-master"
             exact
             element={<CompleteMaster />}
           />
           <Route
-            path="/account/master/complete-master/detail/:id"
+            path="/dashboard/account/master/complete-master/detail/:id"
             exact
             element={<CompleteMasterDetail />}
           />
           <Route
-            path="/account/master/complete-master/agent-table"
+            path="/dashboard/account/master/complete-master/agent-table"
             exact
             element={<CompleteMasterTable />}
           />
           <Route
-            path="/account/master/complete-master/transition-table"
+            path="/dashboard/account/master/complete-master/transition-table"
             exact
             element={<Transition />}
           />
@@ -304,183 +304,183 @@ function App() {
           {/* complete Master */}
           {/* Cancel Master */}
           <Route
-            path="/account/master/cancel-master"
+            path="/dashboard/account/master/cancel-master"
             exact
             element={<CancelMaster />}
           />
           <Route
-            path="/account/master/cancel-master/detail/:id"
+            path="/dashboard/account/master/cancel-master/detail/:id"
             exact
             element={<CancelMasterDetail />}
           />
           {/* Cancel Master */}
-          <Route path="/accounting/deposit" exact element={<MasterDeposit />} />
-          <Route path="/account-title" exact element={<AccountTitle />} />
-          <Route path="/account-data" exact element={<AccountData />} />
+          <Route path="/dashboard/accounting/deposit" exact element={<MasterDeposit />} />
+          <Route path="/dashboard/account-title" exact element={<AccountTitle />} />
+          <Route path="/dashboard/account-data" exact element={<AccountData />} />
           <Route
-            path="/accounting/balance-sheet"
+            path="/dashboard/accounting/balance-sheet"
             exact
             element={<BalanceSheet />}
           />
-          <Route path="/account/user" exact element={<Users />} />
+          <Route path="/dashboard/account/user" exact element={<Users />} />
           <Route
-            path="/account/user/active-user"
+            path="/dashboard/account/user/active-user"
             exact
             element={<ActiveUser />}
           />
-          <Route path="/account/user/all-user" exact element={<AllUser />} />
+          <Route path="/dashboard/account/user/all-user" exact element={<AllUser />} />
           <Route
-            path="/account/user/user-detail/:id"
+            path="/dashboard/account/user/user-detail/:id"
             exact
             element={<UserDetail />}
           />
           <Route
             exact
-            path="/deposite-withdraw-table"
+            path="/dashboard/deposite-withdraw-table"
             element={<UserDetailDesTable />}
           />
           {/* Unit Setting */}
           <Route
             exact
-            path="/unit-setting/create-unit"
+            path="/dashboard/unit-setting/create-unit"
             element={<CreateUnit />}
           />
           <Route
             exact
-            path="/unit-setting/unit-value"
+            path="/dashboard/unit-setting/unit-value"
             element={<UnitValue />}
           />
-          <Route exact path="/unit-setting/currency" element={<Currency />} />
+          <Route exact path="/dashboard/unit-setting/currency" element={<Currency />} />
           <Route
             exact
-            path="/unit-setting/unit-history"
+            path="/dashboard/unit-setting/unit-history"
             element={<TransitionHistory />}
           />
           {/* Payment Setting */}
           <Route
             exact
-            path="/payment-setting/payment-value"
+            path="/dashboard/payment-setting/payment-value"
             element={<PaymentType />}
           />
           <Route
             exact
-            path="/payment-setting/payment-provider"
+            path="/dashboard/payment-setting/payment-provider"
             element={<PaymentProvider />}
           />
           <Route
             exact
-            path="/payment-setting/payment-provider/create"
+            path="/dashboard/payment-setting/payment-provider/create"
             element={<CreatePaymentProvider />}
           />
           <Route
             exact
-            path="/payment-setting/payment-provider/edit/:id"
+            path="/dashboard/payment-setting/payment-provider/edit/:id"
             element={<EditPaymentProvider />}
           />
           <Route
             exact
-            path="/payment-setting/payment-announcement"
+            path="/dashboard/payment-setting/payment-announcement"
             element={<PaymentAnnouncement />}
           />
           <Route
             exact
-            path="/payment-setting/payment-account"
+            path="/dashboard/payment-setting/payment-account"
             element={<PaymentAccount />}
           />
           <Route
             exact
-            path="/payment-setting/payment-account/edit/:id"
+            path="/dashboard/payment-setting/payment-account/edit/:id"
             element={<EditPaymentAccount />}
           />
 
           <Route
             exact
-            path="/game-setting/football-setting"
+            path="/dashboard/game-setting/football-setting"
             element={<FootballSetting />}
           />
 
           {/*------------------------------ Admin Team Account------------------------------------------------ */}
           <Route
             exact
-            path="/admin-team-account/department"
+            path="/dashboard/admin-team-account/department"
             element={<Department />}
           />
           <Route
             exact
-            path="/admin-team-account/department/create-department"
+            path="/dashboard/admin-team-account/department/create-department"
             element={<CreateDepartment />}
           />
           <Route
             exact
-            path="/admin-team-account/department/department-detail/:id"
+            path="/dashboard/admin-team-account/department/department-detail/:id"
             element={<DepartmentDetail />}
           />
           <Route
             exact
-            path="/admin-team-account/department/edit-department/:id"
+            path="/dashboard/admin-team-account/department/edit-department/:id"
             element={<EditDepartment />}
           />
           <Route
             exact
-            path="/admin-team-account/position"
+            path="/dashboard/admin-team-account/position"
             element={<Position />}
           />
           <Route
             exact
-            path="/admin-team-account/position/create-position"
+            path="/dashboard/admin-team-account/position/create-position"
             element={<CreatePosition />}
           />
           <Route
             exact
-            path="/admin-team-account/position/edit-position/:id"
+            path="/dashboard/admin-team-account/position/edit-position/:id"
             element={<EditPosition />}
           />
           <Route
             exact
-            path="/admin-team-account/admin-account"
+            path="/dashboard/admin-team-account/admin-account"
             element={<AdminAccount />}
           />
           <Route
             exact
-            path="/transition-history"
+            path="/dashboard/transition-history"
             element={<TransitionHistory />}
           />
           {/* Deposite */}
-          <Route exact path="/deposite" element={<ADeposite />} />
+          <Route exact path="/dashboard/deposite" element={<ADeposite />} />
           {/* -------------------------HR------------------------*/}
           <Route path="*" element={<Notfound />} />
           <Route path="/" exact element={<Overview />} />
-          <Route exact path="/department" element={<HrDepartment />} />
-          <Route exact path="/position" element={<HrPosition />} />
-          <Route exact path="/employee" element={<HrEmployee />} />
-          <Route path="/odoo-function-detail" element={<DetailFunction />} />
+          <Route exact path="/dashboard/department" element={<HrDepartment />} />
+          <Route exact path="/dashboard/position" element={<HrPosition />} />
+          <Route exact path="/dashboard/employee" element={<HrEmployee />} />
+          <Route path="/dashboard/odoo-function-detail" element={<DetailFunction />} />
           {/* ======================================All Sports===================================================== */}
-          <Route path="/all-sports" exact element={<AllSport />} />
+          <Route path="/dashboard/all-sports" exact element={<AllSport />} />
           {/* ---------------Xzonebet Football------------------ */}
 
           <Route
             exact
-            path="xzonebet-football"
+            path="dashboard/xzonebet-football"
             element={<XzonebetFootball />}
           />
           <Route
             exact
-            path="/xzonebet-football/fixture"
+            path="/dashboard/xzonebet-football/fixture"
             element={<Fixture />}
           />
           <Route
             exact
-            path="/xzonebet-football/opening-bet"
+            path="/dashboard/xzonebet-football/opening-bet"
             element={<OpenningBet />}
           />
           <Route
             exact
-            path="/xzonebet-football/fixture-bet-history"
+            path="/dashboard/xzonebet-football/fixture-bet-history"
             element={<BetHistory />}
           />
           <Route
             exact
-            path="/xzonebet-football/opening-bet-result"
+            path="/dashboard/xzonebet-football/opening-bet-result"
             element={<OpenbetResult />}
           />
           <Route path="*" element={<Notfound />} />
@@ -494,91 +494,91 @@ function App() {
           <Route path="/" exact element={<Overview />} />
           <Route
             exact
-            path="/master/bank-setting/payment-account"
+            path="/dashboard/master/bank-setting/payment-account"
             element={<MPaymentAccount />}
           />
           <Route
             exact
-            path="/payment-setting/payment-account"
+            path="/dashboard/payment-setting/payment-account"
             element={<PaymentAccount />}
           />
           <Route
             exact
-            path="/payment-setting/payment-account/edit/:id"
+            path="/dashboard/payment-setting/payment-account/edit/:id"
             element={<EditPaymentAccount />}
           />
           <Route
             exact
-            path="/master/deposite/user-deposite"
+            path="/dashboard/master/deposite/user-deposite"
             element={<ADeposite />}
           />
           <Route
             exact
-            path="/master/deposite/agent-deposite"
+            path="/dashboard/master/deposite/agent-deposite"
             element={<AgentDeposite />}
           />
-          <Route exact path="/master/profile" element={<MProfile />} />
-          <Route exact path="master/profile/edit" element={<EditProfile />} />
-          <Route exact path="/master/transfer-to" element={<TransferTo />} />
-          <Route exact path="/master/agent" element={<MAgent />} />
-          <Route exact path="/master/agent/new-agent" element={<NewAgent />} />
+          <Route exact path="/dashboard/master/profile" element={<MProfile />} />
+          <Route exact path="/dashboard/master/profile/edit" element={<EditProfile />} />
+          <Route exact path="/dashboard/master/transfer-to" element={<TransferTo />} />
+          <Route exact path="/dashboard/master/agent" element={<MAgent />} />
+          <Route exact path="/dashboard/master/agent/new-agent" element={<NewAgent />} />
           <Route
             exact
-            path="/master/agent/agents"
+            path="/dashboard/master/agent/agents"
             element={<CompleteAgent />}
           />
           <Route
             exact
-            path="/account/agent/complete-agent/detail/:id"
+            path="/dashboard/account/agent/complete-agent/detail/:id"
             element={<CompleteAgentDetail />}
           />
           <Route
             exact
-            path="/new-agent/detail/:id"
+            path="/dashboard/new-agent/detail/:id"
             element={<NewAgentDetail />}
           />
           <Route
             exact
-            path="/master/transition-history"
+            path="/dashboard/master/transition-history"
             element={<TransitionHistory />}
           />
           {/* ----------------------Payment-Setting--------------------- */}
           <Route
             exact
-            path="/master/payment-setting/payment-value"
+            path="/dashboard/master/payment-setting/payment-value"
             element={<PaymentType />}
           />
           <Route
             exact
-            path="/master/payment-setting/payment-provider"
+            path="/dashboard/master/payment-setting/payment-provider"
             element={<PaymentProvider />}
           />
           <Route
             exact
-            path="/master/payment-setting/payment-provider/create"
+            path="/dashboard/master/payment-setting/payment-provider/create"
             element={<CreatePaymentProvider />}
           />
           <Route
             exact
-            path="/master/payment-setting/payment-provider/edit/:id"
+            path="/dashboard/master/payment-setting/payment-provider/edit/:id"
             element={<EditPaymentProvider />}
           />
           <Route
             exact
-            path="/master/payment-setting/payment-announcement"
+            path="/dashboard/master/payment-setting/payment-announcement"
             element={<PaymentAnnouncement />}
           />
           <Route
             exact
-            path="/master/payment-setting/payment-account"
+            path="/dashboard/master/payment-setting/payment-account"
             element={<PaymentAccount />}
           />
           <Route
             exact
-            path="/master/payment-setting/payment-account/edit/:id"
+            path="/dashboard/master/payment-setting/payment-account/edit/:id"
             element={<EditPaymentAccount />}
           />
-          <Route path="/connect-with-chat" element={<ConnectWithChat />} />
+          <Route path="/dashboard/connect-with-chat" element={<ConnectWithChat />} />
           <Route path="*" element={<Notfound />} />
         </Routes>
       );
@@ -587,48 +587,48 @@ function App() {
       return (
         <Routes>
           <Route path="/" exact element={<Overview />} />
-          <Route exact path="/agent/bank-account" element={<ABankAccount />} />
+          <Route exact path="/dashboard/agent/bank-account" element={<ABankAccount />} />
           <Route
             exact
-            path="/agent/deposite/user-deposite"
+            path="/dashboard/agent/deposite/user-deposite"
             element={<ADeposite />}
           />
           <Route
             exact
-            path="/agent/deposite/agent-deposite"
+            path="/dashboard/agent/deposite/agent-deposite"
             element={<AgentDeposite />}
           />
-          <Route exact path="/agent/transfer-to" element={<TransferTo />} />
+          <Route exact path="/dashboard/agent/transfer-to" element={<TransferTo />} />
           <Route
             exact
-            path="/agent/transition-history"
+            path="/dashboard/agent/transition-history"
             element={<ATransitionHistory />}
           />
-          <Route exact path="/agent/user-withdraw" element={<UserWithDraw />} />
+          <Route exact path="/dashboard/agent/user-withdraw" element={<UserWithDraw />} />
 
           <Route
             exact
-            path="/payment-setting/payment-account"
+            path="/dashboard/payment-setting/payment-account"
             element={<PaymentAccount />}
           />
           <Route
             exact
-            path="/payment-setting/payment-account/edit/:id"
+            path="/dashboard/payment-setting/payment-account/edit/:id"
             element={<EditPaymentAccount />}
           />
-          <Route path="/account/user" exact element={<Users />} />
+          <Route path="/dashboard/account/user" exact element={<Users />} />
           <Route
-            path="/account/user/active-user"
+            path="/dashboard/account/user/active-user"
             exact
             element={<ActiveUser />}
           />
-          <Route path="/account/user/all-user" exact element={<AllUser />} />
+          <Route path="/dashboard/account/user/all-user" exact element={<AllUser />} />
           <Route
-            path="/account/user/user-detail/:id"
+            path="/dashboard/account/user/user-detail/:id"
             exact
             element={<UserDetail />}
           />
-          <Route path="/profit" exact element={<Profit />} />
+          <Route path="/dashboard/profit" exact element={<Profit />} />
           <Route path="*" element={<Notfound />} />
         </Routes>
       );
@@ -640,17 +640,17 @@ function App() {
           <Route path="*" element={<Notfound />} />
           <Route
             exact
-            path="/super_master/transfer-to"
+            path="/dashboard/super_master/transfer-to"
             element={<TransferTo />}
           />
           <Route
             exact
-            path="/payment-setting/payment-account"
+            path="/dashboard/payment-setting/payment-account"
             element={<PaymentAccount />}
           />
           <Route
             exact
-            path="/payment-setting/payment-account/edit/:id"
+            path="/dashboard/payment-setting/payment-account/edit/:id"
             element={<EditPaymentAccount />}
           />
           {/* <Route
@@ -665,95 +665,95 @@ function App() {
           /> */}
           <Route
             exact
-            path="/super_master/transition-history"
+            path="/dashboard/super_master/transition-history"
             element={<ATransitionHistory />}
           />
           <Route
             exact
-            path="/super_master/user-withdraw"
+            path="/dashboard/super_master/user-withdraw"
             element={<UserWithDraw />}
           />
-          <Route path="/account/master" exact element={<Master />} />
+          <Route path="/dashboard/account/master" exact element={<Master />} />
           <Route
-            path="/account/affiliate-agent"
+            path="/dashboard/account/affiliate-agent"
             exact
             element={<AffiliateAgent />}
           />
           <Route
-            path="/account/affiliate-agent/pending-affiliate-agent"
+            path="/dashboard/account/affiliate-agent/pending-affiliate-agent"
             element={<PendingAffiliateAgent />}
           />
           <Route
-            path="/account/affiliate-agent/pending-affiliate-agent/detail/:id"
+            path="/dashboard/account/affiliate-agent/pending-affiliate-agent/detail/:id"
             element={<PendingAffiliateAgentDetail />}
           />
           {/* Agent */}
-          <Route path="/account/agent" exact element={<Agent />} />
+          <Route path="/dashboard/account/agent" exact element={<Agent />} />
           <Route
-            path="/account/agent/pending-agent"
+            path="/dashboard/account/agent/pending-agent"
             exact
             element={<PendingAgent />}
           />
           <Route
-            path="/account/agent/pending-agent/detail/:id"
+            path="/dashboard/account/agent/pending-agent/detail/:id"
             exact
             element={<PendingAgentDetail />}
           />
           <Route
-            path="/account/agent/confirm-agent"
+            path="/dashboard/account/agent/confirm-agent"
             exact
             element={<ConfirmAgent />}
           />
           <Route
-            path="/account/agent/confirm-agent/detail/:id"
+            path="/dashboard/account/agent/confirm-agent/detail/:id"
             exact
             element={<ConfirmAgentDetail />}
           />
           <Route
-            path="/account/agent/complete-agent"
+            path="/dashboard/account/agent/complete-agent"
             exact
             element={<CompleteAgent />}
           />
           <Route
-            path="/account/agent/complete-agent/detail/:id"
+            path="/dashboard/account/agent/complete-agent/detail/:id"
             exact
             element={<CompleteAgentDetail />}
           />
           <Route
-            path="/account/agent/cancel-agent"
+            path="/dashboard/account/agent/cancel-agent"
             exact
             element={<CancelAgent />}
           />
           <Route
-            path="/account/agent/cancel-agent/detail/:id"
+            path="/dashboard/account/agent/cancel-agent/detail/:id"
             exact
             element={<CancelAgentDetail />}
           />
           {/* CompleteAgent Table */}
           <Route
-            path="/account/agent/complete-agent/transition-table"
+            path="/dashboard/account/agent/complete-agent/transition-table"
             element={<AgentTransition />}
           />
           {/* Agent */}
           {/* Pending Master */}
           <Route
-            path="/account/master/panding-master"
+            path="/dashboard/account/master/panding-master"
             exact
             element={<PandingMaster />}
           />
           <Route
-            path="/account/master/panding-master/detail/:id"
+            path="/dashboard/account/master/panding-master/detail/:id"
             exact
             element={<PandingMasterDetail />}
           />
           {/* Confirm Master(sai) */}
           <Route
-            path="/account/master/confirm-master"
+            path="/dashboard/account/master/confirm-master"
             exact
             element={<ConfirmMaster />}
           />
           <Route
-            path="/account/master/confirm-master/detail/:id"
+            path="/dashboard/account/master/confirm-master/detail/:id"
             exact
             element={<ConfirmMasterDetail />}
           />
@@ -761,22 +761,22 @@ function App() {
 
           {/* complete Master */}
           <Route
-            path="/account/master/complete-master"
+            path="/dashboard/account/master/complete-master"
             exact
             element={<CompleteMaster />}
           />
           <Route
-            path="/account/master/complete-master/detail/:id"
+            path="/dashboard/account/master/complete-master/detail/:id"
             exact
             element={<CompleteMasterDetail />}
           />
           <Route
-            path="/account/master/complete-master/agent-table"
+            path="/dashboard/account/master/complete-master/agent-table"
             exact
             element={<CompleteMasterTable />}
           />
           <Route
-            path="/account/master/complete-master/transition-table"
+            path="/dashboard/account/master/complete-master/transition-table"
             exact
             element={<Transition />}
           />
@@ -784,39 +784,39 @@ function App() {
           {/* complete Master */}
           {/* Cancel Master */}
           <Route
-            path="/account/master/cancel-master"
+            path="/dashboard/account/master/cancel-master"
             exact
             element={<CancelMaster />}
           />
-          <Route path="/become-an-agent" exact element={<BecomeAnAgent />} />
+          <Route path="/dashboard/become-an-agent" exact element={<BecomeAnAgent />} />
           <Route
-            path="/become-an-agent/detail/:id"
+            path="/dashboard/become-an-agent/detail/:id"
             exact
             element={<AgentDetail />}
           />
           <Route
-            path="/account/master/cancel-master/detail/:id"
+            path="/dashboard/account/master/cancel-master/detail/:id"
             exact
             element={<CancelMasterDetail />}
           />
           {/* Cancel Master */}
           <Route
-            path="/accounting/master-deposit"
+            path="/dashboard/accounting/master-deposit"
             exact
             element={<MasterDeposit />}
           />
           <Route
-            path="/accounting/balance-sheet"
+            path="/dashboard/accounting/balance-sheet"
             exact
             element={<BalanceSheet />}
           />
-          <Route path="/account/user" exact element={<Users />} />
+          <Route path="/dashboard/account/user" exact element={<Users />} />
           <Route
-            path="/account/user/active-user"
+            path="/dashboard/account/user/active-user"
             exact
             element={<ActiveUser />}
           />
-          <Route path="/account/user/all-user" exact element={<AllUser />} />
+          <Route path="/dashboard/account/user/all-user" exact element={<AllUser />} />
         </Routes>
       );
     }
@@ -826,18 +826,18 @@ function App() {
           <Route path="*" element={<Notfound />} />
           <Route
             exact
-            path="/affiliate-agent/transition-history"
+            path="/dashboard/affiliate-agent/transition-history"
             element={<TransitionHistory />}
           />
-          <Route exact path="/agent/user-withdraw" element={<UserWithDraw />} />
+          <Route exact path="/dashboard/agent/user-withdraw" element={<UserWithDraw />} />
           <Route
             exact
-            path="/agent/deposite/user-deposite"
+            path="/dashboard/agent/deposite/user-deposite"
             element={<ADeposite />}
           />
           <Route
             exact
-            path="/agent/deposite/agent-deposite"
+            path="/dashboard/agent/deposite/agent-deposite"
             element={<AgentDeposite />}
           />
         </Routes>
@@ -848,30 +848,30 @@ function App() {
         <Routes>
           <Route path="*" element={<Notfound />} />
           <Route path="/" exact element={<Overview />} />
-          <Route exact path="/department" element={<HrDepartment />} />
-          <Route exact path="/position" element={<HrPosition />} />
-          <Route exact path="/employee" element={<HrEmployee />} />
+          <Route exact path="/dashboard/department" element={<HrDepartment />} />
+          <Route exact path="/dashboard/position" element={<HrPosition />} />
+          <Route exact path="/dashboard/employee" element={<HrEmployee />} />
           <Route
             exacct
-            path="/employee/employee-detail/:id"
+            path="/dashboard/employee/employee-detail/:id"
             element={<EmployeeDetail />}
           />
           <Route
             exact
-            path="/admin-team-account/department/create-department"
+            path="/dashboard/admin-team-account/department/create-department"
             element={<CreateDepartment />}
           />
           <Route
-            path="/admin-team-account/position/create-position"
+            path="/dashboard/admin-team-account/position/create-position"
             element={<CreatePosition />}
           />
-          <Route path="/odoo-function-detail" element={<DetailFunction />} />
+          <Route path="/dashboard/odoo-function-detail" element={<DetailFunction />} />
           <Route
             path="become-an-employee"
             exact
             element={<BecomeAnEmployee />}
           />
-          <Route path="/employee-form" exact element={<EmployeeForm />} />
+          <Route path="/dashboard/employee-form" exact element={<EmployeeForm />} />
         </Routes>
       );
     }
@@ -880,11 +880,11 @@ function App() {
         <Routes>
           <Route path="*" element={<Notfound />} />
           <Route path="/" exact element={<Overview />} />
-          <Route path="/accounting/deposit" exact element={<MasterDeposit />} />
-          <Route path="/account-title" exact element={<AccountTitle />} />
-          <Route path="/account-data" exact element={<AccountData />} />
-          <Route path="/all-bet-income" exact element={<Allbetincome />} />
-          <Route path="/all-bet-outcome" exact element={<AllBetoutcome />} />
+          <Route path="/dashboard/accounting/deposit" exact element={<MasterDeposit />} />
+          <Route path="/dashboard/account-title" exact element={<AccountTitle />} />
+          <Route path="/dashboard/account-data" exact element={<AccountData />} />
+          <Route path="/dashboard/all-bet-income" exact element={<Allbetincome />} />
+          <Route path="/dashboard/all-bet-outcome" exact element={<AllBetoutcome />} />
         </Routes>
       );
     } else {

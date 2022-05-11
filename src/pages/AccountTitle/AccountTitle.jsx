@@ -18,7 +18,7 @@ const AccountTitle = () => {
          <TextField size='small' sx={{width:600}}/>
      <div className={classes["create-btn"]}>
          <Button variant="contained"
-         onClick={()=>navigate("/admin-team-account/department/create-department")}
+         onClick={()=>navigate("/dashboard/admin-team-account/department/create-department")}
          >Create Acount Title</Button>
      </div>
      </div>

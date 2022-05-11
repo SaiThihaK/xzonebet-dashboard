@@ -96,7 +96,7 @@ const PositionTable = ({name,position,salary,percentage,status,data,render,setRe
     <Button 
     className={classes["button"]}
     variant="contained"  onClick={()=>{
-      navigate("/odoo-function-detail")
+      navigate("/dashboard/odoo-function-detail")
     }}>Detail</Button>
     <IconButton onClick={()=>{
       banPosition(params.row?.id)
@@ -104,7 +104,7 @@ const PositionTable = ({name,position,salary,percentage,status,data,render,setRe
     </IconButton>
     <IconButton
     onClick={()=>{
-      navigate(`/admin-team-account/position/edit-position/${params.row.id}`)
+      navigate(`/dashboard/admin-team-account/position/edit-position/${params.row.id}`)
     }}
     ><Edit /></IconButton>
 </Stack>

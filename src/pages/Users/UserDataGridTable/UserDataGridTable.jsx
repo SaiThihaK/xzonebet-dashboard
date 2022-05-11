@@ -74,7 +74,7 @@ const UserDataGridTable = ({data}) => {
     headerAlign: 'center',
     editable: true,
     renderCell:(params)=><Stack spacing={1} direction="row" sx={{justifyContent: 'flex-end'}}>
-    <Button variant="contained" onClick={()=>{navigate(`/account/user/user-detail/${params.row.id}`)}}>Detail</Button>
+    <Button variant="contained" onClick={()=>{navigate(`/dashboard/account/user/user-detail/${params.row.id}`)}}>Detail</Button>
     <Button variant="outlined" color="error">Ban</Button>
     <Button variant="outlined" color="success">Unban</Button>
     </Stack>
