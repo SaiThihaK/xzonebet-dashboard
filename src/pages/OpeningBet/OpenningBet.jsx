@@ -1,16 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PageTitleCard from "../../components/UI/PageTitleCard/PageTitleCard";
 import classes from "./Openningbet.module.css";
 
-import { Avatar, Button, Stack } from "@mui/material";
-import { ArrowUpward, ArrowDownward } from "@mui/icons-material";
+import { Avatar, Button, IconButton, Stack } from "@mui/material";
+import { ArrowUpward, ArrowDownward, Delete } from "@mui/icons-material";
 import NewbetModal from "../../components/UI/Modal/Newbet/NewbetModal";
 import CustomGetFunction from "../../services/CustomGetFunction";
 import { changeTimestamp } from "../../Controller/ChangeDate";
 import NewbetModal1 from "../../components/UI/Modal/Newbet/NewbetModal1";
 import CustomLoading from "../../components/CustomLoading/CustomLoading";
+import {Edit} from "@mui/icons-material"
+import axios from "axios";
+import { DeleteMethod } from "../../services/api-services";
+import { toast } from "react-toastify";
 const OpenningBet = () => {
   const { data,loading} = CustomGetFunction("api/football-fixtures", []);
+  const [render,setRender] = useState(false);
   const [open, setOpen] = useState(false);
   const [id, setId] = useState(null);
   const openHandler = (id) => {
@@ -18,6 +23,25 @@ const OpenningBet = () => {
     setOpen(true);
   };
   const closeHandler = () => setOpen(false);
+  useEffect(()=>{},[render])
+  const deleteHandler = async(id)=>{
+    try{
+      const response = await axios.request(DeleteMethod(`api/football-fixtures/${id}`));
+      if(response.data.status === "success"){
+        toast.success(response.data.message);
+        return;
+      }
+      if(response.data.status==="error"){
+        toast.error(response.data.message);
+        setRender(!render);
+        return;
+      }
+    }catch(error){
+     toast.error(error.response.date.message);
+     return;
+    }
+
+  }
 
   return (
     <PageTitleCard title="Opening Bet">
@@ -87,15 +111,14 @@ const OpenningBet = () => {
                     <span>U</span>
                   </td>
                   <td align="center">
-                    <Button
-                      onClick={() => {
+                    <IconButton onClick={() => {
                         openHandler(index);
-                      }}
-                      size="small"
-                      variant="contained"
-                    >
-                      Edit
-                    </Button>
+                      }}>
+                      <Edit />
+                    </IconButton>
+                    <IconButton onClick={()=>deleteHandler(bet.id)}>
+                      <Delete />
+                    </IconButton>
                   </td>
                 </tr>
               ))}

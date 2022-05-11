@@ -11,7 +11,7 @@ import {BiShow} from "react-icons/bi"
 import Nodata from "../../../components/Nodata/Nodata";
 const ResultCard = ({ resultData }) => {
   const [dataResult, setDataResult] = useState([]);
-  const [loading,setLoading] =  useState(true);
+  const [loading,setLoading] = useState(false);
   const comfirmHandler = async () => {
     if (dataResult.length !==0) {
       return;
@@ -82,12 +82,16 @@ const ResultCard = ({ resultData }) => {
           />
           <p>{resultData.over_team_data.name}</p>
         </div>
-  
-  <div className={classes["goals"]}>
-     <p className={classes["Homegoal"]}>{dataResult?.home === undefined ? "" : dataResult?.home}</p>
-     <p className={classes["bt"]}>-</p>
-     <p className={classes["Awaygoal"]}>{dataResult?.away === undefined ? "" : dataResult?.away}</p>
-  </div>
+        {
+          dataResult?.home ? ( <div className={classes["goals"]}>
+          <p className={classes["Homegoal"]}>{dataResult?.home === undefined ? "" : dataResult?.home}</p>
+          <p className={classes["bt"]}>-</p>
+          <p className={classes["Awaygoal"]}>{dataResult?.away === undefined ? "" : dataResult?.away}</p>
+         </div>
+  ):(<div>Loading</div>)
+        }
+       
+
 
         <div className={classes["away-team"]}>
           <img

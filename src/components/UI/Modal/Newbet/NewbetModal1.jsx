@@ -17,7 +17,7 @@ import TextField from "@mui/material/TextField";
 import { changeTimestamp } from "../../../../Controller/ChangeDate";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { PostMethod } from "../../../../services/api-services";
+import { PatchMethod } from "../../../../services/api-services";
 import { logoutHandler } from "../../../Sidebar/Sidebar";
 const style = {
   position: "absolute",
@@ -81,28 +81,35 @@ console.log("numbers",totalNumber);
       overTeam = "away";
       underTeam = "home";
     }
-    // const addBetData = {
-    //   fixture_id: bettingData?.fixture?.id,
-    //   over_team_id: bettingData?.teams?.[overTeam]?.id,
-    //   over_team_data: bettingData?.teams?.[overTeam],
-    //   under_team_data: bettingData?.teams?.[underTeam],
-    //   under_team_id: bettingData?.teams?.[underTeam]?.id,
-    //   body_symbol1: newBet.body1,
-    //   body_symbol2: newBet.body,
-    //   body_symbol3: newBet.body2,
-    //   total_symbol1: newBet.total1,
-    //   total_symbol2: newBet.total,
-    //   total_symbol3: newBet.total2,
-    //   fixture_timestamp: bettingData?.fixture?.timestamp,
-    //   league_id: bettingData?.league?.id,
-
-    //   league_data: bettingData?.league,
-    // };
+    const addBetData = {
+      // fixture_id: bettingData?.id,
+      // over_team_id: bettingData?.teams?.[overTeam]?.id,
+      // over_team_data: bettingData?.teams?.[overTeam],
+      // under_team_data: bettingData?.teams?.[underTeam],
+      // under_team_id: bettingData?.teams?.[underTeam]?.id,
+      body_symbol1: newBet.body1,
+      body_symbol2: newBet.body,
+      body_symbol3: newBet.body2,
+      total_symbol1: newBet.total1,
+      total_symbol2: newBet.total,
+      total_symbol3: newBet.total2,
+      // fixture_timestamp: bettingData?.fixture_timestamp,
+      // league_id: bettingData?.league?.id,
+      // league_data: bettingData?.league,
+    };
     try {
-      const { data } = await axios.request(PostMethod(`api/football-fixtures`));
+      const { data } = await axios.request(PatchMethod(`api/football-fixtures/${bettingData?.id}`,addBetData));
 
       if ((data.status = "success")) {
         toast.success(data.message);
+        // setNewBet(oddType: "over",
+        // oddType1: "under",
+        // body:  "",
+        // body1: "",
+        // body2: "",
+        // total: "",
+        // total1: "",
+        // total2: "",)
         closeHandler();
         return;
       }
@@ -121,6 +128,7 @@ console.log("numbers",totalNumber);
       }
     }
   };
+
 
   return (
     <div>
