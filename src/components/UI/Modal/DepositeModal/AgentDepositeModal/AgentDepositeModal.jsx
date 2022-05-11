@@ -9,10 +9,10 @@ import axios from "axios";
 import { getMethod, PostMethod } from "../../../../../services/api-services";
 import { logoutHandler } from "../../../../Sidebar/Sidebar";
 import { toast } from "react-toastify";
-
-const style = {
+import Nodata from "../../../../../components/Nodata/Nodata"
+const  style = {
     position: "absolute",
-    top: "40%",
+    top: "50%",
     left: "60%",
     transform: "translate(-50%, -50%)",
     width: 800,
@@ -20,6 +20,8 @@ const style = {
     border: "1px solid #FFF",
     borderRadius: "0.5rem",
     p: 4,
+    overflowY: "auto",
+    maxHeight: "calc(100vh - 100px)",
   }
   
 const AgentDepositeModal = ({ 
@@ -106,7 +108,10 @@ const confirmHandler = async()=>{
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-           <div className={classes["avatar-container"]}>
+          {
+            provDetail.length !==0 ? ( 
+            <>
+            <div className={classes["avatar-container"]}>
             <Avatar src=""  variant="square" sx={{width:80,height:60}}/>
             <Typography id="modal-modal-title" variant="h6" component="h2">
             {provDetail?.payment_provider}
@@ -179,6 +184,10 @@ const confirmHandler = async()=>{
            <FormControl fullWidth style={{marginTop:20}}>
            <Button variant="contained" onClick={confirmHandler}>Confirm</Button>
            </FormControl>
+           </>
+           ):(<Nodata />)
+          }
+          
         </Box>
       </Modal>
     </div>
