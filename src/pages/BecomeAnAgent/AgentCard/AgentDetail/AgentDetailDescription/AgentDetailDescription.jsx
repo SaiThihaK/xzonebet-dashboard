@@ -50,7 +50,7 @@ const cancelHandler = async()=>{
         console.log(response)
         if(response.data.status = "success"){
         AlertToast(toast.success(data.message));
-        navigate("/become-an-agent")
+        navigate("/dashboard/become-an-agent")
         return;
         }
         if(response.data.status = "error"){
@@ -78,7 +78,7 @@ if(status==="rejet"){
       console.log(response)
       if(response.data.status = "success"){
       AlertToast(toast.success(data.message));
-      navigate("/become-an-agent")
+      navigate("/dashboard/become-an-agent")
       return;
       }
       if(response.data.status = "error"){

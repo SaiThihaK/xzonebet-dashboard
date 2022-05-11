@@ -122,7 +122,11 @@ function App() {
       return (
         <Routes>
           <Route path="/" exact element={<Dashboard />} />
-          <Route path="/dashboard/setting/game-setting" exact element={<GameSetting />} />
+          <Route
+            path="/dashboard/setting/game-setting"
+            exact
+            element={<GameSetting />}
+          />
           <Route
             path="/dashboard/setting/soccer-setting"
             exact
@@ -166,7 +170,11 @@ function App() {
             path="/dashboard/setting/affiliate-agent-setting/affiliate-user-percentage"
             element={<AffiliateUserPercentage />}
           />
-          <Route path="/dashboard/betlist/football" exact element={<Football />} />
+          <Route
+            path="/dashboard/betlist/football"
+            exact
+            element={<Football />}
+          />
           <Route path="/dashboard/betlist/2d" exact element={<Twod />} />
           <Route path="/dashboard/betlist/2d/time" exact element={<Time />} />
           <Route
@@ -175,19 +183,31 @@ function App() {
             element={<TwodCloseNumber />}
           />
           <Route path="/dashboard/betlist/3d" exact element={<Threed />} />
-          <Route path="/dashboard/betlist/3d/time" exact element={<ThreedTime />} />
+          <Route
+            path="/dashboard/betlist/3d/time"
+            exact
+            element={<ThreedTime />}
+          />
           <Route
             path="/dashboard/betlist/3d/close-number"
             exact
             element={<ThreedCloseNumber />}
           />
-          <Route path="/dashboard/become-an-agent" exact element={<BecomeAnAgent />} />
+          <Route
+            path="/dashboard/become-an-agent"
+            exact
+            element={<BecomeAnAgent />}
+          />
           <Route
             path="/dashboard/become-an-agent/detail/:id"
             exact
             element={<AgentDetail />}
           />
-          <Route path="/dashboard/account/super-master" exact element={<SuperMaster />} />
+          <Route
+            path="/dashboard/account/super-master"
+            exact
+            element={<SuperMaster />}
+          />
           <Route
             path="/dashboard/account/super-master/detail/:id"
             exact
@@ -314,9 +334,21 @@ function App() {
             element={<CancelMasterDetail />}
           />
           {/* Cancel Master */}
-          <Route path="/dashboard/accounting/deposit" exact element={<MasterDeposit />} />
-          <Route path="/dashboard/account-title" exact element={<AccountTitle />} />
-          <Route path="/dashboard/account-data" exact element={<AccountData />} />
+          <Route
+            path="/dashboard/accounting/deposit"
+            exact
+            element={<MasterDeposit />}
+          />
+          <Route
+            path="/dashboard/account-title"
+            exact
+            element={<AccountTitle />}
+          />
+          <Route
+            path="/dashboard/account-data"
+            exact
+            element={<AccountData />}
+          />
           <Route
             path="/dashboard/accounting/balance-sheet"
             exact
@@ -328,7 +360,11 @@ function App() {
             exact
             element={<ActiveUser />}
           />
-          <Route path="/dashboard/account/user/all-user" exact element={<AllUser />} />
+          <Route
+            path="/dashboard/account/user/all-user"
+            exact
+            element={<AllUser />}
+          />
           <Route
             path="/dashboard/account/user/user-detail/:id"
             exact
@@ -350,7 +386,11 @@ function App() {
             path="/dashboard/unit-setting/unit-value"
             element={<UnitValue />}
           />
-          <Route exact path="/dashboard/unit-setting/currency" element={<Currency />} />
+          <Route
+            exact
+            path="/dashboard/unit-setting/currency"
+            element={<Currency />}
+          />
           <Route
             exact
             path="/dashboard/unit-setting/unit-history"
@@ -450,10 +490,17 @@ function App() {
           {/* -------------------------HR------------------------*/}
           <Route path="*" element={<Notfound />} />
           <Route path="/" exact element={<Overview />} />
-          <Route exact path="/dashboard/department" element={<HrDepartment />} />
+          <Route
+            exact
+            path="/dashboard/department"
+            element={<HrDepartment />}
+          />
           <Route exact path="/dashboard/position" element={<HrPosition />} />
           <Route exact path="/dashboard/employee" element={<HrEmployee />} />
-          <Route path="/dashboard/odoo-function-detail" element={<DetailFunction />} />
+          <Route
+            path="/dashboard/odoo-function-detail"
+            element={<DetailFunction />}
+          />
           {/* ======================================All Sports===================================================== */}
           <Route path="/dashboard/all-sports" exact element={<AllSport />} />
           {/* ---------------Xzonebet Football------------------ */}
@@ -517,11 +564,27 @@ function App() {
             path="/dashboard/master/deposite/agent-deposite"
             element={<AgentDeposite />}
           />
-          <Route exact path="/dashboard/master/profile" element={<MProfile />} />
-          <Route exact path="/dashboard/master/profile/edit" element={<EditProfile />} />
-          <Route exact path="/dashboard/master/transfer-to" element={<TransferTo />} />
+          <Route
+            exact
+            path="/dashboard/master/profile"
+            element={<MProfile />}
+          />
+          <Route
+            exact
+            path="/dashboard/master/profile/edit"
+            element={<EditProfile />}
+          />
+          <Route
+            exact
+            path="/dashboard/master/transfer-to"
+            element={<TransferTo />}
+          />
           <Route exact path="/dashboard/master/agent" element={<MAgent />} />
-          <Route exact path="/dashboard/master/agent/new-agent" element={<NewAgent />} />
+          <Route
+            exact
+            path="/dashboard/master/agent/new-agent"
+            element={<NewAgent />}
+          />
           <Route
             exact
             path="/dashboard/master/agent/agents"
@@ -578,7 +641,10 @@ function App() {
             path="/dashboard/master/payment-setting/payment-account/edit/:id"
             element={<EditPaymentAccount />}
           />
-          <Route path="/dashboard/connect-with-chat" element={<ConnectWithChat />} />
+          <Route
+            path="/dashboard/connect-with-chat"
+            element={<ConnectWithChat />}
+          />
           <Route path="*" element={<Notfound />} />
         </Routes>
       );
@@ -587,7 +653,11 @@ function App() {
       return (
         <Routes>
           <Route path="/" exact element={<Overview />} />
-          <Route exact path="/dashboard/agent/bank-account" element={<ABankAccount />} />
+          <Route
+            exact
+            path="/dashboard/agent/bank-account"
+            element={<ABankAccount />}
+          />
           <Route
             exact
             path="/dashboard/agent/deposite/user-deposite"
@@ -598,13 +668,21 @@ function App() {
             path="/dashboard/agent/deposite/agent-deposite"
             element={<AgentDeposite />}
           />
-          <Route exact path="/dashboard/agent/transfer-to" element={<TransferTo />} />
+          <Route
+            exact
+            path="/dashboard/agent/transfer-to"
+            element={<TransferTo />}
+          />
           <Route
             exact
             path="/dashboard/agent/transition-history"
             element={<ATransitionHistory />}
           />
-          <Route exact path="/dashboard/agent/user-withdraw" element={<UserWithDraw />} />
+          <Route
+            exact
+            path="/dashboard/agent/user-withdraw"
+            element={<UserWithDraw />}
+          />
 
           <Route
             exact
@@ -622,7 +700,11 @@ function App() {
             exact
             element={<ActiveUser />}
           />
-          <Route path="/dashboard/account/user/all-user" exact element={<AllUser />} />
+          <Route
+            path="/dashboard/account/user/all-user"
+            exact
+            element={<AllUser />}
+          />
           <Route
             path="/dashboard/account/user/user-detail/:id"
             exact
@@ -788,7 +870,11 @@ function App() {
             exact
             element={<CancelMaster />}
           />
-          <Route path="/dashboard/become-an-agent" exact element={<BecomeAnAgent />} />
+          <Route
+            path="/dashboard/become-an-agent"
+            exact
+            element={<BecomeAnAgent />}
+          />
           <Route
             path="/dashboard/become-an-agent/detail/:id"
             exact
@@ -816,7 +902,11 @@ function App() {
             exact
             element={<ActiveUser />}
           />
-          <Route path="/dashboard/account/user/all-user" exact element={<AllUser />} />
+          <Route
+            path="/dashboard/account/user/all-user"
+            exact
+            element={<AllUser />}
+          />
         </Routes>
       );
     }
@@ -829,7 +919,11 @@ function App() {
             path="/dashboard/affiliate-agent/transition-history"
             element={<TransitionHistory />}
           />
-          <Route exact path="/dashboard/agent/user-withdraw" element={<UserWithDraw />} />
+          <Route
+            exact
+            path="/dashboard/agent/user-withdraw"
+            element={<UserWithDraw />}
+          />
           <Route
             exact
             path="/dashboard/agent/deposite/user-deposite"
@@ -848,7 +942,11 @@ function App() {
         <Routes>
           <Route path="*" element={<Notfound />} />
           <Route path="/" exact element={<Overview />} />
-          <Route exact path="/dashboard/department" element={<HrDepartment />} />
+          <Route
+            exact
+            path="/dashboard/department"
+            element={<HrDepartment />}
+          />
           <Route exact path="/dashboard/position" element={<HrPosition />} />
           <Route exact path="/dashboard/employee" element={<HrEmployee />} />
           <Route
@@ -865,13 +963,20 @@ function App() {
             path="/dashboard/admin-team-account/position/create-position"
             element={<CreatePosition />}
           />
-          <Route path="/dashboard/odoo-function-detail" element={<DetailFunction />} />
+          <Route
+            path="/dashboard/odoo-function-detail"
+            element={<DetailFunction />}
+          />
           <Route
             path="become-an-employee"
             exact
             element={<BecomeAnEmployee />}
           />
-          <Route path="/dashboard/employee-form" exact element={<EmployeeForm />} />
+          <Route
+            path="/dashboard/employee-form"
+            exact
+            element={<EmployeeForm />}
+          />
         </Routes>
       );
     }
@@ -880,11 +985,31 @@ function App() {
         <Routes>
           <Route path="*" element={<Notfound />} />
           <Route path="/" exact element={<Overview />} />
-          <Route path="/dashboard/accounting/deposit" exact element={<MasterDeposit />} />
-          <Route path="/dashboard/account-title" exact element={<AccountTitle />} />
-          <Route path="/dashboard/account-data" exact element={<AccountData />} />
-          <Route path="/dashboard/all-bet-income" exact element={<Allbetincome />} />
-          <Route path="/dashboard/all-bet-outcome" exact element={<AllBetoutcome />} />
+          <Route
+            path="/dashboard/accounting/deposit"
+            exact
+            element={<MasterDeposit />}
+          />
+          <Route
+            path="/dashboard/account-title"
+            exact
+            element={<AccountTitle />}
+          />
+          <Route
+            path="/dashboard/account-data"
+            exact
+            element={<AccountData />}
+          />
+          <Route
+            path="/dashboard/all-bet-income"
+            exact
+            element={<Allbetincome />}
+          />
+          <Route
+            path="/dashboard/all-bet-outcome"
+            exact
+            element={<AllBetoutcome />}
+          />
         </Routes>
       );
     } else {
