@@ -1,15 +1,17 @@
 import { Button, CircularProgress, IconButton } from "@mui/material";
 import React, { useState } from "react";
-import Card from "../../../components/UI/Card";
+
 import { changeTimestamp } from "../../../Controller/ChangeDate";
 import classes from "./ResultCard.module.css";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import axios from "axios";
 import { PostMethod } from "../../../services/api-services";
 import { logoutHandler } from "../../../components/Sidebar/Sidebar";
 import {BiShow} from "react-icons/bi"
-import Nodata from "../../../components/Nodata/Nodata";
-const ResultCard = ({ resultData }) => {
+
+
+
+const ResultCard = ({ resultData,setRender,render }) => {
   const [dataResult, setDataResult] = useState([]);
   const [loading,setLoading] = useState(false);
   const comfirmHandler = async () => {
@@ -45,6 +47,7 @@ const ResultCard = ({ resultData }) => {
 
       if ((data.status = "success")) {
         toast.success(data.message);
+        setRender(!render)
         return;
       }
       if ((data.status = "error")) {
@@ -82,14 +85,12 @@ const ResultCard = ({ resultData }) => {
           />
           <p>{resultData.over_team_data.name}</p>
         </div>
-        {
-          dataResult?.home ? ( <div className={classes["goals"]}>
+         <div className={classes["goals"]}>
           <p className={classes["Homegoal"]}>{dataResult?.home === undefined ? "" : dataResult?.home}</p>
           <p className={classes["bt"]}>-</p>
           <p className={classes["Awaygoal"]}>{dataResult?.away === undefined ? "" : dataResult?.away}</p>
          </div>
-  ):(<div>Loading</div>)
-        }
+     
        
 
 
@@ -104,8 +105,8 @@ const ResultCard = ({ resultData }) => {
         </div>
       </div>
 
-
-      <div className={classes["btn-container"]}>
+<div style={{display:"flex"}}>
+<div className={classes["btn-container"]}>
         <Button
           onClick={fetchDetail}
           variant="contained"
@@ -113,9 +114,15 @@ const ResultCard = ({ resultData }) => {
         >
           Confirm
         </Button>
-        <IconButton onClick={comfirmHandler} 
+       
+      </div>
+      <div style={{display:"flex",justifyContent:"flex-end"}}>
+      <IconButton onClick={comfirmHandler} 
         ><BiShow /></IconButton>
       </div>
+</div>
+     
+      
     </div>
   );
 };
