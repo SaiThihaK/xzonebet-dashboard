@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { ChangeDate } from '../../../Controller/ChangeDate';
+import { ChangeDate,getResDate } from '../../../Controller/ChangeDate';
 import { Button, Stack } from '@mui/material';
 import { toast } from 'react-toastify';
 import { logoutHandler } from '../../../components/Sidebar/Sidebar';
@@ -55,7 +55,7 @@ export default function MasterDepositeDataTable({ data, num, setNum }) {
       field: 'name',
       headerName: 'Name',
       width: 150,
-      renderCell:(param)=>param.row.first_name +""+ param.row.last_name
+      renderCell:(param)=>param.row.first_name +" "+ param.row.last_name
     },
     {
       field: 'payment_type',
@@ -83,7 +83,7 @@ export default function MasterDepositeDataTable({ data, num, setNum }) {
       field: "date",
       headerName: 'Date',
       width: 200,
-      valueGetter: (param) => param.row.created_at
+      valueGetter: (param) => getResDate(param.row.created_at)
     },
     {
       field: "action",

@@ -13,7 +13,7 @@ const MasterDeposit = () => {
     { label: "User" },
   ];
   const [num,setNum] = useState(0);
-  const {data,loading} = CustomGetFunction(`api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=pending`,[num]);
+  const {data,loading} = CustomGetFunction(`api/affiliate-register-lists-detail?sortColumn=id&sortDirection=desc&limit=3&status=deposit-pending`,[num]);
   const [filterId,setFilterId] = useState("");
   return (
     <div className={classes["soccer-setting-container"]}>
