@@ -12,7 +12,7 @@ const MemberCard = ({partner,path,status}) => {
         </div>
         <div   className={classes["form-container"]}>
       <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Name </label>:<p>&nbsp;&nbsp;{partner?.name ||  ""}</p>
+          <label htmlFor="">Name </label>:<p>&nbsp;&nbsp;{partner?.first_name + ""+partner?.last_name ||  ""}</p>
         </div>
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Email </label>:<p>&nbsp;&nbsp;{partner?.email ||  ""}</p>

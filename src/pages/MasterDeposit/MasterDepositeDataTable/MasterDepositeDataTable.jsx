@@ -48,13 +48,14 @@ export default function MasterDepositeDataTable({ data, num, setNum }) {
       return;
     }
   }
-
+  console.log(data);
   const columns = [
     { field: 'id', headerName: "ID", width: 90 },
     {
       field: 'name',
       headerName: 'Name',
       width: 150,
+      renderCell:(param)=>param.row.first_name +""+ param.row.last_name
     },
     {
       field: 'payment_type',
@@ -82,7 +83,7 @@ export default function MasterDepositeDataTable({ data, num, setNum }) {
       field: "date",
       headerName: 'Date',
       width: 200,
-      valueGetter: (param) => ChangeDate(param.row.created_at)
+      valueGetter: (param) => param.row.created_at
     },
     {
       field: "action",
