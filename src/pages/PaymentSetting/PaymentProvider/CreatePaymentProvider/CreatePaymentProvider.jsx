@@ -22,13 +22,14 @@ const CreatePaymentProvider = () => {
   const [payment_typeValue, setPayment_typeValue] = useState('');
   const [logo, setlogo] = useState({});
   const [country, setCountry] = useState([]);
-
+  const [coun,setCoun] = useState([]);
   const navigate = useNavigate();
 
 
   const payment_typeChange = (e) => setPayment_typeValue(e.target.value);
   const payment_providerChange = (e) => setPayment_provider(e.target.value);
   const logoChange = (e) => setlogo(e.target.files[0]);
+
   const {data} = CustomGetFunction(`api/dashboard/payment-types`,[]);
   const FetchPayment_type = async () => {
     try {
@@ -65,7 +66,7 @@ const CreatePaymentProvider = () => {
       fd.append("payment_type_id",payment_typeValue);
       fd.append("name",payment_provider);
       fd.append("logo",logo);
-      fd.append("countries",JSON.stringify(country));
+      fd.append("countries",JSON.stringify(["1","3","4"]));
       const response = await axios.request(PostProvider(`api/dashboard/payment-providers`,
       fd
       ));
@@ -89,6 +90,20 @@ const CreatePaymentProvider = () => {
       }
     }
   };
+
+
+ 
+  const fetchCountries = async()=>{
+    axios.request(getMethod(`api/countries`))
+    .then(function (response) {
+      setCoun(response.data.data);
+    });
+  }
+
+  useEffect(()=>{fetchCountries()},[])
+ 
+   
+  
 
 
 
