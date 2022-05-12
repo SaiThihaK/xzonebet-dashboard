@@ -50,7 +50,7 @@ export default function MasterDepositeDataTable({ data, num, setNum }) {
   }
 
   const columns = [
-    { field: 'id', headerName: "No", width: 90 },
+    { field: 'id', headerName: "ID", width: 90 },
     {
       field: 'name',
       headerName: 'Name',
@@ -100,7 +100,7 @@ export default function MasterDepositeDataTable({ data, num, setNum }) {
   ];
 
   return (
-    <div style={{ height: "60vh", width: '100%' }}>
+    <div style={{ height: "200vh", width: '100%' }}>
       {
         data.length !== 0 ? <DataGrid
           rows={data}
