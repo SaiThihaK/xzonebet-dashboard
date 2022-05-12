@@ -14,7 +14,7 @@ console.log("userInfo",userInfo);
           alt=""
         />
         <div className={classes["agent-user-des"]}>
-          <h3>{userInfo.name}</h3>
+          <h3>{userInfo.first_name + " " + userInfo.last_name}</h3>
           <span>ID - {userInfo.id}</span>
         </div>
       </div>

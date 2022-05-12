@@ -9,6 +9,7 @@ import Checkbox from '@mui/material/Checkbox';
 import {  getMethod } from '../../../../services/api-services';
 import axios from 'axios';
 import { Avatar } from '@mui/material';
+import CustomGetFunction from '../../../../services/CustomGetFunction';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -27,29 +28,23 @@ export default function SelectCoun({country,setCountry}) {
 
 
   const [coun,setCoun] = React.useState([]);
-  const fetchCountries = async()=>{
-    axios.request(getMethod(`api/countries`))
-    .then(function (response) {
-      setCoun(response.data.data);
-    });
-  }
- 
-  React.useEffect(()=>{
-      fetchCountries();
-  },[])
+
+  const {data} = CustomGetFunction(`api/countries`,[]);
+  // const fetchCountries = async()=>{
+  //   axios.request(getMethod(`api/countries`))
+  //   .then(function (response) {
+  //     setCoun(response.data.data);
+  //   });
+  // }
+
+  // React.useEffect(()=>{
+  //     fetchCountries();
+  // },[])
   // console.log(country);
   
-  const handleChange = (event) => {
-    // const {
-    //   target: { value },
-    // } = event;
-    setCountry(
-      // On autofill we get a stringified value.
-      // typeof value === 'string' ? value.split(',') : value,
-      event.target.value
-    );
+  const handleChange = (e) => {
+    setCountry(e.target.value);
   };
-
 
   return (
     <div style={{marginTop:20}}>
@@ -61,13 +56,13 @@ export default function SelectCoun({country,setCountry}) {
           multiple
           value={country}
           size="small"
-          // ref={arr}
+
           onChange={handleChange}
           renderValue={(selected) => selected.join(', ')}
         >
-          {coun.map((name,index) => (
-            <MenuItem key={index} value={name.id}>
-              <Checkbox checked={country.indexOf(name.id) > -1} />
+          {data?.map((name,index) => (
+            <MenuItem key={index} value={name.name}>
+              <Checkbox checked={country.indexOf(name.name) > -1} />
               {/* <Avatar src={name.flag} style={{width:"20px",height:"20px",marginRight:10}} /> */}
               <ListItemText>
                  {name.name}({name.code})
