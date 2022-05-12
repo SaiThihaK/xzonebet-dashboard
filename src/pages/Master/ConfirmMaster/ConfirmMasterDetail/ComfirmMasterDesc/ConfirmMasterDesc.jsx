@@ -77,9 +77,14 @@ const ComfirmMasterDesc = ({userInfo}) => {
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Transition Id </label>:<p>&nbsp;&nbsp;{userInfo.transition_id}</p>
         </div>
-        <form className={classes['btn-container']}>
-        <Button   variant="contained" color="primary" onClick={confirmHandler} className={classes["btn"]}>Comfirm</Button>
-        </form>
+        {
+          localStorage.getItem("type") !== "hr" && (
+            <form className={classes['btn-container']}>
+            <Button   variant="contained" color="primary" onClick={confirmHandler} className={classes["btn"]}>Comfirm</Button>
+            </form>
+          )
+        }
+       
       </div>
     </div>
   );

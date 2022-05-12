@@ -143,6 +143,8 @@ if(response.data.status === "error"){
   const filterProvider = payment_provider.filter((prov)=>prov?.payment_type === "CryptoCurrency");
   console.log("filter",filterProvider);
 
+ 
+
   return (
     <div className={classes["soccer-setting-container"]}>
       <Card>
@@ -374,9 +376,14 @@ if(response.data.status === "error"){
         </Card>
        
       </div>
-      <div style={{display:"flex",marginTop:20,justifyContent:"flex-end",marginRight:100}}>
+      {
+        localStorage.getItem("type") !== "hr" && (
+        <div style={{display:"flex",marginTop:20,justifyContent:"flex-end",marginRight:100}}>
         <Button type="submit" onClick={(e)=>{submitHandler(e)}} variant="contained">Submit</Button>
       </div>
+      )
+      }
+      
         </form>
       </div>
     </div>

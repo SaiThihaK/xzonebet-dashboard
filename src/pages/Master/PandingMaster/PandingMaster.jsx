@@ -3,19 +3,16 @@ import Card from '../../../components/UI/Card';
 import Grid from "@mui/material/Grid";
 import 'react-toastify/dist/ReactToastify.css';
 import classes from './PandingMaster.module.css';
-import { useState, useEffect   } from "react";
-import axios from "axios";
-import MasterCard from "../../../components/MasterCard/MasterCard";
-import { getMethod } from "../../../services/api-services";
-import { logoutHandler } from "../../../components/Sidebar/Sidebar";
+
 import { ToastContainer } from "react-toastify";
-import MemberCard from "../../../components/MemberCard/MemberCard";
 import CustomGetFunction from "../../../services/CustomGetFunction";
 import { pendingMasterApi } from "../../../services/api-collection";
-
+import CustomLoading from "../../../components/CustomLoading/CustomLoading";
+import MemberCard from "../../../components/MemberCard/MemberCard";
+import Nodata from "../../../components/Nodata/Nodata"
 const PandingMaster = () => {
 
-  const {data} = CustomGetFunction(pendingMasterApi,[]);
+  const {data,loading} = CustomGetFunction(pendingMasterApi,[]);
 
 
   return (
@@ -32,18 +29,24 @@ const PandingMaster = () => {
            )}
           </Grid> */}
           {
-            <Grid container spacing={5}>
+            loading ?(<div>
               {
-              
-                data.length !==0 && data.map((master,index)=>(
-                 <Grid item xs={6} key={index}>
-                    <MemberCard partner={master} path={"/dashboard/account/master/panding-master/detail/"} />
-                   </Grid>
-                 
-                ))
+                data.length !== 0 ? (<Grid container spacing={5}>
+                  {
+                  
+                    data.length !==0 && data.map((master,index)=>(
+                     <Grid item xs={6} key={index}>
+                        <MemberCard partner={master} path={"/dashboard/account/master/panding-master/detail/"} />
+                       </Grid>
+                     
+                    ))
+                  }
+                </Grid>) : (<Nodata />)
               }
-            </Grid>
+              </div>):(<CustomLoading />)
           }
+          
+         
         </div>
       </Card>
     </div>

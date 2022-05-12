@@ -10,11 +10,12 @@ import { logoutHandler } from "../../../components/Sidebar/Sidebar";
 import MemberCard from "../../../components/MemberCard/MemberCard";
 import CustomGetFunction from "../../../services/CustomGetFunction";
 import { completeMasterApi } from "../../../services/api-collection";
-
+import CustomLoading from "../../../components/CustomLoading/CustomLoading";
+import Nodata from "../../../components/Nodata/Nodata";
 
 const CompleteMaster = () => {
-  const {data} = CustomGetFunction(completeMasterApi,[]);
- console.log(data);
+  const {data,loading} = CustomGetFunction(completeMasterApi,[]);
+
   return (
     <div className={classes["soccer-setting-container"]}>
       <Card>
@@ -27,15 +28,25 @@ const CompleteMaster = () => {
            (<MasterCard key={completeMaster?.id} user={completeMaster} path="/account/master/complete-master/detail/" />)
            )}
           </Grid> */}
-           <Grid container spacing={5}>
-            {
-              data.length  !==0 && data.map((master,index)=>(
-                <Grid item xs={6} key={index}>
-                  <MemberCard partner={master} path={"/dashboard/account/master/complete-master/detail/"} />
-                </Grid>
-  ))
-            }
-          </Grid>
+
+          {
+            loading ? (
+              <div>
+                {
+                  data.length !==0 ?(<Grid container spacing={5}>
+                    {
+                      data.length  !==0 &&
+                      data.map((master,index)=>(
+                        <Grid item xs={6} key={index}>
+                          <MemberCard partner={master} path={"/dashboard/account/master/complete-master/detail/"} />
+                        </Grid>)) 
+                    }
+                  </Grid>):(<Nodata />)                
+                }
+                </div>
+            ):(<CustomLoading />)
+          }
+           
         </div>
       </Card>
     </div>
