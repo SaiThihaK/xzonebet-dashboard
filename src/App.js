@@ -977,6 +977,211 @@ function App() {
             exact
             element={<EmployeeForm />}
           />
+
+          {/* =============================Become an Partner===================== */}
+          <Route
+            path="/dashboard/become-an-agent"
+            exact
+            element={<BecomeAnAgent />}
+          />
+          <Route
+            path="/dashboard/become-an-agent/detail/:id"
+            exact
+            element={<AgentDetail />}
+          />
+          <Route
+            path="/dashboard/account/super-master"
+            exact
+            element={<SuperMaster />}
+          />
+          <Route
+            path="/dashboard/account/super-master/detail/:id"
+            exact
+            element={<SuperMasterDetail />}
+          />
+          <Route path="/dashboard/account/master" exact element={<Master />} />
+          <Route
+            path="/dashboard/account/affiliate-agent"
+            exact
+            element={<AffiliateAgent />}
+          />
+          <Route
+            path="/dashboard/account/affiliate-agent/pending-affiliate-agent"
+            element={<PendingAffiliateAgent />}
+          />
+          <Route
+            path="/dashboard/account/affiliate-agent/pending-affiliate-agent/detail/:id"
+            element={<PendingAffiliateAgentDetail />}
+          />
+          {/* Agent */}
+          <Route path="/dashboard/account/agent" exact element={<Agent />} />
+          <Route
+            path="/dashboard/account/agent/pending-agent"
+            exact
+            element={<PendingAgent />}
+          />
+          <Route
+            path="/dashboard/account/agent/pending-agent/detail/:id"
+            exact
+            element={<PendingAgentDetail />}
+          />
+          <Route
+            path="/dashboard/account/agent/confirm-agent"
+            exact
+            element={<ConfirmAgent />}
+          />
+          <Route
+            path="/dashboard/account/agent/confirm-agent/detail/:id"
+            exact
+            element={<ConfirmAgentDetail />}
+          />
+          <Route
+            path="/dashboard/account/agent/complete-agent"
+            exact
+            element={<CompleteAgent />}
+          />
+          <Route
+            path="/dashboard/account/agent/complete-agent/detail/:id"
+            exact
+            element={<CompleteAgentDetail />}
+          />
+          <Route
+            path="/dashboard/account/agent/cancel-agent"
+            exact
+            element={<CancelAgent />}
+          />
+          <Route
+            path="/dashboard/account/agent/cancel-agent/detail/:id"
+            exact
+            element={<CancelAgentDetail />}
+          />
+          {/* CompleteAgent Table */}
+          <Route
+            path="/dashboard/account/agent/complete-agent/transition-table"
+            element={<AgentTransition />}
+          />
+          {/* Agent */}
+          {/* Pending Master */}
+          <Route
+            path="/dashboard/account/master/panding-master"
+            exact
+            element={<PandingMaster />}
+          />
+          <Route
+            path="/dashboard/account/master/panding-master/detail/:id"
+            exact
+            element={<PandingMasterDetail />}
+          />
+          {/* Confirm Master(sai) */}
+          <Route
+            path="/dashboard/account/master/confirm-master"
+            exact
+            element={<ConfirmMaster />}
+          />
+          <Route
+            path="/dashboard/account/master/confirm-master/detail/:id"
+            exact
+            element={<ConfirmMasterDetail />}
+          />
+          {/* Confirm Master(sai) */}
+
+          {/* complete Master */}
+          <Route
+            path="/dashboard/account/master/complete-master"
+            exact
+            element={<CompleteMaster />}
+          />
+          <Route
+            path="/dashboard/account/master/complete-master/detail/:id"
+            exact
+            element={<CompleteMasterDetail />}
+          />
+          <Route
+            path="/dashboard/account/master/complete-master/agent-table"
+            exact
+            element={<CompleteMasterTable />}
+          />
+          <Route
+            path="/dashboard/account/master/complete-master/transition-table"
+            exact
+            element={<Transition />}
+          />
+
+          {/* complete Master */}
+          {/* Cancel Master */}
+          <Route
+            path="/dashboard/account/master/cancel-master"
+            exact
+            element={<CancelMaster />}
+          />
+          <Route
+            path="/dashboard/account/master/cancel-master/detail/:id"
+            exact
+            element={<CancelMasterDetail />}
+          />
+          {/* Cancel Master */}
+          <Route
+            path="/dashboard/accounting/deposit"
+            exact
+            element={<MasterDeposit />}
+          />
+          <Route
+            path="/dashboard/account-title"
+            exact
+            element={<AccountTitle />}
+          />
+          <Route
+            path="/dashboard/account-data"
+            exact
+            element={<AccountData />}
+          />
+          <Route
+            path="/dashboard/accounting/balance-sheet"
+            exact
+            element={<BalanceSheet />}
+          />
+          <Route path="/dashboard/account/user" exact element={<Users />} />
+          <Route
+            path="/dashboard/account/user/active-user"
+            exact
+            element={<ActiveUser />}
+          />
+          <Route
+            path="/dashboard/account/user/all-user"
+            exact
+            element={<AllUser />}
+          />
+          <Route
+            path="/dashboard/account/user/user-detail/:id"
+            exact
+            element={<UserDetail />}
+          />
+          <Route
+            exact
+            path="/dashboard/deposite-withdraw-table"
+            element={<UserDetailDesTable />}
+          />
+          {/* Unit Setting */}
+          <Route
+            exact
+            path="/dashboard/unit-setting/create-unit"
+            element={<CreateUnit />}
+          />
+          <Route
+            exact
+            path="/dashboard/unit-setting/unit-value"
+            element={<UnitValue />}
+          />
+          <Route
+            exact
+            path="/dashboard/unit-setting/currency"
+            element={<Currency />}
+          />
+          <Route
+            exact
+            path="/dashboard/unit-setting/unit-history"
+            element={<TransitionHistory />}
+          />
         </Routes>
       );
     }

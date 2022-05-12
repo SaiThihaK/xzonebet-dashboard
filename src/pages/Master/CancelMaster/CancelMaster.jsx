@@ -5,10 +5,11 @@ import classes from './CancelMaster.module.css';
 import MemberCard from "../../../components/MemberCard/MemberCard";
 import CustomGetFunction from "../../../services/CustomGetFunction";
 import { cancelMasterApi } from "../../../services/api-collection";
-
+import CustomLoading from "../../../components/CustomLoading/CustomLoading";
+import Nodata from "../../../components/Nodata/Nodata";
 const CancelMaster = () => {
 
-  const {data} = CustomGetFunction(cancelMasterApi,[]);
+  const {data,loading} = CustomGetFunction(cancelMasterApi,[]);
 
  
   return (
@@ -23,15 +24,27 @@ const CancelMaster = () => {
            (<MasterCard key={cancelMaster?.id} user ={cancelMaster} path="/account/master/cancel-master/detail/"/>)
            )}
           </Grid> */}
-           <Grid container spacing={5}>
-            {
-              data.length  !==0 && data.map((master,index)=>(
-                <Grid item xs={6} key={index}>
-                  <MemberCard partner={master} path={"/dashboard/account/master/cancel-master/detail/"} />
-                </Grid>
-  ))
-            }
-          </Grid>
+
+             {
+               loading ? ( 
+               <div>
+                 {
+                   data.length ? (    <Grid container spacing={5}>
+            
+                    {
+                      data.length  !==0 && data.map((master,index)=>(
+                        <Grid item xs={6} key={index}>
+                          <MemberCard partner={master} path={"/dashboard/account/master/cancel-master/detail/"} />
+                        </Grid>
+          ))
+                    }
+                  </Grid>):(<Nodata />)
+                 }
+              </div>
+              ):(<CustomLoading />)
+             }
+
+          
         </div>
       </Card>
     </div>

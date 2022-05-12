@@ -9,29 +9,12 @@ import { getMethod } from "../../../services/api-services";
 import { logoutHandler } from "../../../components/Sidebar/Sidebar";
 import MemberCard from "../../../components/MemberCard/MemberCard";
 import { confirmMasterApi } from "../../../services/api-collection";
-
+import CustomGetFunction from "../../../services/CustomGetFunction"
+import CustomLoading from "../../../components/CustomLoading/CustomLoading";
+import Nodata from "../../../components/Nodata/Nodata"
 const ConfirmMaster = () => {
-  const [confirmMasters,setConfirmMasters] = useState([]);
-  const fetchConfirmMaster = async()=>{
-    try{
-      const {data} = await axios.request(getMethod(confirmMasterApi));
-      if(data.status==="success"){
-        setConfirmMasters(data.data);
-        return;
-      }
-
-    }catch(error){
-      console.log(error);
-      console.log(error.response.data.message)
-      if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
-      logoutHandler();
-      }
-    }
-  };
-  useEffect(()=>{
-   fetchConfirmMaster();
-   return ()=>setConfirmMasters([]);
-  },[]);
+ 
+  const {data,loading} = CustomGetFunction(confirmMasterApi,[]);
   return (
     <div className={classes["soccer-setting-container"]}>
       <Card>
@@ -44,15 +27,25 @@ const ConfirmMaster = () => {
            (<MasterCard key={confirmMaster?.id} user={confirmMaster} path="/account/master/confirm-master/detail/" />)
            )}
           </Grid> */}
-          <Grid container spacing={5}>
+          {
+            loading ? ( 
+            <div>
             {
-              confirmMasters.length !==0 && confirmMasters.map((master,index)=>(
-                <Grid item xs={6} key={index}>
-                  <MemberCard partner={master} path={"/dashboard/account/master/confirm-master/detail/"} />
-                </Grid>
-  ))
+              data.length !==0 ? (<Grid container spacing={5}>
+                {
+                  data.length !==0 &&
+                           data.map((master,index)=>(
+                            <Grid item={6} key={index}>
+                              <MemberCard partner={master} path={"/dashboard/account/master/confirm-master/detail/"} />
+                            </Grid>
+              ))
+                }
+              </Grid>):(<Nodata />)
             }
-          </Grid>
+            </div>
+            ):(<CustomLoading />)
+          }
+         
         </div>
       </Card>
     </div>

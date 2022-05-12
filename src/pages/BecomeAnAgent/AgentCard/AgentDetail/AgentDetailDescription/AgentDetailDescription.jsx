@@ -270,9 +270,14 @@ return () => {
       <div style={{padding:"20px 20px",marginTop:20,backgroundColor:"#eee",color:"black",borderRadius:"5px"}}>
         <p>{data?.message}</p>
       </div>
-      <div style={{display:"flex",justifyContent:"flex-end",marginTop:20}}>
+      {
+        localStorage.getItem("type") !== "hr" && (
+          <div style={{display:"flex",justifyContent:"flex-end",marginTop:20}}>
           <Button variant="contained" onClick={submitHandler}>Submit</Button>
         </div>
+        )
+      }
+      
         <CancelModal open={open} handleClose={handleClose} remark={remark} setRemark={setRemark} submitHandler={cancelHandler}/>
     </div>
   );
