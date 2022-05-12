@@ -22,7 +22,7 @@ const MemberCard = ({partner,path,status}) => {
         </div>
         {
           status && <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Form Type </label>:<p>&nbsp;&nbsp;{partner?.form_type||  ""}</p>
+          <label htmlFor="">Type </label>:<p>&nbsp;&nbsp;{partner?.form_type||  ""}</p>
         </div>
         }
       </div>

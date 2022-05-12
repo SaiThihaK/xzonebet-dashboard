@@ -8,10 +8,10 @@ import {  useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import {  toast } from 'react-toastify';
 
-import {  MenuItem, Select } from "@mui/material";
+import {  MenuItem, Select,Avatar } from "@mui/material";
 import SuperMasterDesc from "../../../SuperMaster/SuperMasterCard/SuperMasterDetail/SuperMasterDesc/SuperMasterDesc";
 import Card from "../../../../components/UI/Card";
-import { PostMethod } from "../../../../services/api-services";
+import { PostMethod,getMethod } from "../../../../services/api-services";
 import { logoutHandler } from "../../../../components/Sidebar/Sidebar";
 import CustomGetFunction from "../../../../services/CustomGetFunction";
 import { pendingDetail,AccountDetail } from "../../../../services/api-collection";
@@ -25,12 +25,15 @@ const PandingMasterDetail = () => {
   const  [currency,setCurrency] = useState("");
   const alertToast = (toast,message) =>toast(message);
   // Enjoyment
-  const [superMaster,setSuperMaster] = useState("");
+  const [superMaster,setSuperMaster] = useState([]);
+  const [supValue,setSupValue] = useState("");
   const [username,setUserName] = useState("");
   const [password,setPassword] = useState("");
   const [deposit_percent,setDeposite_percent] = useState("");
   const [withdraw_percent,setWidthDraw_percent] = useState("");
-  // Crypto
+  const [payment_provider,setPaymet_Provider] = useState([]);
+
+   // Crypto
  const navigate = useNavigate();
   
   const {id} = useParams();
@@ -66,12 +69,12 @@ const PandingMasterDetail = () => {
           setPayment_Name("");
           setTransition_id("");
           setAmount("");
-          setSuperMaster("");
+          setSuperMaster([]);
           setUserName("");
           setPassword("");
           setDeposite_percent("");
           setWidthDraw_percent("");
-          navigate("/account/master/panding-master")
+          navigate("/dashboard/account/master/panding-master")
           alertToast(toast.success(response.data.message));
           return;
         }
@@ -90,12 +93,56 @@ const PandingMasterDetail = () => {
     }
   }
  const {data} = CustomGetFunction(AccountDetail+id,[id]);
-  
-  const supMaster = [{id:"1",name:"J-me"},{id:"2",name:"Mr.Harry Potter"},{id:"3",name:"Mr.Willson"}];
-  // const fetchCrypto = async()=>{
-  //   const {data} = await axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=100&page=1&sparkline=false");
-  //   setCoin(data);
-  // }
+
+ const fetchSuperMaster = async()=>{
+   try{
+    const response = await axios.request(getMethod(`api/agents?sortColumn=id&sortDirection=desc&limit=30&agent_level=super_master`));
+    console.log(response.data.data);
+    if(response.data.status === "success"){
+      setSuperMaster(response.data.data);
+      return;
+    }
+    if(response.data.status === "error"){
+      toast.error(response.data.message);
+      return;
+    }
+   }catch(error){
+     toast.error(error.response.data.message)
+   }
+
+ };
+
+ const fetchPayment_provider = async()=>{
+   try{
+ const response = await axios.request(getMethod("api/dashboard/payment-providers"));
+ if(response.data.status ==="success"){
+   setPaymet_Provider(response.data.data);
+   return;
+  }
+if(response.data.status === "error"){
+  toast.error(response.data.message);
+  return;
+}
+   }catch(error){
+     toast.error(error.response.data.message);
+
+   }
+ }
+
+
+ useState(()=>{
+   fetchSuperMaster();
+   fetchPayment_provider();
+   return ()=>{
+     setSuperMaster([]);
+     setPaymet_Provider([]);
+   }
+ },[]);
+
+  console.log(payment_provider)
+  const filterProvider = payment_provider.filter((prov)=>prov?.payment_type === "CryptoCurrency");
+  console.log("filter",filterProvider);
+
   return (
     <div className={classes["soccer-setting-container"]}>
       <Card>
@@ -154,14 +201,29 @@ const PandingMasterDetail = () => {
                     <label htmlFor="">Payment  Name </label>:
                     <p>
                       &nbsp;&nbsp;
-                      <TextField
+                      {/* <TextField
                         id="standard-basic"
                         label="Payment Name"
                         onChange={(e)=>setPayment_Name(e.target.value)}
                         sx={{width:200}}
                         variant="standard"
                         value={payment_name}
-                      />
+                      /> */}
+                      <Select value={payment_name} 
+                      sx={{width:200}}
+                      size="small"
+                      onChange={(e)=>setPayment_Name(e.target.value)}>
+                        {
+                          filterProvider.map((prov,index)=>(
+                            <MenuItem key={index} value={prov.name} style={{display:"flex"}}>
+                            <Avatar src={prov.logo} />
+                            {
+                              prov.name
+                            }
+                            </MenuItem>
+                          ))
+                        }
+                      </Select>
                     </p>
                   </div>
                   <div className={classes["form-group-desc"]}>
@@ -233,11 +295,11 @@ const PandingMasterDetail = () => {
                         label="Super Master"
                         sx={{ width: 200 }}
                         variant="standard"
-                        value={superMaster}
-                        onChange={(e)=>setSuperMaster(e.target.value)}
+                        value={supValue}
+                        onChange={(e)=>setSupValue(e.target.value)}
                       >
                       {
-                        supMaster.map((sup,index)=>(
+                        superMaster?.map((sup,index)=>(
                           <MenuItem key={index} value={sup.id}>
                             {sup.name}
                           </MenuItem>

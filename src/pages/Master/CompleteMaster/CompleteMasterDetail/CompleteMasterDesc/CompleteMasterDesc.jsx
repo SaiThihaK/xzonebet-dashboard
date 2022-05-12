@@ -4,7 +4,7 @@ import classes from "./CompleteMasterDesc.module.css";
 
 
 const CompleteMasterDesc = ({userInfo}) => {
-console.log("userInfo",userInfo)
+console.log("userInfo",userInfo);
   return (
     <div>
       <div className={classes["agent-user-image-group"]}>
@@ -35,10 +35,10 @@ console.log("userInfo",userInfo)
           <label htmlFor="">City </label>:<p>&nbsp;&nbsp;{userInfo.city}</p>
         </div>
         <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Deposite Percentage </label>:<p>&nbsp;&nbsp;{userInfo.currency}</p>
+          <label htmlFor="">Deposite Percentage </label>:<p>&nbsp;&nbsp;{userInfo.deposit_percent}</p>
         </div>
         <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Withdraw Percentage </label>:<p>&nbsp;&nbsp;{userInfo.transition_id}</p>
+          <label htmlFor="">Withdraw Percentage </label>:<p>&nbsp;&nbsp;{userInfo.withdraw_percent}</p>
         </div>
       </div>
     </div>

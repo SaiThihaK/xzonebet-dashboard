@@ -11,6 +11,7 @@ import { confirmDetail } from "../../../../../services/api-collection";
 
 
 const ComfirmMasterDesc = ({userInfo}) => {
+  console.log("confirm",userInfo);
     const alertToast = (msg) =>msg;
     const navigate = useNavigate();
     // console.log(userInfo.id);
@@ -25,7 +26,7 @@ const ComfirmMasterDesc = ({userInfo}) => {
   //  console.log(response);
    if(response.data.status="success"){
      alertToast(toast.success(response.data.message));
-     navigate("/account/master/confirm-master")
+     navigate("/dashboard/account/master/confirm-master")
      return;
    }
     if(response.data.status === "error"){
