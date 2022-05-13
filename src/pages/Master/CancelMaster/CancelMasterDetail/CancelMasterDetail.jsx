@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 
 import classes from "./CancelMasterDetail.module.css";
-import {  useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import Card from "../../../../components/UI/Card";
 import SuperMasterDesc from "../../../SuperMaster/SuperMasterCard/SuperMasterDetail/SuperMasterDesc/SuperMasterDesc";
@@ -11,15 +11,15 @@ import { logoutHandler } from "../../../../components/Sidebar/Sidebar";
 import { AccountDetail } from "../../../../services/api-collection";
 import CustomGetFunction from "../../../../services/CustomGetFunction";
 const CancelMasterDetail = () => {
-  const [cancelMaster,setCancelMaster] = useState([]);
- 
-  
+  const [cancelMaster, setCancelMaster] = useState([]);
+
+
   // Enjoyment
 
-  
-  const {id} = useParams();
-  const {data} = CustomGetFunction(AccountDetail+id,[id]);
-   
+
+  const { id } = useParams();
+  const { data } = CustomGetFunction(AccountDetail + id, [id]);
+
   return (
     <div className={classes["soccer-setting-container"]}>
       <Card>
