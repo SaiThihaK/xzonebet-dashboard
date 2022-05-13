@@ -174,19 +174,19 @@ export const MasterSidebarData = [
         iconOpened: <RiArrowUpSFill/>,
         subNav : [
             {
-                title: 'User Deposite',
+                title: 'Agent Deposite',
                 path: '/dashboard/master/deposite/user-deposite',
                 icon: <IoIosArrowForward />,
             },
             {
-                title:"Agent Deposite",
+                title:"Deposite to Admin",
                 path:'/dashboard/master/deposite/agent-deposite',
                 icon: <IoIosArrowForward />,              
             }
         ]
     },
     {
-        title: "Bank Setting",
+        title: "Payment Account",
         path: '/dashboard/payment-setting/payment-account',
         icon: <AiFillSetting />,
         iconClosed: <RiArrowDownSFill/>,

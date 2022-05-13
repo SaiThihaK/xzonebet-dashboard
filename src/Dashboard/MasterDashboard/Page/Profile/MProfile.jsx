@@ -8,13 +8,18 @@ import classes from "./MProfile.module.css"
 import ProfileDetail from "./ProfileDetail/ProfileDetail";
 
 const MProfile = ()=>{
-const userData = useSelector(userInfo)
-console.log(userData)
+const userData = useSelector(userInfo);
+const type = localStorage.getItem("type");
+console.log("userData",userData);
 return(
     <div className={classes["container"]}>
         <Card>
      <div className={classes["card-header"]}>
-          <h1 className={classes["card-title"]}>MasterInfo</h1>
+          <h1 className={classes["card-title"]}>
+              {
+                  type === "master" ? "SuperMaster Info":"Master Info"
+              }
+          </h1>
      </div>
      <div className={classes["card-body"]}>
     <ProfileCard />
@@ -26,7 +31,7 @@ return(
         <h1 className={classes["card-title"]}>Personal Info</h1>
         </div>
         <div className={classes["card-body"]}>
-        <ProfileDetail />
+        <ProfileDetail  />
         </div>
         </Card>
         </div>

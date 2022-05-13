@@ -31,10 +31,18 @@ const PaymentAccount = () => {
           <h1 className={classes["card-title"]}>Payment Account</h1>
         </div>
         <div className={classes["card-body"]}>
-          <div className={classes["table-container"]}>
+       <div style={{display:"flex",width:"100%"}}>
+       <div style={{flexGrow:1,marginBottom:20}}>
+            <Button variant="contained">Export</Button>
+          </div>
           <div style={{display:"flex",justifyContent:"flex-end",marginBottom:20}}>
             <Button variant="contained" onClick={handleOpen}>Create Payment Account</Button>
-          </div>
+        </div>
+       </div>
+        
+          <div className={classes["table-container"]}>
+          
+  
           {
             loading ?( <PaymentAccountTable data={data} pagination={pagination} setPage={setPage}/>):(<CustomLoading />)
                     }
