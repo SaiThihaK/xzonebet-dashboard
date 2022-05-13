@@ -116,6 +116,16 @@ import UserDetail from "./pages/Users/UserDetail/UserDetail";
 import UserDetailDesTable from "./pages/Users/UserDetailDesTable/UserDetailDesTable";
 import BalanceSheet from "./pages/BalanceSheet/BalanceSheet";
 import EmployeeDetail from "./pages/HrEmployee/EmployeeDetail/EmployeeDetail";
+import MasterTerm from "./pages/PartnerSite/MasterTerm/MasterTerm";
+import AgentTerm from "./pages/PartnerSite/AgentTerm/AgentTerm";
+import AffiliateAgentTerm from "./pages/PartnerSite/AffiliateAgentTerm/AffiliateAgentTerm";
+import HeroContent from "./pages/PartnerSite/HeroContent/HeroContent";
+import Benefit from "./pages/PartnerSite/Benefit/Benefit";
+import BannerImage from "./pages/PartnerSite/BannerImage/BannerImage";
+import AdsContent from "./pages/PartnerSite/AdsContent/AdsContent";
+import ContactForm from "./pages/PartnerSite/ContactForm/ContactForm";
+import { QuestionAnswer } from "@mui/icons-material";
+import AnswerQuestion from "./pages/PartnerSite/AnswerQuestion/AnswerQuestion";
 function App() {
   const DashboardRouting = () => {
     if (type === "admin") {
@@ -298,7 +308,6 @@ function App() {
             element={<ConfirmMasterDetail />}
           />
           {/* Confirm Master(sai) */}
-
           {/* complete Master */}
           <Route
             path="/dashboard/account/master/complete-master"
@@ -320,7 +329,6 @@ function App() {
             exact
             element={<Transition />}
           />
-
           {/* complete Master */}
           {/* Cancel Master */}
           <Route
@@ -432,13 +440,11 @@ function App() {
             path="/dashboard/payment-setting/payment-account/edit/:id"
             element={<EditPaymentAccount />}
           />
-
           <Route
             exact
             path="/dashboard/game-setting/football-setting"
             element={<FootballSetting />}
           />
-
           {/*------------------------------ Admin Team Account------------------------------------------------ */}
           <Route
             exact
@@ -504,7 +510,6 @@ function App() {
           {/* ======================================All Sports===================================================== */}
           <Route path="/dashboard/all-sports" exact element={<AllSport />} />
           {/* ---------------Xzonebet Football------------------ */}
-
           <Route
             exact
             path="dashboard/xzonebet-football"
@@ -530,10 +535,48 @@ function App() {
             path="/dashboard/xzonebet-football/opening-bet-result"
             element={<OpenbetResult />}
           />
+          <Route
+            exact
+            path="/dashboard/master-term-condition"
+            element={<MasterTerm />}
+          />
+          <Route
+            exact
+            path="/dashboard/agent-term-condition"
+            element={<AgentTerm />}
+          />
+          <Route
+            exact
+            path="/dashboard/affiliate-term-condition"
+            element={<AffiliateAgentTerm />}
+          />
+          <Route
+            exact
+            path="/dashboard/hero-content"
+            element={<HeroContent />}
+          />
+          <Route
+            exact
+            path="/dashboard/banner-image"
+            element={<BannerImage />}
+          />
+          <Route path="/dashboard/benefit" exact element={<Benefit />} />
+          <Route path="/dashboard/ads-content" exact element={<AdsContent />} />
+          <Route
+            path="/dashboard/contact-form"
+            exact
+            element={<ContactForm />}
+          />
+          <Route
+            path="/dashboard/question-answer"
+            exact
+            element={<AnswerQuestion />}
+          />
           <Route path="*" element={<Notfound />} />
         </Routes>
       );
     }
+
     //------------------------------------------ Master Dashboard -------------------------------------------------------
     if (type === "master") {
       return (

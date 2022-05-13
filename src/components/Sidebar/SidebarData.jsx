@@ -317,22 +317,77 @@ export const SidebarData = [
             {
                 title: "Betting Report",
                 path: "/dashboard/betting-report",
-                icon: <RiAccountPinCircleFill/>
+                icon: <IoIosArrowForward/>
             },
             {
                 title: "Finance Report",
                 path: "/dashboard/finance-report",
-                icon: <RiAccountPinCircleFill/>
+                icon: <IoIosArrowForward/>
             },
             {
                 title: "Account Report",
                 path: "/dashboard/betting-report",
-                icon: <RiAccountPinCircleFill/>
+                icon: <IoIosArrowForward/>
             },
             {
                 title: "Log History",
                 path: "/dashboard/log-history",
-                icon: <RiAccountPinCircleFill/>
+                icon: <IoIosArrowForward/>
+            },
+        ]
+    },
+    {
+        title: 'Partner Site Control',
+        path: '/report',
+        icon: <FaLayerGroup />,
+        iconClosed: <RiArrowDownSFill/>,
+        iconOpened: <RiArrowUpSFill/>,
+        subNav :[
+            {
+                title: "Master Term and Conditions",
+                path: "/dashboard/master-term-condition",
+                icon: <IoIosArrowForward/>
+            },
+            {
+                title: "Agent Term and Condition",
+                path: "/dashboard/agent-term-condition",
+                icon: <IoIosArrowForward/>
+            },
+            {
+                title: "Affilicate Agent Term and Condition",
+                path: "/dashboard/affiliate-term-condition",
+                icon: <IoIosArrowForward/>
+            },
+            {
+                title: "Hero Content",
+                path: "/dashboard/hero-content",
+                icon: <IoIosArrowForward/>
+            },
+            {
+                title: "Banner Image",
+                path: "/dashboard/banner-image",
+                icon: <IoIosArrowForward/>
+            },
+           
+            {
+                title: "Benefit",
+                path: "/dashboard/benefit",
+                icon: <IoIosArrowForward/>
+            },
+            {
+                title: "Advertisement Content",
+                path: "/dashboard/ads-content",
+                icon: <IoIosArrowForward/>
+            },
+            {
+                title: "Contact Form",
+                path: "/dashboard/contact-form",
+                icon: <IoIosArrowForward/>
+            },
+            {
+                title: "Question and answer",
+                path: "/dashboard/question-answer",
+                icon: <IoIosArrowForward/>
             },
         ]
     },
