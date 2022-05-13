@@ -9,7 +9,7 @@ const HeroContent = () => {
    const handleClose= ()=>setOpen(false);
      return (
          <>
-     <PageTitleCard title="Master Term and Condition">
+     <PageTitleCard title="Hero Content">
          <div className={classes["card-body"]}>
                {!open ? (<p className={classes["card-text"]}>
                Lublic should always verify the authenticity of the information by contacting the relevant gove
