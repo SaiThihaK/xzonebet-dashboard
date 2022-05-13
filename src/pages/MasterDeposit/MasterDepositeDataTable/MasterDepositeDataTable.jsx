@@ -106,8 +106,8 @@ export default function MasterDepositeDataTable({ data, num, setNum }) {
         data.length !== 0 ? <DataGrid
           rows={data}
           columns={columns}
-          pageSize={5}
-          rowsPerPageOptions={[5]}
+          pageSize={100}
+          rowsPerPageOptions={[10]}
         />
           : (
             <Nodata />
