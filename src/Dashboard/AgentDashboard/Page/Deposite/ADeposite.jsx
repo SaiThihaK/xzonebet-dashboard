@@ -13,20 +13,23 @@ import { FormControl, MenuItem, Select } from "@mui/material";
 const ADeposite = ()=>{
 const [num,setNum] = useState(0);
 const [filterStatus,setFilterStatus] = useState("");
-
+const type = localStorage.getItem('type');
 useEffect(()=>{
 
-},[num])
+},[num]);
 return(
     <div>
 
         <Card>
      <div className={classes["card-header"]}>
-          <h1 className={classes["card-title"]}>User Deposite</h1>
+          <h1 className={classes["card-title"]}>
+             Deposite Table
+          </h1>
      </div>
      <div className={classes["card-body"]}>
-     <FormControl sx={{width:200}}>
-         <Select value={filterStatus} onChange={(e)=>setFilterStatus(e.target.value)}>
+     <FormControl sx={{width:200}} style={{marginbottom:10}}>
+         <label>Status Filter</label>
+         <Select value={filterStatus} onChange={(e)=>setFilterStatus(e.target.value)} size="small">
          <MenuItem value="">
              All
              </MenuItem>

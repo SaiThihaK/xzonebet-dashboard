@@ -5,13 +5,19 @@ import { userInfo } from "../../features/UserInfo";
 import classes from "./ProfileCard.module.css";
 
 const ProfileCard = () => {
-const userData = useSelector(userInfo)
+const userData = useSelector(userInfo);
+const type = localStorage.getItem("type");
+
 console.log(userData)
   return (
     <div>
       <div>
         <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Master Id </label>:<p>&nbsp;&nbsp;{userData?.id}</p>
+          <label htmlFor="">
+          {
+            type === "master" ? "SuperMaster ID":"Master ID"
+          }
+          </label>:<p>&nbsp;&nbsp;{userData?.id}</p>
         </div>
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">SuperMaster Name</label>:<p>&nbsp;&nbsp;Kyaw Zaya</p>

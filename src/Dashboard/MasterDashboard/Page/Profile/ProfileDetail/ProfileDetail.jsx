@@ -10,7 +10,8 @@ import classes from "./ProfileDetail.module.css";
 const ProfileDetail = () => {
   const navigate = useNavigate();
   const userData = useSelector(userInfo)
-  console.log(userData)
+  console.log(userData);
+
   return (
     <div>
         <div className={classes["agent-user-image-group"]}>
@@ -50,7 +51,7 @@ const ProfileDetail = () => {
        <Card>
           <div className={classes["form-group-desc"]}>
           <label htmlFor="">Email </label>
-          :<p>&nbsp;&nbsp;HanzarMoeWin@gmail.com</p>
+          :<p>&nbsp;&nbsp;{userData?.email}</p>
         </div>
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Nationality </label>
@@ -58,11 +59,11 @@ const ProfileDetail = () => {
         </div>
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Country </label>
-          :<p>&nbsp;&nbsp;Myanmar</p>
+          :<p>&nbsp;&nbsp;{userData?.agent?.country}</p>
         </div>
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Region</label>
-          :<p>&nbsp;&nbsp;Yangon</p>
+          :<p>&nbsp;&nbsp;{userData?.agent?.region}</p>
         </div>
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Currency Type</label>
