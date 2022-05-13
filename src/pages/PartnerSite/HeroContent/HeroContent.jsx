@@ -1,4 +1,4 @@
-import { Button, Stack } from '@mui/material';
+import { Button, Stack ,TextField} from '@mui/material';
 import React, { useState } from 'react'
 import classes from "./HeroContent.module.css"
 import PageTitleCard from "../../../components/UI/PageTitleCard/PageTitleCard"
@@ -11,12 +11,27 @@ const HeroContent = () => {
          <>
      <PageTitleCard title="Hero Content">
          <div className={classes["card-body"]}>
-               {!open ? (<p className={classes["card-text"]}>
+               {!open ? (
+               <div>
+               <div className={classes["card-title"]}>This is Title</div>
+               <p className={classes["card-text"]}>
                Lublic should always verify the authenticity of the information by contacting the relevant gove
                Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci, ducimus.
                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, accusantium!
-                </p>):(
-                  <textarea value={textValue}   onChange={(e)=>setTextValue(e.target.value)}   rows="8" cols="105" />
+                </p>
+                </div>
+                ):(
+                  <div className={classes["form-container"]}>
+                   <div className={classes["form"]}>  
+                     <label>Title</label>
+                     <TextField fullWidth size="small" />
+                   </div>
+                   <div className={classes["form"]}>
+                    <label>Content</label>
+                   <textarea value={textValue}   onChange={(e)=>setTextValue(e.target.value)}   rows="8" cols="105" />
+                   </div>
+                  
+                  </div>
                   )}
                   
            </div>
