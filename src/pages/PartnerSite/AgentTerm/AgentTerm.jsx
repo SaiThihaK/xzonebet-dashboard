@@ -16,7 +16,7 @@ const AgentTerm = () => {
                Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci, ducimus.
                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, accusantium!
                 </p>):(
-                  <textarea value={textValue}   onChange={(e)=>setTextValue(e.target.value)}   rows="8" cols="105" />
+                  <textarea value={textValue}   onChange={(e)=>setTextValue(e.target.value)}   rows="8" className={classes["text-area"]} />
                   )}
                   
            </div>

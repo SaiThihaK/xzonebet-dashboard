@@ -10,7 +10,6 @@ export default function DemoDatePicker() {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DatePicker
-        label="Basic example"
         value={value}
         onChange={(newValue) => {
           setValue(newValue);

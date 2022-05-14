@@ -7,6 +7,13 @@
 }
 
 .form p{
-    width: 600px;
+    width: 400px;
     font-size: 18px;
+}
+
+.btn-container{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-bottom: 30px;
 }
