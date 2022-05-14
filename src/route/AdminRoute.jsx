@@ -90,7 +90,15 @@ import HrDepartment from "../pages/HrDepartment/HrDepartment";
 import HrPosition from "../pages/HrPosition/HrPosition";
 import HrEmployee from "../pages/HrEmployee/HrEmployee";
 import DetailFunction from "../pages/DetailFunction/DetailFunction";
-
+import MasterTerm from "../pages/PartnerSite/MasterTerm/MasterTerm"
+import AffiliateAgentTerm from "../pages/PartnerSite/AffiliateAgentTerm/AffiliateAgentTerm";
+import AgentTerm from "../pages/PartnerSite/AgentTerm/AgentTerm"
+import HeroContent from "../pages/PartnerSite/HeroContent/HeroContent"
+import BannerImage from "../pages/PartnerSite/BannerImage/BannerImage"
+import Benefit from "../pages/PartnerSite/Benefit/Benefit"
+import AdsContent from "../pages/PartnerSite/AdsContent/AdsContent"
+import ContactForm from "../pages/PartnerSite/ContactForm/ContactForm"
+import AnswerQuestion from "../pages/PartnerSite/AnswerQuestion/AnswerQuestion"
 const AdminRoute = () => {
   return (
       <Routes>
@@ -495,6 +503,45 @@ const AdminRoute = () => {
           path="/dashboard/xzonebet-football/opening-bet-result"
           element={<OpenbetResult />}
         />
+        <Route 
+        exact
+        path="/dashboard/master-term-condition"
+        element={< MasterTerm />}
+        />
+        <Route 
+        exact
+        path="/dashboard/agent-term-condition"
+        element={<AgentTerm />}
+        />
+        <Route
+        exact
+        path="/dashboard/affiliate-term-condition"
+        element={<AffiliateAgentTerm />}
+        />
+        <Route
+        exact
+        path="/dashboard/hero-content"
+        element={<HeroContent />}
+        />
+        <Route 
+        exact 
+        path="/dashboard/banner-image"
+        element={<BannerImage />}
+        />
+        <Route
+        exact
+        path="/dashboard/benefit"
+        element={<Benefit />}/>
+        <Route 
+        exact
+        path="/dashboard/ads-content"
+        element={<AdsContent />}/>
+        
+        <Route exact path="/dashboard/contact-form"
+        element={<ContactForm />}/>
+
+        <Route exact path="/dashboard/question-answer"
+        element={<AnswerQuestion />} />
         <Route path="*" element={<Notfound />} />
       </Routes>
   );
