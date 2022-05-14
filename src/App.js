@@ -5,6 +5,7 @@ import { type } from "./services/Token";
 import "./App.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 import AdminRoute from "./route/AdminRoute";
 import MasterRoute from "./route/MasterRoute";
 import AgentRoute from "./route/AgentRoute";
@@ -16,7 +17,7 @@ function App() {
   const DashboardRouting = () => {
     if (type === "admin") {
       return <AdminRoute />;
-    }
+
     //------------------------------------------ Master Dashboard -------------------------------------------------------
     if (type === "master") {
       return (

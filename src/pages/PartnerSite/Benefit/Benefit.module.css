@@ -1,0 +1,32 @@
+.card-body{
+    padding: 20px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.form label{
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.remark{
+    margin-top: 30px;
+}
+
+.card-text{
+    text-align:start;
+    font-size: 16px;
+}
+
+.card-title{
+    display: flex;
+    font-size: 21px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,16 @@
+.card-body{
+    padding: 20px;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+}
+
+.form label{
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.remark{
+    margin-top: 30px;
+}
