@@ -1,3 +1,20 @@
 .card-body{
     padding: 20px;
 }
+
+.card-text{
+    text-align:start;
+    font-size: 16px;
+}
+
+.card-title{
+    display: flex;
+    font-size: 21px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.form{
+margin-bottom: 20px;
+}
