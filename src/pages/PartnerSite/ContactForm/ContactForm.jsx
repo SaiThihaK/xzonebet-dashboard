@@ -28,17 +28,13 @@ const ContactForm = () => {
            <TextField size='small' sx={{width:300}}/>
          </div>
          <div className={classes["form"]}>
-           <label>Time</label>
-           <TextField size='small' sx={{width:300}}/>
-         </div>
-         {/* <div className={classes["form"]}>
            <label>Date</label>
            <DemoDatePicker/>
-         </div> */}
-         {/* <div className={classes["form"]}>
+         </div>
+         <div className={classes["form"]}>
            <label>Time</label>
            <DemoTimePicker/>
-         </div> */}
+         </div>
         </div>
    </PageTitleCard>
   )

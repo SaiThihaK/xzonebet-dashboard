@@ -10,7 +10,6 @@ export default function DemoTimePicker() {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <TimePicker
-        label="Basic example"
         value={value}
         onChange={(newValue) => {
           setValue(newValue);

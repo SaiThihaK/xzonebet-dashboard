@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
+import classes from "./AnswerQuestion.module.css"
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import { TextField } from "@mui/material";
+import { Button, TextField,Stack } from "@mui/material";
 
 
 
 const AnswerQuestionModal = ({ 
   open, 
   handleClose ,
+  index
 }) => {
 
 
@@ -19,7 +19,7 @@ const AnswerQuestionModal = ({
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: 400,
+    width: 600,
     bgcolor: "background.paper",
     border: "1px solid #FFF",
     borderRadius: "0.5rem",
@@ -37,10 +37,21 @@ const AnswerQuestionModal = ({
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Question 1
+          <Typography id="modal-modal-title" variant="h6" component="h2" className={classes["title"]}>
+            Question and Answer 
           </Typography>
-           <TextField size="small" fullWidth />
+          <div className={classes["form"]}>
+            <label>Question</label>
+            <TextField size="small" fullWidth />
+          </div>
+          <div className={classes["form"]}>
+            <label>Answer</label>
+            <TextField size="small" fullWidth />
+          </div>
+           <Stack direction="row" style={{display:"flex",justifyContent:"center"}} spacing={4}>
+             <Button variant="contained">Confirm</Button>
+             <Button variant="contained" color="error">Cancel</Button>
+           </Stack>
         </Box>
       </Modal>
     </div>
