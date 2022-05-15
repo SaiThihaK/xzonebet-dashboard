@@ -44,7 +44,7 @@
 }
 .prov-title {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   padding: 10px 5px;
 }
@@ -77,3 +77,298 @@
   fill: white;
 }
 */
+/* input[type='checkbox'] {
+    box-sizing: border-box;
+    appearance: none;
+    background: white;
+    outline: 1px solid rgb(168, 167, 167);
+    border: 2px solid white;
+    width: 13px;
+    height: 13px;
+    cursor: pointer;
+  
+  }
+
+  input[type='checkbox']:checked {
+    background: var(--secondary-color);
+    outline-color: var(--secondary-color);
+  
+  } */
+  .deposit_container{
+    background-color: white;
+    width: 100%;
+    padding: 20px;
+}
+.deposit_container h3{
+     font-size: 1.3rem;
+     margin-bottom: 5px;
+    color: var(--main-color);
+    
+}
+.select_payment{
+    margin-bottom: 20px;
+}
+.payment_checkbox{
+display: flex;
+align-items: center;
+}
+.payment_checkbox p{
+    margin-left: 10px;
+    font-size: 1.1rem;
+    width: 200px;
+}
+.warning_text{
+   background-color: var(--main-color); 
+   display: flex;
+   align-items: center;
+   padding: 10px;
+   margin-top: 10px;
+ color: white;
+}
+
+.warning_text i{
+    font-size: 33px;
+    margin-right: 10px;
+    margin-left: 10px;
+     color: var(--background-color);
+}
+.payment_method{
+    display: flex;
+    margin-top: 15px;
+}
+
+.lef_payment{
+    flex: 0 0 230px;
+
+    margin-right: 20px;
+}
+.lef_payment:first-child{
+  border-top:  2px solid rgba(171, 160, 196, 0.527);
+}
+.payment_item{
+    padding: 15px;
+     color:var(--main-color);
+ cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    position: relative;
+    transition:  background-color opacity 0.3s;
+    border-bottom: 2px solid rgba(196, 160, 196, 0.527);
+    border-left: 2px solid rgba(196, 160, 196, 0.527);
+    border-right: 2px solid rgba(196, 160, 196, 0.527);
+}
+.payment_item:hover{
+    color: white;
+    background-color: var(--main-color);
+    border-right: none;
+  
+}
+.payement_item:hover::after,.payment_item:hover::before{
+    opacity: 1;
+}
+.payment_item_active{
+    color: white;
+    background-color: var(--main-color);
+   border-right: none;
+}
+.payment_item_active::after{
+
+    opacity: 1 !important;   
+    
+}
+.payment_item_active::before{
+    opacity: 1 !important;   
+}
+.payment_item::after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -36px;
+    border-width: 23px 23px 23px 15px;
+    border-style: solid;
+    border-color: transparent transparent transparent var(--main-color);
+    border-image: initial;
+    opacity: 0;
+    transform: translateY(-50%);
+
+
+}
+.payment_item::before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -38px;
+    border-width: 23px 23px 23px 15px;
+    border-style: solid;
+    border-color: transparent transparent transparent var(--main-color);
+    border-image: initial;
+    opacity: 0;
+    transform: translateY(-50%);
+}
+.bank_container{
+   
+    width: 100%;
+  
+
+    
+}
+.bank_item{
+   width: 150px; 
+   background-color: white;
+   transition: 0.3s;
+   position: relative;
+   margin-right: 10px;
+   margin-bottom: 10px;
+   border-radius: 10px;
+}
+.bank_percent{
+    font-size: 12px;
+    height: 16px;
+    line-height: 16px;
+    padding: 0px 6px;
+    color: rgb(255, 255, 255);
+    font-weight: 700;
+    background: rgb(255, 0, 0);
+    width: fit-content;
+    padding: 0px 6px;
+position: absolute;
+right: 0;
+z-index: 10;
+}
+.bank_percent::after{
+    content: "";
+    position: absolute;
+    right: 100%;
+    top: 0px;
+    border-width: 8px;
+    border-style: solid;
+    border-color: #2a111d00 rgb(255, 0, 0) transparent transparent;
+    border-image: initial;
+}
+.bank_item:hover {
+    transform: scale(1.05);
+  
+}
+/* .bank_item:hover{
+    box-shadow: 0px 0px 10px 1px rgb(75, 66, 66);
+} */
+.bank_img{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    overflow: hidden;
+   
+}
+.bank_img img{
+    height: 40px;
+    display: block;
+    transition: 0.3s
+}
+.bank_btn{
+
+width: 100%;
+align-items: center;
+padding: 10px;
+color: black;
+font-size: 0.9rem;
+text-align: center;
+}
+.bank_item_container{
+display: flex;
+flex-wrap: wrap;
+
+height: fit-content;
+padding: 15px;
+
+}
+.bank_header{
+color: var(--main-color);
+margin-left: 15px;
+margin-top: 5px;
+}
+
+.bank_payment{
+background-color: rgba(167, 164, 167, 0.466);
+padding: 10px;
+margin-bottom: 20px;
+
+}
+.d_none{
+display: none ;
+}
+.bank-transfer-card {
+  width: 350px;
+  background-color: #fff;
+  
+  margin-top: 20px;
+          
+  background-color: #EDEDED;
+}
+.bank-card-header {
+  background-color: #fff;
+          
+}
+
+.bank-card-body {
+
+  font-size: 13px;
+  font-weight: 500;
+  padding: 20px 10px;
+}
+
+.bank-card-text-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.w_47{
+  width: 47% !important;
+}
+.k-card-body input[type=text] {
+  padding: 5px;
+  outline: none;
+  border: 0;
+  border-top: 1px solid #a09d9d;
+  border-left: 1px solid #a09d9d;
+}
+
+.k-card-body input[type=text]::placeholder {
+  text-align: center;
+}
+
+.bank-card-text {
+  color: rgb(22, 6, 114);
+  font-weight: 600;
+}
+.tras-selectBox{
+  width: 180px;
+   padding: 5px;
+  outline: none;
+  border: 0;
+  border-top: 1px solid #a09d9d;
+  border-left: 1px solid #a09d9d;
+}
+.transferbtn {
+  color: #fff;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  background-color: #759E2E;
+  cursor: pointer;
+}
+.bcmt {
+  opacity: 0.7;
+}
+.banksImg {
+  display: block;
+  margin: auto;
+  width: 40%;
+  padding: 20px;
+}
+
+
+

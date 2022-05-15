@@ -23,8 +23,7 @@ import PaymentAccount from "../pages/PaymentSetting/PaymentAccount/PaymentAccoun
 import ConnectWithChat from "../pages/ConnectWithChat/ConnectWithChat";
 import Notfound from "../components/UI/404/404";
 import Profit from "../pages/Profit/Profit";
-
-
+import MasterSecurity from "../Dashboard/MasterDashboard/Page/Security/MasterSecurity";
 const MasterRoute = () => {
   return (
     <Routes>
@@ -44,6 +43,7 @@ const MasterRoute = () => {
         path="/dashboard/payment-setting/payment-account/edit/:id"
         element={<EditPaymentAccount />}
       />
+    
       <Route
         exact
         path="/dashboard/master/deposite/user-deposite"
@@ -60,6 +60,12 @@ const MasterRoute = () => {
         path="/dashboard/master/profile/edit"
         element={<EditProfile />}
       />
+        <Route
+        exact
+        path="/dashboard/master/security-imformation"
+        element={<MasterSecurity />}
+      />
+       
       <Route
         exact
         path="/dashboard/master/transfer-to"

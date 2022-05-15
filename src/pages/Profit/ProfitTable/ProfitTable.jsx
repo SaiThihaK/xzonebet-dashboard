@@ -62,9 +62,7 @@ const ProfitTable = ({type}) => {
             <StyledTableCell align="left">
               Transition ID
             </StyledTableCell>
-            <StyledTableCell align="left">Amount</StyledTableCell>
-           
-            
+            <StyledTableCell align="left">Amount</StyledTableCell>          
             <StyledTableCell align="left">Type</StyledTableCell>
             <StyledTableCell align="left">Payment Date</StyledTableCell> */}
           </TableRow>
