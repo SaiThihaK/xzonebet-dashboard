@@ -94,6 +94,25 @@ export const MasterSidebarData = [
         // ]
     },
     {
+        title: "Deposite",
+        path: "/master/deposite",
+        icon: <FaMoneyCheckAlt />,
+        iconClosed: <RiArrowDownSFill/>,
+        iconOpened: <RiArrowUpSFill/>,
+        subNav : [
+            {
+                title: 'Agent Deposite',
+                path: '/dashboard/master/deposite/user-deposite',
+                icon: <IoIosArrowForward />,
+            },
+            {
+                title:"Deposite to Admin",
+                path:'/dashboard/master/deposite/agent-deposite',
+                icon: <IoIosArrowForward />,              
+            }
+        ]
+    },
+    {
         title: 'Transition History',
         path: '/dashboard/master/transition-history',
         icon: <FaLayerGroup />,
@@ -113,10 +132,26 @@ export const MasterSidebarData = [
         // ]
     },
     {
-        title: "Profit",
-        path: "/dashboard/master/profit",
-        icon: <FaUserFriends/>
+        title: 'Transfer To',
+        path: '/dashboard/master/transfer-to',
+        icon: <AiFillSetting />,
+        iconClosed: <RiArrowDownSFill/>,
+        iconOpened: <RiArrowUpSFill/>,
+        // subNav : [
+        //     {
+        //         title: 'Game Setting',
+        //         path: '/setting/game-setting',
+        //         icon: <IoIosArrowForward />,
+        //     },
+        //     {
+        //         title: 'Soccer Setting',
+        //         path: '/setting/soccer-setting',
+        //         icon: <IoIosArrowForward />,
+        //     },
+        // ]
     },
+  
+   
     // {
     //     title: 'Payment Setting',
     //     path: '/master/payment-setting',
@@ -147,44 +182,8 @@ export const MasterSidebarData = [
     //         },
     //     ]
     // },
-    {
-        title: 'Transfer To',
-        path: '/dashboard/master/transfer-to',
-        icon: <AiFillSetting />,
-        iconClosed: <RiArrowDownSFill/>,
-        iconOpened: <RiArrowUpSFill/>,
-        // subNav : [
-        //     {
-        //         title: 'Game Setting',
-        //         path: '/setting/game-setting',
-        //         icon: <IoIosArrowForward />,
-        //     },
-        //     {
-        //         title: 'Soccer Setting',
-        //         path: '/setting/soccer-setting',
-        //         icon: <IoIosArrowForward />,
-        //     },
-        // ]
-    },
-    {
-        title: "Deposite",
-        path: "/master/deposite",
-        icon: <FaMoneyCheckAlt />,
-        iconClosed: <RiArrowDownSFill/>,
-        iconOpened: <RiArrowUpSFill/>,
-        subNav : [
-            {
-                title: 'Agent Deposite',
-                path: '/dashboard/master/deposite/user-deposite',
-                icon: <IoIosArrowForward />,
-            },
-            {
-                title:"Deposite to Admin",
-                path:'/dashboard/master/deposite/agent-deposite',
-                icon: <IoIosArrowForward />,              
-            }
-        ]
-    },
+  
+  
     {
         title: "Payment Account",
         path: '/dashboard/payment-setting/payment-account',
@@ -192,10 +191,15 @@ export const MasterSidebarData = [
         iconClosed: <RiArrowDownSFill/>,
         iconOpened: <RiArrowUpSFill/>,
     },
+    // {
+    //     title: "Connect with Chat",
+    //     path: '/dashboard/connect-with-chat',
+    //     icon: <AiFillSetting />,
+    // },
     {
-        title: "Connect with Chat",
-        path: '/dashboard/connect-with-chat',
-        icon: <AiFillSetting />,
+        title: "Profit",
+        path: "/dashboard/master/profit",
+        icon: <FaUserFriends/>
     },
     
 ]
