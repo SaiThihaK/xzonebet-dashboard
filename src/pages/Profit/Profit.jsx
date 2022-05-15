@@ -9,14 +9,58 @@ import { Button, TextField } from '@mui/material';
 const Profit = ({type}) => {
   console.log(type);
     const [value, setValue] = React.useState([null, null]);
+    const masterProfit=[
+{
+      "Date" : "1.6.20222",
+      "Type" : "Deposit",
+      "Percentage" : 20,
+      "Amount" : 15000,
+      "AgentName" : "Zaw Zaw",
+      "Agent_Percentage" : 50,
+      "Remark" : "complete"},
+      {
+        "Date" : "1.6.20222",
+        "Type" : "Deposit",
+        "Percentage" : 10,
+        "Amount" : 15000,
+        "AgentName" : "Zaw Zaw",
+        "Agent_Percentage" : 40,
+        "Remark" : "complete"},
+        {
+          "Date" : "1.6.20222",
+          "Type" : "WithDraw",
+          "Percentage" : 40,
+          "Amount" : 15000,
+          "AgentName" : "Zaw Zaw",
+          "Agent_Percentage" : 20,
+          "Remark" : "complete"},
+          {
+            "Date" : "1.6.20222",
+            "Type" : "WithDraw",
+            "Percentage" : 5,
+            "Amount" : 15000,
+            "AgentName" : "Zaw Zaw",
+            "Agent_Percentage" : 20,
+            "Remark" : "complete"}
+            , {
+              "Date" : "1.6.20222",
+              "Type" : "Deposit",
+              "Percentage" : 10,
+              "Amount" : 15000,
+              "AgentName" : "Zaw Zaw",
+              "Agent_Percentage" : 20,
+              "Remark" : "complete"}
+
+    ]
   return (
    <PageTitleCard title="Profit">
    <div className={classes["card-body"]}>
    <div className={classes["date-range-picker"]}>
+     <Box sx={{"flex" : "0 0 350px" }}>
      <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DateRangePicker
-        startText="Check-in"
-        endText="Check-out"
+        startText="Start-Date"
+        endText="End-Date"
         value={value}
         onChange={(newValue) => {
           setValue(newValue);
@@ -26,15 +70,23 @@ const Profit = ({type}) => {
             <TextField {...startProps}  variant="standard" />
             <Box sx={{ mx: 2 }}> to </Box>
             <TextField {...endProps}  variant="standard"  />
+
           </React.Fragment>
         )}
       />
     </LocalizationProvider>
+    </Box>
+    <Box sx={{height: "fit-content",marginLeft: 3}}>
+    <TextField id="outlined-basic" label="Agent Name" size='small' sx={{"width": 200,"height": 20, }} variant="outlined" />
+    </Box>
+    <Box sx={{height: "fit-content",marginLeft: 3}}>
+    <TextField id="outlined-basic" label="Type" size='small' sx={{"width": 100,"height": 20, }} variant="outlined" />
+    </Box>
     <div className={classes["btn-container"]}>
         <Button variant="contained">Export File</Button>
     </div>
     </div>
-   <ProfitTable type={type} />
+   <ProfitTable type={type} master={masterProfit} />
    </div>
    </PageTitleCard>
   )

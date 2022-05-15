@@ -137,7 +137,7 @@ const Sidebar = () => {
       <div className={classes.container}>
         <ul className={classes["header-noti-icons"]}>
         {/*----------------------- Unit-------------------- */}
-        <li className={classes["unit"]}>
+        {/* <li className={classes["unit"]}>
      
       <div className={classes["main-unit"]}>
       <p>Main Unit-{data?.wallet?.main_unit}</p>
@@ -152,7 +152,7 @@ const Sidebar = () => {
         <span>Diamond Unit</span>  
         -{data?.wallet?.diamond_unit}</p>
       </Card>
-          </li>
+          </li> */}
           <li>
             <button className={classes['header-icon']}>
               <AiIcons.AiOutlineBell color="#9b9b9b" size="23px" />
