@@ -6,7 +6,6 @@ import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 
 export default function DemoTimePicker() {
   const [value, setValue] = React.useState(null);
-
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <TimePicker

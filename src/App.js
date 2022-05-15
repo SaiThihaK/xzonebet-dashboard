@@ -5,13 +5,13 @@ import { type } from "./services/Token";
 import "./App.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import AdminRoute from "./Route/AdminRoute";
-import MasterRoute from "./Route/MasterRoute";
-import AgentRoute from "./Route/AgentRoute";
-import SuperMasterRoute from "./Route/SuperMasterRoute";
-import AffiliateAgentRoute from "./Route/AffiliateAgentRoute";
-import HrRoute from "./Route/HrRoute";
-import AccountingRoute from "./Route/AccountingRoute";
+import AdminRoute from "./route/AdminRoute";
+import MasterRoute from "./route/MasterRoute";
+import AgentRoute from "./route/AgentRoute";
+import SuperMasterRoute from "./route/SuperMasterRoute";
+import AffiliateAgentRoute from "./route/AffiliateAgentRoute";
+import HrRoute from "./route/HrRoute";
+import AccountingRoute from "./route/AccountingRoute";
 function App() {
   const DashboardRouting = () => {
     if (type === "admin") {
