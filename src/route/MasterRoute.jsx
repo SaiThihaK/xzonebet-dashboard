@@ -22,6 +22,7 @@ import PaymentAnnouncement from "../pages/PaymentSetting/PaymentAnnoucement/Paym
 import PaymentAccount from "../pages/PaymentSetting/PaymentAccount/PaymentAccount";
 import ConnectWithChat from "../pages/ConnectWithChat/ConnectWithChat";
 import Notfound from "../components/UI/404/404";
+import Profit from "../pages/Profit/Profit";
 
 
 const MasterRoute = () => {
@@ -80,6 +81,7 @@ const MasterRoute = () => {
         path="/dashboard/account/agent/complete-agent/detail/:id"
         element={<CompleteAgentDetail />}
       />
+         <Route path="/dashboard/master/profit" exact element={<Profit type="master" />} />
       <Route
         exact
         path="/dashboard/new-agent/detail/:id"
@@ -126,10 +128,10 @@ const MasterRoute = () => {
         path="/dashboard/master/payment-setting/payment-account/edit/:id"
         element={<EditPaymentAccount />}
       />
-      <Route
+      {/* <Route
         path="/dashboard/connect-with-chat"
         element={<ConnectWithChat />}
-      />
+      /> */}
       <Route path="*" element={<Notfound />} />
     </Routes>
   );

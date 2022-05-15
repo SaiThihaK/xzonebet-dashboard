@@ -10,8 +10,6 @@ import Paper from "@mui/material/Paper";
 import { BasedColor } from '../../../Controller/BasedColor';
 import Card from "../../../components/UI/Card";
 import classes from "./ProfitTable.module.css";
-
-
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: BasedColor.tableHead,
@@ -31,10 +29,17 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     },
   }));
 
+const agentProfitTitle=[ 
+  "Date","User Name", "Time","Transition ID","Amount","Type","Payment Data"
+]
 
+const MasterProfitTitile=[
+  "Date","Type","Parcentage","Agent Name","Agent Perentage","Profit","Remark"
+]
 
-const ProfitTable = () => {
-  return (
+const ProfitTable = ({type}) => {
+  console.log("master",type);
+  return (  
       <>
     <Card>
     <TableContainer component={Paper}>
@@ -42,7 +47,16 @@ const ProfitTable = () => {
         <TableHead>
           <TableRow>
             <StyledTableCell>No</StyledTableCell>
-            <StyledTableCell align="left">Date</StyledTableCell>
+          { type === "master" ? (MasterProfitTitile.map((el)=> {
+            return (
+              <StyledTableCell align="left">{el}</StyledTableCell>
+            )
+          })) : (agentProfitTitle.map((el)=> {  
+            return (
+              <StyledTableCell align="left">{el}</StyledTableCell>
+            )
+          }))}
+            {/* <StyledTableCell align="left">Date</StyledTableCell>
             <StyledTableCell align="left">User Name</StyledTableCell>
             <StyledTableCell align="left">Time</StyledTableCell>
             <StyledTableCell align="left">
@@ -52,20 +66,20 @@ const ProfitTable = () => {
            
             
             <StyledTableCell align="left">Type</StyledTableCell>
-            <StyledTableCell align="left">Payment Date</StyledTableCell>
+            <StyledTableCell align="left">Payment Date</StyledTableCell> */}
           </TableRow>
         </TableHead>
-        <TableBody>
-        
-           
-            
+        <TableBody>          
         </TableBody>
       </Table>
     </TableContainer>
     </Card>
-    <span className={classes["total-unit"]}>
-  <span>Total Unit- 3000</span>
-    </span>
+    {type !== "master" && (
+ <span className={classes["total-unit"]}>
+ <span>Total Unit- 3000</span>
+   </span>
+    )}
+   
     </>
   )
 }

@@ -6,7 +6,8 @@ import { DateRangePicker, LocalizationProvider } from "@mui/lab";
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import Box from '@mui/material/Box';
 import { Button, TextField } from '@mui/material';
-const Profit = () => {
+const Profit = ({type}) => {
+  console.log(type);
     const [value, setValue] = React.useState([null, null]);
   return (
    <PageTitleCard title="Profit">
@@ -33,7 +34,7 @@ const Profit = () => {
         <Button variant="contained">Export File</Button>
     </div>
     </div>
-   <ProfitTable />
+   <ProfitTable type={type} />
    </div>
    </PageTitleCard>
   )
