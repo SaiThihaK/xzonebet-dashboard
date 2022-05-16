@@ -60,38 +60,23 @@ export const MasterSidebarData = [
         icon: <IoIosFootball />,
     },
     {
-        title: 'Agent',
+        title: 'All Agent',
         path: '/dashboard/master/agent',
         icon: <RiAccountPinCircleFill />,
         iconClosed: <RiArrowDownSFill/>,
         iconOpened: <RiArrowUpSFill/>,
-        // subNav : [
-        //     {
-        //         title: 'Super Master',
-        //         path: '/account/super-master',
-        //         icon: <IoIosArrowForward />,
-        //     },
-        //     {
-        //         title: 'Master',
-        //         path: '/account/master',
-        //         icon: <IoIosArrowForward />,
-        //     },
-        //     {
-        //         title: 'Agent',
-        //         path: '/account/agent',
-        //         icon: <IoIosArrowForward />,
-        //     },
-        //     {
-        //         title: 'User',
-        //         path: '/account/user',
-        //         icon: <IoIosArrowForward />,
-        //     },
-        //     {
-        //         title: 'Affiliate Agent',
-        //         path: '/account/affiliate-agent',
-        //         icon: <IoIosArrowForward />,
-        //     },
-        // ]
+        subNav : [
+            {
+                title: 'Become an Agent',
+                path: '/dashboard/master/agent/new-agent',
+                icon: <IoIosArrowForward />,
+            },
+            {
+                title: 'Complete Agents',
+                path: '/dashboard/master/agent/agents',
+                icon: <IoIosArrowForward />,
+            },
+        ]
     },
     {
         title: "Agent Deposite",

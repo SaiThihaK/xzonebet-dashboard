@@ -1,0 +1,58 @@
+
+.card{
+    padding: 20px;
+    width: 350px;
+    height: auto;
+    background-color: white;
+    border-radius: 5px;
+    position: relative;
+    transition: all ease 0.4s ease-in-out;
+}
+.img-container{
+    width: 80px;
+}
+.img-container img{
+width: 100%;
+}
+.info p{
+    font-size: 13px;
+    font-weight: bold;
+
+}
+.second-grid{
+    display: flex;
+}
+.card-grid{
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+.total-user,.show-data{
+    display: flex;
+    flex-direction: column;
+
+}
+.total-user{
+    flex-grow: 1;
+}
+.btn-container{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+.btn{
+ background-color: orange;
+
+ border:none;
+ padding: 10px;
+}
+.btn:hover{
+    transform: scale(1.1);
+}
+
+.card:hover{
+    transform: scale(1.03);
+}
+
+a{
+    text-decoration: none;
+}
