@@ -9,7 +9,8 @@
     transition: all ease 0.4s ease-in-out;
 }
 .img-container{
-    width: 80px;
+    width:"100%";
+    height:"100%";
 }
 .img-container img{
 width: 100%;
@@ -25,15 +26,10 @@ width: 100%;
 .card-grid{
     display: grid;
     grid-template-columns: 40% 60%;
+    grid-gap: 20px;
 }
-.total-user,.show-data{
-    display: flex;
-    flex-direction: column;
 
-}
-.total-user{
-    flex-grow: 1;
-}
+
 .btn-container{
     position: absolute;
     bottom: 0px;
@@ -41,7 +37,7 @@ width: 100%;
 }
 .btn{
  background-color: orange;
-
+ color: wheat;
  border:none;
  padding: 10px;
 }
@@ -49,10 +45,35 @@ width: 100%;
     transform: scale(1.1);
 }
 
-.card:hover{
+/* .card:hover{
     transform: scale(1.03);
-}
+} */
 
 a{
     text-decoration: none;
 }
+
+.info{
+    display: flex;
+    flex-direction: column;
+
+}
+.info p{
+    padding: 5px;
+}
+
+.info .user-info{
+    display: flex;
+    margin-top: 10px;
+}
+.info .user-info .total-user{
+    width: 100px
+}
+
+.number{
+font-size: 18px;
+}
+
+
+
+

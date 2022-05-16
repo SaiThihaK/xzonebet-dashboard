@@ -85,7 +85,7 @@ const handleChange = (prop) => (event) => {
                    
                   </div>
                
-                  <div className="p_item">
+                  {/* <div className="p_item">
                     <div>
                     Total Unit
                     </div>
@@ -95,29 +95,8 @@ const handleChange = (prop) => (event) => {
                           
                     </div>
                    
-                  </div>
-                  <div className="p_item">
-                    <div>
-                      Deposit Percentage
-                    </div>
-                    <div className="p_ncolor">
-                      <div >5% </div>
-                                        
-                          
-                    </div>
-                   
-                  </div>
-                  <div className="p_item">
-                    <div>
-                      Withdraw Percentage
-                    </div>
-                    <div className="p_ncolor">
-                      <div >5% </div>
-                                        
-                          
-                    </div>
-                   
-                  </div>
+                  </div> */}
+               
               </div>
               
            </div>
@@ -154,7 +133,29 @@ const handleChange = (prop) => (event) => {
                           </div>
                         </div>
                     </div>
-                  
+                    <div className="p_item">
+                    <div>
+                      Deposit Percentage
+                    </div>
+                    <div className="p_ncolor">
+                      <div >5% </div>
+                                        
+                          
+                    </div>
+                   
+                  </div>
+                  <div className="p_item">
+                    <div>
+                      Withdraw Percentage
+                    </div>
+                    <div className="p_ncolor">
+                      <div >5% </div>
+                                        
+                          
+                    </div>
+                   
+                  </div>
+           
               </div>
            </div>
     
@@ -273,12 +274,8 @@ const handleChange = (prop) => (event) => {
                       </div>
                       <div className="p_ncolor" >
                           <p className="input_1">{values.currencyType}</p>
-                         <div className="p_btn"  onClick={()=>{showInput(4)}}> <i className="fas fa-pencil-alt"></i></div>
-                         <div className={`p_absolute ${ showForm===4 &&  "p_a_show"}`} id="input_4">
-                           <input type="text" className="form_p text_input "  value={values.currencyType}
-                            onChange={handleChange('currencyType')} / >
-                           <i className="fas fa-check-circle" onClick={()=>{showInput("")}}></i>
-                          </div>
+                        
+                       
                         </div>
                     </div>
                 
