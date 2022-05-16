@@ -3,7 +3,7 @@ import classes from "./AgentCard.module.css"
 import { Card} from "@mui/material"
 import { Link } from 'react-router-dom'
 const AgentCard = ({route,data}) => {
-    console.log(data);
+
   return (
     <Card className={classes["card"]}>
         <Link to={route}>
