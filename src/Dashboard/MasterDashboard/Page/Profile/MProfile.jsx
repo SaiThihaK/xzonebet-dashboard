@@ -28,7 +28,7 @@ return(
         <div className={classes["personal-info-card"]}>
         <Card>
         <div className={classes["card-header"]}>
-        <h1 className={classes["card-title"]}>Personal Info</h1>
+        <h1 className={classes["card-title"]}>Info</h1>
         </div>
         <div className={classes["card-body"]}>
         <ProfileDetail  />

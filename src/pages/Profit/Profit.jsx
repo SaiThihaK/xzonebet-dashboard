@@ -80,7 +80,7 @@ const Profit = ({type}) => {
     <TextField id="outlined-basic" label="Agent Name" size='small' sx={{"width": 200,"height": 20, }} variant="outlined" />
     </Box>
     <Box sx={{height: "fit-content",marginLeft: 3}}>
-    <TextField id="outlined-basic" label="Type" size='small' sx={{"width": 100,"height": 20, }} variant="outlined" />
+    <TextField id="outlined-basic" label="" size='small' sx={{"width": 100,"height": 20, }} variant="outlined" />
     </Box>
     <div className={classes["btn-container"]}>
         <Button variant="contained">Export File</Button>

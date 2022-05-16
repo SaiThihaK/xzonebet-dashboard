@@ -70,9 +70,6 @@ const Sidebar = () => {
   const unitOpen = Boolean(unitMenu)
   const dispatch = useDispatch();
   const render = useSelector(selectedRender);
-
-  
-
   const unitMenuOpen = (event)=>{
     setUnitMenu(!unitMenu)
   }
@@ -80,7 +77,7 @@ const Sidebar = () => {
   const unitMenuClose = ()=>{
     setUnitMenu(null);
   }
-  
+   
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -130,14 +127,12 @@ const Sidebar = () => {
   }
 
   const {data} = FetchUnit("api/get-login-user",[render]);
-  
-  
   return (
     <IconContext.Provider value={{ color: "#FFF" }}>
       <div className={classes.container}>
         <ul className={classes["header-noti-icons"]}>
         {/*----------------------- Unit-------------------- */}
-        {/* <li className={classes["unit"]}>
+        <li className={classes["unit"]}>
      
       <div className={classes["main-unit"]}>
       <p>Main Unit-{data?.wallet?.main_unit}</p>
@@ -152,7 +147,7 @@ const Sidebar = () => {
         <span>Diamond Unit</span>  
         -{data?.wallet?.diamond_unit}</p>
       </Card>
-          </li> */}
+          </li>
           <li>
             <button className={classes['header-icon']}>
               <AiIcons.AiOutlineBell color="#9b9b9b" size="23px" />
