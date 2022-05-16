@@ -14,16 +14,16 @@ console.log("userData",userData);
 return(
     <div className={classes["container"]}>
         <Card>
-     <div className={classes["card-header"]}>
+     {/* <div className={classes["card-header"]}>
           <h1 className={classes["card-title"]}>
               {
                   type === "master" ? "SuperMaster Info":"Master Info"
               }
           </h1>
-     </div>
-     <div className={classes["card-body"]}>
+     </div> */}
+     {/* <div className={classes["card-body"]}>
     <ProfileCard />
-    </div>
+    </div> */}
         </Card>
         <div className={classes["personal-info-card"]}>
         <Card>

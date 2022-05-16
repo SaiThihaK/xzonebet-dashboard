@@ -126,12 +126,15 @@
   align-items: center;
   padding: 5px;
   position: relative;
+  border-radius: 7px;
+  
 }
-
+.img-container img{
+  border-radius: 10px;
+}
 .img-container:hover .img-text{
   display: block;
 }
-
 .img-text{
   position: absolute;
   top: 40px;
