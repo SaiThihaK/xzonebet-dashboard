@@ -74,9 +74,6 @@ const Sidebar = () => {
   const unitOpen = Boolean(unitMenu)
   const dispatch = useDispatch();
   const render = useSelector(selectedRender);
-
-  
-
   const unitMenuOpen = (event)=>{
     setUnitMenu(!unitMenu)
   }
@@ -84,7 +81,7 @@ const Sidebar = () => {
   const unitMenuClose = ()=>{
     setUnitMenu(null);
   }
-  
+   
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -134,13 +131,13 @@ const Sidebar = () => {
   }
 
   const {data} = FetchUnit("api/get-login-user",[render]);
-  console.log(data)
-  
+
   return (
     <IconContext.Provider value={{ color: "#FFF" }}>
       <div className={classes.container}>
         <ul className={classes["header-noti-icons"]}>
-       
+
+
           <li>
             <button className={classes['header-icon']}>
               <AiIcons.AiOutlineBell color="#9b9b9b" size="23px" />

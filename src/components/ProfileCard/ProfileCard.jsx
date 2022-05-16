@@ -7,7 +7,6 @@ import classes from "./ProfileCard.module.css";
 const ProfileCard = () => {
 const userData = useSelector(userInfo);
 const type = localStorage.getItem("type");
-
 console.log(userData)
   return (
     <div>
