@@ -94,23 +94,14 @@ export const MasterSidebarData = [
         // ]
     },
     {
-        title: "Deposite",
-        path: "/master/deposite",
+        title: "Agent Deposite",
+        path: "/dashboard/master/deposite/user-deposite",
         icon: <FaMoneyCheckAlt />,
-        iconClosed: <RiArrowDownSFill/>,
-        iconOpened: <RiArrowUpSFill/>,
-        subNav : [
-            {
-                title: 'Agent Deposite',
-                path: '/dashboard/master/deposite/user-deposite',
-                icon: <IoIosArrowForward />,
-            },
-            {
-                title:"Deposite to Admin",
-                path:'/dashboard/master/deposite/agent-deposite',
-                icon: <IoIosArrowForward />,              
-            }
-        ]
+    },
+    {
+        title: "Deposite to Admin",
+        path: "/dashboard/master/deposite/agent-deposite",
+        icon: <FaMoneyCheckAlt />,
     },
     {
         title: 'Transition History',
@@ -118,72 +109,7 @@ export const MasterSidebarData = [
         icon: <FaLayerGroup />,
         iconClosed: <RiArrowDownSFill/>,
         iconOpened: <RiArrowUpSFill/>,
-        // subNav : [
-        //     {
-        //         title: 'Master Deposit',
-        //         path: '/accounting/master-deposit',
-        //         icon: <IoIosArrowForward />,
-        //     },
-        //     {
-        //         title: 'Reports',
-        //         path: '/accounting/reports',
-        //         icon: <IoIosArrowForward />,
-        //     },
-        // ]
     },
-    {
-        title: 'Transfer To',
-        path: '/dashboard/master/transfer-to',
-        icon: <AiFillSetting />,
-        iconClosed: <RiArrowDownSFill/>,
-        iconOpened: <RiArrowUpSFill/>,
-        // subNav : [
-        //     {
-        //         title: 'Game Setting',
-        //         path: '/setting/game-setting',
-        //         icon: <IoIosArrowForward />,
-        //     },
-        //     {
-        //         title: 'Soccer Setting',
-        //         path: '/setting/soccer-setting',
-        //         icon: <IoIosArrowForward />,
-        //     },
-        // ]
-    },
-  
-   
-    // {
-    //     title: 'Payment Setting',
-    //     path: '/master/payment-setting',
-    //     icon: <AiFillSetting />,
-    //     iconClosed: <RiArrowDownSFill/>,
-    //     iconOpened: <RiArrowUpSFill/>,
-    //     subNav : [
-    //         {
-    //             title: 'Payment Type',
-    //             path: '/master/payment-setting/payment-value',
-    //             icon: <IoIosArrowForward />,
-    //         },
-    //         {
-    //             title: 'Payment Provider',
-    //             path: '/master/payment-setting/payment-provider',
-    //             icon: <IoIosArrowForward />,
-    //         },
-    //         {
-    //             title: 'Payment Account',
-    //             path: '/master/payment-setting/payment-account',
-    //             icon: <IoIosArrowForward />,
-    //         },
-           
-    //         {
-    //             title: 'Payment  Announcement',
-    //             path: '/master/payment-setting/payment-announcement',
-    //             icon: <IoIosArrowForward />,
-    //         },
-    //     ]
-    // },
-  
-  
     {
         title: "Payment Account",
         path: '/dashboard/payment-setting/payment-account',

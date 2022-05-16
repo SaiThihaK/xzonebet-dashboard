@@ -75,6 +75,7 @@ const AlertToast = (toast,msg)=>{return toast(msg)};
           {paymentType.map((el, index) => {
             return (
               <div
+                key={index}
                 className={` ${classes["payment_item"]} ${
                   el.id === tag && classes["payment_item_active"]
                 } `}
