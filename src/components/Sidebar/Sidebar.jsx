@@ -237,13 +237,9 @@ const Sidebar = () => {
         <div className={classes.sidebarWrap}>
         <div className={classes['img-container']}>
           <img src="https://icon-library.com/images/user-icon-jpg/user-icon-jpg-14.jpg"
-              width="150"
-              height="100" />
-         <p className={classes["img-text"]}>
-           {
-             data?.name
-           }
-         </p>
+              width="200"
+              height="150" />
+          <span className={classes["card-text"]}>{data?.name}</span>
          
         </div>
         <div className={classes["btn-container"]}>

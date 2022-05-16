@@ -109,8 +109,7 @@
   position: absolute;
   top:90%;
   background-color: white;
-
-  border-radius: 20px;
+  /* border-radius: 20px; */
   height: 0;
   transition: all 2s ease-in-out;
 }
@@ -126,11 +125,11 @@
   align-items: center;
   padding: 5px;
   position: relative;
-  border-radius: 7px;
+  flex-direction: column;
   
 }
 .img-container img{
-  border-radius: 10px;
+  border-radius: 2px;
 }
 .img-container:hover .img-text{
   display: block;
@@ -146,6 +145,16 @@
 }
 
 .btn-container{
+  display: flex;
+  justify-content: center;
+}
+
+.card-text{
+  background-color: var(--secondary-color);
+  color: white;
+  padding:10px;
+  width: 200px;
+  border-radius: 5px;
   display: flex;
   justify-content: center;
 }
