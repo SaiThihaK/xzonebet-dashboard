@@ -66,14 +66,15 @@ export const MasterSidebarData = [
         iconClosed: <RiArrowDownSFill/>,
         iconOpened: <RiArrowUpSFill/>,
         subNav : [
+           
             {
-                title: 'Become an Agent',
-                path: '/dashboard/master/agent/new-agent',
+                title: 'Agents',
+                path: '/dashboard/master/agent/agents',
                 icon: <IoIosArrowForward />,
             },
             {
-                title: 'Complete Agents',
-                path: '/dashboard/master/agent/agents',
+                title: 'Become an Agent',
+                path: '/dashboard/master/agent/new-agent',
                 icon: <IoIosArrowForward />,
             },
         ]
