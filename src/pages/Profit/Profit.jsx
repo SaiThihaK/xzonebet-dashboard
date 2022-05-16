@@ -10,46 +10,45 @@ const Profit = ({type}) => {
   console.log(type);
     const [value, setValue] = React.useState([null, null]);
     const masterProfit=[
-{
-      "Date" : "1.6.20222",
-      "Type" : "Deposit",
-      "Percentage" : 20,
-      "Amount" : 15000,
-      "AgentName" : "Zaw Zaw",
-      "Agent_Percentage" : 50,
-      "Remark" : "complete"},
+    { 
+      id:4,
+      Date : "1.6.20222",
+      Type : "Deposit",
+      Percentage : 20,
+      Amount : 15000,AgentName : "Zaw Zaw",Agent_Percentage : 50,Remark : "complete"},
       {
-        "Date" : "1.6.20222",
-        "Type" : "Deposit",
-        "Percentage" : 10,
-        "Amount" : 15000,
-        "AgentName" : "Zaw Zaw",
-        "Agent_Percentage" : 40,
-        "Remark" : "complete"},
+Date : "1.6.20222",
+Type : "Deposit",
+Percentage : 10,
+Amount : 15000,
+AgentName : "Zaw Zaw",Agent_Percentage : 40,
+Remark : "complete"},
         {
-          "Date" : "1.6.20222",
-          "Type" : "WithDraw",
-          "Percentage" : 40,
-          "Amount" : 15000,
-          "AgentName" : "Zaw Zaw",
-          "Agent_Percentage" : 20,
-          "Remark" : "complete"},
+    id:0,
+    Date : "1.6.20222",
+    Type : "WithDraw",
+    Percentage : 40,
+    Amount : 15000,
+    AgentName : "Sai Zaw",
+    Agent_Percentage : 20,
+    Remark : "complete"},
           {
-            "Date" : "1.6.20222",
-            "Type" : "WithDraw",
-            "Percentage" : 5,
-            "Amount" : 15000,
-            "AgentName" : "Zaw Zaw",
-            "Agent_Percentage" : 20,
-            "Remark" : "complete"}
-            , {
-              "Date" : "1.6.20222",
-              "Type" : "Deposit",
-              "Percentage" : 10,
-              "Amount" : 15000,
-              "AgentName" : "Zaw Zaw",
-              "Agent_Percentage" : 20,
-              "Remark" : "complete"}
+        id:1,
+        Date : "1.6.20222",
+        Type : "WithDraw",
+        Percentage : 5,
+        Amount: 15000,
+        AgentName : "Sai Zaw",
+          Agent_Percentage : 20,
+          Remark : "complete"}, 
+          {   id:2,
+              Date: "1.6.20222",
+              Type: "Deposit",
+              Percentage : 10,
+              Amount: 15000,
+              AgentName: "Zaw Zaw",
+              Agent_Percentage: 20,
+              Remark: "complete"}
 
     ]
   return (

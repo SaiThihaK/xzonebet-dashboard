@@ -8,7 +8,11 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
-import {Button, Card} from "@mui/material"
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { Button, CardActionArea, CardActions } from '@mui/material';
 // import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
@@ -130,29 +134,13 @@ const Sidebar = () => {
   }
 
   const {data} = FetchUnit("api/get-login-user",[render]);
-  
+  console.log(data)
   
   return (
     <IconContext.Provider value={{ color: "#FFF" }}>
       <div className={classes.container}>
         <ul className={classes["header-noti-icons"]}>
-        {/*----------------------- Unit-------------------- */}
-        {/* <li className={classes["unit"]}>
-     
-      <div className={classes["main-unit"]}>
-      <p>Main Unit-{data?.wallet?.main_unit}</p>
-      </div>
-         
-      <Card className={classes["unit_container"]}>
-        <p><span>Promotion Unit</span>-{data?.wallet?.promotion_unit}</p>
-        <p>
-          <span> Main Unit</span>
-         -{data?.wallet?.main_unit}</p>
-        <p>
-        <span>Diamond Unit</span>  
-        -{data?.wallet?.diamond_unit}</p>
-      </Card>
-          </li> */}
+       
           <li>
             <button className={classes['header-icon']}>
               <AiIcons.AiOutlineBell color="#9b9b9b" size="23px" />
@@ -250,37 +238,20 @@ const Sidebar = () => {
           {/* y<h1 style={{ color: "#FFF" }}>Logo</h1> */}
         </div>
         <div className={classes.sidebarWrap}>
-        {
-          localStorage.getItem("type") !== "admin" && 
-       
-       
-        <div className={classes.menuItem}>
-          <div>
-            <span className={classes.sidebarLabel}>ID-{data?.id}</span>
-          </div>
-          </div>
-}
-{
-          localStorage.getItem("type") !== "admin"  && 
-          <div className={classes.menuItem}>
-          <div>
-            <span className={classes.sidebarLabel}>Name-{data?.agent?.name || data?.name}</span>
-          </div>
-          </div>
-}
-{
-          localStorage.getItem("type") !== "admin" && 
-       
-          <div className={classes.menuItem}>
-          <div>
-            <span className={classes.sidebarLabel}>Main Unit-{data?.wallet?.main_unit}</span>
-          </div>
-          </div>
-}
-        {/* {SidebarData.map((item, index) => (
-           <Submenu item={item} key={index} />)
-          )} */}
-        
+        <div className={classes['img-container']}>
+          <img src="https://icon-library.com/images/user-icon-jpg/user-icon-jpg-14.jpg"
+              width="150"
+              height="100" />
+         <p className={classes["img-text"]}>
+           {
+             data?.name
+           }
+         </p>
+         
+        </div>
+        <div className={classes["btn-container"]}>
+           <Button variant="contained" size="small">Upload Inmage</Button>
+         </div>
   
           {DifDashboard()}
         </div>

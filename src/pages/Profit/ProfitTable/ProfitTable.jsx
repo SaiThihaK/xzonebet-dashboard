@@ -11,6 +11,7 @@ import { BasedColor } from '../../../Controller/BasedColor';
 import Card from "../../../components/UI/Card";
 import { Box } from "@mui/material";
 import classes from "./ProfitTable.module.css";
+import { DataGrid } from "@mui/x-data-grid";
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: BasedColor.tableHead,
@@ -38,12 +39,17 @@ const MasterProfitTitile=[
   "Date","Type","Amount","Parcentage","Agent Name","Agent Perentage","Profit","Remark"
 ]
 
+
+
 const ProfitTable = ({type,master}) => {
   let TotalAmount=0;
   let TotalPen=0;
   let TotalAgentPen=0;
   let TotalProfit=0;
   
+console.log(master)
+
+
   const addAmount=(el)=>{
 TotalAmount=TotalAmount+el;
     return el
@@ -61,6 +67,108 @@ TotalAmount=TotalAmount+el;
                 return el;
               }
   console.log("master",type);
+  const columns = [
+    {
+      field: "date",
+      headerName: 'Date',
+      width: 100,
+      headerAlign: 'center',
+      editable: false,
+  
+    },
+    {
+      field: 'type',
+      headerName: 'Type',
+      width: 200,
+      headerAlign: 'center',
+      editable: true,
+    },
+    {
+      field: 'ammount',
+      headerName: 'Ammount',
+      width: 200,
+      headerAlign: 'center',
+      editable: true,
+    },
+    {
+      field: 'percentage',
+      headerName: 'Percentage',
+      width: 200,
+      headerAlign: 'center',
+      editable: true,
+    },
+    {
+      field: 'Agent Name',
+      headerName: 'Agent Name',
+      width: 200,
+      headerAlign: 'center',
+      editable: true,
+    },
+    {
+      field: 'Agent Percentage',
+      headerName: 'Agent Percentage',
+      width: 200,
+      headerAlign: 'center',
+      editable: true,
+    },
+    {
+      field: 'Profit',
+      headerName: 'Profit',
+      width: 200,
+      headerAlign: 'center',
+      editable: true,
+    },
+    {
+      field: 'Remark',
+      headerName: 'Remark',
+      width: 200,
+      headerAlign: 'center',
+      editable: true,
+    },
+  ];
+
+  const data=[
+    { 
+      id:4,
+      Date : "1.6.20222",
+      Type : "Deposit",
+      Percentage : 20,
+      Amount : 15000,AgentName : "Zaw Zaw",Agent_Percentage : 50,Remark : "complete"},
+      {
+     Date : "1.6.20222",
+      Type : "Deposit",
+      Percentage : 10,
+      Amount : 15000,
+      AgentName : "Zaw Zaw",Agent_Percenta : 40,
+       Remark : "complete"},
+        {
+    id:0,
+    Date : "1.6.20222",
+    Type : "WithDraw",
+    Percentage : 40,
+    Amount : 15000,
+    AgentName : "Zaw Zaw",
+    Agent_Percentage : 20,
+    Remark : "complete"},
+          {
+        id:1,
+        Date : "1.6.20222",
+        Type : "WithDraw",
+        Percentage : 5,
+        Amount : 15000,
+        AgentName : "Zaw Zaw",
+          Agent_Percentage : 20,
+          Remark : "complete"}, 
+          {   id:2,
+              Date: "1.6.20222",
+              Type: "Deposit",
+              Percentage : 10,
+              Amount: 15000,
+              AgentName: "Zaw Zaw",
+              Agent_Percentage: 20,
+              Remark: "complete"}
+
+    ]
   return (  
       <>
     <Card>
@@ -131,8 +239,14 @@ TotalAmount=TotalAmount+el;
    </span>
     )}
    
-    </>
-  )
+    </>)
+{/* <div className={classes["table-margin"]}>
+      <DataGrid
+        columns={columns}
+        rows={master}
+      />
+</div> 
+  ) */}
 }
 
 export default ProfitTable

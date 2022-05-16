@@ -79,7 +79,7 @@ const deleteHandler = async(id)=>{
  
   
   return (
-    <div style={{ height:"60vh", width: '100%' }}>
+    <div style={{ height:"200vh", width: '100%' }}>
       {data.length !==0 ? ( <DataGrid
         rows={data}
         columns={columns}

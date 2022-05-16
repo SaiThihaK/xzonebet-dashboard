@@ -120,3 +120,29 @@
 .unit_container p span{
   width: 200px;
 }
+.img-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  position: relative;
+}
+
+.img-container:hover .img-text{
+  display: block;
+}
+
+.img-text{
+  position: absolute;
+  top: 40px;
+  display: none;
+  background-color: var(--secondary-color);
+  color: white;
+  font-size: 16px;
+  transition: all 0.5s ease-in-out;
+}
+
+.btn-container{
+  display: flex;
+  justify-content: center;
+}
