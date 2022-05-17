@@ -49,20 +49,10 @@ const [checkBox,setCheckBox]=useState({...countryCode});
   //     }));
   //   }
   // }) }
-  const [coun,setCoun] = React.useState([]);
+ 
 
   const {data} = CustomGetFunction(`api/countries`,[]);
-  // const fetchCountries = async()=>{
-  //   axios.request(getMethod(`api/countries`))
-  //   .then(function (response) {
-  //     setCoun(response.data.data);
-  //   });
-  // }
 
-  // React.useEffect(()=>{
-  //     fetchCountries();
-  // },[])
-  // console.log(country);
   const handleChange = (e) => {
     console.log(e.target.value);
     let v=e.target.value;
@@ -79,6 +69,9 @@ const [checkBox,setCheckBox]=useState({...countryCode});
    
  
   };
+  
+console.log("coun",country);
+const newArr = country.map((c)=>c.id);
 
   return (
     <div style={{marginTop:20}}>
