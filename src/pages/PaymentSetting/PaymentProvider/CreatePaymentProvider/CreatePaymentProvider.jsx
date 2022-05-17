@@ -66,7 +66,7 @@ const CreatePaymentProvider = () => {
       fd.append("payment_type_id",payment_typeValue);
       fd.append("name",payment_provider);
       fd.append("logo",logo);
-      fd.append("countries",JSON.stringify(["1","3","4"]));
+      fd.append("countries",JSON.stringify(country.map((c)=>c.id)));
       const response = await axios.request(PostProvider(`api/dashboard/payment-providers`,
       fd
       ));

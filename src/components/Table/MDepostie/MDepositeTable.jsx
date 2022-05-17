@@ -21,7 +21,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getRender, selectedRender } from "../../../features/render";
 import CustomGetFunction from "../../../services/CustomGetFunction";
 import CustomLoading from "../../../components/CustomLoading/CustomLoading"
-
+import MasterDepositeConfirm from "../../../components/UI/Modal/MasterDeposite/MasterDepositeConfirm"
 
 
 
@@ -56,6 +56,9 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
    const openHandler = ()=>setOpen(true);
    const closeHandler = ()=>setOpen(false);
    const dispatch = useDispatch();
+   const [modalOpen,setModalOpen] = useState(false);
+   const ModalOpenHandler = ()=>setModalOpen(true);
+   const ModalCloseHandler= ()=>setModalOpen(false)
    const handleClick = (id)=>{
    setID(id);
    if(id===ID){
@@ -74,33 +77,35 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
  const confirmHandler = async()=>{
    if(value === "approve"){
     //  console.log("approve")
-    try{
-      const response = await axios.request(PostMethod(`api/deposit/action/${ID}`,{
-        status:"approve"
-      }));
-      console.log(response);
-      if(response.data.status==="success"){
-        AlertToast(toast.success,response.data.message);
-        setID("");
-        setNum(num+1);
-        setValue("");
-        dispatch(getRender({render: !render}))
-        return;
-      }
-      if(response.data.status === "error"){
-        AlertToast(toast.error,response.data.message);
-        setID("");
-        setNum(num+1);
-        setValue("");
-        return;
-      }
-      }catch(error){
-       if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
-         toast.error(error.response.data.message)
-         logoutHandler();
-         }
-       }
-       return;
+    ModalOpenHandler();
+    
+    // try{
+    //   const response = await axios.request(PostMethod(`api/deposit/action/${ID}`,{
+    //     status:"approve"
+    //   }));
+    //   console.log(response);
+    //   if(response.data.status==="success"){
+    //     AlertToast(toast.success,response.data.message);
+    //     setID("");
+    //     setNum(num+1);
+    //     setValue("");
+    //     dispatch(getRender({render: !render}))
+    //     return;
+    //   }
+    //   if(response.data.status === "error"){
+    //     AlertToast(toast.error,response.data.message);
+    //     setID("");
+    //     setNum(num+1);
+    //     setValue("");
+    //     return;
+    //   }
+    //   }catch(error){
+    //    if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
+    //      toast.error(error.response.data.message)
+    //      logoutHandler();
+    //      }
+    //    }
+    //    return;
    }
   if(value === "pending"){
     setID("");
@@ -251,6 +256,7 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
      setID={setID}
      setValue={setValue}
      />
+    <MasterDepositeConfirm open={modalOpen} closeHandler={ModalCloseHandler} />
     </div>) : (<CustomLoading />)
     }
    </div>

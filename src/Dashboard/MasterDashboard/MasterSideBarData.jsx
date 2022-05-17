@@ -90,12 +90,20 @@ export const MasterSidebarData = [
         icon: <FaMoneyCheckAlt />,
     },
     {
-        title: 'Transition History',
+        title: 'Unit History',
         path: '/dashboard/master/transition-history',
         icon: <FaLayerGroup />,
         iconClosed: <RiArrowDownSFill/>,
         iconOpened: <RiArrowUpSFill/>,
     },
+    {
+        title: 'Payment History',
+        path: '/dashboard/master/transition-history',
+        icon: <FaLayerGroup />,
+        iconClosed: <RiArrowDownSFill/>,
+        iconOpened: <RiArrowUpSFill/>,
+    },
+
     {
         title: "Payment Account",
         path: '/dashboard/payment-setting/payment-account',
