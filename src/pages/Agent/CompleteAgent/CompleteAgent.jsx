@@ -14,8 +14,19 @@ import AgentCard from "../../../components/AgentCard/AgentCard";
 import Nodata from "../../../components/Nodata/Nodata";
 const CompleteAgent = () => {
 
-  const {data,loading} = CustomGetFunction('api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=complete&form_type=agent',[])
-
+  const {loading} = CustomGetFunction('api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=complete&form_type=agent',[])
+  const data =[
+    {
+    id:1004,
+    name:"Zaw Zaw",
+    email:"zawzaw@email.com"
+    },
+    {
+      id:1006,
+      name:"Yike",
+      email:"yike@email.com"
+    }
+];
   return (
     <div className={classes["soccer-setting-container"]}>
       <Card>
