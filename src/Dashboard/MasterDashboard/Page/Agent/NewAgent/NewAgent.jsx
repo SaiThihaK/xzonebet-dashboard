@@ -29,15 +29,13 @@ const NewAgent = () => {
             </Grid>):(<Nodata />)
           } */}
           {
-            data.length !==0 ?(<Grid container spacing={5}>
+            data.length !==0 ?(    <Grid container spacing={5}>
               {
-              
-              data?.length !==0 && data?.map((agent,index)=>(
-                 <Grid item xs={6} key={index}>
-                    <MemberCard partner={agent} path={"/new-agent/detail/"} />
-                   </Grid>
-                 
-                ))
+                data.length  !==0 && data.map((master,index)=>(
+                  <Grid item xs={6} key={index}>
+                    <MemberCard partner={master} path={"/account/agent/confirm-agent/detail/"} />
+                  </Grid>
+    ))
               }
             </Grid>):(<Nodata />)
           }
