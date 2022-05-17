@@ -5,7 +5,9 @@
     padding: 10px;
     border-radius: 7px;
 }
-
+.form-container{
+    width: 100%;
+}
 .func-desc{
     margin-top: 5px;
     padding: 0px 10px;
