@@ -145,6 +145,12 @@ const AlertToast = (toast,msg)=>{return toast(msg)};
           </div> */}
         </div>
       </div>
+      <AgentDepositeModal 
+    open={open} 
+    closeHandler={closeHandler} 
+    id={providerId} 
+    AlertToast={AlertToast}
+    />
   </div>
 //       <div>
 
@@ -180,12 +186,7 @@ const AlertToast = (toast,msg)=>{return toast(msg)};
     //     </Grid>
       
     // </Grid>
-    // <AgentDepositeModal 
-    // open={open} 
-    // closeHandler={closeHandler} 
-    // id={providerId} 
-    // AlertToast={AlertToast}
-    // />
+ 
     // </div>
   );
 }

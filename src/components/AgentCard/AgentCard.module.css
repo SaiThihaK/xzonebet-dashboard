@@ -1,7 +1,7 @@
 
 .card{
     padding: 20px;
-    width: 350px;
+    width: 500px;
     height: auto;
     background-color: white;
     border-radius: 5px;
@@ -15,11 +15,7 @@
 .img-container img{
 width: 100%;
 }
-.info p{
-    font-size: 13px;
-    font-weight: bold;
 
-}
 .second-grid{
     display: flex;
 }
@@ -70,8 +66,9 @@ a{
     width: 100px
 }
 
-.number{
-font-size: 18px;
+.amount{
+font-size: 20px;
+font-weight: bold;
 }
 
 

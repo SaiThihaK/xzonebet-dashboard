@@ -15,13 +15,26 @@ const NewAgent = () => {
     <PageTitleCard title="New Agents">
       {
         loading ?( <div className={classes["card-body"]}>
-          {
+          {/* {
             data.length !==0 ? (<Grid container>
               {
               
               data?.length !==0 && data?.map((agent,index)=>(
                  <Grid item xs={4} key={index}>
                    <AgentCard data={agent} route="/dashboard/new-agent/detail/3"/>
+                   </Grid>
+                 
+                ))
+              }
+            </Grid>):(<Nodata />)
+          } */}
+          {
+            data.length !==0 ?(<Grid container spacing={5}>
+              {
+              
+              data?.length !==0 && data?.map((agent,index)=>(
+                 <Grid item xs={6} key={index}>
+                    <MemberCard partner={agent} path={"/new-agent/detail/"} />
                    </Grid>
                  
                 ))

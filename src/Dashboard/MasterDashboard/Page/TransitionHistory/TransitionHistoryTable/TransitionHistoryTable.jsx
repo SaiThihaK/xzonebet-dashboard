@@ -16,7 +16,8 @@ import CustomGetFunction from "../../../../../services/CustomGetFunction";
 import { ChangeDate, getResDate } from "../../../../../Controller/ChangeDate";
 import CustomLoading from "../../../../../components/CustomLoading/CustomLoading";
 import Nodata from "../../../../../components/Nodata/Nodata";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, selectedIdsLookupSelector } from "@mui/x-data-grid";
+
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -41,7 +42,7 @@ const TransitionHistoryTable = () => {
     const [page,setPage] = React.useState(1);
     const [transferData,setTransferData] = React.useState([]);
     const [userData,setUserData] = React.useState([]);
-  const {data,pagination,loading} = CustomGetFunction(`api/wallet/transfer-record?sortColumn=id&sortDirection=desc&limit=10&page=${page}`,[page])
+   const {data,loading} = CustomGetFunction(`api/wallet/transfer-record?sortColumn=id&sortDirection=desc&limit=10&page=${page}`,[page])
  
   const fetchUnit = async()=>{
     try{
@@ -176,7 +177,7 @@ const TransitionHistoryTable = () => {
         {
         data.length !== 0 ? (<DataGrid columns={columns} rows={data} />) : (<Nodata />)
         }
-        
+   
     </div>):(<CustomLoading />)
     }
     </>
