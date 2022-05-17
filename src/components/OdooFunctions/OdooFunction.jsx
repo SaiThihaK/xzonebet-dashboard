@@ -24,27 +24,27 @@ const OdooFunction = ({added,func, OdooClick,OdooRemove}) => {
       {/* <p className={classes["func-desc"]}>
      {func?.text}
       </p> */}
-      {
+        {
         isadded ?  (
-        <Stack direction="row" style={{marginTop:20,fontSize:5,justifyContent:"flex-end"}}>
+        <Stack direction="row" style={{display:"flex",justifyContent:"flex-end",marginTop:35,width:"100%"}}>
         {/* <Button color="success">added</Button> */}
-        <Button color="error" size="small"  variant="contained" sx={{fontSize: "12px",width: "fit-content"}} onClick={()=>{
+        <Button color="error" size="small"  variant="contained" sx={{fontSize: "12px"}} onClick={()=>{
           isremoveHanlder();
           }}>remove</Button>
       </Stack>
       ) : (
-        <Stack direction="row" style={{marginTop:20,fontSize:5,display:"flex",justifyContent:"flex-end"}}>
-        <Button color="success" size="small" variant="contained" sx={{fontSize: "12px",}} onClick={()=>{
+        <Stack direction="row" style={{display:"flex",justifyContent:"flex-end",marginTop:35,width:"100%"}}>
+        <Button color="success" size="small" variant="contained"  onClick={()=>{
           isaddHandler();
          OdooClick(func.id)
           ;}}>add</Button>
-        {/* <Button color="error">remove</Button> */}
       </Stack>
       )
       }
-    
       </div>
+    
     </div>
+
      </Card>
    </div>
   )
