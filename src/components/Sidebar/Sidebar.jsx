@@ -136,7 +136,22 @@ const Sidebar = () => {
     <IconContext.Provider value={{ color: "#FFF" }}>
       <div className={classes.container}>
         <ul className={classes["header-noti-icons"]}>
-
+        <li className={classes["unit"]}>
+     
+     <div className={classes["main-unit"]}>
+     <p>Main Unit-{data?.wallet?.main_unit}</p>
+     </div>
+        
+     <Card className={classes["unit_container"]}>
+       <p><span>Promotion Unit</span>-{data?.wallet?.promotion_unit}</p>
+       <p>
+         <span> Main Unit</span>
+        -{data?.wallet?.main_unit}</p>
+       <p>
+       <span>Diamond Unit</span>  
+       -{data?.wallet?.diamond_unit}</p>
+     </Card>
+         </li>
 
           <li>
             <button className={classes['header-icon']}>
@@ -243,7 +258,7 @@ const Sidebar = () => {
          
         </div>
         <div className={classes["btn-container"]}>
-           <Button variant="contained" size="small">Upload Inmage</Button>
+          <input type="file" className={classes["btn"]}/>
          </div>
   
           {DifDashboard()}

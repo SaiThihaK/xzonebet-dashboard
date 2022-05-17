@@ -147,6 +147,7 @@
 .btn-container{
   display: flex;
   justify-content: center;
+  
 }
 
 .card-text{
@@ -157,4 +158,12 @@
   border-radius: 5px;
   display: flex;
   justify-content: center;
+}
+
+.btn{
+  background-color: var(--secondary-color);
+  padding: 10px;
+  width: 200px;
+  color: white;
+  border-radius: 3px;
 }

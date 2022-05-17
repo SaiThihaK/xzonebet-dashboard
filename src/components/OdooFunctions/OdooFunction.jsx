@@ -13,6 +13,7 @@ const OdooFunction = ({added,func, OdooClick,OdooRemove}) => {
    <div>
      <Card>
      <div className={classes["container"]}>
+
         <div   className={classes["form-container"]}>
       <h3 className={classes["func-title"]}>{func?.name}</h3>
       <p className={classes["func-desc"]}>
@@ -20,7 +21,7 @@ const OdooFunction = ({added,func, OdooClick,OdooRemove}) => {
       </p>
       {
         isadded ?  (
-        <Stack direction="row" style={{marginTop:10,fontSize:12,display:"flex",justifyContent:"flex-end"}}>
+        <Stack direction="row" style={{marginTop:10,fontSize:12,justifyContent:"flex-end"}}>
         {/* <Button color="success">added</Button> */}
         <Button color="error" onClick={()=>{
           isremoveHanlder();
