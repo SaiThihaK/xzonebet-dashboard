@@ -1,15 +1,22 @@
 .container{
-    display: grid;
+    display: flex;
     /* border: 1px solid var(--text-color); */
     transition: all 0.2s ease-in-out;
-    padding: 5px;
+    padding: 10px;
+    border-radius: 7px;
 }
 
 .func-desc{
-    margin-top: 10px;
+    margin-top: 5px;
     padding: 0px 10px;
+    font-size: 13px;
+}
+.func-icon{
+    width: "110px"; display: "flex";justify-content: "center";align-items: "center";
+    height: "58px";
+    background-color: "blueviolet";
 }
 .func-title{
     font-size: 14px;
-    color: var(--secondary-color);
+    color: var(--secondary-color); 
 }

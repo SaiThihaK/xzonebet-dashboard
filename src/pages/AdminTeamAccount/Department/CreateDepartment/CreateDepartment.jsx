@@ -10,6 +10,10 @@ import CustomGetFunction from '../../../../services/CustomGetFunction';
 import CustomLoading from '../../../../components/CustomLoading/CustomLoading';
 import Nodata from '../../../../components/Nodata/Nodata'
 import { useNavigate } from 'react-router-dom'
+import {MdManageAccounts} from "react-icons/md"
+import {MdOutlinePayment} from "react-icons/md"
+import {FaDatabase} from "react-icons/fa"
+
 const CreateDepartment = () => {
 const [functionName,setFunctionName] = useState([]);
 const [name,setName] = useState("");
@@ -42,7 +46,27 @@ const OdooClick = (name)=>{
   ]))
 }
 
+const dummyData=[
+  {
+    "title": "Account Management",
+    "text" : "This Function is responsible for managing accounts",
+     "icon":  <MdManageAccounts style={{ fontSize: "45px",color: "white" }}/>,
+     "bg" : "blueviolet"
+  },
+  {
+    "title": "Payment Setting ",
+    "text" : "This Function is responsible for  payment setting",
+    "icon":  <MdOutlinePayment style={{ fontSize: "45px",color: "white" }}/>,
+    "bg" : "#F2DB45"
+  },
+  {
+    "title": "Unit Setting ",
+    "text" : "This Function is responsible for unit setting",
+    "icon":  <FaDatabase style={{ fontSize: "45px",color: "white" }}/>,
+    "bg" : "#49F338"
 
+  }
+]
 
 console.log(functionName)
 
@@ -55,9 +79,8 @@ console.log(functionName)
             <label>Department</label>
             <TextField size='small' value={name} onChange={(e)=>{setName(e.target.value)}}/>
             </div>
-
             <div className={classes["form-contol"]}>
-            <label>Choose Function</label>
+            {/* <label>Choose Function</label> */}
             {/* <Select
           labelid="demo-multiple-checkbox-label"
           id="demo-multiple-checkbox"
@@ -78,13 +101,13 @@ console.log(functionName)
           ))}
         </Select> */}
 {
-  loading ? (
+  // loading ? (
   <>
   {
-    data.length !== 0 ? ( <Grid container spacing={5}>
+    dummyData.length !== 0 ? ( <Grid container spacing={2}>
       {
-       data?.map((func,index)=>(
-         <Grid item xs={4} key={index}>
+       dummyData?.map((func,index)=>(
+         <Grid item xs={4}  key={index}>
          <OdooFunction func={func} OdooClick={ OdooClick} />
          </Grid>
        ))
@@ -95,7 +118,7 @@ console.log(functionName)
   }
  
    </>
-   ):(<CustomLoading />)
+  //  ):(<CustomLoading />)
 }
 
 </div>
