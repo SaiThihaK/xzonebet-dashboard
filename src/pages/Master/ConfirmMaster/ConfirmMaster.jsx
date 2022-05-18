@@ -35,7 +35,7 @@ const ConfirmMaster = () => {
                 {
                   data.length !==0 &&
                            data.map((master,index)=>(
-                            <Grid item={6} key={index}>
+                            <Grid item xs={6} key={index}>
                               <MemberCard partner={master} path={"/dashboard/account/master/confirm-master/detail/"} />
                             </Grid>
               ))
