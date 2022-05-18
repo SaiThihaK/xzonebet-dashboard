@@ -31,3 +31,7 @@
   bottom: -20px;
   left: 0;
 }
+
+.card-body{
+  background-color: #eee;
+}

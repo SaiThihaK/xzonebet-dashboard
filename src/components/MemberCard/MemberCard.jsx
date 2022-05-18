@@ -1,11 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Card from '../UI/Card';
+import {  useNavigate } from 'react-router-dom';
+import {Card} from "@mui/material"
 import classes from "./MemberCard.module.css"
 
 const MemberCard = ({partner,path,status}) => {
+  const navigate = useNavigate();
   return (
-     <Link to={path+partner?.id || "1"}> 
+    <div className={classes["card"]}>
+    <Card>
+     {/* <Link to={path+partner?.id || "1"}>  */}
     <div className={classes["container"]}>
         <div className={classes["img-container"]}>
             <img src='https://icon-library.com/images/user-icon-jpg/user-icon-jpg-14.jpg' alt="admin team account" />
@@ -26,8 +29,13 @@ const MemberCard = ({partner,path,status}) => {
         </div>
         }
       </div>
+      
     </div>
-    </Link> 
+    <div className={classes["btn-container"]}>
+        <button className={classes["btn"]} onClick={()=>navigate(path+partner?.id || "1")} >More Detail</button>
+      </div>
+    </Card>
+    </div> 
   )
 }
 
