@@ -11,6 +11,7 @@
 }
 .card-body {
   padding: 20px;
+  background-color: #eee;
 }
 .card-title {
   margin-bottom: 0;

@@ -38,7 +38,7 @@ import BalanceSheet from "../pages/BalanceSheet/BalanceSheet";
 import ActiveUser from "../pages/Users/ActiveUsers/ActiveUsers";
 import AllUser from "../pages/Users/AllUser/AllUser";
 import Users from "../pages/Users/Users";
-
+import MProfile from "../Dashboard/MasterDashboard/Page/Profile/MProfile"
 
 const SuperMasterRoute = () => {
   return (
@@ -232,6 +232,7 @@ const SuperMasterRoute = () => {
         exact
         element={<AllUser />}
       />
+      <Route exact path="/dashboard/super_master/profile" element={<MProfile />} />
     </Routes>
   );
 };
