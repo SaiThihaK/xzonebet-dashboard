@@ -58,7 +58,10 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
    const dispatch = useDispatch();
    const [modalOpen,setModalOpen] = useState(false);
    const ModalOpenHandler = ()=>setModalOpen(true);
-   const ModalCloseHandler= ()=>setModalOpen(false)
+   const ModalCloseHandler= ()=>setModalOpen(false);
+   const [amount,setAmount] = useState("");
+   const handleAmmount = (e)=>setAmount(e.target.value);
+   
    const handleClick = (id)=>{
    setID(id);
    if(id===ID){
@@ -78,6 +81,7 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
    if(value === "approve"){
     //  console.log("approve")
     ModalOpenHandler();
+  
     
     // try{
     //   const response = await axios.request(PostMethod(`api/deposit/action/${ID}`,{
@@ -150,6 +154,36 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
       <p className={classes["btn"]} style={{backgroundColor:"red"}} >Reject</p>
     </StyledTableCell>
   }
+ }
+ const submitHandler = async()=>{
+   console.log("it works",ID)
+  try{
+      const response = await axios.request(PostMethod(`api/deposit/action/${ID}`,{
+        status:"approve",
+        main_unit:amount
+      }));
+      console.log("work");
+      console.log(response);
+      if(response.data.status==="success"){
+        AlertToast(toast.success,response.data.message);
+        setID("");
+        setNum(num+1);
+        setValue("");
+        dispatch(getRender({render: !render}))
+        
+        return;
+      }
+      if(response.data.status === "error"){
+        AlertToast(toast.error,response.data.message);
+        setID("");
+        setNum(num+1);
+        setValue("");
+        return;
+      }
+    }catch(error){
+      console.log("This is error")
+     toast.error(error.response.data.message)
+   }
  }
  
 
@@ -256,7 +290,7 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
      setID={setID}
      setValue={setValue}
      />
-    <MasterDepositeConfirm open={modalOpen} closeHandler={ModalCloseHandler} />
+    <MasterDepositeConfirm open={modalOpen} handleClose={ModalCloseHandler} submitHandler={submitHandler} handleAmmount={handleAmmount} />
     </div>) : (<CustomLoading />)
     }
    </div>

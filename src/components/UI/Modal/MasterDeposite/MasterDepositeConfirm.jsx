@@ -42,10 +42,9 @@ const MasterDepositeConfirm = ({ open, handleClose,id,submitHandler,handleAmmoun
               sx={{ justifyContent: "center" }}
             >
               <Button onClick={(e)=>{
-                handleClose();
                 submitHandler(id);
 
-              }} variant="contained" type="submit" color="success">
+              }} variant="contained"  color="success">
                 Confirm
               </Button>
               <Button onClick={handleClose} variant="contained" color="error">
