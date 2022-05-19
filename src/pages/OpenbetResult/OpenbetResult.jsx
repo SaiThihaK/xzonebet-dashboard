@@ -15,8 +15,10 @@ const OpenbetResult = () => {
   return (
     <PageTitleCard title="Opening bet Result">
       {
+    loading ? (<>
+      {
         data.length !==0 ? ( <div className={classes["card-body"]}>
-        {loading ? (
+     
           <Grid container rowSpacing={3}>
             {data.map((item, index) => (
                 <Grid item xs={4} key={index}>
@@ -24,11 +26,13 @@ const OpenbetResult = () => {
                 </Grid>
               ))}
           </Grid>
-        ) : (
-          <CustomLoading />
-        )}
+        )
       </div>):(<Nodata />)
       }
+     
+      </>):(<CustomLoading />)
+      }
+      
      
     </PageTitleCard>
   );
