@@ -69,7 +69,7 @@ const confirmHandler = async()=>{
   }
   console.log("payment_account_id",provDetail.id)
   try{
-    const response = await axios.request(PostMethod(`api/user-deposit`,{
+    const response = await axios.request(PostMethod(`api/deposit`,{
       amount,
       account_no,
       transaction_no,
