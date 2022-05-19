@@ -15,6 +15,7 @@ import UserDetail from "../pages/Users/UserDetail/UserDetail";
 import Profit from "../pages/Profit/Profit";
 import Notfound from "../components/UI/404/404";
 import Overview from "../pages/Overview";
+import MProfile from "../Dashboard/MasterDashboard/Page/Profile/MProfile";
 
 
 const AgentRoute = () => {
@@ -79,6 +80,7 @@ const AgentRoute = () => {
         element={<UserDetail />}
       />
       <Route path="/dashboard/profit" exact element={<Profit />} />
+      <Route exact path="/dashboard/agent/profile" element={<MProfile />} />
       <Route path="*" element={<Notfound />} />
     </Routes>
   );
