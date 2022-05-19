@@ -170,7 +170,6 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
         setNum(num+1);
         setValue("");
         dispatch(getRender({render: !render}))
-        
         return;
       }
       if(response.data.status === "error"){
