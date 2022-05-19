@@ -12,6 +12,7 @@ const ProfileDetail = () => {
   const navigate = useNavigate();
   const userData = useSelector(userInfo)
   console.log(userData);
+  const type = localStorage.getItem("type");
   const [values, setValues] =useState({     
     name : userData?.name,
     dob :  "20/12/1998",
@@ -56,50 +57,52 @@ const handleChange = (prop) => (event) => {
   return (
     <div className="personal_info">
     <div className="p_flex">
+      
        <div className="p_col person_mr">
-           <div className="p_group">
-              <div className="p_info_header">
-                 SUPERMASTER INFO
-              </div>
-              <div className="p_field">
-                  <div className="p_item">
-                    <div>
-                      SurperMaster ID
-                    </div>
-                    <div className="p_ncolor">
-                      <div >1003 </div>
-                                        
-                          
-                    </div>
-                   
-                  </div>
-                  <div className="p_item">
-                    <div>
-                      SurperMaster Name
-                    </div>
-                    <div className="p_ncolor">
-                      <div >Kyaw Kyaw </div>
-                                        
-                          
-                    </div>
-                   
-                  </div>
-               
-                  {/* <div className="p_item">
-                    <div>
-                    Total Unit
-                    </div>
-                    <div className="p_ncolor">
-                      <div >4000 </div>
-                                        
-                          
-                    </div>
-                   
-                  </div> */}
-               
-              </div>
-              
+         {
+           type !== "super_master" && (<div className="p_group">
+           <div className="p_info_header">
+              SUPERMASTER INFO
            </div>
+           <div className="p_field">
+               <div className="p_item">
+                 <div>
+                   SurperMaster ID
+                 </div>
+                 <div className="p_ncolor">
+                   <div >1003 </div>
+                </div>
+                
+               </div>
+               <div className="p_item">
+                 <div>
+                   SurperMaster Name
+                 </div>
+                 <div className="p_ncolor">
+                   <div >Kyaw Kyaw </div>
+                                     
+                       
+                 </div>
+                
+               </div>
+            
+               {/* <div className="p_item">
+                 <div>
+                 Total Unit
+                 </div>
+                 <div className="p_ncolor">
+                   <div >4000 </div>
+                                     
+                       
+                 </div>
+                
+               </div> */}
+            
+           </div>
+           
+        </div>)
+         }
+           
            <div className="p_group">
               <div className="p_info_header">
               PERSONAL INFO

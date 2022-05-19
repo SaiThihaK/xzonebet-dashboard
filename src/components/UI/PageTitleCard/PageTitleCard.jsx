@@ -9,12 +9,11 @@ const PageTitleCard = ({title,children}) => {
         <div className={classes["card-header"]}>
           <h1 className={classes["card-title"]}>{title}</h1>
         </div>
-
+        <div className={classes["card-body"]}>
         {
             children ? children : <div></div>
         }
-     
-       
+        </div>
       </Card>
     </div>
   )

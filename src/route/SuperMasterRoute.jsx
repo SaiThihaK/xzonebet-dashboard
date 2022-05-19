@@ -38,8 +38,9 @@ import BalanceSheet from "../pages/BalanceSheet/BalanceSheet";
 import ActiveUser from "../pages/Users/ActiveUsers/ActiveUsers";
 import AllUser from "../pages/Users/AllUser/AllUser";
 import Users from "../pages/Users/Users";
-
-
+import MProfile from "../Dashboard/MasterDashboard/Page/Profile/MProfile"
+import MasterSecurity from "../Dashboard/MasterDashboard/Page/Security/MasterSecurity";
+import Profit from "../pages/Profit/Profit"
 const SuperMasterRoute = () => {
   return (
     <Routes>
@@ -232,6 +233,13 @@ const SuperMasterRoute = () => {
         exact
         element={<AllUser />}
       />
+      <Route exact path="/dashboard/super_master/profile" element={<MProfile />} />
+      <Route
+        exact
+        path="/dashboard/super_master/security"
+        element={<MasterSecurity />}
+      />
+      <Route path="/dashboard/super_master/profit" exact element={<Profit type="master" />} />
     </Routes>
   );
 };
