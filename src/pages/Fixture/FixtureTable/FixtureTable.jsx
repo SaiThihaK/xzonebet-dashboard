@@ -74,63 +74,70 @@ return (<div>new bet</div>)
                 <StyledTableCell align="right"></StyledTableCell>
               </TableRow>
             </TableHead>
-            <TableBody>
-              {bettingData.map((el, key) => {
-                return (
-                  <StyledTableRow key={key}>
-                    <StyledTableCell align="right">{key + 1}</StyledTableCell>
-                    <StyledTableCell align="right">
-                      {ChangeDate(el?.fixture?.date)}
-                    </StyledTableCell>
-                    <StyledTableCell align="right">
-                      {el?.league?.country}
-                    </StyledTableCell>
-                    <StyledTableCell align="right">
-                      {el?.league?.name}
-                    </StyledTableCell>
-                    <StyledTableCell align="right">
-                      {el?.teams?.home?.name}
-                    </StyledTableCell>
-                    <StyledTableCell align="right">
-                      {el?.teams?.away?.name}
-                    </StyledTableCell>
-                    <StyledTableCell align="right" sx={{ width: "200px" }}>
-                        
-                        {/* {
-                          ()=>{
-                          response = data?.map((fix)=>{
-                              if(fix?.fixture?.id === id){
-                                return true
-                              }
-                              if(response){
-                                console.log(true);
-                              }else{
-                                console.log(false);
-                              }
-
-                            }) } }
-                            */}
-                        
-
-                      {/* {()=>{
-                        console.log("fixture",el?.fixture?.id)
-                        FetchNewBet(el?.fixture?.id)}} */}
-                     
+            
+              <TableBody>
+                {bettingData.map((el, key) => {
+                  return (
+                    <>
+                    {
+                      new Date(el?.fixture?.date)>new Date() && <StyledTableRow key={key}>
+                      <StyledTableCell align="right">{key + 1}</StyledTableCell>
+                      <StyledTableCell align="right">
+                        {ChangeDate(el?.fixture?.date)}
+                      </StyledTableCell>
+                      <StyledTableCell align="right">
+                        {el?.league?.country}
+                      </StyledTableCell>
+                      <StyledTableCell align="right">
+                        {el?.league?.name}
+                      </StyledTableCell>
+                      <StyledTableCell align="right">
+                        {el?.teams?.home?.name}
+                      </StyledTableCell>
+                      <StyledTableCell align="right">
+                        {el?.teams?.away?.name}
+                      </StyledTableCell>
+                      <StyledTableCell align="right" sx={{ width: "200px" }}>
+                          
+                          {/* {
+                            ()=>{
+                            response = data?.map((fix)=>{
+                                if(fix?.fixture?.id === id){
+                                  return true
+                                }
+                                if(response){
+                                  console.log(true);
+                                }else{
+                                  console.log(false);
+                                }
+  
+                              }) } }
+                              */}
+                          
+  
+                        {/* {()=>{
+                          console.log("fixture",el?.fixture?.id)
+                          FetchNewBet(el?.fixture?.id)}} */}
+                       
+                      
+                       <Button
+                         onClick={() => {
+                       openHandler(key);
+                                    }}
+                   variant="contained"
+                                   >
+                              New Bet
+                             </Button>
+                      </StyledTableCell>
+                    </StyledTableRow>
+                    }
                     
-                    <Button
-                      onClick={() => {
-                    openHandler(key);
-                                 }}
-                variant="contained"
-                                >
-                           New Bet
-                          </Button>
-                  
-                    </StyledTableCell>
-                  </StyledTableRow>
-                );
-              })}
-            </TableBody>
+                    </>
+                  );
+                })}
+              </TableBody>
+            
+           
           </Table>
         </TableContainer>):(<Nodata />)
       }
