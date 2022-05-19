@@ -15,7 +15,7 @@ const AdminAccount = () => {
      {
          fakeArr
          .map((member,index)=>(
-            <Grid item xs={4} key={index}>
+            <Grid item xs={6} key={index}>
              <MemberCard />
             </Grid>
          ))

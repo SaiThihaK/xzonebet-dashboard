@@ -11,7 +11,7 @@ import {BiShow} from "react-icons/bi"
 
 
 
-const ResultCard = ({ resultData,setRender,render }) => {
+const  ResultCard = ({ resultData,setRender,render }) => {
   const [dataResult, setDataResult] = useState([]);
   const [loading,setLoading] = useState(false);
   const comfirmHandler = async () => {
