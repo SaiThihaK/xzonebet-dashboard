@@ -2,6 +2,7 @@ import Sidebar, { logoutHandler } from "./components/Sidebar/Sidebar";
 import Container from "./components/Container/Container";
 import { BrowserRouter as Router } from "react-router-dom";
 import { type } from "./services/Token";
+import React from "react";
 import "./App.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

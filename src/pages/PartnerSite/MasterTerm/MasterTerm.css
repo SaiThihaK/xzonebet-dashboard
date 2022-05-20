@@ -1,0 +1,13 @@
+.card-body{
+ padding-bottom: 10px;
+}
+.text-area{
+    width: 100%;
+    background-color: rgba(102, 99, 99, 0.559);
+}
+.DraftEditor-editorContainer{
+    height: 300px !important;
+}
+/* .public-DraftStyleDefault-ltr{
+height: 300px;
+} */
