@@ -8,7 +8,7 @@ import { PostMethod } from "../../../../../services/api-services";
 import { logoutHandler } from "../../../../../components/Sidebar/Sidebar";
 import { useNavigate } from "react-router-dom";
 import { confirmDetail } from "../../../../../services/api-collection";
-
+import {Grid} from "@mui/material"
 
 const ComfirmMasterDesc = ({userInfo}) => {
   console.log("confirm",userInfo);
@@ -53,12 +53,12 @@ const ComfirmMasterDesc = ({userInfo}) => {
           <span>ID - {userInfo.id}</span>
         </div>
       </div>
-      <div  className={classes["form-container"]}>
+      <Grid container>
+      <Grid item xs={6} className={classes["form-container"]}>
       <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Unit </label>:<p>&nbsp;&nbsp;{userInfo.ammount}</p>
+          <label htmlFor="">Unit </label>:<p>&nbsp;&nbsp;{userInfo.unit_amount}</p>
         </div>
         <div className={classes["form-group-desc"]}>
-          
           <label htmlFor="">Email </label>:<p>&nbsp;&nbsp;{userInfo.email}</p>
         </div>
         <div className={classes["form-group-desc"]}>
@@ -71,12 +71,25 @@ const ComfirmMasterDesc = ({userInfo}) => {
           <label htmlFor="">City </label>:<p>&nbsp;&nbsp;{userInfo.city}</p>
         </div>
         <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Currency </label>:<p>&nbsp;&nbsp;{userInfo.currency}</p>
+          <label htmlFor="">Currency </label>:<p>&nbsp;&nbsp;{userInfo.currency_type}</p>
         </div>
-        
         <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Transition Id </label>:<p>&nbsp;&nbsp;{userInfo.transition_id}</p>
+          <label htmlFor="">Transition ID </label>:<p>&nbsp;&nbsp;{userInfo.transition_id}</p>
         </div>
+        <div className={classes["form-group-desc"]}>
+          <label htmlFor="">Deposite Percentage</label>:<p>&nbsp;&nbsp;{userInfo.deposit_percent}</p>
+        </div>
+        <div className={classes["form-group-desc"]}>
+          <label htmlFor="">Deposite Percentage</label>:<p>&nbsp;&nbsp;{userInfo.deposit_percent}</p>
+        </div>
+       
+        <div className={classes["form-group-desc"]}>
+          <label htmlFor="">Withdraw Percentage</label>:<p>&nbsp;&nbsp;{userInfo.withdraw_percent}</p>
+        </div>
+        {/* =====================================Second Grid========================= */}
+   
+      </Grid>
+
         {
           localStorage.getItem("type") !== "hr" && (
             <form className={classes['btn-container']}>
@@ -85,7 +98,7 @@ const ComfirmMasterDesc = ({userInfo}) => {
           )
         }
        
-      </div>
+      </Grid>
     </div>
   );
 };
