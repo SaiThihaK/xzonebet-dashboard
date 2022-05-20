@@ -9,6 +9,7 @@ import axios from "axios";
 import { PostMethod } from "../../../../services/api-services";
 import { toast } from "react-toastify";
 import { logoutHandler } from "../../../Sidebar/Sidebar";
+import { useNavigate } from "react-router-dom";
 
 const style = {
   position: "absolute",
@@ -24,9 +25,9 @@ const style = {
   p: 4,
 };
 
-const MasterDepositCancel = ({ open, handleClose,setNum,id,num,alertToast}) => {
+const MasterDepositCancel = ({ open, handleClose,setNum,id,num,route}) => {
   const [accounting_remark,setAccounting_remark] = useState("");
-
+  const navigate = useNavigate();
   const confirmHandler = async(e)=>{
   e.preventDefault();
   if(!accounting_remark){
@@ -35,15 +36,24 @@ const MasterDepositCancel = ({ open, handleClose,setNum,id,num,alertToast}) => {
   }
   try{
   const {data} = await axios.request(
-  PostMethod(`api/affiliate-register-lists/deposit-rejet/${id}`,
-  {accounting_remark:accounting_remark}
+  PostMethod(`api/affiliate-register-lists/rejet/${id}`,
+  {
+  rejected_reason:accounting_remark,
+  status:"rejected"
+ }
   ));
   // console.log(data);
   if(data.status="success"){
     handleClose();
-    setNum(num+1);
+   
     toast.success(data.message);
     setAccounting_remark('');
+    if(num){
+      setNum(num+1);
+    }
+    if(route){
+      navigate(route)
+    }
     return;
   }
   if(data.status="error"){

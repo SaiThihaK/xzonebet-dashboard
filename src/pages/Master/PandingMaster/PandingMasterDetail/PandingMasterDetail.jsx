@@ -16,6 +16,7 @@ import { logoutHandler } from "../../../../components/Sidebar/Sidebar";
 import CustomGetFunction from "../../../../services/CustomGetFunction";
 import { pendingDetail,AccountDetail } from "../../../../services/api-collection";
 import { idID } from "@mui/material/locale";
+import MasterDepositCancel from "../../../../components/UI/Modal/MasterDepositCancel/MasterDepositCancel";
 const PandingMasterDetail = () => {
   const [age,setAge] = useState();
 
@@ -35,7 +36,10 @@ const PandingMasterDetail = () => {
   const [payment_provider,setPaymet_Provider] = useState([]);
   const [adminPayment,setAdminPayment] = useState([]);
   const [paymentAccount,setPaymentAccount] = useState("")
- 
+  const [Id, setId] = React.useState("");
+  const [open,setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
  console.log("PaymentName",payment_name)
    // Crypto
  const navigate = useNavigate();
@@ -436,12 +440,19 @@ if(response.data.status === "error"){
         localStorage.getItem("type") !== "hr" && (
         <div style={{display:"flex",marginTop:20,justifyContent:"flex-end",marginRight:100}}>
         <Button type="submit" onClick={(e)=>{submitHandler(e)}} variant="contained">Submit</Button>
+        <Button variant="contained" color="error" 
+        style={{marginLeft:100}}
+        onClick={()=>{
+          handleOpen();
+          setId(id);
+        }}>Reject</Button>
       </div>
       )
       }
       
         </form>
       </div>
+      <MasterDepositCancel open={open} handleClose={handleClose}  id={Id} route={'/dashboard/account/master/panding-master'}  />
     </div>
   );
 };

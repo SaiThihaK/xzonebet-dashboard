@@ -12,7 +12,7 @@ const MasterDeposit = () => {
     { label: "Agent" },
     { label: "User" },
   ];
-  const [num,setNum] = useState(0);
+  const [num,setNum] = useState(1);
   const {data,loading} = CustomGetFunction(`api/affiliate-register-lists-detail?sortColumn=id&sortDirection=desc&limit=30&status=deposit-pending`,[num]);
   const [filterId,setFilterId] = useState("");
   return (
