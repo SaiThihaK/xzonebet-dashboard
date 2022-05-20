@@ -32,9 +32,6 @@ const handleChange = (event) => {
 };
 const AlertToast = msg=>msg;
 
-useEffect(()=>{
-  setAge(data?.form_type)
-},[])
 
 const diff_form_type = ()=>{
   if( age==="agent"){
@@ -144,11 +141,12 @@ console.log(age)
 useEffect(() => {
 masters();
 superMasters();
+setAge(data?.form_type)
 return () => {
    setChooseMaster([]);
    setChoose_superMaster([]);
   }
-}, [id]);
+}, [id,data]);
 
 console.log("become an agent",data);
 
@@ -229,7 +227,7 @@ console.log("become an agent",data);
           <label htmlFor="">Currency Type </label>:<p>&nbsp;&nbsp;{data?.currency_type}</p>
         </div>
         {/* master for agent */}
-        {  age === "agent"   && 
+        {  age === "agent"  && 
         (<div className={classes["form-group-desc"]}>
         <label htmlFor="">Choose Master </label>:
         <FormControl sx={{ width: 200 }} style={{marginLeft:2}}>
@@ -255,7 +253,7 @@ console.log("become an agent",data);
           </FormControl>
         </div>) }
       {/* super-master for masters */}
-      {   age === "master" && 
+      {   age === "master"  && 
         (<div className={classes["form-group-desc"]}>
         <label htmlFor="">Choose Super Master </label>:
         <FormControl sx={{ width: 200 }} style={{marginLeft:2}}>

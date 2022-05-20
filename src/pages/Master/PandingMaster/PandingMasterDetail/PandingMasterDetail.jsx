@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -15,6 +15,7 @@ import { PostMethod,getMethod } from "../../../../services/api-services";
 import { logoutHandler } from "../../../../components/Sidebar/Sidebar";
 import CustomGetFunction from "../../../../services/CustomGetFunction";
 import { pendingDetail,AccountDetail } from "../../../../services/api-collection";
+import { idID } from "@mui/material/locale";
 const PandingMasterDetail = () => {
   const [age,setAge] = useState();
 
@@ -32,7 +33,10 @@ const PandingMasterDetail = () => {
   const [deposit_percent,setDeposite_percent] = useState("");
   const [withdraw_percent,setWidthDraw_percent] = useState("");
   const [payment_provider,setPaymet_Provider] = useState([]);
-
+  const [adminPayment,setAdminPayment] = useState([]);
+  const [paymentAccount,setPaymentAccount] = useState("")
+ 
+ console.log("PaymentName",payment_name)
    // Crypto
  const navigate = useNavigate();
   
@@ -52,15 +56,17 @@ const PandingMasterDetail = () => {
           url,
           {
             real_name,
-            payment_name,
-            payment_type:"crypto",
+            payment_name:payment_name.name,
+            payment_type:"CryptoCurrency",
             transition_id,
             amount,
             currency,
             username,
             password,
             deposit_percent,
-            withdraw_percent
+            withdraw_percent,
+            payment_acount_name:paymentAccount.name,
+            payment_acount_no:paymentAccount.account_no
           },
         ));
         // console.log(response.data.status);
@@ -114,7 +120,7 @@ const PandingMasterDetail = () => {
 
  const fetchPayment_provider = async()=>{
    try{
- const response = await axios.request(getMethod("api/dashboard/payment-providers"));
+ const response = await axios.request(getMethod("api/payment-types/crypto"));
  if(response.data.status ==="success"){
    setPaymet_Provider(response.data.data);
    return;
@@ -129,21 +135,37 @@ if(response.data.status === "error"){
    }
  }
 
+ const fetchAdminAccount = async()=>{
+   const response = await axios.request(getMethod(`api/dashboard/admin-payment-accounts?payment_provider_id=${payment_name.id}`));
+   console.log("paymentAccount",response.data.data);
+   try{
+    if(response.data.status === "success"){
+      setAdminPayment(response.data.data);
+      return;
+     }
+     if(response.data.status==="error"){
+       toast.error(response.data.message);
+       return
+     }
+   }catch(error){
+     toast.error(error.response.data.message)
+   }
+   
+ }
+ useEffect(()=>{
+  fetchAdminAccount();
+ },[payment_name])
+
 
  useState(()=>{
    fetchSuperMaster();
    fetchPayment_provider();
+ 
    return ()=>{
      setSuperMaster([]);
      setPaymet_Provider([]);
    }
  },[]);
-
-  console.log(payment_provider)
-  const filterProvider = payment_provider.filter((prov)=>prov?.payment_type === "CryptoCurrency");
-  console.log("filter",filterProvider);
-
- 
 
   return (
     <div className={classes["soccer-setting-container"]}>
@@ -188,7 +210,6 @@ if(response.data.status === "error"){
                       <FormControl variant="standard" sx={{ minWidth: 200 }}>
                         <TextField
                         label="Crypto Currency" 
-                        
                         sx={{ width: 200 }}
                         variant="standard"
                         id="demo-simple-select"
@@ -214,10 +235,11 @@ if(response.data.status === "error"){
                       <Select value={payment_name} 
                       sx={{width:200}}
                       size="small"
+                      variant="standard"
                       onChange={(e)=>setPayment_Name(e.target.value)}>
                         {
-                          filterProvider.map((prov,index)=>(
-                            <MenuItem key={index} value={prov.name} style={{display:"flex"}}>
+                          payment_provider?.payment_providers?.map((prov,index)=>(
+                            <MenuItem key={index} value={prov} style={{display:"flex"}}>
                             <Avatar src={prov.logo} />
                             {
                               prov.name
@@ -228,6 +250,39 @@ if(response.data.status === "error"){
                       </Select>
                     </p>
                   </div>
+                  {/* --------------------------------------Admin Payment Account---------------------------------------- */}
+                  <div className={classes["form-group-desc"]}>
+                    <label htmlFor="">Payment Account </label>:
+                    <p>
+                      &nbsp;&nbsp;
+                      {/* <TextField
+                        id="standard-basic"
+                        label="Payment Name"
+                        onChange={(e)=>setPayment_Name(e.target.value)}
+                        sx={{width:200}}
+                        variant="standard"
+                        value={payment_name}
+                      /> */}
+                      <Select  
+                      sx={{width:200}}
+                      size="small"
+                      variant="standard"
+                      value={paymentAccount.id}
+                      onChange={(e)=>setPaymentAccount(e.target.value)}
+                      >
+                        {
+                          adminPayment.map((pav,index)=>(
+                            <MenuItem key={index} value={pav} style={{display:"flex"}}>
+                            {
+                          `${pav.account_no}(${pav.name})`
+                            }
+                            </MenuItem>
+                          ))
+                        }
+                      </Select>
+                    </p>
+                  </div>
+                  {/* ===========================Transition Id================================================================ */}
                   <div className={classes["form-group-desc"]}>
                     <label htmlFor="">Transition ID</label>:
                     <p>
@@ -298,6 +353,7 @@ if(response.data.status === "error"){
                         sx={{ width: 200 }}
                         variant="standard"
                         value={supValue}
+                        
                         onChange={(e)=>setSupValue(e.target.value)}
                       >
                       {
