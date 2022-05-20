@@ -84,7 +84,7 @@ if(status==="rejet"){
       console.log(response);
    
       if(response.data.status = "success"){
-      AlertToast(toast.success(data.message));
+      AlertToast(toast.success(response.data.message));
       navigate("/dashboard/become-an-agent")
       return;
       }
