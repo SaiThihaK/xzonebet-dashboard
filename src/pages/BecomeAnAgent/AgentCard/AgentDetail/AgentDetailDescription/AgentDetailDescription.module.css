@@ -1,10 +1,17 @@
 .agent-user-image-group {
   display: flex;
-  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+}
+.img-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 .agent-user-image {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   object-fit: cover;
   margin-right: 15px;
   border-radius: 0.5rem;
@@ -13,6 +20,8 @@
   margin-bottom: 3px;
   font-size: 18px;
   color: var(--text-color);
+  display: flex;
+  justify-content: center;
 }
 .agent-user-des span {
   color: var(--text-color);

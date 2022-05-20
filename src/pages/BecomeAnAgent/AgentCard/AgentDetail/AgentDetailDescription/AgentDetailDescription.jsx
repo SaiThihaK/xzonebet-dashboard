@@ -138,19 +138,23 @@ return () => {
    setChooseMaster([]);
    setChoose_superMaster([]);
   }
-}, [id])
+}, [id]);
+
+console.log("become an agent",data);
 
   return (
     <div>
       <div className={classes["agent-user-image-group"]}>
+        <div className={classes["img-container"]}>
         <img
           src="https://icon-library.com/images/user-icon-jpg/user-icon-jpg-14.jpg"
           className={classes["agent-user-image"]}
           alt=""
         />
+        </div>
         <div className={classes["agent-user-des"]}>
-          <h3>{data?.name}</h3>
-          <span>ID - {data?.id}</span>
+          <h3>{data?.first_name +" "+ data?.last_name}</h3>
+          {/* <span>ID - {data?.id}</span> */}
         </div>
       </div>
       <Grid container spacing={2}>
@@ -204,6 +208,12 @@ return () => {
         </div>
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Country </label>:<p>&nbsp;&nbsp;{data?.country}</p>
+        </div>
+        <div className={classes["form-group-desc"]}>
+          <label htmlFor="">State </label>:<p>&nbsp;&nbsp;{data?.state}</p>
+        </div>
+        <div className={classes["form-group-desc"]}>
+          <label htmlFor="">Currency Type </label>:<p>&nbsp;&nbsp;{data?.currency_type}</p>
         </div>
         {/* master for agent */}
         { data.form_type==="agent" || age === "agent"  && 
@@ -267,7 +277,9 @@ return () => {
       </div>
       </Grid>
       </Grid> 
+      <label style={{fontSize:16,fontWeight:600}}>Message</label>
       <div style={{padding:"20px 20px",marginTop:20,backgroundColor:"#eee",color:"black",borderRadius:"5px"}}>
+       
         <p>{data?.message}</p>
       </div>
       {
