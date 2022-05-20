@@ -1,9 +1,18 @@
 import { Button, Stack ,TextField} from '@mui/material';
-import React, { useState } from 'react'
-import PageTitleCard from '../../../components/UI/PageTitleCard/PageTitleCard'
+import React, { useState,useEffect } from 'react'
 import classes from "./AdsContent.module.css"
+import PageTitleCard from "../../../components/UI/PageTitleCard/PageTitleCard"
+import { Editor } from "react-draft-wysiwyg";
+import { EditorState } from "draft-js";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 const AdsContent = () => {
-  const [textValue,setTextValue] = useState();
+  const [editorState, setEditorState] = useState(() =>
+    EditorState.createEmpty()
+  );
+  useEffect(() => {
+    console.log(editorState);
+  }, [editorState]);      
+    const [textValue,setTextValue] = useState();
     const [open,setOpen] = useState(false);
     const handleOpen = ()=>setOpen(true);
    const handleClose= ()=>setOpen(false);
@@ -28,7 +37,13 @@ const AdsContent = () => {
                    </div>
                    <div className={classes["form"]}>
                     <label>Content</label>
-                   <textarea value={textValue}   onChange={(e)=>setTextValue(e.target.value)}   rows="8" cols="105" />
+                    <div style={{ border: "1px solid  rgba(102, 99, 99, 0.559)",borderRadius: "5px", backgroundColor: 'white', padding: '2px', minHeight: '400px',marginRight: '10px',marginTop: "10px" }}>
+            <Editor
+              editorState={editorState}
+              onEditorStateChange={setEditorState}
+            />
+          </div>
+            
                    </div>
                   
                   </div>

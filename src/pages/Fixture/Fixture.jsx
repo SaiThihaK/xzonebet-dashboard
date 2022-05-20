@@ -17,7 +17,6 @@ import { useSelector } from "react-redux";
 import {  getResDate } from "../../Controller/ChangeDate";
 import { toast, ToastContainer } from "react-toastify";
 import CustomLoading from "../../components/CustomLoading/CustomLoading"
-
 const Fixture = () => {
   const [bettingData, setBettingData] = useState([]);
   const [countryData, setCountryData] = useState([]);
@@ -29,13 +28,10 @@ const Fixture = () => {
   };
   const countryName = useSelector((state) => state.country.data);
   const [value, setValue] = React.useState(new Date());
-
   const handleChange = (newValue) => {
     setValue(newValue);
   };
-
   console.log(value)
-
   let leagueOption =
     countryName !== ""
       ? {
@@ -72,7 +68,6 @@ const Fixture = () => {
         console.error(error);
         setLoading(true)
       });
-
     axios
       .request(country)
       .then(function (response) {
@@ -81,10 +76,10 @@ const Fixture = () => {
       .catch(function (error) {
         console.error(error);
       });
-
     axios
       .request(leagueOption)
       .then(function (response) {
+        console.log(response.data.response);
         setLeagueData(response.data.response);
         // console.log(response.data.response);
       })
@@ -92,8 +87,6 @@ const Fixture = () => {
         console.error(error);
       });
   }, []);
-
-
   const filterData = () => {
    console.log("date",value);
    console.log("leagueId",leagueId)

@@ -53,9 +53,7 @@ if(response){
   return (<div>exist</div>)
 }
 return (<div>new bet</div>)
-}
-
-  
+}  
   const closeHandler = () => setOpen(false);
   return (
     <div className={classes["table-margin"]}>

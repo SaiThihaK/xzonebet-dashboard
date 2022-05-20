@@ -167,7 +167,7 @@ const NewbetModal = ({ open, bettingData, closeHandler }) => {
             <Grid item xs={6} style={{ padding: 15, paddingLeft: 0 }}>
               <div className={classes["team-container"]}>
                 <label>Country</label>
-                <p style={{ marginBottom: "10px" }}>
+                <p style={{ marginBottom: "10px",fontSize: "14px" }}>
                   {bettingData?.league?.country}
                 </p>
               </div>
@@ -175,16 +175,16 @@ const NewbetModal = ({ open, bettingData, closeHandler }) => {
                 <label>League</label>
                 <img
                   src={bettingData?.league?.logo}
-                  style={{ marginRight: "10px" }}
+                  style={{ marginRight: "10px",fontSize: "14px"  }}
                   width="30"
                   alt=""
                 />
-                <p>{bettingData?.league?.name}</p>
+                <p style={{fontSize: "14px" }}>{bettingData?.league?.name}</p>
               </div>
 
               <div className={classes["team-con"]}>
                 <label>Team 1</label>
-                <div style={{ display: "flex", alignItems: "center" }}>
+                <div style={{ display: "flex", alignItems: "center",fontSize: "14px"  }}>
                   <img
                     src={bettingData?.teams?.home?.logo}
                     style={{ marginRight: "10px" }}
@@ -225,7 +225,7 @@ const NewbetModal = ({ open, bettingData, closeHandler }) => {
             >
               <div className={classes["team-container"]}>
                 <label>Country</label>
-                <p style={{ marginBottom: "10px" }}>
+                <p style={{ marginBottom: "10px",fontSize: "14px"  }}>
                   {bettingData?.league?.country}
                 </p>
               </div>
@@ -238,7 +238,7 @@ const NewbetModal = ({ open, bettingData, closeHandler }) => {
                   width="30"
                   alt=""
                 />
-                <p>{bettingData?.league?.name}</p>
+                <p >{bettingData?.league?.name}</p>
               </div>
 
               <div className={classes["team-con"]}>

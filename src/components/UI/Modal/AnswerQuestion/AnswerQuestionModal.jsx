@@ -1,19 +1,17 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from 'react'
+import { Editor } from "react-draft-wysiwyg";
+import { EditorState } from "draft-js";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import Box from "@mui/material/Box";
 import classes from "./AnswerQuestion.module.css"
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { Button, TextField,Stack } from "@mui/material";
-
-
-
 const AnswerQuestionModal = ({ 
   open, 
   handleClose ,
   index
 }) => {
-
-
   const style = {
     position: "absolute",
     top: "50%",
@@ -27,7 +25,13 @@ const AnswerQuestionModal = ({
     overflowY: "auto",
     maxHeight: "calc(100vh - 100px)",
   };
-
+  const [editorState, setEditorState] = useState(() =>
+    EditorState.createEmpty()
+  );
+  useEffect(() => {
+    console.log(editorState);
+  }, [editorState]);  
+  const [textValue,setTextValue] = useState();  
   return (
     <div>
       <Modal
@@ -46,7 +50,13 @@ const AnswerQuestionModal = ({
           </div>
           <div className={classes["form"]}>
             <label>Answer</label>
-            <TextField size="small" fullWidth />
+            <div style={{ border: "1px solid  rgba(102, 99, 99, 0.559)",borderRadius: "5px", backgroundColor: 'white', padding: '2px',height: '300px',overflow: "hidden" }}>
+            <Editor
+              editorState={editorState}
+              onEditorStateChange={setEditorState}
+            />
+          </div>
+            
           </div>
            <Stack direction="row" style={{display:"flex",justifyContent:"center"}} spacing={4}>
              <Button variant="contained">Confirm</Button>
