@@ -23,10 +23,12 @@ export default function MasterDepositeDataTable({ data, num, setNum }) {
   const confirmCloseHandler = () => setConfirmOpen(false);
 
   const confirmHandler = async (id) => {
+    console.log("amount",ammount)
     try {
       const response = await axios.request(
         PostMethod(`api/affiliate-register-lists/accept/${id}`,
-          { user_type: "deposit-confirm" },
+          { user_type: "deposit-confirm",
+          unit_amount:ammount },
         ));
 
       if (response.data.status = "success") {
@@ -114,7 +116,7 @@ export default function MasterDepositeDataTable({ data, num, setNum }) {
           )
       }
       <MasterDepositCancel open={open} handleClose={handleClose} setNum={setNum} id={id} num={num} handleAmmount={handleAmmount} />
-      <MasterDepositeConfirm open={confirmOpen} handleClose={confirmCloseHandler} setNum={setNum} num={num} submitHandler={confirmHandler} id={id} />
+      <MasterDepositeConfirm open={confirmOpen} handleClose={confirmCloseHandler} setNum={setNum} num={num} submitHandler={confirmHandler} id={id} handleAmmount={handleAmmount} />
     </div>
   );
 }
