@@ -14,9 +14,10 @@ export default function MasterDepositeDataTable({ data, num, setNum }) {
 
   const [ammount, setAmmount] = useState('');
   const handleAmmount = (e) => setAmmount(e.target.value);
-  const [id, setId] = React.useState("");
+ 
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [open, setOpen] = useState(false);
+  const [id, setId] = React.useState("");
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const confirmOpenHandler = () => setConfirmOpen(true);
@@ -115,7 +116,7 @@ export default function MasterDepositeDataTable({ data, num, setNum }) {
             <Nodata />
           )
       }
-      <MasterDepositCancel open={open} handleClose={handleClose} setNum={setNum} id={id} num={num} handleAmmount={handleAmmount} />
+      <MasterDepositCancel open={open} handleClose={handleClose} setNum={setNum} id={id} num={num}  />
       <MasterDepositeConfirm open={confirmOpen} handleClose={confirmCloseHandler} setNum={setNum} num={num} submitHandler={confirmHandler} id={id} handleAmmount={handleAmmount} />
     </div>
   );

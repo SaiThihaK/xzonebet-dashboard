@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import axios from "axios";
-import React from "react";
+import React,{useState} from "react";
 import classes from "./ComfirmMasterDesc.module.css";
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -9,11 +9,15 @@ import { logoutHandler } from "../../../../../components/Sidebar/Sidebar";
 import { useNavigate } from "react-router-dom";
 import { confirmDetail } from "../../../../../services/api-collection";
 import {Grid} from "@mui/material"
-
+import MasterDepositCancel from "../../../../../components/UI/Modal/MasterDepositCancel/MasterDepositCancel";
 const ComfirmMasterDesc = ({userInfo}) => {
   console.log("confirm",userInfo);
     const alertToast = (msg) =>msg;
     const navigate = useNavigate();
+    const [Id, setId] = React.useState("");
+  const [open,setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
     // console.log(userInfo.id);
    const confirmHandler = async()=>{
   //  console.log("confirm");
@@ -94,11 +98,18 @@ const ComfirmMasterDesc = ({userInfo}) => {
           localStorage.getItem("type") !== "hr" && (
             <form className={classes['btn-container']}>
             <Button   variant="contained" color="primary" onClick={confirmHandler} className={classes["btn"]}>Comfirm</Button>
+            <Button variant="contained" color="error" 
+        style={{marginLeft:100}}
+        onClick={()=>{
+          handleOpen();
+          setId(userInfo.id);
+        }}>Reject</Button>
             </form>
           )
         }
        
       </Grid>
+      <MasterDepositCancel open={open} handleClose={handleClose}  id={Id} route={'/dashboard/account/master/confirm-master'}  />
     </div>
   );
 };
