@@ -10,7 +10,7 @@ import { logoutHandler } from "../../../../../components/Sidebar/Sidebar";
 import axios from "axios";
 import { getMethod, PostMethod } from "../../../../../services/api-services";
 import { chooseMasterApi, chooseSuper_masterApi } from "../../../../../services/api-collection";
-
+import CustomLoading from "../../../../../components/CustomLoading/CustomLoading";
 const AgentDetailDescription = () => {
   const {id} = useParams();
   const [age, setAge] = useState('');
@@ -24,18 +24,27 @@ const AgentDetailDescription = () => {
   const handleOpen = ()=>setOpen(true);
   const handleClose = ()=>setOpen(false);
   const navigate = useNavigate()
-const {data} = CustomGetFunction(`api/affiliate-register-lists/${id}`,[id]);
-
+const {data,loading} = CustomGetFunction(`api/affiliate-register-lists/${id}`,[id]);
+console.log(chooseMaster);
+console.log(choose_superMaster)
 const handleChange = (event) => {
   setAge(event.target.value);
 };
 const AlertToast = msg=>msg;
+
+useEffect(()=>{
+  setAge(data?.form_type)
+},[])
+
 const diff_form_type = ()=>{
-  if(data?.form_type==="agent" || age==="agent"){
-    return {user_type:age || data?.form_type,master_id:1}
+  if( age==="agent"){
+    return {user_type:age || data?.form_type,master_id:master_id}
   }
-  if(data?.form_type==="master" || age==="master"){
-    return {user_type:age || data?.form_type}
+  if( age==="master"){
+    return {user_type:age || data?.form_type, super_master_id:superMaster_id}
+  }
+  if( age ==="affiliate-agent"){
+    return {user_type:age || data?.form_type ,username:"Ko Ye",password:"5683",betting_percent:"20"}
   }
   if(status==="rejet"){
     return {status:"rejected",rejected_reason:remark}
@@ -69,13 +78,14 @@ if(status==="rejet"){
   handleOpen();
   return;
 }
-  
+      console.log("obj",diff_form_type());
     try{
       const url = `api/affiliate-register-lists/${status || "accept"}/${data?.id}`;
       const response = await axios.request(PostMethod(
         url,diff_form_type()
       ));
-      console.log(response)
+      console.log(response);
+   
       if(response.data.status = "success"){
       AlertToast(toast.success(data.message));
       navigate("/dashboard/become-an-agent")
@@ -127,7 +137,7 @@ const superMasters = async()=>{
   }
 }
 
-
+console.log(age)
 
 
 
@@ -144,7 +154,9 @@ console.log("become an agent",data);
 
   return (
     <div>
-      <div className={classes["agent-user-image-group"]}>
+      {
+        loading ? (<div>
+<div className={classes["agent-user-image-group"]}>
         <div className={classes["img-container"]}>
         <img
           src="https://icon-library.com/images/user-icon-jpg/user-icon-jpg-14.jpg"
@@ -187,7 +199,7 @@ console.log("become an agent",data);
              <InputLabel labelid="demo-simple-select-label"
               id="demo-simple-select" size="small">{data.form_type}</InputLabel> 
             <Select
-              value={age || data.form_type}
+              value={age || data?.form_type}
               onChange={handleChange}
               size="small"
               labelid="demo-simple-select-label"
@@ -217,16 +229,14 @@ console.log("become an agent",data);
           <label htmlFor="">Currency Type </label>:<p>&nbsp;&nbsp;{data?.currency_type}</p>
         </div>
         {/* master for agent */}
-        { data.form_type==="agent" || age === "agent"  && 
+        {  age === "agent"   && 
         (<div className={classes["form-group-desc"]}>
         <label htmlFor="">Choose Master </label>:
         <FormControl sx={{ width: 200 }} style={{marginLeft:2}}>
    
-             <InputLabel labelid="demo-simple-select-label"
-              id="demo-simple-select" size="small">1</InputLabel> 
+            
             <Select
               value={master_id}
-             
               size="small"
               labelid="demo-simple-select-label"
               id="demo-simple-select"
@@ -244,15 +254,11 @@ console.log("become an agent",data);
             </Select>
           </FormControl>
         </div>) }
-
       {/* super-master for masters */}
-      {  data.form_type==="master" ||   age === "master"  && 
+      {   age === "master" && 
         (<div className={classes["form-group-desc"]}>
         <label htmlFor="">Choose Super Master </label>:
         <FormControl sx={{ width: 200 }} style={{marginLeft:2}}>
-   
-             <InputLabel labelid="demo-simple-select-label"
-              id="demo-simple-select" size="small">1</InputLabel> 
             <Select
               value={superMaster_id}
               size="small"
@@ -288,6 +294,9 @@ console.log("become an agent",data);
         </div>
         )
       }
+        </div>):(<CustomLoading />)
+      }
+      
       
         <CancelModal open={open} handleClose={handleClose} remark={remark} setRemark={setRemark} submitHandler={cancelHandler}/>
     </div>
