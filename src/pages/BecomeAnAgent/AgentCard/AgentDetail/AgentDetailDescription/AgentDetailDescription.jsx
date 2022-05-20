@@ -167,13 +167,13 @@ console.log("become an agent",data);
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Phone </label>:<p>&nbsp;&nbsp;{data?.phone}</p>
         </div>
-
+        <div className={classes["form-group-desc"]}>
+          <label htmlFor="">Preferred Method to Contact </label>:<p>&nbsp;&nbsp;{data?.preferred_method_of_contact}</p>
+        </div>
         {/* <div className={classes["form-group-desc"]}>
           <label htmlFor="">Region </label>:<p>&nbsp;&nbsp;-</p>
         </div> */}
-        <div className={classes["form-group-desc"]}>
-          <label htmlFor="">City </label>:<p>&nbsp;{data?.city}&nbsp;</p>
-        </div>
+       
         </div>
         </Grid>
       
@@ -203,11 +203,12 @@ console.log("become an agent",data);
             </Select>
           </FormControl>
           </div>
-        <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Preferred Method to Contact </label>:<p>&nbsp;&nbsp;{data?.preferred_method_of_contract}</p>
-        </div>
+      
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Country </label>:<p>&nbsp;&nbsp;{data?.country}</p>
+        </div>
+        <div className={classes["form-group-desc"]}>
+          <label htmlFor="">City </label>:<p>&nbsp;{data?.city}&nbsp;</p>
         </div>
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">State </label>:<p>&nbsp;&nbsp;{data?.state}</p>
@@ -229,7 +230,6 @@ console.log("become an agent",data);
               size="small"
               labelid="demo-simple-select-label"
               id="demo-simple-select"
-              label="1"
               onChange={(e)=>{setMaster_id(e.target.value)}}
               inputProps={{ "aria-label": "Without label" }}
               sx={{ backgroundColor: "#f3f3f3" }}
@@ -237,7 +237,7 @@ console.log("become an agent",data);
             {
               chooseMaster.map((master,index)=>(
                 <MenuItem value={master.id} key={index}>
-                  {master.id}
+                  {master.name}
                 </MenuItem>
               ))
             }
@@ -255,11 +255,10 @@ console.log("become an agent",data);
               id="demo-simple-select" size="small">1</InputLabel> 
             <Select
               value={superMaster_id}
-             
               size="small"
               labelid="demo-simple-select-label"
               id="demo-simple-select"
-              label="1"
+         
               onChange={(e)=>{setSuperMaster_id(e.target.value)}}
               inputProps={{ "aria-label": "Without label" }}
               sx={{ backgroundColor: "#f3f3f3" }}
@@ -267,7 +266,7 @@ console.log("become an agent",data);
             {
               choose_superMaster.map((master,index)=>(
                 <MenuItem value={master.id} key={index}>
-                  {master.id}
+                  {master.name}
                 </MenuItem>
               ))
             }
