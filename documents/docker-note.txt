@@ -1,0 +1,4 @@
+for linux
+--------------------
+docker build --platform linux/amd64 -t yeyintko/xzonebet-frontend:v1 . 
+docker run -d -p 9999:80 yeyintko/xzonebet-frontend:v1
