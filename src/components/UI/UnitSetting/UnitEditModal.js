@@ -42,7 +42,7 @@ export default function UnitEditModal({
     if (unit === "PU") {
       return { main_to_promotion_rate: changeValue };
     }
-    if (unit === "DU") {
+    if (unit === "Main") {
       return { main_to_diamond_rate: changeValue };
     }
     return "false";
