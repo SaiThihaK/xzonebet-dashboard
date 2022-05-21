@@ -11,17 +11,16 @@ import { getMethod } from "../../../services/api-services";
 
 const UnitValue = () => {
   const [Kopen, KsetOpen] = React.useState(false);
-  const [Kvalue, KsetValue] = useState("1000");
   const KhandleOpen = () => KsetOpen(true);
   const KhandleClose = () => KsetOpen(false);
 
   const [PUopen, PUsetOpen] = useState(false);
-  const [PUvalue, PUsetValue] = useState("30");
+  
   const PUhandleOpen = () => PUsetOpen(true);
   const PUhandleClose = () => PUsetOpen(false);
 
   const [Mopen, MsetOpen] = useState(false);
-  const [Mvalue, MsetValue] = useState("6000");
+ 
   const MhandleOpen = () => MsetOpen(true);
   const MhandleClose = () => MsetOpen(false);
 
@@ -78,7 +77,6 @@ const UnitValue = () => {
     totalUnit();
   }, [num])
 
-  console.log("userData",userData);
 
   const totalUnit = () => {
     if (userData && getUnitChange) {
@@ -135,8 +133,8 @@ const UnitValue = () => {
                   </div>
                 </div>
                 <div className={classes["form-group"]}>
-                  <label htmlFor="">1 Main </label>:
-                  <div>&nbsp;{getUnitChange?.main_to_diamond_rate}&nbsp;DU
+                  <label htmlFor="">1 DU </label>:
+                  <div>&nbsp;{getUnitChange?.main_to_diamond_rate}&nbsp;Main
                     &nbsp;<Button variant='contained' size="small" onClick={MhandleOpen}  >Edit</Button></div>
                 </div>
               </div>
@@ -145,7 +143,7 @@ const UnitValue = () => {
           </div>
           <UnitEditModal num={num} setNum={setNum} open={Kopen}  handleClose={KhandleClose} unitFrom="1Main" unitTo={getUnitChange?.main_unit_value_by_mmk}  unit="MMK" />
           <UnitEditModal num={num} setNum={setNum} open={PUopen}  handleClose={PUhandleClose} unitFrom="1Main" unitTo={getUnitChange?.main_to_promotion_rate} unit="PU" />
-          <UnitEditModal num={num} setNum={setNum} open={Mopen}  handleClose={MhandleClose} unitFrom="1Main" unitTo={getUnitChange?.main_to_diamond_rate}  unit="DU" />
+          <UnitEditModal num={num} setNum={setNum} open={Mopen}  handleClose={MhandleClose} unitFrom="1DU" unitTo={getUnitChange?.main_to_diamond_rate}  unit="Main" />
         </div>
       </Card>
       <div style={{ widht: "100%", marginTop: 30, display: "flex", justifyContent: "flex-end" }}>
@@ -153,7 +151,7 @@ const UnitValue = () => {
           onClick={unitchangeOpenHandler}
           color="primary">Unit Change</Button>
       </div>
-      <UnitChangeModal open={unitchangeOpen} handleClose={unitChangeCloseHandler} />
+      <UnitChangeModal open={unitchangeOpen} handleClose={unitChangeCloseHandler} num={num} setNum={setNum}/>
     </div>
   )
 }

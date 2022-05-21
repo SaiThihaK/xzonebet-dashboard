@@ -9,6 +9,8 @@ import MasterDepositeConfirm from '../../../components/UI/Modal/MasterDeposite/M
 import axios from 'axios';
 import { PostMethod } from '../../../services/api-services';
 import Nodata from "../../../components/Nodata/Nodata"
+import { useDispatch, useSelector } from 'react-redux';
+import { getRender, selectedRender } from '../../../features/render';
 export default function MasterDepositeDataTable({ data, num, setNum }) {
 
 
@@ -22,7 +24,8 @@ export default function MasterDepositeDataTable({ data, num, setNum }) {
   const handleClose = () => setOpen(false);
   const confirmOpenHandler = () => setConfirmOpen(true);
   const confirmCloseHandler = () => setConfirmOpen(false);
-
+ const disptch = useDispatch();
+ const render = useSelector(selectedRender);
   const confirmHandler = async (id) => {
     console.log("amount",ammount)
     try {
@@ -35,6 +38,7 @@ export default function MasterDepositeDataTable({ data, num, setNum }) {
       if (response.data.status = "success") {
         setNum(num + 1);
         toast.success(response.data.message);
+        disptch(getRender({render:!render}))
         return;
       }
       if (response.data.status = "error") {
