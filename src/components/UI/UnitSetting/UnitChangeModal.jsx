@@ -29,6 +29,8 @@ const style = {
 export default function UnitChangeModal({
   handleClose,
   open,
+  num,
+  setNum
 }) {
   const AlertToast = (toast,msg)=>toast(msg);
 
@@ -76,6 +78,7 @@ export default function UnitChangeModal({
             setFromUnit("");
             setToUnit("");
             handleClose();
+            setNum(num+1)
             return;
         };
         if(response.data.status === "error"){
@@ -86,6 +89,7 @@ export default function UnitChangeModal({
        }
         }catch(error){
           console.log(error.response)
+          toast.error(error.response.data.message)
             if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
                 logoutHandler();
                 }

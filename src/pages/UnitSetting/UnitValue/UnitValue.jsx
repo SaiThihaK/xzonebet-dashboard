@@ -11,17 +11,16 @@ import { getMethod } from "../../../services/api-services";
 
 const UnitValue = () => {
   const [Kopen, KsetOpen] = React.useState(false);
-  const [Kvalue, KsetValue] = useState("1000");
   const KhandleOpen = () => KsetOpen(true);
   const KhandleClose = () => KsetOpen(false);
 
   const [PUopen, PUsetOpen] = useState(false);
-  const [PUvalue, PUsetValue] = useState("30");
+  
   const PUhandleOpen = () => PUsetOpen(true);
   const PUhandleClose = () => PUsetOpen(false);
 
   const [Mopen, MsetOpen] = useState(false);
-  const [Mvalue, MsetValue] = useState("6000");
+ 
   const MhandleOpen = () => MsetOpen(true);
   const MhandleClose = () => MsetOpen(false);
 
@@ -78,7 +77,6 @@ const UnitValue = () => {
     totalUnit();
   }, [num])
 
-  console.log("userData",userData);
 
   const totalUnit = () => {
     if (userData && getUnitChange) {
@@ -153,7 +151,7 @@ const UnitValue = () => {
           onClick={unitchangeOpenHandler}
           color="primary">Unit Change</Button>
       </div>
-      <UnitChangeModal open={unitchangeOpen} handleClose={unitChangeCloseHandler} />
+      <UnitChangeModal open={unitchangeOpen} handleClose={unitChangeCloseHandler} num={num} setNum={setNum}/>
     </div>
   )
 }
