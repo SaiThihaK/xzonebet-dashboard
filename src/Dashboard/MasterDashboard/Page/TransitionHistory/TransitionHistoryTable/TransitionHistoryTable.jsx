@@ -43,7 +43,7 @@ const TransitionHistoryTable = () => {
     const [transferData,setTransferData] = React.useState([]);
     const [userData,setUserData] = React.useState([]);
    const {data,loading} = CustomGetFunction(`api/wallet/transfer-record?sortColumn=id&sortDirection=desc&limit=10&page=${page}`,[page])
- 
+  
   const fetchUnit = async()=>{
     try{
       const response = await axios.request(getMethod("api/get-login-user"));

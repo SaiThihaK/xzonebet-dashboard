@@ -14,8 +14,7 @@ const ATransitionHistory = () => {
   // let today = new Date();
   // let Todate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 
-    const [value, setValue] = React.useState([null, null]);
-
+    const [value, setValue] = React.useState([null, null]);  
     
   
   // console.log(value)

@@ -1,0 +1,15 @@
+.card-body{
+    padding: 20px;
+}
+.soccer-setting-container {
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+  }
+.soccer-setting-content-flex {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
