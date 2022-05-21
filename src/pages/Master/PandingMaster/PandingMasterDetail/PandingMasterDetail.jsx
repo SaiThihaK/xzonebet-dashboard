@@ -64,7 +64,7 @@ const PandingMasterDetail = () => {
             payment_type:"CryptoCurrency",
             transition_id,
             amount,
-            currency,
+            currency:data.currency_type,
             username,
             password,
             deposit_percent,
@@ -103,7 +103,7 @@ const PandingMasterDetail = () => {
     }
   }
  const {data} = CustomGetFunction(AccountDetail+id,[id]);
-
+ console.log("data",data);
  const fetchSuperMaster = async()=>{
    try{
     const response = await axios.request(getMethod(`api/agents?sortColumn=id&sortDirection=desc&limit=30&agent_level=super_master`));
@@ -209,7 +209,7 @@ if(response.data.status === "error"){
                   </div>
                   <div className={classes["form-group-desc"]}>
                     <label htmlFor="">Payment Type </label>:
-                    <p>
+                    <div>
                       &nbsp;&nbsp;
                       <FormControl variant="standard" sx={{ minWidth: 200 }}>
                         <TextField
@@ -222,7 +222,7 @@ if(response.data.status === "error"){
                          </TextField>
                     
                       </FormControl>
-                    </p>
+                    </div>
                   </div>
                   <div className={classes["form-group-desc"]}>
                     <label htmlFor="">Payment  Name </label>:
@@ -318,19 +318,20 @@ if(response.data.status === "error"){
                   </div>
                   <div className={classes["form-group-desc"]}>
                     <label htmlFor="">Currency </label>:
-                    <p>
+                    <div>
                       &nbsp;&nbsp;
                       <FormControl variant="standard" sx={{ minWidth: 200 }}>
-                      <TextField
-                        id="standard-basic"
-                        onChange={(e)=>setCurrency(e.target.value)}
-                        label="Currency"
+                        <TextField
+                        label={data.currency_type} 
                         sx={{ width: 200 }}
                         variant="standard"
-                        value={currency}
-                      />
+                        id="demo-simple-select"
+                        disabled={true}
+                         >Crypto Currency
+                         </TextField>
+                    
                       </FormControl>
-                    </p>
+                    </div>
                   </div>
                 </form>
               </div>
