@@ -27,6 +27,7 @@ const ToastAlert = (toast,msg)=>toast(msg);
 const logoChange = (e) => setlogo(e.target.files[0]);
 
 const EditHandler = async()=>{
+console.log("payment_type_id",payment_typeValue);
 try{
 let fd = new FormData();
 fd.append("logo",logo);
