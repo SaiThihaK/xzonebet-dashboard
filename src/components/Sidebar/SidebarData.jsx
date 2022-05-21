@@ -114,11 +114,11 @@ export const SidebarData = [
                  path: '/dashboard/unit-setting/unit-value',
                  icon: <IoIosArrowForward />,
              },
-             {
-                 title: 'Currency',
-                 path: '/dashboard/unit-setting/currency',
-                 icon: <IoIosArrowForward />,
-             },
+            //  {
+            //      title: 'Currency',
+            //      path: '/dashboard/unit-setting/currency',
+            //      icon: <IoIosArrowForward />,
+            //  },
              {
                  title: 'Unit History',
                  path: '/dashboard/unit-setting/unit-history',

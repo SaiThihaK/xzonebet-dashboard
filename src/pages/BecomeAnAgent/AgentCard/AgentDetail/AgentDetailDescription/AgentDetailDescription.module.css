@@ -1,13 +1,13 @@
 .agent-user-image-group {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
   flex-direction: column;
 }
 .img-container{
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 .agent-user-image {
   width: 150px;
@@ -21,7 +21,8 @@
   font-size: 18px;
   color: var(--text-color);
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  margin-left: 20px;
 }
 .agent-user-des span {
   color: var(--text-color);
@@ -34,7 +35,7 @@
   display: flex;
   /* align-items: center; */
   color: rgb(65, 65, 65);
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .form-group-desc label {
@@ -47,4 +48,8 @@
 }
 .form-container {
   margin-top: 30px;
+}
+.grid-template{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }

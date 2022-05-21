@@ -168,7 +168,7 @@ console.log("become an agent",data);
         </div>
       </div>
       <Grid container spacing={2}>
-        <Grid item xs={6}>
+        <Grid item xs={6} style={{marginTop:20}}>
         <div className={classes["form-container"]}>
        
         <div className={classes["form-group-desc"]}>
@@ -179,6 +179,9 @@ console.log("become an agent",data);
         </div>
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Preferred Method to Contact </label>:<p>&nbsp;&nbsp;{data?.preferred_method_of_contact}</p>
+        </div>
+        <div className={classes["form-group-desc"]}>
+          <label htmlFor="">Currency Type </label>:<p>&nbsp;&nbsp;{data?.currency_type}</p>
         </div>
         {/* <div className={classes["form-group-desc"]}>
           <label htmlFor="">Region </label>:<p>&nbsp;&nbsp;-</p>
@@ -223,11 +226,9 @@ console.log("become an agent",data);
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">State </label>:<p>&nbsp;&nbsp;{data?.state}</p>
         </div>
-        <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Currency Type </label>:<p>&nbsp;&nbsp;{data?.currency_type}</p>
-        </div>
+        
         {/* master for agent */}
-        {  age === "agent"  && 
+        {/* {  age === "agent"  && 
         (<div className={classes["form-group-desc"]}>
         <label htmlFor="">Choose Master </label>:
         <FormControl sx={{ width: 200 }} style={{marginLeft:2}}>
@@ -251,9 +252,9 @@ console.log("become an agent",data);
             }
             </Select>
           </FormControl>
-        </div>) }
+        </div>) } */}
       {/* super-master for masters */}
-      {   age === "master"  && 
+      {/* {   age === "master"  && 
         (<div className={classes["form-group-desc"]}>
         <label htmlFor="">Choose Super Master </label>:
         <FormControl sx={{ width: 200 }} style={{marginLeft:2}}>
@@ -276,15 +277,18 @@ console.log("become an agent",data);
             }
             </Select>
           </FormControl>
-        </div>) }
+        </div>) }*/}
       </div>
       </Grid>
       </Grid> 
+      <div style={{marginTop:20}}>
       <label style={{fontSize:16,fontWeight:600}}>Message</label>
       <div style={{padding:"20px 20px",marginTop:20,backgroundColor:"#eee",color:"black",borderRadius:"5px"}}>
        
         <p>{data?.message}</p>
       </div>
+      </div>
+    
       {
         localStorage.getItem("type") !== "hr" && (
           <div style={{display:"flex",justifyContent:"flex-end",marginTop:20}}>

@@ -7,7 +7,7 @@ const AgentDetail = () => {
     <div className={classes["soccer-setting-container"]}>
       <Card>
         <div className={classes["card-header"]}>
-          <h1 className={classes["card-title"]}>Become an Agent</h1>
+          <h1 className={classes["card-title"]}>Become an Partner</h1>
         </div>
         <div className={classes["card-body"]}>
             <AgentDetailDescription />
