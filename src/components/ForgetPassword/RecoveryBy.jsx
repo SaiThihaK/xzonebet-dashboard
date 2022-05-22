@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
-import usePost from "../../../../../../services/Post";
-import Loading from "../../../../../Loading/Loading";
+// import usePost from "../../../../../../services/Post";
+// import Loading from "../../../../../Loading/Loading";
+import FormLoading from "../FormLoading/FormLoading";
 import classes from "./ForgetPassword.module.css";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -29,7 +30,7 @@ const RecoveryBy = ({
   const [registerLoading, setRegisterLoading] = useState(false);
   const [submitDisable, setSubmitDisable] = useState(true);
   const [showComfirmBtn, setShowComfirmBtn] = useState(true);
-  const postRequest = usePost();
+  // const postRequest = usePost();
   const handleChange = (e) => {
     setEmail(e.target.value);
   };
@@ -40,7 +41,6 @@ const RecoveryBy = ({
     email_or_phone: email,
     verification_code: confirm,
   };
-
   const PasswordChangeHandler = (event, handleNext) => {
     event.preventDefault();
     setRegisterLoading(true);
@@ -52,21 +52,21 @@ const RecoveryBy = ({
       setRegisterLoading(false);
       return;
     }
-    postRequest("api/check-otp", passwordData).then((getData) => {
-      setRegisterLoading(false);
-      setSubmitDisable(false);
-      const { data, error, message } = getData;
-      if (data) {
-        toast.success(message);
-        handleNext();
+    // postRequest("api/check-otp", passwordData).then((getData) => {
+    //   setRegisterLoading(false);
+    //   setSubmitDisable(false);
+    //   const { data, error, message } = getData;
+    //   if (data) {
+    //     toast.success(message);
+    //     handleNext();
 
-        return;
-      }
+    //     return;
+    //   }
 
-      if (error) {
-        toast.error(error);
-      }
-    });
+    //   if (error) {
+    //     toast.error(error);
+    //   }
+    // });
   };
   const sendOtp = (event, handleNext) => {
     event.preventDefault();
@@ -84,24 +84,24 @@ const RecoveryBy = ({
       otpBody = { email: email };
     }
 
-    postRequest(`api/send-sms-otp`, otpBody).then((getData) => {
-      const { data, error, message } = getData;
-      setOtpLoading(false);
-      if (data) {
-        toast.success(message);
-        handleNext();
+    // postRequest(`api/send-sms-otp`, otpBody).then((getData) => {
+    //   const { data, error, message } = getData;
+    //   setOtpLoading(false);
+    //   if (data) {
+    //     toast.success(message);
+    //     handleNext();
 
-        // setShowComfirmBtn(false);
-        // setSubmitDisable(false);
-        // setCounter(59);
-        // setSendText("Send Again");
-        return;
-      }
-      if (error) {
-        toast.error(error);
-        return;
-      }
-    });
+    //     // setShowComfirmBtn(false);
+    //     // setSubmitDisable(false);
+    //     // setCounter(59);
+    //     // setSendText("Send Again");
+    //     return;
+    //   }
+    //   if (error) {
+    //     toast.error(error);
+    //     return;
+    //   }
+    // });
   };
   React.useEffect(() => {
     const timer =
@@ -191,7 +191,7 @@ const RecoveryBy = ({
                     className={`${classes["submit-register"]}`}
                   >
                     {registerLoading ? (
-                      <Loading width={30} color="white" />
+                      <FormLoading width={30} color="white" />
                     ) : (
                       "Submit"
                     )}
@@ -206,7 +206,7 @@ const RecoveryBy = ({
                   disabled={otpLoading}
                   className={`${classes["submit-register"]}`}
                 >
-                  {otpLoading ? <Loading width={30} color="white" /> : "Submit"}
+                  {otpLoading ? <FormLoading width={30} color="white" /> : "Submit"}
                 </button>
               </div>
             )}

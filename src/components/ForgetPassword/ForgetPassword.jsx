@@ -147,7 +147,7 @@ const ForgetPassword = ({ modal }) => {
                     onClick={() => {
                       modal(false);
                     }}
-                  >
+                    >
                     <i className="fas fa-times"></i>
                   </div>
                   {/* <h3 className={classes["re_header"]}>FORGET PASSWORD</h3> */}

@@ -6,7 +6,7 @@ const BecomeAnEmployee = () => {
   return (
    <PageTitleCard title="Become an Employee">
      <div className={classes["card-body"]}>
-
+        
      </div>
    </PageTitleCard>
   )

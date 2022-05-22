@@ -4,7 +4,6 @@ import React, { useState } from 'react'
 import AnswerQuestionModal from '../../../components/UI/Modal/AnswerQuestion/AnswerQuestionModal'
 import PageTitleCard from '../../../components/UI/PageTitleCard/PageTitleCard'
 import classes from "./AnswerQuestion.module.css"
-
 const AnswerQuestion = () => {
   const [open,setOpen] = useState(false);
   const handleOpen = ()=>setOpen(true);

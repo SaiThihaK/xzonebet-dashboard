@@ -10,9 +10,10 @@ import InputAdornment from "@mui/material/InputAdornment";
 import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import usePost from "../../../../../../../services/Post";
+// import usePost from "../../../../../../../services/Post";
 import classes from "./RecoveryPassword.module.css";
-import Loading from "../../../../../../Loading/Loading";
+import FormLoading from "../../FormLoading/FormLoading";
+// import Loading from "../../../../../../Loading/Loading";
 import { ToastContainer, toast } from "react-toastify";
 
 const crosses = [
@@ -51,7 +52,7 @@ const style = {
 };
 
 export default function RecoveryPassword({ RecoveryData, modal }) {
-  const postRequest = usePost();
+  // const postRequest = usePost();
   const [registerLoading, setRegisterLoading] = useState(false);
   const [submitDisable, setSubmitDisable] = useState(false);
   const [values, setValues] = React.useState({});
@@ -68,20 +69,20 @@ export default function RecoveryPassword({ RecoveryData, modal }) {
   const passwordRecoveryHandler = () => {
     setRegisterLoading(true);
     setSubmitDisable(false);
-    postRequest("api/account-recovery", { ...RecoveryData, ...values }).then(
-      (postData) => {
-        const { data, error, message } = postData;
-        setRegisterLoading(false);
-        if (error) {
-          toast.error(error);
-          return;
-        }
-        if (data) {
-          toast.success(data);
-          modal(false);
-        }
-      }
-    );
+    // postRequest("api/account-recovery", { ...RecoveryData, ...values }).then(
+    //   (postData) => {
+    //     const { data, error, message } = postData;
+    //     setRegisterLoading(false);
+    //     if (error) {
+    //       toast.error(error);
+    //       return;
+    //     }
+    //     if (data) {
+    //       toast.success(data);
+    //       modal(false);
+    //     }
+    //   }
+    // );
   };
   return (
     <div>
@@ -187,7 +188,7 @@ export default function RecoveryPassword({ RecoveryData, modal }) {
             } `}
           >
             {" "}
-            {registerLoading ? <Loading width={30} color="white" /> : "Submit"}
+            {registerLoading ? <FormLoading width={30} color="white" /> : "Submit"}
           </button>
         </div>
       </Box>

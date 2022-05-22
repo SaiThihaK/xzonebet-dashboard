@@ -1,10 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { login } from "../../services/api-services";
-import "./Login.css";
-import ForgetPasswordModal from "../../components/ForgetPasswordModal/ForgetPasswordModal";
+import classes from "./Login.module.css";
+import ForgetPassword from "../../components/ForgetPassword/ForgetPassword";
 import {AiOutlineEye,AiOutlineEyeInvisible} from "react-icons/ai"
-
 function refreshPage() {
   setTimeout(()=>{
       window.location.reload(false);
@@ -22,16 +21,13 @@ const Login = () => {
   const loginPassword = useRef();
   const [showPassword,setShowPassword] = useState(false);
   const showPwhandler = ()=>setShowPassword(!showPassword);
-  // 
   const [open,setOpen] = useState(false);
-  
-  const handleOpen = ()=>setOpen(true);
+  const handleOpen = (state)=>setOpen(state);
   const handleClose = ()=>setOpen(false);
   function validateEmail(email) {
     var re = /\S+@\S+\.\S+/;
     return re.test(email);
   }
-
   useEffect(()=>{
     let input = '';
     if(userloginname){
@@ -84,16 +80,16 @@ const Login = () => {
   }
 
   return (
-    <div className="wrapper">
-      <div className="container">
-        <div className="col-left">
-          <div className="login-text">
+    <div className={classes["wrapper"]}>
+      <div className={classes["container"]}>
+        <div className={classes["col-left"]}>
+          <div className={classes["login-text"]}>
             <h2>Welcome Back</h2>
             <h2>Xzonebet</h2>
           </div>
         </div>
-        <div className="col-right">
-          <div className="login-form">
+        <div className={classes["col-right"]}>
+          <div className={classes["login-form"]}>
             <h2>Login</h2>
             <form onSubmit={loginFormSubmitHandler}>
       {/* ---------------------------Phone Login------------------------------------ */}
@@ -111,7 +107,7 @@ const Login = () => {
                     autoComplete="off"
                     onChange={loginNameHandler}
                   />
-                <span className="errorMessage">{errorUserName}</span>
+                <span className={classes["errorMessage"]}>{errorUserName}</span>
                 </div>
                 ) :
               // ----------------------------Email Login-------------------
@@ -127,18 +123,18 @@ const Login = () => {
                   autoComplete="off"
                   onChange={loginNameHandler}
                 />
-                <span className="errorMessage">{errorUserName}</span>
+                <span className={classes["errorMessage"]}>{errorUserName}</span>
               </div>)
                }
              
               {/*-----------------------------------Password------------------------- */}
-              <div className="Input-field">
+              <div className={classes["Input-field"]}>
                 
                 <label>
                   Password<span>*</span>
                 </label>
                 {
-                  showPassword ?<AiOutlineEye onClick={showPwhandler}  className="icon"/> : <AiOutlineEyeInvisible className="icon" onClick={showPwhandler}  />
+                  showPassword ?<AiOutlineEye onClick={showPwhandler}  className={classes["icon"]} /> : <AiOutlineEyeInvisible className={classes["icon"]} onClick={showPwhandler}  />
                 }
                 
                 <input
@@ -149,13 +145,14 @@ const Login = () => {
                   autoComplete="off"
                   onChange={loginNameHandler}
                 />
-                <span className="errorMessage">{errorMsg}</span>
+                <span className={classes["errorMessage"]}>{errorMsg}</span>
               </div>
               <div>
                 <input type="submit" value="Sing In" />
               </div>
-              <div>
-                <p onClick={handleOpen}>Forget Password?</p>
+              <div className={classes["ForgetPass"]}>
+                <p onClick={()=>{handleOpen(true)}}>Forget Password?</p>
+              
               </div>
             </form>
             <div>
@@ -167,8 +164,8 @@ const Login = () => {
           </div>
         </div>
       </div>
+      {open && <ForgetPassword modal={handleOpen} />}
     </div>
   );
 };
-
 export default Login;

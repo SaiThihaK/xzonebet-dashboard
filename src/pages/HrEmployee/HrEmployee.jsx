@@ -18,7 +18,7 @@ const HrEmployee = () => {
              <TextField size='small' sx={{width:600}}/>
          <div className={classes["create-btn"]}>
              <Button variant="contained"
-            //  onClick={()=>navigate("/admin-team-account/department/create-department")}
+             onClick={()=>navigate("/dashboard/employee-form")}
              >Create Employee</Button> 
          </div>
          </div>
