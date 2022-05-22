@@ -71,23 +71,25 @@ export const SuperMasterSidebarData = [
         iconOpened: <RiArrowUpSFill/>,
     },
     {
-        title: 'Transition History',
-        path: '/dashboard/super_master/transition-history',
+        title: 'Payment Transition',
+        path: '/dashboard/super_master/payment_transition',
         icon: <FaLayerGroup />,
         iconClosed: <RiArrowDownSFill/>,
-        iconOpened: <RiArrowUpSFill/>,
-        // subNav : [
-        //     {
-        //         title: 'Master Deposit',
-        //         path: '/accounting/master-deposit',
-        //         icon: <IoIcons.IoIosArrowForward />,
-        //     },
-        //     {
-        //         title: 'Reports',
-        //         path: '/accounting/reports',
-        //         icon: <IoIcons.IoIosArrowForward />,
-        //     },
-        // ]
+        iconOpened: <RiArrowUpSFill/>
+    },
+    {
+        title: 'Unit Transition',
+        path: '/dashboard/super_master/unit_transition',
+        icon: <FaLayerGroup />,
+        iconClosed: <RiArrowDownSFill/>,
+        iconOpened: <RiArrowUpSFill/>
+    },
+    {
+        title: 'Withdraw to Admin',
+        path: '/dashboard/super_master/withdraw-to-admin',
+        icon: <FaLayerGroup />,
+        iconClosed: <RiArrowDownSFill/>,
+        iconOpened: <RiArrowUpSFill/>
     },
     {
         title: 'Account',

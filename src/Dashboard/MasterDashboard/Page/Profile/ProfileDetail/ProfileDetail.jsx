@@ -203,12 +203,12 @@ const handleChange = (prop) => (event) => {
                       </div>
                       <div className="p_ncolor" >
                           <p className="input_1">{values.phone}</p>
-                         <div className="p_btn"  onClick={()=>{showInput(6)}}> <i className="fas fa-pencil-alt"></i></div>
+                         {/* <div className="p_btn"  onClick={()=>{showInput(6)}}> <i className="fas fa-pencil-alt"></i></div>
                          <div className={`p_absolute ${ showForm===6 &&  "p_a_show"}`}   id="input_4">
                            <input type="number" className="form_p date_input "  value={values.phone}
                             onChange={handleChange('phone')} / >
                            <i className="fas fa-check-circle" onClick={()=>{showInput("")}}></i>
-                          </div>
+                          </div> */}
                         </div>
                     </div>
               <div className="p_item ">
@@ -217,12 +217,12 @@ const handleChange = (prop) => (event) => {
                       </div>
                       <div className="p_ncolor">
                           <p className="input_1">{values.email}</p>
-                               <div className="p_btn" onClick={()=>{showInput(1)}}><i className="fas fa-pencil-alt"></i></div>
+                               {/* <div className="p_btn" onClick={()=>{showInput(1)}}><i className="fas fa-pencil-alt"></i></div>
                                <div className={`p_absolute ${ showForm=== 1 &&  "p_a_show"}`}id="input_3">
                                    <input type="email" className="form_p"  value={values.email}
                             onChange={handleChange('email')} />
                                    <i className="fas fa-check-circle" onClick={()=>{showInput("")}} ></i>
-                                  </div>
+                                  </div> */}
                         </div>
                     </div>
                     <div className="p_item ">

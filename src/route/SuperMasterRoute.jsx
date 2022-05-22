@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Transition from "../components/Table/Complete/Transition/Transiton";
-import Overview from "../pages/Overview";
 import Notfound from "../components/UI/404/404";
 import TransferTo from "../Dashboard/MasterDashboard/Page/TransferTo/TransferTo";
 import PaymentAccount from "../pages/PaymentSetting/PaymentAccount/PaymentAccount";
@@ -41,10 +40,11 @@ import Users from "../pages/Users/Users";
 import MProfile from "../Dashboard/MasterDashboard/Page/Profile/MProfile"
 import MasterSecurity from "../Dashboard/MasterDashboard/Page/Security/MasterSecurity";
 import Profit from "../pages/Profit/Profit"
+import SuperMasterHome from "../pages/SuperMasterHome/SuperMasterHome";
 const SuperMasterRoute = () => {
   return (
     <Routes>
-      <Route path="/" exact element={<Overview />} />
+      <Route path="/" exact element={<SuperMasterHome />} />
       <Route path="*" element={<Notfound />} />
       <Route
         exact
@@ -73,7 +73,12 @@ const SuperMasterRoute = () => {
     /> */}
       <Route
         exact
-        path="/dashboard/super_master/transition-history"
+        path="/dashboard/super_master/payment_transition"
+        element={<ATransitionHistory />}
+      />
+      <Route
+        exact
+        path="/dashboard/super_master/unit_transition"
         element={<ATransitionHistory />}
       />
       <Route
@@ -240,6 +245,7 @@ const SuperMasterRoute = () => {
         element={<MasterSecurity />}
       />
       <Route path="/dashboard/super_master/profit" exact element={<Profit type="master" />} />
+      <Route path="/dashboard/super_master/withdraw-to-admin" exact element={<UserWithDraw />}/>
     </Routes>
   );
 };
