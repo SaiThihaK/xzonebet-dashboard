@@ -62,6 +62,7 @@ const CreateMaster = ({ open, handleClose ,render,setRender}) => {
     setdeposit_percent("");
     setwithdraw_percent("");
     setRender(!render);
+    handleClose();
     return;
   }
   if(response.data.status ==="error"){

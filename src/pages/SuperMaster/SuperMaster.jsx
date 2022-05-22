@@ -12,7 +12,7 @@ const SuperMaster = () => {
   const [render,setRender] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const {data,loading} = CustomGetFunction(`api/agents?sortColumn=id&sortDirection=desc&limit=30&agent_level=super_master`,[]);
+  const {data,loading} = CustomGetFunction(`api/agents?sortColumn=id&sortDirection=desc&limit=30&agent_level=super_master`,[render]);
   console.log(data);
   return (
     <div className={classes["soccer-setting-container"]}>
