@@ -38,7 +38,7 @@ const [account_name,setAccountName] = useState("");
 // console.log(id)
 const fetchProviderDetail = async()=>{
   try{
-const response = await axios.request(getMethod(`api/generate-payment-account/${id}`));
+const response = await axios.request(getMethod(`api/generate-payment-account/${id}?agent_level=provider`));
 console.log(response.data.data);
 if(response.data.status === "success"){
   setProvDetail(response.data.data);

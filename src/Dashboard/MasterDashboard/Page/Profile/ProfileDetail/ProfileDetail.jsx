@@ -6,8 +6,9 @@ import { useNavigate } from "react-router-dom";
 import Card from "../../../../../components/UI/Card";
 import { userInfo } from "../../../../../features/UserInfo";
 import classes from "./ProfileDetail.module.css";
-
+import { toast } from 'react-toastify';
 import "./ProfileDetail.css";
+import { PostProvider } from "../../../../../services/api-services";
 const ProfileDetail = () => {
   const navigate = useNavigate();
   const userData = useSelector(userInfo)
@@ -15,7 +16,7 @@ const ProfileDetail = () => {
   const type = localStorage.getItem("type");
   const [values, setValues] =useState({     
     name : userData?.name,
-    dob :  "20/12/1998",
+    dob :  "20-12-1998",
      NRC: "12432144543",
      passport: "2343wsd3",
      phone: userData?.agent?.phone,
@@ -24,7 +25,45 @@ const ProfileDetail = () => {
       country: userData?.agent?.country,
       region: userData?.agent?.region,
       currencyType: "Crypto"
- });     
+ });  
+
+ const editSubmitHandler = async(e) => {
+  e.preventDefault();
+  console.log("hello");
+  let fd = new FormData();
+  fd.append("name", values.name);
+  fd.append("country_name", values.country);
+  fd.append("currency_code", values.currencyType);
+  fd.append("nrc_card_no", values.NRC);
+  // fd.append("currency_code", values.currency_code);
+  // fd.append("country_name", values.country);
+  // if (values.avatar != "") {
+  //   fd.append("avatar", values.avatar);
+  // } 
+  if (values.dob != "") {
+    values.dob = values.dob.replace("-", ".");
+    fd.append("dob", values.dob);
+  } 
+  try{
+  const response = await axios.request(PostProvider(`api/customers/update-profile/${userData.agent.id}`,fd));
+  if(response.data.status==="success"){
+    toast.success(response.data.message);
+
+
+    return
+  }
+  if(response.data.status==="error"){  
+    toast.error(response.data.message);
+    return;
+  }
+   }catch(error){
+    //  toast.error(error.response.data.message);
+     console.log(error)
+   }
+ }
+
+
+
   useEffect(()=>{
     setValues({      
       name : userData?.name,
@@ -33,7 +72,7 @@ const ProfileDetail = () => {
        passport: "2343wsd3",
        phone: userData?.agent?.phone,
        email: userData?.agent?.email,
-       nationality: "Myanmar",
+      //  nationality: userData?.agent?.country,
         country: userData?.agent?.country,
         region: userData?.agent?.region,
         currencyType: "Crypto"
@@ -130,8 +169,13 @@ const handleChange = (prop) => (event) => {
                           <p className="input_1">{values.dob}</p>
                          <div className="p_btn"  onClick={()=>{showInput(10)}}> <i className="fas fa-pencil-alt"></i></div>
                          <div className={`p_absolute ${ showForm===10 &&  "p_a_show"}`} id="input_4">
-                           <input type="text" className="form_p date_input "    value={values.dob}
-                            onChange={handleChange('dob')} / >
+                         <input
+                    type="date"
+                    className="form_p date_input "
+                    onChange={handleChange("dob")}
+                    value={values.dob ? values.dob.replace(".", "-") : ""}
+                  />
+                           
                            <i className="fas fa-check-circle" onClick={()=>{showInput("")}}></i>
                           </div>
                         </div>
@@ -225,7 +269,7 @@ const handleChange = (prop) => (event) => {
                                   </div> */}
                         </div>
                     </div>
-                    <div className="p_item ">
+                    {/* <div className="p_item ">
                       <div>
                               Nationality
                       </div>
@@ -238,7 +282,7 @@ const handleChange = (prop) => (event) => {
                            <i className="fas fa-check-circle" onClick={()=>{showInput("")}}></i>
                           </div>
                         </div>
-                    </div>
+                    </div> */}
                  
                    
                     <div className="p_item ">
@@ -289,7 +333,7 @@ const handleChange = (prop) => (event) => {
     
     </div>
     </div>
-   <button className="btn_save"> SAVE</button>
+   <button className="btn_save" onClick={editSubmitHandler}> SAVE</button>
        
         
 </div>

@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import ProfileCard from "../../../../components/ProfileCard/ProfileCard";
 import Card from "../../../../components/UI/Card";
 import { userInfo } from "../../../../features/UserInfo";
-
+import { toast } from 'react-toastify';
 import classes from "./MProfile.module.css"
 import ProfileDetail from "./ProfileDetail/ProfileDetail";
 
@@ -11,6 +11,7 @@ const MProfile = ()=>{
 const userData = useSelector(userInfo);
 const type = localStorage.getItem("type");
 console.log("userData",userData);
+
 return(
     <div className={classes["container"]}>
         <Card>

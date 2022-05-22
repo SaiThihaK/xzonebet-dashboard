@@ -11,13 +11,17 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
-
+import { userInfo } from "../../../../features/UserInfo";
+import { PostMethod } from "../../../../services/api-services";
+import axios from "axios";
+import { logoutHandler } from "../../../../components/Sidebar/Sidebar";
 
 const ChangeEmail = () => {
   const [tag, setTag] = useState(1);
   const [conPass, setConPass] = useState(false);
   const [conEmail, setConEmail] = useState(false);
-  // const dispatch = useDispatch();
+  const userData = useSelector(userInfo);
+  const dispatch = useDispatch();
   const [values, setValues] = React.useState({
     emailPassword: "",
     email: "",
@@ -26,7 +30,7 @@ const ChangeEmail = () => {
 
  
 
-  
+  console.log(userData);
 
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
@@ -37,23 +41,49 @@ const ChangeEmail = () => {
       showPassword: !values.showPassword,
     });
   };
-  const ConfirmPassword = () => {
+  const ConfirmPassword = async() => {
     if (values.emailPassword === "") {
       toast.error("please enter");
       return;
     }
     let passwordComfirm = {};
-    // if (userData.email) {
-    //   passwordComfirm = {
-    //     email: userData.email,
-    //     password: values.emailPassword,
-    //   };
-    // } else {
-    //   passwordComfirm = {
-    //     phone: values.phone,
-    //     password: values.emailPassword,
-    //   };
-    // }
+    if (userData.type === "master"){
+      passwordComfirm = {
+        id: userData.id,
+        password: values.emailPassword,
+      };
+    } else if(userData.email)  {
+      passwordComfirm = {
+        email: userData.email,
+        password: values.emailPassword,
+      };
+    } else {
+      passwordComfirm = {
+        phone: values.phone,
+        password: values.emailPassword,
+      };
+    }
+    try{
+    
+    const response = await axios.request(PostMethod(`api/login`,passwordComfirm));
+
+    if(response.data.status==="success"){
+      // toast.success(response.data.message);
+  
+         toast.success("password correct");
+        setConPass(true);
+        return;
+     
+    }
+    if(response.data.status==="error"){  
+         toast.error("invalid password");
+        return;
+    }
+     }catch(error){
+       toast.error("invalid password");
+       console.log(error)
+     }
+     
     // postMethod(`api/login`, passwordComfirm).then((data) => {
     //   const { postData, errors: eMessage } = data;
     //   if (postData) {
@@ -68,11 +98,32 @@ const ChangeEmail = () => {
     // });
   };
 
-  const ConfirmEmail = () => {
+  const ConfirmEmail = async() => {
     if (values.email === "") {
       toast.error("please enter new email field");
       return;
     }
+    try{
+    
+      const response = await axios.request(PostMethod(`api/send-email-otp`,{ email: values.email }));
+  
+      if(response.data.status==="success"){
+        // toast.success(response.data.message);
+    
+        toast.success("Send Otp code successfully");
+            setConEmail(true);
+            return;
+       
+      }
+      if(response.data.status==="error"){  
+              toast.error("please enter correct email");
+        return;
+      }
+       }catch(error){
+         toast.error("invalid password");
+         console.log(error)
+       }
+  
     // postMethod(`api/send-email-otp`, { email: values.email }).then((data) => {
     //   const { postData, errors: eMessage } = data;
     //   if (postData) {
@@ -86,9 +137,41 @@ const ChangeEmail = () => {
     //   }
     // });
   };
-  const ChangeEmailHandler = (e) => {
+  const ChangeEmailHandler = async (e) => {
     e.preventDefault();
+    try{
+    
+      const response = await axios.request(PostMethod(`api/change-email-or-phone`, {
+        old_password: values.emailPassword,
+        email_or_phone: values.email,
+        verification_code: values.opt,
+      }));
+  
+      if(response.data.status==="success"){
+        // toast.success(response.data.message);
+    
+        toast.success("Email change successfully");
+        setValues({
+          emailPassword: "",
+          email: "",
+          opt: "",
+          showPassword: false,
+        });
+        setConEmail(false);
+        setConPass(false);
+        logoutHandler();
+       
+      }
+      if(response.data.status==="error"){  
+        toast.error(response.data.message);
 
+        return;
+      }
+       }catch(error){
+        toast.error(error.response.data.message);
+
+        return;
+       }
     // postMethod(`api/change-email-or-phone`, {
     //   old_password: values.emailPassword,
     //   email_or_phone: values.email,

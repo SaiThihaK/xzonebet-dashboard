@@ -126,7 +126,7 @@ const EmployeeForm = () => {
       // formdata.append("address",JSON.stringify(address));
       // formdata.append("country",JSON.stringify(countryData[country].name));
       // formdata.append("city",JSON.stringify(city));
-      // formdata.append('state',JSON.stringify(stateData[state].name));
+      // formdata.append('state',JSON.stringify(stateData[statMe].name));
       // formdata.append("skill",JSON.stringify(skill));
       // formdata.append("work_histories",JSON.stringify(work_histories));
       // formdata.append("educations",JSON.stringify(educations));

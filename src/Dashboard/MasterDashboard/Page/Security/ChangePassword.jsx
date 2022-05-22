@@ -15,6 +15,9 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Typography from "@mui/material/Typography";
 
 import { ToastContainer, toast } from 'react-toastify';
+import { PostMethod, PostProvider } from '../../../../services/api-services';
+import axios from "axios";
+import { logoutHandler } from '../../../../components/Sidebar/Sidebar';
 
 const ChangePassword = () => {
 
@@ -39,10 +42,37 @@ const ChangePassword = () => {
     const handleMouseDownPassword = (event) => {
       event.preventDefault();
     };
-const PasswordChangeHandler=(e)=>{
-  
+const PasswordChangeHandler= async (e)=>{
+
 e.preventDefault();
+try{
+  delete values["showPassword"];
+  const response = await axios.request(PostMethod(`api/change-password`,values));
+  
+
+  if(response.data.status==="success"){
+    toast.success(response.data.message);
+
+    setValues({
+      old_password: "",
+      password: "",
+      password_confirmation: "",
+      showPassword: false,
+    });
+    logoutHandler();
+    return
+  }
+  if(response.data.status==="error"){  
+    toast.error(response.data.message);
+    return;
+  }
+   }catch(error){
+     toast.error(error.response.data.message);
+     console.log(error)
+   }
  }
+
+ 
   return (
     <div>
     
