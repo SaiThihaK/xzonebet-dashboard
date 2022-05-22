@@ -5,10 +5,15 @@ import Card from '../../components/UI/Card';
 import SuperMasterCard from './SuperMasterCard/SuperMasterCard';
 import CreateMaster from '../../components/UI/Modal/CreateMaster/CreateMaster';
 import classes from './SuperMaster.module.css';
+import CustomGetFunction from '../../services/CustomGetFunction';
+import MemberCard from '../../components/MemberCard/MemberCard';
 const SuperMaster = () => {
-    const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [render,setRender] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const {data,loading} = CustomGetFunction(`api/agents?sortColumn=id&sortDirection=desc&limit=30&agent_level=super_master`,[]);
+  console.log(data);
   return (
     <div className={classes["soccer-setting-container"]}>
       <Card>
@@ -18,11 +23,20 @@ const SuperMaster = () => {
         </div>
         <div className={classes["card-body"]}>
           <Grid container spacing={3}>
-             <SuperMasterCard />
+            {/* <Grid item key={index} xs={6}>
+           </Grid> */}
+              {/* <MemberCard partner={data} route={`/dashboard/account/super-master/detail/${sup.id}`} /> */}
+             {
+               data.map((sup,index)=>(
+             
+                 
+                   <SuperMasterCard data={sup} key={index} />
+               ))
+             }
           </Grid>
         </div>
       </Card>
-      <CreateMaster open={open} handleClose={handleClose}/>
+      <CreateMaster open={open} handleClose={handleClose} render={render} setRender={setRender}/>
     </div>
   )
 }
