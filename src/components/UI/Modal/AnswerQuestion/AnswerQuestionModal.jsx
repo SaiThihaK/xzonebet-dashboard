@@ -9,8 +9,13 @@ import Modal from "@mui/material/Modal";
 import { Button, TextField,Stack } from "@mui/material";
 const AnswerQuestionModal = ({ 
   open, 
-  handleClose ,
-  index
+  handleClose,
+  index,
+  title,
+  setTitle,
+  submitHandler,
+  setDescription,
+  data
 }) => {
   const style = {
     position: "absolute",
@@ -30,8 +35,9 @@ const AnswerQuestionModal = ({
   );
   useEffect(() => {
     console.log(editorState);
-  }, [editorState]);  
-  const [textValue,setTextValue] = useState();  
+    setDescription(editorState.getCurrentContent().getPlainText());
+  }, [editorState,data]);  
+   
   return (
     <div>
       <Modal
@@ -46,7 +52,7 @@ const AnswerQuestionModal = ({
           </Typography>
           <div className={classes["form"]}>
             <label>Question</label>
-            <TextField size="small" fullWidth />
+            <TextField size="small" fullWidth value={title} onChange={(e)=>setTitle(e.target.value)} />
           </div>
           <div className={classes["form"]}>
             <label>Answer</label>
@@ -59,8 +65,8 @@ const AnswerQuestionModal = ({
             
           </div>
            <Stack direction="row" style={{display:"flex",justifyContent:"center"}} spacing={4}>
-             <Button variant="contained">Confirm</Button>
-             <Button variant="contained" color="error">Cancel</Button>
+             <Button variant="contained" onClick={submitHandler}>Confirm</Button>
+             <Button variant="contained" color="error" onClick={handleClose}>Cancel</Button>
            </Stack>
         </Box>
       </Modal>
