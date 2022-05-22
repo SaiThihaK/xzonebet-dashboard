@@ -4,32 +4,133 @@ import React, { useState } from 'react'
 import AnswerQuestionModal from '../../../components/UI/Modal/AnswerQuestion/AnswerQuestionModal'
 import PageTitleCard from '../../../components/UI/PageTitleCard/PageTitleCard'
 import classes from "./AnswerQuestion.module.css"
-
+import CustomGetFunction from "../../../services/CustomGetFunction"
+import axios from 'axios';
+import CustomLoading from '../../../components/CustomLoading/CustomLoading'
+import { toast } from 'react-toastify'
+import { PostMethod, PutMethod } from '../../../services/api-services'
 const AnswerQuestion = () => {
   const [open,setOpen] = useState(false);
   const handleOpen = ()=>setOpen(true);
-  const handleClose = ()=>setOpen(false)
+  const handleClose = ()=>setOpen(false);
+  const [title,setTitle] = useState("");
+  const [description,setDescription] = useState("");
+  const [render,setRender] = useState(false);
+  const [editOpen,setEditOpen] = useState(false);
+  const editOpenHandler = ()=>setEditOpen(true);
+  const editCloseHandler = ()=>setEditOpen(false);
+  const [id,setId] = useState('');
+ 
+  const {data,loading} = CustomGetFunction(`api/xzonebetaffiliate/faqs`,[render]);
+  const createQuestion = async()=>{
+    try{
+      const response = await axios.request(PostMethod("api/xzonebetaffiliate/faq/create",{
+        title,
+        description,
+      }));
+      if(response.data.status==="success"){
+       toast.success(response.data.message);
+       setRender(!render);
+       handleClose();
+       setTitle("");
+       setDescription("");
+       return;
+      }
+      if(response.data.status==="error"){
+      toast.error(response.data.message);
+      return;
+      }
+    }catch(error){
+    console.log(error);
+    toast.error(error.response.data.message);
+    }
+  }
+
+  const editQuestion = async()=>{
+    try{
+   const response = await axios.request(PutMethod(`api/xzonebetaffiliate/${id}/faq-edit`,{
+    title,
+    description
+   }));
+   if(response.data.status==="success"){
+     toast.success(response.data.message);
+     setRender(!render);
+     setTitle("");
+     setDescription("");
+     editCloseHandler();
+     return
+   }
+   if(response.data.status==="error"){
+     toast.error(response.data.message);
+     return;
+   }
+    }catch(error){
+      toast.error(error.response.data.message);
+      return;
+    }
+  }
+
+
+  console.log(data);
    return (
     <PageTitleCard title="Answer Question">
-        <div className={classes["card-body"]}>
-          <div className={classes["btn-container"]}>
-            <Button variant="contained" onClick={handleOpen}>Create Question and Anwer</Button>
-          </div>
-        <div className={classes["form"]}>
-          <div>
-          <h4>This is Question 1</h4>
-      <div style={{marginTop: "10px"}}>  industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
-          </div>
      
-     <IconButton sx={{marginLeft: "25px ",height: "fit-content"}} >
-     <Edit onClick={handleOpen}/>
-     </IconButton>
-     <IconButton>
-     <Delete />
-     </IconButton>
-        </div>
-        </div>
-        <AnswerQuestionModal open={open} handleClose={handleClose}/>
+     {
+       loading ? ( <>
+       <div className={classes["card-body"]}>
+       <div className={classes["btn-container"]}>
+         <Button variant="contained" onClick={handleOpen}>Create Question and Anwer</Button>
+       </div>
+       {
+         data.map((faq,index)=>(
+          <div className={classes["form"]} key={index}>
+          <div style={{width:"100%"}}>
+          <h4>{faq.title}</h4>
+          <div style={{marginTop: "10px"}}>
+        {
+          faq.description
+        }
+          </div>
+          </div>
+          <div className={classes["btn-container"]}>
+          <IconButton onClick={()=>{editOpenHandler();setId(faq.id)}} sx={{marginLeft: "25px ",height: "fit-content"}} >
+          <Edit />
+          </IconButton>
+          <IconButton>
+          <Delete />
+          </IconButton>
+          </div>
+          
+     </div>
+         ))
+       }
+    
+     </div>
+     <AnswerQuestionModal 
+     open={open} 
+     handleClose={handleClose} 
+     title={title} 
+     setTitle={setTitle}
+     submitHandler={createQuestion}
+     setDescription={setDescription}
+     render={render}
+   
+     />
+      <AnswerQuestionModal 
+     open={editOpen} 
+     handleClose={editCloseHandler} 
+     title={title} 
+     setTitle={setTitle}
+     data={data}
+     submitHandler={editQuestion}
+     setDescription={setDescription}
+     render={render}
+     
+     />
+     </> 
+  ):(<CustomLoading />)
+     }
+      
     </PageTitleCard>
   )
 }

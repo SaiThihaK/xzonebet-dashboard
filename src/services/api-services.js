@@ -115,6 +115,18 @@ export const PostMethod = (route, data) => {
   };
   return res;
 };
+export const PutMethod = (route, data) => {
+  const res = {
+    method: "PUT",
+    url: `${REACT_APP_DOMAIN}${route}`,
+    data,
+    headers: {
+      Accept: "application/json",
+      authorization: ltoken,
+    },
+  };
+  return res;
+};
 
 export const PatchMethod = (route, data) => {
   const res = {
