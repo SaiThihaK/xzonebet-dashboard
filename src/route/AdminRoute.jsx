@@ -190,7 +190,7 @@ const AdminRoute = () => {
           element={<SuperMaster />}
         />
         <Route
-          path="/dashboard/account/super-master/detail/:id"
+          path="/dashboard/account/super-master/:id"
           exact
           element={<SuperMasterDetail />}
         />

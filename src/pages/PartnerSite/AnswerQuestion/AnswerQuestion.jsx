@@ -95,7 +95,10 @@ const AnswerQuestion = () => {
           </div>
           </div>
           <div className={classes["btn-container"]}>
-          <IconButton onClick={()=>{editOpenHandler();setId(faq.id)}} sx={{marginLeft: "25px ",height: "fit-content"}} >
+          <IconButton onClick={()=>{
+            editOpenHandler();
+            setId(faq.id)
+            }} sx={{marginLeft: "25px ",height: "fit-content"}} >
           <Edit />
           </IconButton>
           <IconButton>
@@ -116,7 +119,6 @@ const AnswerQuestion = () => {
      submitHandler={createQuestion}
      setDescription={setDescription}
      render={render}
-   
      />
       <AnswerQuestionModal 
      open={editOpen} 
@@ -127,7 +129,6 @@ const AnswerQuestion = () => {
      submitHandler={editQuestion}
      setDescription={setDescription}
      render={render}
-     
      />
      </> 
   ):(<CustomLoading />)

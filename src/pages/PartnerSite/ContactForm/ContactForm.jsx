@@ -2,6 +2,7 @@
 import {Button, TextField } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import PageTitleCard from '../../../components/UI/PageTitleCard/PageTitleCard'
+import CustomGetFunction from '../../../services/CustomGetFunction'
 import classes from "./ContactForm.module.css"
 import DemoDatePicker from './DemoDatePicker'
 import DemoTimePicker from './TimePicker'
@@ -11,13 +12,15 @@ const ContactForm = () => {
     const [facebook,setFacebook] = useState("");
     const [Twitter,setTwitter] = useState("");
     const [Instagram,setInstragram] = useState("");
+    const {data,loading} = CustomGetFunction(`api/xzonebetaffiliate/contact-edit`,[]);
 
+    console.log(data);
     useEffect(()=>{
-      setEmail("sai@dev.com");
-      setFacebook("saithihak@facebook");
+      setEmail(data?.email);
+      setFacebook(data?.facebook);
       setTwitter("sai@twitter");
       setInstragram("sai@instagram")
-    },[])
+    },[data])
   return (
    <PageTitleCard title="Contact Form">
        <div className={classes["card-body"]}>
