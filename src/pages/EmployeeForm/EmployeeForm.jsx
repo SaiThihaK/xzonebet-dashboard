@@ -2,23 +2,24 @@
 import { Button, MenuItem, Select, TextField,IconButton } from '@mui/material';
 import axios from 'axios';
 import React, {  useState } from 'react'
+import InputLabel from '@mui/material/InputLabel';
 import { toast } from 'react-toastify';
 import PageTitleCard from '../../components/UI/PageTitleCard/PageTitleCard';
 import { PostProvider } from '../../services/api-services';
 import CustomGetFunction from '../../services/CustomGetFunction';
 import classes from "./EmployeeForm.module.css"
-import {AddBox,ArrowDropDown} from "@mui/icons-material"
+import {ArrowDropDown} from "@mui/icons-material"
 import {  DesktopDatePicker, LocalizationProvider } from "@mui/lab";
 import { getResDate } from '../../Controller/ChangeDate';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
+
 const EmployeeForm = () => {
-  const {data} = CustomGetFunction("api/departments",[]);
+
   const [userId,setUserId] = useState("");
   const [department,setDepartment] = useState([]);
   const [logo,setlogo] = useState({});
   const [position,setPosition] = useState("")
-
-
   const [name,setName] = useState("");
   const [email,setEmail] = useState('');
   const [phone,setPhone] = useState("");
@@ -27,7 +28,9 @@ const EmployeeForm = () => {
   const [country,setCountry] = useState("");
   const [city,setCity] = useState("");
   const [state,setState] = useState("");
-
+  const [countryId, setCountryId] = useState("");
+  const [stateId, setStateId] = useState("");
+ 
   // working exp state
   const [expPosition,setExpPosition] = useState("");
   const [companyName,setCompanyName] = useState("");
@@ -44,12 +47,17 @@ const EmployeeForm = () => {
   const [isPersonal,setIsPersonal] = useState(false);
   const [isWorkingExp,setWorkingExp] = useState(false);
   const [isEducation,setIsEducation] = useState(false);
+
+  const {data : countryData} = CustomGetFunction('api/countries',[]);
+  const {data : stateData} = CustomGetFunction(`api/states/${countryId}`,[countryId]);
+  const {data : cityData} = CustomGetFunction( `api/cities/${stateId}`,[stateId]);
+  const {data} = CustomGetFunction("api/departments",[]);
   const submitHandler = async(e)=>{
     e.preventDefault();
-    if(!userId){
-      toast.warning("Please enter User Id");
-      return;
-    }
+    // if(!userId){
+    //   toast.warning("Please enter User Id");
+    //   return;
+    // }
     if(department.length === 0){
       toast.warning("Please select department");
       return;
@@ -85,7 +93,6 @@ const EmployeeForm = () => {
       end_date:getResDate(expEndDate),
       description:description
     }];
-
   let educations = [{
     degree:eduDegree,
     school:eduSchool,
@@ -93,25 +100,38 @@ const EmployeeForm = () => {
     end_date:getResDate(eduEndDate),
     note:note
   }];
-
     try{
-      let formdata = new FormData();
-      formdata.append("user_id",JSON.stringify(userId));
-      formdata.append("department_id",JSON.stringify(department?.id));
-      formdata.append("position_id",JSON.stringify(position));
-      formdata.append("avatar",JSON.stringify(logo));
-      formdata.append("name",JSON.stringify(name));
-      formdata.append("email",JSON.stringify(email));
-      formdata.append("phone",JSON.stringify(phone));
-      formdata.append("address",JSON.stringify(address));
-      formdata.append("country",JSON.stringify(country));
-      formdata.append("city",JSON.stringify(city));
-      formdata.append('state',JSON.stringify(state));
-      formdata.append("skill",JSON.stringify(skill));
-      formdata.append("work_histories",JSON.stringify(work_histories));
-      formdata.append("educations",JSON.stringify(educations));
-      console.log("formdata",formdata.getAll());
-   const response = await axios.request(PostProvider("api/employees",formdata));
+      // let formdata = new FormData();
+      // formdata.append("name",JSON.stringify(userId));
+      const FormData= {
+        department_id : department?.id,
+        position_id :position,
+        name : name,
+        phone : phone,
+        email: email,
+        address : address,
+        country: countryData[country].name,
+        city : city,
+        state : stateData[state].name,
+        skill: skill,
+        work_histories:  work_histories,
+        educations : educations
+      }
+      // formdata.append("department_id",JSON.stringify(department?.id));
+      // formdata.append("position_id",JSON.stringify(position));
+      // formdata.append("avatar",JSON.stringify(logo));
+      // formdata.append("name",JSON.stringify(name));
+      // formdata.append("email",JSON.stringify(email));
+      // formdata.append("phone",JSON.stringify(phone));
+      // formdata.append("address",JSON.stringify(address));
+      // formdata.append("country",JSON.stringify(countryData[country].name));
+      // formdata.append("city",JSON.stringify(city));
+      // formdata.append('state',JSON.stringify(stateData[state].name));
+      // formdata.append("skill",JSON.stringify(skill));
+      // formdata.append("work_histories",JSON.stringify(work_histories));
+      // formdata.append("educations",JSON.stringify(educations));
+      // console.log("formdata",formdata.getAll());
+   const response = await axios.request(PostProvider("api/employees",FormData));
    if(response.data.status==="success"){
      toast.success(response.data.message);
      setUserId("");
@@ -122,10 +142,20 @@ const EmployeeForm = () => {
      setPhone("");
      setAddress("");
      setSkill("");
+     setExpPosition("");
+     setCompanyName("");
+     setExpStartDate(new Date());
+     setExpEndDate(new Date());
+     setDescription("");
+  setEduDegree("");
+   setEduSchool("");
+   setEduStartDate(new Date());
+   setEduEndDate(new Date());
+   setNote("");
+ 
      return
    }
-   if(response.data.status==="error"){
-    
+   if(response.data.status==="error"){  
      toast.error(response.data.message);
      return;
    }
@@ -134,17 +164,17 @@ const EmployeeForm = () => {
       console.log(error)
     }
   }
-  
+
   const logoChange = (e) => setlogo(e.target.files[0]);
   return (
   <PageTitleCard title="Employee Form">
    <div className={classes["card-body"]}>
-    <div className={classes["title-form"]}>
+    <div className={classes["title-form"]} onClick={()=>{setIsPersonal((prev)=>!prev)}}>
      <h3>Personal Detail</h3>
      <div className={classes["plus-box"]}>
-   <IconButton onClick={()=>{setIsPersonal((prev)=>!prev)}}>
+   <IconButton >
     {
-     isPersonal ? <ArrowDropDown/> :  <AddBox/>
+     isPersonal ? <ArrowDropDown/> :  <ArrowDropUpIcon/>
      }
      </IconButton>
      </div>
@@ -153,10 +183,10 @@ const EmployeeForm = () => {
       isPersonal &&    <form className={classes["form"]}>
       <div className={classes["grid-template"]}>
    <div>
-   <div  className={classes["form-Control"]}>
-      <label>User Id</label>
+   {/* <div  className={classes["form-Control"]}>
+      <label>User Name</label>
       <TextField size="small" fullWidth value={userId} onChange={(e)=>{setUserId(e.target.value)}}/>
-    </div>
+    </div> */}
     {/* Department */}
     <div  className={classes["form-Control"]}>
       <label>Department</label>
@@ -184,13 +214,16 @@ const EmployeeForm = () => {
       </Select>
     </div>
     {/* Avatar */}
-    <div className={classes["form-Control"]}>
+    {/* <div className={classes["form-Control"]}>
         <label>Choose Provider Logo</label>
         <TextField variant="standard" type="file" accept="image/png, image/jpeg" onChange={logoChange} fullWidth />
-            </div>
+            </div> */}
             {/*==================================================Skill=======================================================  */}
             <div className={classes["form-Control-des"]}>
-       <label>Skill</label>
+              <div style={{width: "100%"}}>
+              <label>Skill</label>
+              </div>
+    
        <textarea rows="6" cols="50" value={skill} onChange={(e)=>{setSkill(e.target.value)}} />
        </div>
    </div>
@@ -218,31 +251,90 @@ const EmployeeForm = () => {
     </div>
     {/* -----------------------Country--------------------------------------------- */}
     <div  className={classes["form-Control"]}>
-      <label>Country</label>
-      <TextField size="small" fullWidth value={country} onChange={(e)=>{setCountry(e.target.value)}} />
+     
+      <InputLabel id="demo-simple-select-label" >Country</InputLabel>
+
+      <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+         sx={{color: "black"}}
+          value={country}
+          
+          size="small"
+           fullWidth
+         
+          onChange={(e)=>{setCountry(e.target.value) ; setCountryId( countryData[e.target.value].id );  } }
+        >
+          {
+            countryData.map((el,index) =>
+              {
+            return  (<MenuItem key={index} value={index} >{el.name}</MenuItem>)
+            })
+          }
+         
+        
+        </Select>
+      {/* <TextField size="small" fullWidth value={country} onChange={(e)=>{setCountry(e.target.value)}} /> */}
     </div>
-  
+    <div  className={classes["form-Control"]}>
+      <label>State</label>
+      <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+         sx={{color: "black"}}
+ 
+          size="small"
+           fullWidth
+         
+          onChange={(e)=> {setState(e.target.value) ; setStateId( countryData[e.target.value].id );  } }
+        >
+          {
+         stateData && stateData.map((el,index) =>
+              {
+                return  (<MenuItem key={index} value={index} >{el.name}</MenuItem>)
+            })
+          }
+         
+        
+        </Select>
+    </div>
    {/* -----------------------------City-------------------------------------------- */}
    <div  className={classes["form-Control"]}>
       <label>City</label>
-      <TextField size="small" fullWidth value={city} onChange={(e)=>{setCity(e.target.value)}} />
+      <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+         sx={{color: "black"}}
+ 
+          size="small"
+           fullWidth
+         
+           onChange={(e)=> {setCity(e.target.value)   } }
+        >
+          {
+         cityData && cityData.map((el,index) =>
+              {
+                return  (<MenuItem key={index} value={el.name} >{el.name}</MenuItem>)
+            })
+          }
+         
+        
+        </Select>
+      {/* <TextField size="small" fullWidth value={city} onChange={(e)=>{setCity(e.target.value)}} /> */}
     </div>
   {/* -------------------------------State--------------------------------------------- */}
-  <div  className={classes["form-Control"]}>
-      <label>State</label>
-      <TextField size="small" fullWidth value={state} onChange={(e)=>{setState (e.target.value)}} />
-    </div>
+
    </div>
       </div>
      </form>
     }
     {/* ------------------------------Working Exp-------------------------------- */}
-     <div className={classes["title-form"]}>
+     <div className={classes["title-form"]} onClick={()=>{setWorkingExp((prev)=>!prev)}}>
      <h3>Working Experience</h3>
      <div className={classes["plus-box"]}>
-   <IconButton onClick={()=>{setWorkingExp((prev)=>!prev)}}>
+   <IconButton >
     {
-     isWorkingExp ? <ArrowDropDown/> :  <AddBox/>
+     isWorkingExp ? <ArrowDropDown/> :  <ArrowDropUpIcon/>
      }
      </IconButton>
      </div>
@@ -276,17 +368,20 @@ const EmployeeForm = () => {
        </div>
        {/*----------------------------------------------Description------------------------------------  */}
        <div className={classes["form-Control-des"]}>
-       <label>Description</label>
+       <div style={{width: "100%",marginLeft: "40px"}}>
+       <label >Description</label>
+              </div>
+     
        <textarea rows="6" cols="50" value={description} onChange={(e)=>{setDescription(e.target.value)}} />
        </div>
       </form>
     }
-    <div className={classes["title-form"]}>
+    <div className={classes["title-form"]} onClick={()=>{setIsEducation((prev)=>!prev)}}>
      <h3>Education</h3>
      <div className={classes["plus-box"]}>
-   <IconButton onClick={()=>{setIsEducation((prev)=>!prev)}}>
+   <IconButton >
     {
-     isEducation ? <ArrowDropDown/> :  <AddBox/>
+     isEducation ? <ArrowDropDown/> :  <ArrowDropUpIcon/>
     }
      </IconButton>
     
@@ -322,7 +417,9 @@ const EmployeeForm = () => {
        </div>
        {/*----------------------------------------------Description------------------------------------  */}
        <div className={classes["form-Control-des"]}>
-       <label>Note</label>
+       <div style={{width: "100%",marginLeft: "40px"}}>
+       <label >Note</label>
+              </div>
        <textarea rows="6" cols="50" value={note} onChange={(e)=>{setNote(e.target.value)}} />
        </div>
       </form>

@@ -4,11 +4,13 @@ import React, { useState } from 'react'
 import AnswerQuestionModal from '../../../components/UI/Modal/AnswerQuestion/AnswerQuestionModal'
 import PageTitleCard from '../../../components/UI/PageTitleCard/PageTitleCard'
 import classes from "./AnswerQuestion.module.css"
+
 import CustomGetFunction from "../../../services/CustomGetFunction"
 import axios from 'axios';
 import CustomLoading from '../../../components/CustomLoading/CustomLoading'
 import { toast } from 'react-toastify'
 import { PostMethod, PutMethod } from '../../../services/api-services'
+
 const AnswerQuestion = () => {
   const [open,setOpen] = useState(false);
   const handleOpen = ()=>setOpen(true);
