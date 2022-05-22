@@ -35,6 +35,7 @@ import {selectedRender} from "../../features/render"
 import { HrSidebarData } from "../../Dashboard/HrDashboard/HrSidebarData";
 import { AccountingSidebarData } from "../../Dashboard/AccountingDashboard/AccountingSidebarData";
 import FetchUnit from "../../services/FetchUnit";
+import { ProviderSidebarData } from "../../Dashboard/ProviderDashboard/ProviderSidebarData";
 
 
 function refreshPage() {
@@ -125,7 +126,11 @@ const Sidebar = () => {
     return AccountingSidebarData.map((item,index)=>
     (<Submenu item={item} key={index} />)
     )
-
+  }
+  if(dashboard === "provider"){
+  return ProviderSidebarData.map((item,index)=>(
+    <Submenu item={item} key={index} />
+  ))
   }
   
   }

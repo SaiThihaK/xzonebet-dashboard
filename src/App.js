@@ -13,6 +13,7 @@ import SuperMasterRoute from "./route/SuperMasterRoute";
 import AffiliateAgentRoute from "./route/AffiliateAgentRoute";
 import HrRoute from "./route/HrRoute";
 import AccountingRoute from "./route/AccountingRoute";
+import ProviderRoute from "./route/ProviderRoute";
 function App() {
   const DashboardRouting = () => {
     if (type === "admin") {
@@ -33,6 +34,9 @@ function App() {
     }
     if (type === "hr") {
       return <HrRoute />;
+    }
+    if (type === "provider") {
+      return <ProviderRoute />;
     }
     if (type === "Accounting") {
       return <AccountingRoute />;
