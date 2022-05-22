@@ -156,7 +156,7 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
   }
  }
  const submitHandler = async()=>{
-   console.log("it works",ID)
+  
   try{
       const response = await axios.request(PostMethod(`api/deposit/action/${ID}`,{
         status:"approve",
@@ -169,7 +169,8 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
         setID("");
         setNum(num+1);
         setValue("");
-        dispatch(getRender({render: !render}))
+        dispatch(getRender({render: !render}));
+        ModalCloseHandler();
         return;
       }
       if(response.data.status === "error"){
