@@ -5,35 +5,74 @@ import PageTitleCard from "../../../components/UI/PageTitleCard/PageTitleCard"
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import CustomGetFunction from "../../../services/CustomGetFunction"
+import CustomLoading from '../../../components/CustomLoading/CustomLoading';
+import { PutMethod } from '../../../services/api-services';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 const AdsContent = () => {
+  const[render,setRender] = useState(false);
+  const {data,loading} = CustomGetFunction(`api/xzonebet-affiliates/content`,[render]);
+  const [title,setTitle] = useState("");
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
   useEffect(() => {
     console.log(editorState);
-  }, [editorState]);      
-    const [textValue,setTextValue] = useState();
+    setTitle(data.content2_title);
+    // setEditorState(data.content1_detail);
+  }, [editorState,data]);      
+    
     const [open,setOpen] = useState(false);
     const handleOpen = ()=>setOpen(true);
    const handleClose= ()=>setOpen(false);
+   const submitHandler = async()=>{
+    console.log(title);
+    try{
+const response =await  axios.request(PutMethod(`api/xzonebet-affiliates/content`,{
+  content2_title:title,
+  content2_detail:editorState.getCurrentContent().getPlainText()
+}));
+console.log(response);
+if(response.data.status==="success"){
+  toast.success(response.data.message);
+  handleClose();
+  setRender(!render)
+  return
+}
+if(response.data.status === "error"){
+  toast.error(response.data.message);
+  setRender(!render);
+  handleClose();
+  return;
+}
+    }catch(error){
+    console.log(error);
+    toast.error(error.response.data.message)
+    }
+  }
      return (
          <>
      <PageTitleCard title="Advertisement Content">
          <div className={classes["card-body"]}>
                {!open ? (
-               <div>
-               <div className={classes["card-title"]}>This is Title</div>
-               <p className={classes["card-text"]}>
-               Lublic should always verify the authenticity of the information by contacting the relevant gove
-               Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci, ducimus.
-               Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, accusantium!
-                </p>
-                </div>
+                 <>
+                 {
+                   loading ? (<div>
+                    <div className={classes["card-title"]}>{data.content2_title}</div>
+                    <p className={classes["card-text"]}>
+                    {
+                      data.content2_detail
+                    }
+                     </p>
+                     </div>):(<CustomLoading />)
+                 }
+               </>
                 ):(
                   <div className={classes["form-container"]}>
                    <div className={classes["form"]}>  
                      <label>Title</label>
-                     <TextField fullWidth size="small" />
+                     <TextField fullWidth size="small" value={title} onChange={(e)=>setTitle(e.target.value)} />
                    </div>
                    <div className={classes["form"]}>
                     <label>Content</label>
@@ -53,7 +92,7 @@ const AdsContent = () => {
     </PageTitleCard>
          <div className={classes["card-body"]}>
     {open &&<Stack direction="row" spacing={3} style={{display:"flex",justifyContent:"flex-end",marginTop:20,marginRight:20}}>
-       <Button onClick={()=>{handleClose();}} variant="contained" >Confirm</Button>
+       <Button onClick={()=>{submitHandler();}} variant="contained" >Confirm</Button>
        <Button onClick={()=>{handleClose()}}  variant="contained" color="error">Cancel</Button>
        </Stack> }
        {!open &&<Stack direction="row" spacing={3} style={{display:"flex",justifyContent:"flex-end",marginTop:20,marginRight:20}}>
