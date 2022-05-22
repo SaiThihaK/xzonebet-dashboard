@@ -13,8 +13,12 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
+import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
-import { useSelector } from "react-redux";
+import { userInfo } from "../../../../features/UserInfo";
+import { PostMethod } from "../../../../services/api-services";
+import axios from "axios";
+import { logoutHandler } from "../../../../components/Sidebar/Sidebar";
 // import usePostRequest from "../../../services/PostRequest";
 // import { Logout } from "../../../hooks/Logout";
 
@@ -38,37 +42,163 @@ const ChangePhone = () => {
       showPassword: !values.showPassword,
     });
   };
-  const ConfirmPassword = () => {
+  const ConfirmPassword = async() => {
     if (values.emailPassword === "") {
       toast.error("please enter");
       return;
     }
     let passwordComfirm = {};
-    // if (userData.email) {
-    //   passwordComfirm = {
-    //     email: userData.email,
-    //     password: values.emailPassword,
-    //   };
-    // } else {
-    //   passwordComfirm = {
-    //     phone: values.phone,
-    //     password: values.emailPassword,
-    //   };
-    // }
-   
+    if (userData.type === "master"){
+      passwordComfirm = {
+        id: userData.id,
+        password: values.emailPassword,
+      };
+    } else if(userData.email)  {
+      passwordComfirm = {
+        email: userData.email,
+        password: values.emailPassword,
+      };
+    } else {
+      passwordComfirm = {
+        phone: values.phone,
+        password: values.emailPassword,
+      };
+    }
+    try{
+    
+    const response = await axios.request(PostMethod(`api/login`,passwordComfirm));
+
+    if(response.data.status==="success"){
+      // toast.success(response.data.message);
+  
+         toast.success("password correct");
+        setConPass(true);
+        return;
+     
+    }
+    if(response.data.status==="error"){  
+         toast.error("invalid password");
+        return;
+    }
+     }catch(error){
+       toast.error("invalid password");
+       console.log(error)
+     }
+     
+    // postMethod(`api/login`, passwordComfirm).then((data) => {
+    //   const { postData, errors: eMessage } = data;
+    //   if (postData) {
+    //     toast.success("password correct");
+    //     setConPass(true);
+    //     return;
+    //   }
+    //   if (eMessage) {
+    //     toast.error("invalid password");
+    //     return;
+    //   }
+    // });
   };
 
-  const ConfirmEmail = () => {
+  const userData = useSelector(userInfo);
+  const ConfirmEmail = async() => {
     if (values.email === "") {
-      toast.error("please enter new phone field");
+      toast.error("please enter new email field");
       return;
     }
- 
-  };
-  const ChangeEmailHandler = (e) => {
-    e.preventDefault();
-
+    try{
+    
+      const response = await axios.request(PostMethod(`api/send-sms-otp`,{ phone: values.email }));
   
+      if(response.data.status==="success"){
+        // toast.success(response.data.message);
+    
+        toast.success("Send Otp code successfully");
+            setConEmail(true);
+            return;
+       
+      }
+      if(response.data.status==="error"){  
+              toast.error("please enter correct email");
+        return;
+      }
+       }catch(error){
+         toast.error("invalid password");
+         console.log(error)
+       }
+  
+    // postMethod(`api/send-email-otp`, { email: values.email }).then((data) => {
+    //   const { postData, errors: eMessage } = data;
+    //   if (postData) {
+    //     toast.success("Send Otp code successfully");
+    //     setConEmail(true);
+    //     return;
+    //   }
+    //   if (eMessage) {
+    //     toast.error("please enter correct email");
+    //     return;
+    //   }
+    // });
+  };
+ 
+  const ChangeEmailHandler = async (e) => {
+    e.preventDefault();
+    try{
+    
+      const response = await axios.request(PostMethod(`api/change-email-or-phone`, {
+        old_password: values.emailPassword,
+        email_or_phone: values.email,
+        verification_code: values.opt,
+      }));
+  
+      if(response.data.status==="success"){
+        // toast.success(response.data.message);
+    
+        toast.success("Email change successfully");
+        setValues({
+          emailPassword: "",
+          email: "",
+          opt: "",
+          showPassword: false,
+        });
+        setConEmail(false);
+        setConPass(false);
+        logoutHandler();
+       
+      }
+      if(response.data.status==="error"){  
+        toast.error(response.data.message);
+
+        return;
+      }
+       }catch(error){
+        toast.error(error.response.data.message);
+
+        return;
+       }
+    // postMethod(`api/change-email-or-phone`, {
+    //   old_password: values.emailPassword,
+    //   email_or_phone: values.email,
+    //   verification_code: values.opt,
+    // }).then((data) => {
+    //   const { postData, errors: eMessage } = data;
+
+    //   if (eMessage) {
+    //     toast.error(eMessage);
+
+    //     return;
+    //   } else {
+    //     toast.success("Email change successfully");
+    //     setValues({
+    //       emailPassword: "",
+    //       email: "",
+    //       opt: "",
+    //       showPassword: false,
+    //     });
+    //     setConEmail(false);
+    //     setConPass(false);
+    //     logout();
+    //   }
+    // });
   };
   const handleMouseDownPassword = (event) => {
     event.preventDefault();

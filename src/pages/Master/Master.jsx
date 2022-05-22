@@ -3,17 +3,16 @@ import Card from '../../components/UI/Card';
 import MasterSettingCard from './MasterSettingCard/MasterSettingCard';
 import classes from './Master.module.css';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import { useEffect } from 'react';
 import { getMethod } from '../../services/api-services';
 import { logoutHandler } from '../../components/Sidebar/Sidebar';
 import { cancelMasterApi, completeMasterApi, confirmMasterApi, pendingMasterApi } from '../../services/api-collection';
-
 const Master = () => {
   const [pendingMaster,setPendingMaster] = useState([]);
   const [confirmMaster,setConfirmMaster] = useState([]);
   const [completeMaster,setCompleteMaster] = useState([]);
   const [cancelMaster,setCancelMaster] = useState([]);
- 
   const fetchPending = async()=>{
     try{
       const pending = await axios.request(getMethod(pendingMasterApi));
