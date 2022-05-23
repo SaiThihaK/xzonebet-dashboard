@@ -23,7 +23,6 @@ const AdsContent = () => {
     setTitle(data.content2_title);
     // setEditorState(data.content1_detail);
   }, [editorState,data]);      
-    
     const [open,setOpen] = useState(false);
     const handleOpen = ()=>setOpen(true);
    const handleClose= ()=>setOpen(false);
@@ -32,7 +31,7 @@ const AdsContent = () => {
     try{
 const response =await  axios.request(PutMethod(`api/xzonebet-affiliates/content`,{
   content2_title:title,
-  content2_detail:editorState.getCurrentContent().getPlainText()
+  content2_detail:stateToHTML(editorState.getCurrentContent())
 }));
 console.log(response);
 if(response.data.status==="success"){
@@ -52,6 +51,7 @@ if(response.data.status === "error"){
     toast.error(error.response.data.message)
     }
   }
+
      return (
          <>
      <PageTitleCard title="Advertisement Content">
@@ -61,11 +61,11 @@ if(response.data.status === "error"){
                  {
                    loading ? (<div>
                     <div className={classes["card-title"]}>{data.content2_title}</div>
-                    <p className={classes["card-text"]}>
+                    <div className={classes["card-text"]}>
                     {
-                      data.content2_detail
+                      <div className={classes["list-style"]} dangerouslySetInnerHTML={{__html:   data.content2_detail }} />
                     }
-                     </p>
+                     </div>
                      </div>):(<CustomLoading />)
                  }
                </>
