@@ -4,14 +4,14 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 
-export default function DemoTimePicker() {
-  const [value, setValue] = React.useState(null);
+export default function DemoTimePicker({time,setTime}) {
+  
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <TimePicker
-        value={value}
+        value={time}
         onChange={(newValue) => {
-          setValue(newValue);
+          setTime(newValue);
         }}
         renderInput={(params) => <TextField {...params}  size="small" sx={{width:300}} />}
       />
