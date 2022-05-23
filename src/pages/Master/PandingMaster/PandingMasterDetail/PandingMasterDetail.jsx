@@ -47,7 +47,7 @@ const PandingMasterDetail = () => {
   const {id} = useParams();
   const submitHandler = async(e)=>{
     e.preventDefault();
-    if(!real_name ||!payment_name||!transition_id||!amount||!currency||!username||!password||!deposit_percent ||!withdraw_percent){
+    if(!real_name ||!payment_name||!transition_id||!amount||!username||!password||!deposit_percent ||!withdraw_percent){
       alertToast(toast.warning,"Please Fill All the Field")
       return;
     }
@@ -244,7 +244,7 @@ if(response.data.status === "error"){
                         {
                           payment_provider?.payment_providers?.map((prov,index)=>(
                             <MenuItem key={index} value={prov} style={{display:"flex"}}>
-                            <Avatar src={prov.logo} />
+                            {/* <Avatar src={prov.logo} /> */}
                             {
                               prov.name
                             }
@@ -440,13 +440,13 @@ if(response.data.status === "error"){
       {
         localStorage.getItem("type") !== "hr" && (
         <div style={{display:"flex",marginTop:20,justifyContent:"flex-end",marginRight:100}}>
-        <Button type="submit" onClick={(e)=>{submitHandler(e)}} variant="contained">Submit</Button>
         <Button variant="contained" color="error" 
-        style={{marginLeft:100}}
+        style={{marginRight:100}}
         onClick={()=>{
           handleOpen();
           setId(id);
         }}>Reject</Button>
+        <Button type="submit" onClick={(e)=>{submitHandler(e)}} variant="contained">Submit</Button>
       </div>
       )
       }

@@ -10,6 +10,7 @@ import CustomLoading from '../../../components/CustomLoading/CustomLoading';
 import { PutMethod } from '../../../services/api-services';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { stateToHTML } from "draft-js-export-html";
 const AdsContent = () => {
   const[render,setRender] = useState(false);
   const {data,loading} = CustomGetFunction(`api/xzonebet-affiliates/content`,[render]);
