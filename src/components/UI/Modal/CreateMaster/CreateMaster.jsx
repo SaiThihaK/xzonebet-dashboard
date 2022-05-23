@@ -7,7 +7,7 @@ import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
 import classes from "./CreateMaster.module.css";
 import CustomGetFunction from "../../../../services/CustomGetFunction"
-import {Grid, MenuItem, Select } from "@mui/material"
+import {Grid, MenuItem, Select,InputLabel,FormControl } from "@mui/material"
 import axios from "axios";
 import { PostMethod } from "../../../../services/api-services";
 import { toast } from "react-toastify";
@@ -149,10 +149,13 @@ const CreateMaster = ({ open, handleClose ,render,setRender}) => {
               value={phone}
               onChange={(e)=>setPhone(e.target.value)}
             />
+            <FormControl fullWidth>
+            <InputLabel id="demo-select-small">Country</InputLabel>
             <Select
               sx={{ width: "100%", mb: 1.5 }}
+              labelId="demo-select-small"
               size="small"
-              id="outlined-basic"
+              id="demo-select-small"
               label="Country"
               variant="outlined"
               value={country.name}
@@ -168,10 +171,14 @@ const CreateMaster = ({ open, handleClose ,render,setRender}) => {
             ))
           }
             </Select>
+            </FormControl>
+            <FormControl fullWidth>
+            <InputLabel id="demo-select-medium">State</InputLabel>
             <Select
               sx={{ width: "100%", mb: 1.5 }}
               size="small"
-              id="outlined-basic"
+              labelId="demo-select-small"
+              id="demo-select-medium"
               label="State"
               variant="outlined"
               value={state.name}
@@ -187,10 +194,14 @@ const CreateMaster = ({ open, handleClose ,render,setRender}) => {
                 ))
               }
             </Select>
+            </FormControl>
+            <FormControl fullWidth>
+            <InputLabel id="demo-select-medium">Country</InputLabel>
             <Select
               sx={{ width: "100%", mb: 1.5 }}
               size="small"
               id="outlined-basic"
+              labelId="demo-select-small"
               label="City"
               variant="outlined"
               value={city}
@@ -204,6 +215,8 @@ const CreateMaster = ({ open, handleClose ,render,setRender}) => {
                 ))
               }
             </Select>
+            </FormControl>
+
             </form>
             </Grid>
           </Grid>
