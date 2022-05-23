@@ -62,7 +62,8 @@ const ContactForm = () => {
          </div>
          <div className={classes["form"]}>
            <label>Date</label>
-           <DemoDatePicker/>
+           {/* <DemoDatePicker/> */}
+           <TextField size="small" fullWidth sx={{width:300}} />
            <div className={classes["btn-container"]}>
              <Button variant="contained" color="success" size="samll">Save</Button>
            </div>
