@@ -38,8 +38,10 @@ const FixtureTable = ({ bettingData }) => {
   const [id, setId] = useState("");
   const [open, setOpen] = useState(false);
   const openHandler = (id) => {
-    setOpen(true);
+    console.log(id);
+    
     setId(id);
+    setOpen(true);
   };
   const { data} = CustomGetFunction("api/football-fixtures", []);
   let response = false;

@@ -96,8 +96,8 @@ const NewbetModal = ({ open, bettingData, closeHandler }) => {
       if ((data.status = "success")) {
         toast.success(data.message);
         setNewBet({
-          oddType: "",
-          oddType1: "",
+          oddType: "over",
+          oddType1: "under",
           body: "",
           body1: "",
           body2: "",
@@ -110,7 +110,6 @@ const NewbetModal = ({ open, bettingData, closeHandler }) => {
       }
       if ((data.status = "error")) {
         toast.error(data.message);
-
         return;
       }
     } catch (error) {
@@ -128,11 +127,12 @@ const NewbetModal = ({ open, bettingData, closeHandler }) => {
     <div>
       <Modal
         open={open}
+      
         onClose={closeHandler}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        {bettingData && ( <Box sx={style}>
           <Typography
             id="modal-modal-title"
             variant="body-1"
@@ -194,7 +194,23 @@ const NewbetModal = ({ open, bettingData, closeHandler }) => {
                   <p>{bettingData?.teams?.home?.name}</p>
                 </div>
               </div>
-              <FormControl style={{ marginLeft: 200, marginTop: 20 }}>
+             <FormControl style={{ marginLeft: 200, marginTop: 20 }}>
+  <InputLabel id="demo-simple-select-label">  Under/Over</InputLabel>
+  <Select
+    labelId="demo-simple-select-label"
+    id="demo-simple-select"
+    sx={{ width: 200 }}
+    variant="outlined"
+    label="Under/Over"
+    value={newBet.oddType}
+                  onChange={handleChange("oddType")}
+  >
+    <MenuItem value="over">Over</MenuItem>
+    <MenuItem value="under">Under</MenuItem>
+    
+  </Select>
+</FormControl>
+              {/* <FormControl style={{ marginLeft: 200, marginTop: 20 }}>
                 <InputLabel id="demo-simple-select-label">
                   Under/Over
                 </InputLabel>
@@ -202,16 +218,17 @@ const NewbetModal = ({ open, bettingData, closeHandler }) => {
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
                   label="Under/Over"
+                  value={newBet.oddType1}
+                  onChange={handleChange("oddType1")}
                   variant="outlined"
                   sx={{ width: 200 }}
-                  value={newBet?.oddType}
-                  onChange={handleChange("oddType")}
+                  
                 >
                   size="small"
                   <MenuItem value="over">Over</MenuItem>
                   <MenuItem value="under">Under</MenuItem>
                 </Select>
-              </FormControl>
+              </FormControl> */}
             </Grid>
             {/* ----------------Team 2------------------- */}
             <Grid
@@ -254,10 +271,26 @@ const NewbetModal = ({ open, bettingData, closeHandler }) => {
                 </div>
               </div>
               <FormControl style={{ marginLeft: 200, marginTop: 20 }}>
+  <InputLabel id="demo-simple-select-label">  Under/Over</InputLabel>
+  <Select
+    labelId="demo-simple-select-label"
+    id="demo-simple-select"
+    sx={{ width: 200 }}
+    variant="outlined"
+    label="Under/Over"
+    value={newBet.oddType1}
+                  onChange={handleChange("oddType1")}
+  >
+    <MenuItem value="over">Over</MenuItem>
+    <MenuItem value="under">Under</MenuItem>
+    
+  </Select>
+</FormControl>
+              <FormControl style={{ marginLeft: 200, marginTop: 20 }}>
                 <InputLabel id="demo-simple-select-label">
                   Under/Over
                 </InputLabel>
-                <Select
+                {/* <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
                   label="Under/Over"
@@ -268,7 +301,7 @@ const NewbetModal = ({ open, bettingData, closeHandler }) => {
                 >
                   <MenuItem value="over">Over</MenuItem>
                   <MenuItem value="under">Under</MenuItem>
-                </Select>
+                </Select> */}
               </FormControl>
             </Grid>
           </Grid>
@@ -417,7 +450,8 @@ const NewbetModal = ({ open, bettingData, closeHandler }) => {
               Save
             </Button>
           </div>
-        </Box>
+        </Box>)}
+       
       </Modal>
     </div>
   );
