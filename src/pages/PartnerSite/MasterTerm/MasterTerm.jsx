@@ -5,17 +5,42 @@ import "./MasterTerm.css"
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import CustomGetFunction from "../../../services/CustomGetFunction"
+import axios from 'axios';
+import { PutMethod } from '../../../services/api-services';
+import { toast } from 'react-toastify';
 const MasterTerm = () => {
- const [textValue,setTextValue] = useState();
+
  const [open,setOpen] = useState(false);
  const handleOpen = ()=>setOpen(true);
 const handleClose= ()=>setOpen(false);
+// const [data,loading] = CustomGetFunction("",[]);
 const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
   useEffect(() => {
     console.log(editorState);
   }, [editorState]);
+
+// const createHandler = async()=>{
+//   try{
+//     const response = await axios.request(PutMethod(`api/xzonebet-affiliates/content`,{
+
+//     }));
+//     if(response.data.status==="success"){
+//       toast.success(response.data.status);
+//       return
+//     }
+//     if(response.data.status==="error"){
+//       toast.error(response.data.message);
+//       return;
+//     }
+//   }catch(error){
+//     toast.error(error.response.data.message);
+
+//   }
+  
+// }  
   return (
       <>
   <PageTitleCard title="Master Term and Condition">

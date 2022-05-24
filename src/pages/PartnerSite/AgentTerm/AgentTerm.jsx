@@ -10,12 +10,32 @@ const AgentTerm = () => {
  const [open,setOpen] = useState(false);
  const handleOpen = ()=>setOpen(true);
 const handleClose= ()=>setOpen(false);
+// const [data,loading] = CustomGetFunction("",[]);
 const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
   useEffect(() => {
     console.log(editorState);
   }, [editorState]);
+  // const createHandler = async()=>{
+//   try{
+//     const response = await axios.request(PutMethod(`api/xzonebet-affiliates/content`,{
+
+//     }));
+//     if(response.data.status==="success"){
+//       toast.success(response.data.status);
+//       return
+//     }
+//     if(response.data.status==="error"){
+//       toast.error(response.data.message);
+//       return;
+//     }
+//   }catch(error){
+//     toast.error(error.response.data.message);
+
+//   }
+  
+// } 
   return (
       <>
   <PageTitleCard title="Agent Term and Condition">

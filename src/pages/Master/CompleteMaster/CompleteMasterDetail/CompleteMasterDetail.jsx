@@ -24,7 +24,7 @@ const CompleteMasterDetail = () => {
       </Card>
       <div className={classes["btn-container"]}>
         <Button variant="contained" onClick={()=>navigate("/dashboard/account/master/complete-master/agent-table")} color="primary">Agent Table</Button>
-        <Button variant="contained" onClick={()=>navigate("/dashboard/account/master/complete-master/transition-table")} color="primary">Transition Table</Button>
+        {/* <Button variant="contained" onClick={()=>navigate("/dashboard/account/master/complete-master/transition-table")} color="primary">Transition Table</Button> */}
       </div>
     </div>
   );

@@ -9,10 +9,9 @@ import classes from "./ProfileDetail.module.css";
 import { toast } from 'react-toastify';
 import "./ProfileDetail.css";
 import { PostProvider } from "../../../../../services/api-services";
-const ProfileDetail = () => {
+const ProfileDetail = ({userData}) => {
   const navigate = useNavigate();
-  const userData = useSelector(userInfo)
-  console.log(userData);
+ 
   const type = localStorage.getItem("type");
   const [values, setValues] =useState({     
     name : userData?.name,
