@@ -73,10 +73,10 @@ return (<div>new bet</div>)
               </TableRow>
             </TableHead>
             
-              <TableBody>
+             
                 {bettingData.map((el, key) => {
                   return (
-                    <>
+                    <TableBody key={key}>
                     {
                       new Date(el?.fixture?.date)>new Date() && <StyledTableRow key={key}>
                       <StyledTableCell align="right">{key + 1}</StyledTableCell>
@@ -128,12 +128,11 @@ return (<div>new bet</div>)
                              </Button>
                       </StyledTableCell>
                     </StyledTableRow>
+                   
                     }
-                    
-                    </>
-                  );
+                   </TableBody>);
                 })}
-              </TableBody>
+              
             
            
           </Table>

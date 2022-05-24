@@ -48,7 +48,7 @@ const NewbetModal = ({ open, bettingData, closeHandler }) => {
     total2: "",
   });
   const handleChange = (prop) => (event) => {
-    setNewBet({ ...newBet, [prop]: event.target.value });
+    setNewBet({ ...newBet, [prop]: event?.target?.value });
   };
   const addNewBet = async (e) => {
     e.preventDefault();
@@ -204,7 +204,7 @@ const NewbetModal = ({ open, bettingData, closeHandler }) => {
                   label="Under/Over"
                   variant="outlined"
                   sx={{ width: 200 }}
-                  value={newBet.oddType}
+                  value={newBet?.oddType}
                   onChange={handleChange("oddType")}
                 >
                   size="small"
@@ -263,7 +263,7 @@ const NewbetModal = ({ open, bettingData, closeHandler }) => {
                   label="Under/Over"
                   variant="outlined"
                   sx={{ width: 200 }}
-                  value={newBet.oddType1}
+                  value={newBet?.oddType1}
                   onChange={handleChange("oddType1")}
                 >
                   <MenuItem value="over">Over</MenuItem>
@@ -283,7 +283,7 @@ const NewbetModal = ({ open, bettingData, closeHandler }) => {
                   size="small"
                   type="number"
                   style={{ width: "100%" }}
-                  value={newBet.body1}
+                  value={newBet?.body1}
                   onChange={handleChange("body1")}
                 />
               </div>
@@ -292,7 +292,7 @@ const NewbetModal = ({ open, bettingData, closeHandler }) => {
               <FormControl fullWidth style={{ marginTop: 20 }}>
                 <Select
                   size="small"
-                  value={newBet.body}
+                  value={newBet?.body}
                   onChange={handleChange("body")}
                 >
                   <MenuItem
@@ -337,7 +337,7 @@ const NewbetModal = ({ open, bettingData, closeHandler }) => {
                   size="small"
                   type="number"
                   style={{ width: "100%" }}
-                  value={newBet.body2}
+                  value={newBet?.body2}
                   onChange={handleChange("body2")}
                 />
               </div>
@@ -352,7 +352,7 @@ const NewbetModal = ({ open, bettingData, closeHandler }) => {
                   size="small"
                   type="number"
                   style={{ width: "100%" }}
-                  value={newBet.total1}
+                  value={newBet?.total1}
                   onChange={handleChange("total1")}
                 />
               </div>
@@ -361,7 +361,7 @@ const NewbetModal = ({ open, bettingData, closeHandler }) => {
               <FormControl fullWidth style={{ marginTop: 20 }}>
                 <Select
                   size="small"
-                  value={newBet.total}
+                  value={newBet?.total}
                   onChange={handleChange("total")}
                 >
                   <MenuItem
@@ -405,7 +405,7 @@ const NewbetModal = ({ open, bettingData, closeHandler }) => {
                 <TextField
                   size="small"
                   type="number"
-                  value={newBet.total2}
+                  value={newBet?.total2}
                   onChange={handleChange("total2")}
                   style={{ width: "100%" }}
                 />

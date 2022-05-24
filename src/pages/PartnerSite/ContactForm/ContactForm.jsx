@@ -21,7 +21,7 @@ const ContactForm = () => {
     const [from,setFrom] = useState('');
     const [to,setTo] = useState('');
     const {data,loading} = CustomGetFunction(`api/xzonebetaffiliate/contact-edit`,[render]);
-    
+    console.log("contactData",data);
     let today = new Date();
     let currentDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
     console.log(currentDate);

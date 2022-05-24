@@ -35,7 +35,7 @@ const AlertToast = msg=>msg;
 
 const diff_form_type = ()=>{
   if( age==="agent"){
-    return {user_type:age || data?.form_type,master_id:master_id}
+    return {user_type:age || data?.form_type,master_id:"1"}
   }
   if( age==="master"){
     return {user_type:age || data?.form_type, super_master_id:superMaster_id}

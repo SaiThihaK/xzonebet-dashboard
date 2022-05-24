@@ -10,7 +10,7 @@ import ProfileDetail from "./ProfileDetail/ProfileDetail";
 const MProfile = ()=>{
 const userData = useSelector(userInfo);
 const type = localStorage.getItem("type");
-console.log("userData",userData);
+
 
 return(
     <div className={classes["container"]}>
@@ -32,7 +32,7 @@ return(
         <h1 className={classes["card-title"]}>Info</h1>
         </div>
         <div className={classes["card-body"]}>
-        <ProfileDetail  />
+        <ProfileDetail userData={userData}  />
         </div>
         </Card>
         </div>
