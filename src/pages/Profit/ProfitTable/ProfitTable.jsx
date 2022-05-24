@@ -36,7 +36,7 @@ const agentProfitTitle=[
 ]
 
 const MasterProfitTitile=[
-  "Date","Type","Amount","Parcentage","Agent Name","Agent Perentage","Profit","Remark"
+  "Date","Type","Amount","Agent Name","Note"
 ]
 
 
@@ -46,10 +46,7 @@ const ProfitTable = ({type,master}) => {
   let TotalPen=0;
   let TotalAgentPen=0;
   let TotalProfit=0;
-  
 console.log(master)
-
-
   const addAmount=(el)=>{
 TotalAmount=TotalAmount+el;
     return el
@@ -167,7 +164,6 @@ TotalAmount=TotalAmount+el;
               AgentName: "Zaw Zaw",
               Agent_Percentage: 20,
               Remark: "complete"}
-
     ]
   return (  
       <>
@@ -208,17 +204,18 @@ TotalAmount=TotalAmount+el;
           {master.map((el,index) => (
             <StyledTableRow key={index}>
               <StyledTableCell align="left">{index}</StyledTableCell>
-              <StyledTableCell align="left">{el.Date}</StyledTableCell>
-              <StyledTableCell align="center"> <Box sx={{backgroundColor: el.Type ==="WithDraw" ? "red" : "rgb(251,177,23)" ,color : "white",borderRadius: "7px",padding: "6px 5px",}}> {el.Type}</Box> </StyledTableCell>
-              <StyledTableCell align="left">{ addAmount(el.Amount) }</StyledTableCell>
-              <StyledTableCell align="left">{ addPercentage(el.Amount * (el.Percentage / 100) ) }</StyledTableCell>
-              <StyledTableCell align="left">{el.AgentName}</StyledTableCell>
-              <StyledTableCell align="left">{ addAgentPercentage(el.Amount * (el.Percentage / 100) ) * (el.Agent_Percentage / 100) }</StyledTableCell>
-              <StyledTableCell align="center" > <Box sx={{backgroundColor: "green" ,color : "white",borderRadius: "7px",padding: "6px 10px",}} >{ addProfit(((el.Amount * (el.Percentage / 100) ) * ( (Math.abs(100-el.Agent_Percentage)) / 100))) }</Box> </StyledTableCell>
-              <StyledTableCell align="left">{el.Remark}</StyledTableCell>
+              <StyledTableCell align="left">{el.readable_date}</StyledTableCell>
+              <StyledTableCell align="center"> <Box sx={{backgroundColor: el.Type ==="WithDraw" ? "red" : "rgb(251,177,23)" ,color : "white",borderRadius: "7px",padding: "6px 5px",}}> {el.type}</Box> </StyledTableCell>
+              <StyledTableCell align="left">{ addAmount(el.amount) }</StyledTableCell>
+              {/* <StyledTableCell align="left">{ addPercentage(el.Amount * (el.Percentage / 100) ) }</StyledTableCell> */}
+              <StyledTableCell align="left">{el?.sender_user?.name}</StyledTableCell>
+              {/* <StyledTableCell align="left">{ addAgentPercentage(el.Amount * (el.Percentage / 100) ) * (el.Agent_Percentage / 100) }</StyledTableCell> */}
+              {/* <StyledTableCell align="center" > <Box sx={{backgroundColor: "green" ,color : "white",borderRadius: "7px",padding: "6px 10px",}} >{ addProfit(((el.Amount * (el.Percentage / 100) ) * ( (Math.abs(100-el.Agent_Percentage)) / 100))) }</Box> </StyledTableCell> */}
+              {/* <StyledTableCell align="left">{el.Remark}</StyledTableCell> */}
+              <StyledTableCell align="left">{el.note}</StyledTableCell>
             </StyledTableRow>
           ))}
-          <StyledTableRow >
+          {/* <StyledTableRow >
               <StyledTableCell align="left" colSpan={3}>Total</StyledTableCell>
             
            
@@ -228,7 +225,7 @@ TotalAmount=TotalAmount+el;
               <StyledTableCell align="left">{TotalAgentPen}</StyledTableCell>
               <StyledTableCell align="left"><Box sx={{backgroundColor: "green" ,color : "white",borderRadius: "7px",padding: "6px 10px",}} >{TotalProfit}</Box></StyledTableCell>
               <StyledTableCell align="left"></StyledTableCell>
-            </StyledTableRow>
+            </StyledTableRow> */}
         </TableBody>
       </Table>
     </TableContainer>
@@ -250,3 +247,5 @@ TotalAmount=TotalAmount+el;
 }
 
 export default ProfitTable
+
+

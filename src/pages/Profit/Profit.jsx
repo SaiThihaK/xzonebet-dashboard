@@ -6,8 +6,11 @@ import { DateRangePicker, LocalizationProvider } from "@mui/lab";
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import Box from '@mui/material/Box';
 import { Button, TextField } from '@mui/material';
+import {getResDate} from '../../Controller/ChangeDate';
+import CustomGetFunction from '../../services/CustomGetFunction';
 const Profit = ({type}) => {
-  console.log(type);
+  const {data,loading} = CustomGetFunction(`api/agents/wallet/profit-record?sortColumn=id&sortDirection=desc&limit=10`,[]);
+  console.log("heo",data);
     const [value, setValue] = React.useState([null, null]);
     const masterProfit=[
     { 
@@ -98,7 +101,7 @@ Remark : "complete"},
         <Button variant="contained">Export File</Button>
     </div>
     </div>
-   <ProfitTable type={type} master={masterProfit} />
+   <ProfitTable type={type}  master={data} />
    </div>
    </PageTitleCard>
   )
