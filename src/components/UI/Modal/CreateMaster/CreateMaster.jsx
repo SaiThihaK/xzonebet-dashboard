@@ -90,7 +90,7 @@ const CreateMaster = ({ open, handleClose ,render,setRender}) => {
             <form action="">
             <TextField
               sx={{ width: "100%", mb: 1.5, mt: 2 }}
-              size="small"
+              
               id="outlined-basic"
               label="Name"
               variant="outlined"
@@ -99,7 +99,7 @@ const CreateMaster = ({ open, handleClose ,render,setRender}) => {
             />
             <TextField
               sx={{ width: "100%", mb: 1.5 }}
-              size="small"
+              
               id="outlined-basic"
               label="Gmail"
               variant="outlined"
@@ -108,7 +108,7 @@ const CreateMaster = ({ open, handleClose ,render,setRender}) => {
             />
             <TextField
               sx={{ width: "100%", mb: 1.5 }}
-              size="small"
+              
               id="outlined-basic"
               label="Password"
               variant="outlined"
@@ -117,7 +117,7 @@ const CreateMaster = ({ open, handleClose ,render,setRender}) => {
             />
             <TextField
               sx={{ width: "100%", mb: 1.5 }}
-              size="small"
+              
               id="outlined-basic"
               label="Deposit Percent"
               variant="outlined"
@@ -127,7 +127,7 @@ const CreateMaster = ({ open, handleClose ,render,setRender}) => {
             />
             <TextField
               sx={{ width: "100%", mb: 1.5 }}
-              size="small"
+              
               id="outlined-basic"
               label="Withdraw Percent"
               type="number"
@@ -142,7 +142,7 @@ const CreateMaster = ({ open, handleClose ,render,setRender}) => {
             <form action="">
             <TextField
               sx={{ width: "100%", mb: 1.5, mt: 2 }}
-              size="small"
+              
               id="outlined-basic"
               label="Phone"
               variant="outlined"
@@ -154,7 +154,7 @@ const CreateMaster = ({ open, handleClose ,render,setRender}) => {
             <Select
               sx={{ width: "100%", mb: 1.5 }}
               labelId="demo-select-small"
-              size="small"
+              
               id="demo-select-small"
               label="Country"
               variant="outlined"
@@ -176,7 +176,7 @@ const CreateMaster = ({ open, handleClose ,render,setRender}) => {
             <InputLabel id="demo-select-medium">State</InputLabel>
             <Select
               sx={{ width: "100%", mb: 1.5 }}
-              size="small"
+              
               labelId="demo-select-small"
               id="demo-select-medium"
               label="State"
@@ -196,10 +196,9 @@ const CreateMaster = ({ open, handleClose ,render,setRender}) => {
             </Select>
             </FormControl>
             <FormControl fullWidth>
-            <InputLabel id="demo-select-medium">Country</InputLabel>
+            <InputLabel id="demo-select-medium">City</InputLabel>
             <Select
               sx={{ width: "100%", mb: 1.5 }}
-              size="small"
               id="outlined-basic"
               labelId="demo-select-small"
               label="City"
