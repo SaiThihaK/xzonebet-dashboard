@@ -7,6 +7,7 @@ import CreateMaster from '../../components/UI/Modal/CreateMaster/CreateMaster';
 import classes from './SuperMaster.module.css';
 import CustomGetFunction from '../../services/CustomGetFunction';
 import MemberCard from '../../components/MemberCard/MemberCard';
+import CustomLoading from "../../components/CustomLoading/CustomLoading"
 const SuperMaster = () => {
   const [open, setOpen] = useState(false);
   const [render,setRender] = useState(false);
@@ -21,20 +22,21 @@ const SuperMaster = () => {
           <h1 className={classes["card-title"]}>All Super Master</h1>
           <Button onClick={handleOpen} variant="contained">Create</Button>
         </div>
-        <div className={classes["card-body"]}>
+        {
+          loading ? ( <div className={classes["card-body"]}>
           <Grid container spacing={3}>
             {/* <Grid item key={index} xs={6}>
            </Grid> */}
               {/* <MemberCard partner={data} route={`/dashboard/account/super-master/detail/${sup.id}`} /> */}
              {
                data.map((sup,index)=>(
-             
-                 
-                   <SuperMasterCard data={sup} key={index} />
+              <SuperMasterCard data={sup} key={index} />
                ))
              }
           </Grid>
-        </div>
+        </div>):(<CustomLoading />)
+        }
+       
       </Card>
       <CreateMaster open={open} handleClose={handleClose} render={render} setRender={setRender}/>
     </div>
