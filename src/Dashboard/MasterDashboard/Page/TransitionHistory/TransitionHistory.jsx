@@ -28,7 +28,7 @@ const TransitionHistory = () => {
         </div>
         <div className={classes["card-body"]}>
           <div className={classes["table-container"]}>
-            <div className={classes["search-header-flex"]}>
+            {/* <div className={classes["search-header-flex"]}>
               <div className={classes.formGroup}>
                 <TextField
                   sx={{ width: 300 }}
@@ -58,7 +58,7 @@ const TransitionHistory = () => {
       />
     </LocalizationProvider>
     </div>
-            </div>
+            </div> */}
       <TransitionHistoryTable />
           </div>
         </div>
