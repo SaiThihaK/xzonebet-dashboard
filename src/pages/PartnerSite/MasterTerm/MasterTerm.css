@@ -8,6 +8,18 @@
 .DraftEditor-editorContainer{
     height: 300px !important;
 }
+.list-style{
+    font-size: 18px;
+}
+
+.list-style ul li{
+    margin-top: 10px;
+    list-style: inside;
+}
+
+.list-style ol li{
+margin-top: 10px;
+}
 /* .public-DraftStyleDefault-ltr{
 height: 300px;
 } */
