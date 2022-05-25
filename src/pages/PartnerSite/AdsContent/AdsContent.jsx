@@ -3,7 +3,7 @@ import React, { useState,useEffect } from 'react'
 import classes from "./AdsContent.module.css"
 import PageTitleCard from "../../../components/UI/PageTitleCard/PageTitleCard"
 import { Editor } from "react-draft-wysiwyg";
-import { EditorState } from "draft-js";
+import { EditorState, ContentState, convertFromHTML } from 'draft-js'
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import CustomGetFunction from "../../../services/CustomGetFunction"
 import CustomLoading from '../../../components/CustomLoading/CustomLoading';
@@ -16,13 +16,23 @@ const AdsContent = () => {
   const {data,loading} = CustomGetFunction(`api/xzonebet-affiliates/content`,[render]);
   const [title,setTitle] = useState("");
   const [editorState, setEditorState] = useState(() =>
-    EditorState.createEmpty()
-  );
-  useEffect(() => {
-    console.log(editorState);
-    setTitle(data.content2_title);
-    // setEditorState(data.content1_detail);
-  }, [editorState,data]);      
+
+  EditorState.createWithContent(
+    ContentState.createFromBlockArray(
+      convertFromHTML(`<div> ${data?.content2_detail}  </div> ` )
+    )
+    ));
+    useEffect(()=>{
+      setEditorState(
+        () =>
+  
+  EditorState.createWithContent(
+    ContentState.createFromBlockArray(
+      convertFromHTML(`<div> ${data?.content2_detail}  </div> ` )
+    )
+    )
+      );
+    },[data])      
     const [open,setOpen] = useState(false);
     const handleOpen = ()=>setOpen(true);
    const handleClose= ()=>setOpen(false);
@@ -38,6 +48,7 @@ if(response.data.status==="success"){
   toast.success(response.data.message);
   handleClose();
   setRender(!render)
+  handleClose();
   return
 }
 if(response.data.status === "error"){
@@ -83,7 +94,6 @@ if(response.data.status === "error"){
               onEditorStateChange={setEditorState}
             />
           </div>
-            
                    </div>
                   
                   </div>
@@ -93,7 +103,7 @@ if(response.data.status === "error"){
     </PageTitleCard>
          <div className={classes["card-body"]}>
     {open &&<Stack direction="row" spacing={3} style={{display:"flex",justifyContent:"flex-end",marginTop:20,marginRight:20}}>
-       <Button onClick={()=>{submitHandler();}} variant="contained" >Confirm</Button>
+        <Button onClick={()=>{submitHandler();}} variant="contained" >Confirm</Button>
        <Button onClick={()=>{handleClose()}}  variant="contained" color="error">Cancel</Button>
        </Stack> }
        {!open &&<Stack direction="row" spacing={3} style={{display:"flex",justifyContent:"flex-end",marginTop:20,marginRight:20}}>
