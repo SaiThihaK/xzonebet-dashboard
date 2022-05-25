@@ -123,7 +123,7 @@ export const SuperMasterSidebarData = [
         ]
     },
     {
-        title: "Become An Agent",
+        title: "Become An Partner",
         path: "/dashboard/become-an-agent",
         icon: <RiAccountPinCircleFill/>
     },

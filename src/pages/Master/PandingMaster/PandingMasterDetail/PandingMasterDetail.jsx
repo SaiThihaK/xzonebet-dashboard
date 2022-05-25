@@ -69,6 +69,7 @@ const PandingMasterDetail = () => {
             password,
             deposit_percent,
             withdraw_percent,
+            super_master_id:supValue,
             payment_acount_name:paymentAccount.name,
             payment_acount_no:paymentAccount.account_no
           },

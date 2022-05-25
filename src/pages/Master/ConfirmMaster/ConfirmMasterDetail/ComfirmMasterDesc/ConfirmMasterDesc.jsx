@@ -15,9 +15,9 @@ const ComfirmMasterDesc = ({userInfo}) => {
     const alertToast = (msg) =>msg;
     const navigate = useNavigate();
     const [Id, setId] = React.useState("");
-  const [open,setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+    const [open,setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
     // console.log(userInfo.id);
    const confirmHandler = async()=>{
   //  console.log("confirm");
@@ -25,7 +25,7 @@ const ComfirmMasterDesc = ({userInfo}) => {
    const response = await axios.request(
      
     PostMethod(confirmDetail+userInfo.id,
-       {super_master_id:1},
+       {super_master_id:userInfo.super_master.id},
    ));
   //  console.log(response);
    if(response.data.status="success"){
@@ -77,16 +77,11 @@ const ComfirmMasterDesc = ({userInfo}) => {
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Currency </label>:<p>&nbsp;&nbsp;{userInfo.currency_type}</p>
         </div>
-        <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Transition ID </label>:<p>&nbsp;&nbsp;{userInfo.transition_id}</p>
-        </div>
-        <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Deposite Percentage</label>:<p>&nbsp;&nbsp;{userInfo.deposit_percent}</p>
-        </div>
-        <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Deposite Percentage</label>:<p>&nbsp;&nbsp;{userInfo.deposit_percent}</p>
-        </div>
        
+        <div className={classes["form-group-desc"]}>
+          <label htmlFor="">Deposite Percentage</label>:<p>&nbsp;&nbsp;{userInfo.deposit_percent}</p>
+        </div>
+        
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Withdraw Percentage</label>:<p>&nbsp;&nbsp;{userInfo.withdraw_percent}</p>
         </div>
@@ -94,8 +89,7 @@ const ComfirmMasterDesc = ({userInfo}) => {
    
       </Grid>
 
-        {
-          localStorage.getItem("type") !== "hr" && (
+        
             <form className={classes['btn-container']}>
             <Button   variant="contained" color="primary" onClick={confirmHandler} className={classes["btn"]}>Comfirm</Button>
             <Button variant="contained" color="error" 
@@ -105,8 +99,7 @@ const ComfirmMasterDesc = ({userInfo}) => {
           setId(userInfo.id);
         }}>Reject</Button>
             </form>
-          )
-        }
+       
        
       </Grid>
       <MasterDepositCancel open={open} handleClose={handleClose}  id={Id} route={'/dashboard/account/master/confirm-master'}  />
