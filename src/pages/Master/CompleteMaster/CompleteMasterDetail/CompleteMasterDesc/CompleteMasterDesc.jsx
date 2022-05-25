@@ -10,19 +10,15 @@ const CompleteMasterDesc = ({userInfo}) => {
   console.log("userInfo",userInfo);
   const type = localStorage.getItem("type");
   const [values, setValues] =useState({     
-    first_name : userInfo?.first_name,
-    last_name: userInfo?.last_name,
-    dob :  "20-12-1998",
-     NRC: "12432144543",
-     passport: "2343wsd3",
-     phone: userInfo?.phone,
-     email: userInfo?.email,
-     nationality: "Myanmar",
-      country: userInfo?.country,
-      region: userInfo?.city,
-      currencyType: "Crypto",
-      deposit_percent:userInfo?.deposit_percent,
-      withdraw_percent:userInfo?.withdraw_percent
+    first_name : "",
+    last_name: "",
+     phone: "",
+     email: "",
+      country: "",
+      region: "",
+      currencyType: "",
+      deposit_percent: "",
+      withdraw_percent:""
  }); 
   useEffect(()=>{
     setValues({      
@@ -33,12 +29,11 @@ const CompleteMasterDesc = ({userInfo}) => {
        passport: "2343wsd3",
        phone: userInfo?.phone,
        email: userInfo?.email,
-      //  nationality: userInfo?.agent?.country,
         country: userInfo?.country,
         region: userInfo?.city,
-        currencyType: "Crypto",
-        deposit_percent:userInfo?.deposit_percent,
-        withdraw_percent:userInfo?.withdraw_percent
+        currencyType:userInfo.currency_type || "",
+        deposit_percent:userInfo?.deposit_percent || "-",
+        withdraw_percent:userInfo?.withdraw_percent || "-"
    });
  },[userInfo]);
  
@@ -124,34 +119,41 @@ const handleChange = (prop) => (event) => {
                          <div className="p_btn"  onClick={()=>{showInput(20)}}> <i className="fas fa-pencil-alt"></i></div>
                          <div className={`p_absolute ${ showForm===20 &&  "p_a_show"}`} id="input_4">
                            <input type="name"   value={values?.last_name}
-                            onChange={handleChange('first_name')} / >
+                            onChange={handleChange('last_name')} / >
                            <i className="fas fa-check-circle" onClick={()=>{showInput("")}}></i>
                           </div>
                         </div>
                     </div>
                   
-                    <div className="p_item">
-                    <div>
-                      Deposit Percentage
+                    <div className="p_item ">
+                      <div>
+                      Deposite Percentage
+                      </div>
+                      <div className="p_ncolor" >
+                          <p className="input_1">{values?.deposit_percent }</p>
+                         <div className="p_btn"  onClick={()=>{showInput(15)}}> <i className="fas fa-pencil-alt"></i></div>
+                         <div className={`p_absolute ${ showForm===15 &&  "p_a_show"}`} id="input_4">
+                           <input type="deposite_percentage"   value={values?.deposit_percent}
+                            onChange={handleChange('deposite_percentage')} / >
+                           <i className="fas fa-check-circle" onClick={()=>{showInput("")}}></i>
+                          </div>
+                        </div>
                     </div>
-                    <div className="p_ncolor">
-                      <div >5% </div>
-                                        
-                          
+                  
+                    <div className="p_item ">
+                      <div>
+                      Withdraw  Percentage
+                      </div>
+                      <div className="p_ncolor" >
+                          <p className="input_1">{values?.withdraw_percent }</p>
+                         <div className="p_btn"  onClick={()=>{showInput(19)}}> <i className="fas fa-pencil-alt"></i></div>
+                         <div className={`p_absolute ${ showForm===19 &&  "p_a_show"}`} id="input_4">
+                           <input type="withdraw_percentage"   value={values?.withdraw_percent}
+                            onChange={handleChange('withdraw_percentage')} / >
+                           <i className="fas fa-check-circle" onClick={()=>{showInput("")}}></i>
+                          </div>
+                        </div>
                     </div>
-                   
-                  </div>
-                  <div className="p_item">
-                    <div>
-                      Withdraw Percentage
-                    </div>
-                    <div className="p_ncolor">
-                      <div >5% </div>
-                                        
-                          
-                    </div>
-                   
-                  </div>
            
               </div>
            </div>
@@ -169,12 +171,12 @@ const handleChange = (prop) => (event) => {
                       </div>
                       <div className="p_ncolor" >
                           <p className="input_1">{values.phone}</p>
-                         {/* <div className="p_btn"  onClick={()=>{showInput(6)}}> <i className="fas fa-pencil-alt"></i></div>
+                         <div className="p_btn"  onClick={()=>{showInput(6)}}> <i className="fas fa-pencil-alt"></i></div>
                          <div className={`p_absolute ${ showForm===6 &&  "p_a_show"}`}   id="input_4">
-                           <input type="number" className="form_p date_input "  value={values.phone}
+                           <input type="text" className="form_p date_input "  value={values.phone}
                             onChange={handleChange('phone')} / >
                            <i className="fas fa-check-circle" onClick={()=>{showInput("")}}></i>
-                          </div> */}
+                          </div>
                         </div>
                     </div>
               <div className="p_item ">
@@ -183,12 +185,12 @@ const handleChange = (prop) => (event) => {
                       </div>
                       <div className="p_ncolor">
                           <p className="input_1">{values.email}</p>
-                               {/* <div className="p_btn" onClick={()=>{showInput(1)}}><i className="fas fa-pencil-alt"></i></div>
+                               <div className="p_btn" onClick={()=>{showInput(1)}}><i className="fas fa-pencil-alt"></i></div>
                                <div className={`p_absolute ${ showForm=== 1 &&  "p_a_show"}`}id="input_3">
                                    <input type="email" className="form_p"  value={values.email}
                             onChange={handleChange('email')} />
                                    <i className="fas fa-check-circle" onClick={()=>{showInput("")}} ></i>
-                                  </div> */}
+                                  </div>
                         </div>
                     </div>
                     {/* <div className="p_item ">
