@@ -91,37 +91,26 @@ export const SuperMasterSidebarData = [
         iconClosed: <RiArrowDownSFill/>,
         iconOpened: <RiArrowUpSFill/>
     },
-    {
-        title: 'Account',
-        path: '/account',
-        icon: <RiAccountPinCircleFill />,
-        iconClosed: <RiArrowDownSFill/>,
-        iconOpened: <RiArrowUpSFill/>,
-        subNav : [
-            
             {
                 title: 'Master',
                 path: '/dashboard/account/master',
-                icon: <IoIosArrowForward />,
+                icon: <RiAccountPinCircleFill/>
             },
             {
                 title: 'Agent',
                 path: '/dashboard/account/agent',
-                icon: <IoIosArrowForward />,
+                icon: <RiAccountPinCircleFill/>
             },
             {
                 title: 'Affiliate Agent',
                 path: '/dashboard/account/affiliate-agent',
-                icon: <IoIosArrowForward />,
+                icon: <RiAccountPinCircleFill/>
             },
             {
                 title: 'User',
                 path: '/dashboard/account/user',
-                icon: <IoIosArrowForward />,
+                icon: <RiAccountPinCircleFill/>
             },
-            
-        ]
-    },
     {
         title: "Become An Partner",
         path: "/dashboard/become-an-agent",

@@ -8,7 +8,6 @@ const SuperMasterHome = () => {
  const {data:completeMaster} = CustomGetFunction(completeMasterApi,[]);
  const {data:users} = CustomGetFunction(`api/users?sortColumn=id&sortDirection=desc&limit=30`,[]);
  const {data:affiliateAgent} = CustomGetFunction(`/apiaffiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=affiliate-agent`,[]);
- console.log("affiliateAgent",affiliateAgent);
   return (
     <PageTitleCard title="SuperMaster Dashboard">
         <div className={classes["card-body"]}>

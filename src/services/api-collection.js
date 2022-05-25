@@ -9,7 +9,7 @@ export const cancelMasterApi = `api/affiliate-register-lists?sortColumn=id&sortD
 // Pending Detail Post
 export const pendingDetail =
   "api/affiliate-register-lists/master/deposit-pending/";
-export const confirmDetail = `api/affiliate-register-lists/confirm/`;
+export const confirmDetail = ` `;
 // PendingMasterDetail get
 export const AccountDetail = `api/affiliate-register-lists/`;
 
