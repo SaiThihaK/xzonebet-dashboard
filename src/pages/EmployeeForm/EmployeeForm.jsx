@@ -49,8 +49,10 @@ const EmployeeForm = () => {
   const [isEducation,setIsEducation] = useState(false);
 
   const {data : countryData} = CustomGetFunction('api/countries',[]);
-  const {data : stateData} = CustomGetFunction(`api/states/${countryId}`,[countryId]);
-  const {data : cityData} = CustomGetFunction( `api/cities/${stateId}`,[stateId]);
+
+  const {data : stateData} =  CustomGetFunction(`api/states/${countryId}`,[countryId]);
+
+  const {data : cityData} =  CustomGetFunction( `api/cities/${stateId}`,[stateId]);
   const {data} = CustomGetFunction("api/departments",[]);
   const submitHandler = async(e)=>{
     e.preventDefault();
