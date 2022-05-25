@@ -32,9 +32,9 @@ const PaymentAccount = () => {
         </div>
         <div className={classes["card-body"]}>
        <div style={{display:"flex",width:"100%"}}>
-       <div style={{flexGrow:1,marginBottom:20}}>
+       {/* <div style={{flexGrow:1,marginBottom:20}}>
             <Button variant="contained">Export</Button>
-          </div>
+          </div> */}
           <div style={{display:"flex",justifyContent:"flex-end",marginBottom:20}}>
             <Button variant="contained" onClick={handleOpen}>Create Payment Account</Button>
         </div>

@@ -16,9 +16,7 @@ import CustomGetFunction from "../../../../../services/CustomGetFunction";
 import { ChangeDate, getResDate } from "../../../../../Controller/ChangeDate";
 import CustomLoading from "../../../../../components/CustomLoading/CustomLoading";
 import Nodata from "../../../../../components/Nodata/Nodata";
-import { DataGrid, selectedIdsLookupSelector } from "@mui/x-data-grid";
-
-
+import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor:BasedColor.tableHead,
@@ -28,7 +26,6 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     fontSize: 14,
   },
 }));
-
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   "&:nth-of-type(odd)": {
     backgroundColor: theme.palette.action.hover,
@@ -43,7 +40,6 @@ const TransitionHistoryTable = () => {
     const [transferData,setTransferData] = React.useState([]);
     const [userData,setUserData] = React.useState([]);
    const {data,loading} = CustomGetFunction(`api/wallet/transfer-record?sortColumn=id&sortDirection=desc&limit=10&page=${page}`,[page])
-  
   const fetchUnit = async()=>{
     try{
       const response = await axios.request(getMethod("api/get-login-user"));
@@ -62,7 +58,6 @@ const TransitionHistoryTable = () => {
     }
 
   }
-
   useEffect(()=>{
     fetchUnit();
     return ()=>{
@@ -84,7 +79,8 @@ const TransitionHistoryTable = () => {
     width: 200,
     headerAlign: 'center',
     editable: false,
-    renderCell:(params)=>ChangeDate(params.row.created_at)
+    valueGetter:(params)=>params.row.readable_date,
+    renderCell:(params)=> ChangeDate(params.row.created_at)
      },
      {
       field: "transfer-amount",
@@ -92,9 +88,10 @@ const TransitionHistoryTable = () => {
       width: 150,
       headerAlign: 'center',
       editable: false,
-      renderCell:(params)=><div  style={userData?.id === params.row.receiver_user.id ? {color:'green'}:{color:"red"}}>
-      {userData?.id===params.row.receiver_user.id ? "+":"-"}{params.row.transfer_amount}
-      </div>
+      valueGetter:(params)=>  `${userData?.id===params.row.receiver_user.id ? "+":"-"} ${params.row.transfer_amount} `,
+        renderCell:(params)=> { return( <div  style={userData?.id === params.row.receiver_user.id ? {color:'green'}:{color:"red"}}>
+          {userData?.id===params.row.receiver_user.id ? "+":"-"}{params.row.transfer_amount}       </div> ) }
+
        },
        {
         field: "from",
@@ -102,7 +99,7 @@ const TransitionHistoryTable = () => {
         width: 150,
         headerAlign: 'center',
         editable: false,
-        renderCell:(params)=>params.row.sender_user.name
+        valueGetter:(params)=>params.row.sender_user.name
          },
          {
           field: "to",
@@ -110,7 +107,7 @@ const TransitionHistoryTable = () => {
           width: 150,
           headerAlign: 'center',
           editable: false,
-          renderCell:(params)=>params.row.receiver_user.name
+          valueGetter:(params)=>params.row.receiver_user.name
            },
            {
             field: "transition Name-note",
@@ -118,10 +115,9 @@ const TransitionHistoryTable = () => {
             width: 300,
             headerAlign: 'center',
             editable: false,
-            renderCell:(params)=>params.row.transaction_name || params.row.note
+            valueGetter:(params)=>params.row.transaction_name || params.row.note
              },
   ]
-
 
   return (
     <>
@@ -175,7 +171,7 @@ const TransitionHistoryTable = () => {
         } */}
        
         {
-        data.length !== 0 ? (<DataGrid columns={columns} rows={data} />) : (<Nodata />)
+        data.length !== 0 ? (<DataGrid columns={columns} rows={data}  components={{ Toolbar: GridToolbar }} />) : (<Nodata />)
         }
    
     </div>):(<CustomLoading />)

@@ -11,7 +11,11 @@ import { BasedColor } from '../../../Controller/BasedColor';
 import Card from "../../../components/UI/Card";
 import { Box } from "@mui/material";
 import classes from "./ProfitTable.module.css";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, GridToolbar } from '@mui/x-data-grid';
+import CustomLoading from "../../../components/CustomLoading/CustomLoading";
+import Nodata from "../../../components/Nodata/Nodata";
+import { logoutHandler } from "../../../components/Sidebar/Sidebar";
+import { ChangeDate } from "../../../Controller/ChangeDate";
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: BasedColor.tableHead,
@@ -34,19 +38,66 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 const agentProfitTitle=[ 
   "Date","User Name", "Time","Transition ID","Amount","Type","Payment Data"
 ]
-
 const MasterProfitTitile=[
   "Date","Type","Amount","Agent Name","Note"
 ]
+const columns = [
+  {
+field: "id",
+headerName: 'ID',
+width: 100,
+headerAlign: 'left',
+editable: false,
+ },
+ {
+  field: "date",
+  headerName: 'Date',
+  width: 200,
+  headerAlign: 'left',
+  editable: false,
+  valueGetter:(params)=>params.row.readable_date,
+  renderCell:(params)=> ChangeDate(params.row.created_at)
+   },
+   {
+    field: "type",
+    headerName: 'Type',
+    width: 150,
+    headerAlign: 'left',
+    editable: false,
+    valueGetter:(params)=> params.row.type ,
+      // renderCell:(params)=> { return(  <Box sx={{backgroundColor: params.row.type ==="withdraw" ? "red" : "rgb(251,177,23)" ,color : "white",borderRadius: "7px",padding: "6px 5px",}}> {params.row.type}</Box>  ) }
 
-
-
-const ProfitTable = ({type,master}) => {
+     },
+     {
+      field: "amount",
+      headerName: 'Amount',
+      width: 150,
+      headerAlign: 'left',
+      editable: false,
+      valueGetter:(params)=>params.row.amount
+       },
+       {
+        field: "to",
+        headerName: 'To',
+        width: 150,
+        headerAlign: 'left',
+        editable: false,
+        valueGetter:(params)=>params.row.sender_user.name
+         },
+         {
+          field: "note",
+          headerName: 'Note',
+          width: 400,
+          headerAlign: 'left',
+          editable: false,
+          valueGetter:(params)=>params.row.note 
+           },
+]
+const ProfitTable = ({type,data,loading}) => {
   let TotalAmount=0;
   let TotalPen=0;
   let TotalAgentPen=0;
-  let TotalProfit=0;
-console.log(master)
+  let TotalProfit=0
   const addAmount=(el)=>{
 TotalAmount=TotalAmount+el;
     return el
@@ -64,171 +115,22 @@ TotalAmount=TotalAmount+el;
                 return el;
               }
   console.log("master",type);
-  const columns = [
-    {
-      field: "date",
-      headerName: 'Date',
-      width: 100,
-      headerAlign: 'center',
-      editable: false,
-  
-    },
-    {
-      field: 'type',
-      headerName: 'Type',
-      width: 200,
-      headerAlign: 'center',
-      editable: true,
-    },
-    {
-      field: 'ammount',
-      headerName: 'Ammount',
-      width: 200,
-      headerAlign: 'center',
-      editable: true,
-    },
-    {
-      field: 'percentage',
-      headerName: 'Percentage',
-      width: 200,
-      headerAlign: 'center',
-      editable: true,
-    },
-    {
-      field: 'Agent Name',
-      headerName: 'Agent Name',
-      width: 200,
-      headerAlign: 'center',
-      editable: true,
-    },
-    {
-      field: 'Agent Percentage',
-      headerName: 'Agent Percentage',
-      width: 200,
-      headerAlign: 'center',
-      editable: true,
-    },
-    {
-      field: 'Profit',
-      headerName: 'Profit',
-      width: 200,
-      headerAlign: 'center',
-      editable: true,
-    },
-    {
-      field: 'Remark',
-      headerName: 'Remark',
-      width: 200,
-      headerAlign: 'center',
-      editable: true,
-    },
-  ];
-
-  const data=[
-    { 
-      id:4,
-      Date : "1.6.20222",
-      Type : "Deposit",
-      Percentage : 20,
-      Amount : 15000,AgentName : "Zaw Zaw",Agent_Percentage : 50,Remark : "complete"},
-      {
-     Date : "1.6.20222",
-      Type : "Deposit",
-      Percentage : 10,
-      Amount : 15000,
-      AgentName : "Zaw Zaw",Agent_Percenta : 40,
-       Remark : "complete"},
-        {
-    id:0,
-    Date : "1.6.20222",
-    Type : "WithDraw",
-    Percentage : 40,
-    Amount : 15000,
-    AgentName : "Zaw Zaw",
-    Agent_Percentage : 20,
-    Remark : "complete"},
-          {
-        id:1,
-        Date : "1.6.20222",
-        Type : "WithDraw",
-        Percentage : 5,
-        Amount : 15000,
-        AgentName : "Zaw Zaw",
-          Agent_Percentage : 20,
-          Remark : "complete"}, 
-          {   id:2,
-              Date: "1.6.20222",
-              Type: "Deposit",
-              Percentage : 10,
-              Amount: 15000,
-              AgentName: "Zaw Zaw",
-              Agent_Percentage: 20,
-              Remark: "complete"}
-    ]
   return (  
       <>
     <Card>
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 700}} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell>No</StyledTableCell>
-          { type === "master" ? (MasterProfitTitile.map((el)=> {
-            return (
-              <StyledTableCell align="left">{el}</StyledTableCell>
-            )
-          })) : (agentProfitTitle.map((el)=> {  
-            return (
-              <StyledTableCell align="left">{el}</StyledTableCell>
-            )
-          }))}
-            {/* <StyledTableCell align="left">Date</StyledTableCell>
-            <StyledTableCell align="left">User Name</StyledTableCell>
-            <StyledTableCell align="left">Time</StyledTableCell>
-            <StyledTableCell align="left">
-              Transition ID
-            </StyledTableCell>
-            <StyledTableCell align="left">Amount</StyledTableCell>          
-            <StyledTableCell align="left">Type</StyledTableCell>
-            <StyledTableCell align="left">Payment Date</StyledTableCell> */}
-          </TableRow>
-        </TableHead>
-       <TableBody>
-       {/* "Date" : "1.6.20222",
-      "Type" : "Deposit",
-      "Percentage" : 20,
-      "Amount" : 15000,
-      "AgentName" : "Zaw Zaw",
-      "Agent Percentage" : 50,
-      "Remark" : "complete" */}
-          {master.map((el,index) => (
-            <StyledTableRow key={index}>
-              <StyledTableCell align="left">{index}</StyledTableCell>
-              <StyledTableCell align="left">{el.readable_date}</StyledTableCell>
-              <StyledTableCell align="center"> <Box sx={{backgroundColor: el.Type ==="WithDraw" ? "red" : "rgb(251,177,23)" ,color : "white",borderRadius: "7px",padding: "6px 5px",}}> {el.type}</Box> </StyledTableCell>
-              <StyledTableCell align="left">{ addAmount(el.amount) }</StyledTableCell>
-              {/* <StyledTableCell align="left">{ addPercentage(el.Amount * (el.Percentage / 100) ) }</StyledTableCell> */}
-              <StyledTableCell align="left">{el?.sender_user?.name}</StyledTableCell>
-              {/* <StyledTableCell align="left">{ addAgentPercentage(el.Amount * (el.Percentage / 100) ) * (el.Agent_Percentage / 100) }</StyledTableCell> */}
-              {/* <StyledTableCell align="center" > <Box sx={{backgroundColor: "green" ,color : "white",borderRadius: "7px",padding: "6px 10px",}} >{ addProfit(((el.Amount * (el.Percentage / 100) ) * ( (Math.abs(100-el.Agent_Percentage)) / 100))) }</Box> </StyledTableCell> */}
-              {/* <StyledTableCell align="left">{el.Remark}</StyledTableCell> */}
-              <StyledTableCell align="left">{el.note}</StyledTableCell>
-            </StyledTableRow>
-          ))}
-          {/* <StyledTableRow >
-              <StyledTableCell align="left" colSpan={3}>Total</StyledTableCell>
-            
-           
-              <StyledTableCell align="left">{TotalAmount}</StyledTableCell>
-              <StyledTableCell align="left">{TotalPen}</StyledTableCell>
-              <StyledTableCell align="left"></StyledTableCell>
-              <StyledTableCell align="left">{TotalAgentPen}</StyledTableCell>
-              <StyledTableCell align="left"><Box sx={{backgroundColor: "green" ,color : "white",borderRadius: "7px",padding: "6px 10px",}} >{TotalProfit}</Box></StyledTableCell>
-              <StyledTableCell align="left"></StyledTableCell>
-            </StyledTableRow> */}
-        </TableBody>
-      </Table>
-    </TableContainer>
+  
+ 
+    {
+      loading ? (<div className={classes["table-margin"]}>
+        
+     
+        {
+          
+        data.length !== 0 ? (<DataGrid columns={columns} rows={data}  components={{ Toolbar: GridToolbar }} />) : (<Nodata />)
+        }
+   
+    </div>):(<CustomLoading />)
+    }
     </Card>
     {type !== "master" && (
  <span className={classes["total-unit"]}>

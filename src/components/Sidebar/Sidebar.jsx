@@ -36,8 +36,6 @@ import { HrSidebarData } from "../../Dashboard/HrDashboard/HrSidebarData";
 import { AccountingSidebarData } from "../../Dashboard/AccountingDashboard/AccountingSidebarData";
 import FetchUnit from "../../services/FetchUnit";
 import { ProviderSidebarData } from "../../Dashboard/ProviderDashboard/ProviderSidebarData";
-
-
 function refreshPage() {
   setTimeout(()=>{
       window.location.reload(false);

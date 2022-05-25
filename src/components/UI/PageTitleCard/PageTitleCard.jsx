@@ -5,7 +5,7 @@ const PageTitleCard = ({title,children}) => {
 
   return (
     <div className={classes["soccer-setting-container"]}>
-      <Card>
+      <Card> 
         <div className={classes["card-header"]}>
           <h1 className={classes["card-title"]}>{title}</h1>
         </div>
