@@ -8,28 +8,12 @@ import Card from '../../components/UI/Card';
 import { logoutHandler } from '../../components/Sidebar/Sidebar';
 import CustomGetFunction from '../../services/CustomGetFunction';
 const AffiliateAgent = () => {
-  const [pendingMaster,setPendingMaster] = useState([]);
+
 //   const [confirmMaster,setConfirmMaster] = useState([]);
 //   const [completeMaster,setCompleteMaster] = useState([]);
 //   const [cancelMaster,setCancelMaster] = useState([]);
-  const {data} = CustomGetFunction('api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=affiliate-agent',[])
-  const fetchPending = async()=>{
-    try{
+  const {data} = CustomGetFunction('/apiaffiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=affiliate-agent',[])
 
-      const pending = await axios.request(getMethod('api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=affiliate-agent'));
-      if(pending.data.status === "success"){
-        setPendingMaster(pending.data.data.length);
-        return;
-      }
-      
-    }catch(error){
-      console.log(error);
-      console.log(error.response.data.message)
-      if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
-      logoutHandler();
-      }
-    }
-  };
 //   const fetchConfirm = async()=>{
 //     const confirm = await axios.request(getMethod(`/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-confirm&form_type=master`));
 //     setConfirmMaster(confirm.data.data.length);
