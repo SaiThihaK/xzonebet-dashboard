@@ -42,6 +42,7 @@ import MasterSecurity from "../Dashboard/MasterDashboard/Page/Security/MasterSec
 import Profit from "../pages/Profit/Profit"
 import SuperMasterHome from "../pages/SuperMasterHome/SuperMasterHome";
 import AgentDeposite from "../Dashboard/AgentDashboard/Page/Deposite/AgentDeposite/AgentDeposite";
+import UserDetail from "../pages/Users/UserDetail/UserDetail";
 const SuperMasterRoute = () => {
   return (
     <Routes>
@@ -239,6 +240,11 @@ const SuperMasterRoute = () => {
         exact
         element={<AllUser />}
       />
+       <Route
+          path="/dashboard/account/user/user-detail/:id"
+          exact
+          element={<UserDetail />}
+        />
       <Route exact path="/dashboard/super_master/profile" element={<MProfile />} />
       <Route
         exact
