@@ -14,6 +14,7 @@ const HrEmployee = () => {
     return (
     <div>
         <PageTitleCard title="employee">
+          <div className={classes["background-wheat"]}>
         <div className={classes["card-body"]}>
              <TextField size='small' sx={{width:600}}/>
          <div className={classes["create-btn"]}>
@@ -41,7 +42,7 @@ const HrEmployee = () => {
           } 
          
       
-         
+         </div>
         </PageTitleCard>
     </div>
   )
