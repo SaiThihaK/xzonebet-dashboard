@@ -144,7 +144,7 @@ const handleChange = (prop) => (event) => {
                   </div>
                   <div className="p_item ">
                     <div>
-                       Region
+                       City
                     </div>
                     <div className="p_ncolor" >
                         <p className="input_1">{values.city}</p>

@@ -130,7 +130,7 @@ const handleChange = (prop) => (event) => {
                       Deposite Percentage
                       </div>
                       <div className="p_ncolor" >
-                          <p className="input_1">{values?.deposit_percent }</p>
+                          <p className="input_1">{values?.deposit_percent }%</p>
                          <div className="p_btn"  onClick={()=>{showInput(15)}}> <i className="fas fa-pencil-alt"></i></div>
                          <div className={`p_absolute ${ showForm===15 &&  "p_a_show"}`} id="input_4">
                            <input type="deposite_percentage"   value={values?.deposit_percent}
@@ -145,7 +145,7 @@ const handleChange = (prop) => (event) => {
                       Withdraw  Percentage
                       </div>
                       <div className="p_ncolor" >
-                          <p className="input_1">{values?.withdraw_percent }</p>
+                          <p className="input_1">{values?.withdraw_percent }%</p>
                          <div className="p_btn"  onClick={()=>{showInput(19)}}> <i className="fas fa-pencil-alt"></i></div>
                          <div className={`p_absolute ${ showForm===19 &&  "p_a_show"}`} id="input_4">
                            <input type="withdraw_percentage"   value={values?.withdraw_percent}
@@ -227,14 +227,14 @@ const handleChange = (prop) => (event) => {
                     </div>
                     <div className="p_item ">
                       <div>
-                         Region
+                         City
                       </div>
                       <div className="p_ncolor" >
-                          <p className="input_1">{values.region}</p>
+                          <p className="input_1">{values.city}</p>
                          <div className="p_btn"  onClick={()=>{showInput(5)}}> <i className="fas fa-pencil-alt"></i></div>
                          <div className={`p_absolute ${ showForm===5 &&  "p_a_show"}`} id="input_4" >
-                           <input type="text" className="form_p text_input "  value={values.region}
-                            onChange={handleChange('region')} / >
+                           <input type="text" className="form_p text_input "  value={values.city}
+                            onChange={handleChange('city')} / >
                            <i className="fas fa-check-circle" onClick={()=>{showInput("")}}></i>
                           </div>
                         </div>

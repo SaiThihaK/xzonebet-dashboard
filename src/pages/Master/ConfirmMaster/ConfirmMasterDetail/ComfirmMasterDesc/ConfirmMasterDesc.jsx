@@ -60,7 +60,7 @@ const ComfirmMasterDesc = ({userInfo}) => {
       <Grid container>
       <Grid item xs={6} className={classes["form-container"]}>
       <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Unit </label>:<p>&nbsp;&nbsp;{userInfo.unit_amount}</p>
+          <label htmlFor="">Unit </label>:<p>&nbsp;&nbsp;{userInfo.unit_amount || "-"}</p>
         </div>
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Email </label>:<p>&nbsp;&nbsp;{userInfo.email}</p>
@@ -79,11 +79,11 @@ const ComfirmMasterDesc = ({userInfo}) => {
         </div>
        
         <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Deposite Percentage</label>:<p>&nbsp;&nbsp;{userInfo.deposit_percent}</p>
+          <label htmlFor="">Deposite Percentage</label>:<p>&nbsp;&nbsp;{userInfo.deposit_percent || "-"}%</p>
         </div>
         
         <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Withdraw Percentage</label>:<p>&nbsp;&nbsp;{userInfo.withdraw_percent}</p>
+          <label htmlFor="">Withdraw Percentage</label>:<p>&nbsp;&nbsp;{userInfo.withdraw_percent || "-"}%</p>
         </div>
         {/* =====================================Second Grid========================= */}
    
