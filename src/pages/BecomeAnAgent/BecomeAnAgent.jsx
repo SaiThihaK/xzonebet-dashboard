@@ -9,6 +9,7 @@ import CustomLoading from "../../components/CustomLoading/CustomLoading";
 import Nodata from "../../components/Nodata/Nodata";
 const BecomeAnAgent = () => {
  const {data,loading} = TableGetFunction(become_an_Partner,[]);
+ console.log("supMaster become an Partner",data)
  
   return (
     <div className={classes["soccer-setting-container"]}>
