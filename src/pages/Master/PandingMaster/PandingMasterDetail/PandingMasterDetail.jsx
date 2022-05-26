@@ -438,8 +438,7 @@ if(response.data.status === "error"){
         </Card>
        
       </div>
-      {
-        localStorage.getItem("type") !== "hr" && (
+      
         <div style={{display:"flex",marginTop:20,justifyContent:"flex-end",marginRight:100}}>
         <Button variant="contained" color="error" 
         style={{marginRight:100}}
@@ -449,8 +448,7 @@ if(response.data.status === "error"){
         }}>Reject</Button>
         <Button type="submit" onClick={(e)=>{submitHandler(e)}} variant="contained">Submit</Button>
       </div>
-      )
-      }
+     
       
         </form>
       </div>

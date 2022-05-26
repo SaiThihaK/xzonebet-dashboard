@@ -90,7 +90,7 @@ const MasterRoute = () => {
          <Route path="/dashboard/master/profit" exact element={<Profit type="master" />} />
       <Route
         exact
-        path="/dashboard/account/agent/confirm-agent/detail/"
+        path="/dashboard/account/agent/confirm-agent/detail/:id"
         element={<NewAgentDetail />}
       />
       <Route
