@@ -35,13 +35,13 @@ const AlertToast = msg=>msg;
 
 const diff_form_type = ()=>{
   if( age==="agent"){
-    return {user_type:age || data?.form_type,master_id:"1"}
+    return {user_type:age || data?.form_type,interview_super_master_id:superMaster_id}
   }
   if( age==="master"){
-    return {user_type:age || data?.form_type, super_master_id:superMaster_id}
+    return {user_type:age || data?.form_type,interview_super_master_id:superMaster_id}
   }
   if( age ==="affiliate-agent"){
-    return {user_type:age || data?.form_type ,username:"Ko Ye",password:"5683",betting_percent:"20"}
+    return {user_type:age || data?.form_type ,username:data?.firtst_name+" "+data?.last_name,password:"5683",betting_percent:"20",interview_super_master_id:superMaster_id}
   }
   if(status==="rejet"){
     return {status:"rejected",rejected_reason:remark}
@@ -254,8 +254,7 @@ console.log("become an agent",data);
           </FormControl>
         </div>) } */}
       {/* super-master for masters */}
-      {/* {   age === "master"  && 
-        (<div className={classes["form-group-desc"]}>
+        <div className={classes["form-group-desc"]}>
         <label htmlFor="">Choose Super Master </label>:
         <FormControl sx={{ width: 200 }} style={{marginLeft:2}}>
             <Select
@@ -277,7 +276,7 @@ console.log("become an agent",data);
             }
             </Select>
           </FormControl>
-        </div>) }*/}
+        </div>
       </div>
       </Grid>
       </Grid> 
@@ -289,13 +288,11 @@ console.log("become an agent",data);
       </div>
       </div>
     
-      {
-        localStorage.getItem("type") !== "hr" && (
+      
           <div style={{display:"flex",justifyContent:"flex-end",marginTop:20}}>
           <Button variant="contained" onClick={submitHandler}>Submit</Button>
         </div>
-        )
-      }
+
         </div>):(<CustomLoading />)
       }
       
