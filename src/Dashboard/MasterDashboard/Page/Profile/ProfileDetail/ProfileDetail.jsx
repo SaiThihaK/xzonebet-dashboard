@@ -16,14 +16,14 @@ const ProfileDetail = ({userData}) => {
   const type = localStorage.getItem("type");
   const [values, setValues] =useState({     
     name : userData?.name,
-    dob :  getResDate(userData?.agent?.created_at),
-     NRC: "12432144543",
-     passport: "2343wsd3",
+    dob : "-",
+     NRC: "-",
+     passport: "-",
      phone: userData?.agent?.phone,
      email: userData?.agent?.email,
-     nationality: "Myanmar",
+     nationality: "-",
       country: userData?.agent?.country,
-      region: userData?.agent?.region,
+      region: userData?.agent?.city,
       currencyType: "Crypto",
       deposite_percentage:userData?.agent?.deposit_percent,
       withdraw_percentage:userData?.agent?.withdraw_percent
@@ -69,14 +69,14 @@ const ProfileDetail = ({userData}) => {
   useEffect(()=>{
     setValues({      
       name : userData?.name,
-      dob :  getResDate(userData?.agent?.created_at),
-       NRC: "12432144543",
-       passport: "2343wsd3",
+      dob :  "-",
+       NRC: "-",
+       passport: "-",
        phone: userData?.agent?.phone,
        email: userData?.agent?.email,
       //  nationality: userData?.agent?.country,
         country: userData?.agent?.country,
-        region: userData?.agent?.region,
+        region: userData?.agent?.city,
         currencyType: "Crypto",
         deposite_percentage:userData?.agent?.deposit_percent,
         withdraw_percentage:userData?.agent?.withdraw_percent
@@ -213,7 +213,7 @@ const handleChange = (prop) => (event) => {
                           </div>
                         </div>
                     </div>
-                    {/* <div className="p_item ">
+                    <div className="p_item ">
                       <div>
                         Withdraw Percentage
                       </div>
@@ -226,7 +226,7 @@ const handleChange = (prop) => (event) => {
                            <i className="fas fa-check-circle" onClick={()=>{showInput("")}}></i>
                           </div>
                         </div>
-                    </div> */}
+                    </div>
                   
           
 
@@ -332,7 +332,7 @@ const handleChange = (prop) => (event) => {
                     </div>
                     <div className="p_item ">
                       <div>
-                         Region
+                        City
                       </div>
                       <div className="p_ncolor" >
                           <p className="input_1">{values.region}</p>
