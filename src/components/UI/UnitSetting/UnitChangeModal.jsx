@@ -10,7 +10,8 @@ import { FormControl,  Select,  TextField,MenuItem } from "@mui/material";
 import axios from "axios";
 import { getMethod, PostMethod } from "../../../services/api-services";
 import { logoutHandler } from "../../Sidebar/Sidebar";
-
+import { useDispatch, useSelector } from 'react-redux';
+import { getRender, selectedRender } from '../../../features/render';
 import {toast} from "react-toastify"
 
 const style = {
@@ -40,16 +41,20 @@ export default function UnitChangeModal({
   React.useEffect(()=>{
 
     },[])
-   
+  const dispatch = useDispatch();
+  const render = useSelector(selectedRender)
     const UnitChangeArr = [
       {name:"Promotion Unit",value:"promotion_unit",changeUnit:[{
-        name:"Main Unit",value:"main_unit"
-      }]},
-      {name:"Main Unit",value:'main_unit',changeUnit:[{
+        name:"Main Unit",value:"main_unit",
         name:"Diamond Unit",value:"diamond_unit"
       }]},
+      {name:"Main Unit",value:'main_unit',changeUnit:[{
+        name:"Diamond Unit",value:"diamond_unit",
+        name:"Promotion Unit",value:"promotion_unit"
+      }]},
       {name:"Diamond Unit",value:"diamond_unit",changeUnit:[{
-        name:"Main Unit",value:"main_unit"
+        name:"Main Unit",value:"main_unit",
+        name:"Promotion Unit",value:"promotion_unit"
       }]}
     ];
       const filterToArray = UnitChangeArr.filter((unit)=>{
@@ -78,7 +83,8 @@ export default function UnitChangeModal({
             setFromUnit("");
             setToUnit("");
             handleClose();
-            setNum(num+1)
+            setNum(num+1);
+            dispatch(getRender({render:!render}))
             return;
         };
         if(response.data.status === "error"){

@@ -31,7 +31,7 @@ const handleChange = (event) => {
   setAge(event.target.value);
 };
 const AlertToast = msg=>msg;
-
+const type = localStorage.getItem("type");
 
 const diff_form_type = ()=>{
   if( age==="agent"){
@@ -228,7 +228,7 @@ console.log("become an agent",data);
         </div>
         
         {/* master for agent */}
-        {/* {  age === "agent"  && 
+        { (type==="super_master" && age==="agent")  && 
         (<div className={classes["form-group-desc"]}>
         <label htmlFor="">Choose Master </label>:
         <FormControl sx={{ width: 200 }} style={{marginLeft:2}}>
@@ -252,31 +252,36 @@ console.log("become an agent",data);
             }
             </Select>
           </FormControl>
-        </div>) } */}
+        </div>) }
       {/* super-master for masters */}
+      {
+       type !=="super_master" && (
         <div className={classes["form-group-desc"]}>
         <label htmlFor="">Choose Super Master </label>:
-        <FormControl sx={{ width: 200 }} style={{marginLeft:2}}>
-            <Select
-              value={superMaster_id}
-              size="small"
-              labelid="demo-simple-select-label"
-              id="demo-simple-select"
-         
-              onChange={(e)=>{setSuperMaster_id(e.target.value)}}
-              inputProps={{ "aria-label": "Without label" }}
-              sx={{ backgroundColor: "#f3f3f3" }}
-            >
-            {
-              choose_superMaster.map((master,index)=>(
-                <MenuItem value={master.id} key={index}>
-                  {master.name}
-                </MenuItem>
-              ))
-            }
-            </Select>
-          </FormControl>
+       <FormControl sx={{ width: 200 }} style={{marginLeft:2}}>
+        <Select
+          value={superMaster_id}
+          size="small"
+          labelid="demo-simple-select-label"
+          id="demo-simple-select"
+     
+          onChange={(e)=>{setSuperMaster_id(e.target.value)}}
+          inputProps={{ "aria-label": "Without label" }}
+          sx={{ backgroundColor: "#f3f3f3" }}
+        >
+        {
+          choose_superMaster.map((master,index)=>(
+            <MenuItem value={master.id} key={index}>
+              {master.name}
+            </MenuItem>
+          ))
+        }
+        </Select>
+      </FormControl>
+    
+        
         </div>
+            ) }
       </div>
       </Grid>
       </Grid> 

@@ -10,7 +10,7 @@ import ProfileDetail from "./ProfileDetail/ProfileDetail";
 const MProfile = ()=>{
 const userData = useSelector(userInfo);
 const type = localStorage.getItem("type");
-
+console.log("userInfo",userData)
 
 return(
     <div className={classes["container"]}>

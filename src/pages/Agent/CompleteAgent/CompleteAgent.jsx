@@ -14,7 +14,8 @@ import AgentCard from "../../../components/AgentCard/AgentCard";
 import Nodata from "../../../components/Nodata/Nodata";
 const CompleteAgent = () => {
 
-  const {loading} = CustomGetFunction('api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=complete&form_type=agent',[])
+  const {data:agents,loading} = CustomGetFunction('api/agents?sortColumn=id&sortDirection=desc&limit=30&agent_level=agent',[]);
+  console.log('agnets',agents)
   const data =[
     {
     id:1004,
@@ -50,9 +51,9 @@ const CompleteAgent = () => {
             }
           </Grid> */}
         {
-          data.length !==0 ? (<Grid container>
+          agents.length !==0 ? (<Grid container>
             {
-            data?.length !==0 && data?.map((agent,index)=>(
+            agents?.length !==0 && agents?.map((agent,index)=>(
                <Grid item xs={6} key={index}>
                  <AgentCard data={agent} route={`/dashboard/account/agent/complete-agent/detail/${agent.id}`}/>
                  </Grid>
