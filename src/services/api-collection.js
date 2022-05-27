@@ -15,7 +15,7 @@ export const AccountDetail = `api/affiliate-register-lists/`;
 
 // Become an partner Api
 export const become_an_Partner =
-  "api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=pending";
+  "api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=pending0";
 // ChoosingMaster in Become an Partner form for agent
 export const chooseMasterApi =
   "api/agents?sortColumn=id&sortDirection=desc&limit=30&agent_level=master";

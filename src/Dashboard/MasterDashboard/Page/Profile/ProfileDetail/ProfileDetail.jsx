@@ -9,13 +9,14 @@ import classes from "./ProfileDetail.module.css";
 import { toast } from 'react-toastify';
 import "./ProfileDetail.css";
 import { PostProvider } from "../../../../../services/api-services";
+import {getResDate} from "../../../../../Controller/ChangeDate"
 const ProfileDetail = ({userData}) => {
   const navigate = useNavigate();
- 
+
   const type = localStorage.getItem("type");
   const [values, setValues] =useState({     
     name : userData?.name,
-    dob :  "20-12-1998",
+    dob :  getResDate(userData?.agent?.created_at),
      NRC: "12432144543",
      passport: "2343wsd3",
      phone: userData?.agent?.phone,
@@ -23,7 +24,9 @@ const ProfileDetail = ({userData}) => {
      nationality: "Myanmar",
       country: userData?.agent?.country,
       region: userData?.agent?.region,
-      currencyType: "Crypto"
+      currencyType: "Crypto",
+      deposite_percentage:userData?.agent?.deposit_percent,
+      withdraw_percentage:userData?.agent?.withdraw_percent
  });  
 
  const editSubmitHandler = async(e) => {
@@ -66,7 +69,7 @@ const ProfileDetail = ({userData}) => {
   useEffect(()=>{
     setValues({      
       name : userData?.name,
-      dob :  "20/12/1998",
+      dob :  getResDate(userData?.agent?.created_at),
        NRC: "12432144543",
        passport: "2343wsd3",
        phone: userData?.agent?.phone,
@@ -74,7 +77,9 @@ const ProfileDetail = ({userData}) => {
       //  nationality: userData?.agent?.country,
         country: userData?.agent?.country,
         region: userData?.agent?.region,
-        currencyType: "Crypto"
+        currencyType: "Crypto",
+        deposite_percentage:userData?.agent?.deposit_percent,
+        withdraw_percentage:userData?.agent?.withdraw_percent
    });
  },[userData]);
  
@@ -99,25 +104,40 @@ const handleChange = (prop) => (event) => {
        <div className="p_col person_mr">
          {
            type !== "super_master" && (<div className="p_group">
+            
            <div className="p_info_header">
-              SUPERMASTER INFO
+             {
+               type === "master" ? "SUPERMASTER INFO" : "MASTER INFO"
+             }
            </div>
            <div className="p_field">
                <div className="p_item">
                  <div>
-                   SurperMaster ID
+                {
+                  type === "master" ? "SUPERMASTER ID":"MASTER ID"
+                }
                  </div>
                  <div className="p_ncolor">
-                   <div >1003 </div>
+                   <div>
+                     {
+                       type === "master" ? userData?.agent?.super_master?.user_id : userData?.agent?.master?.user_id
+                     }
+                   </div>
                 </div>
                 
                </div>
                <div className="p_item">
                  <div>
-                   SurperMaster Name
+                  {
+                    type==="master" ? "SUPERMASTER NAME" : "MASTER NAME"
+                  }
                  </div>
                  <div className="p_ncolor">
-                   <div >Kyaw Kyaw </div>
+                   <div>
+                   {
+                       type === "master" ? userData?.agent?.super_master?.name : userData?.agent?.master?.name
+                   }
+                   </div>
                                      
                        
                  </div>
@@ -179,29 +199,39 @@ const handleChange = (prop) => (event) => {
                           </div>
                         </div>
                     </div>
-                    <div className="p_item">
-                    <div>
-                      Deposit Percentage
+                    <div className="p_item ">
+                      <div>
+                        Deposite Percentage
+                      </div>
+                      <div className="p_ncolor" >
+                          <p className="input_1">{values.deposite_percentage}%</p>
+                         <div className="p_btn"  onClick={()=>{showInput(40)}}> <i className="fas fa-pencil-alt"></i></div>
+                         <div className={`p_absolute ${ showForm===40 &&  "p_a_show"}`} id="input_4">
+                           <input type="text" className="form_p date_input "   value={values.deposite_percentage}
+                            onChange={handleChange('deposite_percentage')} / >
+                           <i className="fas fa-check-circle" onClick={()=>{showInput("")}}></i>
+                          </div>
+                        </div>
                     </div>
-                    <div className="p_ncolor">
-                      <div >5% </div>
-                                        
-                          
-                    </div>
-                   
-                  </div>
-                  <div className="p_item">
-                    <div>
-                      Withdraw Percentage
-                    </div>
-                    <div className="p_ncolor">
-                      <div >5% </div>
-                                        
-                          
-                    </div>
-                   
-                  </div>
-           
+                    {/* <div className="p_item ">
+                      <div>
+                        Withdraw Percentage
+                      </div>
+                      <div className="p_ncolor" >
+                          <p className="input_1">{values.withdraw_percentage}%</p>
+                         <div className="p_btn"  onClick={()=>{showInput(44)}}> <i className="fas fa-pencil-alt"></i></div>
+                         <div className={`p_absolute ${ showForm===44 &&  "p_a_show"}`} id="input_4">
+                           <input type="text" className="form_p date_input "   value={values.withdraw_percentage}
+                            onChange={handleChange('withdraw_percentage')} / >
+                           <i className="fas fa-check-circle" onClick={()=>{showInput("")}}></i>
+                          </div>
+                        </div>
+                    </div> */}
+                  
+          
+
+
+
               </div>
            </div>
     
