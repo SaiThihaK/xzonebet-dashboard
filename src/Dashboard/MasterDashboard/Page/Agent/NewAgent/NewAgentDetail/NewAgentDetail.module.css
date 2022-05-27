@@ -1,5 +1,8 @@
 .btn-container{
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     padding: 30px;
+}
+.btn{
+    margin-left: 50px;
 }

@@ -8,6 +8,7 @@ import { become_an_Partner } from "../../services/api-collection";
 import CustomLoading from "../../components/CustomLoading/CustomLoading";
 import Nodata from "../../components/Nodata/Nodata";
 const BecomeAnAgent = () => {
+ const type = localStorage.getItem("type");
  const {data,loading} = TableGetFunction(become_an_Partner,[]);
  console.log("supMaster become an Partner",data)
  

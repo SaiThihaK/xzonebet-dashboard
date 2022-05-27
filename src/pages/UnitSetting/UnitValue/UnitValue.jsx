@@ -92,7 +92,6 @@ const UnitValue = () => {
 
   return (
     <div className={classes["soccer-setting-container"]}>
-      <ToastContainer />
       <Card>
         <div className={classes["card-header"]}>
           <h1 className={classes["card-title"]}>Unit Value</h1>

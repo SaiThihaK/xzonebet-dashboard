@@ -196,7 +196,7 @@ const CreateMaster = ({ open, handleClose ,render,setRender}) => {
             </Select>
             </FormControl>
             <FormControl fullWidth>
-            <InputLabel id="demo-select-medium">City</InputLabel>
+            {/* <InputLabel id="demo-select-medium">City</InputLabel>
             <Select
               sx={{ width: "100%", mb: 1.5 }}
               id="outlined-basic"
@@ -213,7 +213,8 @@ const CreateMaster = ({ open, handleClose ,render,setRender}) => {
                   </MenuItem>
                 ))
               }
-            </Select>
+            </Select> */}
+            <TextField value={city} onChange={(e)=>setCity(e.target.value)} label="City" />
             </FormControl>
 
             </form>

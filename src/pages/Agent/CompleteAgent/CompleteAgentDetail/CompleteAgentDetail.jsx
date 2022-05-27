@@ -19,6 +19,8 @@ const CompleteAgentDetail = () => {
   // Enjoyment
   // console.log(id);
  const {data} = CustomGetFunction(`api/affiliate-register-lists/${id}`,[id]);
+ console.log("agentDetail",data);
+ 
   return (
     <div className={classes["soccer-setting-container"]}>
       <Card>

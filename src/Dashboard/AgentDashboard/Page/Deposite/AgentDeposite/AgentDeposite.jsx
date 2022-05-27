@@ -3,7 +3,7 @@ import React ,{useState} from 'react';
 import Card from '../../../../../components/UI/Card';
 import axios from 'axios';
 import { getMethod } from '../../../../../services/api-services';
-import {  List, ListItemButton, ListItemText,ListItemIcon,Grid} from '@mui/material';
+import {  List, ListItemButton, ListItemText,ListItemIcon,Grid, Button, Stack} from '@mui/material';
 
 import PaymentIcon from '@mui/icons-material/Payment';
 import { logoutHandler } from '../../../../../components/Sidebar/Sidebar';
@@ -16,7 +16,7 @@ const [paymentType,setPaymentType] = React.useState([]);
 const [paymentId,setPaymentId] = React.useState(1);
 const [open,setOpen] = React.useState(false);
 const [providerId,setProviderId] = React.useState();
-
+const [btnClick,setBtnClick] = React.useState(false);
 
 const openHandler =()=>setOpen(true);
 const closeHandler = ()=>setOpen(false);
@@ -67,9 +67,15 @@ const [tag, setTag] = useState(1);
 console.log(paymentType);
 const FilterPayment_Provider = provider.filter((c)=>c.payment_type_id === paymentId);
 const AlertToast = (toast,msg)=>{return toast(msg)};
-
   return (
-    <div className={classes["deposit_container"]}>   
+    <div className={classes["deposit_container"]}>
+      <Stack direction="row">
+        <Button className={!btnClick ? classes['btn'] : classes[""]}>Provider</Button>
+        <p style={{fontSize:16,marginTop:8,fontWeight:800}}>/</p>
+        <Button
+        className={btnClick ? classes['btn'] : classes[""]}
+        >Master</Button>  
+      </Stack>  
       <div className={classes["payment_method"]}>
         <div className={classes["lef_payment"]}>
           {paymentType.map((el, index) => {
@@ -145,7 +151,7 @@ const AlertToast = (toast,msg)=>{return toast(msg)};
           </div> */}
         </div>
       </div>
-      <AgentDepositeModal 
+    <AgentDepositeModal 
     open={open} 
     closeHandler={closeHandler} 
     id={providerId} 

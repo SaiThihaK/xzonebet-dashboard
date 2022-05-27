@@ -10,6 +10,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { PostMethod } from '../../../../../../services/api-services'
 import { toast } from 'react-toastify'
 import axios from 'axios'
+import MasterDepositCancel from '../../../../../../components/UI/Modal/MasterDepositCancel/MasterDepositCancel'
 
 const NewAgentDetail = () => {
 const [name,setName] = useState("");
@@ -17,6 +18,10 @@ const [password,setPassword] = useState("");
 const [deposit,setDeposit] = useState("");
 const [withDraw,setWithDraw] = useState("");
 const [masterId,setMasterId] = useState("");
+const [open,setOpen] = useState(false);
+const [num,setNum] = useState(1);
+const handleOpen = ()=>setOpen(true);
+const handleClose = ()=>setOpen(false);
 const {id} = useParams();
 const navigate = useNavigate();
   const {data} = CustomGetFunction(`api/agents/${id}`,[id]);
@@ -30,7 +35,7 @@ const navigate = useNavigate();
     try{
  const response = await axios.request(PostMethod(`api/affiliate-register-lists/confirm-as-agent/${id}`,{
    username:name,
-   master_id:masterId,
+  //  master id:masterId,
    password:password,
    deposit_percent:deposit,
    withdraw_percent:withDraw,
@@ -54,6 +59,8 @@ const navigate = useNavigate();
     AlertToast(toast.error(error.response.data.message))
     }
   } 
+
+ 
   return (
    <PageTitleCard title="New Agent Form">
      <Grid container spacing={1} style={{padding:30}}>
@@ -71,8 +78,12 @@ const navigate = useNavigate();
     /></Grid>
      </Grid>
      <div className={classes["btn-container"]}>
-      <Button variant="contained" onClick={submitHandler}>Submit</Button>
+      <Button variant="contained" className={classes["btn"]} onClick={submitHandler}>Submit</Button>
+      <Button  variant="contained" className={classes["btn"]} color="error"
+      onClick={handleOpen}
+      >Reject</Button>
      </div>
+     <MasterDepositCancel open={open} handleClose={handleClose} setNum={setNum} id={id} num={num} route="/dashboard/master/agent/new-agent"  />
    </PageTitleCard>
   )
 }
