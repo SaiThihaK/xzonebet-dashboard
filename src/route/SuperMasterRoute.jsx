@@ -43,6 +43,8 @@ import Profit from "../pages/Profit/Profit"
 import SuperMasterHome from "../pages/SuperMasterHome/SuperMasterHome";
 import AgentDeposite from "../Dashboard/AgentDashboard/Page/Deposite/AgentDeposite/AgentDeposite";
 import UserDetail from "../pages/Users/UserDetail/UserDetail";
+import BecomeAnPartnerSup from "../pages/BecomeAnPartnerSup/BeomeAnPartnerSup";
+import BecomeAnPartnerSupDetail from "../pages/BecomeAnPartnerSup/BecomeAnPartnerSupDetail/BecomeAnPartnerSupDetail";
 const SuperMasterRoute = () => {
   return (
     <Routes>
@@ -206,12 +208,12 @@ const SuperMasterRoute = () => {
       <Route
         path="/dashboard/become-an-agent"
         exact
-        element={<BecomeAnAgent />}
+        element={<BecomeAnPartnerSup/>}
       />
       <Route
         path="/dashboard/become-an-agent/detail/:id"
         exact
-        element={<AgentDetail />}
+        element={<BecomeAnPartnerSupDetail />}
       />
       <Route
         path="/dashboard/account/master/cancel-master/detail/:id"

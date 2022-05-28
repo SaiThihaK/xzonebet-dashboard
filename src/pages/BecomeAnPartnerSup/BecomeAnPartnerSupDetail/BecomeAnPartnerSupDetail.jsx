@@ -1,35 +1,34 @@
 import React, { useEffect, useState } from "react";
 import {  useNavigate, useParams } from "react-router-dom";
 import Button from "@mui/material/Button";
-import classes from "./AgentDetailDescription.module.css";
-import CancelModal from "../../../../../components/CancelModal/CancelModal"
-import CustomGetFunction from "../../../../../services/CustomGetFunction";
+import classes from "./BecomeAnPartnerSup.module.css";
 import { FormControl, Grid, InputLabel, MenuItem, Select } from "@mui/material";
 import { toast } from "react-toastify";
-import { logoutHandler } from "../../../../../components/Sidebar/Sidebar";
 import axios from "axios";
-import { getMethod, PostMethod } from "../../../../../services/api-services";
-import { chooseMasterApi, chooseSuper_masterApi } from "../../../../../services/api-collection";
-import CustomLoading from "../../../../../components/CustomLoading/CustomLoading";
+import CustomGetFunction from "../../../services/CustomGetFunction";
+import CustomLoading from "../../../components/CustomLoading/CustomLoading"
+import { logoutHandler } from "../../../components/Sidebar/Sidebar";
+import { chooseMasterApi, chooseSuper_masterApi } from "../../../services/api-collection";
+import { getMethod, PostMethod } from "../../../services/api-services";
+import CancelModal from "../../../components/CancelModal/CancelModal";
+import PageTitleCard from "../../../components/UI/PageTitleCard/PageTitleCard";
 import { useSelector } from "react-redux";
-import { userInfo } from "../../../../../features/UserInfo";
-const AgentDetailDescription = () => {
+import { userInfo } from "../../../features/UserInfo";
+
+const BecomeAnPartnerSupDetail = () => {
   const {id} = useParams();
   const [age, setAge] = useState('');
   const [status,setStatus] = useState("");
   const [chooseMaster,setChooseMaster] = useState([]);
   const [master_id,setMaster_id] = useState("");
   const [choose_superMaster,setChoose_superMaster] = useState([]);
-  const [superMaster_id,setSuperMaster_id] = useState("");
   const [remark,setRemark] = useState("");
   const [open,setOpen] = useState(false);
   const handleOpen = ()=>setOpen(true);
   const handleClose = ()=>setOpen(false);
   const navigate = useNavigate();
   const userData = useSelector(userInfo);
-
-  console.log("userData",userData)
-
+  console.log("userInfo",userData);
 const {data,loading} = CustomGetFunction(`api/affiliate-register-lists/${id}`,[id]);
 console.log(chooseMaster);
 console.log(choose_superMaster)
@@ -42,13 +41,13 @@ const type = localStorage.getItem("type");
 const diff_form_type = ()=>{
   
   if( age==="agent"){
-    return {user_type:age || data?.form_type,interview_super_master_id:superMaster_id}
+    return {user_type:age || data?.form_type,interview_super_master_id:userData.id,master_id:master_id}
   }
   if( age==="master"){
-    return {user_type:age || data?.form_type,interview_super_master_id:superMaster_id}
+    return {user_type:age || data?.form_type,interview_super_master_id:userData.id}
   }
   if( age ==="affiliate-agent"){
-    return {user_type:age || data?.form_type ,username:data?.firtst_name+" "+data?.last_name,password:"5683",betting_percent:"20",interview_super_master_id:superMaster_id}
+    return {user_type:age || data?.form_type ,username:data?.firtst_name+" "+data?.last_name,password:"5683",betting_percent:"20",interview_super_master_id:userData.id}
   }
   if(status==="rejet"){
     return {status:"rejected",rejected_reason:remark}
@@ -56,7 +55,7 @@ const diff_form_type = ()=>{
 }
 const cancelHandler = async()=>{
       try{
-        const url = `api/affiliate-register-lists${status || "accept"}/${data?.id}`;
+        const url = `api/affiliate-register-lists/${status || "accept"}/${data?.id}`;
         const response = await axios.request(PostMethod(
           url,diff_form_type()
         ));
@@ -84,7 +83,7 @@ if(status==="rejet"){
 }
       console.log("obj",diff_form_type());
     try{
-      const url = `api/affiliate-register-lists/choose-interviewer/${data?.id}`;
+      const url = `api/affiliate-register-lists/${status || "accept"}/${data?.id}`;
       const response = await axios.request(PostMethod(
         url,diff_form_type()
       ));
@@ -155,10 +154,10 @@ return () => {
   }
 }, [id,data]);
 
-console.log("become an agent",data);
+
 
   return (
-    <div>
+    <PageTitleCard title="Become an Partner Detail">
       {
         loading ? (<div>
 <div className={classes["agent-user-image-group"]}>
@@ -261,34 +260,7 @@ console.log("become an agent",data);
           </FormControl>
         </div>) }
       {/* super-master for masters */}
-      {
-       type !=="super_master" && (
-        <div className={classes["form-group-desc"]}>
-        <label htmlFor="">Choose Super Master </label>:
-       <FormControl sx={{ width: 200 }} style={{marginLeft:2}}>
-        <Select
-          value={superMaster_id}
-          size="small"
-          labelid="demo-simple-select-label"
-          id="demo-simple-select"
-     
-          onChange={(e)=>{setSuperMaster_id(e.target.value)}}
-          inputProps={{ "aria-label": "Without label" }}
-          sx={{ backgroundColor: "#f3f3f3" }}
-        >
-        {
-          choose_superMaster.map((master,index)=>(
-            <MenuItem value={master.id} key={index}>
-              {master.name}
-            </MenuItem>
-          ))
-        }
-        </Select>
-      </FormControl>
     
-        
-        </div>
-            ) }
       </div>
       </Grid>
       </Grid> 
@@ -308,10 +280,9 @@ console.log("become an agent",data);
         </div>):(<CustomLoading />)
       }
       
-      
         <CancelModal open={open} handleClose={handleClose} remark={remark} setRemark={setRemark} submitHandler={cancelHandler}/>
-    </div>
+    </PageTitleCard>
   );
 };
 
-export default AgentDetailDescription;
+export default BecomeAnPartnerSupDetail;

@@ -51,7 +51,7 @@ const CompleteAgent = () => {
             }
           </Grid> */}
         {
-          agents.length !==0 ? (<Grid container>
+          agents.length !==0 ? (<Grid container spacing={4}>
             {
             agents?.length !==0 && agents?.map((agent,index)=>(
                <Grid item xs={6} key={index}>

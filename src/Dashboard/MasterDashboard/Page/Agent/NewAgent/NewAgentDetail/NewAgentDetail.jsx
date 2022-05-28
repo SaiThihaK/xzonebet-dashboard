@@ -24,7 +24,7 @@ const handleOpen = ()=>setOpen(true);
 const handleClose = ()=>setOpen(false);
 const {id} = useParams();
 const navigate = useNavigate();
-  const {data} = CustomGetFunction(`api/agents/${id}`,[id]);
+  const {data} = CustomGetFunction(`api/affiliate-register-lists/${id}`,[id]);
   const AlertToast = msg=>msg;
   const submitHandler = async()=>{
     console.log("username",name);
@@ -48,7 +48,7 @@ const navigate = useNavigate();
    setPassword("");
    setDeposit("");
    setWithDraw("");
-   navigate("/master/agent/new-agent")
+   navigate("/dashboard/master/agent/new-agent")
    return;
  }
  if(response.data.status==="error"){
@@ -64,7 +64,7 @@ const navigate = useNavigate();
   return (
    <PageTitleCard title="New Agent Form">
      <Grid container spacing={1} style={{padding:30}}>
-    <Grid item xs={6}><PendingAgentDesc userInfo={data} masterId={masterId} setMasterId={setMasterId} /></Grid>
+    <Grid item xs={6}><PendingAgentDesc data={data} masterId={masterId} setMasterId={setMasterId} /></Grid>
     <Grid item xs={6}><EnjoymentForm
     name={name}
     setName={setName}
@@ -78,8 +78,8 @@ const navigate = useNavigate();
     /></Grid>
      </Grid>
      <div className={classes["btn-container"]}>
-      <Button variant="contained" className={classes["btn"]} onClick={submitHandler}>Submit</Button>
-      <Button  variant="contained" className={classes["btn"]} color="error"
+      <Button variant="contained" className={classes["btn"]} onClick={submitHandler} style={{marginLeft:50}}>Submit</Button>
+      <Button  variant="contained" className={classes["btn"]} color="error" style={{marginLeft:50}}
       onClick={handleOpen}
       >Reject</Button>
      </div>
