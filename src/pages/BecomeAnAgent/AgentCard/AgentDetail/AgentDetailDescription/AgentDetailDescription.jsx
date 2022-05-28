@@ -42,7 +42,7 @@ const type = localStorage.getItem("type");
 const diff_form_type = ()=>{
   
   if( age==="agent"){
-    return {user_type:age || data?.form_type,interview_super_master_id:superMaster_id}
+    return {user_type:age || data?.form_type,interview_super_master_id:superMaster_id,}
   }
   if( age==="master"){
     return {user_type:age || data?.form_type,interview_super_master_id:superMaster_id}
@@ -86,7 +86,7 @@ if(status==="rejet"){
 }
       console.log("obj",diff_form_type());
     try{
-      const affiliateUrl = `api/affiliate-register-lists/accept-affiliate/${data.id}`
+      const affiliateUrl = `api/affiliate-register-lists/affiliate-agent/${data.id}`
       const url = `api/affiliate-register-lists/choose-interviewer/${data?.id}`;
       const newUrl =  age ==="affiliate-agent" ? affiliateUrl : url;
       const response = await axios.request(PostMethod(
