@@ -45,7 +45,7 @@ const CreateMaster = ({ open, handleClose ,render,setRender}) => {
     phone,
     password,
     country:country.name,
-    city:city.name,
+    city:city,
     state:state.name,
     deposit_percent,
     withdraw_percent

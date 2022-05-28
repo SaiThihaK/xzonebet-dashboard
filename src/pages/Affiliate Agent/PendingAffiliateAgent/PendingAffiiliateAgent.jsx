@@ -12,7 +12,7 @@ import MemberCard from "../../../components/MemberCard/MemberCard";
 
 const PendingAffiliateAgent = () => {
     
-    const {data} = CustomGetFunction("api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=affiliate-agent",[]);
+    const {data} = CustomGetFunction("api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=accept-affiliate",[]);
    
   return (
     <div className={classes["soccer-setting-container"]}>
