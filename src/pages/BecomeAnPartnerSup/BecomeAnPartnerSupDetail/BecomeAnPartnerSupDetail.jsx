@@ -28,6 +28,7 @@ const BecomeAnPartnerSupDetail = () => {
   const handleClose = ()=>setOpen(false);
   const navigate = useNavigate();
   const userData = useSelector(userInfo);
+  console.log("userData",userData)
   console.log("userInfo",userData);
 const {data,loading} = CustomGetFunction(`api/affiliate-register-lists/${id}`,[id]);
 console.log(chooseMaster);
@@ -41,13 +42,13 @@ const type = localStorage.getItem("type");
 const diff_form_type = ()=>{
   
   if( age==="agent"){
-    return {user_type:age || data?.form_type,interview_super_master_id:userData.id,master_id:master_id}
+    return {user_type:age || data?.form_type,interview_super_master_id:userData.agent.id,master_id:master_id}
   }
   if( age==="master"){
-    return {user_type:age || data?.form_type,interview_super_master_id:userData.id}
+    return {user_type:age || data?.form_type,interview_super_master_id:userData.agent.id,super_master_id:userData.agent.id}
   }
   if( age ==="affiliate-agent"){
-    return {user_type:age || data?.form_type ,username:data?.firtst_name+" "+data?.last_name,password:"5683",betting_percent:"20",interview_super_master_id:userData.id}
+    return {user_type:age || data?.form_type ,username:data?.firtst_name+" "+data?.last_name,password:"5683",betting_percent:"20",interview_super_master_id:userData.agent.id}
   }
   if(status==="rejet"){
     return {status:"rejected",rejected_reason:remark}
