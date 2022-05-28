@@ -8,7 +8,7 @@ import classes from "./NewAgent.module.css"
 import CustomLoading from "../../../../../components/CustomLoading/CustomLoading"
 import Nodata from '../../../../../components/Nodata/Nodata'
 const NewAgent = () => {
-  const {data,loading} = CustomGetFunction("api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&form_type=agent&status=pending",[]);
+  const {data,loading} = CustomGetFunction("api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&form_type=agent&status=admin-confirm",[]);
   console.log("pending Agent",data)
     
   return (

@@ -42,13 +42,13 @@ const type = localStorage.getItem("type");
 const diff_form_type = ()=>{
   
   if( age==="agent"){
-    return {user_type:age || data?.form_type,master_id:master_id}
+    return {user_type:age || data?.form_type,interview_super_master_id:superMaster_id}
   }
   if( age==="master"){
-    return {user_type:age || data?.form_type,}
+    return {user_type:age || data?.form_type,interview_super_master_id:superMaster_id}
   }
   if( age ==="affiliate-agent"){
-    return {user_type:age || data?.form_type ,username:data?.firtst_name+" "+data?.last_name,password:"5683",betting_percent:"20"}
+    return {user_type:age || data?.form_type ,username:data?.firtst_name+" "+data?.last_name,password:"5683",betting_percent:"20",interview_super_master_id:superMaster_id}
   }
   if(status==="rejet"){
     return {status:"rejected",rejected_reason:remark}

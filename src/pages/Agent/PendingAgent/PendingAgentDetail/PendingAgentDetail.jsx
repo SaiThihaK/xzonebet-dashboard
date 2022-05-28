@@ -87,7 +87,7 @@ const PendingAgentDetail = () => {
           <h1 className={classes["card-title"]}>Pending Agent Form Detail</h1>
         </div>
         <div className={classes["card-body"]}>
-          <PendingAgentDesc userInfo={data} />
+          <PendingAgentDesc data={data} />
         </div>
       </Card>
           <form>
