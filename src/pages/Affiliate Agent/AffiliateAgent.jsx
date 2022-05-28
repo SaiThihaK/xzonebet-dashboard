@@ -12,7 +12,7 @@ const AffiliateAgent = () => {
 //   const [confirmMaster,setConfirmMaster] = useState([]);
 //   const [completeMaster,setCompleteMaster] = useState([]);
 //   const [cancelMaster,setCancelMaster] = useState([]);
-  const {data} = CustomGetFunction('/apiaffiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=affiliate-agent',[])
+  const {data} = CustomGetFunction('api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=accept-affiliate',[])
 
 //   const fetchConfirm = async()=>{
 //     const confirm = await axios.request(getMethod(`/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-confirm&form_type=master`));
