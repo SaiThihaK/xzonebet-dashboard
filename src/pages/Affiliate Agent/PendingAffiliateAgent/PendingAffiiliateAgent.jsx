@@ -9,10 +9,11 @@ import MasterCard from "../../../components/MasterCard/MasterCard";
 import { logoutHandler } from "../../../components/Sidebar/Sidebar";
 import CustomGetFunction from "../../../services/CustomGetFunction";
 import MemberCard from "../../../components/MemberCard/MemberCard";
-
+import CustomLoading from "../../../components/CustomLoading/CustomLoading"
+import Nodata from "../../../components/Nodata/Nodata"
 const PendingAffiliateAgent = () => {
     
-    const {data} = CustomGetFunction("api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=accept-affiliate",[]);
+    const {data,loading} = CustomGetFunction("api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=accept-affiliate",[]);
    
   return (
     <div className={classes["soccer-setting-container"]}>
@@ -20,26 +21,26 @@ const PendingAffiliateAgent = () => {
         <div className={classes["card-header"]}>
           <h1 className={classes["card-title"]}>Pending Affiliate Agents</h1>
         </div>
-        <div className={classes["card-body"]}>
-          {/* <Grid container spacing={3}>
-           {data.length !==0 && data.map((pendingMaster)=>
-           (<MasterCard key={pendingMaster?.id} user={pendingMaster} path={"/account/affiliate-agent/pending-affiliate-agent/detail/"} />)
-           )}
-          </Grid> */}
-           {
-            <Grid container spacing={5}>
-              {
-              
-                data.length !==0 && data.map((master,index)=>(
-                 <Grid item xs={6} key={index}>
-                    <MemberCard partner={master} path={"/dashboard/account/affiliate-agent/pending-affiliate-agent/detail/"} />
-                   </Grid>
-                 
-                ))
-              }
-            </Grid>
-          }
-        </div>
+        {
+          loading ? ( <div className={classes["card-body"]}>
+          {
+             data.length !== 0 ? ( <>
+              <Grid container spacing={5}>
+                {
+                
+                  data.length !==0 && data.map((master,index)=>(
+                   <Grid item xs={6} key={index}>
+                      <MemberCard partner={master} path={"/dashboard/account/affiliate-agent/pending-affiliate-agent/detail/"} />
+                     </Grid>
+                   
+                  ))
+                }
+              </Grid>
+              </>) :(<Nodata />)
+           }
+           
+        </div>):(<CustomLoading />)
+        }
       </Card>
     </div>
   );
