@@ -6,7 +6,7 @@ import PageTitleCard from "../../components/UI/PageTitleCard/PageTitleCard"
 import CustomGetFunction from "../../services/CustomGetFunction"
 import classes from "./BecomeAnPartner.module.css"
 const BecomeAnPartnerSup = ()=>{
-const {data,loading} = CustomGetFunction(`api/affiliate-register-lists?sortColumn=id&sortDirection=desc&status=pending`,[]);
+const {data,loading} = CustomGetFunction(`api/affiliate-register-lists?sortColumn=id&sortDirection=desc&status=interview-pending`,[]);
 console.log(data);
 return (
     <PageTitleCard title="Become an Partner">
