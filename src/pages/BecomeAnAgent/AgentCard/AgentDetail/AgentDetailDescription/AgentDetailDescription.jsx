@@ -266,7 +266,7 @@ console.log("become an agent",data);
         </div>) }
       {/* super-master for masters */}
       {
-       type !=="super_master" && (
+        age !=="affiliate-agent" && (
         <div className={classes["form-group-desc"]}>
         <label htmlFor="">Choose Super Master </label>:
        <FormControl sx={{ width: 200 }} style={{marginLeft:2}}>
