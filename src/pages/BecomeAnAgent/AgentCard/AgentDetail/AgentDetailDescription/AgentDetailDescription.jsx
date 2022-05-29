@@ -86,7 +86,7 @@ if(status==="rejet"){
 }
       console.log("obj",diff_form_type());
     try{
-      const affiliateUrl = `api/affiliate-register-lists/affiliate-agent/${data.id}`
+      const affiliateUrl = `api/register-lists/accept-affiliate/${data.id}`
       const url = `api/affiliate-register-lists/choose-interviewer/${data?.id}`;
       const newUrl =  age ==="affiliate-agent" ? affiliateUrl : url;
       const response = await axios.request(PostMethod(

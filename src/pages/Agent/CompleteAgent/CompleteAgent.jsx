@@ -16,18 +16,7 @@ const CompleteAgent = () => {
 
   const {data:agents,loading} = CustomGetFunction('api/agents?sortColumn=id&sortDirection=desc&limit=30&agent_level=agent',[]);
   console.log('agnets',agents)
-  const data =[
-    {
-    id:1004,
-    name:"Zaw Zaw",
-    email:"zawzaw@email.com"
-    },
-    {
-      id:1006,
-      name:"Yike",
-      email:"yike@email.com"
-    }
-];
+  
   return (
     <div className={classes["soccer-setting-container"]}>
       <Card>
