@@ -10,7 +10,7 @@ import CustomGetFunction from '../../services/CustomGetFunction';
 const AffiliateAgent = () => {
 
 
-  const {data} = CustomGetFunction('api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=accept-affiliate',[])
+  const {data} = CustomGetFunction('api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=affiliate-agent',[])
   const {data:completeAffiliate} = CustomGetFunction(`api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=complete&form_type=affiliate-agent`,[]);
 
   return (

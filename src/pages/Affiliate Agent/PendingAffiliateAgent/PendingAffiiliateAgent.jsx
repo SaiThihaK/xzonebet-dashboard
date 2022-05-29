@@ -13,7 +13,7 @@ import CustomLoading from "../../../components/CustomLoading/CustomLoading"
 import Nodata from "../../../components/Nodata/Nodata"
 const PendingAffiliateAgent = () => {
     
-    const {data,loading} = CustomGetFunction("api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=accept-affiliate",[]);
+    const {data,loading} = CustomGetFunction("api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=affiliate-agent",[]);
    
   return (
     <div className={classes["soccer-setting-container"]}>
