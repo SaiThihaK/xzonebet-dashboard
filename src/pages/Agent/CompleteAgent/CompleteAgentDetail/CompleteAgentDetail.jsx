@@ -19,7 +19,7 @@ const CompleteAgentDetail = () => {
   const navigate = useNavigate();
   // Enjoyment
   // console.log(id);
- const {data} = CustomGetFunction(`api/affiliate-register-lists/${id}`,[id]);
+ const {data} = CustomGetFunction(`api/agents/${id}`,[id]);
  console.log("agentDetail",data);
  
   return (

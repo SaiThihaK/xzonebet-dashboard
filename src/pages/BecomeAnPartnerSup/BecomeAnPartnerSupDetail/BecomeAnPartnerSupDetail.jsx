@@ -188,6 +188,9 @@ return () => {
           <label htmlFor="">Preferred Method to Contact </label>:<p>&nbsp;&nbsp;{data?.preferred_method_of_contact}</p>
         </div>
         <div className={classes["form-group-desc"]}>
+          <label htmlFor="">{data?.preferred_method_of_contact}</label>:<p>&nbsp;&nbsp;{data?.contact_info}</p>
+        </div>
+        <div className={classes["form-group-desc"]}>
           <label htmlFor="">Currency Type </label>:<p>&nbsp;&nbsp;{data?.currency_type}</p>
         </div>
         {/* <div className={classes["form-group-desc"]}>

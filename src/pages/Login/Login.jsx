@@ -4,6 +4,7 @@ import { login } from "../../services/api-services";
 import classes from "./Login.module.css";
 import ForgetPassword from "../../components/ForgetPassword/ForgetPassword";
 import {AiOutlineEye,AiOutlineEyeInvisible} from "react-icons/ai"
+import { useNavigate } from "react-router-dom";
 function refreshPage() {
   setTimeout(()=>{
       window.location.reload(false);
@@ -47,8 +48,9 @@ const Login = () => {
           localStorage.setItem('jToken',res.data.data['j_token']);
           localStorage.setItem('lToken',res.data.data['l_token']);
           localStorage.setItem('type',res.data.data['type']);
-          refreshPage();
           window.location.assign("/")
+          refreshPage();
+         
         break;
         case "error":
           setErrorMsg(res.data.message);
@@ -71,6 +73,7 @@ const Login = () => {
  
    const loginFormSubmitHandler = (e) => {
      e.preventDefault();
+    //  window.location.assign("/")
      setuserloginname(loginName.current.value);
      setLoginpass(loginPassword.current.value);
      setPhone(loginPhone.current.value)

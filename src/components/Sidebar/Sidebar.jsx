@@ -49,7 +49,7 @@ export const logoutHandler = async() => {
       localStorage.removeItem('jToken');
       localStorage.removeItem('lToken');
       localStorage.removeItem('type');
-      window.location.assign("/");
+      // window.location.href("/");
       refreshPage();
       return;
     }
@@ -59,7 +59,7 @@ export const logoutHandler = async() => {
         localStorage.removeItem('jToken');
         localStorage.removeItem('lToken');
         localStorage.removeItem('type');
-        window.location.assign("/");
+        // window.location.href("/");
         refreshPage();
         return;
       }
