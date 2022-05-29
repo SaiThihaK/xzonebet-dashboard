@@ -77,8 +77,8 @@ editable: false,
       valueGetter:(params)=>params.row.amount
        },
        {
-        field: "to",
-        headerName: 'To',
+        field: "from",
+        headerName: 'From',
         width: 150,
         headerAlign: 'left',
         editable: false,

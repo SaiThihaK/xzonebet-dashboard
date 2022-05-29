@@ -205,12 +205,12 @@ const handleChange = (prop) => (event) => {
                       </div>
                       <div className="p_ncolor" >
                           <p className="input_1">{values.deposite_percentage}%</p>
-                         <div className="p_btn"  onClick={()=>{showInput(40)}}> <i className="fas fa-pencil-alt"></i></div>
+                         {/* <div className="p_btn"  onClick={()=>{showInput(40)}}> <i className="fas fa-pencil-alt"></i></div>
                          <div className={`p_absolute ${ showForm===40 &&  "p_a_show"}`} id="input_4">
                            <input type="text" className="form_p date_input "   value={values.deposite_percentage}
                             onChange={handleChange('deposite_percentage')} / >
                            <i className="fas fa-check-circle" onClick={()=>{showInput("")}}></i>
-                          </div>
+                          </div> */}
                         </div>
                     </div>
                     <div className="p_item ">
@@ -219,12 +219,12 @@ const handleChange = (prop) => (event) => {
                       </div>
                       <div className="p_ncolor" >
                           <p className="input_1">{values.withdraw_percentage}%</p>
-                         <div className="p_btn"  onClick={()=>{showInput(44)}}> <i className="fas fa-pencil-alt"></i></div>
+                         {/* <div className="p_btn"  onClick={()=>{showInput(44)}}> <i className="fas fa-pencil-alt"></i></div>
                          <div className={`p_absolute ${ showForm===44 &&  "p_a_show"}`} id="input_4">
                            <input type="text" className="form_p date_input "   value={values.withdraw_percentage}
                             onChange={handleChange('withdraw_percentage')} / >
                            <i className="fas fa-check-circle" onClick={()=>{showInput("")}}></i>
-                          </div>
+                          </div> */}
                         </div>
                     </div>
                   

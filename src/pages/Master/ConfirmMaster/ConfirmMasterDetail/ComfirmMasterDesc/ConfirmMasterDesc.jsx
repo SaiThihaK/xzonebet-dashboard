@@ -10,6 +10,8 @@ import { useNavigate } from "react-router-dom";
 import { confirmDetail } from "../../../../../services/api-collection";
 import {Grid} from "@mui/material"
 import MasterDepositCancel from "../../../../../components/UI/Modal/MasterDepositCancel/MasterDepositCancel";
+import { useDispatch, useSelector } from "react-redux";
+import { getRender, selectedRender } from "../../../../../features/render";
 const ComfirmMasterDesc = ({userInfo}) => {
   console.log("confirm",userInfo);
     const alertToast = (msg) =>msg;
@@ -18,6 +20,8 @@ const ComfirmMasterDesc = ({userInfo}) => {
     const [open,setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const dispatch = useDispatch();
+    const render = useSelector(selectedRender);
     // console.log(userInfo.id);
    const confirmHandler = async()=>{
   //  console.log("confirm");
@@ -30,7 +34,8 @@ const ComfirmMasterDesc = ({userInfo}) => {
   //  console.log(response);
    if(response.data.status="success"){
      alertToast(toast.success(response.data.message));
-     navigate("/dashboard/account/master/confirm-master")
+     navigate("/dashboard/account/master/confirm-master");
+     dispatch(getRender({render:!render}))
      return;
    }
     if(response.data.status === "error"){

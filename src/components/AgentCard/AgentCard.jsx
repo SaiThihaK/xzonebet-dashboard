@@ -19,11 +19,11 @@ const navigate = useNavigate();
            <div className={classes["user-info"]}>
             <div className={classes["total-user"]}>
             <p>Total Users</p>
-            <p className={classes["amount"]}>21</p>
+            <p className={classes["amount"]}>-</p>
             </div>
             <div className={classes["current-amount"]}>
             <p>Total Unit</p>
-            <p className={classes["amount"]}>30K</p>
+            <p className={classes["amount"]}>-</p>
             </div>
            </div>
          </div>

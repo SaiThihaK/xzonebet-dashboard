@@ -20,7 +20,7 @@ const CompleteAffiliateAgent = () => {
               
                 data.length !==0 && data.map((master,index)=>(
                  <Grid item xs={6} key={index}>
-                    <MemberCard partner={master} path={"/dashboard/account/affiliate-agent/pending-affiliate-agent/detail/"} />
+                    <MemberCard partner={master} path={"/dashboard/account/affiliate-agent/complete-affiliate-agent/"} />
                    </Grid>
                  
                 ))

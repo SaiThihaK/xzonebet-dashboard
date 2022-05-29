@@ -11,6 +11,7 @@ import CompleteAgentDesc from "./CompleteAgentDesc/CompleteAgentDesc";
 import { getMethod } from "../../../../services/api-services";
 import { logoutHandler } from "../../../../components/Sidebar/Sidebar";
 import CustomGetFunction from "../../../../services/CustomGetFunction";
+import CompleteMasterDesc from "../../../Master/CompleteMaster/CompleteMasterDetail/CompleteMasterDesc/CompleteMasterDesc";
 const CompleteAgentDetail = () => {
   const [age, setAge] = React.useState("");
   const [completeMaster,setCompleteMaster] = useState([]);
@@ -28,7 +29,8 @@ const CompleteAgentDetail = () => {
           <h1 className={classes["card-title"]}>Complete Agent Form Detail</h1>
         </div>
         <div className={classes["card-body"]}>
-          <CompleteAgentDesc userInfo={data} /> 
+          {/* <CompleteAgentDesc userInfo={data} />  */}
+          <CompleteMasterDesc userInfo={data} />
         </div>
       </Card>
       <div className={classes["btn-container"]}>

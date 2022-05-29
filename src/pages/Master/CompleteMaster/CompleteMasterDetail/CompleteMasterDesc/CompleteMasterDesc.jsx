@@ -30,7 +30,7 @@ const CompleteMasterDesc = ({userInfo}) => {
        phone: userInfo?.phone,
        email: userInfo?.email,
         country: userInfo?.country,
-        region: userInfo?.city,
+        city: userInfo?.city,
         currencyType:userInfo.currency_type || "",
         deposit_percent:userInfo?.deposit_percent || "-",
         withdraw_percent:userInfo?.withdraw_percent || "-"

@@ -100,6 +100,7 @@ import AdsContent from "../pages/PartnerSite/AdsContent/AdsContent"
 import ContactForm from "../pages/PartnerSite/ContactForm/ContactForm"
 import AnswerQuestion from "../pages/PartnerSite/AnswerQuestion/AnswerQuestion"
 import CompleteAffiliateAgent from "../pages/Affiliate Agent/CompleteAffiliateAgent/CompleteAffiliateAgent";
+import CompleteAffiliateAgentDetail from "../pages/Affiliate Agent/CompleteAffiliateAgent/CompleteAffiliateAgentDetail/CompleteAffiliateAgentDetail";
 const AdminRoute = () => {
   return (
       <Routes>
@@ -212,6 +213,8 @@ const AdminRoute = () => {
         <Route path="/dashboard/account/affiliate-agent/complete-affiliate-agent"
         element={<CompleteAffiliateAgent />} />
         {/* Agent */}
+        <Route path="/dashboard/account/affiliate-agent/complete-affiliate-agent/:id"
+        element={<CompleteAffiliateAgentDetail />} />
         <Route path="/dashboard/account/agent" exact element={<Agent />} />
         <Route
           path="/dashboard/account/agent/pending-agent"
