@@ -28,11 +28,10 @@ const AgentDetailDescription = () => {
   const navigate = useNavigate();
   const userData = useSelector(userInfo);
 
-  console.log("userData",userData)
+
 
 const {data,loading} = CustomGetFunction(`api/affiliate-register-lists/${id}`,[id]);
-console.log(chooseMaster);
-console.log(choose_superMaster)
+console.log("data",data);
 const handleChange = (event) => {
   setAge(event.target.value);
 };
@@ -190,6 +189,9 @@ console.log("become an agent",data);
         </div>
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Preferred Method to Contact </label>:<p>&nbsp;&nbsp;{data?.preferred_method_of_contact}</p>
+        </div>
+        <div className={classes["form-group-desc"]}>
+          <label htmlFor="">{data?.preferred_method_of_contact} account</label>:<p>&nbsp;&nbsp;{data?.contact_info}</p>
         </div>
         <div className={classes["form-group-desc"]}>
           <label htmlFor="">Currency Type </label>:<p>&nbsp;&nbsp;{data?.currency_type}</p>
