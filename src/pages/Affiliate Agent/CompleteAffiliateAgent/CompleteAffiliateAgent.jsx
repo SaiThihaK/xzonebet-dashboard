@@ -3,7 +3,7 @@ import React from 'react'
 import MemberCard from '../../../components/MemberCard/MemberCard';
 import PageTitleCard from '../../../components/UI/PageTitleCard/PageTitleCard'
 import CustomGetFunction from '../../../services/CustomGetFunction'
-
+import classes from "./CompleteAffiliateAgent.module.css"
 const CompleteAffiliateAgent = () => {
  const {data} = CustomGetFunction(`api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=complete&form_type=affiliate-agent`,[]);
   return (

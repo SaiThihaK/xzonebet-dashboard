@@ -9,24 +9,9 @@ import { logoutHandler } from '../../components/Sidebar/Sidebar';
 import CustomGetFunction from '../../services/CustomGetFunction';
 const AffiliateAgent = () => {
 
-//   const [confirmMaster,setConfirmMaster] = useState([]);
-//   const [completeMaster,setCompleteMaster] = useState([]);
-//   const [cancelMaster,setCancelMaster] = useState([]);
+
   const {data} = CustomGetFunction('api/affiliate-register-lists?sortColumn=updated_at&sortDirection=desc&limit=30&status=accept-affiliate',[])
-
-//   const fetchConfirm = async()=>{
-//     const confirm = await axios.request(getMethod(`/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-confirm&form_type=master`));
-//     setConfirmMaster(confirm.data.data.length);
-//   };
-//   const fetchComplete = async()=>{
-//     const complete = await axios.request(getMethod(`/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=complete&form_type=master`));
-//     setCompleteMaster(complete.data.data.length);
-//   };
-//   const fetchCancel = async()=>{
-//     const cancel = await axios.request(getMethod(`/api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=deposit-rejet&form_type=master`));
-//     setCancelMaster(cancel.data.data.length);
-//   }
-
+  const {data:completeAffiliate} = CustomGetFunction(`api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=complete&form_type=affiliate-agent`,[]);
 
   return (
     <div className={classes["soccer-setting-container"]}>
@@ -37,9 +22,9 @@ const AffiliateAgent = () => {
         <div className={classes["card-body"]}>
             <div className={classes['soccer-setting-content-flex']}>
                <MasterSettingCard name="Pending Affiliate Agent" bgColor="#FFC107" path="pending-affiliate-agent" userNum={data?.length} />
-               {/* <MasterSettingCard name="Confirm Master" bgColor="#4099FF" path="confirm-master"  userNum={confirmMaster}/>
-               <MasterSettingCard name="Complete Master" bgColor="#2ED8B6" path="complete-master"  userNum={completeMaster}/>
-               <MasterSettingCard name="Cancel Master" bgColor="#FF5370" path="cancel-master"  userNum={cancelMaster}/> */}
+               <MasterSettingCard name="Complete Affiliate Agent " bgColor="#4099FF" path="complete-affiliate-agent"  userNum={completeAffiliate.length}/>
+               {/* <MasterSettingCard name="Complete Master" bgColor="#2ED8B6" path="complete-master"  userNum={completeMaster}/>
+               <MasterSettingCard name="Cancel Master" bgColor="#FF5370" path="cancel-master"  userNum={cancelMaster}/> */} 
            </div>
         </div>
       </Card>
