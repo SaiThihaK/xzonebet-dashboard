@@ -45,6 +45,8 @@ import AgentDeposite from "../Dashboard/AgentDashboard/Page/Deposite/AgentDeposi
 import UserDetail from "../pages/Users/UserDetail/UserDetail";
 import BecomeAnPartnerSup from "../pages/BecomeAnPartnerSup/BeomeAnPartnerSup";
 import BecomeAnPartnerSupDetail from "../pages/BecomeAnPartnerSup/BecomeAnPartnerSupDetail/BecomeAnPartnerSupDetail";
+import CompleteAffiliateAgent from "../pages/Affiliate Agent/CompleteAffiliateAgent/CompleteAffiliateAgent";
+import CompleteAffiliateAgentDetail from "../pages/Affiliate Agent/CompleteAffiliateAgent/CompleteAffiliateAgentDetail/CompleteAffiliateAgentDetail";
 const SuperMasterRoute = () => {
   return (
     <Routes>
@@ -104,6 +106,11 @@ const SuperMasterRoute = () => {
         path="/dashboard/account/affiliate-agent/pending-affiliate-agent/detail/:id"
         element={<PendingAffiliateAgentDetail />}
       />
+      <Route path="/dashboard/account/affiliate-agent/complete-affiliate-agent"
+        element={<CompleteAffiliateAgent />} />
+        {/* Agent */}
+        <Route path="/dashboard/account/affiliate-agent/complete-affiliate-agent/:id"
+        element={<CompleteAffiliateAgentDetail  />} />
       {/* Agent */}
       <Route path="/dashboard/account/agent" exact element={<Agent />} />
       <Route
