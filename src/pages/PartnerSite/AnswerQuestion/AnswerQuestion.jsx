@@ -4,46 +4,26 @@ import React, { useEffect, useState } from 'react'
 import AnswerQuestionModal from '../../../components/UI/Modal/AnswerQuestion/AnswerQuestionModal'
 import PageTitleCard from '../../../components/UI/PageTitleCard/PageTitleCard'
 import classes from "./AnswerQuestion.module.css"
-
 import CustomGetFunction from "../../../services/CustomGetFunction"
 import axios from 'axios';
 import CustomLoading from '../../../components/CustomLoading/CustomLoading'
 import { toast } from 'react-toastify'
 import { PostMethod, PutMethod } from '../../../services/api-services'
-import { Editor } from "react-draft-wysiwyg";
-import { EditorState, ContentState, convertFromHTML } from 'draft-js'
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+
 const AnswerQuestion = () => {
   const [open,setOpen] = useState(false);
-  const handleOpen = ()=>setOpen(true);
-  const handleClose = ()=>setOpen(false);
+ 
   const [title,setTitle] = useState("");
   const [description,setDescription] = useState("");
   const [render,setRender] = useState(false);
   const [editOpen,setEditOpen] = useState(false);
   const editOpenHandler = ()=>setEditOpen(true);
   const editCloseHandler = ()=>setEditOpen(false);
-  const [id,setId] = useState('');
- 
+  const [id,setId] = useState('1');
+  const handleOpen = ()=>setOpen(true);
+  const handleClose = ()=>setOpen(false);
   const {data,loading} = CustomGetFunction(`api/xzonebetaffiliate/faqs`,[render]);
-  const [editorState, setEditorState] = useState(() =>
-
-EditorState.createWithContent(
-  ContentState.createFromBlockArray(
-    convertFromHTML(`<div> ${data?.title}  </div> ` )
-  )
-  ));
-  useEffect(()=>{
-    setEditorState(
-      () =>
-
-EditorState.createWithContent(
-  ContentState.createFromBlockArray(
-    convertFromHTML(`<div> ${data?.title}  </div> ` )
-  )
-  )
-    );
-  },[data])
+  const {data:detailQuestion} = CustomGetFunction(`api/xzonebetaffiliate/${id}/faq-edit`,[id]);
   const createQuestion = async()=>{
     try{
       const response = await axios.request(PostMethod("api/xzonebetaffiliate/faq/create",{
@@ -145,7 +125,7 @@ EditorState.createWithContent(
      handleClose={editCloseHandler} 
      title={title} 
      setTitle={setTitle}
-     data={data}
+     data={detailQuestion}
      submitHandler={editQuestion}
      setDescription={setDescription}
      render={render}
