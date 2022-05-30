@@ -69,7 +69,7 @@ const PandingMasterDetail = () => {
             password,
             deposit_percent,
             withdraw_percent,
-            super_master_id:supValue,
+            super_master_id:data?.super_master?.id,
             payment_acount_name:paymentAccount.name,
             payment_acount_no:paymentAccount.account_no
           },
@@ -171,6 +171,7 @@ if(response.data.status === "error"){
      setPaymet_Provider([]);
    }
  },[]);
+ console.log("pending Master Detail",data)
 
   return (
     <div className={classes["soccer-setting-container"]}>
@@ -350,10 +351,10 @@ if(response.data.status === "error"){
                 <form action="" style={{ width: "400px" }}>
                 <div className={classes["form-group-desc"]}>
                     <label htmlFor="">Choose SuperMaster</label>:
-                    <p>
+                    <div>
                       &nbsp;&nbsp;
                       {/* <input type="text" /> */}
-                      <Select
+                      {/* <Select
                         id="standard-basic"
                         label="Super Master"
                         sx={{ width: 200 }}
@@ -369,8 +370,10 @@ if(response.data.status === "error"){
                           </MenuItem>
                         ))
                       }
-                      </Select>
-                    </p>
+                      </Select> */}
+                      <TextField value={data?.super_master?.name} disabled={true} label={data?.superMaster?.name}
+                      size="small" variant="standard" />
+                    </div>
                   </div>
                   <div className={classes["form-group-desc"]}>
                     <label htmlFor="">User Name </label>:

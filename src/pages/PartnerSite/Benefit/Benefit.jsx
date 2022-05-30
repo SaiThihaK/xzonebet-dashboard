@@ -3,25 +3,40 @@ import React, { useState,useEffect } from 'react'
 import classes from "./Benefit.module.css"
 import PageTitleCard from "../../../components/UI/PageTitleCard/PageTitleCard"
 import { Editor } from "react-draft-wysiwyg";
-import { EditorState } from "draft-js";
+
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import CustomGetFunction from '../../../services/CustomGetFunction';
 import { PostMethod, PutMethod } from '../../../services/api-services';
 import { toast } from 'react-toastify';
 import  axios from 'axios';
 import CustomLoading from '../../../components/CustomLoading/CustomLoading';
+import { stateToHTML } from "draft-js-export-html";
+import { EditorState, ContentState, convertFromHTML } from 'draft-js'
 const Benefit = () => {
   const [render,setRender] = useState(false);
   const {data,loading} = CustomGetFunction(`api/xzonebet-affiliates/content`,[render]);
+  console.log(data);
   const [editorState, setEditorState] = useState(() =>
-    EditorState.createEmpty()
-  );
+
+EditorState.createWithContent(
+  ContentState.createFromBlockArray(
+    convertFromHTML(`<div> ${data?.content1_detail}  </div> ` )
+  )
+  ));
   const [title,setTitle] = useState("");
  
-  useEffect(() => {
-    console.log(editorState);
-    setTitle(data.content1_title);
-  }, [editorState,data]);      
+  useEffect(()=>{
+    setTitle(data?.content1_title)
+    setEditorState(
+      () =>
+
+EditorState.createWithContent(
+  ContentState.createFromBlockArray(
+    convertFromHTML(`<div> ${data?.content1_detail}  </div> ` )
+  )
+  )
+    );
+  },[data])     
     
     const [open,setOpen] = useState(false);
     const handleOpen = ()=>setOpen(true);
@@ -32,7 +47,7 @@ const Benefit = () => {
     try{
 const response =await  axios.request(PutMethod(`api/xzonebet-affiliates/content`,{
   content1_title:title,
-  content1_detail:editorState.getCurrentContent().getPlainText()
+  content1_detail:stateToHTML(editorState.getCurrentContent())
 }));
 console.log(response);
 if(response.data.status==="success"){
@@ -53,43 +68,24 @@ if(response.data.status === "error"){
      return (
          <>
      <PageTitleCard title="Benefits">
-         <div className={classes["card-body"]}>
-               {!open ? (
-                <>
-                {
-                  loading ? (<div>
-                    <div className={classes["card-title"]}>{data.content1_title}</div>
-                    <p className={classes["card-text"]}>
-                         {data.content1_detail}
-                     </p>
-                     </div>):(<CustomLoading />)
-                }
-                
-                </>
-               
-                ):(
-                  <div className={classes["form-container"]}>
-                   <div className={classes["form"]}>  
-                     <label>Title</label>
-                     <TextField fullWidth size="small" value={title} onChange={(e)=>{
-                       setTitle(e.target.value);
-                     }} />
-                   </div>
-                   <div className={classes["form"]}>
-                    <label>Content</label>
-                    <div style={{ border: "1px solid  rgba(102, 99, 99, 0.559)",borderRadius: "5px", backgroundColor: 'white', padding: '2px', minHeight: '400px',marginRight: '10px',marginTop: "10px" }}>
+     <div className="card-body">
+            {!open ? (
+             loading ? (
+            <p className="card-text" style={{padding: "10px"}}>
+            {
+                      <div className="list-style" dangerouslySetInnerHTML={{__html:   data.content1_detail }} />
+                    }
+             </p>):<CustomLoading /> ):(
+            
+            <div style={{ border: "1px solid  rgba(102, 99, 99, 0.559)",backgroundColor: 'white', padding: '2px', minHeight: '400px',marginRight: '10px',marginLeft: '10px',marginTop: "10px" }}>
             <Editor
               editorState={editorState}
               onEditorStateChange={setEditorState}
             />
-          </div>
-            
-                   </div>
-                  
-                  </div>
-                  )}
-                  
-           </div>
+          </div>            
+              //  <textarea value={textValue}   onChange={(e)=>setTextValue(e.target.value)}   rows="8"  />
+               )}
+               </div>
     </PageTitleCard>
          <div className={classes["card-body"]}>
     {open &&<Stack direction="row" spacing={3} style={{display:"flex",justifyContent:"flex-end",marginTop:20,marginRight:20}}>

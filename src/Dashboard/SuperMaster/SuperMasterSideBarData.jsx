@@ -84,13 +84,13 @@ export const SuperMasterSidebarData = [
         iconClosed: <RiArrowDownSFill/>,
         iconOpened: <RiArrowUpSFill/>
     },
-    {
-        title: 'Withdraw to Admin',
-        path: '/dashboard/super_master/withdraw-to-admin',
-        icon: <FaLayerGroup />,
-        iconClosed: <RiArrowDownSFill/>,
-        iconOpened: <RiArrowUpSFill/>
-    },
+    // {
+    //     title: 'Withdraw to Admin',
+    //     path: '/dashboard/super_master/withdraw-to-admin',
+    //     icon: <FaLayerGroup />,
+    //     iconClosed: <RiArrowDownSFill/>,
+    //     iconOpened: <RiArrowUpSFill/>
+    // },
             {
                 title: 'Master',
                 path: '/dashboard/account/master',
