@@ -1,12 +1,13 @@
 import React, { useState,useEffect } from 'react'
-import { Editor } from "react-draft-wysiwyg";
-import { EditorState } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import Box from "@mui/material/Box";
 import classes from "./AnswerQuestion.module.css"
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { Button, TextField,Stack } from "@mui/material";
+import { Editor } from "react-draft-wysiwyg";
+import { EditorState, ContentState, convertFromHTML } from 'draft-js'
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 const AnswerQuestionModal = ({ 
   open, 
   handleClose,
@@ -30,14 +31,27 @@ const AnswerQuestionModal = ({
     overflowY: "auto",
     maxHeight: "calc(100vh - 100px)",
   };
+  console.log("question Detail",data);
+
   const [editorState, setEditorState] = useState(() =>
-    EditorState.createEmpty()
-  );
-  useEffect(() => {
-    console.log(editorState);
-    setDescription(editorState.getCurrentContent().getPlainText());
-  }, [editorState,data]);  
-   
+
+  EditorState.createWithContent(
+    ContentState.createFromBlockArray(
+      convertFromHTML(`<div> ${data?.description || ""}</div> ` )
+    )
+    ));
+    useEffect(()=>{
+      setTitle(data?.title || "")
+      setEditorState(
+        () =>
+  
+  EditorState.createWithContent(
+    ContentState.createFromBlockArray(
+      convertFromHTML(`<div> ${data?.description}  </div> ` )
+    )
+    )
+      );
+    },[data])
   return (
     <div>
       <Modal

@@ -15,14 +15,15 @@ const AdsContent = () => {
   const[render,setRender] = useState(false);
   const {data,loading} = CustomGetFunction(`api/xzonebet-affiliates/content`,[render]);
   const [title,setTitle] = useState("");
+  console.log(`adsContent`,data)
   const [editorState, setEditorState] = useState(() =>
-
   EditorState.createWithContent(
     ContentState.createFromBlockArray(
       convertFromHTML(`<div> ${data?.content2_detail}  </div> ` )
     )
     ));
     useEffect(()=>{
+      setTitle(data.content2_title)
       setEditorState(
         () =>
   
@@ -95,7 +96,6 @@ if(response.data.status === "error"){
             />
           </div>
                    </div>
-                  
                   </div>
                   )}
                   
