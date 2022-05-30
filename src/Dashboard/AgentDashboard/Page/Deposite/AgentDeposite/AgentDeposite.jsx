@@ -68,14 +68,7 @@ console.log(paymentType);
 const FilterPayment_Provider = provider.filter((c)=>c.payment_type_id === paymentId);
 const AlertToast = (toast,msg)=>{return toast(msg)};
   return (
-    <div className={classes["deposit_container"]}>
-      <Stack direction="row">
-        <Button className={!btnClick ? classes['btn'] : classes[""]}>Provider</Button>
-        <p style={{fontSize:16,marginTop:8,fontWeight:800}}>/</p>
-        <Button
-        className={btnClick ? classes['btn'] : classes[""]}
-        >Master</Button>  
-      </Stack>  
+    <div className={classes["deposit_container"]}> 
       <div className={classes["payment_method"]}>
         <div className={classes["lef_payment"]}>
           {paymentType.map((el, index) => {

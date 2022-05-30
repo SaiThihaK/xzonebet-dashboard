@@ -29,10 +29,14 @@ const BecomeAnPartnerSupDetail = () => {
   const navigate = useNavigate();
   const userData = useSelector(userInfo);
   console.log("userData",userData)
-  console.log("userInfo",userData);
+
 const {data,loading} = CustomGetFunction(`api/affiliate-register-lists/${id}`,[id]);
-console.log(chooseMaster);
-console.log(choose_superMaster)
+console.log("agent Data",data?.master?.id);
+
+
+useEffect(()=>{
+  setMaster_id(data?.master?.id)
+},[id,data])
 const handleChange = (event) => {
   setAge(event.target.value);
 };
