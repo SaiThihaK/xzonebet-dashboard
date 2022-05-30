@@ -1,6 +1,6 @@
 import { Delete, Edit } from '@mui/icons-material'
 import { IconButton,Button } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import AnswerQuestionModal from '../../../components/UI/Modal/AnswerQuestion/AnswerQuestionModal'
 import PageTitleCard from '../../../components/UI/PageTitleCard/PageTitleCard'
 import classes from "./AnswerQuestion.module.css"
@@ -10,7 +10,9 @@ import axios from 'axios';
 import CustomLoading from '../../../components/CustomLoading/CustomLoading'
 import { toast } from 'react-toastify'
 import { PostMethod, PutMethod } from '../../../services/api-services'
-
+import { Editor } from "react-draft-wysiwyg";
+import { EditorState, ContentState, convertFromHTML } from 'draft-js'
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 const AnswerQuestion = () => {
   const [open,setOpen] = useState(false);
   const handleOpen = ()=>setOpen(true);
@@ -24,6 +26,24 @@ const AnswerQuestion = () => {
   const [id,setId] = useState('');
  
   const {data,loading} = CustomGetFunction(`api/xzonebetaffiliate/faqs`,[render]);
+  const [editorState, setEditorState] = useState(() =>
+
+EditorState.createWithContent(
+  ContentState.createFromBlockArray(
+    convertFromHTML(`<div> ${data?.title}  </div> ` )
+  )
+  ));
+  useEffect(()=>{
+    setEditorState(
+      () =>
+
+EditorState.createWithContent(
+  ContentState.createFromBlockArray(
+    convertFromHTML(`<div> ${data?.title}  </div> ` )
+  )
+  )
+    );
+  },[data])
   const createQuestion = async()=>{
     try{
       const response = await axios.request(PostMethod("api/xzonebetaffiliate/faq/create",{
