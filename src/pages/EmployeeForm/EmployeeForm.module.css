@@ -1,12 +1,13 @@
-.card-body{
-    padding:20px;
-}
-.form-Control{
-display: flex;
-margin-bottom: 20px;
+.card-body {
+    padding: 20px;
 }
 
-.form-Control label{
+.form-Control {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.form-Control label {
     width: 150px;
     font-size: 16px;
     margin-top: 10px;
@@ -15,29 +16,48 @@ margin-bottom: 20px;
 
 
 
-.grid-template{
-display: grid;
-grid-template-columns: 1fr 1fr;
-grid-gap: 50px;
-padding: 10px 20px;
+.grid-template {
+    display: flex;
+    padding: 10px 20px;
 }
 
-.btn-container{
+.grid-template>div {
+    flex: 0 0 auto;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.e_photo {
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.e_photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.btn-container {
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
-.title-form{
+
+.title-form {
     display: flex;
-  align-items: center;
+    align-items: center;
     background-color: #eee;
-    padding:  5px 10px;
+    padding: 5px 10px;
     border-radius: 10px;
     cursor: pointer;
     margin-bottom: 10px;
 }
 
-.title-form h3{
+.title-form h3 {
     flex-grow: 1;
 }
 
@@ -47,27 +67,79 @@ padding: 10px 20px;
     display: flex;
     justify-content: flex-end;
 } */
-.form{
-    transition: all 1s ease-in-out;
-    margin-bottom: 20px;
-    padding: 10px 20px;
-}
-.form-Control-des{
+.work-flex {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
-.form-Control-des label{
-    width: 150px;
-    font-size: 16px;
-    justify-self: start;
-  
-    font-weight: 600;
-display: block;
-    margin-bottom: 10px; 
+
+
+.btn-add {
+    padding: 13px 10px;
+    height: fit-content;
+    cursor: pointer;
+    color: white;
+    background-color: var(--secondary-color);
+    border: none;
+    outline: none;
+    border-radius: 5px;
 }
 
-.form-Control-des textarea{
+.work-title {
+    color: var(--secondary-color);
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.line-brake {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.line-brake hr {
+
+    width: 90%;
+    margin-bottom: 20px;
+}
+
+.form {
+    transition: all 1s ease-in-out;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+}
+
+.hr_title {
+    margin-top: 10px;
+    margin-left: 20px;
+    font-size: px;
+}
+
+.employee_card {
+    background-color: #fff;
+    border-radius: 10px;
     width: 100%;
+    height: 100%;
+    padding: 30px;
+
+
+}
+
+.form-Control-des {
+    display: flex;
+    justify-content: center;
+
+}
+
+.form-Control-des label {
+    width: 150px;
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.form-Control-des textarea {
+    width: 100%;
+    height: 100px;
 }
