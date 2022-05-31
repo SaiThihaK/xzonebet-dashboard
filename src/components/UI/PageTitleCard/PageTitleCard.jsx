@@ -1,18 +1,19 @@
 import React from 'react';
 import Card from '../Card';
 import classes from "./PageTitleCard.module.css"
-const PageTitleCard = ({title,children}) => {
+const PageTitleCard = ({ title, children, none }) => {
 
   return (
     <div className={classes["soccer-setting-container"]}>
-      <Card> 
-        <div className={classes["card-header"]}>
+      <Card>
+        {!none && (<div className={classes["card-header"]}>
           <h1 className={classes["card-title"]}>{title}</h1>
-        </div>
+        </div>)}
+
         <div className={classes["card-body"]}>
-        {
+          {
             children ? children : <div></div>
-        }
+          }
         </div>
       </Card>
     </div>

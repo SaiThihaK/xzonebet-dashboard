@@ -11,7 +11,6 @@ import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import CustomGetFunction from "../../../services/CustomGetFunction";
 import CustomLoading from "../../../components/CustomLoading/CustomLoading"
-
 const PaymentProvider = () => {
   const navigate = useNavigate();
   // const [open,setOpen] = useState(false);
@@ -32,8 +31,7 @@ const PaymentProvider = () => {
           <div className={classes["table-container"]}>
           <div style={{display:"flex",justifyContent:"flex-end",marginBottom:20}}>
             <Button variant="contained" onClick={()=>navigate("/dashboard/payment-setting/payment-provider/create")}>Create Provider</Button>
-          </div>
-         
+          </div>  
          {
            loading ? (  <PaymentProviderTable data={data} />):(<CustomLoading />)
          }
