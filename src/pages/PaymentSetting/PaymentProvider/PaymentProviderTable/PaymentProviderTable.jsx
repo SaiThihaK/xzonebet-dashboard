@@ -95,9 +95,9 @@ const PaymentProviderTable = ({data}) => {
                  }}>
                  <Edit />
                  </IconButton>
-                 <IconButton>
+                 {/* <IconButton>
                    <Delete />
-                 </IconButton>
+                 </IconButton> */}
                   </Stack>
     },
   ]
