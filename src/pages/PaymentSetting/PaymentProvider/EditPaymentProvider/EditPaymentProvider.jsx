@@ -25,9 +25,13 @@ const providerValueChange = e =>setProviderValue(e.target.value);
 const {id} = useParams();
 const ToastAlert = (toast,msg)=>toast(msg);
 const logoChange = (e) => setlogo(e.target.files[0]);
-
+const {data:providerDetail} = CustomGetFunction(`api/dashboard/payment-providers/${id}`,[id]);
+useEffect(()=>{
+setPayment_typeValue(providerDetail?.payment_type_id);
+setProviderValue(providerDetail?.name)
+},[providerDetail])
+console.log("provDetail",providerDetail);
 const EditHandler = async()=>{
-console.log("payment_type_id",payment_typeValue);
 try{
 let fd = new FormData();
 fd.append("logo",logo);

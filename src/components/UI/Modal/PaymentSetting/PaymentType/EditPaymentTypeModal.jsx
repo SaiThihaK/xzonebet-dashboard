@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { FormControl, TextField } from "@mui/material";
 import { PatchMethod, PostMethod } from "../../../../../services/api-services";
-
+import CustomGetFunction from "../../../../../services/CustomGetFunction"
 import axios from "axios";
 import { toast } from "react-toastify";
 import { logoutHandler } from "../../../../Sidebar/Sidebar";
@@ -38,7 +38,13 @@ export default function EditPaymentModal({
   const [type,setType] = useState("");
   const handleChange = (e)=>setType(e.target.value);
   const ToastAlert = (msg) => msg;
-
+const {data} = CustomGetFunction(`api/dashboard/payment-types/${id}`,[id]);
+useEffect(()=>{
+  setType(data?.name);
+  return ()=>{
+    setType("");
+  }
+},[data])
 const submitHandler = async(e)=>{
   e.preventDefault();
   if(!type){
@@ -86,7 +92,7 @@ const submitHandler = async(e)=>{
             <TextField
               value={type}
               onChange={handleChange}
-              label="Edit Payment Type"
+             
               inputProps={{ "aria-label": "Without label" }}
               size="small"
               sx={{ backgroundColor: "#f3f3f3" }}
