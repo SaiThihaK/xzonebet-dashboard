@@ -14,7 +14,7 @@ import CustomLoading from "../../../components/CustomLoading/CustomLoading";
 import Nodata from "../../../components/Nodata/Nodata";
 
 const CompleteMaster = () => {
-  const {data,loading} = CustomGetFunction(completeMasterApi,[]);
+  const {data,loading} = CustomGetFunction(`api/agents?sortColumn=id&sortDirection=desc&limit=30&agent_level=master`,[]);
 
   return (
     <div className={classes["soccer-setting-container"]}>

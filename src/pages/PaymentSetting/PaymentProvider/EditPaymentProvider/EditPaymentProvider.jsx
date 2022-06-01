@@ -30,7 +30,7 @@ useEffect(()=>{
 setPayment_typeValue(providerDetail?.payment_type_id);
 setProviderValue(providerDetail?.name)
 },[providerDetail])
-console.log("provDetail",providerDetail);
+
 const EditHandler = async()=>{
 try{
 let fd = new FormData();

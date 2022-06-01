@@ -24,9 +24,6 @@ const CompleteMasterDesc = ({userInfo}) => {
     setValues({      
       first_name : userInfo?.first_name,
       last_name: userInfo?.last_name,
-      dob :  "20/12/1998",
-       NRC: "12432144543",
-       passport: "2343wsd3",
        phone: userInfo?.phone,
        email: userInfo?.email,
         country: userInfo?.country,
@@ -46,10 +43,7 @@ const handleChange = (prop) => (event) => {
       setShowForm("");
       return;
     }
-    setShowForm(el);
-    console.log("hhei");
-    console.log(el);
-    console.log(showForm);  
+    setShowForm(el);  
   }
   return (
     <div>
@@ -65,29 +59,6 @@ const handleChange = (prop) => (event) => {
           <span>ID - {userInfo.id}</span>
         </div>
       </div>
-      {/* <div   className={classes["form-container"]}>
-      <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Unit </label>:<p>&nbsp;&nbsp;</p>
-        </div>
-        <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Email </label>:<p>&nbsp;&nbsp;{userInfo.email}</p>
-        </div>
-        <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Phone </label>:<p>&nbsp;&nbsp;{userInfo.phone}</p>
-        </div>
-        <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Country </label>:<p>&nbsp;&nbsp;{userInfo.country}</p>
-        </div>
-        <div className={classes["form-group-desc"]}>
-          <label htmlFor="">City </label>:<p>&nbsp;&nbsp;{userInfo.city}</p>
-        </div>
-        <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Deposite Percentage </label>:<p>&nbsp;&nbsp;{userInfo.deposit_percent}</p>
-        </div>
-        <div className={classes["form-group-desc"]}>
-          <label htmlFor="">Withdraw Percentage </label>:<p>&nbsp;&nbsp;{userInfo.withdraw_percent}</p>
-        </div>
-      </div> */}
      <div className="personal_info">
     <div className="p_flex">
       
@@ -132,12 +103,21 @@ const handleChange = (prop) => (event) => {
                       </div>
                       <div className="p_ncolor" >
                           <p className="input_1">{values?.deposit_percent }%</p>
-                         <div className="p_btn"  onClick={()=>{showInput(15)}}> <i className="fas fa-pencil-alt"></i></div>
-                         <div className={`p_absolute ${ showForm===15 &&  "p_a_show"}`} id="input_4">
-                           <input type="deposite_percentage"   value={values?.deposit_percent}
-                            onChange={handleChange('deposite_percentage')} / >
-                           <i className="fas fa-check-circle" onClick={()=>{showInput("")}}></i>
-                          </div>
+                          {
+                            type !=="master" && (
+                              <>
+                              <div className="p_btn"  onClick={()=>{showInput(15)}}> 
+                              <i className="fas fa-pencil-alt"></i>
+                              </div>
+                              <div className={`p_absolute ${ showForm===15 &&  "p_a_show"}`} id="input_4">
+                                <input type="deposite_percentage"   value={values?.deposit_percent}
+                                 onChange={handleChange('deposite_percentage')} / >
+                                <i className="fas fa-check-circle" onClick={()=>{showInput("")}}></i>
+                               </div>
+                               </>
+                            )
+                          }
+                        
                         </div>
                     </div>
                   
@@ -147,12 +127,21 @@ const handleChange = (prop) => (event) => {
                       </div>
                       <div className="p_ncolor" >
                           <p className="input_1">{values?.withdraw_percent }%</p>
-                         <div className="p_btn"  onClick={()=>{showInput(19)}}> <i className="fas fa-pencil-alt"></i></div>
+                          {
+                            type !== "master" && (
+                              <>
+                          <div className="p_btn"  onClick={()=>{showInput(19)}}> 
+                         <i className="fas fa-pencil-alt"></i>
+                         </div>
                          <div className={`p_absolute ${ showForm===19 &&  "p_a_show"}`} id="input_4">
                            <input type="withdraw_percentage"   value={values?.withdraw_percent}
                             onChange={handleChange('withdraw_percentage')} / >
                            <i className="fas fa-check-circle" onClick={()=>{showInput("")}}></i>
                           </div>
+                              </>
+                            )
+                          }
+                       
                         </div>
                     </div>
            

@@ -41,7 +41,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 const PaymentAccountTable = ({data,pagination,setPage}) => {
 const navigate = useNavigate();
 console.log("this is data",data);
-console.log(data);
+
 
 const deleteHandler = async(id)=>{
   console.log(id)
@@ -90,7 +90,7 @@ const columns = [
     headerAlign: 'center',
     editable: false,
     renderCell:(params)=> <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
-    <Avatar style={{display:"flex",justifyContent:"center"}} src={params.row.provider_logo} variant="square" alt=""/>
+    <Avatar style={{display:"flex",justifyContent:"center"}} src={params.row.logo} variant="square" alt=""/>
     </div>
   },
   {
