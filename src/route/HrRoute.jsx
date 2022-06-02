@@ -63,7 +63,7 @@ const HrRoute = () => {
       <Route exact path="/dashboard/position" element={<HrPosition />} />
       <Route exact path="/dashboard/employee" element={<HrEmployee />} />
       <Route
-        exacct
+        exact
         path="/dashboard/employee/employee-detail/:id"
         element={<EmployeeDetail />}
       />

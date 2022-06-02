@@ -1,21 +1,18 @@
-
 import { Button, MenuItem, Select, TextField, IconButton } from '@mui/material';
 import axios from 'axios';
 import React, { useState } from 'react'
 import InputLabel from '@mui/material/InputLabel';
 import { toast } from 'react-toastify';
 import PageTitleCard from '../../components/UI/PageTitleCard/PageTitleCard';
-import { PostProvider } from '../../services/api-services';
+import { PostProvider, PostMethod } from '../../services/api-services';
 import CustomGetFunction from '../../services/CustomGetFunction';
 import classes from "./EmployeeForm.module.css"
-import { ArrowDropDown } from "@mui/icons-material"
-import { DesktopDatePicker, LocalizationProvider } from "@mui/lab";
-import { getResDate } from '../../Controller/ChangeDate';
-import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
-import AdapterDateFns from "@mui/lab/AdapterDateFns";
+
+import WorkHistory from './WorkHistory';
+import Education from './Education';
+import { useNavigate } from "react-router-dom";
 
 const EmployeeForm = () => {
-
   const [userId, setUserId] = useState("");
   const [department, setDepartment] = useState([]);
   const [logo, setlogo] = useState({});
@@ -28,35 +25,42 @@ const EmployeeForm = () => {
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
-  const [countryId, setCountryId] = useState("");
-  const [stateId, setStateId] = useState("");
-
-  // working exp state
-  const [expPosition, setExpPosition] = useState("");
-  const [companyName, setCompanyName] = useState("");
-  const [expStartDate, setExpStartDate] = useState(new Date());
-  const [expEndDate, setExpEndDate] = useState(new Date());
-  const [description, setDescription] = useState("");
+  const [countryId, setCountryId] = useState(0);
+  const [stateId, setStateId] = useState(0);
+  const [workCount, setWorkCount] = useState(0);
+  const [eduCount, setEduCount] = useState(0);
+  const [clear, setClear] = useState(false);
+  // workin exp state
   // Education
-  const [eduDegree, setEduDegree] = useState("");
-  const [eduSchool, setEduSchool] = useState("");
-  const [eduStartDate, setEduStartDate] = useState(new Date());
-  const [eduEndDate, setEduEndDate] = useState(new Date());
-  const [note, setNote] = useState("");
+  const [workHistory, setWorkHistory] = useState({});
+  const [education, setEducation] = useState({});
+  const [history, setHistory] = useState([]);
+  const [showRowOne, setshowRowOne] = useState({
+    show: { 0: true },
+  });
+  const handleClickOne = (id) => {
+    setshowRowOne((prevState) => ({
+      show: { ...prevState.show, [id]: !prevState.show[id] },
+    }));
+  };
+  const [showRow, setshowRow] = useState({
+    show: { 0: true },
+  });
+  const handleClick = (id) => {
+    setshowRow((prevState) => ({
+      show: { ...prevState.show, [id]: !prevState.show[id] },
+    }));
+  };
+  let navigate = useNavigate();
   // ------------------------Condition---------------------------------------------------
-  const [isPersonal, setIsPersonal] = useState(false);
-  const [isWorkingExp, setWorkingExp] = useState(false);
-  const [isEducation, setIsEducation] = useState(false);
   const { data: countryData } = CustomGetFunction('api/countries', []);
-  if (countryId !== "") {
-    var { data: stateData } = CustomGetFunction(`api/states/${countryId}`, [countryId]);
-  }
-  if (stateId !== "") {
-    var { data: cityData } = CustomGetFunction(`api/cities/${stateId}`, [stateId]);
-  }
+  var { data: stateData } = CustomGetFunction(`api/states/${countryId}`, [countryId]);
+  var { data: cityData } = CustomGetFunction(`api/cities/${stateId}`, [stateId]);
   const { data } = CustomGetFunction("api/departments", []);
   const submitHandler = async (e) => {
     e.preventDefault();
+    const arrOfObj1 = Object.values(workHistory);
+    const arrOfObj2 = Object.values(education);
     // if(!userId){
     //   toast.warning("Please enter User Id");
     //   return;
@@ -89,20 +93,20 @@ const EmployeeForm = () => {
       toast.warning("Please enter skill");
       return;
     }
-    let work_histories = [{
-      position: expPosition,
-      company_name: companyName,
-      start_date: getResDate(expStartDate),
-      end_date: getResDate(expEndDate),
-      description: description
-    }];
-    let educations = [{
-      degree: eduDegree,
-      school: eduSchool,
-      start_date: getResDate(eduStartDate),
-      end_date: getResDate(eduEndDate),
-      note: note
-    }];
+    // let work_histories = [{
+    //   position: expPosition,
+    //   company_name: companyName,
+    //   start_date: getResDate(expStartDate),
+    //   end_date: getResDate(expEndDate),
+    //   description: description
+    // }];
+    // let educations = [{
+    //   degree: eduDegree,
+    //   school: eduSchool,
+    //   start_date: getResDate(eduStartDate),
+    //   end_date: getResDate(eduEndDate),
+    //   note: note
+    // }];
     try {
       // let formdata = new FormData();
       // formdata.append("name",JSON.stringify(userId));
@@ -117,45 +121,68 @@ const EmployeeForm = () => {
         city: city,
         state: stateData[state].name,
         skill: skill,
-        work_histories: work_histories,
-        educations: educations
-      }
-      // formdata.append("department_id",JSON.stringify(department?.id));
-      // formdata.append("position_id",JSON.stringify(position));
-      // formdata.append("avatar",JSON.stringify(logo));
-      // formdata.append("name",JSON.stringify(name));
-      // formdata.append("email",JSON.stringify(email));
-      // formdata.append("phone",JSON.stringify(phone));
-      // formdata.append("address",JSON.stringify(address));
-      // formdata.append("country",JSON.stringify(countryData[country].name));
-      // formdata.append("city",JSON.stringify(city));
-      // formdata.append('state',JSON.stringify(stateData[statMe].name));
-      // formdata.append("skill",JSON.stringify(skill));
-      // formdata.append("work_histories",JSON.stringify(work_histories));
-      // formdata.append("educations",JSON.stringify(educations));
-      // console.log("formdata",formdata.getAll());
-      const response = await axios.request(PostProvider("api/employees", FormData));
+        work_histories: arrOfObj1,
+        educations: arrOfObj2
+      };
+      // formdata.append(FormData);
+
+      // formdata.append("department_id", department?.id);
+      // formdata.append("position_id", position);
+      // formdata.append("avatar", logo);
+      // formdata.append("name", name);
+      // formdata.append("email", email);
+      // formdata.append("phone", phone);
+      // formdata.append("address", address);
+      // formdata.append("country", countryData[country].name);
+      // formdata.append("city", city);
+      // formdata.append('state', stateData[state].name);
+      // formdata.append("skill", skill);
+      // formdata.append("work_histories", arrOfObj1);
+      // formdata.append("educations", [JSON.parse(...arrObj2)]);
+      // console.log(arrOfObj1);
+      // console.log("formdata", formdata.getAll("work_histories"));
+      const response = await axios.request(PostMethod("api/employees", FormData));
       if (response.data.status === "success") {
         toast.success(response.data.message);
-        setUserId("");
-        setDepartment([]);
-        setPosition("");
-        setName("");
-        setEmail("");
-        setPhone("");
-        setAddress("");
-        setSkill("");
-        setExpPosition("");
-        setCompanyName("");
-        setExpStartDate(new Date());
-        setExpEndDate(new Date());
-        setDescription("");
-        setEduDegree("");
-        setEduSchool("");
-        setEduStartDate(new Date());
-        setEduEndDate(new Date());
-        setNote("");
+        navigate("/dashboard/employee");
+        return;
+        // setUserId("");
+        // setDepartment([]);
+        // setPosition("");
+        // setName("");
+        // setSkill("");
+        // setEmail("");
+        // setPhone("");
+        // setAddress("");
+        // setClear(true);
+        // setEduCount(0);
+        // setWorkCount(0);
+        // clear(true);
+        // setCountry("");
+        // setCity("");
+        // setState("");
+        // setCountryId(0);
+        // setStateId(0);
 
+
+        // setshowRowOne({
+        //   show: { 0: true },
+        // });
+        // setshowRow({
+        //   show: { 0: true },
+        // });
+
+        // setSkill("");
+        // setExpPosition("");
+        // setCompanyName("");
+        // setExpStartDate(new Date());
+        // setExpEndDate(new Date());
+        // setDescription("");
+        // setEduDegree("");
+        // setEduSchool("");
+        // setEduStartDate(new Date());
+        // setEduEndDate(new Date());
+        // setNote("");
         return
       }
       if (response.data.status === "error") {
@@ -330,116 +357,40 @@ const EmployeeForm = () => {
           {/* ------------------------------Working Exp-------------------------------- */}
           <div className={classes["work-flex"]}>
             <h3 className={classes["work-title"]}>Work History</h3>
-            <button className={classes["btn-add"]}> Add New Work History</button>
+            <button className={classes["btn-add"]} onClick={() => {
+              // if (workCount === 5) {
+              //   return;
+              // }
+              handleClick(workCount + 1);
+              setWorkCount(pre => pre + 1);
+            }}> Add New Work History</button>
           </div>
+          {Array.from(Array(workCount + 1).keys()).map((el, key) => {
+            if (showRow.show[key]) {
+              return (<WorkHistory setWorkHistory={setWorkHistory} showRow={showRow} keys={key} handleClick={handleClick} />)
+            }
 
-
-          <form className={classes["form"]}>
-            <div className={classes["grid-template"]}>
-              <div>
-                <div className={classes["form-Control"]}>
-                  <label>Position</label>
-                  <TextField size="small" fullWidth value={expPosition} onChange={(e) => { setExpPosition(e.target.value) }} />
-                </div>
-                {/* --------------------------------Company---------------------------------------------------- */}
-                <div className={classes["form-Control"]}>
-                  <label>End Date</label>
-                  <DatePicker value={expEndDate} setValue={setExpEndDate} />
-                </div>
-              </div>
-
-
-              {/* ----------------------------------------------------------Form-Date---------------------------------------- */}
-              <div>
-                <div className={classes["form-Control"]}>
-                  <label>Company Name</label>
-                  <TextField size="small" fullWidth value={companyName} onChange={(e) => { setCompanyName(e.target.value) }} />
-                </div>
-                {/* -----------------------------Start Date----------------------------------------------------------------- */}
-                <div className={classes["form-Control"]}>
-                  <label>Start Date</label>
-                  <DatePicker value={expStartDate} setValue={setExpStartDate} />
-                </div>
-
-                {/* --------------------------------------------------End Date------------------------------ */}
-
-
-              </div>
-            </div>
-            {/*----------------------------------------------Description------------------------------------  */}
-
-            <div className={classes["form-Control-des"]} style={{
-              paddingLeft: "20px",
-            }}>
-
-              <label style={{
-                width: "70px", marginRight: "20px",
-                marginLeft: "20px"
-              }} >Description</label>
-
-
-              <textarea value={description} onChange={(e) => { setDescription(e.target.value) }} style={{
-                marginLeft: "20px"
-              }} />
-
-            </div>
-          </form>
+          })
+          }
 
           <div className={classes["line-brake"]}>  <hr /></div>
 
           {/* ------------------------------Working Exp-------------------------------- */}
-          <div className={classes["work-flex"]}>
+          < div className={classes["work-flex"]} >
             <h3 className={classes["work-title"]}>Education</h3>
-            <button className={classes["btn-add"]}> Add Education</button>
+            <button className={classes["btn-add"]} onClick={() => {
+              handleClickOne(eduCount + 1);
+              setEduCount(pre => pre + 1);
+            }}> Add Education</button>
           </div>
-
           {/* ----------------------------------------Education----------------------------------------- */}
-          <form className={classes["form"]}>
-            <div className={classes["grid-template"]}>
-              <div>  <div className={classes["form-Control"]}>
-                <label>Degree</label>
-                <TextField size="small" fullWidth value={eduDegree} onChange={(e) => { setEduDegree(e.target.value) }} />
-              </div>
-                <div className={classes["form-Control"]}>
-                  <label>Start Date</label>
-                  <DatePicker value={eduStartDate} setValue={setEduStartDate} />
-                </div>
-                {/* --------------------------------School---------------------------------------------------- */}
-              </div>
-              <div>
-                <div className={classes["form-Control"]}>
-                  <label>School</label>
-                  <TextField size="small" fullWidth value={eduSchool} onChange={(e) => { setEduSchool(e.target.value) }} />
-                </div>
+          {Array.from(Array(eduCount + 1).keys()).map((el, key) => {
+            if (showRowOne.show[key]) {
+              return (<Education setEducation={setEducation} keys={key} handleClick={handleClickOne} />)
+            }
 
-                {/* --------------------------------------------------End Date------------------------------ */}
-                <div className={classes["form-Control"]}>
-                  <label>End Date</label>
-                  <DatePicker value={eduEndDate} setValue={setEduEndDate} />
-                </div>
-              </div>
-
-            </div>
-            {/* ----------------------------------------------------------Form-Date---------------------------------------- */}
-
-            {/*----------------------------------------------Description------------------------------------  */}
-            <div className={classes["form-Control-des"]} style={{
-              paddingLeft: "20px",
-            }}>
-
-              <label style={{
-                width: "70px", marginRight: "20px",
-                marginLeft: "20px"
-              }} >Note</label>
-
-
-              <textarea value={note} onChange={(e) => { setNote(e.target.value) }} style={{
-                marginLeft: "20px"
-              }} />
-
-            </div>
-
-          </form>
+          })
+          }
 
           <div className={classes["btn-container"]}>
             <Button variant="contained" onClick={submitHandler}>Submit</Button>
@@ -455,17 +406,3 @@ const EmployeeForm = () => {
 export default EmployeeForm
 
 
-
-export const DatePicker = ({ value, setValue }) => {
-  const handleChange = (newValue) => {
-    setValue(newValue);
-  };
-  return (<LocalizationProvider dateAdapter={AdapterDateFns}>
-    <DesktopDatePicker
-      inputFormat="MM/dd/yyyy"
-      value={value}
-      onChange={handleChange}
-      renderInput={(params) => <TextField {...params} fullWidth size='small' />}
-    />
-  </LocalizationProvider>)
-}
