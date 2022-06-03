@@ -2,7 +2,7 @@ import React from "react";
 import Card from '../../../components/UI/Card';
 import Grid from "@mui/material/Grid";
 import classes from './CompleteAgent.module.css';
-import { useState, useEffect   } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import MasterCard from "../../../components/MasterCard/MasterCard";
 import { getMethod } from "../../../services/api-services";
@@ -14,9 +14,9 @@ import AgentCard from "../../../components/AgentCard/AgentCard";
 import Nodata from "../../../components/Nodata/Nodata";
 const CompleteAgent = () => {
 
-  const {data:agents,loading} = CustomGetFunction('api/agents?sortColumn=id&sortDirection=desc&limit=30&agent_level=agent',[]);
-  console.log('agnets',agents)
-  
+  const { data: agents, loading } = CustomGetFunction('api/agents?sortColumn=id&sortDirection=desc&limit=30&agent_level=agent', []);
+  console.log('agnets', agents)
+
   return (
     <div className={classes["soccer-setting-container"]}>
       <Card>
@@ -24,13 +24,13 @@ const CompleteAgent = () => {
           <h1 className={classes["card-title"]}>Complete Agents</h1>
         </div>
         {
-          loading ? ( <div className={classes["card-body"]}>
-          {/* <Grid container spacing={3}>
+          loading ? (<div className={classes["card-body"]}>
+            {/* <Grid container spacing={3}>
            {completeMasters.length !==0 && completeMasters.map((completeMaster)=>
            (<MasterCard key={completeMaster?.id} user={completeMaster} path="/account/agent/complete-agent/detail/" />)
            )}
           </Grid> */}
-          {/* <Grid container spacing={5}>
+            {/* <Grid container spacing={5}>
             {
               data.length  !==0 && data.map((master,index)=>(
                 <Grid item xs={6} key={index}>
@@ -39,22 +39,22 @@ const CompleteAgent = () => {
   ))
             }
           </Grid> */}
-        {
-          agents.length !==0 ? (<Grid container spacing={4}>
             {
-            agents?.length !==0 && agents?.map((agent,index)=>(
-               <Grid item xs={6} key={index}>
-                 <AgentCard data={agent} route={`/dashboard/account/agent/complete-agent/detail/${agent.id}`}/>
-                 </Grid>
-              ))
+              agents.length !== 0 ? (<Grid container spacing={4}>
+                {
+                  agents?.length !== 0 && agents?.map((agent, index) => (
+                    <Grid item xs={6} key={index}>
+                      <AgentCard data={agent} route={`/dashboard/account/agent/complete-agent/detail/${agent.id}`} />
+                    </Grid>
+                  ))
+                }
+              </Grid>) : (<Nodata />)
             }
-          </Grid>):(<Nodata />)
-        }
 
 
-        </div>):(<CustomLoading />)
+          </div>) : (<CustomLoading />)
         }
-       
+
       </Card>
     </div>
   );

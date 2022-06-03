@@ -102,6 +102,8 @@ import AnswerQuestion from "../pages/PartnerSite/AnswerQuestion/AnswerQuestion"
 import CompleteAffiliateAgent from "../pages/Affiliate Agent/CompleteAffiliateAgent/CompleteAffiliateAgent";
 import CompleteAffiliateAgentDetail from "../pages/Affiliate Agent/CompleteAffiliateAgent/CompleteAffiliateAgentDetail/CompleteAffiliateAgentDetail";
 import EmployeeForm from "../pages/EmployeeForm/EmployeeForm";
+import Provider from "../pages/Provider/Provider";
+import CancelProvider from "../pages/Provider/CancelProvider";
 const AdminRoute = () => {
   return (
     <Routes>
@@ -188,6 +190,11 @@ const AdminRoute = () => {
         element={<AgentDetail />}
       />
       <Route
+        path="/dashboard/account/provider"
+        exact
+        element={<Provider type="provider" />}
+      />
+      <Route
         path="/dashboard/account/super-master"
         exact
         element={<SuperMaster />}
@@ -196,6 +203,11 @@ const AdminRoute = () => {
         path="/dashboard/account/super-master/:id"
         exact
         element={<SuperMasterDetail />}
+      />
+      <Route
+        path="/dashboard/account/provider/:id"
+        exact
+        element={<SuperMasterDetail type="provider" />}
       />
       <Route path="/dashboard/account/master" exact element={<Master />} />
       <Route
@@ -223,6 +235,11 @@ const AdminRoute = () => {
         element={<PendingAgent />}
       />
       <Route
+        path="/dashboard/account/provider/pending-provider"
+        exact
+        element={<PendingAgent type="provider" />}
+      />
+      <Route
         path="/dashboard/account/agent/pending-agent/detail/:id"
         exact
         element={<PendingAgentDetail />}
@@ -236,6 +253,11 @@ const AdminRoute = () => {
         path="/dashboard/account/agent/confirm-agent/detail/:id"
         exact
         element={<ConfirmAgentDetail />}
+      />
+      <Route
+        path="/dashboard/account/provider/cancel-provider"
+        exact
+        element={<CancelAgent type="provider" />}
       />
       <Route
         path="/dashboard/account/agent/complete-agent"

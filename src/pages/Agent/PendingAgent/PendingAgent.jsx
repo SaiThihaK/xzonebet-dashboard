@@ -2,7 +2,7 @@ import React from "react";
 import Card from '../../../components/UI/Card';
 import Grid from "@mui/material/Grid";
 import classes from './PendingAgent.module.css';
-import { useState, useEffect   } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import PendingAgentCard from "./PendingAgentCard/PendingAgentCard";
 import { getMethod } from "../../../services/api-services";
@@ -11,9 +11,9 @@ import MemberCard from "../../../components/MemberCard/MemberCard";
 import CustomGetFunction from "../../../services/CustomGetFunction";
 
 const PendingAgent = () => {
- 
-  const {data} = CustomGetFunction('api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=agent',[])
- 
+
+  const { data } = CustomGetFunction('api/affiliate-register-lists?sortColumn=id&sortDirection=desc&limit=30&status=agent', [])
+
   return (
     <div className={classes["soccer-setting-container"]}>
       <Card>
@@ -29,11 +29,11 @@ const PendingAgent = () => {
           </Grid> */}
           <Grid container spacing={5}>
             {
-              data.length  !==0 && data.map((master,index)=>(
+              data.length !== 0 && data.map((master, index) => (
                 <Grid item xs={6} key={index}>
                   <MemberCard partner={master} path={"/dashboard/account/agent/pending-agent/detail/"} />
                 </Grid>
-  ))
+              ))
             }
           </Grid>
         </div>
