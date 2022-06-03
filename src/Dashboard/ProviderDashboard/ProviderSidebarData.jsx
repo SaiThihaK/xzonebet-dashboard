@@ -61,7 +61,12 @@ export const ProviderSidebarData = [
     },
    
     {
-        title: "Agent Deposite",
+        title: "User Deposite",
+        path: "/dashboard/master/deposite/user-deposite",
+        icon: <FaMoneyCheckAlt />,
+    },
+    {
+        title: "User Withdraw",
         path: "/dashboard/master/deposite/user-deposite",
         icon: <FaMoneyCheckAlt />,
     },

@@ -25,7 +25,7 @@ const {data,loading} = CustomGetFunction("api/admin/configuration-setting",[rend
 console.log(data);
 useEffect(()=>{
   setTextValue(data?.payment_announcement_withdraw)
-  },[])
+  },[data])
 const changeAnnouncement = async()=>{
   try{
 const response = await axios.request(PostMethod("api/admin/change-configuration-setting",{
@@ -43,6 +43,7 @@ if(response.data.status==="error"){
   }
   catch(error){
  toast.error(error.response.data.message);
+
   }
 }
 return(

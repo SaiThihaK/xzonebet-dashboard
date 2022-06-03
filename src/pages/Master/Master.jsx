@@ -48,7 +48,7 @@ const Master = () => {
   };
   const fetchComplete = async()=>{
     try{
-      const complete = await axios.request(getMethod(completeMasterApi));
+      const complete = await axios.request(getMethod(`api/agents?sortColumn=id&sortDirection=desc&limit=30&agent_level=master`));
       if(complete.data.status==="success"){
         setCompleteMaster(complete.data.data.length);
         return;
