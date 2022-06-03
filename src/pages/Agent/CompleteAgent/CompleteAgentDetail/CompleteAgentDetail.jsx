@@ -36,13 +36,13 @@ const CompleteAgentDetail = () => {
         data?.downlines?.length !==0 ? (
           <div className={classes["list"]}>
             <div className={classes["card-header"]}>
-          <h1 className={classes["card-title"]}>Agents </h1>
+          <h1 className={classes["card-title"]}>Users </h1>
         </div>
             <Grid container spacing={1}>
               {
                 data?.downlines?.map((agent,index)=>(
                   <Grid item xs={6} key={index}>
-                  <AgentCard data={agent} route={`/dashboard/account/agent/complete-agent/detail/${agent.id}`}/>
+                  <AgentCard data={agent} route={`/dashboard/account/user/user-detail/${agent.user_id}`}/>
                   </Grid>
                 ))
               }

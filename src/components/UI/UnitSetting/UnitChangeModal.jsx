@@ -46,15 +46,15 @@ export default function UnitChangeModal({
     const UnitChangeArr = [
       {name:"Promotion Unit",value:"promotion_unit",changeUnit:[{
         name:"Main Unit",value:"main_unit",
-        name:"Diamond Unit",value:"diamond_unit"
+       
       }]},
       {name:"Main Unit",value:'main_unit',changeUnit:[{
         name:"Diamond Unit",value:"diamond_unit",
-        name:"Promotion Unit",value:"promotion_unit"
+       
       }]},
       {name:"Diamond Unit",value:"diamond_unit",changeUnit:[{
         name:"Main Unit",value:"main_unit",
-        name:"Promotion Unit",value:"promotion_unit"
+       
       }]}
     ];
       const filterToArray = UnitChangeArr.filter((unit)=>{

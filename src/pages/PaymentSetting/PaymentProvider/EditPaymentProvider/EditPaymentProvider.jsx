@@ -6,7 +6,7 @@ import classes from "./EditPaymentProvider.module.css"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Card from "../../../../components/UI/Card";
-import { getMethod, PatchMethod } from "../../../../services/api-services";
+import { getMethod, PatchMethod,PostMethod,PostProvider} from "../../../../services/api-services";
 import { useParams } from "react-router-dom";
 import { logoutHandler } from "../../../../components/Sidebar/Sidebar";
 import SelectCoun from "../CreatePaymentProvider/SelectCoun";
@@ -34,12 +34,12 @@ setProviderValue(providerDetail?.name)
 const EditHandler = async()=>{
 try{
 let fd = new FormData();
-fd.append("logo",logo);
+// fd.append("logo",logo);
 fd.append("name",providerValue)
 fd.append("payment_type_id",payment_typeValue);
-fd.append("countries",country);
-
-const response = await axios.request(PatchMethod(`api/dashboard/payment-providers/${id}`,
+fd.append("countries",JSON.stringify(country));
+fd.append("_method","PATCH")
+const response = await axios.request(PostProvider(`api/dashboard/payment-providers/${id}`,
 fd
 ));
 console.log(response);

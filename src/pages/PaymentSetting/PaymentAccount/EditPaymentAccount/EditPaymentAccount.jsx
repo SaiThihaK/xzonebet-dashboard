@@ -10,7 +10,7 @@ import Card from "../../../../components/UI/Card";
 import { useParams } from "react-router-dom";
 import { PatchMethod } from "../../../../services/api-services";
 import CustomGetFunction from "../../../../services/CustomGetFunction";
-
+import CustomLoading from "../../../../components/CustomLoading/CustomLoading"
 
 
 const EditPaymentAccount = () => {
@@ -24,8 +24,8 @@ const accountChange = e=>setAccount(e.target.value);
  
 const logoChange = (e) => setlogo(e.target.files[0]);
 
-const ToastAlert = (toast,msg)=>toast(msg);
-const  {data:paymentAccountDetail} = CustomGetFunction(`api/dashboard/payment-accounts/${id}`,[id]);
+
+const  {data:paymentAccountDetail,loading} = CustomGetFunction(`api/dashboard/payment-accounts/${id}`,[id]);
 console.log("accountDetail",paymentAccountDetail);
 useEffect(()=>{
 setAccount(paymentAccountDetail?.account_no);
@@ -78,8 +78,8 @@ useEffect(()=>{
 console.log(id);
   return (
     <div className={classes["soccer-setting-container"]}>
-      <ToastContainer />
-      <Card>
+     {
+       loading ? (<Card>
         <div className={classes["card-header"]}>
           <h1 className={classes["card-title"]}>Edit Payment PaymentAccount(Coming Soon)</h1>
         </div>
@@ -102,7 +102,9 @@ console.log(id);
          
           <Button variant="contained" onClick={EditHandler}  style={{ marginTop: 60,width:700 }}>Edit</Button>
         </div>
-      </Card>
+      </Card>):(<CustomLoading />)
+     }
+      
     </div>
 
   )

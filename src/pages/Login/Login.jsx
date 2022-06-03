@@ -44,11 +44,12 @@ const Login = () => {
         case "success":
           // console.log('login success');
           // console.log(res.data)
+          // window.location.assign("/");
           localStorage.setItem('status',res.data.status);
           localStorage.setItem('jToken',res.data.data['j_token']);
           localStorage.setItem('lToken',res.data.data['l_token']);
           localStorage.setItem('type',res.data.data['type']);
-          window.location.assign("/")
+          window.location.replace("/")
           refreshPage();
          
         break;
