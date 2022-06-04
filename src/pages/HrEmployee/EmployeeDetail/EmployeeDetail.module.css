@@ -2,9 +2,33 @@
     padding: 20px;
 }
 
+
+.card-body {
+    padding: 20px;
+}
+
 .form-Control {
     display: flex;
     margin-bottom: 20px;
+    align-items: center;
+}
+
+.form-Control-s {
+    display: flex;
+    margin-bottom: 20px;
+    margin-top: 10px;
+
+}
+
+.form-Control-s label {
+    flex: 0 0 150px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.form-Control-s p {
+    width: 100%;
+
 }
 
 .form-Control label {
@@ -19,12 +43,15 @@
 .grid-template {
     display: flex;
     padding: 10px 20px;
+
+    width: 100%;
 }
 
 .grid-template>div {
-    flex: 0 0 auto;
-    margin-right: 20px;
-    margin-left: 20px;
+    width: 50%;
+
+
+
 }
 
 .detete-btn {
@@ -121,7 +148,10 @@
     color: var(--secondary-color);
     font-size: 20px;
     margin-top: 10px;
-    margin-bottom: 20px;
+
+    margin-left: 40px;
+    margin-bottom: 10px;
+
 }
 
 .line-brake {
@@ -132,7 +162,9 @@
 
 .line-brake hr {
 
-    width: 90%;
+
+    width: 95%;
+
     margin-bottom: 20px;
 }
 
