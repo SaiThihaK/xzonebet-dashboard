@@ -2,6 +2,7 @@
     padding: 20px;
 }
 
+
 .card-body {
     padding: 20px;
 }
@@ -27,6 +28,7 @@
 
 .form-Control-s p {
     width: 100%;
+
 }
 
 .form-Control label {
@@ -41,11 +43,13 @@
 .grid-template {
     display: flex;
     padding: 10px 20px;
+
     width: 100%;
 }
 
 .grid-template>div {
     width: 50%;
+
 
 
 }
@@ -144,8 +148,10 @@
     color: var(--secondary-color);
     font-size: 20px;
     margin-top: 10px;
+
     margin-left: 40px;
     margin-bottom: 10px;
+
 }
 
 .line-brake {
@@ -156,7 +162,9 @@
 
 .line-brake hr {
 
+
     width: 95%;
+
     margin-bottom: 20px;
 }
 
