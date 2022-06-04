@@ -79,7 +79,7 @@ const UserWithDrawTable = ({}) => {
     {
         id !==user.id ?
         (
-        <Button onClick={()=>setId(user.id)} style={{width:80}}    color="success" variant="contained">
+        <Button onClick={()=>setId(user.id)} style={{width:120}}    color="success" variant="contained">
           Pending
         </Button>
         )
@@ -121,6 +121,7 @@ const UserWithDrawTable = ({}) => {
               <StyledTableCell align="left">Amount</StyledTableCell>
               <StyledTableCell align="left">Phone/Account</StyledTableCell>
               <StyledTableCell align="left">Payment Date</StyledTableCell>
+              <StyledTableCell align="left">User Action</StyledTableCell>
               <StyledTableCell align="left">Action</StyledTableCell>
             </TableRow>
               
@@ -136,12 +137,20 @@ const UserWithDrawTable = ({}) => {
                 <StyledTableCell align="left">{user.payment_provider.name}</StyledTableCell>
                 <StyledTableCell align="left">{user.amount}</StyledTableCell>
                 <StyledTableCell align="left">{user.account_no}</StyledTableCell>
+                
                 <StyledTableCell align="left">
                  {
                    ChangeDate(user?.created_at)
                  }
                 </StyledTableCell>
-       
+                <StyledTableCell align="left">
+                <p className={classes["btn"]} style={{backgroundColor:user.user_action==="Complete" ? "green" : "red"}}>
+                {
+                  user.user_action
+                }
+                </p>
+                </StyledTableCell>
+  
                 <StyledTableCell align="right" >
                   {
                     differStatus(user)
