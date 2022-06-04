@@ -8,7 +8,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import classes from "./UserWithDraw.module.css";
-import { Button, Stack } from "@mui/material";
+import { Button, FormControl, MenuItem, Select, Stack } from "@mui/material";
 import Card from "../../UI/Card";
 import { BasedColor } from "../../../Controller/BasedColor";
 import ApproveActionModal from "../../UI/Modal/UserWithDraw/ApproveActionModal";
@@ -16,7 +16,11 @@ import RejectActionModal from "../../UI/Modal/UserWithDraw/RejectActionModal";
 import CustomPagination from "../../Pagination/CustomPagination";
 import TableGetFunction from "../../../services/TableGetFunction";
 import {ChangeDate} from "../../../Controller/ChangeDate"
-
+import KSHFunction from "../../../services/KSHFunction";
+import CustomLoading from "../../../components/CustomLoading/CustomLoading"
+import axios from "axios";
+import { toast } from "react-toastify";
+import { PostMethod } from "../../../services/api-services";
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -41,21 +45,71 @@ const UserWithDrawTable = ({}) => {
    const [open,setOpen] = useState(false);
    const [cancelopen,setCancelOpen] = useState(false);
    const [page,setPage] = useState(1);
-
+   const [agent_action,setAgent_action] = useState("");
    const AlertToast = (toast,msg)=> toast(msg);
    const openHandler = ()=>setOpen(true);
    const closeHandler = ()=>setOpen(false);
    const CancelopenHandler = ()=>setCancelOpen(true);
    const CancelcloseHandler = ()=>setCancelOpen(false);
    const [userWithDraw,setUserWithDraw] = useState([]);
-   const [id,setId] = useState("");
+   const [id,setId] = useState(0);
    const [num,setNum] = useState(0);
- const {data,pagination} =  TableGetFunction(`api/user-withdraw?sortColumn=id&sortDirection=desc&limit=20&status=pending&page=${page}`,[page,num]);
-
+   console.log(agent_action)
+ const {data,loading} =  KSHFunction(`api/user/withdrawals`,[page,num]);
+ console.log("userWithdraw",data);
+ const confirmHandler = async()=>{
+   try{
+  const response = await axios.request(PostMethod(`api/user/withdrawal/agent-action/${id}`,{
+    agent_action,
+  }));
+  if(response.data.success){
+    toast.success(response.data.message);
+    setNum(num+1)
+    setId(0);
+    return; 
+  }
+  console.log(response);
+   }catch(error){
+     toast.error(error.response.data.message)
+   }
+ }
+ const differStatus = (user)=>{
+  if(user.agent_action === "Uncomplete"){
+    return <StyledTableCell align="left">
+    {
+        id !==user.id ?
+        (
+        <Button onClick={()=>setId(user.id)} style={{width:80}}    color="success" variant="contained">
+          Pending
+        </Button>
+        )
+        :(<FormControl   className={classes["form-control"]}>
+        <Select  size="small" value={agent_action} onChange={(e)=>setAgent_action(e.target.value)}>
+            {/* <MenuItem value="pending">Pending</MenuItem> */}
+            <MenuItem value={1}>Approve</MenuItem>
+            <MenuItem value={0}>Reject</MenuItem>
+        </Select>
+        <Button onClick={confirmHandler}>Confirm</Button>
+        </FormControl>)
+    }
+  
+   </StyledTableCell> 
+  }
+  if(user.agent_action === "Complete"){
+    return  <StyledTableCell align="left">
+      <p className={classes["btn"]} style={{backgroundColor:"blue"}} >Approve</p>
+    </StyledTableCell>
+  }
+  if(user.status === "rejected"){
+   return  <StyledTableCell align="left">
+     <p className={classes["btn"]} style={{backgroundColor:"red"}} >Reject</p>
+   </StyledTableCell>
+ }
+}
   return (
     <div className={classes["table-margin"]}>
- 
-      <Card>
+   {
+     loading ? (<Card>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700}} aria-label="customized table">
           <TableHead>
@@ -77,9 +131,9 @@ const UserWithDrawTable = ({}) => {
                 <StyledTableCell component="th" scope="row">
                 {index+1}
                 </StyledTableCell>
-                <StyledTableCell align="left">{user.user_id}</StyledTableCell>
-                <StyledTableCell align="left">{user.account_name}</StyledTableCell>
-                <StyledTableCell align="left">{user.payment_provider_name}</StyledTableCell>
+                <StyledTableCell align="left">{user.user.id}</StyledTableCell>
+                <StyledTableCell align="left">{user.user.name}</StyledTableCell>
+                <StyledTableCell align="left">{user.payment_provider.name}</StyledTableCell>
                 <StyledTableCell align="left">{user.amount}</StyledTableCell>
                 <StyledTableCell align="left">{user.account_no}</StyledTableCell>
                 <StyledTableCell align="left">
@@ -89,7 +143,10 @@ const UserWithDrawTable = ({}) => {
                 </StyledTableCell>
        
                 <StyledTableCell align="right" >
-                <Stack spacing={1} direction="row">
+                  {
+                    differStatus(user)
+                  }
+                {/* <Stack spacing={1} direction="row">
                      <Button onClick={()=>{
                          openHandler();
                          setId(user.id)
@@ -102,7 +159,7 @@ const UserWithDrawTable = ({}) => {
                      }}   size="small" color="error" variant="contained">
                        Reject
                     </Button>
-                    </Stack>
+                    </Stack> */}
                 </StyledTableCell>
                 </StyledTableRow>
                   ))}
@@ -111,8 +168,10 @@ const UserWithDrawTable = ({}) => {
         </Table>
       </TableContainer>
      
-      </Card>
-      <CustomPagination setPage={setPage} totalPage={pagination?.meta?.last_page} />
+      </Card>):(<CustomLoading />)
+   }
+      
+      {/* <CustomPagination setPage={setPage} totalPage={pagination?.meta?.last_page} /> */}
       <ApproveActionModal 
       open={open} 
       handleClose={closeHandler} 
