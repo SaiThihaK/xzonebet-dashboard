@@ -10,6 +10,7 @@ import { IoIosArrowForward, IoIosFootball } from "react-icons/io"
 import { FaLayerGroup, FaUserFriends } from "react-icons/fa"
 import { AiFillSetting } from "react-icons/ai"
 import { MdSportsBasketball } from "react-icons/md"
+import {GiTempleGate} from "react-icons/gi"
 export const SidebarData = [
     {
         title: 'DashBoard',
@@ -163,6 +164,11 @@ export const SidebarData = [
     //     path: '/dashboard/account/provider',
     //     icon: <RiGroupLine />,
     // },
+    {
+        title: 'Payment Gateway',
+        path: '/dashboard/payment-gateway',
+        icon: <GiTempleGate/>,
+    },
     {
         title: 'Master',
         path: '/dashboard/account/master',

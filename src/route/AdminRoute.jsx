@@ -104,6 +104,7 @@ import CompleteAffiliateAgentDetail from "../pages/Affiliate Agent/CompleteAffil
 import EmployeeForm from "../pages/EmployeeForm/EmployeeForm";
 import Provider from "../pages/Provider/Provider";
 import CancelProvider from "../pages/Provider/CancelProvider";
+import PaymentGateway from "../pages/PaymentGateway/PaymentGateway";
 const AdminRoute = () => {
   return (
     <Routes>
@@ -444,7 +445,9 @@ const AdminRoute = () => {
         path="/dashboard/game-setting/football-setting"
         element={<FootballSetting />}
       />
-
+      {/* ================================Payment Gateway */}
+     <Route exact path="/dashboard/payment-gateway"
+     element={<PaymentGateway />} />
       {/*------------------------------ Admin Team Account------------------------------------------------ */}
       <Route
         exact

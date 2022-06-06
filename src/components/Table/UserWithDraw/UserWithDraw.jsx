@@ -21,7 +21,7 @@ import CustomLoading from "../../../components/CustomLoading/CustomLoading"
 import axios from "axios";
 import { toast } from "react-toastify";
 import { PostMethod } from "../../../services/api-services";
-
+import Nodata from '../../../components/Nodata/Nodata'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -111,70 +111,72 @@ const UserWithDrawTable = ({}) => {
    {
      loading ? (<Card>
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 700}} aria-label="customized table">
-          <TableHead>
-            <TableRow>
-              <StyledTableCell>No</StyledTableCell>
-              <StyledTableCell align="left">user-ID</StyledTableCell>
-              <StyledTableCell align="left">User Name</StyledTableCell>
-              <StyledTableCell align="left">Payment Provider</StyledTableCell>
-              <StyledTableCell align="left">Amount</StyledTableCell>
-              <StyledTableCell align="left">Phone/Account</StyledTableCell>
-              <StyledTableCell align="left">Payment Date</StyledTableCell>
-              <StyledTableCell align="left">User Action</StyledTableCell>
-              <StyledTableCell align="left">Action</StyledTableCell>
-            </TableRow>
+        {
+        data.length !==0 ? ( <Table sx={{ minWidth: 700}} aria-label="customized table">
+        <TableHead>
+          <TableRow>
+            <StyledTableCell>No</StyledTableCell>
+            <StyledTableCell align="left">user-ID</StyledTableCell>
+            <StyledTableCell align="left">User Name</StyledTableCell>
+            <StyledTableCell align="left">Payment Provider</StyledTableCell>
+            <StyledTableCell align="left">Amount</StyledTableCell>
+            <StyledTableCell align="left">Phone/Account</StyledTableCell>
+            <StyledTableCell align="left">Payment Date</StyledTableCell>
+            <StyledTableCell align="left">User Action</StyledTableCell>
+            <StyledTableCell align="left">Action</StyledTableCell>
+          </TableRow>
+            
+        </TableHead>
+        <TableBody>
+         {data?.map((user,index)=>(
+            <StyledTableRow key={index}>
+              <StyledTableCell component="th" scope="row">
+              {index+1}
+              </StyledTableCell>
+              <StyledTableCell align="left">{user.user.id}</StyledTableCell>
+              <StyledTableCell align="left">{user.user.name}</StyledTableCell>
+              <StyledTableCell align="left">{user.payment_provider.name}</StyledTableCell>
+              <StyledTableCell align="left">{user.amount}</StyledTableCell>
+              <StyledTableCell align="left">{user.account_no}</StyledTableCell>
               
-          </TableHead>
-          <TableBody>
-           {data?.map((user,index)=>(
-              <StyledTableRow key={index}>
-                <StyledTableCell component="th" scope="row">
-                {index+1}
-                </StyledTableCell>
-                <StyledTableCell align="left">{user.user.id}</StyledTableCell>
-                <StyledTableCell align="left">{user.user.name}</StyledTableCell>
-                <StyledTableCell align="left">{user.payment_provider.name}</StyledTableCell>
-                <StyledTableCell align="left">{user.amount}</StyledTableCell>
-                <StyledTableCell align="left">{user.account_no}</StyledTableCell>
-                
-                <StyledTableCell align="left">
-                 {
-                   ChangeDate(user?.created_at)
-                 }
-                </StyledTableCell>
-                <StyledTableCell align="left">
-                <p className={classes["btn"]} style={{backgroundColor:user.user_action==="Complete" ? "green" : "red"}}>
+              <StyledTableCell align="left">
+               {
+                 ChangeDate(user?.created_at)
+               }
+              </StyledTableCell>
+              <StyledTableCell align="left">
+              <p className={classes["btn"]} style={{backgroundColor:user.user_action==="Complete" ? "green" : "red"}}>
+              {
+                user.user_action
+              }
+              </p>
+              </StyledTableCell>
+
+              <StyledTableCell align="right" >
                 {
-                  user.user_action
+                  differStatus(user)
                 }
-                </p>
-                </StyledTableCell>
-  
-                <StyledTableCell align="right" >
-                  {
-                    differStatus(user)
-                  }
-                {/* <Stack spacing={1} direction="row">
-                     <Button onClick={()=>{
-                         openHandler();
-                         setId(user.id)
-                     }}  size="small"  variant="contained">
-                       Approve
-                     </Button>
-                     <Button onClick={(e)=>{
-                        CancelopenHandler()
-                         setId(user.id)
-                     }}   size="small" color="error" variant="contained">
-                       Reject
-                    </Button>
-                    </Stack> */}
-                </StyledTableCell>
-                </StyledTableRow>
-                  ))}
-        {/* --------------------------------------------------Test */}
-          </TableBody>
-        </Table>
+              {/* <Stack spacing={1} direction="row">
+                   <Button onClick={()=>{
+                       openHandler();
+                       setId(user.id)
+                   }}  size="small"  variant="contained">
+                     Approve
+                   </Button>
+                   <Button onClick={(e)=>{
+                      CancelopenHandler()
+                       setId(user.id)
+                   }}   size="small" color="error" variant="contained">
+                     Reject
+                  </Button>
+                  </Stack> */}
+              </StyledTableCell>
+              </StyledTableRow>
+                ))}
+      {/* --------------------------------------------------Test */}
+        </TableBody>
+      </Table>):(<Nodata />)
+        }
       </TableContainer>
      
       </Card>):(<CustomLoading />)
