@@ -1,0 +1,14 @@
+.table{
+    height: 150vh;
+    width: 100%;
+}
+.btn{
+    width: 120px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding: 10px 30px;
+    border-radius: 5px;
+    text-transform:uppercase;
+  
+  }

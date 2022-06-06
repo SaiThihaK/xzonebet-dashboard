@@ -152,7 +152,7 @@ const Login = () => {
                 <span className={classes["errorMessage"]}>{errorMsg}</span>
               </div>
               <div>
-                <input type="submit" value="Sing In" />
+                <input type="submit" value="Sign In" />
               </div>
               <div className={classes["ForgetPass"]}>
                 <p onClick={()=>{handleOpen(true)}}>Forget Password?</p>

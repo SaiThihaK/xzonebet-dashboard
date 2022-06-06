@@ -86,7 +86,7 @@ const columns = [
   {
     field: "provider_logo",
     headerName: 'Provider Logo',
-    width: 200,
+    width: 120,
     headerAlign: 'center',
     editable: false,
     renderCell:(params)=> <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
@@ -110,7 +110,7 @@ const columns = [
   {
     field: "action",
     headerName: 'Action',
-    width: 200,
+    width: 90,
     headerAlign: 'center',
     editable: false,
     renderCell:(params)=> <Stack spacing={1} direction="row" sx={{justifyContent: 'flex-end'}}>
@@ -120,9 +120,9 @@ const columns = [
     }}
     ><Edit />
     </IconButton>
-    <IconButton onClick={()=>{deleteHandler(params.row.id)}}>
+    {/* <IconButton onClick={()=>{deleteHandler(params.row.id)}}>
       <Delete />
-    </IconButton>
+    </IconButton> */}
      </Stack>
   },
 

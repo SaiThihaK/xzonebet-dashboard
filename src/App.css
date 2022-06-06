@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&display=swap");
+
 * {
   padding: 0;
   margin: 0;
@@ -9,12 +10,9 @@
 :root {
   --text-color: rgb(44, 44, 44);
   --bg-color: white;
-  /* --main-color: #242526; */
-  --main-color: #252831;
+  --main-color: #242526;
   --secondary-color: #ba1e23;
-  /* --secondary-hover: #034e03; /
-  / --background-color:  rgb(3, 54, 3); */
-  --background-color: #121212;
+  --background-color:  rgb(3, 54, 3);
   --live-header: #2b2a2a;
   --secondary-hover: rgb(77, 10, 10);
 }
