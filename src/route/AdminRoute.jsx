@@ -108,7 +108,7 @@ import PaymentGateway from "../pages/PaymentGateway/PaymentGateway";
 const AdminRoute = () => {
   return (
     <Routes>
-      <Route path="/" exact element={<Dashboard />} />
+      <Route path="/dashboard" exact element={<Dashboard />} />
       <Route
         path="/dashboard/setting/game-setting"
         exact

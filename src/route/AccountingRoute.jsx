@@ -13,7 +13,7 @@ const AccountingRoute = () => {
   return (
     <Routes>
       <Route path="*" element={<Notfound />} />
-      <Route path="/" exact element={<Overview />} />
+      <Route path="/dashoard" exact element={<Overview />} />
       <Route
         path="/dashboard/accounting/deposit"
         exact

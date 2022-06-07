@@ -9,3 +9,10 @@
   display: flex;
   justify-content: flex-end;
 }
+.remark_description{
+  width: 100%;
+}
+.remark_description:focus{
+  outline: none !important;
+  border:2px solid #3498db;
+}
