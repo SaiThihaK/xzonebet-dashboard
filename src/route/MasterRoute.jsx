@@ -27,7 +27,7 @@ import MasterSecurity from "../Dashboard/MasterDashboard/Page/Security/MasterSec
 const MasterRoute = () => {
   return (
     <Routes>
-      <Route path="/" exact element={<Overview />} />
+      <Route path="/dashboard" exact element={<Overview />} />
       <Route
         exact
         path="/dashboard/master/bank-setting/payment-account"

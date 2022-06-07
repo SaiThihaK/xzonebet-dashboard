@@ -15,7 +15,7 @@ import {AiFillBank } from "react-icons/ai"
 export const SuperMasterSidebarData = [
     {
         title: 'SuperMaster DashBoard',
-        path: '/',
+        path: '/dashboard',
         icon: <AiFillHome />,
         iconClosed: <RiArrowDownSFill/>,
         iconOpened: <RiArrowUpSFill/>,

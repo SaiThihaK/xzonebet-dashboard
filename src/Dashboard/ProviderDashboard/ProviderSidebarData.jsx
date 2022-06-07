@@ -13,7 +13,7 @@ import {AiFillSetting } from "react-icons/ai"
 export const ProviderSidebarData = [
     {
         title: 'Provider DashBoard',
-        path: '/',
+        path: '/dashboard',
         icon: <AiFillHome />,
         iconClosed: <RiArrowDownSFill/>,
         iconOpened: <RiArrowUpSFill/>,

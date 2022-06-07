@@ -58,7 +58,7 @@ const HrRoute = () => {
   return (
     <Routes>
       <Route path="*" element={<Notfound />} />
-      <Route path="/" exact element={<Overview />} />
+      <Route path="/dashboard" exact element={<Overview />} />
       <Route exact path="/dashboard/department" element={<HrDepartment />} />
       <Route exact path="/dashboard/position" element={<HrPosition />} />
       <Route exact path="/dashboard/employee" element={<HrEmployee />} />

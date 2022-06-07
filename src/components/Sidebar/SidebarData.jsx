@@ -14,7 +14,7 @@ import {GiTempleGate} from "react-icons/gi"
 export const SidebarData = [
     {
         title: 'DashBoard',
-        path: '/',
+        path: '/dashboard',
         icon: <AiFillHome />,
         iconClosed: <RiArrowDownSFill />,
         iconOpened: <RiArrowUpSFill />,
