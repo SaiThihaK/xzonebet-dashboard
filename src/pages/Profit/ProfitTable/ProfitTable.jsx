@@ -45,7 +45,7 @@ const columns = [
   {
 field: "id",
 headerName: 'ID',
-width: 100,
+width: 90,
 headerAlign: 'left',
 editable: false,
  },
@@ -71,7 +71,7 @@ editable: false,
      {
       field: "amount",
       headerName: 'Amount',
-      width: 150,
+      width: 100,
       headerAlign: 'left',
       editable: false,
       valueGetter:(params)=>params.row.amount
@@ -87,7 +87,7 @@ editable: false,
          {
           field: "note",
           headerName: 'Note',
-          width: 400,
+          width: 300,
           headerAlign: 'left',
           editable: false,
           valueGetter:(params)=>params.row.note 
@@ -122,11 +122,9 @@ TotalAmount=TotalAmount+el;
  
     {
       loading ? (<div className={classes["table-margin"]}>
-        
-     
         {
           
-        data.length !== 0 ? (<DataGrid columns={columns} rows={data}  components={{ Toolbar: GridToolbar }} />) : (<Nodata />)
+        data.length !== 0 ? (<DataGrid columns={columns} rows={data}  components={{ Toolbar: GridToolbar }} hideFooter />) : (<Nodata />)
         }
    
     </div>):(<CustomLoading />)

@@ -66,11 +66,11 @@ const TransitionHistoryTable = () => {
   },[page])
   
   const columns = [
-    { title: '#', field: 'tableData.id', render:rowData => { return( <p>{rowData.tableData.id+1}</p> ) } },
+   
     {
   field: "id",
   headerName: 'ID',
-  width: 100,
+  width: 90,
   headerAlign: 'center',
   editable: false,
    },

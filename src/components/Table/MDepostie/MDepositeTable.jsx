@@ -243,56 +243,29 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
                 {
                   differStatus(user)
                 }
-                {/* <StyledTableCell align="left">
-                 {
-                     ID !==user.id ?
-                     (
-                     <Button onClick={()=>handleClick(user.id)}   size="small" color="success" variant="contained">
-                       {user.status}
-                     </Button>
-                     )
-                     :(<FormControl className={classes["form-control"]}>
-                     <Select value={value} onChange={onChangeValue} size="small">
-                         <MenuItem value="pending">Pending</MenuItem>
-                         <MenuItem value="approve">Approve</MenuItem>
-                         <MenuItem value="re-ject">Reject</MenuItem>
-                     </Select>
-                     <Button onClick={confirmHandler}>Confirm</Button>
-                     </FormControl>)
-                 }
-               
-                </StyledTableCell> */}
-             
+
         </StyledTableRow>
                   ))}
         {/* --------------------------------------------------Test */}
           </TableBody>
         </Table>
       </TableContainer>
-      <div className={classes["pagination"]}>
-      <Pagination
-        count={pagination?.meta?.last_page}
-        style={{ marginTop: 20, backgroundColor: "white" }}
-        color="primary"
-        onChange={(e) => {
-          setPage(e.target.textContent);
-        }}
-      />
-    </div>
+      
       </Card>
-     <DepositeModal 
-     open={open}
-     closeHandler={closeHandler}
-     num={num}
-     setNum={setNum}
-     id={ID}
-     AlertToast={AlertToast}
-     setID={setID}
-     setValue={setValue}
-     />
-    <MasterDepositeConfirm open={modalOpen} handleClose={ModalCloseHandler} submitHandler={submitHandler} handleAmmount={handleAmmount} />
+    
+ 
     </div>) : (<CustomLoading />)
-    }
+    }    <DepositeModal 
+    open={open}
+    closeHandler={closeHandler}
+    num={num}
+    setNum={setNum}
+    id={ID}
+    AlertToast={AlertToast}
+    setID={setID}
+    setValue={setValue}
+    />
+       <MasterDepositeConfirm open={modalOpen} handleClose={ModalCloseHandler} submitHandler={submitHandler} handleAmmount={handleAmmount} />
    </div>
   );
 };

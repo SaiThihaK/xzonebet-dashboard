@@ -13,10 +13,10 @@ const UserWithDraw = () => {
     const [value,setValue] = useState([null,null])
   return (
     <div>
-        <PageTitleCard title="User With Draw">
+        <PageTitleCard title="User Withdraw">
         <div className={classes["card-body"]}>
           <div className={classes["table-container"]}>
-            <div className={classes["search-header-flex"]}>
+            {/* <div className={classes["search-header-flex"]}>
               <div className={classes.formGroup}>
                 <TextField
                   sx={{ width: 300 }}
@@ -46,7 +46,7 @@ const UserWithDraw = () => {
       />
     </LocalizationProvider>
     </div>
-            </div>
+            </div> */}
           </div>
         </div>
         <UserWithDrawTable />
