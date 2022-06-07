@@ -13,7 +13,7 @@ import {FaLayerGroup} from "react-icons/fa"
 export const AccountingSidebarData = [
     {
         title: 'Accounting DashBoard',
-        path: '/',
+        path: '/dashbord',
         icon: <AiFillHome />,
         iconClosed: <RiArrowDownSFill/>,
         iconOpened: <RiArrowUpSFill/>,

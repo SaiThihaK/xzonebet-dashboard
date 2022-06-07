@@ -14,7 +14,7 @@ import {FaLayerGroup,FaUserFriends,FaMoneyCheckAlt} from "react-icons/fa"
 export const AffiliateAgentSidebarData  = [
     {
         title: 'Affiliate DashBoard',
-        path: '/',
+        path: '/dashboard',
         icon: <AiFillHome />,
         iconClosed: <RiArrowDownSFill/>,
         iconOpened: <RiArrowUpSFill/>,

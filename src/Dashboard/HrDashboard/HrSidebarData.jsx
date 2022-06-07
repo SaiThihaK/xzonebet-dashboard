@@ -12,7 +12,7 @@ import {FaLayerGroup} from "react-icons/fa"
 export const HrSidebarData  = [
     {
         title: 'HR DashBoard',
-        path: '/',
+        path: '/dashboard',
         icon: <AiFillHome />,
        
     },

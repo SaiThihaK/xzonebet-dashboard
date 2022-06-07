@@ -50,7 +50,7 @@ import CompleteAffiliateAgentDetail from "../pages/Affiliate Agent/CompleteAffil
 const SuperMasterRoute = () => {
   return (
     <Routes>
-      <Route path="/" exact element={<SuperMasterHome />} />
+      <Route path="/dashboard" exact element={<SuperMasterHome />} />
       <Route path="*" element={<Notfound />} />
       <Route
         exact

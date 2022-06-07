@@ -14,7 +14,7 @@ import {AiFillBank} from "react-icons/ai"
 export const AgentSidebarData = [
     {
         title: 'Agent DashBoard',
-        path: '/',
+        path: '/dashboard',
         icon: <AiFillHome />,
         iconClosed: <RiArrowDownSFill/>,
         iconOpened: <RiArrowUpSFill/>,

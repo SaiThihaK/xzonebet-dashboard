@@ -21,7 +21,7 @@ import MProfile from "../Dashboard/MasterDashboard/Page/Profile/MProfile";
 const AgentRoute = () => {
   return (
     <Routes>
-      <Route path="/" exact element={<Overview />} />
+      <Route path="/dashboard" exact element={<Overview />} />
       <Route
         exact
         path="/dashboard/agent/bank-account"

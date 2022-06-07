@@ -14,7 +14,9 @@ import AffiliateAgentRoute from "./route/AffiliateAgentRoute";
 import HrRoute from "./route/HrRoute";
 import AccountingRoute from "./route/AccountingRoute";
 import ProviderRoute from "./route/ProviderRoute";
+import Login from "./pages/Login/Login";
 function App() {
+  const loginStatus = localStorage.getItem("status");
   const DashboardRouting = () => {
     if (type === "admin") {
       return <AdminRoute />;
@@ -52,9 +54,13 @@ function App() {
 
   return (
     <Router>
-      <Sidebar />
+      {loginStatus === "success" && <Sidebar />}
       <ToastContainer />
-      <Container>{DashboardRouting()}</Container>
+      {loginStatus === "success" ? (
+        <Container> {DashboardRouting()} </Container>
+      ) : (
+        <Login />
+      )}
     </Router>
   );
 }
