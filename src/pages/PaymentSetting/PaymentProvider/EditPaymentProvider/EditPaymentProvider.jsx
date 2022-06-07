@@ -39,7 +39,7 @@ fd.append("name",providerValue)
 fd.append("payment_type_id",payment_typeValue);
 fd.append("countries",JSON.stringify(country));
 fd.append("_method","PATCH")
-const response = await axios.request(PostProvider(`api/dashboard/payment-providers/${id}`,
+const response = await axios.request(PostMethod(`api/dashboard/payment-providers/${id}`,
 fd
 ));
 console.log(response);

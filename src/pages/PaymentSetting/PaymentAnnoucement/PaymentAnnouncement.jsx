@@ -34,6 +34,7 @@ const response = await axios.request(PostMethod("api/admin/change-configuration-
 if(response.data.status==="success"){
   toast.success(response.data.message);
   setRender(!render);
+  handleClose();
   return;
 }
 if(response.data.status==="error"){
@@ -66,7 +67,7 @@ return(
    
     </Card>
     {open &&<Stack direction="row" spacing={3} style={{display:"flex",justifyContent:"flex-end",marginTop:20,marginRight:20}}>
-    <Button onClick={()=>{handleClose();changeAnnouncement();}} variant="contained" >Confirm</Button>
+    <Button onClick={()=>{changeAnnouncement();}} variant="contained" >Confirm</Button>
     <Button onClick={()=>{handleClose()}}  variant="contained" color="error">Cancel</Button>
     </Stack> }
     {!open &&<Stack direction="row" spacing={3} style={{display:"flex",justifyContent:"flex-end",marginTop:20,marginRight:20}}>
