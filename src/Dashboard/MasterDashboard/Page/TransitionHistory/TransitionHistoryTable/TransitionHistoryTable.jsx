@@ -66,6 +66,7 @@ const TransitionHistoryTable = () => {
   },[page])
   
   const columns = [
+    { title: '#', field: 'tableData.id', render:rowData => { return( <p>{rowData.tableData.id+1}</p> ) } },
     {
   field: "id",
   headerName: 'ID',
@@ -112,7 +113,7 @@ const TransitionHistoryTable = () => {
            {
             field: "transition Name-note",
             headerName: 'Transition Name/Note',
-            width: 300,
+            width: 250,
             headerAlign: 'center',
             editable: false,
             valueGetter:(params)=>params.row.transaction_name || params.row.note
@@ -124,54 +125,10 @@ const TransitionHistoryTable = () => {
     {
       loading ? (<div className={classes["table-margin"]}>
         
-        {/* {
-          data.length !==0 ? (<div>
-            <TableContainer component={Paper}>
-              <Table sx={{ minWidth: 700 }} aria-label="customized table">
-                <TableHead>
-                  <TableRow>
-                    <StyledTableCell>No.</StyledTableCell>
-                    <StyledTableCell align="right">Id</StyledTableCell>
-                    <StyledTableCell align="right">Date</StyledTableCell>
-                    <StyledTableCell align="right">Transfer Amount</StyledTableCell>
-                    <StyledTableCell align="right">
-                      From
-                    </StyledTableCell>
-                    <StyledTableCell align="right">To</StyledTableCell>
-                    <StyledTableCell align="right">Transition Name / Note</StyledTableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {data?.map((row, index) => (
-                    <StyledTableRow key={index}>
-                      <StyledTableCell component="th" scope="row">
-                        {index+1}
-                      </StyledTableCell>
-                      <StyledTableCell align="right">{row.id}</StyledTableCell>
-                      <StyledTableCell align="right">{ChangeDate(row.created_at)}</StyledTableCell>
-                      <StyledTableCell align="right" 
-                      style={userData?.id === row.receiver_user.id ? {color:'green'}:{color:"red"}}>
-                        {userData?.id===row.receiver_user.id ? "+":"-"}{row.transfer_amount}
-                        </StyledTableCell>
-                      <StyledTableCell align="right">{row.sender_user.name}</StyledTableCell>
-                     
-                      <StyledTableCell align="right">{row.receiver_user.name}</StyledTableCell>
-                      <StyledTableCell align="right">
-                        {
-                          row.transaction_name || row.note
-                        }
-                      </StyledTableCell>
-              </StyledTableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
-            <CustomPagination totalPage={pagination?.meta?.last_page} setPage={setPage} />
-            </div>):(<Nodata />)
-        } */}
+       
        
         {
-        data.length !== 0 ? (<DataGrid columns={columns} rows={data}  components={{ Toolbar: GridToolbar }} />) : (<Nodata />)
+        data.length !== 0 ? (<DataGrid columns={columns} rows={data}  components={{ Toolbar: GridToolbar }} hideFooter />) : (<Nodata />)
         }
    
     </div>):(<CustomLoading />)
