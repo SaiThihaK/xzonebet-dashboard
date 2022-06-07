@@ -41,12 +41,14 @@ export default function PaymentAccountModal({
   const [payment_providerValue,setPayment_providerValue] = useState("");
   const [name,setName] = useState("");
   const [account,setAccount] = useState("");
+  const [remark,setRemark] = useState("");
 
   const nameChange = e=>setName(e.target.value);
   const accountChange = e=>setAccount(e.target.value);
 
   const Payment_ProviderChange = (e)=>setPayment_providerValue(e.target.value);
   const {data} = CustomGetFunction('api/dashboard/payment-types',[]);
+  const type = localStorage.getItem("type");
   const Payment_Method = async()=>{
     try{
       const response = await axios.request(getMethod(`api/dashboard/payment-types`));
@@ -94,9 +96,13 @@ export default function PaymentAccountModal({
       fd.append("payment_provider_id",payment_providerValue);
       fd.append("name",name);
       fd.append("account_no",account);
-      console.log("payment_provider_id",payment_providerValue);
-      console.log("name",name);
-      console.log("account_no",account);
+      
+      let agentFd = new FormData();
+      agentFd.append("payment_provider_id",payment_providerValue);
+      agentFd.append("name",name);
+      agentFd.append("account_no",account);
+      agentFd.append("Remark",remark);
+
     const response =await axios.request(PostMethod("api/dashboard/payment-accounts",fd));
   
     if(response.data.status === "success"){
@@ -190,7 +196,16 @@ export default function PaymentAccountModal({
         <label className={classes["form-label"]}>Name</label>
         <TextField  size="small" onChange={nameChange}   />
         </FormControl>
-            
+        {
+          type === "agent" && <FormControl sx={{width:"100%"}} className={classes["form-container"]}>
+          <label className={classes["form-label"]}>Remark</label>
+          <textarea  rows="4" className={classes["remark_description"]} value={remark} onChange={(e)=>{
+            setRemark(e.target.value)
+          }}>
+      
+         </textarea>
+          </FormControl>
+        }
             <div className={classes["btn-container"]}>
             <Button
                 variant="contained"
