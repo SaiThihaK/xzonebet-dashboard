@@ -1,13 +1,17 @@
 
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import ProfileDetail from "../../../../../Dashboard/MasterDashboard/Page/Profile/ProfileDetail/ProfileDetail";
+import { PatchMethod, PostMethod } from "../../../../../services/api-services";
 import classes from "./CompleteMasterDesc.module.css";
 
 
-const CompleteMasterDesc = ({userInfo}) => {
+const CompleteMasterDesc = ({userInfo,render,setRender}) => {
   const navigate = useNavigate();
   console.log("userInfo",userInfo);
+  
   const type = localStorage.getItem("type");
   const [values, setValues] =useState({     
     first_name : "",
@@ -44,6 +48,35 @@ const handleChange = (prop) => (event) => {
       return;
     }
     setShowForm(el);  
+  }
+
+  const EditHandler = async()=>{
+    try{
+  const response = await axios.request(PatchMethod(`api/agents/${userInfo.id}`,{
+    email:values.email,
+    phone:values.phone,
+    deposit_percent:values.deposit_percent,
+    withdraw_percent:values.withdraw_percent,
+    country:values.country,
+    city:values.city,
+    first_name:values.first_name,
+    last_name:values.last_name
+  }));
+  console.log(response);
+  if(response.data.status==="success"){
+    toast.success(response.data.message);
+    setShowForm("")
+    setRender(!render)
+    return;
+  }
+  if(response.data.status==="error"){
+    toast.error(response.data.message);
+    return;
+  }
+    }catch(error){
+      toast.error(error.response.data.message);
+      return
+    }
   }
   return (
     <div>
@@ -111,7 +144,7 @@ const handleChange = (prop) => (event) => {
                               </div>
                               <div className={`p_absolute ${ showForm===15 &&  "p_a_show"}`} id="input_4">
                                 <input type="deposite_percentage"   value={values?.deposit_percent}
-                                 onChange={handleChange('deposite_percentage')} / >
+                                 onChange={handleChange('deposit_percent')} />
                                 <i className="fas fa-check-circle" onClick={()=>{showInput("")}}></i>
                                </div>
                                </>
@@ -135,7 +168,7 @@ const handleChange = (prop) => (event) => {
                          </div>
                          <div className={`p_absolute ${ showForm===19 &&  "p_a_show"}`} id="input_4">
                            <input type="withdraw_percentage"   value={values?.withdraw_percent}
-                            onChange={handleChange('withdraw_percentage')} / >
+                            onChange={handleChange('withdraw_percent')} />
                            <i className="fas fa-check-circle" onClick={()=>{showInput("")}}></i>
                           </div>
                               </>
@@ -247,7 +280,7 @@ const handleChange = (prop) => (event) => {
     
     </div>
     </div>
-   <button className="btn_save"> SAVE</button>
+   <button className="btn_save" onClick={EditHandler}> SAVE</button>
        
         
 </div>

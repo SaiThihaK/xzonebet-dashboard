@@ -29,7 +29,7 @@ const PaymentGatewayTable = ({data}) => {
       editable: true,
       renderCell:(param)=>
       <div>
-   <p>{param?.user?.phone_or_acc}</p>
+   <p>{param?.row.phone_or_acc}</p>
       </div>
     },
     {
@@ -53,7 +53,7 @@ const PaymentGatewayTable = ({data}) => {
       headerName: 'Amount',
       width: 200,
       headerAlign: 'center',
-      editable: true,
+      renderCell:(param)=>param.row.amount
     },
     {
       field: 'user_action',

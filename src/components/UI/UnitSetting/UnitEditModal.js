@@ -27,9 +27,7 @@ export default function UnitEditModal({
   open,
   unitTo,
   unitFrom,
-
   unit,
-
   setNum,
   num,
 }) {

@@ -7,7 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Card from "../../../../components/UI/Card";
 import { getMethod, PatchMethod,PostMethod,PostProvider} from "../../../../services/api-services";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { logoutHandler } from "../../../../components/Sidebar/Sidebar";
 import SelectCoun from "../CreatePaymentProvider/SelectCoun";
 import CustomGetFunction from "../../../../services/CustomGetFunction";
@@ -23,7 +23,7 @@ const payment_typeChange = e =>setPayment_typeValue(e.target.value);
 const providerValueChange = e =>setProviderValue(e.target.value);
 
 const {id} = useParams();
-const ToastAlert = (toast,msg)=>toast(msg);
+const navigate = useNavigate();
 const logoChange = (e) => setlogo(e.target.files[0]);
 const {data:providerDetail} = CustomGetFunction(`api/dashboard/payment-providers/${id}`,[id]);
 useEffect(()=>{
@@ -34,16 +34,24 @@ setProviderValue(providerDetail?.name)
 const EditHandler = async()=>{
 try{
 let fd = new FormData();
-// fd.append("logo",logo);
+fd.append("logo",logo);
 fd.append("name",providerValue)
 fd.append("payment_type_id",payment_typeValue);
-fd.append("countries",JSON.stringify(country));
+fd.append("countries",JSON.stringify(country.map((c)=>c.id)));
 fd.append("_method","PATCH")
 const response = await axios.request(PostMethod(`api/dashboard/payment-providers/${id}`,
 fd
 ));
 console.log(response);
-ToastAlert(toast.error("comming soon"));
+if(response.data.status){
+  toast.success(response.data.message);
+  navigate("/dashboard/payment-setting/payment-provider");
+  return;
+}
+if(!response.data.status){
+  toast.error(response.data.message);
+  return;
+}
 }catch(error){
         toast.error(error.response.data.message)
         if (error.response.status === 401 || error.response.data.message === "Unauthenticated.") {
@@ -58,7 +66,7 @@ ToastAlert(toast.error("comming soon"));
       <ToastContainer />
       <Card>
         <div className={classes["card-header"]}>
-          <h1 className={classes["card-title"]} >Edit Payment Provider(Coming Soon)</h1>
+          <h1 className={classes["card-title"]} >Edit Payment Provider</h1>
         </div>
         <div className={classes["card-body"]}>
            <FormControl sx={{marginTop:5}} fullWidth>

@@ -8,7 +8,7 @@ import UserDataGridTable from "../UserDataGridTable/UserDataGridTable";
 import classes from "./AllUser.module.css";
 const AllUser = () => {
 
-  const {data,loading} = CustomGetFunction('api/users?sortColumn=id&sortDirection=desc&limit=30',[]);
+  const {data,loading} = CustomGetFunction('api/users?sortColumn=id&sortDirection=desc&limit=30&status=Customers',[]);
 
   
   return (

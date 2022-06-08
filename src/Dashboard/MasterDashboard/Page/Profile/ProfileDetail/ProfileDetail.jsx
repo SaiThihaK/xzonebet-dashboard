@@ -1,17 +1,11 @@
 import { Button } from "@mui/material";
 import axios from "axios";
 import React,{useState,useEffect} from "react";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import Card from "../../../../../components/UI/Card";
-import { userInfo } from "../../../../../features/UserInfo";
-import classes from "./ProfileDetail.module.css";
 import { toast } from 'react-toastify';
 import "./ProfileDetail.css";
-import { PostProvider } from "../../../../../services/api-services";
+import { PostProvider,PatchMethod } from "../../../../../services/api-services";
 import {getResDate} from "../../../../../Controller/ChangeDate"
-const ProfileDetail = ({userData}) => {
-  const navigate = useNavigate();
+const ProfileDetail = ({userData,render,setRender}) => {
 
   const type = localStorage.getItem("type");
   const [values, setValues] =useState({     
@@ -47,11 +41,12 @@ const ProfileDetail = ({userData}) => {
     fd.append("dob", values.dob);
   } 
   try{
-  const response = await axios.request(PostProvider(`api/customers/update-profile/${userData.agent.id}`,fd));
+  const response = await axios.request(PatchMethod(`api/agents/${userData.agent.id}`,fd));
+
   if(response.data.status==="success"){
     toast.success(response.data.message);
-
-
+    setShowForm("");
+    setRender(!render);
     return
   }
   if(response.data.status==="error"){  
@@ -59,7 +54,7 @@ const ProfileDetail = ({userData}) => {
     return;
   }
    }catch(error){
-    //  toast.error(error.response.data.message);
+     toast.error(error.response.data.message);
      console.log(error)
    }
  }
