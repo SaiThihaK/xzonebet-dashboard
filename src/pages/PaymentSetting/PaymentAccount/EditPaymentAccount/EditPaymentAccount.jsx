@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { logoutHandler } from "../../../../components/Sidebar/Sidebar";
 import Card from "../../../../components/UI/Card";
 import { useParams } from "react-router-dom";
-import { PatchMethod } from "../../../../services/api-services";
+import { PatchMethod, PostMethod } from "../../../../services/api-services";
 import CustomGetFunction from "../../../../services/CustomGetFunction";
 import CustomLoading from "../../../../components/CustomLoading/CustomLoading"
 
@@ -34,20 +34,17 @@ return ()=>{
   setAccount("");
   setName("");
 }
-},[paymentAccountDetail]);
+},[paymentAccountDetail,id]);
 const EditHandler = async()=>{
 try{
 let fd = new FormData();
 fd.append("name",name);
 fd.append("account_no",account);
 fd.append("payment_provider_id",id);
-fd.append("payment_type_id",3)
-const response = await axios.request(PatchMethod(`api/dashboard/payment-providers/${id}`,
-{
-  name,
-  account_no:account,
-  payment_provider_id:id
-}
+fd.append("payment_type_id",paymentAccountDetail.payment_type_id)
+fd.appent("_method","patch");
+const response = await axios.request(PostMethod(`api/dashboard/payment-providers/${id}`,
+fd
 ));
 console.log(response);
 if(response.data.status==="success"){
@@ -66,22 +63,13 @@ if(response.data.status==="error"){
         }
       }   
 }
- 
-console.log("name",name);
-console.log("account",account);
 
-
-
-useEffect(()=>{
-
-},[id])
-console.log(id);
   return (
     <div className={classes["soccer-setting-container"]}>
      {
        loading ? (<Card>
         <div className={classes["card-header"]}>
-          <h1 className={classes["card-title"]}>Edit Payment PaymentAccount(Coming Soon)</h1>
+          <h1 className={classes["card-title"]}>Edit Payment PaymentAccount</h1>
         </div>
         <div className={classes["card-body"]}>
          

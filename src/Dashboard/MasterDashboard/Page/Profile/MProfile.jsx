@@ -6,11 +6,12 @@ import { userInfo } from "../../../../features/UserInfo";
 import { toast } from 'react-toastify';
 import classes from "./MProfile.module.css"
 import ProfileDetail from "./ProfileDetail/ProfileDetail";
+import { useState } from "react";
 
 const MProfile = ()=>{
 const userData = useSelector(userInfo);
 const type = localStorage.getItem("type");
-
+const [render,setRender] = useState(false);
 
 return(
     <div className={classes["container"]}>
@@ -32,7 +33,7 @@ return(
         <h1 className={classes["card-title"]}>Info</h1>
         </div>
         <div className={classes["card-body"]}>
-        <ProfileDetail userData={userData}  />
+        <ProfileDetail userData={userData}  render={render} setRender={setRender} />
         </div>
         </Card>
         </div>

@@ -10,10 +10,9 @@ import AgentCard from "../../../../components/AgentCard/AgentCard"
 import Nodata from "../../../../components/Nodata/Nodata"
 const CompleteMasterDetail = () => {
   const {id} = useParams();
-  const navigate = useNavigate();
   // Enjoyment
-
-  const {data} = CustomGetFunction(`api/agents/${id}`,[id]);
+  const [render,setRender] = useState(false);
+  const {data} = CustomGetFunction(`api/agents/${id}`,[id,render]);
   console.log(data);
   return (
     <div className={classes["soccer-setting-container"]}>
@@ -22,7 +21,7 @@ const CompleteMasterDetail = () => {
           <h1 className={classes["card-title"]}>Complete Master Form Detail </h1>
         </div>
         <div className={classes["card-body"]}>
-          <CompleteMasterDesc userInfo={data} />
+          <CompleteMasterDesc userInfo={data} setRender={setRender} render={render} />
         </div>
       </Card>
       <>

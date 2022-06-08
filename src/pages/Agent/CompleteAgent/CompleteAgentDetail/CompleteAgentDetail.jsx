@@ -17,7 +17,8 @@ const CompleteAgentDetail = () => {
   const navigate = useNavigate();
   // Enjoyment
   // console.log(id);
- const {data} = CustomGetFunction(`api/agents/${id}`,[id]);
+ const [render,setRender] = useState(false);
+ const {data} = CustomGetFunction(`api/agents/${id}`,[id,render]);
  console.log("agentDetail",data);
  
   return (
@@ -28,7 +29,7 @@ const CompleteAgentDetail = () => {
         </div>
         <div className={classes["card-body"]}>
           {/* <CompleteAgentDesc userInfo={data} />  */}
-          <CompleteMasterDesc userInfo={data} />
+          <CompleteMasterDesc userInfo={data} render={render} setRender={setRender} />
         </div>
       </Card>
       <>
