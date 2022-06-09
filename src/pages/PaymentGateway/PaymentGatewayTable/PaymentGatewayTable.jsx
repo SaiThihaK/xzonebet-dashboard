@@ -16,7 +16,7 @@ const PaymentGatewayTable = ({data}) => {
     {
       field: 'user name',
       headerName: 'User Name',
-      width: 200,
+      width: 150,
       headerAlign: 'center',
       editable: true,
       renderCell:(param)=>param?.row?.user?.name
@@ -24,7 +24,7 @@ const PaymentGatewayTable = ({data}) => {
     {
       field: 'Account',
       headerName: 'Account',
-      width: 200,
+      width: 150,
       headerAlign: 'center',
       editable: true,
       renderCell:(param)=>
@@ -35,7 +35,7 @@ const PaymentGatewayTable = ({data}) => {
     {
       field: 'Agent Name',
       headerName: 'Agent Name',
-      width: 200,
+      width: 150,
       headerAlign: 'center',
       editable: true,
       renderCell:(param)=>param?.row?.agent_user?.name
@@ -43,7 +43,7 @@ const PaymentGatewayTable = ({data}) => {
     {
       field: 'Agent ID',
       headerName: 'Agent ID',
-      width: 200,
+      width: 100,
       headerAlign: 'center',
       editable: true,
       renderCell:(param)=>param?.row?.agent_user?.id
@@ -51,7 +51,7 @@ const PaymentGatewayTable = ({data}) => {
     {
       field: 'amount',
       headerName: 'Amount',
-      width: 200,
+      width: 150,
       headerAlign: 'center',
       renderCell:(param)=>param.row.amount
     },
@@ -61,7 +61,7 @@ const PaymentGatewayTable = ({data}) => {
       width: 200,
       headerAlign: 'center',
       editable: true,
-      renderCell:(param)=><p className={classes["btn"]} style={{backgroundColor:param.user_action==="Complete" ? "green" : "red"}}>
+      renderCell:(param)=><p className={classes["btn"]} style={{backgroundColor:param.row.user_action==="Complete" ? "green" : "red"}}>
       {
         param.row.user_action
       }
@@ -73,7 +73,7 @@ const PaymentGatewayTable = ({data}) => {
       width: 200,
       headerAlign: 'center',
       editable: true,
-      renderCell:(param)=><p className={classes["btn"]} style={{backgroundColor:param.agent_action==="Complete" ? "green" : "red"}}>
+      renderCell:(param)=><p className={classes["btn"]} style={{backgroundColor:param.row.agent_action==="Complete" ? "green" : "red"}}>
       {
         param.row.agent_action
       }
@@ -82,12 +82,12 @@ const PaymentGatewayTable = ({data}) => {
     {
       field: 'Action',
       headerName: 'Action',
-      width: 200,
+      width: 300,
       headerAlign: 'center',
       editable: true,
-      renderCell:(param)=><Stack>
-        <Button variant="outlined">Move to User</Button>
-        <Button variant="outlined">Move to Agent</Button>
+      renderCell:(param)=><Stack direction="row" spacing={3}>
+        <Button variant="outlined" size="small">Move to User</Button>
+        <Button variant="outlined" size="small">Move to Agent</Button>
       </Stack>
     },
   ];
@@ -98,6 +98,8 @@ const PaymentGatewayTable = ({data}) => {
           rows={data}
           columns={columns}
           pageSize={5}
+          rowHeight={45}
+          hideFooter
         />):(<Nodata />)
       }
     
