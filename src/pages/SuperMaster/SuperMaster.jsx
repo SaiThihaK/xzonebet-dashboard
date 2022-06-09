@@ -30,7 +30,7 @@ const SuperMaster = () => {
               {/* <MemberCard partner={data} route={`/dashboard/account/super-master/detail/${sup.id}`} /> */}
              {
                data.map((sup,index)=>(
-              <SuperMasterCard data={sup} key={index} />
+              <SuperMasterCard data={sup} key={index} route={`/dashboard/account/super-master/${sup.id}`}/>
                ))
              }
           </Grid>

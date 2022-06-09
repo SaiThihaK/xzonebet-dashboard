@@ -4,6 +4,7 @@ import { Card} from "@mui/material"
 import { Link, useNavigate } from 'react-router-dom'
 const AgentCard = ({route,data}) => {
 const navigate = useNavigate();
+console.log("agent Detail",data);
   return (
     <Card className={classes["card"]}>
         <div className={classes["card-grid"]}>
@@ -25,7 +26,11 @@ const navigate = useNavigate();
             </div>
             <div className={classes["current-amount"]}>
             <p>Total Unit</p>
-            <p className={classes["amount"]}>-</p>
+            <p className={classes["amount"]}>
+            {
+              data?.wallet?.main_unit
+            }
+            </p>
             </div>
            </div>
          </div>
