@@ -6,6 +6,10 @@ import SuperMasterDesc from './SuperMasterDesc/SuperMasterDesc';
 import SuperMasterDescTable from './SuperMasterDesc/SuperMasterDescTable/SuperMasterDescTable';
 import CustomLoading from "../../../../components/CustomLoading/CustomLoading"
 import classes from './SuperMasterDetail.module.css';
+import PageTitleCard from '../../../../components/UI/PageTitleCard/PageTitleCard';
+import { Grid } from '@mui/material';
+import MemberCard from '../../../../components/MemberCard/MemberCard';
+import Nodata from '../../../../components/Nodata/Nodata';
 const SuperMasterDetail = ({ type }) => {
   const { id } = useParams();
   const { data, loading } = CustomGetFunction(`api/agents/${id}`, []);
@@ -212,6 +216,21 @@ const SuperMasterDetail = ({ type }) => {
               <button className="btn_save"> SAVE</button>
             </div>
           </div>
+          <PageTitleCard title="Masters">
+            <div className={classes["card-body"]}>
+            {
+                  data.downlines.length !==0 ?(<Grid container spacing={5}>
+                    {
+                      data.downlines.length !==0 &&
+                      data.downlines.map((master,index)=>(
+                        <Grid item xs={6} key={index}>
+                          <MemberCard partner={master} path={"/dashboard/account/master/complete-master/detail/"} />
+                        </Grid>)) 
+                    }
+                  </Grid>):(<Nodata />)                
+                }
+            </div>
+          </PageTitleCard>
         </Card>) : (<CustomLoading />)
       }
 

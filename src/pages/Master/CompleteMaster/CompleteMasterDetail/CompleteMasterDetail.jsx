@@ -13,7 +13,7 @@ const CompleteMasterDetail = () => {
   // Enjoyment
   const [render,setRender] = useState(false);
   const {data} = CustomGetFunction(`api/agents/${id}`,[id,render]);
-  console.log(data);
+  console.log("Master Detail",data);
   return (
     <div className={classes["soccer-setting-container"]}>
       <Card>

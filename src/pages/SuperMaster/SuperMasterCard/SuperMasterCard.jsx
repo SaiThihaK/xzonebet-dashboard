@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 import * as FaIcons from "react-icons/fa";
 import ToggleBtn from "../../../components/UI/ToggleBtn/ToggleBtn";
 import classes from './SuperMasterCard.module.css';
-const SuperMasterCard = ({ data }) => {
+const SuperMasterCard = ({ data,route}) => {
 
   return (
     <Grid item xs={3}>
@@ -21,7 +21,7 @@ const SuperMasterCard = ({ data }) => {
             height="140px"
             image="https://icon-library.com/images/user-icon-jpg/user-icon-jpg-14.jpg"
           />
-          <Link to={`/dashboard/account/provider/${data.id}`}>
+          <Link to={route}>
             <button className={classes["view-detail"]}>
               <FaIcons.FaEye />
             </button>
