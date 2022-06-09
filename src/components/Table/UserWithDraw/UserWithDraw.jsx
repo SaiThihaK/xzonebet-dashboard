@@ -22,7 +22,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { PostMethod } from "../../../services/api-services";
 import Nodata from '../../../components/Nodata/Nodata'
-
+import { DataGrid } from '@mui/x-data-grid';
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: BasedColor.tableHead,
@@ -84,7 +84,7 @@ const UserWithDrawTable = ({}) => {
         </Button>
         )
         :(<FormControl   className={classes["form-control"]}>
-        <Select  size="small" value={agent_action} onChange={(e)=>setAgent_action(e.target.value)}>
+        <Select  size="small" sx={{width:120}} value={agent_action} onChange={(e)=>setAgent_action(e.target.value)}>
             {/* <MenuItem value="pending">Pending</MenuItem> */}
             <MenuItem value={1}>Approve</MenuItem>
             <MenuItem value={0}>Reject</MenuItem>
@@ -106,13 +106,72 @@ const UserWithDrawTable = ({}) => {
    </StyledTableCell>
  }
 }
+
+
+const columns = [
+  { field: 'id', headerName: 'User-ID ',width: 90 },
+  {
+    field: 'User Name',
+    headerName: 'User Name',
+    width: 150,
+    renderCell:(param)=>param.row.user.name
+  },
+  {
+    field: 'payment Provider',
+    headerName: 'Payment Provider',
+    width: 150,
+    renderCell:(param)=>param.row.payment_provider.name
+  },
+  {
+    field: 'amount',
+    headerName: 'Amount',
+    type: 'number',
+    width: 150,
+  },
+  {
+    field: 'phone_or_acc',
+    headerName: 'Phone/Account',
+    width: 160,
+  },
+  {
+    field: 'Payment Date',
+    headerName: 'Payment Date',
+    width: 150,
+    renderCell:(param)=><p>
+      {
+        ChangeDate(param.row.created_at)
+      }     
+    </p>
+  },
+  {
+    field: 'User Action',
+    headerName: 'User Action',
+    width: 150,
+    renderCell:(param)=><div>
+                    <p className={classes["btn"]} style={{backgroundColor:param.row.user_action==="Complete" ? "green" : "red"}}>
+                      {param.row.user_action}
+                    </p>
+    </div>
+  },
+  {
+    field: 'Action',
+    headerName: 'Action',
+    width: 150, 
+    renderCell:(param)=><div>{differStatus(param.row)}</div>
+  },
+];
+
   return (
     <div className={classes["table-margin"]}>
    {
-     loading ? (<Card>
+     loading ? (
+       <div className={classes['table-padding']}>
+     <Card>
       <TableContainer component={Paper}>
         {
-        data.length !==0 ? ( <Table sx={{ minWidth: 700}} aria-label="customized table">
+        data.length !==0 ? ( 
+        <div className={classes["table"]}>
+        {/* <Table sx={{ minWidth: 700}} aria-label="customized table">
         <TableHead>
           <TableRow>
             <StyledTableCell>No</StyledTableCell>
@@ -156,30 +215,25 @@ const UserWithDrawTable = ({}) => {
                 {
                   differStatus(user)
                 }
-              {/* <Stack spacing={1} direction="row">
-                   <Button onClick={()=>{
-                       openHandler();
-                       setId(user.id)
-                   }}  size="small"  variant="contained">
-                     Approve
-                   </Button>
-                   <Button onClick={(e)=>{
-                      CancelopenHandler()
-                       setId(user.id)
-                   }}   size="small" color="error" variant="contained">
-                     Reject
-                  </Button>
-                  </Stack> */}
+             
               </StyledTableCell>
               </StyledTableRow>
                 ))}
-      {/* --------------------------------------------------Test */}
         </TableBody>
-      </Table>):(<Nodata />)
+      </Table> */}
+     <DataGrid
+        rows={data}
+        columns={columns}
+        hideFooter
+        rowHeight={100}
+      />
+      </div>
+      ):(<Nodata />)
         }
       </TableContainer>
-     
-      </Card>):(<CustomLoading />)
+      </Card>
+      
+      </div>):(<CustomLoading />)
    }
       
       {/* <CustomPagination setPage={setPage} totalPage={pagination?.meta?.last_page} /> */}
