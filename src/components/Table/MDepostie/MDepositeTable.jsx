@@ -1,20 +1,11 @@
-import React,{useEffect, useState} from "react";
+import React,{ useState} from "react";
 import { styled } from "@mui/material/styles";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-
 import classes from "./MDepositeTable.module.css";
-import { Button, FormControl, MenuItem, Select,Pagination } from "@mui/material";
-import Card from "../../UI/Card";
+import { Button, FormControl, MenuItem, Select } from "@mui/material";
 import { BasedColor } from "../../../Controller/BasedColor";
 import axios from "axios";
-import { getMethod, PostMethod } from "../../../services/api-services";
-import { logoutHandler } from "../../Sidebar/Sidebar";
+import { PostMethod } from "../../../services/api-services";
 import { toast } from "react-toastify";
 import DepositeModal from "../../UI/Modal/DepositeModal/DepositeModal";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,6 +13,7 @@ import { getRender, selectedRender } from "../../../features/render";
 import CustomGetFunction from "../../../services/CustomGetFunction";
 import CustomLoading from "../../../components/CustomLoading/CustomLoading"
 import MasterDepositeConfirm from "../../../components/UI/Modal/MasterDeposite/MasterDepositeConfirm"
+import { DataGrid } from '@mui/x-data-grid';
 
 
 
@@ -34,15 +26,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     fontSize: 14,
   },
 }));
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  "&:nth-of-type(odd)": {
-    backgroundColor: theme.palette.action.hover,
-  },
-  // hide last border
-  "&:last-child td, &:last-child th": {
-    border: 0,
-  },
-}));
+
 const MDepositeTable = ({setNum,num,filterStatus}) => {
    const [open,setOpen] = useState(false);
    const [value,setValue] = useState("");
@@ -185,10 +169,59 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
      toast.error(error.response.data.message)
    }
  }
- 
+ const columns = [
+  { 
+    field: 'id', 
+    headerName: 'User-ID',
+    width: 90,
+    renderCell:(param)=>param.row.submit_user?.id
+ },
+  {
+    field: 'account_name',
+    headerName: 'Account Name',
+    width: 150,
+    renderCell:(param)=> param.row.account_name
+  },
+  {
+    field: 'account number',
+    headerName: 'Account No/Account Name',
+    width: 200,
+    renderCell:(param)=> param.row.account_no
+  },
+  {
+    field: 'transaction_no',
+    headerName: 'Trasitoin ID',
+    type: 'number',
+    width: 110,
+
+  },
+  {
+    field: 'payment_provider_name',
+    headerName: 'Payment Provider',
+    width: 160,
+    renderCell:(param)=>param.row.payment_provider_name
+  },
+  {
+    field: 'Payment Date',
+    headerName: 'Payment Date',
+    width: 160,
+    renderCell:(param)=><p>{ChangeDate(param.row.created_at)}</p>
+    
+  },
+  {
+    field: 'Status',
+    headerName: 'Status',
+    width: 150,
+    renderCell:(param)=><div>
+      {differStatus(param.row)}
+    </div>
+    
+  },
+];
 
 
- const {data,pagination,loading} = CustomGetFunction(`api/deposit-receive?sortColumn=id&sortDirection=desc&limit=20&page=${page}${filterStatus}`,[num,page,filterStatus])
+
+ const {data,loading} = CustomGetFunction(`api/deposit-receive?sortColumn=id&sortDirection=desc&limit=20&page=${page}${filterStatus}`,[num,page,filterStatus])
  console.log(data);
    const ChangeDate=(date)=>{
     const dateNo=new Date(date);
@@ -198,9 +231,9 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
   return (
     <div className={classes["table-margin"]}>
     {
-      loading ? ( <div className={classes["table-margin"]}>
-      <Card>
-       
+      loading ? ( 
+      <div className={classes["table-margin"]}>
+      {/* <Card>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700}} aria-label="customized table">
           <TableHead>
@@ -214,8 +247,6 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
               </StyledTableCell>
               <StyledTableCell align="left">Payment Provider</StyledTableCell>
               <StyledTableCell align="left">Amount</StyledTableCell>
-             
-              
               <StyledTableCell align="left">Status</StyledTableCell>
               <StyledTableCell align="left">Payment Date</StyledTableCell>
             </TableRow>
@@ -246,14 +277,17 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
 
         </StyledTableRow>
                   ))}
-        {/* --------------------------------------------------Test */}
           </TableBody>
         </Table>
       </TableContainer>
-      
-      </Card>
+      </Card> */}
     
- 
+    <DataGrid
+        rows={data}
+        columns={columns}
+        hideFooter
+        rowHeight={100}
+      />
     </div>) : (<CustomLoading />)
     }    <DepositeModal 
     open={open}
