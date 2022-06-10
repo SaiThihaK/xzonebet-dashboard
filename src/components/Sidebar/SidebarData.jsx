@@ -18,7 +18,6 @@ export const SidebarData = [
         icon: <AiFillHome />,
         iconClosed: <RiArrowDownSFill />,
         iconOpened: <RiArrowUpSFill />,
-
     },
     {
         title: 'Admin Team Account',
@@ -375,7 +374,7 @@ export const SidebarData = [
     },
     {
         title: 'Partner Site Control',
-        path: '/report',
+     
         icon: <FaLayerGroup />,
         iconClosed: <RiArrowDownSFill />,
         iconOpened: <RiArrowUpSFill />,
@@ -428,7 +427,33 @@ export const SidebarData = [
             },
         ]
     },
-
-
-
+        {
+            title: 'Promotion',
+            path: '/report',
+            icon: <FaLayerGroup />,
+            iconClosed: <RiArrowDownSFill />,
+            iconOpened: <RiArrowUpSFill />,
+            subNav: [
+                {
+                    title: "Daily Cash Back User",
+                    path: "/dashboard/daily-cash-back-user",
+                    icon: <IoIosArrowForward />
+                },
+                {
+                    title: "Festival Promotion",
+                    path: "/dashboard/festival-promotion",
+                    icon: <IoIosArrowForward />
+                },
+                {
+                    title: "User level",
+                    path: "/dashboard/user-level",
+                    icon: <IoIosArrowForward />
+                },
+                {
+                    title: "Deposite Promotion",
+                    path: "/dashboard/deposite-promotion",
+                    icon: <IoIosArrowForward />
+                },
+            ]
+        }
 ]
