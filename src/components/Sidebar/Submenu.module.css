@@ -20,10 +20,29 @@
   margin-left: 16px;
   font-size: 15px;
 }
-.sub-list {
+.sub-list:link,
+.sub-list:visited {
   background-color: #15171c;
-  /* height: 60px; */
   padding: 15px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #f5f5f5;
+  font-size: 12px;
+  transition: 0.3s;
+}
+.sub-list:hover,
+.sub-list:focus,
+.sub-list.active {
+  background-color: var(--main-color);
+  cursor: pointer;
+  border-left: 4px solid #d1cdd8;
+}
+
+/* .sub-list {
+  background-color: #15171c; */
+/* height: 60px; */
+/* padding: 15px;
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -38,4 +57,4 @@
 }
 .active {
   background-color: var(--main-color);
-}
+} */
