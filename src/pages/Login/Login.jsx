@@ -25,6 +25,7 @@ const Login = () => {
   const [open,setOpen] = useState(false);
   const handleOpen = (state)=>setOpen(state);
   const handleClose = ()=>setOpen(false);
+  let navigate = useNavigate();
   function validateEmail(email) {
     var re = /\S+@\S+\.\S+/;
     return re.test(email);
@@ -49,7 +50,7 @@ const Login = () => {
           localStorage.setItem('jToken',res.data.data['j_token']);
           localStorage.setItem('lToken',res.data.data['l_token']);
           localStorage.setItem('type',res.data.data['type']);
-          window.location.replace("/")
+         navigate("/dashboard")
           refreshPage();
          
         break;
