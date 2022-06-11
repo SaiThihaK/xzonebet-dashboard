@@ -37,6 +37,7 @@ import { AccountingSidebarData } from "../../Dashboard/AccountingDashboard/Accou
 import FetchUnit from "../../services/FetchUnit";
 import { ProviderSidebarData } from "../../Dashboard/ProviderDashboard/ProviderSidebarData";
 import { envlogo } from "../../variable";
+
 function refreshPage() {
   setTimeout(()=>{
       window.location.assign("/");
@@ -254,7 +255,7 @@ const Sidebar = () => {
         // style={{ left: sidebar ? "0" : "-100%" }}
       >
         <div className={classes["sidebar-header"]}>
-          <img src={envlogo} className={classes.logo} alt="" />
+          <img src={logo} className={classes.logo} alt="" />
           {/* y<h1 style={{ color: "#FFF" }}>Logo</h1> */}
         </div>
         <div className={classes.sidebarWrap}>

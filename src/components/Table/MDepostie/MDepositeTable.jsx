@@ -64,8 +64,8 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
  const confirmHandler = async()=>{
    if(value === "approve"){
     //  console.log("approve")
-    ModalOpenHandler();
-  
+    // ModalOpenHandler();
+    submitHandler();
     
     // try{
     //   const response = await axios.request(PostMethod(`api/deposit/action/${ID}`,{
@@ -144,9 +144,7 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
   try{
       const response = await axios.request(PostMethod(`api/deposit/action/${ID}`,{
         status:"approve",
-        main_unit:amount
       }));
-      console.log("work");
       console.log(response);
       if(response.data.status==="success"){
         AlertToast(toast.success,response.data.message);

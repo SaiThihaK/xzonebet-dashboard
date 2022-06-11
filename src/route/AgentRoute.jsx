@@ -30,7 +30,7 @@ const AgentRoute = () => {
       <Route
         exact
         path="/dashboard/agent/deposite/user-deposite"
-        element={<ADeposite />}
+        element={<  ADeposite />}
       />
       <Route
         exact
