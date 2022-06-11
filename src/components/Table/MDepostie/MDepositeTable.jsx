@@ -187,10 +187,16 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
     renderCell:(param)=> param.row.account_no
   },
   {
+    field: 'amount',
+    headerName: 'Amount',
+    width: 100,
+    // renderCell:(param)=> param.row.account_no
+  },
+  {
     field: 'transaction_no',
     headerName: 'Trasitoin ID',
     type: 'number',
-    width: 110,
+    width: 200,
 
   },
   {

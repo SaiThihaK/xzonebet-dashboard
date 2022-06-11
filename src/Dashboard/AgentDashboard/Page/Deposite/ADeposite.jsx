@@ -19,7 +19,6 @@ useEffect(()=>{
 },[num]);
 return(
     <div>
-
         <Card>
      <div className={classes["card-header"]}>
           <h1 className={classes["card-title"]}>

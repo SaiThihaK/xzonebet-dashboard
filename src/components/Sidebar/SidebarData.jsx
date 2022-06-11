@@ -455,5 +455,34 @@ export const SidebarData = [
                     icon: <IoIosArrowForward />
                 },
             ]
+        },
+        {
+            title: 'Xzone bet Site Control',
+            path: '/dashboard/xzonebet-control',
+            icon: <FaLayerGroup />,
+            iconClosed: <RiArrowDownSFill />,
+            iconOpened: <RiArrowUpSFill />,
+            subNav: [
+                {
+                    title: "Banner Images",
+                    path: "/dashboard/xzonebet-control/banner-image",
+                    icon: <IoIosArrowForward />
+                },
+                {
+                    title: "Casino Banner",
+                    path: "/dashboard/xzonebet-control/casino-banner-image",
+                    icon: <IoIosArrowForward />
+                },
+                {
+                    title: "User level",
+                    path: "/dashboard/user-level",
+                    icon: <IoIosArrowForward />
+                },
+                {
+                    title: "Deposite Promotion",
+                    path: "/dashboard/deposite-promotion",
+                    icon: <IoIosArrowForward />
+                },
+            ]
         }
 ]
