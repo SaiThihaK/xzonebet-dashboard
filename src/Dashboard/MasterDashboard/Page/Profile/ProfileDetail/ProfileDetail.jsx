@@ -91,6 +91,66 @@ const handleChange = (prop) => (event) => {
     console.log("hhei");
     console.log(el);
     console.log(showForm);  
+  };
+
+  const differentMaster = ()=>{
+    if(type==="super_master" || type==="provider")return <div></div>
+    if(type==="master"|| type==="agent")return <div className="p_group">
+            
+    <div className="p_info_header">
+      {
+        type === "master" ? "SUPERMASTER INFO" : "MASTER INFO"
+      }
+    </div>
+    <div className="p_field">
+        <div className="p_item">
+          <div>
+         {
+           type === "master" ? "SUPERMASTER ID":"MASTER ID"
+         }
+          </div>
+          <div className="p_ncolor">
+            <div>
+              {
+                type === "master" ? userData?.agent?.super_master?.user_id : userData?.agent?.master?.user_id
+              }
+            </div>
+         </div>
+         
+        </div>
+        <div className="p_item">
+          <div>
+           {
+             type==="master" ? "SUPERMASTER NAME" : "MASTER NAME"
+           }
+          </div>
+          <div className="p_ncolor">
+            <div>
+            {
+                type === "master" ? userData?.agent?.super_master?.name : userData?.agent?.master?.name
+            }
+            </div>
+                              
+                
+          </div>
+         
+        </div>
+     
+        {/* <div className="p_item">
+          <div>
+          Total Unit
+          </div>
+          <div className="p_ncolor">
+            <div >4000 </div>
+                              
+                
+          </div>
+         
+        </div> */}
+     
+    </div>
+    
+ </div>
   }
   return (
     <div className="personal_info">
@@ -98,62 +158,7 @@ const handleChange = (prop) => (event) => {
       
        <div className="p_col person_mr">
          {
-           type !== "super_master" && (<div className="p_group">
-            
-           <div className="p_info_header">
-             {
-               type === "master" ? "SUPERMASTER INFO" : "MASTER INFO"
-             }
-           </div>
-           <div className="p_field">
-               <div className="p_item">
-                 <div>
-                {
-                  type === "master" ? "SUPERMASTER ID":"MASTER ID"
-                }
-                 </div>
-                 <div className="p_ncolor">
-                   <div>
-                     {
-                       type === "master" ? userData?.agent?.super_master?.user_id : userData?.agent?.master?.user_id
-                     }
-                   </div>
-                </div>
-                
-               </div>
-               <div className="p_item">
-                 <div>
-                  {
-                    type==="master" ? "SUPERMASTER NAME" : "MASTER NAME"
-                  }
-                 </div>
-                 <div className="p_ncolor">
-                   <div>
-                   {
-                       type === "master" ? userData?.agent?.super_master?.name : userData?.agent?.master?.name
-                   }
-                   </div>
-                                     
-                       
-                 </div>
-                
-               </div>
-            
-               {/* <div className="p_item">
-                 <div>
-                 Total Unit
-                 </div>
-                 <div className="p_ncolor">
-                   <div >4000 </div>
-                                     
-                       
-                 </div>
-                
-               </div> */}
-            
-           </div>
-           
-        </div>)
+          differentMaster()
          }
            
            <div className="p_group">

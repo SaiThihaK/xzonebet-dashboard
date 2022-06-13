@@ -37,14 +37,20 @@ return ()=>{
 },[paymentAccountDetail,id]);
 const EditHandler = async()=>{
 try{
-let fd = new FormData();
-fd.append("name",name);
-fd.append("account_no",account);
-fd.append("payment_provider_id",id);
-fd.append("payment_type_id",paymentAccountDetail.payment_type_id)
-fd.appent("_method","patch");
+// let fd = new FormData();
+// fd.append("name",name);
+// fd.append("account_no",account);
+// fd.append("payment_provider_id",id);
+// fd.append("payment_type_id",paymentAccountDetail.payment_type_id)
+// fd.appent("_method","patch");
 const response = await axios.request(PostMethod(`api/dashboard/payment-providers/${id}`,
-fd
+{
+  name,
+  account_no:account,
+  payment_provider_id:parseInt(id),
+  payment_type_id:paymentAccountDetail.payment_type_id,
+  _method:"patch"
+}
 ));
 console.log(response);
 if(response.data.status==="success"){

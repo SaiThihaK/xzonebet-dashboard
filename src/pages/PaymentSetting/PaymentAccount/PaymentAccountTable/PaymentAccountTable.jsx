@@ -38,9 +38,9 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 
-const PaymentAccountTable = ({data,pagination,setPage}) => {
+const PaymentAccountTable = ({data}) => {
 const navigate = useNavigate();
-console.log("this is data",data);
+
 
 
 const deleteHandler = async(id)=>{
@@ -133,54 +133,6 @@ const columns = [
  
         {
           data?.length !== 0 ? (<div className={classes["table-margin"]}>
-            {/* <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 700 }} aria-label="customized table">
-            <TableHead>
-              <TableRow>
-                <StyledTableCell align="left">No.</StyledTableCell>
-                <StyledTableCell align="right">Payment Type</StyledTableCell>
-                <StyledTableCell align="right">Payment Provider</StyledTableCell>
-                <StyledTableCell align="right">Provider Logo</StyledTableCell>
-                <StyledTableCell align="right">Account Number </StyledTableCell>
-                <StyledTableCell align="right">Name </StyledTableCell>
-                <StyledTableCell align="right">Action</StyledTableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              
-              {data.map((row,index)=>(
-                   <StyledTableRow key={index}>
-                    <StyledTableCell component="th" scope="row">
-                     {index}
-                  </StyledTableCell>
-                  <StyledTableCell align="right" >{row?.payment_type}</StyledTableCell>
-                  <StyledTableCell align="right" >{row.payment_provider}</StyledTableCell>
-                  <StyledTableCell align="right" >
-                      <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
-                      <Avatar style={{display:"flex",justifyContent:"center"}} src={row.provider_logo} variant="square" alt=""/>
-                      </div>
-                      
-                  </StyledTableCell>
-                  <StyledTableCell align="right" >{row.account_no}</StyledTableCell>
-                  <StyledTableCell align="right" >{row.name}</StyledTableCell>
-                  <StyledTableCell align="right">
-                  <Stack spacing={1} direction="row" sx={{justifyContent: 'flex-end'}}>
-                  <IconButton
-                  onClick={()=>{
-                    navigate(`/payment-setting/payment-account/edit/${row.id}`)
-                  }}
-                  ><Edit /></IconButton>
-                  <IconButton><Delete /></IconButton>
-                   </Stack>
-                  </StyledTableCell>
-                  </StyledTableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <CustomPagination setPage={setPage} totalPage={pagination?.meta?.last_page} /> */}
-     
-
 
         <DataGrid rows={data} columns={columns} />
       </div>):(<Nodata />)
