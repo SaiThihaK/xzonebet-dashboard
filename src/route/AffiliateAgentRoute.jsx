@@ -5,17 +5,21 @@ import UserWithDraw from "../pages/UserWithDraw/UserWithDraw";
 import ADeposite from "../Dashboard/AgentDashboard/Page/Deposite/ADeposite";
 import AgentDeposite from "../Dashboard/AgentDashboard/Page/Deposite/AgentDeposite/AgentDeposite";
 import { Route, Routes } from "react-router-dom";
+import Overview from "../pages/Overview";
+import MProfile from "../Dashboard/MasterDashboard/Page/Profile/MProfile";
 
 
 const AffiliateAgentRoute = () => {
   return (
     <Routes>
       <Route path="*" element={<Notfound />} />
+      <Route path="/dashboard" exact  element={<Overview />} />
       <Route
         exact
         path="/dashboard/affiliate-agent/transition-history"
         element={<TransitionHistory />}
       />
+      <Route exact path="/dashboard/affiliate-agent/profile" element={<MProfile />} />
       <Route
         exact
         path="/dashboard/agent/user-withdraw"

@@ -125,8 +125,7 @@ const columns = [
   {
     field: 'amount',
     headerName: 'Amount',
-    type: 'number',
-    width: 150,
+    width: 100,
   },
   {
     field: 'phone_or_acc',
@@ -136,10 +135,11 @@ const columns = [
   {
     field: 'Payment Date',
     headerName: 'Payment Date',
-    width: 150,
+    width: 200,
     renderCell:(param)=><p>
       {
-        ChangeDate(param.row.created_at)
+        // ChangeDate(param.row.created_at)
+        param.row.created_at
       }     
     </p>
   },

@@ -14,6 +14,7 @@ import CustomGetFunction from "../../../services/CustomGetFunction";
 import CustomLoading from "../../../components/CustomLoading/CustomLoading"
 import MasterDepositeConfirm from "../../../components/UI/Modal/MasterDeposite/MasterDepositeConfirm"
 import { DataGrid } from '@mui/x-data-grid';
+import Nodata from "../../Nodata/Nodata";
 
 
 
@@ -286,12 +287,15 @@ const MDepositeTable = ({setNum,num,filterStatus}) => {
       </TableContainer>
       </Card> */}
     
-    <DataGrid
-        rows={data}
-        columns={columns}
-        hideFooter
-        rowHeight={100}
-      />
+    
+      {
+        data.length !== 0 ? (<DataGrid
+          rows={data}
+          columns={columns}
+          hideFooter
+          rowHeight={100}
+        />):(<Nodata />)
+      }
     </div>) : (<CustomLoading />)
     }    <DepositeModal 
     open={open}
