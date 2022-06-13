@@ -17,25 +17,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { DeleteMethod } from "../../../../services/api-services";
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: BasedColor.tableHead,
-    color: theme.palette.common.white,
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
-  },
-}));
 
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  "&:nth-of-type(odd)": {
-    backgroundColor: theme.palette.action.hover,
-  },
-  // hide last border
-  "&:last-child td, &:last-child th": {
-    border: 0,
-  },
-}));
 
 
 const PaymentAccountTable = ({data}) => {
@@ -81,7 +63,7 @@ const columns = [
     headerName: 'Payment Provider',
     width: 200,
     headerAlign: 'center',
-    editable: false,
+   renderCell:(param)=>param.row.payment_provider.name
   },
   {
     field: "provider_logo",

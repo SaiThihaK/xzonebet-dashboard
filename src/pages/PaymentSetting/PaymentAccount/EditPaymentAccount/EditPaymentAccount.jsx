@@ -7,7 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { logoutHandler } from "../../../../components/Sidebar/Sidebar";
 import Card from "../../../../components/UI/Card";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { PatchMethod, PostMethod } from "../../../../services/api-services";
 import CustomGetFunction from "../../../../services/CustomGetFunction";
 import CustomLoading from "../../../../components/CustomLoading/CustomLoading"
@@ -20,7 +20,7 @@ const [name,setName] = useState("");
 const [account,setAccount] = useState("");
 const nameChange = e=>setName(e.target.value);
 const accountChange = e=>setAccount(e.target.value);
-
+const navigate = useNavigate();
  
 const logoChange = (e) => setlogo(e.target.files[0]);
 
@@ -43,11 +43,11 @@ try{
 // fd.append("payment_provider_id",id);
 // fd.append("payment_type_id",paymentAccountDetail.payment_type_id)
 // fd.appent("_method","patch");
-const response = await axios.request(PostMethod(`api/dashboard/payment-providers/${id}`,
+const response = await axios.request(PostMethod(`api/dashboard/payment-accounts/${id}`,
 {
   name,
   account_no:account,
-  payment_provider_id:parseInt(id),
+  payment_provider_id:paymentAccountDetail.payment_provider.id,
   payment_type_id:paymentAccountDetail.payment_type_id,
   _method:"patch"
 }
@@ -55,6 +55,7 @@ const response = await axios.request(PostMethod(`api/dashboard/payment-providers
 console.log(response);
 if(response.data.status==="success"){
   toast.success(response.data.message);
+  navigate(`/dashboard/payment-setting/payment-account`)
   return;
 }
 if(response.data.status==="error"){

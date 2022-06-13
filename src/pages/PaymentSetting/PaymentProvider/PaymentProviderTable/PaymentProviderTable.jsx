@@ -26,27 +26,6 @@ import { Delete, Edit } from "@mui/icons-material";
 import { DataGrid } from "@mui/x-data-grid";
 const PaymentProviderTable = ({data}) => {
 
-  const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    [`&.${tableCellClasses.head}`]: {
-      backgroundColor: BasedColor.tableHead,
-      color: theme.palette.common.white,
-    },
-    [`&.${tableCellClasses.body}`]: {
-      fontSize: 14,
-    },
-  }));
-
-  const StyledTableRow = styled(TableRow)(({ theme }) => ({
-    "&:nth-of-type(odd)": {
-      backgroundColor: theme.palette.action.hover,
-    },
-    // hide last border
-    "&:last-child td, &:last-child th": {
-      border: 0,
-    },
-  }));
-  // State
- 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
